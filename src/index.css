@@ -67,9 +67,11 @@
   }
 }
 
-.Cotanner-welcome-title{
+.containner-welcome .img{
   padding-top: 10px;
   display: flex;
   justify-content: center;
-  flex-direction: column;
+}
+.containner-welcome .cards{
+  padding-top: 20px;
 }
