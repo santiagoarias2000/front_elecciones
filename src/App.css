@@ -36,15 +36,3 @@
     transform: rotate(360deg);
   }
 }
-.header{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 6vw;
-  background-color: #052851;  
-}
-.header img {
-  width: 12.3vw;
-  height: 3.8vw;
-}
