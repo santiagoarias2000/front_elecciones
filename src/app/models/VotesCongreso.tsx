@@ -34,6 +34,7 @@ class VotesCongreso {
     descDistr: string,
     codePolipar: number,
     descPolipa: string,
+    codeCan:number,
     nameCandi: string,
     numberVotes: number,
     codeCont: string
@@ -51,6 +52,10 @@ class VotesCongreso {
     this.descriptionDistrict = descDistr;
     this.descriptionPosition = descrPosit;
     this.codePoliticparty = codePolipar;
+    this.codeCandidate = codeCan
+    this.candidate_name = nameCandi;
+    this.numberVotes = numberVotes;
+    this.codeContry = codeCont;
 
 
   }

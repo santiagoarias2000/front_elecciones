@@ -1,5 +1,9 @@
-export const MainBoard =()=>{
+export const Welcome =()=>{
     return(
-        <div>Acá va a ir el la Bienvenida</div>
+
+        <div className="Cotanner-welcome-title">
+            <h1>Tabla de Contenido</h1>
+            <h2>Información Estadística Publicada</h2>
+        </div>
     )
 }
