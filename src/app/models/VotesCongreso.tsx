@@ -7,17 +7,18 @@ class VotesCongreso {
   public candidateDescription: string;
   public gender: string;
   public descriptionOption: string;
-  public idDepartment: Department;
+  public department: Department;
   public idMunicipality: Municipality;
   public descriptionPosition: string;
   public tableNumber: number;
   public codeRole: number;
+  public description_role: string;
   public descriptionDistrict: string;
   public codePoliticparty: number;
   public descriptionPoliticparty: string;
   public codeCandidate: number;
   public candidate_name: string;
-  public numberVotes: number;
+  public votos: number;
   public codeContry: string;
 
   constructor(
@@ -31,6 +32,7 @@ class VotesCongreso {
     descrPosit: string,
     tableNu: number,
     codeRol: number,
+    descRol: string,
     descDistr: string,
     codePolipar: number,
     descPolipa: string,
@@ -44,19 +46,22 @@ class VotesCongreso {
     this.candidateDescription = candiDes;
     this.gender = gender;
     this.descriptionOption = descrOption;
-    this.idDepartment = idDepa;
+    this.department = idDepa;
     this.idMunicipality = idMun;
     this.descriptionPoliticparty = descPolipa;
     this.tableNumber = tableNu;
     this.codeRole = codeRol;
+    this.description_role = descRol;
     this.descriptionDistrict = descDistr;
     this.descriptionPosition = descrPosit;
     this.codePoliticparty = codePolipar;
     this.codeCandidate = codeCan
     this.candidate_name = nameCandi;
-    this.numberVotes = numberVotes;
+    this.votos = numberVotes;
     this.codeContry = codeCont;
 
 
   }
 }
+
+export default VotesCongreso;
