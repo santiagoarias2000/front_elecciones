@@ -662,6 +662,7 @@ h6 {
   #mainBackground, 
   #footer {
     padding: 0 100px 0 100px;
+    margin-left: 300px;
   }
 }
 
@@ -1350,3 +1351,71 @@ h6 {
 .cardBorder{
   border: none !important;
 }
+.header{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 6vw;
+  background-color: #052851;  
+}
+.header img {
+  width: 12.3vw;
+  height: 3.8vw;
+}
+
+.containner-welcome{
+  padding-top: 6vw;
+}
+.containner-welcome img {
+    width: 100%;
+}
+.containner-welcome .color-yellow {
+  width: 100%;
+  height: 3px;
+  background-color: #d9224e;
+}
+.containner-welcome .cards {
+  font-family: "Tilt Warp", cursive;
+  font-size: 1vw; 
+  padding-top:19px;
+}
+
+.btn-cards{
+  background-color: #d9224e; 
+  border: none;
+  color: white;
+  padding: 0.3vw 3vw;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.3vw;
+  font-weight: 400;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  border-radius: 5px;
+}
+.btn-cards:hover {
+  color: #fff;
+}
+.container .tocard:hover {
+  box-shadow: 5px 5px 8px  rgba(0,0,0,0.38);
+  transform: translateY(-3%);
+  transition: all 0.5s;
+}
+.cards-text{
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+.cards-btn{
+  padding-bottom: 15px;
+}
+.cards .icon{
+  font-size: 50px;
+}
+.cards img{
+  color: #052851;
+  width: 6vw;
+}
+
+
