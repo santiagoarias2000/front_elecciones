@@ -93,12 +93,12 @@
 }
 .containner-welcome .cards {
   font-family: "Tilt Warp", cursive;
-  font-size: 1vw;
+  font-size: 1vw; 
   padding-top:19px;
 }
 
 .btn-cards{
-  background-color: #d9224e; /* Green */
+  background-color: #d9224e; 
   border: none;
   color: white;
   padding: 0.3vw 3vw;
