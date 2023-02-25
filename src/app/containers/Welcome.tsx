@@ -1,6 +1,7 @@
 import img from "../../assets/image/eleccioneshe.jpg";
 import president from "../../assets/image/presidente.svg";
 import camera from "../../assets/image/multitud-de-usuarios.png";
+import { Link } from "react-router-dom";
 
 export const Welcome = () => {
   return (
@@ -33,10 +34,10 @@ export const Welcome = () => {
                   <img src={camera} alt="Imagen de camara" />
                   <h3 className="card-title cards-text">Cámara</h3>
                   <div className="cards-btn">
-                  <a href="#" className="btn-cards ">
+                  <Link to ="/camara" className="btn-cards ">
                     <i className="bi bi-bar-chart-line-fill"></i>
                        &nbsp; Ver resultados
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

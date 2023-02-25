@@ -19,7 +19,7 @@ const loading = (
 
 function App() {
   return (
-    <div className="body">
+    <div>
       <BrowserRouter>
         {/* time to loading information to aplication */}
         <Suspense fallback={loading}>

@@ -1,5 +1,3 @@
-
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -44,7 +42,6 @@ h6 {
 # Main
 --------------------------------------------------------------*/
 #main {
-  margin-top: 60px;
   padding: 20px 30px;
   transition: all 0.3s;
 }
@@ -247,7 +244,7 @@ h6 {
 .card {
   margin-bottom: 30px;
   border: none;
-  background-color: #FFFFFF90 !important;
+  background-color: #ffffff90 !important;
   border-radius: 5px;
   box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
 }
@@ -276,7 +273,6 @@ h6 {
 
 .card-body {
   padding: 0 20px 20px 20px;
-  
 }
 .card-img-overlay {
   background-color: rgba(255, 255, 255, 0.6);
@@ -659,10 +655,9 @@ h6 {
 
 @media (min-width: 1200px) {
   #main,
-  #mainBackground, 
+  #mainBackground,
   #footer {
     padding: 0 100px 0 100px;
-    margin-left: 300px;
   }
 }
 
@@ -1340,36 +1335,37 @@ h6 {
   width: 100%;
 }
 
-.colorTable{
-  --bs-table-hover-color: #FFFFFF !important;
+.colorTable {
+  --bs-table-hover-color: #ffffff !important;
   color: #052851 !important;
 }
 
-.color{
+.color {
   color: #052851 !important;
 }
-.cardBorder{
+.cardBorder {
   border: none !important;
 }
-.header{
+.headers {
   position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
   width: 100%;
   height: 6vw;
-  background-color: #052851;  
+  background-color: #052851;
 }
-.header img {
+.headers img {
   width: 12.3vw;
   height: 3.8vw;
 }
 
-.containner-welcome{
+.containner-welcome {
   padding-top: 6vw;
 }
 .containner-welcome img {
-    width: 100%;
+  width: 100%;
 }
 .containner-welcome .color-yellow {
   width: 100%;
@@ -1378,12 +1374,12 @@ h6 {
 }
 .containner-welcome .cards {
   font-family: "Tilt Warp", cursive;
-  font-size: 1vw; 
-  padding-top:19px;
+  font-size: 1vw;
+  padding-top: 19px;
 }
 
-.btn-cards{
-  background-color: #d9224e; 
+.btn-cards {
+  background-color: #d9224e;
   border: none;
   color: white;
   padding: 0.3vw 3vw;
@@ -1392,30 +1388,84 @@ h6 {
   display: inline-block;
   font-size: 1.3vw;
   font-weight: 400;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   border-radius: 5px;
 }
 .btn-cards:hover {
   color: #fff;
 }
 .container .tocard:hover {
-  box-shadow: 5px 5px 8px  rgba(0,0,0,0.38);
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.38);
   transform: translateY(-3%);
   transition: all 0.5s;
 }
-.cards-text{
+.cards-text {
   padding-top: 20px;
   padding-bottom: 10px;
 }
-.cards-btn{
+.cards-btn {
   padding-bottom: 15px;
 }
-.cards .icon{
+.cards .icon {
   font-size: 50px;
 }
-.cards img{
+.cards img {
   color: #052851;
   width: 6vw;
 }
 
+.containner_footers {
+  padding-top: 5vw;
+  padding-bottom: .7vw;
+  background-image: url("/src/assets/image/img.png");
+  background-repeat: no-repeat;
+  color: #ffffff;
+  font-family: 2vw;
+  font-family: 'Tilt Warp', cursive;
+}
+.containner_footers .side_stripe {
+  margin-left: 20px;
+  width: 2px;
+  height: 100px;
+  background-color: #d9224e;
+  border-radius: 20px;
+}
+.containner_footers .icon_footer {
+  font-size: 1.67vw;
+  color:#d9224e 
+}
+.containner_footers .end_footer{
+  width: 100%;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+}
+.containner_footers li{
+  display: flex;
+  text-align: left;
+  align-items: center;
+  list-style: none;
+  line-height: 1.5;
+  color: #fff;
+  text-decoration: none;
 
+}
+.link{
+  color: #cddfff;
+}
+.containner_footers p{
+  display: flex;
+  text-align: left;
+  list-style: none;
+  line-height: 1.5;
+  color: #fff;
+  text-decoration: none;
+}
+.link_hitdata{
+  color: #fff;
+  text-decoration: none;
+}
+.link_hitdata :hover{
+  color: #fff3cd
+}

@@ -20,7 +20,6 @@ export const Camara = () => {
   };
 
   useEffect(() => {
-    console.log(arrayVotesCamaraTerritorial);
     getVotosCamaraTerritorialCareBackend();
     getVotosCamaraIndigenaCareBackend();
   }, []);
@@ -31,7 +30,7 @@ export const Camara = () => {
       
       <img
           src={camara}
-          style={{ width: "100%" , maxHeight:"80%"}}
+          style={{ width: "100%" , maxHeight:"80%", marginTop:"10vw"}}
           alt="logo principal para la parte superior de la pagina web"
         />
       {/* Navegación estilo breadcrumb: Inicio */}

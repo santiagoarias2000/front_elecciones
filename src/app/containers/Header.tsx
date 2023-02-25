@@ -5,7 +5,7 @@ import camara from "../../assets/image/camara.jpg";
 export const Header = () => {
   return (
     <div>
-      <header className="header">
+      <header className="headers">
         <Link to={"/welcome"}>
           <img
             src={logoHeader}
