@@ -54,6 +54,7 @@ export const Camara = () => {
               <b>TERRITORIAL DEPARTAMENTAL</b>
             </div>
           </div>
+          <div className="table-wrapper-scroll-y my-custom-scrollbar">
           <table
             className="colorTable table table-hover"
             style={{ background: "#05285190 !important" }}
@@ -83,6 +84,7 @@ export const Camara = () => {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       </div>
 

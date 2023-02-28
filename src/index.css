@@ -1443,6 +1443,17 @@ h6 {
   align-items: center;
   flex-direction: column;
 }
+@media (min-width: 769px) {
+  .containner-welcome .cards {
+    font-family: "Tilt Warp", cursive;
+    font-size: 0.4vw !important;
+    padding-top: 19px;
+  }
+
+  .containner_footers .end_footer_respodive {
+    display: none;
+  }
+}
 .containner_footers li {
   display: flex;
   text-align: left;
@@ -1472,6 +1483,13 @@ h6 {
 }
 
 @media (max-width: 768px) {
+  .card-title {
+    padding: 0px 0 8px 0;
+    font-size: 12px;
+    font-weight: 500;
+    color: black;
+    font-family: "Poppins", sans-serif;
+  }
   .img_footer_center img {
     margin-top: 10px;
     width: 140%;
@@ -1497,11 +1515,7 @@ h6 {
     color: #d9224e;
   }
   .containner_footers .end_footer {
-    width: 100%;
-    display: flex;
-    justify-items: center;
-    align-items: center;
-    flex-direction: column;
+    display: none;
   }
   .containner_footers h6 {
     font-family: 1vw;
@@ -1538,4 +1552,22 @@ h6 {
   .link_hitdata :hover {
     color: #fff3cd;
   }
+  .end_footer_respodive #texts{
+    font: 0.8em sans-serif;
+    width: 100%;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
 }
+
+.my-custom-scrollbar {
+  position: relative;
+  height: 200px;
+  overflow: auto;
+  }
+  .table-wrapper-scroll-y {
+  display: block;
+  }

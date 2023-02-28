@@ -79,6 +79,13 @@ export const Footer = () => {
             <Link to="https://hitdatasoluciones.com/" className="link_hitdata">Hit Data</Link>
           </h6>
         </div>
+        <div className="end_footer_respodive">
+          <span id="texts">Copyright © 2023</span>
+          <span id="texts">
+            Guía Electoral de Colombia by
+            <Link to="https://hitdatasoluciones.com/" className="link_hitdata">Hit Data</Link>
+          </span>
+        </div>
       </div>
     </section>
   );
