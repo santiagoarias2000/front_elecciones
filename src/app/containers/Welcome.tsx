@@ -34,7 +34,7 @@ export const Welcome = () => {
                   <img src={camera} alt="Imagen de camara" />
                   <h3 className="card-title cards-text">Cámara</h3>
                   <div className="cards-btn">
-                  <Link to ="/camara" className="btn-cards ">
+                  <Link to ="/guiaelectoral/camara" className="btn-cards ">
                     <i className="bi bi-bar-chart-line-fill"></i>
                        &nbsp; Ver resultados
                     </Link>

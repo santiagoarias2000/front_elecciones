@@ -1342,6 +1342,7 @@ h6 {
 
 .color {
   color: #052851 !important;
+  cursor: pointer;
 }
 .cardBorder {
   border: none !important;
