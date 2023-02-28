@@ -246,7 +246,7 @@ h6 {
   border: none;
   background-color: #ffffff90 !important;
   border-radius: 5px;
-  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+  box-shadow: 0px 0 20px #052851;
 }
 
 .card-header,
@@ -1336,12 +1336,13 @@ h6 {
 }
 
 .colorTable {
-  --bs-table-hover-color: #ffffff !important;
+  --bs-table-hover-color: #052851 !important;
   color: #052851 !important;
 }
 
 .color {
   color: #052851 !important;
+  cursor: pointer;
 }
 .cardBorder {
   border: none !important;
@@ -1469,3 +1470,12 @@ h6 {
 .link_hitdata :hover{
   color: #fff3cd
 }
+
+.my-custom-scrollbar {
+  position: relative;
+  height: 200px;
+  overflow: auto;
+  }
+  .table-wrapper-scroll-y {
+  display: block;
+  }
