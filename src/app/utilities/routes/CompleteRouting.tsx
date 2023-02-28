@@ -5,11 +5,12 @@ import { Welcome } from "../../containers/Welcome";
 
 
 const LazyMainBoard = lazy(()=>import("../../containers/MainBoard").then(()=>({default:MainBoard})));
+const LazyWelcome =lazy(()=>import("../../containers/Welcome").then(()=>({default:Welcome})));
 
 export const CompleteRouting = () => {
   return (
     <Routes>
-      <Route path="/*" element={<LazyMainBoard/>}/>
+      <Route path="/guiaelectoral/*" element={<LazyMainBoard/>}/>
     </Routes>
   );
 };

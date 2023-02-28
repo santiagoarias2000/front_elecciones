@@ -3,6 +3,7 @@ import VotesCongreso from "../../models/VotesCongreso";
 import ServicePrivate from "../../services/ServicePrivate";
 import ApiBack from "../../utilities/domains/ApiBack";
 import camara from "../../../assets/image/camara.jpg";
+import { Link } from "react-router-dom";
 
 export const Camara = () => {
   const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
@@ -11,18 +12,30 @@ export const Camara = () => {
     VotesCongreso[]
   >([]);
 
-  const getVotosCamaraTerritorialCareBackend = async () => {
+  const [
+    arrayVotesCamaraAfroDescendiente,
+    setArrayVotosCamaraAfroDescendiente,
+  ] = useState<VotesCongreso[]>([]);
+
+  const getVotosCamaraTerritorial = async () => {
     const result = await ServicePrivate.requestGET(ApiBack.CAMARA_TERRITORIAL);
     setArrayVotosCamaraTerritorial(result);
   };
-  const getVotosCamaraIndigenaCareBackend = async () => {
+  const getVotosCamaraIndigena = async () => {
     const result = await ServicePrivate.requestGET(ApiBack.CAMARA_INDIGENA);
     setArrayVotosCamaraIndigena(result);
   };
+  const getVotosCamaraAfroDescendiente = async () => {
+    const result = await ServicePrivate.requestGET(
+      ApiBack.CAMARA_AFRODESCENDIENTE
+    );
+    setArrayVotosCamaraAfroDescendiente(result);
+  };
 
   useEffect(() => {
-    getVotosCamaraTerritorialCareBackend();
-    getVotosCamaraIndigenaCareBackend();
+    getVotosCamaraTerritorial();
+    getVotosCamaraIndigena();
+    getVotosCamaraAfroDescendiente();
   }, []);
 
   return (
@@ -95,15 +108,16 @@ export const Camara = () => {
           >
             <thead>
               <tr>
-                <th className="text-center" style={{ width: "40%" }}>
+                <th className="text-center" style={{ width: "35%" }}>
                   DEPARTAMENTO
                 </th>
                 <th className="text-center" style={{ width: "30%" }}>
                   ROLE
                 </th>
-                <th className="text-center" style={{ width: "30%" }}>
+                <th className="text-center" style={{ width: "25%" }}>
                   TOTAL VOTOS
                 </th>
+                <th className="text-center" style={{ width: "10%" }}></th>
               </tr>
             </thead>
             <tbody className="color">
@@ -114,6 +128,11 @@ export const Camara = () => {
                   </td>
                   <td className="text-center">{myVotes.description_role}</td>
                   <td className="text-center">{myVotes.votos}</td>
+                  <td className="text-center align-middle">
+                    <Link className="text-center" to={""}>
+                      <i className="fa-solid fa-magnifying-glass fa-sm"></i>
+                    </Link>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -221,6 +240,7 @@ export const Camara = () => {
           </div>
         </div>
       </div>
+
       {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>
   );
