@@ -8,9 +8,9 @@ export const Footer = () => {
         <div className="container text-center">
           <div className="row">
             <div className="col img_footer_center">
-              <img src={footerimg} alt="" style={{ maxWidth: "50%" }} />
+              <img src={footerimg} alt="" />
             </div>
-            <div className="col-5">
+            <div className="col-6">
               <ul>
                 <li>
                   <i className="bi bi-globe icon_footer"></i>&nbsp;
@@ -31,7 +31,7 @@ export const Footer = () => {
                 <div className="col-1">
                   <div className="side_stripe"></div>
                 </div>
-                <div className="col-9">
+                <div className="col">
                   <ul className="list">
                     <li>
                       <Link
@@ -78,6 +78,13 @@ export const Footer = () => {
             Guía Electoral de Colombia by{" "}
             <Link to="https://hitdatasoluciones.com/" className="link_hitdata">Hit Data</Link>
           </h6>
+        </div>
+        <div className="end_footer_respodive">
+          <span id="texts">Copyright © 2023</span>
+          <span id="texts">
+            Guía Electoral de Colombia by
+            <Link to="https://hitdatasoluciones.com/" className="link_hitdata">Hit Data</Link>
+          </span>
         </div>
       </div>
     </section>

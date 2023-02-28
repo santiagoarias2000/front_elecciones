@@ -89,6 +89,35 @@ export const Camara = () => {
                 ))}
               </tbody>
             </table>
+          <table
+            className="colorTable table table-hover"
+            style={{ background: "#05285190 !important" }}
+          >
+            <thead>
+              <tr>
+                <th className="text-center" style={{ width: "40%" }}>
+                  DEPARTAMENTO
+                </th>
+                <th className="text-center" style={{ width: "30%" }}>
+                  ROLE
+                </th>
+                <th className="text-center" style={{ width: "30%" }}>
+                  TOTAL VOTOS
+                </th>
+              </tr>
+            </thead>
+            <tbody className="color">
+              {arrayVotesCamaraTerritorial.map((myVotes, contador) => (
+                <tr key={contador}>
+                  <td className="text-center">
+                    <b>{myVotes.department.nameDepartment}</b>
+                  </td>
+                  <td className="text-center">{myVotes.description_role}</td>
+                  <td className="text-center">{myVotes.votos}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
           </div>
         </div>
       </div>
