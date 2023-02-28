@@ -6,7 +6,7 @@ export const Header = () => {
   return (
     <div>
       <header className="headers">
-        <Link to={"/welcome"}>
+        <Link to={"/guiaelectoral/welcome"}>
           <img
             src={logoHeader}
             alt="logo principal para la parte superior de la pagina web"
