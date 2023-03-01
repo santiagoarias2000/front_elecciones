@@ -1,6 +1,6 @@
 import img from "../../assets/image/eleccioneshe.jpg";
-import president from "../../assets/image/presidente.svg";
-import camera from "../../assets/image/multitud-de-usuarios.png";
+import president from "../../assets/image/imgenroll.png";
+import camera from "../../assets/image/imgen_rol.png";
 import { Link } from "react-router-dom";
 
 export const Welcome = () => {
@@ -17,7 +17,7 @@ export const Welcome = () => {
             <div className="col-4">
               <div className="card text-center tocard">
                 <div className="card-body">
-                <img src={president} alt="Imagen de presidencia" />
+                <img src={president} alt="Imagen de presidencia" style={{width:"20%"}}/>
                   <h4 className="card-title cards-text">Presidencia</h4>
                   <div className="cards-btn">
                   <a href="#" className="btn-cards ">
@@ -61,8 +61,8 @@ export const Welcome = () => {
             <div className="col-4">
               <div className="card text-center tocard">
                 <div className="card-body">
-                <img src={president} alt="Imagen de presidencia" />
-                  <h4 className="card-title cards-text">Goberacion</h4>
+                <img src={president} alt="Imagen de presidencia" style={{width:"20%"}} />
+                  <h4 className="card-title cards-text">Gobernación</h4>
                   <div className="cards-btn">
                   <a href="#" className="btn-cards ">
                     <i className="bi bi-bar-chart-line-fill"></i>
@@ -90,7 +90,7 @@ export const Welcome = () => {
               <div className="card text-center tocard">
                 <div className="card-body">
                 <img src={camera} alt="Imagen de senado" />
-                  <h3 className="card-title cards-text">Consejo</h3>
+                  <h3 className="card-title cards-text">Concejo</h3>
                   <div className="cards-btn">
                     <a href="#" className="btn-cards ">
                     <i className="bi bi-bar-chart-line-fill"></i>

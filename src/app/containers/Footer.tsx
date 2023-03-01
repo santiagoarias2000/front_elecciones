@@ -35,7 +35,7 @@ export const Footer = () => {
                   <ul className="list">
                     <li>
                       <Link
-                        to=""
+                        to="/guiaelectoral/politicasprivacidad"
                         className="link"
                         style={{ color: "#fff", textDecoration: "none" }}
                       >
@@ -44,7 +44,7 @@ export const Footer = () => {
                     </li>
                     <li>
                       <Link
-                        to=""
+                        to="/guiaelectoral/avisolegal"
                         style={{ color: "#fff", textDecoration: "none" }}
                       >
                         Aviso legales
@@ -52,7 +52,7 @@ export const Footer = () => {
                     </li>
                     <li>
                       <Link
-                        to=""
+                        to="/guiaelectoral/politicascookies"
                         style={{ color: "#fff", textDecoration: "none" }}
                       >
                         Políticas de Cookies
@@ -60,10 +60,10 @@ export const Footer = () => {
                     </li>
                     <li>
                       <Link
-                        to=""
+                        to="/guiaelectoral/terminoscondiciones"
                         style={{ color: "#fff", textDecoration: "none" }}
                       >
-                        Términos y Codiciones
+                        Términos y Condiciones
                       </Link>
                     </li>
                   </ul>

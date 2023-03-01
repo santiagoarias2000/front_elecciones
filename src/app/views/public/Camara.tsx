@@ -51,6 +51,7 @@ export const Camara = () => {
         }}
         alt="logo principal para la parte superior de la pagina web"
       />
+      <div className="side_bar"></div>
       {/* Navegación estilo breadcrumb: Inicio */}
 
       {/* Navegación estilo breadcrumb: Fin */}
