@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import VotesCongreso from "../../models/VotesCongreso";
-import ServicePrivate from "../../services/ServicePrivate";
-import ApiBack from "../../utilities/domains/ApiBack";
-import camara from "../../../assets/image/camara.jpg";
+import VotesCongreso from "../../../models/VotesCongreso";
+import ServicePrivate from "../../../services/ServicePrivate";
+import ApiBack from "../../../utilities/domains/ApiBack";
+import camara from "../../../../assets/image/camara.jpg";
 import { Link } from "react-router-dom";
 
 export const Camara = () => {
@@ -101,7 +101,7 @@ export const Camara = () => {
                     <td className="text-center">{myVotes.description_role}</td>
                     <td className="text-center">{myVotes.votos}</td>
                     <td className="text-center align-middle">
-                      <Link className="text-center" to={""}>
+                      <Link className="text-center" to={"/guiaelectoral/camara/circuncripcion/territorial/departamento/"+myVotes.department.idDepartment}>
                         <i className="fa-solid fa-magnifying-glass fa-sm"></i>
                       </Link>
                     </td>
