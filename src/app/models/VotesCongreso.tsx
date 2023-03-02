@@ -15,7 +15,7 @@ class VotesCongreso {
   public description_role: string;
   public descriptionDistrict: string;
   public codePoliticparty: number;
-  public descriptionPoliticparty: string;
+  public description_politicparty: string;
   public codeCandidate: number;
   public candidate_name: string;
   public votos: number;
@@ -48,7 +48,7 @@ class VotesCongreso {
     this.descriptionOption = descrOption;
     this.department = idDepa;
     this.idMunicipality = idMun;
-    this.descriptionPoliticparty = descPolipa;
+    this.description_politicparty = descPolipa;
     this.tableNumber = tableNu;
     this.codeRole = codeRol;
     this.description_role = descRol;
