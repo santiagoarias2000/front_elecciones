@@ -4,11 +4,15 @@ import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import camara from "../../../../assets/image/camara.jpg";
 import { Link, useParams } from "react-router-dom";
+import Municipality from "../../../models/Municipality";
 
 export const CamaraIndigenaDepartamento = () => {
   let { idDepartment } = useParams();
   const [arrayVotesCamaraIndigena, setArrayVotosCamaraIndigena] =
     useState<VotesCongreso[]>([]);
+
+  const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
+
 
   const getVotosCamaraIndigena = async () => {
     const result = await ServicePrivate.requestGET(
@@ -16,8 +20,15 @@ export const CamaraIndigenaDepartamento = () => {
     );
     setArrayVotosCamaraIndigena(result);
   };
+  const getMuniciaplity = async () => {
+    const result = await ServicePrivate.requestGET(
+      ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
+    );
+    setArrayMunicipio(result);
+  };
   useEffect(() => {
     getVotosCamaraIndigena();
+    getMuniciaplity();
   }, []);
 
   return (

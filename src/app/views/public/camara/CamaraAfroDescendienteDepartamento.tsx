@@ -4,11 +4,13 @@ import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import camara from "../../../../assets/image/camara.jpg";
 import { Link, useParams } from "react-router-dom";
+import Municipality from "../../../models/Municipality";
 
 export const CamaraAfroDescendienteDepartamento = () => {
   let { idDepartment } = useParams();
-  const [arrayVotesCamaraAfroDescendiente, setArrayVotosCamaraAfroDescendiente] =
-    useState<VotesCongreso[]>([]);
+  const [ arrayVotesCamaraAfroDescendiente, setArrayVotosCamaraAfroDescendiente, ] = useState<VotesCongreso[]>([]);
+
+  const [ arrayMunicipio, setArrayMunicipio, ] = useState<VotesCongreso[]>([]);
 
   const getVotosCamaraAfroDescendiente = async () => {
     const result = await ServicePrivate.requestGET(
@@ -93,9 +95,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
                     <td className="text-center">
                       {myVotes.description_district}
                     </td>
-                    <td className="text-center">
-                      {myVotes.description_role}
-                    </td>
+                    <td className="text-center">{myVotes.description_role}</td>
                     <td className="text-center">
                       {myVotes.department.nameDepartment}
                     </td>
