@@ -11,6 +11,8 @@ import { CookiesPolices } from "../../views/shared/CookiesPolicies";
 import { TermsConditions } from "../../views/shared/TermsConditions";
 import { Camara } from "../../views/public/camara/Camara";
 import { CamaraTerritorialDepartamento } from "../../views/public/camara/CamaraTerritorialDepartamento";
+import { CamaraIndigenaDepartamento } from "../../views/public/camara/CamaraIndigenaDepartamento";
+import { CamaraAfroDescendienteDepartamento } from "../../views/public/camara/CamaraAfroDescendienteDepartamento";
 
 
 //Lazy structure from use the all tsx
@@ -25,6 +27,8 @@ const LazyCookiesPolicies = lazy(()=> import("../../views/shared/CookiesPolicies
 const LazyTermsConditions = lazy(()=> import("../../views/shared/TermsConditions").then(()=>({default:TermsConditions})))
 const LazyCamara =lazy(()=>import("../../views/public/camara/Camara").then(()=>({default:Camara})));
 const LazyCamaraTerritorialDepartamento =lazy(()=>import("../../views/public/camara/CamaraTerritorialDepartamento").then(()=>({default:CamaraTerritorialDepartamento})));
+const LazyCamaraIndigenaDepartamento =lazy(()=>import("../../views/public/camara/CamaraIndigenaDepartamento").then(()=>({default:CamaraIndigenaDepartamento})));
+const LazyCamaraAfroDescendienteDepartamento =lazy(()=>import("../../views/public/camara/CamaraAfroDescendienteDepartamento").then(()=>({default:CamaraAfroDescendienteDepartamento})));
 
 
 
@@ -45,6 +49,8 @@ export const InternalRouting = () => {
 
       <Route path="/*" element={<LazyNotFound/>}/>
       <Route path="/camara/circuncripcion/territorial/departamento/:idDepartment" element={<LazyCamaraTerritorialDepartamento />} />
+      <Route path="/camara/circuncripcion/indigena/departamento/:idDepartment" element={<LazyCamaraIndigenaDepartamento />} />
+      <Route path="/camara/circuncripcion/afrodescendiente/departamento/:idDepartment" element={<LazyCamaraAfroDescendienteDepartamento />} />
       
       
     </Routes>

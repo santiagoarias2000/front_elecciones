@@ -2,15 +2,14 @@ import { useState, useEffect } from "react";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import Form from "react-bootstrap/Form";
 import camara from "../../../../assets/image/camara.jpg";
 import { Link, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
-import { Col, InputGroup, Pagination, Row, Table } from "react-bootstrap";
 
-export const CamaraTerritorialDepartamento = () => {
+import { Col, Form, InputGroup, Pagination, Row, Table } from "react-bootstrap";
+
+export const CamaraIndigenaDepartamento = () => {
   const [search, setSearch] = useState("");
-  console.log(search);
   const setOption = ["nameDepartment", "descriptionRole", "votos"];
   const [sort, setSort] = useState("");
 
@@ -23,18 +22,20 @@ export const CamaraTerritorialDepartamento = () => {
       </Pagination.Item>
     );
   }
+
   let { idDepartment } = useParams();
-  const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
-    useState<VotesCongreso[]>([]);
+  const [arrayVotesCamaraIndigena, setArrayVotosCamaraIndigena] = useState<
+    VotesCongreso[]
+  >([]);
+
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
 
-  const getVotosCamaraTerritorial = async () => {
+  const getVotosCamaraIndigena = async () => {
     const result = await ServicePrivate.requestGET(
-      ApiBack.CAMARA_TERRITORIAL_DEPARTAMENTO + "/" + idDepartment
+      ApiBack.CAMARA_INDIGENA_DEPARTAMENTO + "/" + idDepartment
     );
-    setArrayVotosCamaraTerritorial(result);
+    setArrayVotosCamaraIndigena(result);
   };
-  // get vehicle to be displayed in the combo
   const getMuniciaplity = async () => {
     const result = await ServicePrivate.requestGET(
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
@@ -42,7 +43,7 @@ export const CamaraTerritorialDepartamento = () => {
     setArrayMunicipio(result);
   };
   useEffect(() => {
-    getVotosCamaraTerritorial();
+    getVotosCamaraIndigena();
     getMuniciaplity();
   }, []);
 
@@ -78,7 +79,7 @@ export const CamaraTerritorialDepartamento = () => {
             }}
           >
             <div className="text-center">
-              <b>TERRITORIAL DEPARTAMENTAL</b>
+              <b>TERRITORIAL INDIGENA</b>
             </div>
           </div>
           <Form style={{ padding: "0 2% 0 72%" }}>
@@ -118,7 +119,7 @@ export const CamaraTerritorialDepartamento = () => {
                 </tr>
               </thead>
               <tbody className="color">
-                {arrayVotesCamaraTerritorial
+                {arrayVotesCamaraIndigena
                   .filter((myVotes) => {
                     return search.toLowerCase() === ""
                       ? myVotes
@@ -149,38 +150,17 @@ export const CamaraTerritorialDepartamento = () => {
               </tbody>
             </table>
           </div>
-          <div className="dropdown">
-            <a
-              className="btn btn-secondary dropdown-toggle"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Municipios
-            </a>
-            <ul className="dropdown-menu">
-              {arrayMunicipio.map((myMunicipality) => (
-                <Link to={"/guiaelectoral/welcome"}>
-                  <li>
-                    <a className="dropdown-item">
-                      {myMunicipality.name_municipality}
-                    </a>
-                  </li>
-                </Link>
-              ))}
-            </ul>
-            <div
-              className="container-fluid display-flex justify-content-center"
-              style={{
-                color: "#FFFFFF",
-                height: "80px",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <div className="text-center">
-                <Pagination className="prueba">{items}</Pagination>
-              </div>
+          <div
+            className="container-fluid display-flex justify-content-center"
+            style={{
+              color: "#FFFFFF",
+              height: "80px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <div className="text-center">
+              <Pagination className="prueba">{items}</Pagination>
             </div>
           </div>
         </div>
