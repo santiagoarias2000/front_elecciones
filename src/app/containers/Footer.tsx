@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import footerimg from "../../assets/image/PNGelecciones.png";
 
+
+
 export const Footer = () => {
   return (
     <section>
@@ -34,37 +36,37 @@ export const Footer = () => {
                 <div className="col">
                   <ul className="list">
                     <li>
-                      <Link
-                        to="/guiaelectoral/politicasprivacidad"
+                      <a
+                        href={"/guiaelectoral/politicasprivacidad"}
                         className="link"
                         style={{ color: "#fff", textDecoration: "none" }}
                       >
                         Políticas de privacidad
-                      </Link>
+                      </a>
                     </li>
                     <li>
-                      <Link
-                        to="/guiaelectoral/avisolegal"
+                      <a
+                        href={"/guiaelectoral/avisolegal"}
                         style={{ color: "#fff", textDecoration: "none" }}
                       >
                         Aviso legales
-                      </Link>
+                      </a>
                     </li>
                     <li>
-                      <Link
-                        to="/guiaelectoral/politicascookies"
+                      <a
+                        href={"/guiaelectoral/politicascookies"}
                         style={{ color: "#fff", textDecoration: "none" }}
                       >
                         Políticas de Cookies
-                      </Link>
+                      </a>
                     </li>
                     <li>
-                      <Link
-                        to="/guiaelectoral/terminoscondiciones"
+                      <a
+                        href={"/guiaelectoral/terminoscondiciones"}
                         style={{ color: "#fff", textDecoration: "none" }}
                       >
                         Términos y Condiciones
-                      </Link>
+                      </a>
                     </li>
                   </ul>
                 </div>

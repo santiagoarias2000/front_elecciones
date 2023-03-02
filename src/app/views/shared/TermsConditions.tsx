@@ -1,7 +1,8 @@
 export const TermsConditions = () => {
   return (
     <main id="main" className="main" style={{ paddingTop: "10vw" }}>
-      <div className="card">
+      <div className="card" style={{ display: "flex", textAlign: "justify" }}>
+        <div style={{ margin: "30px" }}>
         <h1>
           <b>Términos y condiciones</b>
         </h1>
@@ -456,6 +457,8 @@ export const TermsConditions = () => {
           aplicable disponga otra cosa.
         </p>
         Condiciones Generales de Contratación a 01 de marzo de 2023.
+        </div>
+        
       </div>
     </main>
   );

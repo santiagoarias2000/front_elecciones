@@ -1,8 +1,9 @@
 export const LegalWarning = () => {
   return (
     <main id="main" className="main" style={{ paddingTop: "10vw" }}>
-      <div className="card">
-        <h1>Aviso legal</h1>
+      <div className="card" style={{ display: "flex", textAlign: "justify" }}>
+       <div style={{ margin: "30px" }}>
+       <h1>Aviso legal</h1>
         <br />
         <h2>
           <b>1. Aviso Legal y Términos de Uso</b>
@@ -11,7 +12,6 @@ export const LegalWarning = () => {
         <b>1.1. DATOS IDENTIFICATIVOS DEL RESPONSABLE</b>
         <br />
         <p>
-          {" "}
           Domicilio social se encuentra en Calle 36 Numero 16c-02 Tunja, Boyaca
           Email: julianyureafyt@gmail.com
         </p>
@@ -328,6 +328,7 @@ export const LegalWarning = () => {
           tribunales de la ciudad de Madrid, salvo que la Ley aplicable disponga
           otra cosa
         </p>
+       </div>
       </div>
     </main>
   );
