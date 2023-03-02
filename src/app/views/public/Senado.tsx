@@ -13,7 +13,7 @@ export const Senado = () => {
   >([]);
 
   const getVotosSenadoTerritorial = async () => {
-    const result = await ServicePrivate.requestGET(ApiBack.SENADO_NACIONAL);
+    const result = await ServicePrivate.requestGET(ApiBack.SENADO_LIST_102);
     setArrayVotesSenadoNacional(result);
   };
   const getVotosSenadoIndigena = async () => {
@@ -51,11 +51,11 @@ export const Senado = () => {
             }}
           >
             <div className="text-center">
-              <b>TERRITORIAL NACIONAL</b>
+              <b>TERRITORIAL NACIONAL </b>&nbsp;
             </div>
             <div className="display-flex justify-content-end">
               <button type="button" className="btn btn-danger">
-                188 Senado
+                102 Senado
               </button>
             </div>
           </div>
@@ -67,14 +67,20 @@ export const Senado = () => {
             >
               <thead>
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }}>
-                    DEPARTAMENTO
-                  </th>
                   <th className="text-center" style={{ width: "30%" }}>
-                    ROLE
+                    NOMBRE CANDIDATO
                   </th>
-                  <th className="text-center" style={{ width: "25%" }}>
-                    TOTAL VOTOS
+                  <th className="text-center" style={{ width: "20%" }}>
+                    PARTIDO
+                  </th>
+                  <th className="text-center" style={{ width: "20%" }}>
+                    TOTAL VOTOS NACIONAL
+                  </th>
+                  <th className="text-center" style={{ width: "20%" }}>
+                    DEPARTAMENTO 
+                  </th>
+                  <th className="text-center" style={{ width: "20%" }}>
+                    MAS VOTACION
                   </th>
                   <th className="text-center" style={{ width: "10%" }}></th>
                 </tr>
@@ -83,12 +89,20 @@ export const Senado = () => {
                 {arrayVotesSenadoNacional.map((myVotes, contador) => (
                   <tr key={contador}>
                     <td className="text-center">
-                      <b>{myVotes.department.nameDepartment}</b>
+                      <b>{myVotes.candidate_name}</b>
                     </td>
-                    <td className="text-center">{myVotes.description_role}</td>
+                    <td className="text-center">{myVotes.description_politicparty}</td>
                     <td className="text-center">{myVotes.votos}</td>
+                    <td className="text-center">{myVotes.department.nameDepartment}</td>
+                    <td className="text-center">{myVotes.max_votes}</td>
                     <td className="text-center align-middle">
-                      <Link className="text-center" to={"/guiaelectoral/senado/senadoDetails/"+myVotes.department.idDepartment}>
+                      <Link
+                        className="text-center"
+                        to={
+                          "/guiaelectoral/senado/senadoDetails/" +
+                          myVotes.department.idDepartment
+                        }
+                      >
                         <i className="fa-solid fa-magnifying-glass fa-sm"></i>
                       </Link>
                     </td>
@@ -99,7 +113,8 @@ export const Senado = () => {
           </div>
         </div>
       </div>
-
+      
+      
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
           <div
@@ -116,6 +131,7 @@ export const Senado = () => {
               <b>TERRITORIAL INDIGENA</b>
             </div>
           </div>
+          <div className="table-wrapper-scroll-y my-custom-scrollbar">
           <table
             className="colorTable table table-hover"
             style={{ background: "#05285190 !important" }}
@@ -152,6 +168,7 @@ export const Senado = () => {
             </tbody>
           </table>
         </div>
+      </div>
       </div>
       <div className="position-absolute bottom-50 end-50"></div>
       {/* Ejemplo de una tabla para presentación de datos: Fin */}

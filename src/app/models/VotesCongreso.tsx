@@ -20,6 +20,7 @@ class VotesCongreso {
   public candidate_name: string;
   public votos: number;
   public code_contry: string;
+  public max_votes: number;
 
   constructor(
     id: number,
@@ -39,7 +40,8 @@ class VotesCongreso {
     codeCan:number,
     nameCandi: string,
     numberVotes: number,
-    codeCont: string
+    codeCont: string,
+    max_votes: number
   ) {
     this.id_votes = id;
     this.election_year = elecYea;
@@ -59,7 +61,7 @@ class VotesCongreso {
     this.candidate_name = nameCandi;
     this.votos = numberVotes;
     this.code_contry = codeCont;
-
+    this.max_votes = max_votes;
 
   }
 }
