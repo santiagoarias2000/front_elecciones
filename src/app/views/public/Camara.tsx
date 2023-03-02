@@ -4,8 +4,25 @@ import ServicePrivate from "../../services/ServicePrivate";
 import ApiBack from "../../utilities/domains/ApiBack";
 import camara from "../../../assets/image/camara.jpg";
 import { Link } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import { Col, InputGroup, Pagination, Row, Table } from "react-bootstrap";
 
 export const Camara = () => {
+  const [search, setSearch] = useState("");
+  console.log(search);
+  const setOption = ["nameDepartment", "descriptionRole", "votos"];
+  const [sort, setSort] = useState("");
+
+  let active = 1;
+  let items = [];
+  for (let number = 1; number <= 5; number++) {
+    items.push(
+      <Pagination.Item key={number} active={number === active}>
+        {number}
+      </Pagination.Item>
+    );
+  }
+
   const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
     useState<VotesCongreso[]>([]);
   const [arrayVotesCamaraIndigena, setArrayVotosCamaraIndigena] = useState<
@@ -47,7 +64,7 @@ export const Camara = () => {
           maxHeight: "80%",
           marginTop: "10vw",
           borderRadius: "5px 5px 0 0",
-          boxShadow: "0px 0 20px #052851",
+          boxShadow: "0px 0 5px #052851",
         }}
         alt="logo principal para la parte superior de la pagina web"
       />
@@ -72,6 +89,15 @@ export const Camara = () => {
               <b>TERRITORIAL DEPARTAMENTAL</b>
             </div>
           </div>
+          <Form style={{ padding: "0 2% 0 72%" }}>
+            <InputGroup className="my-3">
+              <Form.Control
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search Keeper"
+                style={{ textAlign: "right", marginRight: "5px" }}
+              ></Form.Control>
+            </InputGroup>
+          </Form>
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
               className="colorTable table table-hover"
@@ -92,22 +118,45 @@ export const Camara = () => {
                 </tr>
               </thead>
               <tbody className="color">
-                {arrayVotesCamaraTerritorial.map((myVotes, contador) => (
-                  <tr key={contador}>
-                    <td className="text-center">
-                      <b>{myVotes.department.nameDepartment}</b>
-                    </td>
-                    <td className="text-center">{myVotes.description_role}</td>
-                    <td className="text-center">{myVotes.votos}</td>
-                    <td className="text-center align-middle">
-                      <Link className="text-center" to={""}>
-                        <i className="fa-solid fa-magnifying-glass fa-sm"></i>
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
+                {arrayVotesCamaraTerritorial
+                  .filter((myVotes) => {
+                    return search.toLowerCase() === ""
+                      ? myVotes
+                      : myVotes.department.nameDepartment
+                          .toLowerCase()
+                          .includes(search);
+                  })
+                  .map((myVotes, contador) => (
+                    <tr key={contador}>
+                      <td className="text-center">
+                        <b>{myVotes.department.nameDepartment}</b>
+                      </td>
+                      <td className="text-center">
+                        {myVotes.description_role}
+                      </td>
+                      <td className="text-center">{myVotes.votos}</td>
+                      <td className="text-center align-middle">
+                        <Link className="text-center" to={""}>
+                          <i className="fa-solid fa-magnifying-glass fa-sm"></i>
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
+          </div>
+          <div
+            className="container-fluid display-flex justify-content-center"
+            style={{
+              color: "#FFFFFF",
+              height: "80px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <div className="text-center">
+              <Pagination className="prueba">{items}</Pagination>
+            </div>
           </div>
         </div>
       </div>
@@ -122,12 +171,22 @@ export const Camara = () => {
               height: "40px",
               display: "flex",
               alignItems: "center",
+              borderRadius: "5px 5px 0 0",
             }}
           >
             <div className="text-center">
               <b>TERRITORIAL INDIGENA</b>
             </div>
           </div>
+          <Form style={{ padding: "0 2% 0 72%" }}>
+            <InputGroup className="my-3">
+              <Form.Control
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search Keeper"
+                style={{ textAlign: "right", marginRight: "5px" }}
+              ></Form.Control>
+            </InputGroup>
+          </Form>
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
               className="colorTable table table-hover"
@@ -165,8 +224,22 @@ export const Camara = () => {
               </tbody>
             </table>
           </div>
+          <div
+            className="container-fluid display-flex justify-content-center"
+            style={{
+              color: "#FFFFFF",
+              height: "80px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <div className="text-center">
+              <Pagination className="prueba">{items}</Pagination>
+            </div>
+          </div>
         </div>
       </div>
+
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
           <div
@@ -177,12 +250,22 @@ export const Camara = () => {
               height: "40px",
               display: "flex",
               alignItems: "center",
+              borderRadius: "5px 5px 0 0",
             }}
           >
             <div className="text-center">
               <b>TERRITORIAL AFRO-DESCENDIENTES</b>
             </div>
           </div>
+          <Form style={{ padding: "0 2% 0 72%" }}>
+            <InputGroup className="my-3">
+              <Form.Control
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search Keeper"
+                style={{ textAlign: "right", marginRight: "5px" }}
+              ></Form.Control>
+            </InputGroup>
+          </Form>
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
               className="colorTable table table-hover"
@@ -219,6 +302,19 @@ export const Camara = () => {
                 ))}
               </tbody>
             </table>
+          </div>
+          <div
+            className="container-fluid display-flex justify-content-center"
+            style={{
+              color: "#FFFFFF",
+              height: "80px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <div className="text-center">
+              <Pagination className="prueba">{items}</Pagination>
+            </div>
           </div>
         </div>
       </div>

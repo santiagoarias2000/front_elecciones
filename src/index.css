@@ -246,7 +246,7 @@ h6 {
   border: none;
   background-color: #ffffff90 !important;
   border-radius: 5px;
-  box-shadow: 0px 0 20px #052851;
+  box-shadow: 0px 0 5px #052851;
 }
 
 .card-header,
@@ -1566,9 +1566,19 @@ h6 {
 
 .my-custom-scrollbar {
   position: relative;
-  height: 200px;
+  height: 287px;
   overflow: auto;
   }
   .table-wrapper-scroll-y {
   display: block;
+  }
+
+  .prueba{
+    margin-top: auto;
+    margin-bottom:auto;
+    --bs-pagination-color: #052851 !important;
+    --bs-pagination-hover-color: #052851 !important;
+    --bs-pagination-focus-color: #052851 !important;
+    --bs-pagination-active-bg: #052851 !important;
+    --bs-pagination-active-border-color: #052851 !important;
   }
