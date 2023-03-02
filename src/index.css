@@ -246,7 +246,7 @@ h6 {
   border: none;
   background-color: #ffffff90 !important;
   border-radius: 5px;
-  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+  box-shadow: 0px 0 20px #052851;
 }
 
 .card-header,
@@ -1336,7 +1336,7 @@ h6 {
 }
 
 .colorTable {
-  --bs-table-hover-color: #ffffff !important;
+  --bs-table-hover-color: #052851 !important;
   color: #052851 !important;
 }
 
@@ -1490,6 +1490,7 @@ h6 {
     font-weight: 500;
     color: black;
     font-family: "Poppins", sans-serif;
+    padding-bottom: 20px;
   }
   .img_footer_center img {
     margin-top: 10px;
@@ -1521,7 +1522,7 @@ h6 {
   .containner_footers h6 {
     font-family: 1vw;
   }
-  .containner_footers .list{
+  .containner_footers .list {
     width: 110%;
     padding-left: 0rem;
   }
@@ -1531,7 +1532,7 @@ h6 {
     align-items: center;
     list-style: none;
     line-height: 1.5;
-    font-size: 2vw; 
+    font-size: 2vw;
     color: #fff;
     text-decoration: none;
   }
@@ -1553,7 +1554,7 @@ h6 {
   .link_hitdata :hover {
     color: #fff3cd;
   }
-  .end_footer_respodive #texts{
+  .end_footer_respodive #texts {
     font: 0.8em sans-serif;
     width: 100%;
     display: flex;
@@ -1561,14 +1562,35 @@ h6 {
     align-items: center;
     flex-direction: column;
   }
-
 }
 
 .my-custom-scrollbar {
   position: relative;
   height: 200px;
   overflow: auto;
-  }
-  .table-wrapper-scroll-y {
+}
+.table-wrapper-scroll-y {
   display: block;
-  }
+}
+
+.container_error {
+  background-image: url("../src/assets/image/errorfondo.jpg");
+}
+.container_error .btn{
+  background-color: #052851;
+  font-size: 20px;
+  font-family: "Tilt Warp", cursive;
+  color: #ffffff;
+}
+
+.container_error .btn:hover{
+  background-color: #052870;
+  font-size: 20px;
+  font-family: "Tilt Warp", cursive;
+  color: #ffffff;
+}
+.side_bar{
+  width: 100%;
+  height: 5px;
+  background-color: #d9224e;
+}

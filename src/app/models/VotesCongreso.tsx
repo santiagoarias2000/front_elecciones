@@ -2,24 +2,24 @@ import Department from "./Department";
 import Municipality from "./Municipality";
 
 class VotesCongreso {
-  public idVotes: number;
-  public electionYear: string;
-  public candidateDescription: string;
+  public id_votes: number;
+  public election_year: string;
+  public candidate_description: string;
   public gender: string;
-  public descriptionOption: string;
+  public description_option: string;
   public department: Department;
-  public idMunicipality: Municipality;
-  public descriptionPosition: string;
-  public tableNumber: number;
-  public codeRole: number;
+  public municipality: Municipality;
+  public description_position: string;
+  public table_number: number;
+  public code_role: number;
   public description_role: string;
-  public descriptionDistrict: string;
-  public codePoliticparty: number;
+  public description_district: string;
+  public code_politicparty: number;
   public description_politicparty: string;
-  public codeCandidate: number;
+  public code_candidate: number;
   public candidate_name: string;
   public votos: number;
-  public codeContry: string;
+  public code_contry: string;
 
   constructor(
     id: number,
@@ -41,24 +41,24 @@ class VotesCongreso {
     numberVotes: number,
     codeCont: string
   ) {
-    this.idVotes = id;
-    this.electionYear = elecYea;
-    this.candidateDescription = candiDes;
+    this.id_votes = id;
+    this.election_year = elecYea;
+    this.candidate_description = candiDes;
     this.gender = gender;
-    this.descriptionOption = descrOption;
+    this.description_option = descrOption;
     this.department = idDepa;
-    this.idMunicipality = idMun;
+    this.municipality = idMun;
     this.description_politicparty = descPolipa;
-    this.tableNumber = tableNu;
-    this.codeRole = codeRol;
+    this.table_number = tableNu;
+    this.code_role = codeRol;
     this.description_role = descRol;
-    this.descriptionDistrict = descDistr;
-    this.descriptionPosition = descrPosit;
-    this.codePoliticparty = codePolipar;
-    this.codeCandidate = codeCan
+    this.description_district = descDistr;
+    this.description_position = descrPosit;
+    this.code_politicparty = codePolipar;
+    this.code_candidate = codeCan
     this.candidate_name = nameCandi;
     this.votos = numberVotes;
-    this.codeContry = codeCont;
+    this.code_contry = codeCont;
 
 
   }

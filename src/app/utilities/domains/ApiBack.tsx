@@ -13,9 +13,10 @@ const ApiBack = {
 
   SENADO_INDIGENA:"/api/public/senado/circuncripcion/indigena/senado",
   SENADO_INDIGENA_DEPARTAMENTAL:"/api/public/senado/circuncripcion/indigena/senado/departamental",
-  SENADO_INDIGENA_MUNICIPIO:"/api/public/senado/circuncripcion/indigena/senado/departamental"
+  SENADO_INDIGENA_MUNICIPIO:"/api/public/senado/circuncripcion/indigena/senado/departamental",
 
 
 
+  CAMARA_TERRITORIAL_DEPARTAMENTO:"/api/public/camara/circuncripcion/territorial/departamento",
 };
 export default ApiBack;
