@@ -230,7 +230,7 @@ export const Camara = () => {
                     <td className="text-center">{myVotes.description_role}</td>
                     <td className="text-center">{myVotes.votos}</td>
                     <td className="text-center align-middle">
-                      <Link className="text-center" to={""}>
+                      <Link className="text-center" to={"/guiaelectoral/camara/circuncripcion/indigena/departamento/"+myVotes.department.idDepartment}>
                         <i className="fa-solid fa-magnifying-glass fa-sm"></i>
                       </Link>
                     </td>
@@ -309,7 +309,7 @@ export const Camara = () => {
                     <td className="text-center">{myVotes.description_role}</td>
                     <td className="text-center">{myVotes.votos}</td>
                     <td className="text-center align-middle">
-                      <Link className="text-center" to={""}>
+                      <Link className="text-center" to={"/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/"+myVotes.department.idDepartment}>
                         <i className="fa-solid fa-magnifying-glass fa-sm"></i>
                       </Link>
                     </td>

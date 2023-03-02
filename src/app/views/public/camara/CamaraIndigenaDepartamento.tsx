@@ -2,26 +2,24 @@ import { useState, useEffect } from "react";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import camara from "../../../../assets/image/camara.jpg";
 import { Link, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
 
-export const CamaraTerritorialDepartamento = () => {
+export const CamaraIndigenaDepartamento = () => {
   let { idDepartment } = useParams();
-  const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
+  const [arrayVotesCamaraIndigena, setArrayVotosCamaraIndigena] =
     useState<VotesCongreso[]>([]);
+
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
 
-  const getVotosCamaraTerritorial = async () => {
+
+  const getVotosCamaraIndigena = async () => {
     const result = await ServicePrivate.requestGET(
-      ApiBack.CAMARA_TERRITORIAL_DEPARTAMENTO + "/" + idDepartment
+      ApiBack.CAMARA_INDIGENA_DEPARTAMENTO + "/" + idDepartment
     );
-    setArrayVotosCamaraTerritorial(result);
+    setArrayVotosCamaraIndigena(result);
   };
-  // get vehicle to be displayed in the combo
   const getMuniciaplity = async () => {
     const result = await ServicePrivate.requestGET(
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
@@ -29,7 +27,7 @@ export const CamaraTerritorialDepartamento = () => {
     setArrayMunicipio(result);
   };
   useEffect(() => {
-    getVotosCamaraTerritorial();
+    getVotosCamaraIndigena();
     getMuniciaplity();
   }, []);
 
@@ -64,7 +62,7 @@ export const CamaraTerritorialDepartamento = () => {
             }}
           >
             <div className="text-center">
-              <b>TERRITORIAL DEPARTAMENTAL</b>
+              <b>TERRITORIAL INDIGENA</b>
             </div>
           </div>
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
@@ -95,7 +93,7 @@ export const CamaraTerritorialDepartamento = () => {
                 </tr>
               </thead>
               <tbody className="color">
-                {arrayVotesCamaraTerritorial.map((myVotes, contador) => (
+                {arrayVotesCamaraIndigena.map((myVotes, contador) => (
                   <tr key={contador}>
                     <td className="text-center">
                       <b>{myVotes.candidate_name}</b>
@@ -106,7 +104,9 @@ export const CamaraTerritorialDepartamento = () => {
                     <td className="text-center">
                       {myVotes.description_district}
                     </td>
-                    <td className="text-center">{myVotes.description_role}</td>
+                    <td className="text-center">
+                      {myVotes.description_role}
+                    </td>
                     <td className="text-center">
                       {myVotes.department.nameDepartment}
                     </td>
@@ -116,18 +116,6 @@ export const CamaraTerritorialDepartamento = () => {
               </tbody>
             </table>
           </div>
-          <div className="dropdown">
-              <a className="btn btn-secondary dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Municipios
-              </a>
-              <ul className="dropdown-menu">
-                {arrayMunicipio.map((myMunicipality)=>(
-                    <Link to={"/guiaelectoral/welcome"}>
-                      <li><a className="dropdown-item">{myMunicipality.name_municipality}</a></li>
-                    </Link>
-                ))}
-              </ul>
-            </div>
         </div>
       </div>
 
