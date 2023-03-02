@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import VotesCongreso from "../../models/VotesCongreso";
-import ServicePrivate from "../../services/ServicePrivate";
-import ApiBack from "../../utilities/domains/ApiBack";
-import camara from "../../../assets/image/camara.jpg";
+import VotesCongreso from "../../../models/VotesCongreso";
+import ServicePrivate from "../../../services/ServicePrivate";
+import ApiBack from "../../../utilities/domains/ApiBack";
+import camara from "../../../../assets/image/camara.jpg";
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { Col, InputGroup, Pagination, Row, Table } from "react-bootstrap";
@@ -68,6 +68,7 @@ export const Camara = () => {
         }}
         alt="logo principal para la parte superior de la pagina web"
       />
+      <div className="side_bar"></div>
       {/* Navegación estilo breadcrumb: Inicio */}
 
       {/* Navegación estilo breadcrumb: Fin */}
@@ -142,6 +143,20 @@ export const Camara = () => {
                       </td>
                     </tr>
                   ))}
+                {arrayVotesCamaraTerritorial.map((myVotes, contador) => (
+                  <tr key={contador}>
+                    <td className="text-center">
+                      <b>{myVotes.department.nameDepartment}</b>
+                    </td>
+                    <td className="text-center">{myVotes.description_role}</td>
+                    <td className="text-center">{myVotes.votos}</td>
+                    <td className="text-center align-middle">
+                      <Link className="text-center" to={"/guiaelectoral/camara/circuncripcion/territorial/departamento/"+myVotes.department.idDepartment}>
+                        <i className="fa-solid fa-magnifying-glass fa-sm"></i>
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
