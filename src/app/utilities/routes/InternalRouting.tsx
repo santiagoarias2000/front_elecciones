@@ -2,6 +2,8 @@ import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Welcome } from "../../containers/Welcome";
 import { MainBoard } from "../../containers/MainBoard";
+import { Senado } from "../../views/public/Senado";
+import { SenadoDetails } from "../../views/public/SenadoDetails";
 import { PrivacyPolicies } from "../../views/shared/PrivacyPolicies";
 import { NotFound } from "../../views/shared/NotFound";
 import { LegalWarning } from "../../views/shared/LegalWarning";
@@ -16,6 +18,8 @@ import { CamaraAfroDescendienteDepartamento } from "../../views/public/camara/Ca
 //Lazy structure from use the all tsx
 
 const LazyWelcome =lazy(()=>import("../../containers/Welcome").then(()=>({default:Welcome})));
+const LazySenado =lazy(()=>import("../../views/public/Senado").then(()=>({default:Senado})));
+const LazySenadoDetails =lazy(()=>import("../../views/public/SenadoDetails").then(()=>({default:SenadoDetails})));
 const LazyPrivacyPolicies =lazy(()=>import("../../views/shared/PrivacyPolicies").then(()=>({default:PrivacyPolicies})));
 const LazyNotFound = lazy(()=> import("../../views/shared/NotFound").then(()=>({default:NotFound})))
 const LazyLegalWarning = lazy(()=> import("../../views/shared/LegalWarning").then(()=>({default:LegalWarning})))
@@ -34,6 +38,8 @@ export const InternalRouting = () => {
       //Routes Default
       <Route path="/welcome" element={<LazyWelcome />} />
       <Route path="/camara" element={<LazyCamara />} />
+      <Route path="/senado" element={<LazySenado />} />
+      <Route path="/senado/senadoDetails/:idDepartment" element={<LazySenadoDetails />} />
 
       {/* page legal to need app web */}
       <Route path="/politicasprivacidad" element={<LazyPrivacyPolicies/>} />
