@@ -5,19 +5,19 @@ import ApiBack from "../../../utilities/domains/ApiBack";
 import camara from "../../../../assets/image/camara.jpg";
 import { Link, useParams } from "react-router-dom";
 
-export const CamaraTerritorialDepartamento = () => {
+export const CamaraIndigenaDepartamento = () => {
   let { idDepartment } = useParams();
-  const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
+  const [arrayVotesCamaraIndigena, setArrayVotosCamaraIndigena] =
     useState<VotesCongreso[]>([]);
 
-  const getVotosCamaraTerritorial = async () => {
+  const getVotosCamaraIndigena = async () => {
     const result = await ServicePrivate.requestGET(
-      ApiBack.CAMARA_TERRITORIAL_DEPARTAMENTO + "/" + idDepartment
+      ApiBack.CAMARA_INDIGENA_DEPARTAMENTO + "/" + idDepartment
     );
-    setArrayVotosCamaraTerritorial(result);
+    setArrayVotosCamaraIndigena(result);
   };
   useEffect(() => {
-    getVotosCamaraTerritorial();
+    getVotosCamaraIndigena();
   }, []);
 
   return (
@@ -51,7 +51,7 @@ export const CamaraTerritorialDepartamento = () => {
             }}
           >
             <div className="text-center">
-              <b>TERRITORIAL DEPARTAMENTAL</b>
+              <b>TERRITORIAL INDIGENA</b>
             </div>
           </div>
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
@@ -82,7 +82,7 @@ export const CamaraTerritorialDepartamento = () => {
                 </tr>
               </thead>
               <tbody className="color">
-                {arrayVotesCamaraTerritorial.map((myVotes, contador) => (
+                {arrayVotesCamaraIndigena.map((myVotes, contador) => (
                   <tr key={contador}>
                     <td className="text-center">
                       <b>{myVotes.candidate_name}</b>
