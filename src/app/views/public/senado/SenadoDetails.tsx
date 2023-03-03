@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import senado from "../../../../assets/image/camara.jpg";
+import senado from "../../../../assets/image/SENADO.jpg";
 import VotesCongreso from "../../../models/VotesCongreso";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import ServicePrivate from "../../../services/ServicePrivate";

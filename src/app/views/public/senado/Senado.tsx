@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import senado from "../../../../assets/image/camara.jpg";
+import senado from "../../../../assets/image/SENADO.jpg";
 import { Link } from "react-router-dom";
 export const Senado = () => {
   const [arrayVotesSenadoNacional, setArrayVotesSenadoNacional] = useState<
@@ -71,9 +71,6 @@ export const Senado = () => {
                   <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
                   </th>
-                  <th className="text-center" style={{ width: "30%" }}>
-                    ROLE
-                  </th>
                   <th className="text-center" style={{ width: "25%" }}>
                     TOTAL VOTOS
                   </th>
@@ -86,7 +83,6 @@ export const Senado = () => {
                     <td className="text-center">
                       <b>{myVotes.department.nameDepartment}</b>
                     </td>
-                    <td className="text-center">{myVotes.description_role}</td>
                     <td className="text-center">{myVotes.votos}</td>
                     <td className="text-center align-middle">
                       <Link className="text-center" to={"/guiaelectoral/senado/senadoDetails/"+myVotes.department.idDepartment}>

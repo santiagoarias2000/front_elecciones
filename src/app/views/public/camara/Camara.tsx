@@ -4,8 +4,25 @@ import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import camara from "../../../../assets/image/camara.jpg";
 import { Link } from "react-router-dom";
+import { Col, Form, InputGroup, Pagination, Row, Table } from "react-bootstrap";
 
 export const Camara = () => {
+  const [searchTerritorial, setSearchTerritorial] = useState("");
+  const [searchIndigena, setSearchIndigena] = useState("");
+  const [searchAfro, setSearchAfro] = useState("");
+  const setOption = ["nameDepartment", "descriptionRole", "votos"];
+  const [sort, setSort] = useState("");
+
+  let active = 1;
+  let items = [];
+  for (let number = 1; number <= 5; number++) {
+    items.push(
+      <Pagination.Item key={number} active={number === active}>
+        {number}
+      </Pagination.Item>
+    );
+  }
+
   const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
     useState<VotesCongreso[]>([]);
   const [arrayVotesCamaraIndigena, setArrayVotosCamaraIndigena] = useState<
@@ -73,6 +90,15 @@ export const Camara = () => {
               <b>TERRITORIAL DEPARTAMENTAL</b>
             </div>
           </div>
+          <Form style={{ padding: "0 2% 0 72%" }}>
+            <InputGroup className="my-3">
+              <Form.Control
+                onChange={(e) => setSearchTerritorial(e.target.value)}
+                placeholder="Buscar departamento"
+                style={{ textAlign: "right", marginRight: "5px" }}
+              ></Form.Control>
+            </InputGroup>
+          </Form>
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
               className="colorTable table table-hover"
@@ -93,22 +119,51 @@ export const Camara = () => {
                 </tr>
               </thead>
               <tbody className="color">
-                {arrayVotesCamaraTerritorial.map((myVotes, contador) => (
-                  <tr key={contador}>
-                    <td className="text-center">
-                      <b>{myVotes.department.nameDepartment}</b>
-                    </td>
-                    <td className="text-center">{myVotes.description_role}</td>
-                    <td className="text-center">{myVotes.votos}</td>
-                    <td className="text-center align-middle">
-                      <Link className="text-center" to={"/guiaelectoral/camara/circuncripcion/territorial/departamento/"+myVotes.department.idDepartment}>
-                        <i className="fa-solid fa-magnifying-glass fa-sm"></i>
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
+                {arrayVotesCamaraTerritorial
+                  .filter((myVotes) => {
+                    return searchTerritorial.toLowerCase() === ""
+                      ? myVotes
+                      : myVotes.department.nameDepartment
+                          .toLowerCase()
+                          .includes(searchTerritorial);
+                  })
+                  .map((myVotes, contador) => (
+                    <tr key={contador}>
+                      <td className="text-center">
+                        <b>{myVotes.department.nameDepartment}</b>
+                      </td>
+                      <td className="text-center">
+                        {myVotes.description_role}
+                      </td>
+                      <td className="text-center">{myVotes.votos}</td>
+                      <td className="text-center align-middle">
+                        <Link
+                          className="text-center"
+                          to={
+                            "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
+                            myVotes.department.idDepartment
+                          }
+                        >
+                          <i className="fa-solid fa-magnifying-glass fa-sm"></i>
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
+          </div>
+          <div
+            className="container-fluid display-flex justify-content-center"
+            style={{
+              color: "#FFFFFF",
+              height: "80px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <div className="text-center">
+              <Pagination className="prueba">{items}</Pagination>
+            </div>
           </div>
         </div>
       </div>
@@ -129,6 +184,15 @@ export const Camara = () => {
               <b>TERRITORIAL INDIGENA</b>
             </div>
           </div>
+          <Form style={{ padding: "0 2% 0 72%" }}>
+            <InputGroup className="my-3">
+              <Form.Control
+                onChange={(e) => setSearchIndigena(e.target.value)}
+                placeholder="Buscar departamento"
+                style={{ textAlign: "right", marginRight: "5px" }}
+              ></Form.Control>
+            </InputGroup>
+          </Form>
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
               className="colorTable table table-hover"
@@ -149,22 +213,51 @@ export const Camara = () => {
                 </tr>
               </thead>
               <tbody className="color">
-                {arrayVotesCamaraIndigena.map((myVotes, contador) => (
-                  <tr key={contador}>
-                    <td className="text-center">
-                      <b>{myVotes.department.nameDepartment}</b>
-                    </td>
-                    <td className="text-center">{myVotes.description_role}</td>
-                    <td className="text-center">{myVotes.votos}</td>
-                    <td className="text-center align-middle">
-                      <Link className="text-center" to={""}>
-                        <i className="fa-solid fa-magnifying-glass fa-sm"></i>
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
+                {arrayVotesCamaraIndigena
+                  .filter((myVotes) => {
+                    return searchIndigena.toLowerCase() === ""
+                      ? myVotes
+                      : myVotes.department.nameDepartment
+                          .toLowerCase()
+                          .includes(searchIndigena);
+                  })
+                  .map((myVotes, contador) => (
+                    <tr key={contador}>
+                      <td className="text-center">
+                        <b>{myVotes.department.nameDepartment}</b>
+                      </td>
+                      <td className="text-center">
+                        {myVotes.description_role}
+                      </td>
+                      <td className="text-center">{myVotes.votos}</td>
+                      <td className="text-center align-middle">
+                        <Link
+                          className="text-center"
+                          to={
+                            "/guiaelectoral/camara/circuncripcion/indigena/departamento/" +
+                            myVotes.department.idDepartment
+                          }
+                        >
+                          <i className="fa-solid fa-magnifying-glass fa-sm"></i>
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
+          </div>
+          <div
+            className="container-fluid display-flex justify-content-center"
+            style={{
+              color: "#FFFFFF",
+              height: "80px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <div className="text-center">
+              <Pagination className="prueba">{items}</Pagination>
+            </div>
           </div>
         </div>
       </div>
@@ -184,6 +277,15 @@ export const Camara = () => {
               <b>TERRITORIAL AFRO-DESCENDIENTES</b>
             </div>
           </div>
+          <Form style={{ padding: "0 2% 0 72%" }}>
+            <InputGroup className="my-3">
+              <Form.Control
+                onChange={(e) => setSearchAfro(e.target.value)}
+                placeholder="Buscar departamento"
+                style={{ textAlign: "right", marginRight: "5px" }}
+              ></Form.Control>
+            </InputGroup>
+          </Form>
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
               className="colorTable table table-hover"
@@ -204,22 +306,51 @@ export const Camara = () => {
                 </tr>
               </thead>
               <tbody className="color">
-                {arrayVotesCamaraAfroDescendiente.map((myVotes, contador) => (
-                  <tr key={contador}>
-                    <td className="text-center">
-                      <b>{myVotes.department.nameDepartment}</b>
-                    </td>
-                    <td className="text-center">{myVotes.description_role}</td>
-                    <td className="text-center">{myVotes.votos}</td>
-                    <td className="text-center align-middle">
-                      <Link className="text-center" to={""}>
-                        <i className="fa-solid fa-magnifying-glass fa-sm"></i>
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
+                {arrayVotesCamaraAfroDescendiente
+                  .filter((myVotes) => {
+                    return searchAfro.toLowerCase() === ""
+                      ? myVotes
+                      : myVotes.department.nameDepartment
+                          .toLowerCase()
+                          .includes(searchAfro);
+                  })
+                  .map((myVotes, contador) => (
+                    <tr key={contador}>
+                      <td className="text-center">
+                        <b>{myVotes.department.nameDepartment}</b>
+                      </td>
+                      <td className="text-center">
+                        {myVotes.description_role}
+                      </td>
+                      <td className="text-center">{myVotes.votos}</td>
+                      <td className="text-center align-middle">
+                        <Link
+                          className="text-center"
+                          to={
+                            "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
+                            myVotes.department.idDepartment
+                          }
+                        >
+                          <i className="fa-solid fa-magnifying-glass fa-sm"></i>
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
+          </div>
+          <div
+            className="container-fluid display-flex justify-content-center"
+            style={{
+              color: "#FFFFFF",
+              height: "80px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <div className="text-center">
+              <Pagination className="prueba">{items}</Pagination>
+            </div>
           </div>
         </div>
       </div>
