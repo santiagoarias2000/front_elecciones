@@ -123,9 +123,6 @@ export const Senado = () => {
                 <th className="text-center" style={{ width: "35%" }}>
                   DEPARTAMENTO
                 </th>
-                <th className="text-center" style={{ width: "30%" }}>
-                  ROLE
-                </th>
                 <th className="text-center" style={{ width: "25%" }}>
                   TOTAL VOTOS
                 </th>
@@ -138,7 +135,6 @@ export const Senado = () => {
                   <td className="text-center">
                     <b>{myVotes.department.nameDepartment}</b>
                   </td>
-                  <td className="text-center">{myVotes.description_role}</td>
                   <td className="text-center">{myVotes.votos}</td>
                   <td className="text-center align-middle">
                     <Link className="text-center" to={""}>
