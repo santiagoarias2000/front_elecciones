@@ -8,6 +8,7 @@ const ApiBack = {
   CAMARA_AFRODESCENDIENTE: "/api/public/camara/afrodescendiente",
 
   SENADO_LIST_102: "/api/public/senado/circuncripcion/nacional/elegidos",
+  SENADO_LIST_2_INDIGENA: "/api/public/senado/circuncripcion/indigena/elegidos",
   SENADO_NACIONAL:"/api/public/senado/circuncripcion/nacional/senado",
   SENADO_NACIONAL_DEPARTAMENTO:"/api/public/senado/circuncripcion/nacional/senado/departamental",
   SENADO_NACIONAL_MUNICIPIO:"/api/public/senado/circuncripcion/nacional/senado/departamental",

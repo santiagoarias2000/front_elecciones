@@ -94,7 +94,7 @@ export const Camara = () => {
             <InputGroup className="my-3">
               <Form.Control
                 onChange={(e) => setSearchTerritorial(e.target.value)}
-                placeholder="Search Keeper"
+                placeholder="Buscar departamento"
                 style={{ textAlign: "right", marginRight: "5px" }}
               ></Form.Control>
             </InputGroup>
@@ -188,7 +188,7 @@ export const Camara = () => {
             <InputGroup className="my-3">
               <Form.Control
                 onChange={(e) => setSearchIndigena(e.target.value)}
-                placeholder="Search Keeper"
+                placeholder="Buscar departamento"
                 style={{ textAlign: "right", marginRight: "5px" }}
               ></Form.Control>
             </InputGroup>
@@ -281,7 +281,7 @@ export const Camara = () => {
             <InputGroup className="my-3">
               <Form.Control
                 onChange={(e) => setSearchAfro(e.target.value)}
-                placeholder="Search Keeper"
+                placeholder="Buscar departamento"
                 style={{ textAlign: "right", marginRight: "5px" }}
               ></Form.Control>
             </InputGroup>

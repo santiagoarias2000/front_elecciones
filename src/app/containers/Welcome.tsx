@@ -34,10 +34,10 @@ export const Welcome = () => {
                   <img src={camera} alt="Imagen de camara" />
                   <h3 className="card-title cards-text">Cámara</h3>
                   <div className="cards-btn">
-                    <Link to="/guiaelectoral/camara" className="btn-cards ">
+                    <a href="/guiaelectoral/camara" className="btn-cards ">
                       <i className="bi bi-bar-chart-line-fill"></i>
                       &nbsp; Ver resultados
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -48,10 +48,10 @@ export const Welcome = () => {
                   <img src={camera} alt="Imagen de senado" />
                   <h3 className="card-title cards-text">Senado</h3>
                   <div className="cards-btn">
-                    <Link to="/guiaelectoral/senado" className="btn-cards">
+                    <a href="/guiaelectoral/senado" className="btn-cards">
                       <i className="bi bi-bar-chart-line-fill"></i>
                       &nbsp; Ver resultados
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -78,10 +78,10 @@ export const Welcome = () => {
                   <img src={camera} alt="Imagen de camara" />
                   <h3 className="card-title cards-text">Alcadia</h3>
                   <div className="cards-btn">
-                    <Link to="/camara" className="btn-cards ">
+                    <a href="/camara" className="btn-cards ">
                       <i className="bi bi-bar-chart-line-fill"></i>
                       &nbsp; Ver resultados
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </div>
