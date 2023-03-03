@@ -70,12 +70,8 @@ export const SenadoElegidos = () => {
             <div className="text-center">
               <b>TERRITORIAL NACIONAL</b> &nbsp;
             </div>
-            <div className="display-flex justify-content-end">
-              <button type="button" className="btn btn-danger">
-                100 Senado
-              </button>
-            </div>
           </div>
+          <div className="name_table">Lista de los 108 Elegidos</div>
           <Form style={{ padding: "0 2% 0 72%" }}>
             <InputGroup className="my-3">
               <Form.Control
@@ -107,7 +103,6 @@ export const SenadoElegidos = () => {
                   <th className="text-center" style={{ width: "20%" }}>
                     MAS VOTACION
                   </th>
-                  <th className="text-center" style={{ width: "10%" }}></th>
                 </tr>
               </thead>
               <tbody className="color">
@@ -128,17 +123,6 @@ export const SenadoElegidos = () => {
                       <td className="text-center">{myVotes.votos}</td>
                       <td className="text-center">{myVotes.department.nameDepartment}</td>
                       <td className="text-center">{myVotes.max_votes}</td>
-                      <td className="text-center align-middle">
-                        <Link
-                          className="text-center"
-                          to={
-                            "/guiaelectoral/senado/senadoDetails/" +
-                            myVotes.department.idDepartment
-                          }
-                        >
-                          <i className="fa-solid fa-magnifying-glass fa-sm"></i>
-                        </Link>
-                      </td>
                     </tr>
                   ))}
               </tbody>
@@ -174,11 +158,6 @@ export const SenadoElegidos = () => {
           >
             <div className="text-center">
               <b>TERRITORIAL INDIGENA</b> &nbsp;
-            </div>
-            <div className="display-flex justify-content-end">
-              <button type="button" className="btn btn-danger">
-                2 Senado
-              </button>
             </div>
           </div>
           <Form style={{ padding: "0 2% 0 72%" }}>

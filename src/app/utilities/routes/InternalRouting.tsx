@@ -13,12 +13,14 @@ import { Camara } from "../../views/public/camara/Camara";
 import { CamaraTerritorialDepartamento } from "../../views/public/camara/CamaraTerritorialDepartamento";
 import { CamaraIndigenaDepartamento } from "../../views/public/camara/CamaraIndigenaDepartamento";
 import { CamaraAfroDescendienteDepartamento } from "../../views/public/camara/CamaraAfroDescendienteDepartamento";
+import { Senado } from "../../views/public/senado/Senado";
 
 
 //Lazy structure from use the all tsx
 
 const LazyWelcome =lazy(()=>import("../../containers/Welcome").then(()=>({default:Welcome})));
-const LazySenado =lazy(()=>import("../../views/public/senado/SenadoElegidos").then(()=>({default:SenadoElegidos})));
+const LazySenadoElegidos =lazy(()=>import("../../views/public/senado/SenadoElegidos").then(()=>({default:SenadoElegidos})));
+const LazySenado =lazy(()=>import("../../views/public/senado/Senado").then(()=>({default:Senado})));
 const LazySenadoDetails =lazy(()=>import("../../views/public/senado/SenadoDetails").then(()=>({default:SenadoDetails})));
 const LazyPrivacyPolicies =lazy(()=>import("../../views/shared/PrivacyPolicies").then(()=>({default:PrivacyPolicies})));
 const LazyNotFound = lazy(()=> import("../../views/shared/NotFound").then(()=>({default:NotFound})))
@@ -38,7 +40,8 @@ export const InternalRouting = () => {
       //Routes Default
       <Route path="/welcome" element={<LazyWelcome />} />
       <Route path="/camara" element={<LazyCamara />} />
-      <Route path="/senado" element={<LazySenado />} />
+      <Route path="/senadoelegidos" element={<LazySenadoElegidos />} />
+      <Route path="/senado" element={<LazySenado/>} />
       <Route path="/senado/senadoDetails/:idDepartment" element={<LazySenadoDetails />} />
 
       {/* page legal to need app web */}
