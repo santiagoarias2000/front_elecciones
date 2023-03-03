@@ -2,10 +2,10 @@
 import Department from "./Department";
 
 class Municipality {
-  public idMunicipality: number;
+  public id_municipality: number;
   public idDepartment: Department;
   public codeMunicipalityDane: number;
-  public nameMunicipality: string;
+  public name_municipality: string;
   public nameMunicipality2: string;
 
   constructor(
@@ -15,10 +15,10 @@ class Municipality {
     nameMun: string,
     nameMun2: string
   ) {
-    this.idMunicipality = id;
+    this.id_municipality = id;
     this.idDepartment = idDep;
     this.codeMunicipalityDane = codeMuni;
-    this.nameMunicipality = nameMun;
+    this.name_municipality = nameMun;
     this.nameMunicipality2 = nameMun2;
   }
 }

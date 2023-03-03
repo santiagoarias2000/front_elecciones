@@ -1,15 +1,27 @@
 import { useEffect, useState } from "react";
-import senado from "../../../assets/image/camara.jpg";
-import VotesCongreso from "../../models/VotesCongreso";
+import senado from "../../../../assets/image/camara.jpg";
+import VotesCongreso from "../../../models/VotesCongreso";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import ServicePrivate from "../../services/ServicePrivate";
-import ApiBack from "../../utilities/domains/ApiBack";
+import ServicePrivate from "../../../services/ServicePrivate";
+import ApiBack from "../../../utilities/domains/ApiBack";
+import Municipality from "../../../models/Municipality";
+import e from "express";
+import { SenadoMuni } from "./SenadoMuni";
 
 export const SenadoDetails = () => {
   let { idDepartment } = useParams();
-  const regresar = useNavigate();
+  type miObjeto = { nombreSuma: number };
+  let component = null;
+  type myForm = React.FormEvent<HTMLFormElement>;
+
+  const [seleccion, setSeleccion]: any = useState<number>();
   const [arrayVotesSenadoDepartamental, setArrayVotesSenadoDepartamental] =
     useState<VotesCongreso[]>([]);
+  const [
+    arrayVotesSenadoDepartamentalMunicipio,
+    setArrayVotesSenadoDepartamentalMunicipio,
+  ] = useState<VotesCongreso[]>([]);
+  const [arrayMunicipios, setMunicipios] = useState<Municipality[]>([]);
 
   const getVotosSenadoDepartamental = async () => {
     const urlCargarDepartamento =
@@ -20,10 +32,33 @@ export const SenadoDetails = () => {
       setArrayVotesSenadoDepartamental(result);
     }
   };
+  const getVotosSenadoDepartamentalMunicipio = async () => {
+    const urlCargarDepartamento =
+      ApiBack.SENADO_NACIONAL_MUNICIPIO +
+      "/" +
+      idDepartment +
+      "/municipio/" +
+      seleccion;
+    const result = await ServicePrivate.requestGET(urlCargarDepartamento);
+    setArrayVotesSenadoDepartamentalMunicipio(result);
+    if (result) {
+      setArrayVotesSenadoDepartamentalMunicipio(result);
+    }
+  };
+  const getMunicipios = async () => {
+    const resultado = await ServicePrivate.requestGET(
+      ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
+    );
+    setMunicipios(resultado);
+    return resultado;
+  };
 
   useEffect(() => {
     getVotosSenadoDepartamental();
+    getMunicipios();
   }, [idDepartment]);
+  console.log(setSeleccion);
+
   return (
     <main id="main" className="main">
       <img
@@ -51,14 +86,29 @@ export const SenadoDetails = () => {
             <div className="text-center">
               <b>VOTOS POR DEPARTAMENTO</b>
             </div>
-            <div className="dropdown">
-              <a className="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown link
-              </a>
 
-              <ul className="dropdown-menu">
-                <li><a className="dropdown-item" href="#">Action</a></li>
-              </ul>
+            <div className="dropdown">
+              <li className="nav-item dropdown">
+                <button
+                  className="btn btn-dark dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Dropdown
+                </button>
+                <ul className="dropdown-menu dropdown-menu-dark">
+                  <li>
+                    {arrayMunicipios.map((myVehicle, indice) => (
+                      <Link className="dropdown-item" to={"municipio/"+myVehicle.id_municipality}>
+                        {myVehicle.name_municipality}
+                      </Link>
+                    ))}
+                    <a className="dropdown-item" href="#">
+                      Action
+                    </a>
+                  </li>
+                </ul>
+              </li>
             </div>
           </div>
 
@@ -72,10 +122,10 @@ export const SenadoDetails = () => {
                   <th className="text-center" style={{ width: "35%" }}>
                     CANDIATO
                   </th>
-                  <th className="text-center" style={{ width: "30%" }}>
+                  <th className="text-center" style={{ width: "35%" }}>
                     PARTIDO
                   </th>
-                  <th className="text-center" style={{ width: "25%" }}>
+                  <th className="text-center" style={{ width: "30%" }}>
                     TOTAL VOTOS
                   </th>
                 </tr>
@@ -86,7 +136,9 @@ export const SenadoDetails = () => {
                     <td className="text-center">
                       <b>{myVotes.candidate_name}</b>
                     </td>
-                    <td className="text-center">{myVotes.description_politicparty}</td>
+                    <td className="text-center">
+                      {myVotes.description_politicparty}
+                    </td>
                     <td className="text-center">{myVotes.votos}</td>
                   </tr>
                 ))}
@@ -96,59 +148,6 @@ export const SenadoDetails = () => {
         </div>
       </div>
 
-      {/* <div className="col-lg-12" style={{ color: "#052851 !important" }}>
-        <div className="cardBorder card">
-          <div
-            className="container-fluid display-flex justify-content-center"
-            style={{
-              background: "#052851",
-              color: "#FFFFFF",
-              height: "40px",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <div className="text-center">
-              <b>TERRITORIAL INDIGENA</b>
-            </div>
-          </div>
-          <table
-            className="colorTable table table-hover"
-            style={{ background: "#05285190 !important" }}
-          >
-            <thead>
-              <tr>
-                <th className="text-center" style={{ width: "35%" }}>
-                  DEPARTAMENTO
-                </th>
-                <th className="text-center" style={{ width: "30%" }}>
-                  ROLE
-                </th>
-                <th className="text-center" style={{ width: "25%" }}>
-                  TOTAL VOTOS
-                </th>
-                <th className="text-center" style={{ width: "10%" }}></th>
-              </tr>
-            </thead>
-            <tbody className="color">
-              {arrayVotesSenadoIndigena.map((myVotes, contador) => (
-                <tr key={contador}>
-                  <td className="text-center">
-                    <b>{myVotes.department.nameDepartment}</b>
-                  </td>
-                  <td className="text-center">{myVotes.description_role}</td>
-                  <td className="text-center">{myVotes.votos}</td>
-                  <td className="text-center align-middle">
-                    <Link className="text-center" to={""}>
-                      <i className="fa-solid fa-magnifying-glass fa-sm"></i>
-                    </Link>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div> */}
       <div className="position-absolute bottom-50 end-50"></div>
       {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>

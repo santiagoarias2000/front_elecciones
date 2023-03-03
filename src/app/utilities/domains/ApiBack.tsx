@@ -1,7 +1,7 @@
 const ApiBack = {
   URL: "http://localhost:3123",
 
-  COMBOBOX_MUNICIPIO: "/api/public/municipio",
+  COMBOBOX_MUNICIPIO: "/api/public/municipio/departamento",
   CAMARA_TERRITORIAL: "/api/public/camara/territorial",
   CAMARA_INDIGENA: "/api/public/camara/indigena",
   CAMARA_AFRODESCENDIENTE: "/api/public/camara/afrodescendiente",

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import VotesCongreso from "../../models/VotesCongreso";
-import ServicePrivate from "../../services/ServicePrivate";
-import ApiBack from "../../utilities/domains/ApiBack";
-import camara from "../../../assets/image/camara.jpg";
+import VotesCongreso from "../../../models/VotesCongreso";
+import ServicePrivate from "../../../services/ServicePrivate";
+import ApiBack from "../../../utilities/domains/ApiBack";
+import senado from "../../../../assets/image/camara.jpg";
 import { Link } from "react-router-dom";
 export const Senado = () => {
   const [arrayVotesSenadoNacional, setArrayVotesSenadoNacional] = useState<
@@ -29,8 +29,13 @@ export const Senado = () => {
   return (
     <main id="main" className="main">
       <img
-        src={camara}
-        style={{ width: "100%", maxHeight: "80%", marginTop: "10vw" }}
+        src={senado}
+        style={{  
+          width: "100%",
+        maxHeight: "80%",
+        marginTop: "10vw",
+        borderRadius: "5px 5px 0 0",
+        boxShadow: "0px 0 20px #052851", }}
         alt="logo principal para la parte superior de la pagina web"
       />
       {/* Navegación estilo breadcrumb: Inicio */}
@@ -50,14 +55,10 @@ export const Senado = () => {
               alignItems: "center",
             }}
           >
-            <div className="text-center">
-              <b>TERRITORIAL NACIONAL</b>
-            </div>
-            <div className="display-flex justify-content-end">
-              <button type="button" className="btn btn-danger">
-                188 Senado
-              </button>
-            </div>
+          <div className="text-center">
+            <b>TERRITORIAL NACIONAL</b>
+          </div>
+          
           </div>
 
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
@@ -116,10 +117,11 @@ export const Senado = () => {
               <b>TERRITORIAL INDIGENA</b>
             </div>
           </div>
-          <table
-            className="colorTable table table-hover"
-            style={{ background: "#05285190 !important" }}
-          >
+          <div className="table-wrapper-scroll-y my-custom-scrollbar">
+            <table
+              className="colorTable table table-hover"
+              style={{ background: "#05285190 !important" }}
+            >
             <thead>
               <tr>
                 <th className="text-center" style={{ width: "35%" }}>
@@ -151,9 +153,9 @@ export const Senado = () => {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       </div>
-      <div className="position-absolute bottom-50 end-50"></div>
       {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>
   );
