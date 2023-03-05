@@ -10,7 +10,7 @@ export const Camara = () => {
   const [searchTerritorial, setSearchTerritorial] = useState("");
   const [searchIndigena, setSearchIndigena] = useState("");
   const [searchAfro, setSearchAfro] = useState("");
-  const setOption = ["nameDepartment", "descriptionRole", "votos"];
+  const setOption = ["name_department", "descriptionRole", "votos"];
   const [sort, setSort] = useState("");
 
   let active = 1;
@@ -123,14 +123,14 @@ export const Camara = () => {
                   .filter((myVotes) => {
                     return searchTerritorial.toLowerCase() === ""
                       ? myVotes
-                      : myVotes.department.nameDepartment
+                      : myVotes.department.name_department
                           .toLowerCase()
                           .includes(searchTerritorial);
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
                       <td className="text-center">
-                        <b>{myVotes.department.nameDepartment}</b>
+                        <b>{myVotes.department.name_department}</b>
                       </td>
                       <td className="text-center">
                         {myVotes.description_role}
@@ -217,14 +217,14 @@ export const Camara = () => {
                   .filter((myVotes) => {
                     return searchIndigena.toLowerCase() === ""
                       ? myVotes
-                      : myVotes.department.nameDepartment
+                      : myVotes.department.name_department
                           .toLowerCase()
                           .includes(searchIndigena);
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
                       <td className="text-center">
-                        <b>{myVotes.department.nameDepartment}</b>
+                        <b>{myVotes.department.name_department}</b>
                       </td>
                       <td className="text-center">
                         {myVotes.description_role}
@@ -310,14 +310,14 @@ export const Camara = () => {
                   .filter((myVotes) => {
                     return searchAfro.toLowerCase() === ""
                       ? myVotes
-                      : myVotes.department.nameDepartment
+                      : myVotes.department.name_department
                           .toLowerCase()
                           .includes(searchAfro);
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
                       <td className="text-center">
-                        <b>{myVotes.department.nameDepartment}</b>
+                        <b>{myVotes.department.name_department}</b>
                       </td>
                       <td className="text-center">
                         {myVotes.description_role}

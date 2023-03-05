@@ -2,14 +2,15 @@ import { useState, useEffect } from "react";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
+import Form from "react-bootstrap/Form";
 import camara from "../../../../assets/image/camara.jpg";
 import { Link, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
+import { Col, InputGroup, Pagination, Row, Table } from "react-bootstrap";
 
-import { Col, Form, InputGroup, Pagination, Row, Table } from "react-bootstrap";
-
-export const CamaraIndigenaDepartamento = () => {
+export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
   const [search, setSearch] = useState("");
+  console.log(search);
   const setOption = ["nameDepartment", "descriptionRole", "votos"];
   const [sort, setSort] = useState("");
 
@@ -22,20 +23,23 @@ export const CamaraIndigenaDepartamento = () => {
       </Pagination.Item>
     );
   }
-
   let { idDepartment } = useParams();
-  const [arrayVotesCamaraIndigena, setArrayVotosCamaraIndigena] = useState<
-    VotesCongreso[]
-  >([]);
-
+  let { idMunicipality } = useParams();
+  const [arrayVotesCamaraAfroDescendiente, setArrayVotosCamaraAfroDescendiente] =
+    useState<VotesCongreso[]>([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
 
-  const getVotosCamaraIndigena = async () => {
+  const getVotosCamaraAfroDescendiente = async () => {
     const result = await ServicePrivate.requestGET(
-      ApiBack.CAMARA_INDIGENA_DEPARTAMENTO + "/" + idDepartment
+      ApiBack.CAMARA_AFRODESCENDIENTE_DEPARTAMENTO_MUNICIPIO +
+        "/" +
+        idDepartment +
+        "/municipio/" +
+        idMunicipality
     );
-    setArrayVotosCamaraIndigena(result);
+    setArrayVotosCamaraAfroDescendiente(result);
   };
+  // get vehicle to be displayed in the combo
   const getMuniciaplity = async () => {
     const result = await ServicePrivate.requestGET(
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
@@ -43,7 +47,7 @@ export const CamaraIndigenaDepartamento = () => {
     setArrayMunicipio(result);
   };
   useEffect(() => {
-    getVotosCamaraIndigena();
+    getVotosCamaraAfroDescendiente();
     getMuniciaplity();
   }, []);
 
@@ -79,7 +83,7 @@ export const CamaraIndigenaDepartamento = () => {
             }}
           >
             <div className="text-center">
-              <b>TERRITORIAL INDIGENA</b>
+              <b>TERRITORIAL AFRO-DESCENDIENTE</b>
             </div>
           </div>
           <div className="d-flex">
@@ -102,10 +106,10 @@ export const CamaraIndigenaDepartamento = () => {
                 Municipios
               </a>
               <ul className="dropdown-menu">
-                {arrayMunicipio.map((myMunicipality, indice) => (
+                {arrayMunicipio.map((myMunicipality) => (
                   <a
                     href={
-                      "/guiaelectoral/camara/circuncripcion/indigena/departamento/" +
+                      "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
                       myMunicipality.id_department +
                       "/municipio/" +
                       myMunicipality.id_municipality
@@ -121,7 +125,7 @@ export const CamaraIndigenaDepartamento = () => {
               </ul>
             </div>
           </div>
-          
+
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
               className="colorTable table table-hover"
@@ -129,19 +133,25 @@ export const CamaraIndigenaDepartamento = () => {
             >
               <thead>
                 <tr>
-                  <th className="text-center" style={{ width: "40%" }}>
+                  <th className="text-center" style={{ width: "30%" }}>
                     NOMBRE CANDIDATO
                   </th>
-                  <th className="text-center" style={{ width: "35%" }}>
+                  <th className="text-center" style={{ width: "40%" }}>
                     PARTIDO POLÍTICO
                   </th>
-                  <th className="text-center" style={{ width: "25%" }}>
+                  <th className="text-center" style={{ width: "5 %" }}>
                     VOTOS DEPARTAMENTO
+                  </th>
+                  <th className="text-center" style={{ width: "25 %" }}>
+                    MUNICIPIO
+                  </th>
+                  <th className="text-center" style={{ width: "5 %" }}>
+                    VOTOS MUNICIPIO
                   </th>
                 </tr>
               </thead>
               <tbody className="color">
-                {arrayVotesCamaraIndigena
+                {arrayVotesCamaraAfroDescendiente
                   .filter((myVotes) => {
                     return search.toLowerCase() === ""
                       ? myVotes
@@ -158,11 +168,16 @@ export const CamaraIndigenaDepartamento = () => {
                         {myVotes.description_politicparty}
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
+                      <td className="text-center">
+                        {myVotes.municipality.name_municipality}
+                      </td>
+                      <td className="text-center">{myVotes.votos_muicipio}</td>
                     </tr>
                   ))}
               </tbody>
             </table>
           </div>
+
           <div
             className="container-fluid display-flex justify-content-center"
             style={{

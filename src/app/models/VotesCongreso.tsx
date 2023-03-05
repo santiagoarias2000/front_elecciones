@@ -19,6 +19,7 @@ class VotesCongreso {
   public code_candidate: number;
   public candidate_name: string;
   public votos: number;
+  public votos_muicipio:number;
   public code_contry: string;
 
   constructor(
@@ -39,6 +40,7 @@ class VotesCongreso {
     codeCan:number,
     nameCandi: string,
     numberVotes: number,
+    numberVotesMunicipio:number,
     codeCont: string
   ) {
     this.id_votes = id;
@@ -58,6 +60,7 @@ class VotesCongreso {
     this.code_candidate = codeCan
     this.candidate_name = nameCandi;
     this.votos = numberVotes;
+    this.votos_muicipio=numberVotesMunicipio;
     this.code_contry = codeCont;
 
 
