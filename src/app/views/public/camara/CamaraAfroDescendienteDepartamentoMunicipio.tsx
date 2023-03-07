@@ -150,7 +150,7 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                   className="colorTable table table-hover"
                   style={{ background: "#05285190 !important" }}
                 >
-                  <thead>
+                  <thead className="container_table">
                     <tr>
                       <th className="text-center" style={{ width: "30%" }}>
                         NOMBRE CANDIDATO
@@ -169,7 +169,7 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="color">
+                  <tbody className="color container_table">
                     {arrayVotesCamaraAfroDescendiente
                       .filter((myVotes) => {
                         return search.toLowerCase() === ""
