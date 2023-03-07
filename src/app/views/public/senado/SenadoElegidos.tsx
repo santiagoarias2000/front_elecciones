@@ -3,12 +3,14 @@ import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import camara from "../../../../assets/image/SENADO.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Col, Form, InputGroup, Pagination, Row, Table } from "react-bootstrap";
 
 export const SenadoElegidos = () => {
   const [searchNacional, setSearchNacional] = useState("");
   const [searchIndigena, setSearchIndigena] = useState("");
+
+  const regresar = useNavigate();
 
   let active = 1;
   let items = [];
@@ -32,7 +34,9 @@ export const SenadoElegidos = () => {
     setArrayVotesSenadoNacional(result);
   };
   const getVotosSenadoIndigena = async () => {
-    const result = await ServicePrivate.requestGET(ApiBack.SENADO_LIST_2_INDIGENA);
+    const result = await ServicePrivate.requestGET(
+      ApiBack.SENADO_LIST_2_INDIGENA
+    );
     setArrayVotesSenadoIndigena(result);
   };
 
@@ -57,36 +61,38 @@ export const SenadoElegidos = () => {
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div
-            className="container-fluid display-flex justify-content-center"
-            style={{
-              background: "#052851",
-              color: "#FFFFFF",
-              height: "40px",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
+          <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b>TERRITORIAL NACIONAL</b> &nbsp;
+              <b className="title_table">TERRITORIAL NACIONAL</b> &nbsp;
             </div>
           </div>
-          <div className="name_table">Lista de los 108 Elegidos</div>
-          <Form style={{ padding: "0 2% 0 72%" }}>
-            <InputGroup className="my-3">
-              <Form.Control
-                onChange={(e) => setSearchNacional(e.target.value)}
-                placeholder="Buscar nombre candidato"
-                style={{ textAlign: "right", marginRight: "5px" }}
-              ></Form.Control>
-            </InputGroup>
-          </Form>
+
+          <div className="container">
+            <div className="row">
+              <div className="col-sm">
+                <div className="name_table">LISTA DE 108 ELEGIDOS</div>
+              </div>
+              <div className="col-sm">
+                <Form id="form_conta">
+                  <InputGroup className="my-3 container_form">
+                    <Form.Control
+                      onChange={(e) => setSearchNacional(e.target.value)}
+                      placeholder="Buscar nombre candidato"
+                      style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
+                    ></Form.Control>
+                  </InputGroup>
+                </Form>
+              </div>
+            </div>
+          </div>
+
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
               className="colorTable table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead>
+              <thead className="container_table">
                 <tr>
                   <th className="text-center" style={{ width: "30%" }}>
                     NOMBRE CANDIDATO
@@ -98,14 +104,14 @@ export const SenadoElegidos = () => {
                     TOTAL VOTOS NACIONAL
                   </th>
                   <th className="text-center" style={{ width: "20%" }}>
-                    DEPARTAMENTO 
+                    DEPARTAMENTO
                   </th>
                   <th className="text-center" style={{ width: "20%" }}>
                     MAS VOTACION
                   </th>
                 </tr>
               </thead>
-              <tbody className="color">
+              <tbody className="color container_table">
                 {arrayVotesSenadoNacional
                   .filter((myVotes) => {
                     return searchNacional.toLowerCase() === ""
@@ -119,9 +125,13 @@ export const SenadoElegidos = () => {
                       <td className="text-center">
                         <b>{myVotes.candidate_name}</b>
                       </td>
-                      <td className="text-center">{myVotes.description_politicparty}</td>
+                      <td className="text-center">
+                        {myVotes.description_politicparty}
+                      </td>
                       <td className="text-center">{myVotes.votos}</td>
-                      <td className="text-center">{myVotes.department.nameDepartment}</td>
+                      <td className="text-center">
+                        {myVotes.department.nameDepartment}
+                      </td>
                       <td className="text-center">{myVotes.max_votes}</td>
                     </tr>
                   ))}
@@ -138,34 +148,33 @@ export const SenadoElegidos = () => {
             }}
           >
             <div className="text-center">
-              <Pagination className="prueba">{items}</Pagination>
+              <button
+                type="button"
+                className="btn buttonBack-primary"
+                onClick={() => regresar(-1)}
+              >
+                <i className="bi bi-arrow-left-circle">&nbsp;&nbsp;</i>
+                REGRESAR
+              </button>
             </div>
           </div>
         </div>
       </div>
-      
+
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div
-            className="container-fluid display-flex justify-content-center"
-            style={{
-              background: "#052851",
-              color: "#FFFFFF",
-              height: "40px",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
+          <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
               <b>TERRITORIAL INDIGENA</b> &nbsp;
             </div>
           </div>
           <Form style={{ padding: "0 2% 0 72%" }}>
-            <InputGroup className="my-3">
+            <InputGroup className="my-3 container_form">
               <Form.Control
                 onChange={(e) => setSearchNacional(e.target.value)}
                 placeholder="Buscar nombre candidato"
                 style={{ textAlign: "right", marginRight: "5px" }}
+                className="form_co"
               ></Form.Control>
             </InputGroup>
           </Form>
@@ -174,7 +183,7 @@ export const SenadoElegidos = () => {
               className="colorTable table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead>
+              <thead className="container_table">
                 <tr>
                   <th className="text-center" style={{ width: "30%" }}>
                     NOMBRE CANDIDATO
@@ -186,7 +195,7 @@ export const SenadoElegidos = () => {
                     TOTAL VOTOS NACIONAL
                   </th>
                   <th className="text-center" style={{ width: "20%" }}>
-                    DEPARTAMENTO 
+                    DEPARTAMENTO
                   </th>
                   <th className="text-center" style={{ width: "20%" }}>
                     MAS VOTACION
@@ -194,7 +203,7 @@ export const SenadoElegidos = () => {
                   <th className="text-center" style={{ width: "10%" }}></th>
                 </tr>
               </thead>
-              <tbody className="color">
+              <tbody className="color container_table">
                 {arrayVotesSenadoIndigena
                   .filter((myVotes) => {
                     return searchNacional.toLowerCase() === ""
@@ -208,9 +217,13 @@ export const SenadoElegidos = () => {
                       <td className="text-center">
                         <b>{myVotes.candidate_name}</b>
                       </td>
-                      <td className="text-center">{myVotes.description_politicparty}</td>
+                      <td className="text-center">
+                        {myVotes.description_politicparty}
+                      </td>
                       <td className="text-center">{myVotes.votos}</td>
-                      <td className="text-center">{myVotes.department.nameDepartment}</td>
+                      <td className="text-center">
+                        {myVotes.department.nameDepartment}
+                      </td>
                       <td className="text-center">{myVotes.max_votes}</td>
                       <td className="text-center align-middle">
                         <Link
@@ -239,7 +252,14 @@ export const SenadoElegidos = () => {
             }}
           >
             <div className="text-center">
-              <Pagination className="prueba">{items}</Pagination>
+              <button
+                type="button"
+                className="btn buttonBack-primary"
+                onClick={() => regresar(-1)}
+              >
+                <i className="bi bi-arrow-left-circle">&nbsp;&nbsp;</i>
+                REGRESAR
+              </button>
             </div>
           </div>
         </div>

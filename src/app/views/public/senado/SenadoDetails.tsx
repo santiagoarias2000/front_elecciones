@@ -39,14 +39,7 @@ export const SenadoDetails = () => {
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
           <div
-            className="container-fluid display-flex justify-content-center"
-            style={{
-              background: "#052851",
-              color: "#FFFFFF",
-              height: "40px",
-              display: "flex",
-              alignItems: "center",
-            }}
+            className="container-fluid display-flex justify-content-center container_title"
           >
             <div className="text-center">
               <b>VOTOS POR DEPARTAMENTO</b>

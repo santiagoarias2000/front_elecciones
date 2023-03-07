@@ -68,14 +68,7 @@ export const CamaraTerritorialDepartamento = () => {
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
           <div
-            className="container-fluid display-flex justify-content-center"
-            style={{
-              background: "#052851",
-              color: "#FFFFFF",
-              height: "40px",
-              display: "flex",
-              alignItems: "center",
-            }}
+            className="container-fluid display-flex justify-content-center container_title"
           >
             <div className="text-center">
               <b>TERRITORIAL DEPARTAMENTAL</b>
@@ -95,7 +88,7 @@ export const CamaraTerritorialDepartamento = () => {
               className="colorTable table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead>
+              <thead className="container_table">
                 <tr>
                   <th className="text-center" style={{ width: "40%" }}>
                     NOMBRE CANDIDATO
@@ -117,7 +110,7 @@ export const CamaraTerritorialDepartamento = () => {
                   </th>
                 </tr>
               </thead>
-              <tbody className="color">
+              <tbody className="color container_table">
                 {arrayVotesCamaraTerritorial
                   .filter((myVotes) => {
                     return search.toLowerCase() === ""

@@ -38,25 +38,22 @@ export const Senado = () => {
       {/* Navegación estilo breadcrumb: Fin */}
 
       {/* Ejemplo de una tabla para presentación de datos: Inicio */}
+      <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
           <div
-            className="container-fluid display-flex justify-content-center"
-            style={{
-              background: "#052851",
-              color: "#FFFFFF",
-              height: "40px",
-              display: "flex",
-              alignItems: "center",
-            }}
+            className="container-fluid display-flex justify-content-center container_title"
+          >
+            <a href="/guiaelectoral/senadoelegidos" className="bt_elegidos">
+            <i className="bi bi-search"></i> &nbsp; Conozca los 108 Elegidos
+            </a>
+          </div>
+          <div className="side_bar_white"></div>
+          <div
+            className="container-fluid display-flex justify-content-center container_title"
           >
             <div className="text-center">
               <b>TERRITORIAL NACIONAL</b>
-            </div>
-            <div className="display-flex justify-content-end">
-              <a href="/guiaelectoral/senadoelegidos">
-                188 Senado
-              </a>
             </div>
           </div>
 
@@ -65,9 +62,9 @@ export const Senado = () => {
               className="colorTable table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead>
+              <thead className="container_table">
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }}>
+                  <th className="text-cente r" style={{ width: "35%" }}>
                     DEPARTAMENTO
                   </th>
                   <th className="text-center" style={{ width: "25%" }}>
@@ -76,7 +73,7 @@ export const Senado = () => {
                   <th className="text-center" style={{ width: "10%" }}></th>
                 </tr>
               </thead>
-              <tbody className="color">
+              <tbody className="color container_table">
                 {arrayVotesSenadoNacional.map((myVotes, contador) => (
                   <tr key={contador}>
                     <td className="text-center">
@@ -84,7 +81,13 @@ export const Senado = () => {
                     </td>
                     <td className="text-center">{myVotes.votos}</td>
                     <td className="text-center align-middle">
-                      <Link className="text-center" to={"/guiaelectoral/senado/senadoDetails/"+myVotes.department.idDepartment}>
+                      <Link
+                        className="text-center"
+                        to={
+                          "/guiaelectoral/senado/senadoDetails/" +
+                          myVotes.department.idDepartment
+                        }
+                      >
                         <i className="fa-solid fa-magnifying-glass fa-sm"></i>
                       </Link>
                     </td>
