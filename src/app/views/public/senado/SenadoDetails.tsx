@@ -66,9 +66,9 @@ export const SenadoDetails = () => {
     getVotosSenadoDepartamental();
     getMunicipios();
   }, [idDepartment]);
-  // useEffect(()=>{
-  //   getVotosSenadoDepartamentalMunicipio();
-  // },[arrayVotesSenadoDepartamentalMunicipio])
+  useEffect(()=>{
+    
+  },[seleccion])
 
   return (
     <main id="main" className="main">
@@ -112,7 +112,7 @@ export const SenadoDetails = () => {
               <ul className="dropdown-menu">
                 <li>
                 {arrayMunicipios.map((miMunicipio, indice)=>(
-                  <a className="dropdown-item" href={"/guiaelectoral/senado/senadoDetails/"+idDepartment+"/municipio/"+miMunicipio.id_municipality} onClick={()=>(setSeleccion(miMunicipio.id_municipality))}>
+                  <a className="dropdown-item" onClick={()=>(setSeleccion(miMunicipio.id_municipality))}>
                     {miMunicipio.name_municipality}
                   </a>
                 ))}
@@ -182,11 +182,11 @@ export const SenadoDetails = () => {
                         </td>
                         </tr>
                       ))}
-                      {/* {arrayVotesSenadoDepartamentalMunicipio.map((myMunis,index)=>(
+                      {arrayVotesSenadoDepartamentalMunicipio.map((myMunis,index)=>(
                         <tr key={index}>
                           <td className="text-center">{myMunis.votos}</td>
                         </tr>
-                      ))} */}
+                      ))}
                      
                     
                 

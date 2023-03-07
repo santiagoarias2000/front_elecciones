@@ -98,7 +98,7 @@ export const  SenadoMuni = () => {
                         <b>{myVotes.candidate_name}</b>
                       </td>
                       <td className="text-center">{myVotes.description_politicparty}</td>
-                      {/* <td className="text-center">{myVotes.municipality.name_municipality}</td> */}
+                      <td className="text-center">{myVotes.municipality.name_municipality}</td>
                       
                       <td className="text-center">{myVotes.votos}</td>
                     </tr>
