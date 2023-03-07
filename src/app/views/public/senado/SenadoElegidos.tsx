@@ -165,19 +165,28 @@ export const SenadoElegidos = () => {
         <div className="cardBorder card">
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b>TERRITORIAL INDIGENA</b> &nbsp;
+              <b className="title_table">TERRITORIAL INDIGENA</b> &nbsp;
             </div>
           </div>
-          <Form style={{ padding: "0 2% 0 72%" }}>
-            <InputGroup className="my-3 container_form">
-              <Form.Control
-                onChange={(e) => setSearchNacional(e.target.value)}
-                placeholder="Buscar nombre candidato"
-                style={{ textAlign: "right", marginRight: "5px" }}
-                className="form_co"
-              ></Form.Control>
-            </InputGroup>
-          </Form>
+          <div className="container">
+            <div className="row">
+              <div className="col-sm">
+                <div className="name_table">Lista 2 elegidos</div>
+              </div>
+              <div className="col-sm">
+                <Form id="form_conta">
+                  <InputGroup className="my-3 container_form">
+                    <Form.Control
+                      onChange={(e) => setSearchNacional(e.target.value)}
+                      placeholder="Buscar nombre candidato"
+                      style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
+                    ></Form.Control>
+                  </InputGroup>
+                </Form>
+              </div>
+            </div>
+          </div>
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
               className="colorTable table table-hover"
@@ -200,8 +209,7 @@ export const SenadoElegidos = () => {
                   <th className="text-center" style={{ width: "20%" }}>
                     MAS VOTACION
                   </th>
-                  <th className="text-center" style={{ width: "10%" }}></th>
-                </tr>
+                                  </tr>
               </thead>
               <tbody className="color container_table">
                 {arrayVotesSenadoIndigena
@@ -225,17 +233,6 @@ export const SenadoElegidos = () => {
                         {myVotes.department.name_department}
                       </td>
                       <td className="text-center">{myVotes.max_votes}</td>
-                      <td className="text-center align-middle">
-                        <Link
-                          className="text-center"
-                          to={
-                            "/guiaelectoral/senado/senadoDetails/" +
-                            myVotes.department.idDepartment
-                          }
-                        >
-                          <i className="fa-solid fa-magnifying-glass fa-sm"></i>
-                        </Link>
-                      </td>
                     </tr>
                   ))}
               </tbody>
