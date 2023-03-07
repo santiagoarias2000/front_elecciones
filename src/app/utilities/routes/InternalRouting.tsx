@@ -11,6 +11,7 @@ import { CookiesPolices } from "../../views/shared/CookiesPolicies";
 import { TermsConditions } from "../../views/shared/TermsConditions";
 import { Camara } from "../../views/public/camara/Camara";
 import { CamaraTerritorialDepartamento } from "../../views/public/camara/CamaraTerritorialDepartamento";
+import { SenadoMuni } from "../../views/public/senado/SenadoMuni";
 import { CamaraIndigenaDepartamento } from "../../views/public/camara/CamaraIndigenaDepartamento";
 import { CamaraAfroDescendienteDepartamento } from "../../views/public/camara/CamaraAfroDescendienteDepartamento";
 import { Senado } from "../../views/public/senado/Senado";
@@ -23,6 +24,7 @@ import { CamaraAfroDescendienteDepartamentoMunicipio } from "../../views/public/
 //Lazy structure from use the all tsx
 
 const LazyWelcome =lazy(()=>import("../../containers/Welcome").then(()=>({default:Welcome})));
+const LazySenadoDetailsMuni =lazy(()=>import("../../views/public/senado/SenadoMuni").then(()=>({default:SenadoMuni})));
 const LazySenadoElegidos =lazy(()=>import("../../views/public/senado/SenadoElegidos").then(()=>({default:SenadoElegidos})));
 const LazySenado =lazy(()=>import("../../views/public/senado/Senado").then(()=>({default:Senado})));
 const LazySenadoDetails =lazy(()=>import("../../views/public/senado/SenadoDetails").then(()=>({default:SenadoDetails})));
@@ -52,6 +54,7 @@ export const InternalRouting = () => {
       <Route path="/senadoelegidos" element={<LazySenadoElegidos />} />
       <Route path="/senado" element={<LazySenado/>} />
       <Route path="/senado/senadoDetails/:idDepartment" element={<LazySenadoDetails />} />
+      <Route path="/senado/senadoDetails/:idDepartment/municipio/:idMunicipality" element={<LazySenadoDetailsMuni />} />
 
       {/* page legal to need app web */}
       <Route path="/politicasprivacidad" element={<LazyPrivacyPolicies/>} />
