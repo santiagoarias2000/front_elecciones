@@ -142,7 +142,7 @@ export const CamaraIndigenaDepartamento = () => {
                         {myVotes.description_role}
                       </td>
                       <td className="text-center">
-                        {myVotes.department.nameDepartment}
+                        {myVotes.department.name_department}
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
                     </tr>

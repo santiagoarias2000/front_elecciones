@@ -4,15 +4,17 @@ import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import Form from "react-bootstrap/Form";
 import camara from "../../../../assets/image/camara.jpg";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
 import { Col, InputGroup, Pagination, Row, Table } from "react-bootstrap";
+import Department from "../../../models/Department";
 
 export const CamaraTerritorialDepartamento = () => {
   const [search, setSearch] = useState("");
   console.log(search);
   const setOption = ["nameDepartment", "descriptionRole", "votos"];
   const [sort, setSort] = useState("");
+  const regresar = useNavigate();
 
   let active = 1;
   let items = [];
@@ -27,6 +29,7 @@ export const CamaraTerritorialDepartamento = () => {
   const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
     useState<VotesCongreso[]>([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
+  const [arrayDepartamento, setArrayDepartamento] = useState<Department[]>([]);
 
   const getVotosCamaraTerritorial = async () => {
     const result = await ServicePrivate.requestGET(
@@ -41,9 +44,18 @@ export const CamaraTerritorialDepartamento = () => {
     );
     setArrayMunicipio(result);
   };
+
+  const getDepartamento = async () => {
+    const result = await ServicePrivate.requestGET(
+      ApiBack.NOMBRE_DEPARTAMENTO + "/" + idDepartment
+    );
+    setArrayDepartamento(result);
+  };
+
   useEffect(() => {
     getVotosCamaraTerritorial();
     getMuniciaplity();
+    getDepartamento();
   }, []);
 
   return (
@@ -81,15 +93,51 @@ export const CamaraTerritorialDepartamento = () => {
               <b>TERRITORIAL DEPARTAMENTAL</b>
             </div>
           </div>
-          <Form style={{ padding: "0 2% 0 72%" }}>
-            <InputGroup className="my-3">
-              <Form.Control
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search Keeper"
-                style={{ textAlign: "right", marginRight: "5px" }}
-              ></Form.Control>
-            </InputGroup>
-          </Form>
+
+          <div className="container text-center">
+            <div className="row">
+              <div className="col align-content-center">
+                <a
+                  className="buttonBack buttonBack-primary dropdown-toggle"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Municipios
+                </a>
+                <ul className="dropdown-menu">
+                  {arrayMunicipio.map((myMunicipality) => (
+                    <Link to={"/guiaelectoral/welcome"}>
+                      <li>
+                        <a className="dropdown-item">
+                          {myMunicipality.name_municipality}
+                        </a>
+                      </li>
+                    </Link>
+                  ))}
+                </ul>
+              </div>
+              <div className="col align-middle">
+                <h5 className="text-center" style={{ color: "#052851" }}>
+                  {arrayDepartamento.map((myDepartment) => (
+                    <b>{myDepartment.name_department}</b>
+                  ))}
+                </h5>
+              </div>
+              <div className="col">
+                <Form >
+                  <InputGroup className="my-3">
+                    <Form.Control
+                      onChange={(e) => setSearch(e.target.value)}
+                      placeholder="Search Keeper"
+                      style={{ textAlign: "right", marginRight: "5px" }}
+                    ></Form.Control>
+                  </InputGroup>
+                </Form>
+              </div>
+            </div>
+          </div>
+
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
               className="colorTable table table-hover"
@@ -100,20 +148,11 @@ export const CamaraTerritorialDepartamento = () => {
                   <th className="text-center" style={{ width: "40%" }}>
                     NOMBRE CANDIDATO
                   </th>
-                  <th className="text-center" style={{ width: "30%" }}>
+                  <th className="text-center" style={{ width: "35%" }}>
                     PARTIDO POLITICO
                   </th>
-                  <th className="text-center" style={{ width: "10%" }}>
-                    CIRCUSCRIPCIÓN
-                  </th>
-                  <th className="text-center" style={{ width: "10%" }}>
-                    ROLE
-                  </th>
-                  <th className="text-center" style={{ width: "5%" }}>
-                    DEPARTAMENTO
-                  </th>
-                  <th className="text-center" style={{ width: "5%" }}>
-                    VOTOS
+                  <th className="text-center" style={{ width: "25%" }}>
+                    VOTOS DEPARTAMENTO
                   </th>
                 </tr>
               </thead>
@@ -134,15 +173,6 @@ export const CamaraTerritorialDepartamento = () => {
                       <td className="text-center">
                         {myVotes.description_politicparty}
                       </td>
-                      <td className="text-center">
-                        {myVotes.description_district}
-                      </td>
-                      <td className="text-center">
-                        {myVotes.description_role}
-                      </td>
-                      <td className="text-center">
-                        {myVotes.department.nameDepartment}
-                      </td>
                       <td className="text-center">{myVotes.votos}</td>
                     </tr>
                   ))}
@@ -150,25 +180,6 @@ export const CamaraTerritorialDepartamento = () => {
             </table>
           </div>
           <div className="dropdown">
-            <a
-              className="btn btn-secondary dropdown-toggle"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Municipios
-            </a>
-            <ul className="dropdown-menu">
-              {arrayMunicipio.map((myMunicipality) => (
-                <Link to={"/guiaelectoral/welcome"}>
-                  <li>
-                    <a className="dropdown-item">
-                      {myMunicipality.name_municipality}
-                    </a>
-                  </li>
-                </Link>
-              ))}
-            </ul>
             <div
               className="container-fluid display-flex justify-content-center"
               style={{
@@ -179,7 +190,14 @@ export const CamaraTerritorialDepartamento = () => {
               }}
             >
               <div className="text-center">
-                <Pagination className="prueba">{items}</Pagination>
+                <button
+                  type="button"
+                  className="buttonBack buttonBack-primary"
+                  onClick={() => regresar(-1)}
+                >
+                  <i className="bi bi-arrow-left-circle"></i>
+                  &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                </button>
               </div>
             </div>
           </div>
