@@ -29,8 +29,9 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
     setArrayVotosCamaraAfroDescendiente,
   ] = useState<VotesCongreso[]>([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
-  const [arrayDepartamento, setArrayDepartamento] = useState<Department[]>([]);
-
+  const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
+    Municipality[]
+  >([]);
 
   const getVotosCamaraAfroDescendiente = async () => {
     const result = await ServicePrivate.requestGET(
@@ -49,16 +50,16 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
     );
     setArrayMunicipio(result);
   };
-  const getDepartamento = async () => {
+  const getNameMunicipality = async () => {
     const result = await ServicePrivate.requestGET(
-      ApiBack.NOMBRE_DEPARTAMENTO + "/" + idDepartment
+      ApiBack.NOMBRE_MUNICIPIO + "/" + idMunicipality
     );
-    setArrayDepartamento(result);
+    setArrayNameMunicipality(result);
   };
   useEffect(() => {
     getVotosCamaraAfroDescendiente();
     getMuniciaplity();
-    getDepartamento();
+    getMuniciaplity();
   }, []);
 
   return (
@@ -128,8 +129,13 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
               </div>
               <div className="col">
                 <h5 className="text-center my-4" style={{ color: "#052851" }}>
-                  {arrayDepartamento.map((myDepartment) => (
-                    <b>{myDepartment.name_department}</b>
+                  {arrayNameMunicipality.map((myNameMunicipality) => (
+                    <b>
+                      {myNameMunicipality.name_municipality}
+                      {" ("}
+                      {myNameMunicipality.department}
+                      {")"}
+                    </b>
                   ))}
                 </h5>
               </div>
@@ -138,7 +144,7 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                   <InputGroup className="my-3">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Search Keeper"
+                      placeholder="Buscar nombre candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
                     ></Form.Control>
                   </InputGroup>
@@ -155,16 +161,13 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                       <th className="text-center" style={{ width: "30%" }}>
                         NOMBRE CANDIDATO
                       </th>
-                      <th className="text-center" style={{ width: "405%" }}>
+                      <th className="text-center" style={{ width: "35%" }}>
                         PARTIDO POLÍTICO
                       </th>
-                      <th className="text-center" style={{ width: "25 %" }}>
+                      <th className="text-center" style={{ width: "25%" }}>
                         VOTOS DEPARTAMENTO
                       </th>
-                      <th className="text-center" style={{ width: "25 %" }}>
-                        MUNICIPIO
-                      </th>
-                      <th className="text-center" style={{ width: "5 %" }}>
+                      <th className="text-center" style={{ width: "15%" }}>
                         VOTOS MUNICIPIO
                       </th>
                     </tr>
@@ -174,7 +177,7 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                       .filter((myVotes) => {
                         return search.toLowerCase() === ""
                           ? myVotes
-                          : myVotes.description_politicparty
+                          : myVotes.candidate_name
                               .toLowerCase()
                               .includes(search);
                       })
@@ -187,9 +190,7 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                             {myVotes.description_politicparty}
                           </td>
                           <td className="text-center">{myVotes.votos}</td>
-                          <td className="text-center">
-                            {myVotes.municipality.name_municipality}
-                          </td>
+
                           <td className="text-center">
                             {myVotes.votos_muicipio}
                           </td>
@@ -212,19 +213,22 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                     <button
                       type="button"
                       className="buttonBack buttonBack-primary"
-                      onClick={() => regresar(-1)}
                     >
-                      <i className="bi bi-arrow-left-circle"></i>
-                      &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                      <a className="link_hitdata"
+                        href={
+                          "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
+                          idDepartment
+                        }
+                      >
+                        <i className="bi bi-arrow-left-circle"></i>
+                        &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                      </a>
                     </button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-
-          
         </div>
       </div>
 

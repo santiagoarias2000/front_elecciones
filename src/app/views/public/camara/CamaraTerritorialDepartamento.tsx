@@ -187,10 +187,12 @@ export const CamaraTerritorialDepartamento = () => {
                     <button
                       type="button"
                       className="buttonBack buttonBack-primary"
-                      onClick={() => regresar(-1)}
                     >
-                      <i className="bi bi-arrow-left-circle"></i>
-                      &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                      <a className="link_hitdata">
+                        <Link to={"/guiaelectoral/camara/"}></Link>
+                        <i className="bi bi-arrow-left-circle"></i>
+                        &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                      </a>
                     </button>
                   </div>
                 </div>
