@@ -133,7 +133,7 @@ export const CamaraIndigenaDepartamento = () => {
                   <InputGroup className="my-3">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Search Keeper"
+                      placeholder="Buscar Partido Político"
                       style={{ textAlign: "right", marginRight: "5px" }}
                     ></Form.Control>
                   </InputGroup>

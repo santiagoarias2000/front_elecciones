@@ -127,7 +127,7 @@ export const SenadoDetails = () => {
             <InputGroup className="my-3">
               <Form.Control
                 onChange={(e) => setSearchNacional(e.target.value)}
-                placeholder="Search Keeper"
+                placeholder="Buscar Nombre Candidato"
                 style={{ textAlign: "right", marginRight: "5px" }}
               ></Form.Control>
             </InputGroup>

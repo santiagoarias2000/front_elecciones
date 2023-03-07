@@ -125,7 +125,7 @@ export const CamaraTerritorialDepartamento = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Buscar XXXXXXXXXXXXXX"
+                      placeholder="Buscar Partido Político"
                       style={{ textAlign: "right", marginRight: "5px" }}
                     ></Form.Control>
                   </InputGroup>

@@ -142,7 +142,7 @@ export const Senado = () => {
                 href="/guiaelectoral/senadoelegidos"
                 className="buttonBack buttonBack-primary"
               >
-                <i className="bi bi-search "></i> &nbsp; CONOSCA LOS 108
+                <i className="bi bi-search "></i> &nbsp; CONOZCA LOS 108
                 ELEGIDOS
               </a>
             </div>
@@ -168,7 +168,7 @@ export const Senado = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchIndigena(e.target.value)}
-                      placeholder="Buscar nombre departamento"
+                      placeholder="Buscar Nombre Candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
                     ></Form.Control>
@@ -243,7 +243,7 @@ export const Senado = () => {
                 href="/guiaelectoral/senadoelegidos"
                 className="buttonBack buttonBack-primary"
               >
-                <i className="bi bi-search "></i> &nbsp; CONOSCA LOS 108
+                <i className="bi bi-search "></i> &nbsp; CONOZCA LOS 108
                 ELEGIDOS
               </a>
             </div>
