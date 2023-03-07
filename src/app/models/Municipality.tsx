@@ -2,7 +2,7 @@
 import Department from "./Department";
 
 class Municipality {
-  public id_municipality: number;
+  public idMunicipality: number;
   public idDepartment: Department;
   public codeMunicipalityDane: number;
   public name_municipality: string;
@@ -15,7 +15,7 @@ class Municipality {
     nameMun: string,
     nameMun2: string
   ) {
-    this.id_municipality = id;
+    this.idMunicipality = id;
     this.idDepartment = idDep;
     this.codeMunicipalityDane = codeMuni;
     this.name_municipality = nameMun;

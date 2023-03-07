@@ -8,7 +8,9 @@ import senado from "../../../../assets/image/camara.jpg";
 type miObjeto = { nombreMuni: number };
 export const  SenadoMuni = () => {
     let { idDepartment } = useParams();
-    let { idMuni } = useParams();
+    let { idMunicipality } = useParams();
+    console.log(idDepartment, idMunicipality);
+    
     const [seleccion, setSeleccion] = useState<number>()
     const [arrayVotesSenadoDepartamentalMunicipio, setArrayVotesSenadoDepartamentalMunicipio] =  useState<VotesCongreso[]>([]);
     
@@ -16,7 +18,7 @@ export const  SenadoMuni = () => {
     
     const getVotosSenadoDepartamentalMunicipio = async () => {
         const urlCargarDepartamento =
-          ApiBack.SENADO_NACIONAL_MUNICIPIO + "/" + idDepartment + "/municipio/" + idMuni;
+          ApiBack.SENADO_NACIONAL_MUNICIPIO + "/" + idDepartment + "/municipio/" + idMunicipality;
         const result = await ServicePrivate.requestGET(urlCargarDepartamento);
         setArrayVotesSenadoDepartamentalMunicipio(result);
         if (result) {
@@ -27,7 +29,7 @@ export const  SenadoMuni = () => {
     useEffect(() => {
         getVotosSenadoDepartamentalMunicipio();
      
-    }, [idDepartment,idMuni]);
+    }, [idDepartment,idMunicipality]);
     
     return (
       <main id="main" className="main">
@@ -96,7 +98,7 @@ export const  SenadoMuni = () => {
                         <b>{myVotes.candidate_name}</b>
                       </td>
                       <td className="text-center">{myVotes.description_politicparty}</td>
-                      <td className="text-center">{myVotes.municipality.name_municipality}</td>
+                      {/* <td className="text-center">{myVotes.municipality.name_municipality}</td> */}
                       
                       <td className="text-center">{myVotes.votos}</td>
                     </tr>

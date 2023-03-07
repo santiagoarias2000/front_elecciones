@@ -1,20 +1,29 @@
 import { useEffect, useState } from "react";
 import senado from "../../../../assets/image/SENADO.jpg";
 import VotesCongreso from "../../../models/VotesCongreso";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Col, Form, InputGroup, Pagination, Row, Table } from "react-bootstrap";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import Municipality from "../../../models/Municipality";
 import e from "express";
 import { SenadoMuni } from "./SenadoMuni";
+import { useParams } from "react-router-dom";
 
 export const SenadoDetails = () => {
   let { idDepartment } = useParams();
-  type miObjeto = { nombreSuma: number };
-  let component = null;
-  type myForm = React.FormEvent<HTMLFormElement>;
 
-  const [seleccion, setSeleccion]: any = useState<number>();
+  const [searchNacional, setSearchNacional] = useState("");
+  let active = 1;
+  let items = [];
+  for (let number = 1; number <= 5; number++) {
+    items.push(
+      <Pagination.Item key={number} active={number === active}>
+        {number}
+      </Pagination.Item>
+    );
+  }
+
+  const [seleccion, setSeleccion] = useState<number|undefined>();
   const [arrayVotesSenadoDepartamental, setArrayVotesSenadoDepartamental] =
     useState<VotesCongreso[]>([]);
   const [
@@ -57,7 +66,9 @@ export const SenadoDetails = () => {
     getVotosSenadoDepartamental();
     getMunicipios();
   }, [idDepartment]);
-  console.log(setSeleccion);
+  // useEffect(()=>{
+  //   getVotosSenadoDepartamentalMunicipio();
+  // },[arrayVotesSenadoDepartamentalMunicipio])
 
   return (
     <main id="main" className="main">
@@ -71,6 +82,7 @@ export const SenadoDetails = () => {
       {/* Navegación estilo breadcrumb: Fin */}
 
       {/* Ejemplo de una tabla para presentación de datos: Inicio */}
+      <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
           <div
@@ -84,34 +96,49 @@ export const SenadoDetails = () => {
             }}
           >
             <div className="text-center">
-              <b>VOTOS POR DEPARTAMENTO</b>
-            </div>
-
-            <div className="dropdown">
-              <li className="nav-item dropdown">
-                <button
-                  className="btn btn-dark dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </button>
-                <ul className="dropdown-menu dropdown-menu-dark">
-                  <li>
-                    {arrayMunicipios.map((myVehicle, indice) => (
-                      <Link className="dropdown-item" to={"municipio/"+myVehicle.id_municipality}>
-                        {myVehicle.name_municipality}
-                      </Link>
-                    ))}
-                    <a className="dropdown-item" href="#">
-                      Action
-                    </a>
-                  </li>
-                </ul>
-              </li>
+              <b>CIRCUNCRIPCIÓN NACIONAL</b> &nbsp;
             </div>
           </div>
-
+          <div style={{ padding: "0 2% 0 72%" }}>
+            <div className="btn-group" >
+              <button
+                type="button"
+                className="btn btn-primary dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Municipios
+              </button>
+              <ul className="dropdown-menu">
+                <li>
+                {arrayMunicipios.map((miMunicipio, indice)=>(
+                  <a className="dropdown-item" href={"/guiaelectoral/senado/senadoDetails/"+idDepartment+"/municipio/"+miMunicipio.idMunicipality} onClick={()=>(setSeleccion(miMunicipio.idMunicipality))}>
+                    {miMunicipio.name_municipality}
+                  </a>
+                ))}
+                  
+                </li>
+                
+                <li>
+                  <hr className="dropdown-divider"></hr>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Separated link
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <Form style={{ padding: "0 2% 0 72%" }}>
+            <InputGroup className="my-3">
+              <Form.Control
+                onChange={(e) => setSearchNacional(e.target.value)}
+                placeholder="Search Keeper"
+                style={{ textAlign: "right", marginRight: "5px" }}
+              ></Form.Control>
+            </InputGroup>
+          </Form>
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
               className="colorTable table table-hover"
@@ -119,31 +146,65 @@ export const SenadoDetails = () => {
             >
               <thead>
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }}>
-                    CANDIATO
+                  <th className="text-center" style={{ width: "40%" }}>
+                    NOMBRE CANDIDATO
                   </th>
-                  <th className="text-center" style={{ width: "35%" }}>
-                    PARTIDO
+                  <th className="text-center" style={{ width: "20%" }}>
+                    ROLE
                   </th>
-                  <th className="text-center" style={{ width: "30%" }}>
-                    TOTAL VOTOS
+                  <th className="text-center" style={{ width: "20%" }}>
+                    TOTAL VOTOS NACIONAL
+                  </th>
+                  <th className="text-center" style={{ width: "20%" }}>
+                    MUNICIPIO
                   </th>
                 </tr>
               </thead>
               <tbody className="color">
-                {arrayVotesSenadoDepartamental.map((myVotes, contador) => (
-                  <tr key={contador}>
-                    <td className="text-center">
-                      <b>{myVotes.candidate_name}</b>
-                    </td>
-                    <td className="text-center">
-                      {myVotes.description_politicparty}
-                    </td>
-                    <td className="text-center">{myVotes.votos}</td>
-                  </tr>
-                ))}
+                {arrayVotesSenadoDepartamental
+                  .filter((myVotes) => {
+                    return searchNacional.toLowerCase() === ""
+                      ? myVotes
+                      : myVotes.candidate_name
+                          .toLowerCase()
+                          .includes(searchNacional);
+                  })
+                  .map((myVotes, contador) => (
+                    <tr key={contador}>
+                      <td className="text-center">
+                        <b>{myVotes.candidate_name}</b>
+                      </td>
+                      <td className="text-center">
+                        {myVotes.description_politicparty}
+                      </td>
+                      <td className="text-center">{myVotes.votos}</td>
+                      <td className="text-center">
+                        </td>
+                        </tr>
+                      ))}
+                      {/* {arrayVotesSenadoDepartamentalMunicipio.map((myMunis,index)=>(
+                        <tr key={index}>
+                          <td className="text-center">{myMunis.votos}</td>
+                        </tr>
+                      ))} */}
+                     
+                    
+                
               </tbody>
             </table>
+          </div>
+          <div
+            className="container-fluid display-flex justify-content-center"
+            style={{
+              color: "#FFFFFF",
+              height: "80px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <div className="text-center">
+              <Pagination className="prueba">{items}</Pagination>
+            </div>
           </div>
         </div>
       </div>
