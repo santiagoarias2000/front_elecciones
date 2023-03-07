@@ -11,9 +11,6 @@ import Department from "../../../models/Department";
 
 export const CamaraTerritorialDepartamento = () => {
   const [search, setSearch] = useState("");
-  console.log(search);
-  const setOption = ["nameDepartment", "descriptionRole", "votos"];
-  const [sort, setSort] = useState("");
   const regresar = useNavigate();
 
   let active = 1;
