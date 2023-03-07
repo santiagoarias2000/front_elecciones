@@ -3,8 +3,8 @@ const ApiBack = {
 
   
   COMBOBOX_MUNICIPIO: "/api/public/municipio",
+  NOMBRE_MUNICIPIO: "/api/public/municipio/one",
   NOMBRE_DEPARTAMENTO: "/api/public/departamento",
-  NOMBRE_MUNICIPIO: "/api/public/municipio",
 
   CAMARA_TERRITORIAL: "/api/public/camara/territorial",
   CANTIDAD_CAMARA_TERRITORIAL: "/api/public/camara/cantidadTerritorial",

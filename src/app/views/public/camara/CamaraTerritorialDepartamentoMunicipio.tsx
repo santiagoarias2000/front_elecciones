@@ -6,13 +6,17 @@ import Form from "react-bootstrap/Form";
 import camara from "../../../../assets/image/camara.jpg";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
-import { Col, InputGroup, Pagination, Row, Table } from "react-bootstrap";
-import Department from "../../../models/Department";
+import {
+  Col,
+  Dropdown,
+  InputGroup,
+  Pagination,
+  Row,
+  Table,
+} from "react-bootstrap";
 
 export const CamaraTerritorialDepartamentoMunicipio = () => {
   const [search, setSearch] = useState("");
-  const regresar = useNavigate();
-
   let active = 1;
   let items = [];
   for (let number = 1; number <= 5; number++) {
@@ -27,7 +31,9 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
   const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
     useState<VotesCongreso[]>([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
-  const [arrayDepartamento, setArrayDepartamento] = useState<Department[]>([]);
+  const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
+    Municipality[]
+  >([]);
 
   const getVotosCamaraTerritorial = async () => {
     const result = await ServicePrivate.requestGET(
@@ -39,23 +45,26 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
     );
     setArrayVotosCamaraTerritorial(result);
   };
+
   // get vehicle to be displayed in the combo
-  const getMuniciaplity = async () => {
+  const getMunicipality = async () => {
     const result = await ServicePrivate.requestGET(
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
     );
     setArrayMunicipio(result);
   };
-  const getDepartamento = async () => {
+
+  const getNameMunicipality = async () => {
     const result = await ServicePrivate.requestGET(
-      ApiBack.NOMBRE_DEPARTAMENTO + "/" + idDepartment
+      ApiBack.NOMBRE_MUNICIPIO + "/" + idMunicipality
     );
-    setArrayDepartamento(result);
+    setArrayNameMunicipality(result);
   };
+
   useEffect(() => {
     getVotosCamaraTerritorial();
-    getMuniciaplity();
-    getDepartamento();
+    getMunicipality();
+    getNameMunicipality();
   }, []);
 
   return (
@@ -93,6 +102,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
               <b className="title_table">TERRITORIAL DEPARTAMENTAL</b>
             </div>
           </div>
+
           <div className="container text-center">
             <div className="row">
               <div className="col align-content-center my-3">
@@ -107,6 +117,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                 <ul className="dropdown-menu">
                   {arrayMunicipio.map((myMunicipality, indice) => (
                     <a
+                      style={{ textDecoration: "none !important" }}
                       href={
                         "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
                         myMunicipality.id_department +
@@ -125,8 +136,13 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
               </div>
               <div className="col">
                 <h5 className="text-center my-4" style={{ color: "#052851" }}>
-                  {arrayDepartamento.map((myDepartment) => (
-                    <b>{myDepartment.name_department}</b>
+                  {arrayNameMunicipality.map((myNameMunicipality) => (
+                    <b>
+                      {myNameMunicipality.name_municipality}
+                      {" ("}
+                      {myNameMunicipality.department}
+                      {")"}
+                    </b>
                   ))}
                 </h5>
               </div>
@@ -152,16 +168,13 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                       <th className="text-center" style={{ width: "30%" }}>
                         NOMBRE CANDIDATO
                       </th>
-                      <th className="text-center" style={{ width: "405%" }}>
+                      <th className="text-center" style={{ width: "25%" }}>
                         PARTIDO POLÍTICO
                       </th>
                       <th className="text-center" style={{ width: "25 %" }}>
                         VOTOS DEPARTAMENTO
                       </th>
-                      <th className="text-center" style={{ width: "25 %" }}>
-                        MUNICIPIO
-                      </th>
-                      <th className="text-center" style={{ width: "5 %" }}>
+                      <th className="text-center" style={{ width: "20 %" }}>
                         VOTOS MUNICIPIO
                       </th>
                     </tr>
@@ -171,7 +184,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                       .filter((myVotes) => {
                         return search.toLowerCase() === ""
                           ? myVotes
-                          : myVotes.description_politicparty
+                          : myVotes.candidate_name
                               .toLowerCase()
                               .includes(search);
                       })
@@ -184,9 +197,6 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                             {myVotes.description_politicparty}
                           </td>
                           <td className="text-center">{myVotes.votos}</td>
-                          <td className="text-center">
-                            {myVotes.municipality.name_municipality}
-                          </td>
                           <td className="text-center">
                             {myVotes.votos_muicipio}
                           </td>
@@ -209,10 +219,16 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                     <button
                       type="button"
                       className="buttonBack buttonBack-primary"
-                      onClick={() => regresar(-1)}
                     >
-                      <i className="bi bi-arrow-left-circle"></i>
-                      &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                      <a className="link_hitdata"
+                        href={
+                          "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
+                          idDepartment
+                        }
+                      >
+                        <i className="bi bi-arrow-left-circle"></i>
+                        &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                      </a>
                     </button>
                   </div>
                 </div>

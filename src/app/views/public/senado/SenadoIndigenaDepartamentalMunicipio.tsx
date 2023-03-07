@@ -3,13 +3,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
-import senado from "../../../../assets/image/camara.jpg";
+import senado from "../../../../assets/image/SENADO.jpg";
 import { Form, InputGroup, Pagination } from "react-bootstrap";
 import Municipality from "../../../models/Municipality";
 
 type miObjeto = { nombreMuni: number };
-export const  SenadoMuni = () => {
-  const [search, setSearch] = useState("");
+export const SenadoIndigenaDepartamentalMunicipio = () =>{
+  let { idDepartment } = useParams();
+  let { idMunicipality } = useParams();
+    const [search, setSearch] = useState("");
   console.log(search);
   const setOption = ["nameDepartment", "descriptionRole", "votos"];
   const [sort, setSort] = useState("");
@@ -23,8 +25,7 @@ export const  SenadoMuni = () => {
       </Pagination.Item>
     );
   }
-  let { idDepartment } = useParams();
-  let { idMunicipality } = useParams();
+  
   const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
     useState<VotesCongreso[]>([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
@@ -33,7 +34,7 @@ export const  SenadoMuni = () => {
 
   const getVotosCamaraTerritorial = async () => {
     const result = await ServicePrivate.requestGET(
-      ApiBack.CAMARA_TERRITORIAL_DEPARTAMENTO_MUNICIPIO +
+      ApiBack.SENADO_INDIGENA_MUNICIPIO +
         "/" +
         idDepartment +
         "/municipio/" +
@@ -92,7 +93,7 @@ export const  SenadoMuni = () => {
             }}
           >
             <div className="text-center">
-              <b className="title_table">CIRCUNCRIPCIÓN TERRITORIAL MUNICIPAL</b>
+              <b className="title_table">CIRCUNCRIPCIÓN MUNICIPAL INDIGENA</b>
             </div>
           </div>
 
@@ -113,7 +114,7 @@ export const  SenadoMuni = () => {
                       {arrayMunicipio.map((myMunicipality) => (
                         <a
                           href={
-                            "/guiaelectoral/senado/indigena/departamento/municipio/" +
+                            "/guiaelectoral/senado/indigena/departamento/municipio/departamento/" +
                             myMunicipality.id_department +
                             "/municipio/" +
                             myMunicipality.id_municipality
@@ -130,7 +131,6 @@ export const  SenadoMuni = () => {
                   </div>
                 </div>
 
-                <div className="col">
                 <h5 className="text-center my-4" style={{ color: "#052851" }}>
                   {arrayNameMunicipality.map((myNameMunicipality) => (
                     <b>
@@ -141,7 +141,6 @@ export const  SenadoMuni = () => {
                     </b>
                   ))}
                 </h5>
-              </div>
                 <div className="col-sm">
                   <Form id="form_conta">
                     <InputGroup className="my-3 container_form">

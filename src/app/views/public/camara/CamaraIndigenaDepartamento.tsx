@@ -145,7 +145,7 @@ export const CamaraIndigenaDepartamento = () => {
                   className="colorTable table table-hover"
                   style={{ background: "#05285190 !important" }}
                 >
-                  <thead>
+                  <thead className="container_table">
                     <tr>
                       <th className="text-center" style={{ width: "40%" }}>
                         NOMBRE CANDIDATO
@@ -158,7 +158,7 @@ export const CamaraIndigenaDepartamento = () => {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="color">
+                  <tbody className="color container_table">
                     {arrayVotesCamaraIndigena
                       .filter((myVotes) => {
                         return search.toLowerCase() === ""
@@ -195,10 +195,12 @@ export const CamaraIndigenaDepartamento = () => {
                     <button
                       type="button"
                       className="buttonBack buttonBack-primary"
-                      onClick={() => regresar(-1)}
                     >
-                      <i className="bi bi-arrow-left-circle"></i>
-                      &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                      <a className="link_hitdata">
+                        <Link to={"/guiaelectoral/camara/"}></Link>
+                        <i className="bi bi-arrow-left-circle"></i>
+                        &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                      </a>
                     </button>
                   </div>
                 </div>

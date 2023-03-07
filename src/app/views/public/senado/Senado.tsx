@@ -210,7 +210,7 @@ export const Senado = () => {
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
                       <td className="text-center align-middle">
-                        <Link className="text-center" to={""}>
+                        <Link className="text-center" to={"/guiaelectoral/senado/indigena/departamento/"+myVotes.department.idDepartment}>
                           <i className="fa-solid fa-magnifying-glass fa-sm"></i>
                         </Link>
                       </td>

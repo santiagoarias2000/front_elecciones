@@ -77,9 +77,8 @@ export const Camara = () => {
           <div className="container">
             <div className="row">
               <div className="col-sm">
-                <div className="name_table">CAMARA</div>
               </div>
-              <div className="col-sm">
+              <div className="col-6">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
                     <Form.Control
@@ -181,9 +180,9 @@ export const Camara = () => {
           <div className="container">
             <div className="row">
               <div className="col-sm">
-                <div className="name_table">CAMARA</div>
+
               </div>
-              <div className="col-sm">
+              <div className="col-6">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
                     <Form.Control
@@ -285,9 +284,8 @@ export const Camara = () => {
           <div className="container">
             <div className="row">
               <div className="col-sm">
-                <div className="name_table">CAMARA</div>
               </div>
-              <div className="col-sm">
+              <div className="col-6">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
                     <Form.Control
