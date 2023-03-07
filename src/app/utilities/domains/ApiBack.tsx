@@ -20,5 +20,9 @@ const ApiBack = {
   CAMARA_TERRITORIAL_DEPARTAMENTO:"/api/public/camara/circuncripcion/territorial/departamento",
   CAMARA_INDIGENA_DEPARTAMENTO:"/api/public/camara/circuncripcion/indigena/departamento",
   CAMARA_AFRODESCENDIENTE_DEPARTAMENTO:"/api/public/camara/circuncripcion/afrodescendiente/departamento",
+  
+  CAMARA_TERRITORIAL_DEPARTAMENTO_MUNICIPIO:"/api/public/camara/circuncripcion/territorial/departamento",
+  CAMARA_INDIGENA_DEPARTAMENTO_MUNICIPIO:"/api/public/camara/circuncripcion/indigena/departamento",
+  CAMARA_AFRODESCENDIENTE_DEPARTAMENTO_MUNICIPIO:"/api/public/camara/circuncripcion/afrodescendiente/departamento",
 };
 export default ApiBack;

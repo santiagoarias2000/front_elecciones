@@ -19,6 +19,7 @@ class VotesCongreso {
   public code_candidate: number;
   public candidate_name: string;
   public votos: number;
+  public votos_muicipio:number;
   public code_contry: string;
   public max_votes: number;
 
@@ -40,8 +41,11 @@ class VotesCongreso {
     codeCan:number,
     nameCandi: string,
     numberVotes: number,
+    nuberVotesMunicipio:number,
     codeCont: string,
     max_votes: number
+
+    
   ) {
     this.id_votes = id;
     this.election_year = elecYea;
@@ -60,6 +64,7 @@ class VotesCongreso {
     this.code_candidate = codeCan
     this.candidate_name = nameCandi;
     this.votos = numberVotes;
+    this.votos_muicipio=nuberVotesMunicipio;
     this.code_contry = codeCont;
     this.max_votes = max_votes;
 
