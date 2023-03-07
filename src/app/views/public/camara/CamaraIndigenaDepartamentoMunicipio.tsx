@@ -28,7 +28,9 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
     VotesCongreso[]
   >([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
-  const [arrayDepartamento, setArrayDepartamento] = useState<Department[]>([]);
+  const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
+    Municipality[]
+  >([]);
 
   const getVotosCamaraIndiegena = async () => {
     const result = await ServicePrivate.requestGET(
@@ -47,16 +49,16 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
     );
     setArrayMunicipio(result);
   };
-  const getDepartamento = async () => {
+  const getNameMunicipality = async () => {
     const result = await ServicePrivate.requestGET(
-      ApiBack.NOMBRE_DEPARTAMENTO + "/" + idDepartment
+      ApiBack.NOMBRE_MUNICIPIO + "/" + idMunicipality
     );
-    setArrayDepartamento(result);
+    setArrayNameMunicipality(result);
   };
   useEffect(() => {
     getVotosCamaraIndiegena();
     getMuniciaplity();
-    getDepartamento();
+    getNameMunicipality();
   }, []);
 
   return (
@@ -126,8 +128,13 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
               </div>
               <div className="col">
                 <h5 className="text-center my-4" style={{ color: "#052851" }}>
-                  {arrayDepartamento.map((myDepartment) => (
-                    <b>{myDepartment.name_department}</b>
+                  {arrayNameMunicipality.map((myNameMunicipality) => (
+                    <b>
+                      {myNameMunicipality.name_municipality}
+                      {" ("}
+                      {myNameMunicipality.department}
+                      {")"}
+                    </b>
                   ))}
                 </h5>
               </div>
@@ -207,10 +214,16 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
                     <button
                       type="button"
                       className="buttonBack buttonBack-primary"
-                      onClick={() => regresar(-1)}
                     >
-                      <i className="bi bi-arrow-left-circle"></i>
-                      &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                      <a className="link_hitdata"
+                        href={
+                          "/guiaelectoral/camara/circuncripcion/indigena/departamento/" +
+                          idDepartment
+                        }
+                      >
+                        <i className="bi bi-arrow-left-circle"></i>
+                        &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                      </a>
                     </button>
                   </div>
                 </div>
