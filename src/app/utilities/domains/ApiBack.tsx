@@ -3,7 +3,10 @@ const ApiBack = {
 
   
   COMBOBOX_MUNICIPIO: "/api/public/municipio",
+  NOMBRE_DEPARTAMENTO: "/api/public/departamento",
+
   CAMARA_TERRITORIAL: "/api/public/camara/territorial",
+  CANTIDAD_CAMARA_TERRITORIAL: "/api/public/camara/cantidadTerritorial",
   CAMARA_INDIGENA: "/api/public/camara/indigena",
   CAMARA_AFRODESCENDIENTE: "/api/public/camara/afrodescendiente",
 
@@ -20,5 +23,9 @@ const ApiBack = {
   CAMARA_TERRITORIAL_DEPARTAMENTO:"/api/public/camara/circuncripcion/territorial/departamento",
   CAMARA_INDIGENA_DEPARTAMENTO:"/api/public/camara/circuncripcion/indigena/departamento",
   CAMARA_AFRODESCENDIENTE_DEPARTAMENTO:"/api/public/camara/circuncripcion/afrodescendiente/departamento",
+  
+  CAMARA_TERRITORIAL_DEPARTAMENTO_MUNICIPIO:"/api/public/camara/circuncripcion/territorial/departamento",
+  CAMARA_INDIGENA_DEPARTAMENTO_MUNICIPIO:"/api/public/camara/circuncripcion/indigena/departamento",
+  CAMARA_AFRODESCENDIENTE_DEPARTAMENTO_MUNICIPIO:"/api/public/camara/circuncripcion/afrodescendiente/departamento",
 };
 export default ApiBack;

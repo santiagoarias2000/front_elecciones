@@ -112,7 +112,7 @@ export const SenadoDetails = () => {
               <ul className="dropdown-menu">
                 <li>
                 {arrayMunicipios.map((miMunicipio, indice)=>(
-                  <a className="dropdown-item" href={"/guiaelectoral/senado/senadoDetails/"+idDepartment+"/municipio/"+miMunicipio.idMunicipality} onClick={()=>(setSeleccion(miMunicipio.idMunicipality))}>
+                  <a className="dropdown-item" href={"/guiaelectoral/senado/senadoDetails/"+idDepartment+"/municipio/"+miMunicipio.id_municipality} onClick={()=>(setSeleccion(miMunicipio.id_municipality))}>
                     {miMunicipio.name_municipality}
                   </a>
                 ))}
