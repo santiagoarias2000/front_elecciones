@@ -147,16 +147,16 @@ export const SenadoElegidos = () => {
               alignItems: "center",
             }}
           >
-            <div className="text-center">
-              <button
-                type="button"
-                className="btn buttonBack-primary"
-                onClick={() => regresar(-1)}
-              >
-                <i className="bi bi-arrow-left-circle">&nbsp;&nbsp;</i>
-                REGRESAR
-              </button>
-            </div>
+                  <div className="text-center">
+                    <button
+                      type="button"
+                      className="buttonBack buttonBack-primary"
+                      onClick={() => regresar(-1)}
+                    >
+                      <i className="bi bi-arrow-left-circle"></i>
+                      &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                    </button>
+                  </div>
           </div>
         </div>
       </div>
@@ -209,7 +209,7 @@ export const SenadoElegidos = () => {
                   <th className="text-center" style={{ width: "20%" }}>
                     MAS VOTACION
                   </th>
-                                  </tr>
+                </tr>
               </thead>
               <tbody className="color container_table">
                 {arrayVotesSenadoIndigena
@@ -251,11 +251,11 @@ export const SenadoElegidos = () => {
             <div className="text-center">
               <button
                 type="button"
-                className="btn buttonBack-primary"
+                className="buttonBack buttonBack-primary"
                 onClick={() => regresar(-1)}
               >
-                <i className="bi bi-arrow-left-circle">&nbsp;&nbsp;</i>
-                REGRESAR
+                <i className="bi bi-arrow-left-circle"></i>
+                &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
               </button>
             </div>
           </div>
