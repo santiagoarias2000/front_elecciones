@@ -55,14 +55,14 @@ export const Senado = () => {
           <div className="container">
             <div className="row">
               <div className="col-sm">
-                <div className="name_table">nombre departamento cambiar</div>
+                <div className="name_table">SENADO</div>
               </div>
               <div className="col-sm">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchNacional(e.target.value)}
-                      placeholder="Buscar nombre candidato"
+                      placeholder="Buscar nombre departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
                     ></Form.Control>
@@ -79,7 +79,7 @@ export const Senado = () => {
             >
               <thead className="container_table">
                 <tr>
-                  <th className="text-cente r" style={{ width: "35%" }}>
+                  <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
                   </th>
                   <th className="text-center" style={{ width: "25%" }}>
@@ -131,14 +131,19 @@ export const Senado = () => {
             <div className="text-center">
               <button
                 type="button"
-                className="btn buttonBack-primary"
+                className="buttonBack buttonBack-primary"
                 onClick={() => regresar(-1)}
               >
-                <i className="bi bi-arrow-left-circle">&nbsp;&nbsp;</i>
-                REGRESAR
+                <i className="bi bi-arrow-left-circle"></i>
+                &nbsp;&nbsp;REGRESAR A ELEGIR ELECCION
               </button>
-              <a href="/guiaelectoral/senadoelegidos" className="bt_elegidos">
-                <i className="bi bi-search"></i> &nbsp; Conozca los 108 Elegidos
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a
+                href="/guiaelectoral/senadoelegidos"
+                className="buttonBack buttonBack-primary"
+              >
+                <i className="bi bi-search "></i> &nbsp; CONOSCA LOS 108
+                ELEGIDOS
               </a>
             </div>
           </div>
@@ -156,14 +161,14 @@ export const Senado = () => {
           <div className="container">
             <div className="row">
               <div className="col-sm">
-                <div className="name_table">LISTA DE 108 ELEGIDOS</div>
+                <div className="name_table">SENADO</div>
               </div>
               <div className="col-sm">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchIndigena(e.target.value)}
-                      placeholder="Buscar nombre candidato"
+                      placeholder="Buscar nombre departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
                     ></Form.Control>
@@ -182,9 +187,6 @@ export const Senado = () => {
                 <tr>
                   <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
-                  </th>
-                  <th className="text-center" style={{ width: "30%" }}>
-                    ROLE
                   </th>
                   <th className="text-center" style={{ width: "25%" }}>
                     TOTAL VOTOS
@@ -205,9 +207,6 @@ export const Senado = () => {
                     <tr key={contador}>
                       <td className="text-center">
                         <b>{myVotes.department.name_department}</b>
-                      </td>
-                      <td className="text-center">
-                        {myVotes.description_role}
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
                       <td className="text-center align-middle">
@@ -233,12 +232,20 @@ export const Senado = () => {
             <div className="text-center">
               <button
                 type="button"
-                className="btn buttonBack-primary"
+                className="buttonBack buttonBack-primary"
                 onClick={() => regresar(-1)}
               >
-                <i className="bi bi-arrow-left-circle">&nbsp;&nbsp;</i>
-                REGRESAR
+                <i className="bi bi-arrow-left-circle"></i>
+                &nbsp;&nbsp;REGRESAR A ELEGIR ELECCION
               </button>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a
+                href="/guiaelectoral/senadoelegidos"
+                className="buttonBack buttonBack-primary"
+              >
+                <i className="bi bi-search "></i> &nbsp; CONOSCA LOS 108
+                ELEGIDOS
+              </a>
             </div>
           </div>
         </div>

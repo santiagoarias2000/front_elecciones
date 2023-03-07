@@ -25,8 +25,10 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
   }
   let { idDepartment } = useParams();
   let { idMunicipality } = useParams();
-  const [arrayVotesCamaraAfroDescendiente, setArrayVotosCamaraAfroDescendiente] =
-    useState<VotesCongreso[]>([]);
+  const [
+    arrayVotesCamaraAfroDescendiente,
+    setArrayVotosCamaraAfroDescendiente,
+  ] = useState<VotesCongreso[]>([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
 
   const getVotosCamaraAfroDescendiente = async () => {
@@ -83,46 +85,64 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
             }}
           >
             <div className="text-center">
-              <b>TERRITORIAL AFRO-DESCENDIENTE</b>
+              <b className="title_table">TERRITORIAL AFRO-DESCENDIENTE</b>
             </div>
           </div>
           <div className="d-flex">
-            <Form style={{ padding: "0 2% 0 72%" }}>
-              <InputGroup className="my-3">
-                <Form.Control
-                  onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Search Keeper"
-                  style={{ textAlign: "right", marginRight: "5px" }}
-                ></Form.Control>
-              </InputGroup>
-            </Form>
-            <div className="dropdown">
-              <a
-                className="btn btn-secondary dropdown-toggle"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Municipios
-              </a>
-              <ul className="dropdown-menu">
-                {arrayMunicipio.map((myMunicipality) => (
-                  <a
-                    href={
-                      "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
-                      myMunicipality.id_department +
-                      "/municipio/" +
-                      myMunicipality.id_municipality
-                    }
-                  >
-                    <li>
-                      <a className="dropdown-item">
-                        {myMunicipality.name_municipality}
-                      </a>
-                    </li>
-                  </a>
-                ))}
-              </ul>
+            <div className="container">
+              <div className="row">
+
+              <div className="col align-content-center my-3">
+                  <div className="dropdown">
+                    <a
+                      className="buttonBack buttonBack-primary dropdown-toggle"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Municipios
+                    </a>
+                    <ul className="dropdown-menu">
+                      {arrayMunicipio.map((myMunicipality) => (
+                        <a
+                          href={
+                            "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
+                            myMunicipality.id_department +
+                            "/municipio/" +
+                            myMunicipality.id_municipality
+                          }
+                        >
+                          <li>
+                            <a className="dropdown-item">
+                              {myMunicipality.name_municipality}
+                            </a>
+                          </li>
+                        </a>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="col">
+                <h5 className="text-center my-4" style={{ color: "#052851" }}>
+                  {arrayMunicipio.map((myDepartment) => (
+                    <b>{myDepartment.name_municipality}</b>
+                  ))}
+                </h5>
+              </div>
+                <div className="col-sm">
+                  <Form id="form_conta">
+                    <InputGroup className="my-3 container_form">
+                      <Form.Control
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Buscar xxxxxxxxxxx"
+                        style={{ textAlign: "right", marginRight: "5px" }}
+                      ></Form.Control>
+                    </InputGroup>
+                  </Form>
+                </div>
+
+              </div>
             </div>
           </div>
 
@@ -131,7 +151,7 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
               className="colorTable table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead>
+              <thead className="container_table">
                 <tr>
                   <th className="text-center" style={{ width: "30%" }}>
                     NOMBRE CANDIDATO
@@ -150,7 +170,7 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                   </th>
                 </tr>
               </thead>
-              <tbody className="color">
+              <tbody className="color container_table">
                 {arrayVotesCamaraAfroDescendiente
                   .filter((myVotes) => {
                     return search.toLowerCase() === ""

@@ -68,22 +68,31 @@ export const Camara = () => {
       {/* Ejemplo de una tabla para presentación de datos: Inicio */}
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div
-            className="container-fluid display-flex justify-content-center container_title"
-          >
+          <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b>TERRITORIAL DEPARTAMENTAL</b>
+              <b className="title_table">TERRITORIAL DEPARTAMENTAL</b>
             </div>
           </div>
-          <Form style={{ padding: "0 3% 0 72%" }}>
-            <InputGroup className="my-3">
-              <Form.Control
-                onChange={(e) => setSearchTerritorial(e.target.value)}
-                placeholder="Buscar departamento"
-                style={{ textAlign: "right", marginRight: "5px" }}
-              ></Form.Control>
-            </InputGroup>
-          </Form>
+
+          <div className="container">
+            <div className="row">
+              <div className="col-sm">
+                <div className="name_table">CAMARA</div>
+              </div>
+              <div className="col-sm">
+                <Form id="form_conta">
+                  <InputGroup className="my-3 container_form">
+                    <Form.Control
+                      onChange={(e) => setSearchTerritorial(e.target.value)}
+                      placeholder="Buscar departamento"
+                      style={{ textAlign: "right", marginRight: "5px" }}
+                    ></Form.Control>
+                  </InputGroup>
+                </Form>
+              </div>
+            </div>
+          </div>
+
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
               className="colorTable table table-hover"
@@ -165,24 +174,35 @@ export const Camara = () => {
             }}
           >
             <div className="text-center">
-              <b>TERRITORIAL INDIGENA</b>
+              <b className="title_table">TERRITORIAL INDIGENA</b>
             </div>
           </div>
-          <Form style={{ padding: "0 2% 0 72%" }}>
-            <InputGroup className="my-3">
-              <Form.Control
-                onChange={(e) => setSearchIndigena(e.target.value)}
-                placeholder="Buscar departamento"
-                style={{ textAlign: "right", marginRight: "5px" }}
-              ></Form.Control>
-            </InputGroup>
-          </Form>
+
+          <div className="container">
+            <div className="row">
+              <div className="col-sm">
+                <div className="name_table">CAMARA</div>
+              </div>
+              <div className="col-sm">
+                <Form id="form_conta">
+                  <InputGroup className="my-3 container_form">
+                    <Form.Control
+                      onChange={(e) => setSearchIndigena(e.target.value)}
+                      placeholder="Buscar departamento"
+                      style={{ textAlign: "right", marginRight: "5px" }}
+                    ></Form.Control>
+                  </InputGroup>
+                </Form>
+              </div>
+            </div>
+          </div>
+
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
               className="colorTable table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead>
+              <thead className="container_table">
                 <tr>
                   <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
@@ -196,7 +216,7 @@ export const Camara = () => {
                   <th className="text-center" style={{ width: "10%" }}></th>
                 </tr>
               </thead>
-              <tbody className="color">
+              <tbody className="color container_table">
                 {arrayVotesCamaraIndigena
                   .filter((myVotes) => {
                     return searchIndigena.toLowerCase() === ""
@@ -258,24 +278,35 @@ export const Camara = () => {
             }}
           >
             <div className="text-center">
-              <b>TERRITORIAL AFRO-DESCENDIENTES</b>
+              <b className="title_table">TERRITORIAL AFRO-DESCENDIENTES</b>
             </div>
           </div>
-          <Form style={{ padding: "0 2% 0 72%" }}>
-            <InputGroup className="my-3">
-              <Form.Control
-                onChange={(e) => setSearchAfro(e.target.value)}
-                placeholder="Buscar departamento"
-                style={{ textAlign: "right", marginRight: "5px" }}
-              ></Form.Control>
-            </InputGroup>
-          </Form>
+
+          <div className="container">
+            <div className="row">
+              <div className="col-sm">
+                <div className="name_table">CAMARA</div>
+              </div>
+              <div className="col-sm">
+                <Form id="form_conta">
+                  <InputGroup className="my-3 container_form">
+                    <Form.Control
+                      onChange={(e) => setSearchAfro(e.target.value)}
+                      placeholder="Buscar departamento"
+                      style={{ textAlign: "right", marginRight: "5px" }}
+                    ></Form.Control>
+                  </InputGroup>
+                </Form>
+              </div>
+            </div>
+          </div>
+
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
               className="colorTable table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead>
+              <thead className="container_table">
                 <tr>
                   <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
@@ -289,7 +320,7 @@ export const Camara = () => {
                   <th className="text-center" style={{ width: "10%" }}></th>
                 </tr>
               </thead>
-              <tbody className="color">
+              <tbody className="color container_table">
                 {arrayVotesCamaraAfroDescendiente
                   .filter((myVotes) => {
                     return searchAfro.toLowerCase() === ""

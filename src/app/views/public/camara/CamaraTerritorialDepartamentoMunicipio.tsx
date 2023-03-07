@@ -4,7 +4,7 @@ import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import Form from "react-bootstrap/Form";
 import camara from "../../../../assets/image/camara.jpg";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
 import { Col, InputGroup, Pagination, Row, Table } from "react-bootstrap";
 
@@ -28,6 +28,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
   const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
     useState<VotesCongreso[]>([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
+  const regresar = useNavigate();
 
   const getVotosCamaraTerritorial = async () => {
     const result = await ServicePrivate.requestGET(
@@ -83,46 +84,59 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
             }}
           >
             <div className="text-center">
-              <b>TERRITORIAL DEPARTAMENTAL</b>
+              <b className="title_table">TERRITORIAL DEPARTAMENTAL</b>
             </div>
           </div>
+
           <div className="d-flex">
-            <Form style={{ padding: "0 2% 0 72%" }}>
-              <InputGroup className="my-3">
-                <Form.Control
-                  onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Search Keeper"
-                  style={{ textAlign: "right", marginRight: "5px" }}
-                ></Form.Control>
-              </InputGroup>
-            </Form>
-            <div className="dropdown">
-              <a
-                className="btn btn-secondary dropdown-toggle"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Municipios
-              </a>
-              <ul className="dropdown-menu">
-                {arrayMunicipio.map((myMunicipality) => (
-                  <a
-                    href={
-                      "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
-                      myMunicipality.id_department +
-                      "/municipio/" +
-                      myMunicipality.id_municipality
-                    }
-                  >
-                    <li>
-                      <a className="dropdown-item">
-                        {myMunicipality.name_municipality}
-                      </a>
-                    </li>
-                  </a>
-                ))}
-              </ul>
+            <div className="container">
+              <div className="row">
+                <div className="col-sm align-content-center my-3">
+                  <div className="dropdown">
+                    <a
+                      className="buttonBack buttonBack-primary dropdown-toggle"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Municipios
+                    </a>
+                    <ul className="dropdown-menu">
+                      {arrayMunicipio.map((myMunicipality) => (
+                        <a
+                          href={
+                            "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
+                            myMunicipality.id_department +
+                            "/municipio/" +
+                            myMunicipality.id_municipality
+                          }
+                        >
+                          <li>
+                            <a className="dropdown-item">
+                              {myMunicipality.name_municipality}
+                            </a>
+                          </li>
+                        </a>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="col-sm">
+                  <div className="name_table">XXXXXXX</div>
+                </div>
+                <div className="col-sm">
+                  <Form id="form_conta">
+                    <InputGroup className="my-3 container_form">
+                      <Form.Control
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Buscar partido político"
+                        style={{ textAlign: "right", marginRight: "5px" }}
+                      ></Form.Control>
+                    </InputGroup>
+                  </Form>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -178,17 +192,26 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
             </table>
           </div>
 
-          <div
-            className="container-fluid display-flex justify-content-center"
-            style={{
-              color: "#FFFFFF",
-              height: "80px",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <div className="text-center">
-              <Pagination className="prueba">{items}</Pagination>
+          <div className="dropdown">
+            <div
+              className="container-fluid display-flex justify-content-center"
+              style={{
+                color: "#FFFFFF",
+                height: "80px",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <div className="text-center">
+                <button
+                  type="button"
+                  className="buttonBack buttonBack-primary"
+                  onClick={() => regresar(-1)}
+                >
+                  <i className="bi bi-arrow-left-circle"></i>
+                  &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                </button>
+              </div>
             </div>
           </div>
         </div>
