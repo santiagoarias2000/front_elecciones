@@ -136,7 +136,7 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
                   <InputGroup className="my-3">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Search Keeper"
+                      placeholder="Buscar nombre candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
                     ></Form.Control>
                   </InputGroup>
@@ -169,7 +169,7 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
                       .filter((myVotes) => {
                         return search.toLowerCase() === ""
                           ? myVotes
-                          : myVotes.description_politicparty
+                          : myVotes.candidate_name
                               .toLowerCase()
                               .includes(search);
                       })

@@ -138,7 +138,7 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                   <InputGroup className="my-3">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Search Keeper"
+                      placeholder="Buscar nombre candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
                     ></Form.Control>
                   </InputGroup>
@@ -171,7 +171,7 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                       .filter((myVotes) => {
                         return search.toLowerCase() === ""
                           ? myVotes
-                          : myVotes.description_politicparty
+                          : myVotes.candidate_name
                               .toLowerCase()
                               .includes(search);
                       })
@@ -184,9 +184,7 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                             {myVotes.description_politicparty}
                           </td>
                           <td className="text-center">{myVotes.votos}</td>
-                          <td className="text-center">
-                            {myVotes.municipality.name_municipality}
-                          </td>
+
                           <td className="text-center">
                             {myVotes.votos_muicipio}
                           </td>

@@ -135,7 +135,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                   <InputGroup className="my-3">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Search Keeper"
+                      placeholder="Buscar nombre candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
                     ></Form.Control>
                   </InputGroup>
@@ -152,13 +152,13 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                       <th className="text-center" style={{ width: "30%" }}>
                         NOMBRE CANDIDATO
                       </th>
-                      <th className="text-center" style={{ width: "35%" }}>
+                      <th className="text-center" style={{ width: "30%" }}>
                         PARTIDO POLÍTICO
                       </th>
                       <th className="text-center" style={{ width: "25%" }}>
                         VOTOS DEPARTAMENTO
                       </th>
-                      <th className="text-center" style={{ width: "15%" }}>
+                      <th className="text-center" style={{ width: "20%" }}>
                         VOTOS MUNICIPIO
                       </th>
                     </tr>
@@ -168,7 +168,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                       .filter((myVotes) => {
                         return search.toLowerCase() === ""
                           ? myVotes
-                          : myVotes.description_politicparty
+                          : myVotes.candidate_name
                               .toLowerCase()
                               .includes(search);
                       })
