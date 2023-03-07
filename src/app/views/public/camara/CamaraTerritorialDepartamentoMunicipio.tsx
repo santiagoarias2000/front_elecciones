@@ -152,16 +152,13 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                       <th className="text-center" style={{ width: "30%" }}>
                         NOMBRE CANDIDATO
                       </th>
-                      <th className="text-center" style={{ width: "405%" }}>
+                      <th className="text-center" style={{ width: "35%" }}>
                         PARTIDO POLÍTICO
                       </th>
-                      <th className="text-center" style={{ width: "25 %" }}>
+                      <th className="text-center" style={{ width: "25%" }}>
                         VOTOS DEPARTAMENTO
                       </th>
-                      <th className="text-center" style={{ width: "25 %" }}>
-                        MUNICIPIO
-                      </th>
-                      <th className="text-center" style={{ width: "5 %" }}>
+                      <th className="text-center" style={{ width: "15%" }}>
                         VOTOS MUNICIPIO
                       </th>
                     </tr>
@@ -184,9 +181,6 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                             {myVotes.description_politicparty}
                           </td>
                           <td className="text-center">{myVotes.votos}</td>
-                          <td className="text-center">
-                            {myVotes.municipality.name_municipality}
-                          </td>
                           <td className="text-center">
                             {myVotes.votos_muicipio}
                           </td>

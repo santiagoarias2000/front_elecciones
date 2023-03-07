@@ -153,16 +153,13 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
                       <th className="text-center" style={{ width: "30%" }}>
                         NOMBRE CANDIDATO
                       </th>
-                      <th className="text-center" style={{ width: "405%" }}>
+                      <th className="text-center" style={{ width: "35%" }}>
                         PARTIDO POLÍTICO
                       </th>
-                      <th className="text-center" style={{ width: "25 %" }}>
+                      <th className="text-center" style={{ width: "25%" }}>
                         VOTOS DEPARTAMENTO
                       </th>
-                      <th className="text-center" style={{ width: "25 %" }}>
-                        MUNICIPIO
-                      </th>
-                      <th className="text-center" style={{ width: "5 %" }}>
+                      <th className="text-center" style={{ width: "15%" }}>
                         VOTOS MUNICIPIO
                       </th>
                     </tr>
