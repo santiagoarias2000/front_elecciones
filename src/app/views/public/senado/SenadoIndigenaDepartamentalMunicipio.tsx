@@ -3,13 +3,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
-import senado from "../../../../assets/image/camara.jpg";
+import senado from "../../../../assets/image/SENADO.jpg";
 import { Form, InputGroup, Pagination } from "react-bootstrap";
 import Municipality from "../../../models/Municipality";
 
 type miObjeto = { nombreMuni: number };
-export const  SenadoMuni = () => {
-  const [search, setSearch] = useState("");
+export const SenadoIndigenaDepartamentalMunicipio = () =>{
+    const [search, setSearch] = useState("");
   console.log(search);
   const setOption = ["nameDepartment", "descriptionRole", "votos"];
   const [sort, setSort] = useState("");
@@ -32,7 +32,7 @@ export const  SenadoMuni = () => {
 
   const getVotosCamaraTerritorial = async () => {
     const result = await ServicePrivate.requestGET(
-      ApiBack.CAMARA_TERRITORIAL_DEPARTAMENTO_MUNICIPIO +
+      ApiBack.SENADO_INDIGENA_MUNICIPIO +
         "/" +
         idDepartment +
         "/municipio/" +
@@ -84,7 +84,7 @@ export const  SenadoMuni = () => {
             }}
           >
             <div className="text-center">
-              <b className="title_table">CIRCUNCRIPCIÓN TERRITORIAL MUNICIPAL</b>
+              <b className="title_table">CIRCUNCRIPCIÓN INDIGENA TERRITORIAL DEPARTAMENTAL</b>
             </div>
           </div>
 

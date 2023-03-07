@@ -19,6 +19,7 @@ import { Blog } from "../../containers/Blog";
 import { CamaraIndigenaDepartamentoMunicipio } from "../../views/public/camara/CamaraIndigenaDepartamentoMunicipio";
 import { CamaraTerritorialDepartamentoMunicipio } from "../../views/public/camara/CamaraTerritorialDepartamentoMunicipio";
 import { CamaraAfroDescendienteDepartamentoMunicipio } from "../../views/public/camara/CamaraAfroDescendienteDepartamentoMunicipio";
+import { SenadoIndigenaDepartamento } from "../../views/public/senado/SenadoIndigenaDepartamento";
 
 
 //Lazy structure from use the all tsx
@@ -28,6 +29,7 @@ const LazySenadoDetailsMuni =lazy(()=>import("../../views/public/senado/SenadoMu
 const LazySenadoElegidos =lazy(()=>import("../../views/public/senado/SenadoElegidos").then(()=>({default:SenadoElegidos})));
 const LazySenado =lazy(()=>import("../../views/public/senado/Senado").then(()=>({default:Senado})));
 const LazySenadoDetails =lazy(()=>import("../../views/public/senado/SenadoDetails").then(()=>({default:SenadoDetails})));
+const LazySenadoIndigenaDepartamental =lazy(()=>import("../../views/public/senado/SenadoIndigenaDepartamento").then(()=>({default:SenadoIndigenaDepartamento})));
 const LazyPrivacyPolicies =lazy(()=>import("../../views/shared/PrivacyPolicies").then(()=>({default:PrivacyPolicies})));
 const LazyNotFound = lazy(()=> import("../../views/shared/NotFound").then(()=>({default:NotFound})))
 const LazyLegalWarning = lazy(()=> import("../../views/shared/LegalWarning").then(()=>({default:LegalWarning})))
@@ -55,6 +57,9 @@ export const InternalRouting = () => {
       <Route path="/senado" element={<LazySenado/>} />
       <Route path="/senado/senadoDetails/:idDepartment" element={<LazySenadoDetails />} />
       <Route path="/senado/senadoDetails/:idDepartment/municipio/:idMunicipality" element={<LazySenadoDetailsMuni />} />
+      <Route path="/senado/indigena/departamento/:idDepartment" element={<LazySenadoIndigenaDepartamental />} />
+      <Route path="/senado/indigena/departamento/:idDepartment/municipio/:idMunicipality" element={<LazySenadoDetailsMuni />} />
+      
 
       {/* page legal to need app web */}
       <Route path="/politicasprivacidad" element={<LazyPrivacyPolicies/>} />
