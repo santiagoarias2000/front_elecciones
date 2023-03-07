@@ -93,7 +93,6 @@ export const CamaraTerritorialDepartamento = () => {
               <b>TERRITORIAL DEPARTAMENTAL</b>
             </div>
           </div>
-
           <div className="container text-center">
             <div className="row">
               <div className="col align-content-center my-3">
@@ -106,14 +105,21 @@ export const CamaraTerritorialDepartamento = () => {
                   Municipios
                 </a>
                 <ul className="dropdown-menu">
-                  {arrayMunicipio.map((myMunicipality) => (
-                    <Link to={"/guiaelectoral/welcome"}>
+                  {arrayMunicipio.map((myMunicipality, indice) => (
+                    <a
+                      href={
+                        "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
+                        myMunicipality.id_department +
+                        "/municipio/" +
+                        myMunicipality.id_municipality
+                      }
+                    >
                       <li>
                         <a className="dropdown-item">
                           {myMunicipality.name_municipality}
                         </a>
                       </li>
-                    </Link>
+                    </a>
                   ))}
                 </ul>
               </div>
@@ -125,7 +131,7 @@ export const CamaraTerritorialDepartamento = () => {
                 </h5>
               </div>
               <div className="col">
-                <Form >
+                <Form>
                   <InputGroup className="my-3">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
@@ -135,69 +141,69 @@ export const CamaraTerritorialDepartamento = () => {
                   </InputGroup>
                 </Form>
               </div>
-            </div>
-          </div>
 
-          <div className="table-wrapper-scroll-y my-custom-scrollbar">
-            <table
-              className="colorTable table table-hover"
-              style={{ background: "#05285190 !important" }}
-            >
-              <thead>
-                <tr>
-                  <th className="text-center" style={{ width: "40%" }}>
-                    NOMBRE CANDIDATO
-                  </th>
-                  <th className="text-center" style={{ width: "35%" }}>
-                    PARTIDO POLITICO
-                  </th>
-                  <th className="text-center" style={{ width: "25%" }}>
-                    VOTOS DEPARTAMENTO
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="color">
-                {arrayVotesCamaraTerritorial
-                  .filter((myVotes) => {
-                    return search.toLowerCase() === ""
-                      ? myVotes
-                      : myVotes.description_politicparty
-                          .toLowerCase()
-                          .includes(search);
-                  })
-                  .map((myVotes, contador) => (
-                    <tr key={contador}>
-                      <td className="text-center">
-                        <b>{myVotes.candidate_name}</b>
-                      </td>
-                      <td className="text-center">
-                        {myVotes.description_politicparty}
-                      </td>
-                      <td className="text-center">{myVotes.votos}</td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="dropdown">
-            <div
-              className="container-fluid display-flex justify-content-center"
-              style={{
-                color: "#FFFFFF",
-                height: "80px",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <div className="text-center">
-                <button
-                  type="button"
-                  className="buttonBack buttonBack-primary"
-                  onClick={() => regresar(-1)}
+              <div className="table-wrapper-scroll-y my-custom-scrollbar">
+                <table
+                  className="colorTable table table-hover"
+                  style={{ background: "#05285190 !important" }}
                 >
-                  <i className="bi bi-arrow-left-circle"></i>
-                  &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
-                </button>
+                  <thead>
+                    <tr>
+                      <th className="text-center" style={{ width: "40%" }}>
+                        NOMBRE CANDIDATO
+                      </th>
+                      <th className="text-center" style={{ width: "35%" }}>
+                        PARTIDO POLÍTICO
+                      </th>
+                      <th className="text-center" style={{ width: "25 %" }}>
+                        VOTOS DEPARTAMENTO
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="color">
+                    {arrayVotesCamaraTerritorial
+                      .filter((myVotes) => {
+                        return search.toLowerCase() === ""
+                          ? myVotes
+                          : myVotes.description_politicparty
+                              .toLowerCase()
+                              .includes(search);
+                      })
+                      .map((myVotes, contador) => (
+                        <tr key={contador}>
+                          <td className="text-center">
+                            <b>{myVotes.candidate_name}</b>
+                          </td>
+                          <td className="text-center">
+                            {myVotes.description_politicparty}
+                          </td>
+                          <td className="text-center">{myVotes.votos}</td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="dropdown">
+                <div
+                  className="container-fluid display-flex justify-content-center"
+                  style={{
+                    color: "#FFFFFF",
+                    height: "80px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <div className="text-center">
+                    <button
+                      type="button"
+                      className="buttonBack buttonBack-primary"
+                      onClick={() => regresar(-1)}
+                    >
+                      <i className="bi bi-arrow-left-circle"></i>
+                      &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

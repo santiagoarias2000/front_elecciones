@@ -82,18 +82,15 @@ export const Camara = () => {
               <b>TERRITORIAL DEPARTAMENTAL</b>
             </div>
           </div>
-
-          <div>
-            <Form style={{ padding: "0 3% 0 72%" }}>
-              <InputGroup className="my-3">
-                <Form.Control
-                  onChange={(e) => setSearchTerritorial(e.target.value)}
-                  placeholder="Search Keeper"
-                  style={{ textAlign: "right", marginRight: "5px" }}
-                ></Form.Control>
-              </InputGroup>
-            </Form>
-          </div>
+          <Form style={{ padding: "0 3% 0 72%" }}>
+            <InputGroup className="my-3">
+              <Form.Control
+                onChange={(e) => setSearchTerritorial(e.target.value)}
+                placeholder="Buscar departamento"
+                style={{ textAlign: "right", marginRight: "5px" }}
+              ></Form.Control>
+            </InputGroup>
+          </Form>
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
               className="colorTable table table-hover"
@@ -182,7 +179,7 @@ export const Camara = () => {
             <InputGroup className="my-3">
               <Form.Control
                 onChange={(e) => setSearchIndigena(e.target.value)}
-                placeholder="Search Keeper"
+                placeholder="Buscar departamento"
                 style={{ textAlign: "right", marginRight: "5px" }}
               ></Form.Control>
             </InputGroup>
@@ -275,7 +272,7 @@ export const Camara = () => {
             <InputGroup className="my-3">
               <Form.Control
                 onChange={(e) => setSearchAfro(e.target.value)}
-                placeholder="Search Keeper"
+                placeholder="Buscar departamento"
                 style={{ textAlign: "right", marginRight: "5px" }}
               ></Form.Control>
             </InputGroup>
