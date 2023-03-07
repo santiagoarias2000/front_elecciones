@@ -131,20 +131,11 @@ export const CamaraAfroDescendienteDepartamento = () => {
                   <th className="text-center" style={{ width: "40%" }}>
                     NOMBRE CANDIDATO
                   </th>
-                  <th className="text-center" style={{ width: "30%" }}>
+                  <th className="text-center" style={{ width: "35%" }}>
                     PARTIDO POLÍTICO
                   </th>
-                  <th className="text-center" style={{ width: "10%" }}>
-                    CIRCUSCRIPCIÓN
-                  </th>
-                  <th className="text-center" style={{ width: "10%" }}>
-                    ROLE
-                  </th>
                   <th className="text-center" style={{ width: "5%" }}>
-                    DEPARTAMENTO
-                  </th>
-                  <th className="text-center" style={{ width: "5%" }}>
-                    VOTOS
+                    VOTOS DEPARTAMENTO
                   </th>
                 </tr>
               </thead>
@@ -164,15 +155,6 @@ export const CamaraAfroDescendienteDepartamento = () => {
                       </td>
                       <td className="text-center">
                         {myVotes.description_politicparty}
-                      </td>
-                      <td className="text-center">
-                        {myVotes.description_district}
-                      </td>
-                      <td className="text-center">
-                        {myVotes.description_role}
-                      </td>
-                      <td className="text-center">
-                        {myVotes.department.name_department}
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
                     </tr>
