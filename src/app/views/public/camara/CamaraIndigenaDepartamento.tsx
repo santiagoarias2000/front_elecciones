@@ -122,11 +122,11 @@ export const CamaraIndigenaDepartamento = () => {
                 </ul>
               </div>
               <div className="col">
-                <h5 className="text-center my-4" style={{ color: "#052851" }}>
+                <h6 className="text-center my-4" style={{ color: "#052851" }}>
                   {arrayDepartamento.map((myDepartment) => (
                     <b>{myDepartment.name_department}</b>
                   ))}
-                </h5>
+                </h6>
               </div>
               <div className="col">
                 <Form>
@@ -195,10 +195,15 @@ export const CamaraIndigenaDepartamento = () => {
                     <button
                       type="button"
                       className="buttonBack buttonBack-primary"
-                      onClick={() => regresar(-1)}
                     >
-                      <i className="bi bi-arrow-left-circle"></i>
-                      &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                      <a className="link_hitdata"
+                        href={
+                          "/guiaelectoral/camara/"
+                        }
+                      >
+                        <i className="bi bi-arrow-left-circle"></i>
+                        &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                      </a>
                     </button>
                   </div>
                 </div>

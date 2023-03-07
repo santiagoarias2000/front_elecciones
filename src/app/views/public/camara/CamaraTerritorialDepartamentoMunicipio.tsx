@@ -140,7 +140,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                 </ul>
               </div>
               <div className="col">
-                <h5 className="text-center my-4" style={{ color: "#052851" }}>
+                <h6 className="text-center my-4" style={{ color: "#052851" }}>
                   {arrayNameMunicipality.map((myNameMunicipality) => (
                     <b>
                       {myNameMunicipality.name_municipality}
@@ -149,14 +149,14 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                       {")"}
                     </b>
                   ))}
-                </h5>
+                </h6>
               </div>
               <div className="col">
                 <Form>
                   <InputGroup className="my-3">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Search Keeper"
+                      placeholder="Buscar candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
                     ></Form.Control>
                   </InputGroup>
@@ -227,8 +227,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                     >
                       <a className="link_hitdata"
                         href={
-                          "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
-                          idDepartment
+                          "/guiaelectoral/camara/"
                         }
                       >
                         <i className="bi bi-arrow-left-circle"></i>
