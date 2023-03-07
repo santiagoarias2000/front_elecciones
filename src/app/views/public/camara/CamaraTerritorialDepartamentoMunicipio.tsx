@@ -17,11 +17,6 @@ import {
 
 export const CamaraTerritorialDepartamentoMunicipio = () => {
   const [search, setSearch] = useState("");
-  console.log(search);
-  const setOption = ["nameDepartment", "descriptionRole", "votos"];
-  const [sort, setSort] = useState("");
-  const regresar = useNavigate();
-
   let active = 1;
   let items = [];
   for (let number = 1; number <= 5; number++) {

@@ -8,6 +8,7 @@ import Municipality from "../../../models/Municipality";
 import e from "express";
 import { SenadoMuni } from "./SenadoMuni";
 import { useNavigate, useParams } from "react-router-dom";
+import Department from "../../../models/Department";
 
 export const SenadoDetails = () => {
   let { idDepartment } = useParams();
@@ -32,6 +33,7 @@ export const SenadoDetails = () => {
     setArrayVotesSenadoDepartamentalMunicipio,
   ] = useState<VotesCongreso[]>([]);
   const [arrayMunicipios, setMunicipios] = useState<Municipality[]>([]);
+  const [arrayDepartamento, setArrayDepartamento] = useState<Department[]>([]);
 
   const getVotosSenadoDepartamental = async () => {
     const urlCargarDepartamento =
@@ -63,9 +65,16 @@ export const SenadoDetails = () => {
     return resultado;
   };
 
+  const getDepartamento = async () => {
+    const result = await ServicePrivate.requestGET(
+      ApiBack.NOMBRE_DEPARTAMENTO + "/" + idDepartment
+    );
+    setArrayDepartamento(result);
+  };
   useEffect(() => {
     getVotosSenadoDepartamental();
     getMunicipios();
+    getDepartamento();
   }, [idDepartment]);
   // useEffect(()=>{
   //   getVotosSenadoDepartamentalMunicipio();
@@ -105,6 +114,7 @@ export const SenadoDetails = () => {
                   </button>
                   <ul className="dropdown-menu">
                     <li>
+                    
                       {arrayMunicipios.map((miMunicipio, indice) => (
                         <a
                           className="dropdown-item"
@@ -122,27 +132,22 @@ export const SenadoDetails = () => {
                         </a>
                       ))}
                     </li>
-
-                    <li>
-                      <hr className="dropdown-divider"></hr>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Separated link
-                      </a>
-                    </li>
                   </ul>
                 </div>
               </div>
-              <div className="col-sm">
-              <div className="name_table">XXXXXXX</div>
+               <div className="col">
+                <h5 className="text-center my-4" style={{ color: "#052851" }}>
+                  {arrayDepartamento.map((myDepartment) => (
+                    <b>{myDepartment.name_department}</b>
+                  ))}
+                </h5>
               </div>
               <div className="col-sm">
               <Form id="form_conta">
             <InputGroup className="my-3 container_form">
               <Form.Control
                 onChange={(e) => setSearchNacional(e.target.value)}
-                placeholder="Buscar XXXXXXXXXXXX"
+                placeholder="Buscar partido político"
                 style={{ textAlign: "right", marginRight: "5px" }}
               ></Form.Control>
             </InputGroup>
@@ -168,9 +173,6 @@ export const SenadoDetails = () => {
                   <th className="text-center" style={{ width: "20%" }}>
                     TOTAL VOTOS NACIONAL
                   </th>
-                  <th className="text-center" style={{ width: "20%" }}>
-                    MUNICIPIO
-                  </th>
                 </tr>
               </thead>
               <tbody className="color container_table">
@@ -191,7 +193,6 @@ export const SenadoDetails = () => {
                         {myVotes.description_politicparty}
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
-                      <td className="text-center"></td>
                     </tr>
                   ))}
                 {/* {arrayVotesSenadoDepartamentalMunicipio.map((myMunis,index)=>(

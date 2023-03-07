@@ -10,8 +10,6 @@ import Department from "../../../models/Department";
 
 export const CamaraAfroDescendienteDepartamento = () => {
   const [search, setSearch] = useState("");
-  const regresar = useNavigate();
-
   let active = 1;
   let items = [];
   for (let number = 1; number <= 5; number++) {
