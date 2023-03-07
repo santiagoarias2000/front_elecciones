@@ -28,6 +28,7 @@ export const  SenadoMuni = () => {
   const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
     useState<VotesCongreso[]>([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
+  const [arrayNameMunicipality, setArrayNameMunicipality] = useState< Municipality[] >([]);
   const regresar = useNavigate();
 
   const getVotosCamaraTerritorial = async () => {
@@ -47,9 +48,16 @@ export const  SenadoMuni = () => {
     );
     setArrayMunicipio(result);
   };
+  const getNameMunicipality = async () => {
+    const result = await ServicePrivate.requestGET(
+      ApiBack.NOMBRE_MUNICIPIO + "/" + idMunicipality
+    );
+    setArrayNameMunicipality(result);
+  };
   useEffect(() => {
     getVotosCamaraTerritorial();
     getMuniciaplity();
+    getNameMunicipality();
   }, []);
 
   return (
@@ -105,7 +113,7 @@ export const  SenadoMuni = () => {
                       {arrayMunicipio.map((myMunicipality) => (
                         <a
                           href={
-                            "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
+                            "/guiaelectoral/senado/indigena/departamento/municipio/" +
                             myMunicipality.id_department +
                             "/municipio/" +
                             myMunicipality.id_municipality
@@ -122,9 +130,18 @@ export const  SenadoMuni = () => {
                   </div>
                 </div>
 
-                <div className="col-sm">
-                  <div className="name_table">XXXXXXX</div>
-                </div>
+                <div className="col">
+                <h5 className="text-center my-4" style={{ color: "#052851" }}>
+                  {arrayNameMunicipality.map((myNameMunicipality) => (
+                    <b>
+                      {myNameMunicipality.name_municipality}
+                      {" ("}
+                      {myNameMunicipality.department}
+                      {")"}
+                    </b>
+                  ))}
+                </h5>
+              </div>
                 <div className="col-sm">
                   <Form id="form_conta">
                     <InputGroup className="my-3 container_form">

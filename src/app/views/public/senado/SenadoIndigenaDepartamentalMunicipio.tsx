@@ -9,6 +9,8 @@ import Municipality from "../../../models/Municipality";
 
 type miObjeto = { nombreMuni: number };
 export const SenadoIndigenaDepartamentalMunicipio = () =>{
+  let { idDepartment } = useParams();
+  let { idMunicipality } = useParams();
     const [search, setSearch] = useState("");
   console.log(search);
   const setOption = ["nameDepartment", "descriptionRole", "votos"];
@@ -23,11 +25,11 @@ export const SenadoIndigenaDepartamentalMunicipio = () =>{
       </Pagination.Item>
     );
   }
-  let { idDepartment } = useParams();
-  let { idMunicipality } = useParams();
+  
   const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
     useState<VotesCongreso[]>([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
+  const [arrayNameMunicipality, setArrayNameMunicipality] = useState< Municipality[] >([]);
   const regresar = useNavigate();
 
   const getVotosCamaraTerritorial = async () => {
@@ -47,9 +49,16 @@ export const SenadoIndigenaDepartamentalMunicipio = () =>{
     );
     setArrayMunicipio(result);
   };
+  const getNameMunicipality = async () => {
+    const result = await ServicePrivate.requestGET(
+      ApiBack.NOMBRE_MUNICIPIO + "/" + idMunicipality
+    );
+    setArrayNameMunicipality(result);
+  };
   useEffect(() => {
     getVotosCamaraTerritorial();
     getMuniciaplity();
+    getNameMunicipality();
   }, []);
 
   return (
@@ -84,7 +93,7 @@ export const SenadoIndigenaDepartamentalMunicipio = () =>{
             }}
           >
             <div className="text-center">
-              <b className="title_table">CIRCUNCRIPCIÓN INDIGENA TERRITORIAL DEPARTAMENTAL</b>
+              <b className="title_table">CIRCUNCRIPCIÓN MUNICIPAL INDIGENA</b>
             </div>
           </div>
 
@@ -105,7 +114,7 @@ export const SenadoIndigenaDepartamentalMunicipio = () =>{
                       {arrayMunicipio.map((myMunicipality) => (
                         <a
                           href={
-                            "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
+                            "/guiaelectoral/senado/indigena/departamento/municipio/departamento/" +
                             myMunicipality.id_department +
                             "/municipio/" +
                             myMunicipality.id_municipality
@@ -122,9 +131,16 @@ export const SenadoIndigenaDepartamentalMunicipio = () =>{
                   </div>
                 </div>
 
-                <div className="col-sm">
-                  <div className="name_table">XXXXXXX</div>
-                </div>
+                <h5 className="text-center my-4" style={{ color: "#052851" }}>
+                  {arrayNameMunicipality.map((myNameMunicipality) => (
+                    <b>
+                      {myNameMunicipality.name_municipality}
+                      {" ("}
+                      {myNameMunicipality.department}
+                      {")"}
+                    </b>
+                  ))}
+                </h5>
                 <div className="col-sm">
                   <Form id="form_conta">
                     <InputGroup className="my-3 container_form">

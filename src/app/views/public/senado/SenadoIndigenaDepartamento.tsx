@@ -95,7 +95,7 @@ export const SenadoIndigenaDepartamento = () =>{
                           <a
                             className="dropdown-item"
                             href={
-                              "/guiaelectoral/senado/indigena/departamento/" +
+                              "/guiaelectoral/senado/indigena/departamento/municipio/" +
                               idDepartment +
                               "/municipio/" +
                               miMunicipio.id_municipality
