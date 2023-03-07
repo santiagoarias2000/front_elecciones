@@ -96,7 +96,7 @@ export const CamaraTerritorialDepartamento = () => {
 
           <div className="container text-center">
             <div className="row">
-              <div className="col align-content-center">
+              <div className="col align-content-center my-3">
                 <a
                   className="buttonBack buttonBack-primary dropdown-toggle"
                   role="button"
@@ -117,8 +117,8 @@ export const CamaraTerritorialDepartamento = () => {
                   ))}
                 </ul>
               </div>
-              <div className="col align-middle">
-                <h5 className="text-center" style={{ color: "#052851" }}>
+              <div className="col">
+                <h5 className="text-center my-4" style={{ color: "#052851" }}>
                   {arrayDepartamento.map((myDepartment) => (
                     <b>{myDepartment.name_department}</b>
                   ))}
