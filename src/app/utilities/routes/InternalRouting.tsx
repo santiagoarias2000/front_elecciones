@@ -11,9 +11,11 @@ import { CookiesPolices } from "../../views/shared/CookiesPolicies";
 import { TermsConditions } from "../../views/shared/TermsConditions";
 import { Camara } from "../../views/public/camara/Camara";
 import { CamaraTerritorialDepartamento } from "../../views/public/camara/CamaraTerritorialDepartamento";
+import { SenadoMuni } from "../../views/public/senado/SenadoMuni";
 import { CamaraIndigenaDepartamento } from "../../views/public/camara/CamaraIndigenaDepartamento";
 import { CamaraAfroDescendienteDepartamento } from "../../views/public/camara/CamaraAfroDescendienteDepartamento";
 import { Senado } from "../../views/public/senado/Senado";
+import { Blog } from "../../containers/Blog";
 import { CamaraIndigenaDepartamentoMunicipio } from "../../views/public/camara/CamaraIndigenaDepartamentoMunicipio";
 import { CamaraTerritorialDepartamentoMunicipio } from "../../views/public/camara/CamaraTerritorialDepartamentoMunicipio";
 import { CamaraAfroDescendienteDepartamentoMunicipio } from "../../views/public/camara/CamaraAfroDescendienteDepartamentoMunicipio";
@@ -22,6 +24,7 @@ import { CamaraAfroDescendienteDepartamentoMunicipio } from "../../views/public/
 //Lazy structure from use the all tsx
 
 const LazyWelcome =lazy(()=>import("../../containers/Welcome").then(()=>({default:Welcome})));
+const LazySenadoDetailsMuni =lazy(()=>import("../../views/public/senado/SenadoMuni").then(()=>({default:SenadoMuni})));
 const LazySenadoElegidos =lazy(()=>import("../../views/public/senado/SenadoElegidos").then(()=>({default:SenadoElegidos})));
 const LazySenado =lazy(()=>import("../../views/public/senado/Senado").then(()=>({default:Senado})));
 const LazySenadoDetails =lazy(()=>import("../../views/public/senado/SenadoDetails").then(()=>({default:SenadoDetails})));
@@ -34,6 +37,7 @@ const LazyCamara =lazy(()=>import("../../views/public/camara/Camara").then(()=>(
 const LazyCamaraTerritorialDepartamento =lazy(()=>import("../../views/public/camara/CamaraTerritorialDepartamento").then(()=>({default:CamaraTerritorialDepartamento})));
 const LazyCamaraIndigenaDepartamento =lazy(()=>import("../../views/public/camara/CamaraIndigenaDepartamento").then(()=>({default:CamaraIndigenaDepartamento})));
 const LazyCamaraAfroDescendienteDepartamento =lazy(()=>import("../../views/public/camara/CamaraAfroDescendienteDepartamento").then(()=>({default:CamaraAfroDescendienteDepartamento})));
+const LazyBlog =lazy(()=>import("../../containers/Blog").then(()=>({default:Blog})));
 const LazyCamaraTerritorialepartamentoMunicipio =lazy(()=>import("../../views/public/camara/CamaraTerritorialDepartamentoMunicipio").then(()=>({default:CamaraTerritorialDepartamentoMunicipio})));
 const LazyCamaraIndigenaDepartamentoMunicipio =lazy(()=>import("../../views/public/camara/CamaraIndigenaDepartamentoMunicipio").then(()=>({default:CamaraIndigenaDepartamentoMunicipio})));
 const LazyCamaraAfroDescendienteDepartamentoMunicipio =lazy(()=>import("../../views/public/camara/CamaraAfroDescendienteDepartamentoMunicipio").then(()=>({default:CamaraAfroDescendienteDepartamentoMunicipio})));
@@ -44,11 +48,13 @@ export const InternalRouting = () => {
   return (
     <Routes>
       //Routes Default
+      <Route path="/" element={<LazyBlog/>}/>
       <Route path="/welcome" element={<LazyWelcome />} />
       <Route path="/camara" element={<LazyCamara />} />
       <Route path="/senadoelegidos" element={<LazySenadoElegidos />} />
       <Route path="/senado" element={<LazySenado/>} />
       <Route path="/senado/senadoDetails/:idDepartment" element={<LazySenadoDetails />} />
+      <Route path="/senado/senadoDetails/:idDepartment/municipio/:idMunicipality" element={<LazySenadoDetailsMuni />} />
 
       {/* page legal to need app web */}
       <Route path="/politicasprivacidad" element={<LazyPrivacyPolicies/>} />

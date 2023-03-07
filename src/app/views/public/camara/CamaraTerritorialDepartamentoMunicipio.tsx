@@ -104,7 +104,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
             }}
           >
             <div className="text-center">
-              <b>TERRITORIAL DEPARTAMENTAL</b>
+              <b className="title_table">TERRITORIAL DEPARTAMENTAL</b>
             </div>
           </div>
 

@@ -6,9 +6,9 @@ import { Welcome } from "./Welcome";
 export const MainBoard = () => {
   return (
     <div>
-            <Header/>
-            <InternalRouting/>
-            <Footer/>
-        </div>
+      <Header />
+      <InternalRouting />
+      <Footer />
+    </div>
   );
 };

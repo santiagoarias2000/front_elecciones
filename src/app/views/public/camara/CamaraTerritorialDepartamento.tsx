@@ -11,9 +11,6 @@ import Department from "../../../models/Department";
 
 export const CamaraTerritorialDepartamento = () => {
   const [search, setSearch] = useState("");
-  console.log(search);
-  const setOption = ["nameDepartment", "descriptionRole", "votos"];
-  const [sort, setSort] = useState("");
   const regresar = useNavigate();
 
   let active = 1;
@@ -80,17 +77,10 @@ export const CamaraTerritorialDepartamento = () => {
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
           <div
-            className="container-fluid display-flex justify-content-center"
-            style={{
-              background: "#052851",
-              color: "#FFFFFF",
-              height: "40px",
-              display: "flex",
-              alignItems: "center",
-            }}
+            className="container-fluid display-flex justify-content-center container_title"
           >
             <div className="text-center">
-              <b>TERRITORIAL DEPARTAMENTAL</b>
+              <b className="title_table">TERRITORIAL DEPARTAMENTAL</b>
             </div>
           </div>
           <div className="container text-center">
@@ -131,11 +121,11 @@ export const CamaraTerritorialDepartamento = () => {
                 </h5>
               </div>
               <div className="col">
-                <Form>
-                  <InputGroup className="my-3">
+                <Form id="form_conta">
+                  <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Search Keeper"
+                      placeholder="Buscar XXXXXXXXXXXXXX"
                       style={{ textAlign: "right", marginRight: "5px" }}
                     ></Form.Control>
                   </InputGroup>
@@ -147,7 +137,7 @@ export const CamaraTerritorialDepartamento = () => {
                   className="colorTable table table-hover"
                   style={{ background: "#05285190 !important" }}
                 >
-                  <thead>
+                  <thead className="container_table">
                     <tr>
                       <th className="text-center" style={{ width: "40%" }}>
                         NOMBRE CANDIDATO
@@ -160,7 +150,7 @@ export const CamaraTerritorialDepartamento = () => {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="color">
+                  <tbody className="color container_table">
                     {arrayVotesCamaraTerritorial
                       .filter((myVotes) => {
                         return search.toLowerCase() === ""
