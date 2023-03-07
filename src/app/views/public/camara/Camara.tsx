@@ -3,28 +3,19 @@ import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import camara from "../../../../assets/image/camara.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Col, Form, InputGroup, Pagination, Row, Table } from "react-bootstrap";
+import { totalmem } from "os";
 
 export const Camara = () => {
   const [searchTerritorial, setSearchTerritorial] = useState("");
   const [searchIndigena, setSearchIndigena] = useState("");
   const [searchAfro, setSearchAfro] = useState("");
-  const setOption = ["name_department", "descriptionRole", "votos"];
-  const [sort, setSort] = useState("");
-
-  let active = 1;
-  let items = [];
-  for (let number = 1; number <= 5; number++) {
-    items.push(
-      <Pagination.Item key={number} active={number === active}>
-        {number}
-      </Pagination.Item>
-    );
-  }
+  const regresar = useNavigate();
 
   const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
     useState<VotesCongreso[]>([]);
+
   const [arrayVotesCamaraIndigena, setArrayVotosCamaraIndigena] = useState<
     VotesCongreso[]
   >([]);
@@ -35,6 +26,7 @@ export const Camara = () => {
   ] = useState<VotesCongreso[]>([]);
 
   const getVotosCamaraTerritorial = async () => {
+    //const parametrosPaginador= {paginaActual: activo, cantidadMostrar:numeroElemPag};
     const result = await ServicePrivate.requestGET(ApiBack.CAMARA_TERRITORIAL);
     setArrayVotosCamaraTerritorial(result);
   };
@@ -50,9 +42,9 @@ export const Camara = () => {
   };
 
   useEffect(() => {
-    getVotosCamaraTerritorial();
     getVotosCamaraIndigena();
     getVotosCamaraAfroDescendiente();
+    getVotosCamaraTerritorial();
   }, []);
 
   return (
@@ -83,7 +75,7 @@ export const Camara = () => {
               <b>TERRITORIAL DEPARTAMENTAL</b>
             </div>
           </div>
-          <Form style={{ padding: "0 2% 0 72%" }}>
+          <Form style={{ padding: "0 3% 0 72%" }}>
             <InputGroup className="my-3">
               <Form.Control
                 onChange={(e) => setSearchTerritorial(e.target.value)}
@@ -155,12 +147,11 @@ export const Camara = () => {
             }}
           >
             <div className="text-center">
-              <Pagination className="prueba">{items}</Pagination>
+              {/*  <Pagination className="prueba">{items}</Pagination> */}
             </div>
           </div>
         </div>
       </div>
-
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
           <div
@@ -249,7 +240,7 @@ export const Camara = () => {
             }}
           >
             <div className="text-center">
-              <Pagination className="prueba">{items}</Pagination>
+              {/*  <Pagination className="prueba">{items}</Pagination> */}
             </div>
           </div>
         </div>
@@ -342,7 +333,7 @@ export const Camara = () => {
             }}
           >
             <div className="text-center">
-              <Pagination className="prueba">{items}</Pagination>
+              {/* <Pagination className="prueba">{items}</Pagination> */}
             </div>
           </div>
         </div>
