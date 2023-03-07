@@ -77,7 +77,7 @@ export const Senado = () => {
                 {arrayVotesSenadoNacional.map((myVotes, contador) => (
                   <tr key={contador}>
                     <td className="text-center">
-                      <b>{myVotes.department.nameDepartment}</b>
+                      <b>{myVotes.department.name_department}</b>
                     </td>
                     <td className="text-center">{myVotes.votos}</td>
                     <td className="text-center align-middle">
@@ -137,7 +137,7 @@ export const Senado = () => {
               {arrayVotesSenadoIndigena.map((myVotes, contador) => (
                 <tr key={contador}>
                   <td className="text-center">
-                    <b>{myVotes.department.nameDepartment}</b>
+                    <b>{myVotes.department.name_department}</b>
                   </td>
                   <td className="text-center">{myVotes.description_role}</td>
                   <td className="text-center">{myVotes.votos}</td>

@@ -130,7 +130,7 @@ export const SenadoElegidos = () => {
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
                       <td className="text-center">
-                        {myVotes.department.nameDepartment}
+                        {myVotes.department.name_department}
                       </td>
                       <td className="text-center">{myVotes.max_votes}</td>
                     </tr>
@@ -222,7 +222,7 @@ export const SenadoElegidos = () => {
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
                       <td className="text-center">
-                        {myVotes.department.nameDepartment}
+                        {myVotes.department.name_department}
                       </td>
                       <td className="text-center">{myVotes.max_votes}</td>
                       <td className="text-center align-middle">

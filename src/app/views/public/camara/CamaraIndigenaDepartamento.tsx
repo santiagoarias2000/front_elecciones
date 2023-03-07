@@ -75,15 +75,46 @@ export const CamaraIndigenaDepartamento = () => {
               <b>TERRITORIAL INDIGENA</b>
             </div>
           </div>
-          <Form style={{ padding: "0 2% 0 72%" }}>
-            <InputGroup className="my-3">
-              <Form.Control
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search Keeper"
-                style={{ textAlign: "right", marginRight: "5px" }}
-              ></Form.Control>
-            </InputGroup>
-          </Form>
+          <div className="d-flex">
+            <Form style={{ padding: "0 2% 0 72%" }}>
+              <InputGroup className="my-3">
+                <Form.Control
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder="Search Keeper"
+                  style={{ textAlign: "right", marginRight: "5px" }}
+                ></Form.Control>
+              </InputGroup>
+            </Form>
+            <div className="dropdown">
+              <a
+                className="btn btn-secondary dropdown-toggle"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Municipios
+              </a>
+              <ul className="dropdown-menu">
+                {arrayMunicipio.map((myMunicipality, indice) => (
+                  <a
+                    href={
+                      "/guiaelectoral/camara/circuncripcion/indigena/departamento/" +
+                      myMunicipality.id_department +
+                      "/municipio/" +
+                      myMunicipality.id_municipality
+                    }
+                  >
+                    <li>
+                      <a className="dropdown-item">
+                        {myMunicipality.name_municipality}
+                      </a>
+                    </li>
+                  </a>
+                ))}
+              </ul>
+            </div>
+          </div>
+          
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
               className="colorTable table table-hover"
@@ -94,20 +125,11 @@ export const CamaraIndigenaDepartamento = () => {
                   <th className="text-center" style={{ width: "40%" }}>
                     NOMBRE CANDIDATO
                   </th>
-                  <th className="text-center" style={{ width: "30%" }}>
-                    PARTIDO POLITICO
+                  <th className="text-center" style={{ width: "35%" }}>
+                    PARTIDO POLÍTICO
                   </th>
-                  <th className="text-center" style={{ width: "10%" }}>
-                    CIRCUSCRIPCIÓN
-                  </th>
-                  <th className="text-center" style={{ width: "10%" }}>
-                    ROLE
-                  </th>
-                  <th className="text-center" style={{ width: "5%" }}>
-                    DEPARTAMENTO
-                  </th>
-                  <th className="text-center" style={{ width: "5%" }}>
-                    VOTOS
+                  <th className="text-center" style={{ width: "25%" }}>
+                    VOTOS DEPARTAMENTO
                   </th>
                 </tr>
               </thead>
@@ -127,15 +149,6 @@ export const CamaraIndigenaDepartamento = () => {
                       </td>
                       <td className="text-center">
                         {myVotes.description_politicparty}
-                      </td>
-                      <td className="text-center">
-                        {myVotes.description_district}
-                      </td>
-                      <td className="text-center">
-                        {myVotes.description_role}
-                      </td>
-                      <td className="text-center">
-                        {myVotes.department.nameDepartment}
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
                     </tr>
