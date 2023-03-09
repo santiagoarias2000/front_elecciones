@@ -123,11 +123,7 @@ export const SenadoDetails = () => {
                             idDepartment +
                             "/municipio/" +
                             miMunicipio.id_municipality
-                          }
-                          onClick={() =>
-                            setSeleccion(miMunicipio.id_municipality)
-                          }
-                        >
+                          } >
                           {miMunicipio.name_municipality}
                         </a>
                       ))}

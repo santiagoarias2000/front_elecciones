@@ -59,7 +59,7 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
   useEffect(() => {
     getVotosCamaraAfroDescendiente();
     getMuniciaplity();
-    getMuniciaplity();
+    getNameMunicipality();
   }, []);
 
   return (
@@ -81,152 +81,150 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
       {/* Navegación estilo breadcrumb: Fin */}
 
       {/* Ejemplo de una tabla para presentación de datos: Inicio */}
-      <div className="col-lg-12" style={{ color: "#052851 !important" }}>
-        <div className="cardBorder card">
+      <div className="col-lg-12" style={{ color: "#052851 !important" }}></div>
+      <div className="cardBorder card">
+        <div
+          className="container-fluid display-flex justify-content-center"
+          style={{
+            background: "#052851",
+            color: "#FFFFFF",
+            height: "40px",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <div className="text-center">
+            <b className="title_table">TERRITORIAL AFRO-DESCENDIENTE</b>
+          </div>
+        </div>
+        <div className="container">
+          <div className="row">
+            <div className="col-sm ">
+              <div className="dropdown align-content-center my-3">
+                <button
+                  type="button"
+                  className="buttonBack buttonBack-primary dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Municipios
+                </button>
+                <ul
+                  className="dropdown-menu selectpicker"
+                  data-live-search="true"
+                  style={{ maxHeight: "200px", overflowY: "auto" }}
+                >
+                  <li>
+                    {arrayMunicipio.map((myMunicipality, indice) => (
+                      <a
+                        className="dropdown-item"
+                        href={
+                          "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
+                          myMunicipality.id_department +
+                          "/municipio/" +
+                          myMunicipality.id_municipality
+                        }
+                      >
+                        {myMunicipality.name_municipality}
+                      </a>
+                    ))}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="col">
+              <h5 className="text-center my-4" style={{ color: "#052851" }}>
+                {arrayNameMunicipality.map((myNameMunicipality) => (
+                  <b>
+                    {myNameMunicipality.name_municipality}
+                    {" ("}
+                    {myNameMunicipality.department}
+                    {")"}
+                  </b>
+                ))}
+              </h5>
+            </div>
+            <div className="col-sm">
+              <Form id="form_conta">
+                <InputGroup className="my-3 container_form">
+                  <Form.Control
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Buscar candidato político"
+                    style={{ textAlign: "right", marginRight: "5px" }}
+                  ></Form.Control>
+                </InputGroup>
+              </Form>
+            </div>
+          </div>
+        </div>
+
+        <div className="table-wrapper-scroll-y my-custom-scrollbar">
+          <table
+            className="colorTable table table-hover"
+            style={{ background: "#05285190 !important" }}
+          >
+            <thead className="container_table">
+              <tr>
+                <th className="text-center" style={{ width: "30%" }}>
+                  NOMBRE CANDIDATO
+                </th>
+                <th className="text-center" style={{ width: "25%" }}>
+                  PARTIDO POLÍTICO
+                </th>
+                <th className="text-center" style={{ width: "25 %" }}>
+                  VOTOS DEPARTAMENTO
+                </th>
+                <th className="text-center" style={{ width: "20 %" }}>
+                  VOTOS MUNICIPIO
+                </th>
+              </tr>
+            </thead>
+            <tbody className="color container_table">
+              {arrayVotesCamaraAfroDescendiente
+                .filter((myVotes) => {
+                  return search.toLowerCase() === ""
+                    ? myVotes
+                    : myVotes.candidate_name.toLowerCase().includes(search);
+                })
+                .map((myVotes, contador) => (
+                  <tr key={contador}>
+                    <td className="text-left">
+                      <b>{myVotes.candidate_name}</b>
+                    </td>
+                    <td className="text-left">
+                      {myVotes.description_politicparty}
+                    </td>
+                    <td className="text-center">{myVotes.votos}</td>
+
+                    <td className="text-center">{myVotes.votos_muicipio}</td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="dropdown">
           <div
             className="container-fluid display-flex justify-content-center"
             style={{
-              background: "#052851",
               color: "#FFFFFF",
-              height: "40px",
+              height: "80px",
               display: "flex",
               alignItems: "center",
             }}
           >
             <div className="text-center">
-              <b className="title_table">TERRITORIAL AFRO-DESCENDIENTE</b>
-            </div>
-          </div>
-          <div className="container text-center">
-            <div className="row">
-              <div className="col align-content-center my-3">
+              <button type="button" className="buttonBack buttonBack-primary">
                 <a
-                  className="buttonBack buttonBack-primary dropdown-toggle"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
+                  className="link_hitdata"
+                  href={
+                    "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
+                    idDepartment
+                  }
                 >
-                  Municipios
+                  <i className="bi bi-arrow-left-circle"></i>
+                  &nbsp;&nbsp;REGRESAR A ELEGIR MUNICIPIO
                 </a>
-                <ul className="dropdown-menu">
-                  {arrayMunicipio.map((myMunicipality, indice) => (
-                    <a
-                      href={
-                        "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
-                        myMunicipality.id_department +
-                        "/municipio/" +
-                        myMunicipality.id_municipality
-                      }
-                    >
-                      <li>
-                        <a className="dropdown-item">
-                          {myMunicipality.name_municipality}
-                        </a>
-                      </li>
-                    </a>
-                  ))}
-                </ul>
-              </div>
-              <div className="col">
-                <h5 className="text-center my-4" style={{ color: "#052851" }}>
-                  {arrayNameMunicipality.map((myNameMunicipality) => (
-                    <b>
-                      {myNameMunicipality.name_municipality}
-                      {" ("}
-                      {myNameMunicipality.department}
-                      {")"}
-                    </b>
-                  ))}
-                </h5>
-              </div>
-              <div className="col">
-                <Form>
-                  <InputGroup className="my-3">
-                    <Form.Control
-                      onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Buscar Partido Político"
-                      style={{ textAlign: "right", marginRight: "5px" }}
-                    ></Form.Control>
-                  </InputGroup>
-                </Form>
-              </div>
-
-              <div className="table-wrapper-scroll-y my-custom-scrollbar">
-                <table
-                  className="colorTable table table-hover"
-                  style={{ background: "#05285190 !important" }}
-                >
-                  <thead className="container_table">
-                    <tr>
-                      <th className="text-center" style={{ width: "30%" }}>
-                        NOMBRE CANDIDATO
-                      </th>
-                      <th className="text-center" style={{ width: "35%" }}>
-                        PARTIDO POLÍTICO
-                      </th>
-                      <th className="text-center" style={{ width: "25%" }}>
-                        VOTOS DEPARTAMENTO
-                      </th>
-                      <th className="text-center" style={{ width: "15%" }}>
-                        VOTOS MUNICIPIO
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="color container_table">
-                    {arrayVotesCamaraAfroDescendiente
-                      .filter((myVotes) => {
-                        return search.toLowerCase() === ""
-                          ? myVotes
-                          : myVotes.candidate_name
-                              .toLowerCase()
-                              .includes(search);
-                      })
-                      .map((myVotes, contador) => (
-                        <tr key={contador}>
-                          <td className="text-center">
-                            <b>{myVotes.candidate_name}</b>
-                          </td>
-                          <td className="text-center">
-                            {myVotes.description_politicparty}
-                          </td>
-                          <td className="text-center">{myVotes.votos}</td>
-
-                          <td className="text-center">
-                            {myVotes.votos_muicipio}
-                          </td>
-                        </tr>
-                      ))}
-                  </tbody>
-                </table>
-              </div>
-              <div className="dropdown">
-                <div
-                  className="container-fluid display-flex justify-content-center"
-                  style={{
-                    color: "#FFFFFF",
-                    height: "80px",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <div className="text-center">
-                    <button
-                      type="button"
-                      className="buttonBack buttonBack-primary"
-                    >
-                      <a className="link_hitdata"
-                        href={
-                          "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
-                          idDepartment
-                        }
-                      >
-                        <i className="bi bi-arrow-left-circle"></i>
-                        &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
-                      </a>
-                    </button>
-                  </div>
-                </div>
-              </div>
+              </button>
             </div>
           </div>
         </div>

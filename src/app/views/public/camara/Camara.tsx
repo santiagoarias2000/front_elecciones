@@ -83,7 +83,7 @@ export const Camara = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchTerritorial(e.target.value)}
-                      placeholder="Buscar Nombre Departamento"
+                      placeholder="Buscar departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                     ></Form.Control>
                   </InputGroup>
@@ -187,7 +187,7 @@ export const Camara = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchIndigena(e.target.value)}
-                      placeholder="Buscar Nombre Departamento"
+                      placeholder="Buscar departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                     ></Form.Control>
                   </InputGroup>
@@ -290,7 +290,7 @@ export const Camara = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchAfro(e.target.value)}
-                      placeholder="Buscar Nombre Departamento"
+                      placeholder="Buscar departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                     ></Form.Control>
                   </InputGroup>
