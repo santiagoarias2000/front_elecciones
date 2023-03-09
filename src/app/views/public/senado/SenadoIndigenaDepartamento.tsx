@@ -97,7 +97,7 @@ export const SenadoIndigenaDepartamento = () => {
                         <a
                           className="dropdown-item"
                           href={
-                            "/guiaelectoral/senado/indigena/departamento/municipio/" +
+                            "/guiaelectoral/senado/indigena/departamento/" +
                             idDepartment +
                             "/municipio/" +
                             miMunicipio.id_municipality
@@ -138,11 +138,11 @@ export const SenadoIndigenaDepartamento = () => {
             >
               <thead className="container_table">
                 <tr>
+                <th className="text-center" style={{ width: "20%" }}>
+                    ROLE
+                  </th>
                   <th className="text-center" style={{ width: "40%" }}>
                     NOMBRE CANDIDATO
-                  </th>
-                  <th className="text-center" style={{ width: "20%" }}>
-                    ROLE
                   </th>
                   <th className="text-center" style={{ width: "20%" }}>
                     TOTAL VOTOS NACIONAL
@@ -161,10 +161,10 @@ export const SenadoIndigenaDepartamento = () => {
                   .map((myVotes, contador) => (
                     <tr key={contador}>
                       <td className="text-center">
-                        <b>{myVotes.candidate_name}</b>
+                        {myVotes.description_politicparty}
                       </td>
                       <td className="text-center">
-                        {myVotes.description_politicparty}
+                        <b>{myVotes.candidate_name}</b>
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
                     </tr>

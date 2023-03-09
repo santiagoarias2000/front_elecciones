@@ -60,7 +60,7 @@ export const InternalRouting = () => {
       <Route path="/senado/senadoDetails/:idDepartment" element={<LazySenadoDetails />} />
       <Route path="/senado/senadoDetails/:idDepartment/municipio/:idMunicipality" element={<LazySenadoDetailsMuni />} />
       <Route path="/senado/indigena/departamento/:idDepartment" element={<LazySenadoIndigenaDepartamental />} />
-      <Route path="/senado/indigena/departamento/municipio/:idDepartment/municipio/:idMunicipality" element={<LazySenadoIndigenaMunicipal />} />
+      <Route path="/senado/indigena/departamento/:idDepartment/municipio/:idMunicipality" element={<LazySenadoIndigenaMunicipal />} />
       
 
       {/* page legal to need app web */}

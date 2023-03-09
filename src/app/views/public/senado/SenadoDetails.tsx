@@ -28,10 +28,6 @@ export const SenadoDetails = () => {
   const [seleccion, setSeleccion] = useState<number | undefined>();
   const [arrayVotesSenadoDepartamental, setArrayVotesSenadoDepartamental] =
     useState<VotesCongreso[]>([]);
-  const [
-    arrayVotesSenadoDepartamentalMunicipio,
-    setArrayVotesSenadoDepartamentalMunicipio,
-  ] = useState<VotesCongreso[]>([]);
   const [arrayMunicipios, setMunicipios] = useState<Municipality[]>([]);
   const [arrayDepartamento, setArrayDepartamento] = useState<Department[]>([]);
 
@@ -44,19 +40,7 @@ export const SenadoDetails = () => {
       setArrayVotesSenadoDepartamental(result);
     }
   };
-  const getVotosSenadoDepartamentalMunicipio = async () => {
-    const urlCargarDepartamento =
-      ApiBack.SENADO_NACIONAL_MUNICIPIO +
-      "/" +
-      idDepartment +
-      "/municipio/" +
-      seleccion;
-    const result = await ServicePrivate.requestGET(urlCargarDepartamento);
-    setArrayVotesSenadoDepartamentalMunicipio(result);
-    if (result) {
-      setArrayVotesSenadoDepartamentalMunicipio(result);
-    }
-  };
+ 
   const getMunicipios = async () => {
     const resultado = await ServicePrivate.requestGET(
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
@@ -76,9 +60,6 @@ export const SenadoDetails = () => {
     getMunicipios();
     getDepartamento();
   }, [idDepartment]);
-  // useEffect(()=>{
-  //   getVotosSenadoDepartamentalMunicipio();
-  // },[arrayVotesSenadoDepartamentalMunicipio])
 
   return (
     <main id="main" className="main">
