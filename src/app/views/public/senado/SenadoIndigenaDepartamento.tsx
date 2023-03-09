@@ -38,7 +38,7 @@ export const SenadoIndigenaDepartamento = () => {
 
   const getDepartamento = async () => {
     const result = await ServicePrivate.requestGET(
-      ApiBack.NOMBRE_DEPARTAMENTO + "/" + idDepartment
+      ApiBack.NOMBRE_DEPARTAMENTO_INDIGENA_SENADO + "/" + idDepartment
     );
     setArrayDepartamento(result);
   };

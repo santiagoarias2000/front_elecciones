@@ -168,7 +168,7 @@ export const Senado = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchIndigena(e.target.value)}
-                      placeholder="Buscar nombre departamento"
+                      placeholder="Buscar Nombre Candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
                     ></Form.Control>

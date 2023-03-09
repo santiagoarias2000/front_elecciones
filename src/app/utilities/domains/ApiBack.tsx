@@ -4,7 +4,12 @@ const ApiBack = {
   
   COMBOBOX_MUNICIPIO: "/api/public/municipio",
   NOMBRE_MUNICIPIO: "/api/public/municipio/one",
-  NOMBRE_DEPARTAMENTO: "/api/public/departamento",
+  NOMBRE_DEPARTAMENTO_TERRITORIAL: "/api/public/departamento/territorial",
+  NOMBRE_DEPARTAMENTO_INDIGENA: "/api/public/departamento/indigenaCamara",
+  NOMBRE_DEPARTAMENTO_AFRODESCENDIENTE: "/api/public/departamento/afrodescendiente",
+
+  NOMBRE_DEPARTAMENTO_NACIONAL: "/api/public/departamento/nacional",
+  NOMBRE_DEPARTAMENTO_INDIGENA_SENADO: "/api/public/departamento/indigenaSenado",
 
   CAMARA_TERRITORIAL: "/api/public/camara/territorial",
   CANTIDAD_CAMARA_TERRITORIAL: "/api/public/camara/cantidadTerritorial",
