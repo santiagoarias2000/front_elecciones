@@ -20,7 +20,7 @@ import { CamaraIndigenaDepartamentoMunicipio } from "../../views/public/camara/C
 import { CamaraTerritorialDepartamentoMunicipio } from "../../views/public/camara/CamaraTerritorialDepartamentoMunicipio";
 import { CamaraAfroDescendienteDepartamentoMunicipio } from "../../views/public/camara/CamaraAfroDescendienteDepartamentoMunicipio";
 import { SenadoIndigenaDepartamento } from "../../views/public/senado/SenadoIndigenaDepartamento";
-
+import { PresidenciaAll } from "../../views/public/presidencia/presidenciaAll";
 
 //Lazy structure from use the all tsx
 
@@ -43,7 +43,7 @@ const LazyWelcome =lazy(()=>import("../../containers/Welcome").then(()=>({defaul
 const LazyCamaraTerritorialepartamentoMunicipio =lazy(()=>import("../../views/public/camara/CamaraTerritorialDepartamentoMunicipio").then(()=>({default:CamaraTerritorialDepartamentoMunicipio})));
 const LazyCamaraIndigenaDepartamentoMunicipio =lazy(()=>import("../../views/public/camara/CamaraIndigenaDepartamentoMunicipio").then(()=>({default:CamaraIndigenaDepartamentoMunicipio})));
 const LazyCamaraAfroDescendienteDepartamentoMunicipio =lazy(()=>import("../../views/public/camara/CamaraAfroDescendienteDepartamentoMunicipio").then(()=>({default:CamaraAfroDescendienteDepartamentoMunicipio})));
-
+const LazyPresidente = lazy(() => import("../../views/public/presidencia/presidenciaAll").then(() => ({default: PresidenciaAll,})));
 
 export const InternalRouting = () => {
   return (
@@ -73,7 +73,8 @@ export const InternalRouting = () => {
       <Route path="/guiaelectoral/camara/circuncripcion/territorial/departamento/:idDepartment/municipio/:idMunicipality" element={<LazyCamaraTerritorialepartamentoMunicipio />} />
       <Route path="/guiaelectoral/camara/circuncripcion/indigena/departamento/:idDepartment/municipio/:idMunicipality" element={<LazyCamaraIndigenaDepartamentoMunicipio />} />
       <Route path="/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/:idDepartment/municipio/:idMunicipality" element={<LazyCamaraAfroDescendienteDepartamentoMunicipio />} />
-      
+      //Routes presidente
+      <Route path="/presidencia" element={<LazyPresidente />} />
       
     </Routes>
   );

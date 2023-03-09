@@ -20,7 +20,7 @@ export const Welcome = () => {
                 <img src={president} alt="Imagen de presidencia" style={{width:"20%"}}/>
                   <h4 className="card-title cards-text">Presidencia</h4>
                   <div className="cards-btn">
-                    <a href="#" className="btn-cards ">
+                    <a href="/guiaelectoral/presidencia" className="btn-cards ">
                       <i className="bi bi-bar-chart-line-fill"></i>
                       &nbsp; Ver resultados
                     </a>

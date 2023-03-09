@@ -123,11 +123,7 @@ export const SenadoDetails = () => {
                             idDepartment +
                             "/municipio/" +
                             miMunicipio.id_municipality
-                          }
-                          onClick={() =>
-                            setSeleccion(miMunicipio.id_municipality)
-                          }
-                        >
+                          } >
                           {miMunicipio.name_municipality}
                         </a>
                       ))}
@@ -147,7 +143,7 @@ export const SenadoDetails = () => {
             <InputGroup className="my-3 container_form">
               <Form.Control
                 onChange={(e) => setSearchNacional(e.target.value)}
-                placeholder="Buscar partido político"
+                placeholder="Buscar Nombre Candidato"
                 style={{ textAlign: "right", marginRight: "5px" }}
               ></Form.Control>
             </InputGroup>
