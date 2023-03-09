@@ -6,11 +6,10 @@ import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import Municipality from "../../../models/Municipality";
 import e from "express";
-import { SenadoMuni } from "./SenadoMuni";
 import { useNavigate, useParams } from "react-router-dom";
 import Department from "../../../models/Department";
 
-export const SenadoDetails = () => {
+export const SenadoNacionalDepartamento = () => {
   let { idDepartment } = useParams();
 
   const [searchNacional, setSearchNacional] = useState("");
@@ -142,13 +141,13 @@ export const SenadoDetails = () => {
             >
               <thead className="container_table">
                 <tr>
-                  <th className="text-center" style={{ width: "40%" }}>
+                  <th className="text-center" style={{ width: "35%" }}>
                     NOMBRE CANDIDATO
                   </th>
-                  <th className="text-center" style={{ width: "20%" }}>
+                  <th className="text-center" style={{ width: "35%" }}>
                     ROLE
                   </th>
-                  <th className="text-center" style={{ width: "20%" }}>
+                  <th className="text-center" style={{ width: "30%" }}>
                     TOTAL VOTOS NACIONAL
                   </th>
                 </tr>
@@ -191,7 +190,7 @@ export const SenadoDetails = () => {
                     ))}
                   </h6>
                   </div>
-                </div>
+            </div>
           <div className="dropdown">
             <div
               className="container-fluid display-flex justify-content-center"
@@ -203,12 +202,12 @@ export const SenadoDetails = () => {
               }}
             >
               <div className="text-center">
-                <button type="button" className="buttonBack buttonBack-primary">
-                  <a className="link_hitdata" href="/guiaelectoral/senado">
+                
+                  <a  type="button" className="buttonBack buttonBack-primary" href="/guiaelectoral/senado">
                     <i className="bi bi-arrow-left-circle"></i>
                     &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
                   </a>
-                </button>
+                
               </div>
             </div>
           </div>

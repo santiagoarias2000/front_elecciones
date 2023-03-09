@@ -129,14 +129,14 @@ export const Senado = () => {
             }}
           >
             <div className="text-center">
-              <button
+              <a
                 type="button"
                 className="buttonBack buttonBack-primary"
-                onClick={() => regresar(-1)}
+                href="/"
               >
                 <i className="bi bi-arrow-left-circle"></i>
                 &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
-              </button>
+              </a>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <a
                 href="/guiaelectoral/senadoelegidos"
@@ -230,14 +230,14 @@ export const Senado = () => {
             }}
           >
             <div className="text-center">
-              <button
+              <a
                 type="button"
                 className="buttonBack buttonBack-primary"
-                onClick={() => regresar(-1)}
+                href="/"
               >
                 <i className="bi bi-arrow-left-circle"></i>
                 &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
-              </button>
+              </a>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <a
                 href="/guiaelectoral/senadoelegidos"

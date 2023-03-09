@@ -173,6 +173,22 @@ export const SenadoIndigenaDepartamento = () => {
             </table>
           </div>
           <div className="dropdown">
+                  <div
+                    className="container-fluid display-flex justify-content-center"
+                    style={{
+                      color: "#FFFFFF",
+                      height: "40px",
+                      alignItems: "right",
+                    }}
+                  >
+                    <h6 className="my-4" style={{ color: "#052851", textAlign:"right" }}>
+                    {arrayDepartamento.map((myDepartment) => (
+                      <b style={{color:"#D9224E"}}>VOTACIÓN TOTAL: {myDepartment.votos}</b>
+                    ))}
+                  </h6>
+                  </div>
+            </div>
+          <div className="dropdown">
             <div
               className="container-fluid display-flex justify-content-center"
               style={{
@@ -183,12 +199,12 @@ export const SenadoIndigenaDepartamento = () => {
               }}
             >
               <div className="text-center">
-                <button type="button" className="buttonBack buttonBack-primary">
-                  <a href="/guiaelectoral/senado" className="link_hitdata">
+                
+                  <a href="/guiaelectoral/senado"  type="button" className="buttonBack buttonBack-primary">
                     <i className="bi bi-arrow-left-circle"></i>
                     &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
                   </a>
-                </button>
+                
               </div>
             </div>
           </div>
