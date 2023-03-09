@@ -135,7 +135,7 @@ export const Senado = () => {
                 onClick={() => regresar(-1)}
               >
                 <i className="bi bi-arrow-left-circle"></i>
-                &nbsp;&nbsp;REGRESAR A ELEGIR ELECCION
+                &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
               </button>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <a
@@ -154,7 +154,7 @@ export const Senado = () => {
         <div className="cardBorder card">
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b className="title_table">TERRITORIAL INDIGENA</b>
+              <b className="title_table">TERRITORIAL INDÍGENA</b>
             </div>
           </div>
 
@@ -236,7 +236,7 @@ export const Senado = () => {
                 onClick={() => regresar(-1)}
               >
                 <i className="bi bi-arrow-left-circle"></i>
-                &nbsp;&nbsp;REGRESAR A ELEGIR ELECCION
+                &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
               </button>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <a

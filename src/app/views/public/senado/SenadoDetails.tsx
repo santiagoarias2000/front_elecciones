@@ -28,10 +28,6 @@ export const SenadoDetails = () => {
   const [seleccion, setSeleccion] = useState<number | undefined>();
   const [arrayVotesSenadoDepartamental, setArrayVotesSenadoDepartamental] =
     useState<VotesCongreso[]>([]);
-  const [
-    arrayVotesSenadoDepartamentalMunicipio,
-    setArrayVotesSenadoDepartamentalMunicipio,
-  ] = useState<VotesCongreso[]>([]);
   const [arrayMunicipios, setMunicipios] = useState<Municipality[]>([]);
   const [arrayDepartamento, setArrayDepartamento] = useState<Department[]>([]);
 
@@ -44,19 +40,7 @@ export const SenadoDetails = () => {
       setArrayVotesSenadoDepartamental(result);
     }
   };
-  const getVotosSenadoDepartamentalMunicipio = async () => {
-    const urlCargarDepartamento =
-      ApiBack.SENADO_NACIONAL_MUNICIPIO +
-      "/" +
-      idDepartment +
-      "/municipio/" +
-      seleccion;
-    const result = await ServicePrivate.requestGET(urlCargarDepartamento);
-    setArrayVotesSenadoDepartamentalMunicipio(result);
-    if (result) {
-      setArrayVotesSenadoDepartamentalMunicipio(result);
-    }
-  };
+ 
   const getMunicipios = async () => {
     const resultado = await ServicePrivate.requestGET(
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
@@ -76,9 +60,6 @@ export const SenadoDetails = () => {
     getMunicipios();
     getDepartamento();
   }, [idDepartment]);
-  // useEffect(()=>{
-  //   getVotosSenadoDepartamentalMunicipio();
-  // },[arrayVotesSenadoDepartamentalMunicipio])
 
   return (
     <main id="main" className="main">
@@ -103,7 +84,8 @@ export const SenadoDetails = () => {
           <div className="container">
             <div className="row">
               <div className="col-sm ">
-                <div className="dropdown text-center my-3">
+                <div className="dropdown align-content-center my-3">
+                  <div className="dropdown">
                   <button
                     type="button"
                     className="buttonBack buttonBack-primary dropdown-toggle"
@@ -112,10 +94,9 @@ export const SenadoDetails = () => {
                   >
                     Municipios
                   </button>
-                  <ul className="dropdown-menu">
+                  <ul className="dropdown-menu selectpicker" data-live-search="true" style={{ maxHeight: "200px", overflowY: "auto" }} >
                     <li>
-                    
-                      {arrayMunicipios.map((miMunicipio, indice) => (
+                      {arrayMunicipios.map((miMunicipio) => (
                         <a
                           className="dropdown-item"
                           href={
@@ -123,15 +104,17 @@ export const SenadoDetails = () => {
                             idDepartment +
                             "/municipio/" +
                             miMunicipio.id_municipality
-                          } >
+                          }
+                        >
                           {miMunicipio.name_municipality}
                         </a>
                       ))}
                     </li>
                   </ul>
+                  </div>
                 </div>
               </div>
-               <div className="col">
+              <div className="col">
                 <h5 className="text-center my-4" style={{ color: "#052851" }}>
                   {arrayDepartamento.map((myDepartment) => (
                     <b>{myDepartment.name_department}</b>
@@ -151,7 +134,6 @@ export const SenadoDetails = () => {
               </div>
             </div>
           </div>
-
 
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
@@ -191,11 +173,6 @@ export const SenadoDetails = () => {
                       <td className="text-center">{myVotes.votos}</td>
                     </tr>
                   ))}
-                {/* {arrayVotesSenadoDepartamentalMunicipio.map((myMunis,index)=>(
-                        <tr key={index}>
-                          <td className="text-center">{myMunis.votos}</td>
-                        </tr>
-                      ))} */}
               </tbody>
             </table>
           </div>
@@ -226,13 +203,11 @@ export const SenadoDetails = () => {
               }}
             >
               <div className="text-center">
-                <button
-                  type="button"
-                  className="buttonBack buttonBack-primary"
-                  onClick={() => regresar(-1)}
-                >
-                  <i className="bi bi-arrow-left-circle"></i>
-                  &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                <button type="button" className="buttonBack buttonBack-primary">
+                  <a className="link_hitdata" href="/guiaelectoral/senado">
+                    <i className="bi bi-arrow-left-circle"></i>
+                    &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                  </a>
                 </button>
               </div>
             </div>

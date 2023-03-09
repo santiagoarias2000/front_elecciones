@@ -20,6 +20,8 @@ import { CamaraIndigenaDepartamentoMunicipio } from "../../views/public/camara/C
 import { CamaraTerritorialDepartamentoMunicipio } from "../../views/public/camara/CamaraTerritorialDepartamentoMunicipio";
 import { CamaraAfroDescendienteDepartamentoMunicipio } from "../../views/public/camara/CamaraAfroDescendienteDepartamentoMunicipio";
 import { SenadoIndigenaDepartamento } from "../../views/public/senado/SenadoIndigenaDepartamento";
+import { SenadoIndigenaDepartamentalMunicipio } from "../../views/public/senado/SenadoIndigenaDepartamentalMunicipio";
+
 import { PresidenciaAll } from "../../views/public/presidencia/presidenciaAll";
 
 //Lazy structure from use the all tsx
@@ -30,6 +32,7 @@ const LazySenadoElegidos =lazy(()=>import("../../views/public/senado/SenadoElegi
 const LazySenado =lazy(()=>import("../../views/public/senado/Senado").then(()=>({default:Senado})));
 const LazySenadoDetails =lazy(()=>import("../../views/public/senado/SenadoDetails").then(()=>({default:SenadoDetails})));
 const LazySenadoIndigenaDepartamental =lazy(()=>import("../../views/public/senado/SenadoIndigenaDepartamento").then(()=>({default:SenadoIndigenaDepartamento})));
+const LazySenadoIndigenaMunicipal =lazy(()=>import("../../views/public/senado/SenadoIndigenaDepartamentalMunicipio").then(()=>({default:SenadoIndigenaDepartamentalMunicipio})));
 const LazyPrivacyPolicies =lazy(()=>import("../../views/shared/PrivacyPolicies").then(()=>({default:PrivacyPolicies})));
 const LazyNotFound = lazy(()=> import("../../views/shared/NotFound").then(()=>({default:NotFound})))
 const LazyLegalWarning = lazy(()=> import("../../views/shared/LegalWarning").then(()=>({default:LegalWarning})))
