@@ -218,18 +218,17 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
             }}
           >
             <div className="text-center">
-              <button type="button" className="buttonBack buttonBack-primary">
-                <a
-                  className="link_hitdata"
-                  href={
-                    "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
-                    idDepartment
-                  }
-                >
-                  <i className="bi bi-arrow-left-circle"></i>
-                  &nbsp;&nbsp;REGRESAR A ELEGIR MUNICIPIO
-                </a>
-              </button>
+              <a
+                type="button"
+                className="buttonBack buttonBack-primary"
+                href={
+                  "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
+                  idDepartment
+                }
+              >
+                <i className="bi bi-arrow-left-circle"></i>
+                &nbsp;&nbsp;REGRESAR A ELEGIR MUNICIPIO
+              </a>
             </div>
           </div>
         </div>

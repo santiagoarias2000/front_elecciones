@@ -213,9 +213,8 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
             }}
           >
             <div className="text-center">
-              <button type="button" className="buttonBack buttonBack-primary">
                 <a
-                  className="link_hitdata"
+                  type="button" className="buttonBack buttonBack-primary"
                   href={
                     "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
                     idDepartment
@@ -224,7 +223,6 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                   <i className="bi bi-arrow-left-circle"></i>
                   &nbsp;&nbsp;REGRESAR A ELEGIR MUNICIPIO
                 </a>
-              </button>
             </div>
           </div>
         </div>

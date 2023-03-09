@@ -241,7 +241,7 @@ export const Senado = () => {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <a
                 href="/guiaelectoral/senadoelegidos"
-                className="buttonBack buttonBack-primary"
+                className="buttonBack buttonBack-primary link_hitdata"
               >
                 <i className="bi bi-search "></i> &nbsp; CONOZCA LOS 108
                 ELEGIDOS
