@@ -205,6 +205,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                   </tbody>
                 </table>
               </div>
+              
               <div className="dropdown">
                 <div
                   className="container-fluid display-flex justify-content-center"

@@ -38,7 +38,7 @@ export const SenadoIndigenaDepartamento = () =>{
 
   const getDepartamento = async () => {
     const result = await ServicePrivate.requestGET(
-      ApiBack.NOMBRE_DEPARTAMENTO + "/" + idDepartment
+      ApiBack.NOMBRE_DEPARTAMENTO_INDIGENA_SENADO + "/" + idDepartment
     );
     setArrayDepartamento(result);
   };
@@ -179,6 +179,22 @@ export const SenadoIndigenaDepartamento = () =>{
                 </tbody>
               </table>
             </div>
+            <div className="dropdown">
+                  <div
+                    className="container-fluid display-flex justify-content-center"
+                    style={{
+                      color: "#FFFFFF",
+                      height: "40px",
+                      alignItems: "right",
+                    }}
+                  >
+                    <h6 className="my-4" style={{ color: "#052851", textAlign:"right" }}>
+                    {arrayDepartamento.map((myDepartment) => (
+                      <b style={{color:"#D9224E"}}>VOTACIÓN TOTAL: {myDepartment.votos}</b>
+                    ))}
+                  </h6>
+                  </div>
+                </div>
             <div className="dropdown">
               <div
                 className="container-fluid display-flex justify-content-center"

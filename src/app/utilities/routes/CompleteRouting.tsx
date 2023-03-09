@@ -9,12 +9,13 @@ import { Blog } from "../../containers/Blog";
 const LazyMainBoard = lazy(()=>import("../../containers/MainBoard").then(()=>({default:MainBoard})));
 const LazyBlog =lazy(()=>import("../../containers/Blog").then(()=>({default:Blog})));
 const LazyNotFound = lazy(()=> import("../../views/shared/NotFound").then(()=>({default:NotFound})))
+const LazyWelcome =lazy(()=>import("../../containers/Welcome").then(()=>({default:Welcome})));
 
 export const CompleteRouting = () => {
   return (
     <Routes>
-      <Route path="/guiaelectoral/*" element={<LazyMainBoard/>}/>
-      <Route path="/*" element={<LazyNotFound/>}/>
+      <Route path="/*" element={<LazyMainBoard/>}/>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

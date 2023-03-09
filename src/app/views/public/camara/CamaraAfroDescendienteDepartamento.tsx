@@ -43,7 +43,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
   };
   const getDepartamento = async () => {
     const result = await ServicePrivate.requestGET(
-      ApiBack.NOMBRE_DEPARTAMENTO + "/" + idDepartment
+      ApiBack.NOMBRE_DEPARTAMENTO_AFRODESCENDIENTE + "/" + idDepartment
     );
     setArrayDepartamento(result);
   };
@@ -174,6 +174,27 @@ export const CamaraAfroDescendienteDepartamento = () => {
                   className="container-fluid display-flex justify-content-center"
                   style={{
                     color: "#FFFFFF",
+                    height: "40px",
+                    alignItems: "right",
+                  }}
+                >
+                  <h6
+                    className="my-4"
+                    style={{ color: "#052851", textAlign: "right" }}
+                  >
+                    {arrayDepartamento.map((myDepartment) => (
+                      <b style={{ color: "#D9224E" }}>
+                        VOTACIÓN TOTAL: {myDepartment.votos}
+                      </b>
+                    ))}
+                  </h6>
+                </div>
+              </div>
+              <div className="dropdown">
+                <div
+                  className="container-fluid display-flex justify-content-center"
+                  style={{
+                    color: "#FFFFFF",
                     height: "80px",
                     display: "flex",
                     alignItems: "center",
@@ -184,10 +205,9 @@ export const CamaraAfroDescendienteDepartamento = () => {
                       type="button"
                       className="buttonBack buttonBack-primary"
                     >
-                      <a className="link_hitdata"
-                        href={
-                          "/guiaelectoral/camara/"
-                        }
+                      <a
+                        className="link_hitdata"
+                        href={"/guiaelectoral/camara/"}
                       >
                         <i className="bi bi-arrow-left-circle"></i>
                         &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO

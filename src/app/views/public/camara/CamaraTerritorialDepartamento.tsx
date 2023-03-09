@@ -44,7 +44,7 @@ export const CamaraTerritorialDepartamento = () => {
 
   const getDepartamento = async () => {
     const result = await ServicePrivate.requestGET(
-      ApiBack.NOMBRE_DEPARTAMENTO + "/" + idDepartment
+      ApiBack.NOMBRE_DEPARTAMENTO_TERRITORIAL + "/" + idDepartment
     );
     setArrayDepartamento(result);
   };
@@ -76,9 +76,7 @@ export const CamaraTerritorialDepartamento = () => {
       {/* Ejemplo de una tabla para presentación de datos: Inicio */}
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div
-            className="container-fluid display-flex justify-content-center container_title"
-          >
+          <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
               <b className="title_table">TERRITORIAL DEPARTAMENTAL</b>
             </div>
@@ -174,6 +172,22 @@ export const CamaraTerritorialDepartamento = () => {
                 </table>
               </div>
               <div className="dropdown">
+                  <div
+                    className="container-fluid display-flex justify-content-center"
+                    style={{
+                      color: "#FFFFFF",
+                      height: "40px",
+                      alignItems: "right",
+                    }}
+                  >
+                    <h6 className="my-4" style={{ color: "#052851", textAlign:"right" }}>
+                    {arrayDepartamento.map((myDepartment) => (
+                      <b style={{color:"#D9224E"}}>VOTACIÓN TOTAL: {myDepartment.votos}</b>
+                    ))}
+                  </h6>
+                  </div>
+                </div>
+              <div className="dropdown">
                 <div
                   className="container-fluid display-flex justify-content-center"
                   style={{
@@ -188,10 +202,9 @@ export const CamaraTerritorialDepartamento = () => {
                       type="button"
                       className="buttonBack buttonBack-primary"
                     >
-                      <a className="link_hitdata"
-                        href={
-                          "/guiaelectoral/camara/"
-                        }
+                      <a
+                        className="link_hitdata"
+                        href={"/guiaelectoral/camara/"}
                       >
                         <i className="bi bi-arrow-left-circle"></i>
                         &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
@@ -199,6 +212,7 @@ export const CamaraTerritorialDepartamento = () => {
                     </button>
                   </div>
                 </div>
+                
               </div>
             </div>
           </div>
