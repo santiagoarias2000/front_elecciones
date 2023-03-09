@@ -203,6 +203,7 @@ export const CamaraIndigenaDepartamento = () => {
                   </h6>
                   </div>
                 </div>
+                
               <div className="dropdown">
                 <div
                   className="container-fluid display-flex justify-content-center"
