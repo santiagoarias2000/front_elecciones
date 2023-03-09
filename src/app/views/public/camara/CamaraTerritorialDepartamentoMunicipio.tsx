@@ -106,7 +106,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
         <div className="container">
           <div className="row">
             <div className="col-sm ">
-              <div className="dropdown align-content-center my-3">
+              <div className="dropdown text-center my-3">
                 <button
                   type="button"
                   className="buttonBack buttonBack-primary dropdown-toggle"
@@ -169,7 +169,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
             className="colorTable table table-hover"
             style={{ background: "#05285190 !important" }}
           >
-            <thead>
+            <thead className="container_table">
               <tr>
                 <th className="text-center" style={{ width: "30%" }}>
                   NOMBRE CANDIDATO
@@ -185,7 +185,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                 </th>
               </tr>
             </thead>
-            <tbody className="color">
+            <tbody className="color container_table">
               {arrayVotesCamaraTerritorial
                 .filter((myVotes) => {
                   return search.toLowerCase() === ""
@@ -195,9 +195,9 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                 .map((myVotes, contador) => (
                   <tr key={contador}>
                     <td className="text-left">
-                      <b>{myVotes.candidate_name}</b>
+                      <b className="fst-italic">{myVotes.candidate_name}</b>
                     </td>
-                    <td className="text-left">
+                    <td className="text-center">
                       {myVotes.description_politicparty}
                     </td>
                     <td className="text-center">{myVotes.votos}</td>
