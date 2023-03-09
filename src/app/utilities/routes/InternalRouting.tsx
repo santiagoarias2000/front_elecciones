@@ -56,8 +56,8 @@ export const InternalRouting = () => {
       <Route path="/guiaelectoral/camara" element={<LazyCamara />} />
       <Route path="/guiaelectoral/senadoelegidos" element={<LazySenadoElegidos />} />
       <Route path="/guiaelectoral/senado" element={<LazySenado/>} />
-      <Route path="/guiaelectoral/senado/senadoDetails/:idDepartment" element={<LazySenadoNacionalDepartamento />} />
-      <Route path="/guiaelectoral/senado/senadoDetails/:idDepartment/municipio/:idMunicipality" element={<LazySenadoNacionalMunicipio />} />
+      <Route path="/guiaelectoral/senado/nacional/:idDepartment" element={<LazySenadoNacionalDepartamento />} />
+      <Route path="/guiaelectoral/senado/nacional/:idDepartment/municipio/:idMunicipality" element={<LazySenadoNacionalMunicipio />} />
       <Route path="/guiaelectoral/senado/indigena/departamento/:idDepartment" element={<LazySenadoIndigenaDepartamental />} />
       <Route path="/guiaelectoral/senado/indigena/departamento/:idDepartment/municipio/:idMunicipality" element={<LazySenadoIndigenaMunicipio />} />
       

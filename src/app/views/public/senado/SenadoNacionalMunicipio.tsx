@@ -115,9 +115,10 @@ export const SenadoNacionalMunicipio = () => {
                       Municipios
                     </button>
                     <ul  className="dropdown-menu selectpicker" data-live-search="true" style={{ maxHeight: "200px", overflowY: "auto" }} > 
+                    <input type="text" placeholder="Busqueda..." />
                       <li>
                         {arrayMunicipio.map((myMunicipality) => (
-                          <a className="dropdown-item" href={ "/guiaelectoral/senado/senadoDetails/" + myMunicipality.id_department + "/municipio/" + myMunicipality.id_municipality } > {myMunicipality.name_municipality} </a>
+                          <a className="dropdown-item" href={ "/guiaelectoral/senado/nacional/" + myMunicipality.id_department + "/municipio/" + myMunicipality.id_municipality } > {myMunicipality.name_municipality} </a>
                         ))}
                       </li>
                     </ul>

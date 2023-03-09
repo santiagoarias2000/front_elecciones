@@ -92,6 +92,7 @@ export const SenadoIndigenaDepartamento = () => {
                     Municipios
                   </button>
                   <ul className="dropdown-menu selectpicker" data-live-search="true" style={{ maxHeight: "200px", overflowY: "auto" }} >
+                    <input type="text" placeholder="Busqueda..." />
                     <li>
                       {arrayMunicipios.map((miMunicipio, indice) => (
                         <a

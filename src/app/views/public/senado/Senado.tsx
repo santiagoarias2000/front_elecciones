@@ -107,7 +107,7 @@ export const Senado = () => {
                         <Link
                           className="text-center"
                           to={
-                            "/guiaelectoral/senado/senadoDetails/" +
+                            "/guiaelectoral/senado/nacional/" +
                             myVotes.department.idDepartment
                           }
                         >

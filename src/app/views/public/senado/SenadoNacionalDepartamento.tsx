@@ -99,7 +99,7 @@ export const SenadoNacionalDepartamento = () => {
                         <a
                           className="dropdown-item"
                           href={
-                            "/guiaelectoral/senado/senadoDetails/" +
+                            "/guiaelectoral/senado/nacional/" +
                             idDepartment +
                             "/municipio/" +
                             miMunicipio.id_municipality
