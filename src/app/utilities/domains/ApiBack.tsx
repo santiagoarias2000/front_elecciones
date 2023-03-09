@@ -1,5 +1,5 @@
 const ApiBack = {
-  URL: "http://localhost:3123",
+  URL: "3.95.63.32:3123",
 
   
   COMBOBOX_MUNICIPIO: "/api/public/municipio",

@@ -1667,6 +1667,22 @@ h6 {
     height: 1rem;
   }
 }
+.container_table tr .text_left{
+  padding-left: 8vw;
+  text-align: justify !important; 
+}
+
+.container_total{
+  color:#052851
+}
+
+@media (max-width: 768px) {
+  .container_total{
+    font-size: 10px;
+  }
+
+}
+
 @media (max-width: 768px) {
   .container_table {
     font-size: 7.5px;

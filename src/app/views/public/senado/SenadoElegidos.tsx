@@ -77,7 +77,7 @@ export const SenadoElegidos = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchNacional(e.target.value)}
-                      placeholder="Buscar Nombre Candidato"
+                      placeholder="Buscar Nombre candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
                     ></Form.Control>
