@@ -83,7 +83,7 @@ export const Camara = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchTerritorial(e.target.value)}
-                      placeholder="Buscar Nombre Departamento"
+                      placeholder="Buscar departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                     ></Form.Control>
                   </InputGroup>
@@ -144,20 +144,36 @@ export const Camara = () => {
                   ))}
               </tbody>
             </table>
+            
           </div>
-          <div
-            className="container-fluid display-flex justify-content-center"
-            style={{
-              color: "#FFFFFF",
-              height: "80px",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <div className="text-center">
-              {/*  <Pagination className="prueba">{items}</Pagination> */}
-            </div>
-          </div>
+          
+          <div className="dropdown">
+                <div
+                  className="container-fluid display-flex justify-content-center"
+                  style={{
+                    color: "#FFFFFF",
+                    height: "80px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <div className="text-center">
+                    <button
+                      type="button"
+                      className="buttonBack buttonBack-primary"
+                    >
+                      <a className="link_hitdata"
+                        href={
+                          "/"
+                        }
+                      >
+                        <i className="bi bi-arrow-left-circle"></i>
+                        &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                      </a>
+                    </button>
+                  </div>
+                </div>
+              </div>
         </div>
       </div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
@@ -187,7 +203,7 @@ export const Camara = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchIndigena(e.target.value)}
-                      placeholder="Buscar Nombre Departamento"
+                      placeholder="Buscar departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                     ></Form.Control>
                   </InputGroup>
@@ -249,19 +265,33 @@ export const Camara = () => {
               </tbody>
             </table>
           </div>
-          <div
-            className="container-fluid display-flex justify-content-center"
-            style={{
-              color: "#FFFFFF",
-              height: "80px",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <div className="text-center">
-              {/*  <Pagination className="prueba">{items}</Pagination> */}
-            </div>
-          </div>
+          <div className="dropdown">
+                <div
+                  className="container-fluid display-flex justify-content-center"
+                  style={{
+                    color: "#FFFFFF",
+                    height: "80px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <div className="text-center">
+                    <button
+                      type="button"
+                      className="buttonBack buttonBack-primary"
+                    >
+                      <a className="link_hitdata"
+                        href={
+                          "/"
+                        }
+                      >
+                        <i className="bi bi-arrow-left-circle"></i>
+                        &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                      </a>
+                    </button>
+                  </div>
+                </div>
+              </div>
         </div>
       </div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
@@ -290,7 +320,7 @@ export const Camara = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchAfro(e.target.value)}
-                      placeholder="Buscar Nombre Departamento"
+                      placeholder="Buscar departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                     ></Form.Control>
                   </InputGroup>
@@ -352,19 +382,33 @@ export const Camara = () => {
               </tbody>
             </table>
           </div>
-          <div
-            className="container-fluid display-flex justify-content-center"
-            style={{
-              color: "#FFFFFF",
-              height: "80px",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <div className="text-center">
-              {/* <Pagination className="prueba">{items}</Pagination> */}
-            </div>
-          </div>
+          <div className="dropdown">
+                <div
+                  className="container-fluid display-flex justify-content-center"
+                  style={{
+                    color: "#FFFFFF",
+                    height: "80px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <div className="text-center">
+                    <button
+                      type="button"
+                      className="buttonBack buttonBack-primary"
+                    >
+                      <a className="link_hitdata"
+                        href={
+                          "/"
+                        }
+                      >
+                        <i className="bi bi-arrow-left-circle"></i>
+                        &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                      </a>
+                    </button>
+                  </div>
+                </div>
+              </div>
         </div>
       </div>
 

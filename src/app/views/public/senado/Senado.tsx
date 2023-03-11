@@ -107,7 +107,7 @@ export const Senado = () => {
                         <Link
                           className="text-center"
                           to={
-                            "/guiaelectoral/senado/senadoDetails/" +
+                            "/guiaelectoral/senado/nacional/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -129,14 +129,14 @@ export const Senado = () => {
             }}
           >
             <div className="text-center">
-              <button
+              <a
                 type="button"
                 className="buttonBack buttonBack-primary"
-                onClick={() => regresar(-1)}
+                href="/"
               >
                 <i className="bi bi-arrow-left-circle"></i>
-                &nbsp;&nbsp;REGRESAR A ELEGIR ELECCION
-              </button>
+                &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
+              </a>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <a
                 href="/guiaelectoral/senadoelegidos"
@@ -154,7 +154,7 @@ export const Senado = () => {
         <div className="cardBorder card">
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b className="title_table">TERRITORIAL INDIGENA</b>
+              <b className="title_table">TERRITORIAL INDÍGENA</b>
             </div>
           </div>
 
@@ -230,14 +230,14 @@ export const Senado = () => {
             }}
           >
             <div className="text-center">
-              <button
+              <a
                 type="button"
                 className="buttonBack buttonBack-primary"
-                onClick={() => regresar(-1)}
+                href="/"
               >
                 <i className="bi bi-arrow-left-circle"></i>
-                &nbsp;&nbsp;REGRESAR A ELEGIR ELECCION
-              </button>
+                &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
+              </a>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <a
                 href="/guiaelectoral/senadoelegidos"

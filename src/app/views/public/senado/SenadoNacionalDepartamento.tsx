@@ -6,11 +6,10 @@ import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import Municipality from "../../../models/Municipality";
 import e from "express";
-import { SenadoMuni } from "./SenadoMuni";
 import { useNavigate, useParams } from "react-router-dom";
 import Department from "../../../models/Department";
 
-export const SenadoDetails = () => {
+export const SenadoNacionalDepartamento = () => {
   let { idDepartment } = useParams();
 
   const [searchNacional, setSearchNacional] = useState("");
@@ -28,10 +27,6 @@ export const SenadoDetails = () => {
   const [seleccion, setSeleccion] = useState<number | undefined>();
   const [arrayVotesSenadoDepartamental, setArrayVotesSenadoDepartamental] =
     useState<VotesCongreso[]>([]);
-  const [
-    arrayVotesSenadoDepartamentalMunicipio,
-    setArrayVotesSenadoDepartamentalMunicipio,
-  ] = useState<VotesCongreso[]>([]);
   const [arrayMunicipios, setMunicipios] = useState<Municipality[]>([]);
   const [arrayDepartamento, setArrayDepartamento] = useState<Department[]>([]);
 
@@ -44,19 +39,7 @@ export const SenadoDetails = () => {
       setArrayVotesSenadoDepartamental(result);
     }
   };
-  const getVotosSenadoDepartamentalMunicipio = async () => {
-    const urlCargarDepartamento =
-      ApiBack.SENADO_NACIONAL_MUNICIPIO +
-      "/" +
-      idDepartment +
-      "/municipio/" +
-      seleccion;
-    const result = await ServicePrivate.requestGET(urlCargarDepartamento);
-    setArrayVotesSenadoDepartamentalMunicipio(result);
-    if (result) {
-      setArrayVotesSenadoDepartamentalMunicipio(result);
-    }
-  };
+ 
   const getMunicipios = async () => {
     const resultado = await ServicePrivate.requestGET(
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
@@ -67,7 +50,7 @@ export const SenadoDetails = () => {
 
   const getDepartamento = async () => {
     const result = await ServicePrivate.requestGET(
-      ApiBack.NOMBRE_DEPARTAMENTO + "/" + idDepartment
+      ApiBack.NOMBRE_DEPARTAMENTO_NACIONAL + "/" + idDepartment
     );
     setArrayDepartamento(result);
   };
@@ -76,9 +59,6 @@ export const SenadoDetails = () => {
     getMunicipios();
     getDepartamento();
   }, [idDepartment]);
-  // useEffect(()=>{
-  //   getVotosSenadoDepartamentalMunicipio();
-  // },[arrayVotesSenadoDepartamentalMunicipio])
 
   return (
     <main id="main" className="main">
@@ -104,6 +84,7 @@ export const SenadoDetails = () => {
             <div className="row">
               <div className="col-sm ">
                 <div className="dropdown align-content-center my-3">
+                  <div className="dropdown">
                   <button
                     type="button"
                     className="buttonBack buttonBack-primary dropdown-toggle"
@@ -112,20 +93,16 @@ export const SenadoDetails = () => {
                   >
                     Municipios
                   </button>
-                  <ul className="dropdown-menu">
+                  <ul className="dropdown-menu selectpicker" data-live-search="true" style={{ maxHeight: "200px", overflowY: "auto" }} >
                     <li>
-                    
-                      {arrayMunicipios.map((miMunicipio, indice) => (
+                      {arrayMunicipios.map((miMunicipio) => (
                         <a
                           className="dropdown-item"
                           href={
-                            "/guiaelectoral/senado/senadoDetails/" +
+                            "/guiaelectoral/senado/nacional/" +
                             idDepartment +
                             "/municipio/" +
                             miMunicipio.id_municipality
-                          }
-                          onClick={() =>
-                            setSeleccion(miMunicipio.id_municipality)
                           }
                         >
                           {miMunicipio.name_municipality}
@@ -133,9 +110,10 @@ export const SenadoDetails = () => {
                       ))}
                     </li>
                   </ul>
+                  </div>
                 </div>
               </div>
-               <div className="col">
+              <div className="col">
                 <h5 className="text-center my-4" style={{ color: "#052851" }}>
                   {arrayDepartamento.map((myDepartment) => (
                     <b>{myDepartment.name_department}</b>
@@ -156,7 +134,6 @@ export const SenadoDetails = () => {
             </div>
           </div>
 
-
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
               className="colorTable table table-hover"
@@ -164,13 +141,13 @@ export const SenadoDetails = () => {
             >
               <thead className="container_table">
                 <tr>
-                  <th className="text-center" style={{ width: "40%" }}>
+                  <th className="text-center" style={{ width: "35%" }}>
                     NOMBRE CANDIDATO
                   </th>
-                  <th className="text-center" style={{ width: "20%" }}>
+                  <th className="text-center" style={{ width: "35%" }}>
                     ROLE
                   </th>
-                  <th className="text-center" style={{ width: "20%" }}>
+                  <th className="text-center" style={{ width: "30%" }}>
                     TOTAL VOTOS NACIONAL
                   </th>
                 </tr>
@@ -195,14 +172,25 @@ export const SenadoDetails = () => {
                       <td className="text-center">{myVotes.votos}</td>
                     </tr>
                   ))}
-                {/* {arrayVotesSenadoDepartamentalMunicipio.map((myMunis,index)=>(
-                        <tr key={index}>
-                          <td className="text-center">{myMunis.votos}</td>
-                        </tr>
-                      ))} */}
               </tbody>
             </table>
           </div>
+          <div className="dropdown">
+                  <div
+                    className="container-fluid display-flex justify-content-center"
+                    style={{
+                      color: "#FFFFFF",
+                      height: "40px",
+                      alignItems: "right",
+                    }}
+                  >
+                    <h6 className="my-4" style={{ color: "#052851", textAlign:"right" }}>
+                    {arrayDepartamento.map((myDepartment) => (
+                      <b style={{color:"#D9224E"}}>VOTACIÓN TOTAL: {myDepartment.votos}</b>
+                    ))}
+                  </h6>
+                  </div>
+            </div>
           <div className="dropdown">
             <div
               className="container-fluid display-flex justify-content-center"
@@ -214,14 +202,12 @@ export const SenadoDetails = () => {
               }}
             >
               <div className="text-center">
-                <button
-                  type="button"
-                  className="buttonBack buttonBack-primary"
-                  onClick={() => regresar(-1)}
-                >
-                  <i className="bi bi-arrow-left-circle"></i>
-                  &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
-                </button>
+                
+                  <a  type="button" className="buttonBack buttonBack-primary" href="/guiaelectoral/senado">
+                    <i className="bi bi-arrow-left-circle"></i>
+                    &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                  </a>
+                
               </div>
             </div>
           </div>

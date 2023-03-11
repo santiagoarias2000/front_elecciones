@@ -8,10 +8,10 @@ import { Form, InputGroup, Pagination } from "react-bootstrap";
 import Municipality from "../../../models/Municipality";
 
 type miObjeto = { nombreMuni: number };
-export const SenadoIndigenaDepartamentalMunicipio = () =>{
+export const SenadoNacionalMunicipio = () => {
   let { idDepartment } = useParams();
   let { idMunicipality } = useParams();
-    const [search, setSearch] = useState("");
+  const [search, setSearch] = useState("");
   console.log(search);
   const setOption = ["nameDepartment", "descriptionRole", "votos"];
   const [sort, setSort] = useState("");
@@ -25,22 +25,24 @@ export const SenadoIndigenaDepartamentalMunicipio = () =>{
       </Pagination.Item>
     );
   }
-  
-  const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
+
+  const [arrayVotesSenadoTerritorial, setArrayVotosSenadoTerritorial] =
     useState<VotesCongreso[]>([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
-  const [arrayNameMunicipality, setArrayNameMunicipality] = useState< Municipality[] >([]);
+  const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
+    Municipality[]
+  >([]);
   const regresar = useNavigate();
 
-  const getVotosCamaraTerritorial = async () => {
+  const getVotosSenadoTerritorial = async () => {
     const result = await ServicePrivate.requestGET(
-      ApiBack.SENADO_INDIGENA_MUNICIPIO +
+      ApiBack.SENADO_NACIONAL_MUNICIPIO +
         "/" +
         idDepartment +
         "/municipio/" +
         idMunicipality
     );
-    setArrayVotosCamaraTerritorial(result);
+    setArrayVotosSenadoTerritorial(result);
   };
   // get vehicle to be displayed in the combo
   const getMuniciaplity = async () => {
@@ -56,7 +58,7 @@ export const SenadoIndigenaDepartamentalMunicipio = () =>{
     setArrayNameMunicipality(result);
   };
   useEffect(() => {
-    getVotosCamaraTerritorial();
+    getVotosSenadoTerritorial();
     getMuniciaplity();
     getNameMunicipality();
   }, []);
@@ -93,54 +95,48 @@ export const SenadoIndigenaDepartamentalMunicipio = () =>{
             }}
           >
             <div className="text-center">
-              <b className="title_table">CIRCUNCRIPCIÓN MUNICIPAL INDIGENA</b>
+              <b className="title_table">
+                CIRCUNCRIPCIÓN TERRITORIAL MUNICIPAL
+              </b>
             </div>
           </div>
 
           <div className="d-flex">
             <div className="container">
               <div className="row">
-                <div className="col-sm align-content-center my-3">
+                <div className="dropdown col-sm align-content-center my-3">
                   <div className="dropdown">
-                    <a
+                    <button
+                      type="button"
                       className="buttonBack buttonBack-primary dropdown-toggle"
-                      role="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
                       Municipios
-                    </a>
-                    <ul className="dropdown-menu">
-                      {arrayMunicipio.map((myMunicipality) => (
-                        <a
-                          href={
-                            "/guiaelectoral/senado/indigena/departamento/municipio/departamento/" +
-                            myMunicipality.id_department +
-                            "/municipio/" +
-                            myMunicipality.id_municipality
-                          }
-                        >
-                          <li>
-                            <a className="dropdown-item">
-                              {myMunicipality.name_municipality}
-                            </a>
-                          </li>
-                        </a>
-                      ))}
+                    </button>
+                    <ul  className="dropdown-menu selectpicker" data-live-search="true" style={{ maxHeight: "200px", overflowY: "auto" }} > 
+                    <input type="text" placeholder="Busqueda..." />
+                      <li>
+                        {arrayMunicipio.map((myMunicipality) => (
+                          <a className="dropdown-item" href={ "/guiaelectoral/senado/nacional/" + myMunicipality.id_department + "/municipio/" + myMunicipality.id_municipality } > {myMunicipality.name_municipality} </a>
+                        ))}
+                      </li>
                     </ul>
                   </div>
                 </div>
 
-                <h5 className="text-center my-4" style={{ color: "#052851" }}>
-                  {arrayNameMunicipality.map((myNameMunicipality) => (
-                    <b>
-                      {myNameMunicipality.name_municipality}
-                      {" ("}
-                      {myNameMunicipality.department}
-                      {")"}
-                    </b>
-                  ))}
-                </h5>
+                <div className="col">
+                  <h5 className="text-center my-4" style={{ color: "#052851" }}>
+                    {arrayNameMunicipality.map((myNameMunicipality) => (
+                      <b>
+                        {myNameMunicipality.name_municipality}
+                        {" ("}
+                        {myNameMunicipality.department}
+                        {")"}
+                      </b>
+                    ))}
+                  </h5>
+                </div>
                 <div className="col-sm">
                   <Form id="form_conta">
                     <InputGroup className="my-3 container_form">
@@ -164,24 +160,21 @@ export const SenadoIndigenaDepartamentalMunicipio = () =>{
               <thead className="container_table">
                 <tr>
                   <th className="text-center" style={{ width: "30%" }}>
-                    NOMBRE CANDIDATO
-                  </th>
-                  <th className="text-center" style={{ width: "40%" }}>
                     PARTIDO POLÍTICO
                   </th>
-                  <th className="text-center" style={{ width: "5 %" }}>
+                  <th className="text-center" style={{ width: "30%" }}>
+                    NOMBRE CANDIDATO
+                  </th>
+                  <th className="text-center" style={{ width: "20%" }}>
                     VOTOS DEPARTAMENTO
                   </th>
-                  <th className="text-center" style={{ width: "25 %" }}>
-                    MUNICIPIO
-                  </th>
-                  <th className="text-center" style={{ width: "5 %" }}>
+                  <th className="text-center" style={{ width: "20%" }}>
                     VOTOS MUNICIPIO
                   </th>
                 </tr>
               </thead>
               <tbody className="color">
-                {arrayVotesCamaraTerritorial
+                {arrayVotesSenadoTerritorial
                   .filter((myVotes) => {
                     return search.toLowerCase() === ""
                       ? myVotes
@@ -192,15 +185,12 @@ export const SenadoIndigenaDepartamentalMunicipio = () =>{
                   .map((myVotes, contador) => (
                     <tr key={contador}>
                       <td className="text-center">
-                        <b>{myVotes.candidate_name}</b>
-                      </td>
-                      <td className="text-center">
                         {myVotes.description_politicparty}
                       </td>
-                      <td className="text-center">{myVotes.votos}</td>
                       <td className="text-center">
-                        {myVotes.municipality.name_municipality}
+                        <b>{myVotes.candidate_name}</b>
                       </td>
+                      <td className="text-center">{myVotes.votos}</td>
                       <td className="text-center">{myVotes.votos_muicipio}</td>
                     </tr>
                   ))}
@@ -219,14 +209,16 @@ export const SenadoIndigenaDepartamentalMunicipio = () =>{
               }}
             >
               <div className="text-center">
-                <button
-                  type="button"
-                  className="buttonBack buttonBack-primary"
-                  onClick={() => regresar(-1)}
-                >
-                  <i className="bi bi-arrow-left-circle"></i>
-                  &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
-                </button>
+                
+                  <a
+                     type="button"
+                     className="buttonBack buttonBack-primary"
+                    href={"/guiaelectoral/senado/senadoDetails/" + idDepartment}
+                  >
+                    <i className="bi bi-arrow-left-circle"></i>
+                    &nbsp;&nbsp;REGRESAR A ELEGIR UN MUNICIPIO
+                  </a>
+                
               </div>
             </div>
           </div>

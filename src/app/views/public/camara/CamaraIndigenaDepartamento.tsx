@@ -31,7 +31,6 @@ export const CamaraIndigenaDepartamento = () => {
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
   const [arrayDepartamento, setArrayDepartamento] = useState<Department[]>([]);
 
-
   const getVotosCamaraIndigena = async () => {
     const result = await ServicePrivate.requestGET(
       ApiBack.CAMARA_INDIGENA_DEPARTAMENTO + "/" + idDepartment
@@ -46,14 +45,14 @@ export const CamaraIndigenaDepartamento = () => {
   };
   const getDepartamento = async () => {
     const result = await ServicePrivate.requestGET(
-      ApiBack.NOMBRE_DEPARTAMENTO + "/" + idDepartment
+      ApiBack.NOMBRE_DEPARTAMENTO_INDIGENA + "/" + idDepartment
     );
     setArrayDepartamento(result);
   };
   useEffect(() => {
     getVotosCamaraIndigena();
     getMuniciaplity();
-    getDepartamento()
+    getDepartamento();
   }, []);
 
   return (
@@ -75,7 +74,7 @@ export const CamaraIndigenaDepartamento = () => {
       {/* Navegación estilo breadcrumb: Fin */}
 
       {/* Ejemplo de una tabla para presentación de datos: Inicio */}
-      <div className="col-lg-12" style={{ color: "#052851 !important" }}>
+      <div className="col-lg-12" style={{ color: "#052851 !important" }}></div>
         <div className="cardBorder card">
           <div
             className="container-fluid display-flex justify-content-center"
@@ -91,54 +90,61 @@ export const CamaraIndigenaDepartamento = () => {
               <b>TERRITORIAL INDIGENA</b>
             </div>
           </div>
-          <div className="container text-center">
-            <div className="row">
-              <div className="col align-content-center my-3">
-                <a
+          <div className="container">
+          <div className="row">
+            <div className="col-sm ">
+              <div className="dropdown align-content-center my-3">
+                <button
+                  type="button"
                   className="buttonBack buttonBack-primary dropdown-toggle"
-                  role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   Municipios
-                </a>
-                <ul className="dropdown-menu">
-                  {arrayMunicipio.map((myMunicipality, indice) => (
-                    <a
-                      href={
-                        "/guiaelectoral/camara/circuncripcion/indigena/departamento/" +
-                        myMunicipality.id_department +
-                        "/municipio/" +
-                        myMunicipality.id_municipality
-                      }
-                    >
-                      <li>
-                        <a className="dropdown-item">
-                          {myMunicipality.name_municipality}
-                        </a>
-                      </li>
-                    </a>
-                  ))}
+                </button>
+                <ul
+                  className="dropdown-menu selectpicker"
+                  data-live-search="true"
+                  style={{ maxHeight: "200px", overflowY: "auto" }}
+                >
+                  <li>
+                    {arrayMunicipio.map((myMunicipality, indice) => (
+                      <a
+                        className="dropdown-item"
+                        href={
+                          "/guiaelectoral/camara/circuncripcion/indigena/departamento/" +
+                          myMunicipality.id_department +
+                          "/municipio/" +
+                          myMunicipality.id_municipality
+                        }
+                      >
+                        {myMunicipality.name_municipality}
+                      </a>
+                    ))}
+                  </li>
                 </ul>
               </div>
-              <div className="col">
-                <h5 className="text-center my-4" style={{ color: "#052851" }}>
-                  {arrayDepartamento.map((myDepartment) => (
-                    <b>{myDepartment.name_department}</b>
-                  ))}
-                </h5>
-              </div>
-              <div className="col">
-                <Form>
-                  <InputGroup className="my-3">
-                    <Form.Control
-                      onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Buscar Partido Político"
-                      style={{ textAlign: "right", marginRight: "5px" }}
-                    ></Form.Control>
-                  </InputGroup>
-                </Form>
-              </div>
+            </div>
+            <div className="col">
+              <h5 className="text-center my-4" style={{ color: "#052851" }}>
+                {arrayDepartamento.map((myDepartment) => (
+                  <b>{myDepartment.name_department}</b>
+                ))}
+              </h5>
+            </div>
+            <div className="col-sm">
+              <Form id="form_conta">
+                <InputGroup className="my-3 container_form">
+                  <Form.Control
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Buscar partido político"
+                    style={{ textAlign: "right", marginRight: "5px" }}
+                  ></Form.Control>
+                </InputGroup>
+              </Form>
+            </div>
+          </div>
+        </div>
 
               <div className="table-wrapper-scroll-y my-custom-scrollbar">
                 <table
@@ -169,10 +175,10 @@ export const CamaraIndigenaDepartamento = () => {
                       })
                       .map((myVotes, contador) => (
                         <tr key={contador}>
-                          <td className="text-center">
+                          <td className="text-left">
                             <b>{myVotes.candidate_name}</b>
                           </td>
-                          <td className="text-center">
+                          <td className="text-left">
                             {myVotes.description_politicparty}
                           </td>
                           <td className="text-center">{myVotes.votos}</td>
@@ -181,6 +187,23 @@ export const CamaraIndigenaDepartamento = () => {
                   </tbody>
                 </table>
               </div>
+              <div className="dropdown">
+                  <div
+                    className="container-fluid display-flex justify-content-center"
+                    style={{
+                      color: "#FFFFFF",
+                      height: "40px",
+                      alignItems: "right",
+                    }}
+                  >
+                    <h6 className="my-4" style={{ color: "#052851", textAlign:"right" }}>
+                    {arrayDepartamento.map((myDepartment) => (
+                      <b style={{color:"#D9224E"}}>VOTACIÓN TOTAL: {myDepartment.votos}</b>
+                    ))}
+                  </h6>
+                  </div>
+                </div>
+                
               <div className="dropdown">
                 <div
                   className="container-fluid display-flex justify-content-center"
@@ -196,8 +219,11 @@ export const CamaraIndigenaDepartamento = () => {
                       type="button"
                       className="buttonBack buttonBack-primary"
                     >
-                      <a className="link_hitdata">
-                        <Link to={"/guiaelectoral/camara/"}></Link>
+                      <a className="link_hitdata"
+                        href={
+                          "/guiaelectoral/camara/"
+                        }
+                      >
                         <i className="bi bi-arrow-left-circle"></i>
                         &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
                       </a>
@@ -206,10 +232,6 @@ export const CamaraIndigenaDepartamento = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-
       {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>
   );
