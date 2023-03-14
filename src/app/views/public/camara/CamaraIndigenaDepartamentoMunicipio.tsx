@@ -11,6 +11,8 @@ import Department from "../../../models/Department";
 
 export const CamaraIndigenaDepartamentoMunicipio = () => {
   const [search, setSearch] = useState("");
+  const [searchMunicipio,setSearchMunicipio] = useState('');
+
   const regresar = useNavigate();
 
   let active = 1;
@@ -113,8 +115,15 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
                   data-live-search="true"
                   style={{ maxHeight: "200px", overflowY: "auto" }}
                 >
+                  <input type="text" placeholder="Busqueda..." onChange={event=>{setSearchMunicipio(event.target.value)}}/>
                   <li>
-                    {arrayMunicipio.map((myMunicipality, indice) => (
+                    {arrayMunicipio.filter((val)=>{
+                        if (searchMunicipio == "") {
+                         return val;
+                        }else if(val.name_municipality.toLocaleLowerCase().includes(searchMunicipio.toLocaleLowerCase())){
+                         return val;
+                        }})
+                    .map((myMunicipality, indice) => (
                       <a
                         className="dropdown-item"
                         href={
@@ -146,9 +155,9 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
             <div className="col-sm">
               <Form id="form_conta">
                 <InputGroup className="my-3 container_form">
-                  <Form.Control
+                <Form.Control
                     onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Buscar candidato político"
+                    placeholder="Buscar un Partido Político o Candidato"
                     style={{ textAlign: "right", marginRight: "5px" }}
                   ></Form.Control>
                 </InputGroup>
@@ -178,13 +187,17 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
                 </th>
               </tr>
             </thead>
-            <tbody className="color">
+            <tbody className="color container_table">
               {arrayVotesCamaraIndiegena
-                .filter((myVotes) => {
-                  return search.toLowerCase() === ""
-                    ? myVotes
-                    : myVotes.candidate_name.toLowerCase().includes(search);
-                })
+                .filter((val=>{
+                  if(search == ""){
+                    return val;
+                  }else if(val.description_politicparty.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                    return val;
+                  }else if(val.candidate_name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                    return val;
+                  }
+                }))
                 .map((myVotes, contador) => (
                   <tr key={contador}>
                     <td className="text-left">

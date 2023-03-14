@@ -12,9 +12,8 @@ export const SenadoIndigenaMunicipio = () => {
   let { idDepartment } = useParams();
   let { idMunicipality } = useParams();
   const [search, setSearch] = useState("");
-  console.log(search);
-  const setOption = ["nameDepartment", "descriptionRole", "votos"];
-  const [sort, setSort] = useState("");
+  const [searchMunicipio,setSearchMunicipio] = useState('');
+
 
   let active = 1;
   let items = [];
@@ -110,8 +109,16 @@ export const SenadoIndigenaMunicipio = () => {
                     data-live-search="true"
                     style={{ maxHeight: "200px", overflowY: "auto" }}
                   >
+                  <input type="text" placeholder="Busqueda..." onChange={event=>{setSearchMunicipio(event.target.value)}}/>
                     <li>
-                      {arrayMunicipio.map((myMunicipality) => (
+                      {arrayMunicipio
+                      .filter((val)=>{
+                        if (searchMunicipio == "") {
+                         return val;
+                        }else if(val.name_municipality.toLocaleLowerCase().includes(searchMunicipio.toLocaleLowerCase())){
+                         return val;
+                        }})
+                      .map((myMunicipality) => (
                         <a
                           className="dropdown-item"
                           href={
@@ -146,7 +153,7 @@ export const SenadoIndigenaMunicipio = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Buscar partido político"
+                      placeholder="Buscar un Partido Político o Candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
                     ></Form.Control>
                   </InputGroup>
@@ -178,13 +185,15 @@ export const SenadoIndigenaMunicipio = () => {
               </thead>
               <tbody className="color">
                 {arrayVotesCamaraTerritorial
-                  .filter((myVotes) => {
-                    return search.toLowerCase() === ""
-                      ? myVotes
-                      : myVotes.description_politicparty
-                          .toLowerCase()
-                          .includes(search);
-                  })
+                  .filter((val=>{
+                    if(search == ""){
+                      return val;
+                    }else if(val.description_politicparty.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                      return val;
+                    }else if(val.candidate_name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                      return val;
+                    }
+                  }))
                   .map((myVotes, contador) => (
                     <tr key={contador}>
                       <td className="text-center">

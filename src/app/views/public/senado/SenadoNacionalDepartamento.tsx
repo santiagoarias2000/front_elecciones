@@ -12,17 +12,9 @@ import Department from "../../../models/Department";
 export const SenadoNacionalDepartamento = () => {
   let { idDepartment } = useParams();
 
-  const [searchNacional, setSearchNacional] = useState("");
-  let active = 1;
-  let items = [];
-  for (let number = 1; number <= 5; number++) {
-    items.push(
-      <Pagination.Item key={number} active={number === active}>
-        {number}
-      </Pagination.Item>
-    );
-  }
-
+  const [search, setSearch] = useState("");
+  const [searchMunicipio,setSearchMunicipio] = useState('');
+  
   const regresar = useNavigate();
   const [seleccion, setSeleccion] = useState<number | undefined>();
   const [arrayVotesSenadoDepartamental, setArrayVotesSenadoDepartamental] =
@@ -94,8 +86,16 @@ export const SenadoNacionalDepartamento = () => {
                     Municipios
                   </button>
                   <ul className="dropdown-menu selectpicker" data-live-search="true" style={{ maxHeight: "200px", overflowY: "auto" }} >
+                  <input type="text" placeholder="Busqueda..." onChange={event=>{setSearchMunicipio(event.target.value)}}/>
                     <li>
-                      {arrayMunicipios.map((miMunicipio) => (
+                      {arrayMunicipios
+                      .filter((val)=>{
+                        if (searchMunicipio == "") {
+                         return val;
+                        }else if(val.name_municipality.toLocaleLowerCase().includes(searchMunicipio.toLocaleLowerCase())){
+                         return val;
+                        }})
+                      .map((miMunicipio) => (
                         <a
                           className="dropdown-item"
                           href={
@@ -123,11 +123,11 @@ export const SenadoNacionalDepartamento = () => {
               <div className="col-sm">
               <Form id="form_conta">
             <InputGroup className="my-3 container_form">
-              <Form.Control
-                onChange={(e) => setSearchNacional(e.target.value)}
-                placeholder="Buscar Nombre Candidato"
-                style={{ textAlign: "right", marginRight: "5px" }}
-              ></Form.Control>
+            <Form.Control
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Buscar un Partido Político o Candidato"
+                    style={{ textAlign: "right", marginRight: "5px" }}
+            ></Form.Control>
             </InputGroup>
           </Form>
               </div>
@@ -154,14 +154,15 @@ export const SenadoNacionalDepartamento = () => {
               </thead>
               <tbody className="color container_table">
                 {arrayVotesSenadoDepartamental
-                  .filter((myVotes) => {
-                    return searchNacional.toLowerCase() === ""
-                      ? myVotes
-                      : myVotes.candidate_name
-                          .toLowerCase()
-                          .includes(searchNacional);
-                  })
-                  .map((myVotes, contador) => (
+                  .filter((val=>{
+                    if(search == ""){
+                      return val;
+                    }else if(val.description_politicparty.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                      return val;
+                    }else if(val.candidate_name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                      return val;
+                    }
+                  })).map((myVotes, contador) => (
                     <tr key={contador}>
                       <td className="text-center">
                         <b>{myVotes.candidate_name}</b>
@@ -184,7 +185,7 @@ export const SenadoNacionalDepartamento = () => {
                       alignItems: "right",
                     }}
                   >
-                    <h6 className="my-4" style={{ color: "#052851", textAlign:"right" }}>
+                    <h6 className="my-4" style={{ color: "#052851", textAlign:"right" ,paddingRight:"100px"}}>
                     {arrayDepartamento.map((myDepartment) => (
                       <b style={{color:"#D9224E"}}>VOTACIÓN TOTAL: {myDepartment.votos}</b>
                     ))}

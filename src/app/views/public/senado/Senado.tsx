@@ -91,11 +91,11 @@ export const Senado = () => {
               <tbody className="color container_table">
                 {arrayVotesSenadoNacional
                   .filter((myVotes) => {
-                    return searchNacional.toLowerCase() === ""
+                    return searchNacional === ""
                       ? myVotes
-                      : myVotes.candidate_name
+                      : myVotes.department.name_department
                           .toLowerCase()
-                          .includes(searchNacional);
+                          .includes(searchNacional.toLocaleLowerCase());
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
@@ -168,7 +168,7 @@ export const Senado = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchIndigena(e.target.value)}
-                      placeholder="Buscar Nombre Candidato"
+                      placeholder="Buscar nombre departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
                     ></Form.Control>
@@ -197,11 +197,11 @@ export const Senado = () => {
               <tbody className="color container_table">
                 {arrayVotesSenadoIndigena
                   .filter((myVotes) => {
-                    return searchNacional.toLowerCase() === ""
+                    return searchIndigena === ""
                       ? myVotes
-                      : myVotes.candidate_name
+                      : myVotes.department.name_department
                           .toLowerCase()
-                          .includes(searchNacional);
+                          .includes(searchIndigena.toLocaleLowerCase());
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>

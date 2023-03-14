@@ -7,24 +7,12 @@ import senado from "../../../../assets/image/SENADO.jpg";
 import { Form, InputGroup, Pagination } from "react-bootstrap";
 import Municipality from "../../../models/Municipality";
 
-type miObjeto = { nombreMuni: number };
 export const SenadoNacionalMunicipio = () => {
+  //Variables
   let { idDepartment } = useParams();
   let { idMunicipality } = useParams();
   const [search, setSearch] = useState("");
-  console.log(search);
-  const setOption = ["nameDepartment", "descriptionRole", "votos"];
-  const [sort, setSort] = useState("");
-
-  let active = 1;
-  let items = [];
-  for (let number = 1; number <= 5; number++) {
-    items.push(
-      <Pagination.Item key={number} active={number === active}>
-        {number}
-      </Pagination.Item>
-    );
-  }
+  const [searchMunicipio, setSearchMunicipio] = useState("");
 
   const [arrayVotesSenadoTerritorial, setArrayVotosSenadoTerritorial] =
     useState<VotesCongreso[]>([]);
@@ -32,8 +20,8 @@ export const SenadoNacionalMunicipio = () => {
   const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
     Municipality[]
   >([]);
-  const regresar = useNavigate();
 
+  //Funciones
   const getVotosSenadoTerritorial = async () => {
     const result = await ServicePrivate.requestGET(
       ApiBack.SENADO_NACIONAL_MUNICIPIO +
@@ -57,6 +45,7 @@ export const SenadoNacionalMunicipio = () => {
     );
     setArrayNameMunicipality(result);
   };
+
   useEffect(() => {
     getVotosSenadoTerritorial();
     getMuniciaplity();
@@ -114,12 +103,45 @@ export const SenadoNacionalMunicipio = () => {
                     >
                       Municipios
                     </button>
-                    <ul  className="dropdown-menu selectpicker" data-live-search="true" style={{ maxHeight: "200px", overflowY: "auto" }} > 
-                    <input type="text" placeholder="Busqueda..." />
+                    <ul
+                      className="dropdown-menu selectpicker"
+                      data-live-search="true"
+                      style={{ maxHeight: "200px", overflowY: "auto" }}
+                    >
+                      <input
+                        type="text"
+                        placeholder="Busqueda..."
+                        onChange={(event) => {
+                          setSearchMunicipio(event.target.value);
+                        }}
+                      />
                       <li>
-                        {arrayMunicipio.map((myMunicipality) => (
-                          <a className="dropdown-item" href={ "/guiaelectoral/senado/nacional/" + myMunicipality.id_department + "/municipio/" + myMunicipality.id_municipality } > {myMunicipality.name_municipality} </a>
-                        ))}
+                        {arrayMunicipio
+                          .filter((val) => {
+                            if (searchMunicipio == "") {
+                              return val;
+                            } else if (
+                              val.name_municipality
+                                .toLocaleLowerCase()
+                                .includes(searchMunicipio.toLocaleLowerCase())
+                            ) {
+                              return val;
+                            }
+                          })
+                          .map((myMunicipality) => (
+                            <a
+                              className="dropdown-item"
+                              href={
+                                "/guiaelectoral/senado/nacional/" +
+                                myMunicipality.id_department +
+                                "/municipio/" +
+                                myMunicipality.id_municipality
+                              }
+                            >
+                              {" "}
+                              {myMunicipality.name_municipality}{" "}
+                            </a>
+                          ))}
                       </li>
                     </ul>
                   </div>
@@ -142,7 +164,7 @@ export const SenadoNacionalMunicipio = () => {
                     <InputGroup className="my-3 container_form">
                       <Form.Control
                         onChange={(e) => setSearch(e.target.value)}
-                        placeholder="Buscar partido político"
+                        placeholder="Buscar un Partido Político o Candidato"
                         style={{ textAlign: "right", marginRight: "5px" }}
                       ></Form.Control>
                     </InputGroup>
@@ -175,13 +197,15 @@ export const SenadoNacionalMunicipio = () => {
               </thead>
               <tbody className="color">
                 {arrayVotesSenadoTerritorial
-                  .filter((myVotes) => {
-                    return search.toLowerCase() === ""
-                      ? myVotes
-                      : myVotes.description_politicparty
-                          .toLowerCase()
-                          .includes(search);
-                  })
+                  .filter((val=>{
+                    if(search == ""){
+                      return val;
+                    }else if(val.description_politicparty.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                      return val;
+                    }else if(val.candidate_name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                      return val;
+                    }
+                  }))
                   .map((myVotes, contador) => (
                     <tr key={contador}>
                       <td className="text-center">
@@ -209,16 +233,14 @@ export const SenadoNacionalMunicipio = () => {
               }}
             >
               <div className="text-center">
-                
-                  <a
-                     type="button"
-                     className="buttonBack buttonBack-primary"
-                    href={"/guiaelectoral/senado/senadoDetails/" + idDepartment}
-                  >
-                    <i className="bi bi-arrow-left-circle"></i>
-                    &nbsp;&nbsp;REGRESAR A ELEGIR UN MUNICIPIO
-                  </a>
-                
+                <a
+                  type="button"
+                  className="buttonBack buttonBack-primary"
+                  href={"/guiaelectoral/senado/senadoDetails/" + idDepartment}
+                >
+                  <i className="bi bi-arrow-left-circle"></i>
+                  &nbsp;&nbsp;REGRESAR A ELEGIR UN MUNICIPIO
+                </a>
               </div>
             </div>
           </div>

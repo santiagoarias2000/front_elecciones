@@ -10,6 +10,8 @@ import Department from "../../../models/Department";
 
 export const CamaraAfroDescendienteDepartamento = () => {
   const [search, setSearch] = useState("");
+  const [searchMunicipio,setSearchMunicipio] = useState('');
+
   let active = 1;
   let items = [];
   for (let number = 1; number <= 5; number++) {
@@ -96,8 +98,15 @@ export const CamaraAfroDescendienteDepartamento = () => {
                   data-live-search="true"
                   style={{ maxHeight: "200px", overflowY: "auto" }}
                 >
+                  <input type="text" placeholder="Busqueda..." onChange={event=>{setSearchMunicipio(event.target.value)}}/>
                   <li>
-                    {arrayMunicipio.map((myMunicipality, indice) => (
+                    {arrayMunicipio.filter((val)=>{
+                        if (searchMunicipio == "") {
+                         return val;
+                        }else if(val.name_municipality.toLocaleLowerCase().includes(searchMunicipio.toLocaleLowerCase())){
+                         return val;
+                        }})
+                    .map((myMunicipality, indice) => (
                       <a
                         className="dropdown-item"
                         href={
@@ -144,7 +153,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
                 <InputGroup className="my-3 container_form">
                   <Form.Control
                     onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Buscar partido político"
+                    placeholder="Buscar un Partido Político o Candidato"
                     style={{ textAlign: "right", marginRight: "5px" }}
                   ></Form.Control>
                 </InputGroup>
@@ -174,13 +183,15 @@ export const CamaraAfroDescendienteDepartamento = () => {
                   </thead>
                   <tbody className="color">
                     {arrayVotesCamaraAfroDescendiente
-                      .filter((myVotes) => {
-                        return search.toLowerCase() === ""
-                          ? myVotes
-                          : myVotes.description_politicparty
-                              .toLowerCase()
-                              .includes(search);
-                      })
+                     .filter((val=>{
+                      if(search == ""){
+                        return val;
+                      }else if(val.description_politicparty.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                        return val;
+                      }else if(val.candidate_name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                        return val;
+                      }
+                    }))
                       .map((myVotes, contador) => (
                         <tr key={contador}>
                           <td className="text-left">

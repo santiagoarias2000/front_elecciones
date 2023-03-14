@@ -114,11 +114,11 @@ export const Camara = () => {
               <tbody className="color container_table">
                 {arrayVotesCamaraTerritorial
                   .filter((myVotes) => {
-                    return searchTerritorial.toLowerCase() === ""
+                    return searchTerritorial === ""
                       ? myVotes
                       : myVotes.department.name_department
                           .toLowerCase()
-                          .includes(searchTerritorial);
+                          .includes(searchTerritorial.toLowerCase());
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
@@ -234,11 +234,11 @@ export const Camara = () => {
               <tbody className="color container_table">
                 {arrayVotesCamaraIndigena
                   .filter((myVotes) => {
-                    return searchIndigena.toLowerCase() === ""
+                    return searchIndigena === ""
                       ? myVotes
                       : myVotes.department.name_department
                           .toLowerCase()
-                          .includes(searchIndigena);
+                          .includes(searchIndigena.toLowerCase());
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
@@ -351,11 +351,11 @@ export const Camara = () => {
               <tbody className="color container_table">
                 {arrayVotesCamaraAfroDescendiente
                   .filter((myVotes) => {
-                    return searchAfro.toLowerCase() === ""
+                    return searchAfro === ""
                       ? myVotes
                       : myVotes.department.name_department
                           .toLowerCase()
-                          .includes(searchAfro);
+                          .includes(searchAfro.toLowerCase());
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>

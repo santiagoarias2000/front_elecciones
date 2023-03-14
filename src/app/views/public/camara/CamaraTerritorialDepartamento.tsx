@@ -11,6 +11,8 @@ import Department from "../../../models/Department";
 
 export const CamaraTerritorialDepartamento = () => {
   const [search, setSearch] = useState("");
+  const [searchMunicipio,setSearchMunicipio] = useState('');
+
   const regresar = useNavigate();
 
   let active = 1;
@@ -84,7 +86,7 @@ export const CamaraTerritorialDepartamento = () => {
         <div className="container">
           <div className="row">
             <div className="col-sm ">
-              <div className="dropdown align-content-center my-3">
+              <div className="dropdown text-center my-3">
                 <button
                   type="button"
                   className="buttonBack buttonBack-primary dropdown-toggle"
@@ -98,8 +100,15 @@ export const CamaraTerritorialDepartamento = () => {
                   data-live-search="true"
                   style={{ maxHeight: "200px", overflowY: "auto" }}
                 >
+                  <input type="text" placeholder="Busqueda..." onChange={event=>{setSearchMunicipio(event.target.value)}}/>
                   <li>
-                    {arrayMunicipio.map((myMunicipality, indice) => (
+                    {arrayMunicipio.filter((val)=>{
+                        if (searchMunicipio == "") {
+                         return val;
+                        }else if(val.name_municipality.toLocaleLowerCase().includes(searchMunicipio.toLocaleLowerCase())){
+                         return val;
+                        }})
+                    .map((myMunicipality, indice) => (
                       <a
                         className="dropdown-item"
                         href={
@@ -128,7 +137,7 @@ export const CamaraTerritorialDepartamento = () => {
                 <InputGroup className="my-3 container_form">
                   <Form.Control
                     onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Buscar partido político"
+                    placeholder="Buscar un Partido Político o Candidato"
                     style={{ textAlign: "right", marginRight: "5px" }}
                   ></Form.Control>
                 </InputGroup>
@@ -157,13 +166,15 @@ export const CamaraTerritorialDepartamento = () => {
             </thead>
             <tbody className="color container_table">
               {arrayVotesCamaraTerritorial
-                .filter((myVotes) => {
-                  return search.toLowerCase() === ""
-                    ? myVotes
-                    : myVotes.description_politicparty
-                        .toLowerCase()
-                        .includes(search);
-                })
+               .filter((val=>{
+                if(search == ""){
+                  return val;
+                }else if(val.description_politicparty.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                  return val;
+                }else if(val.candidate_name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                  return val;
+                }
+              }))
                 .map((myVotes, contador) => (
                   <tr key={contador}>
                     <td className="text-left">
@@ -187,7 +198,7 @@ export const CamaraTerritorialDepartamento = () => {
                       alignItems: "right",
                     }}
                   >
-                    <h6 className="my-4" style={{ color: "#052851", textAlign:"right" }}>
+                    <h6 className="my-4" style={{ color: "#052851", textAlign:"right",paddingRight:"100px" }}>
                     {arrayDepartamento.map((myDepartment) => (
                       <b style={{color:"#D9224E"}}>VOTACIÓN TOTAL: {myDepartment.votos}</b>
                     ))}

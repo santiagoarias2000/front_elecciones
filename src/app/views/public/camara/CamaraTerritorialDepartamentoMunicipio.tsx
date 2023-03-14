@@ -6,17 +6,11 @@ import Form from "react-bootstrap/Form";
 import camara from "../../../../assets/image/camara.jpg";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
-import {
-  Col,
-  Dropdown,
-  InputGroup,
-  Pagination,
-  Row,
-  Table,
-} from "react-bootstrap";
+import { Col, Dropdown, InputGroup, Pagination, Row, Table, } from "react-bootstrap";
 
 export const CamaraTerritorialDepartamentoMunicipio = () => {
   const [search, setSearch] = useState("");
+  const [searchMunicipio, setSearchMunicipio] = useState("");
   let active = 1;
   let items = [];
   for (let number = 1; number <= 5; number++) {
@@ -44,6 +38,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
         idMunicipality
     );
     setArrayVotosCamaraTerritorial(result);
+    
   };
 
   // get vehicle to be displayed in the combo
@@ -120,8 +115,15 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                   data-live-search="true"
                   style={{ maxHeight: "200px", overflowY: "auto" }}
                 >
+                  <input type="text" placeholder="Busqueda..." onChange={event=>{setSearchMunicipio(event.target.value)}}/>
                   <li>
-                    {arrayMunicipio.map((myMunicipality, indice) => (
+                    {arrayMunicipio.filter((val)=>{
+                        if (searchMunicipio == "") {
+                         return val;
+                        }else if(val.name_municipality.toLocaleLowerCase().includes(searchMunicipio.toLocaleLowerCase())){
+                         return val;
+                        }})
+                    .map((myMunicipality, indice) => (
                       <a
                         className="dropdown-item"
                         href={
@@ -151,11 +153,11 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
               </h5>
             </div>
             <div className="col-sm">
-              <Form id="form_conta">
+            <Form id="form_conta">
                 <InputGroup className="my-3 container_form">
                   <Form.Control
                     onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Buscar candidato político"
+                    placeholder="Buscar un Partido Político o Candidato"
                     style={{ textAlign: "right", marginRight: "5px" }}
                   ></Form.Control>
                 </InputGroup>
@@ -187,11 +189,15 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
             </thead>
             <tbody className="color">
               {arrayVotesCamaraTerritorial
-                .filter((myVotes) => {
-                  return search.toLowerCase() === ""
-                    ? myVotes
-                    : myVotes.candidate_name.toLowerCase().includes(search);
-                })
+                .filter((val=>{
+                  if(search == ""){
+                    return val;
+                  }else if(val.description_politicparty.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                    return val;
+                  }else if(val.candidate_name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                    return val;
+                  }
+                }))
                 .map((myVotes, contador) => (
                   <tr key={contador}>
                     <td className="text-left">
