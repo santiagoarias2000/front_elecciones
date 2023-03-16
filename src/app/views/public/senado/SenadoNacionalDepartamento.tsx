@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import senado from "../../../../assets/image/SENADO.jpg";
 import VotesCongreso from "../../../models/VotesCongreso";
-import { Col, Form, InputGroup, Pagination, Row, Table } from "react-bootstrap";
+import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import Municipality from "../../../models/Municipality";
 import e from "express";
 import { useNavigate, useParams } from "react-router-dom";
 import Department from "../../../models/Department";
+import ImageSpinner from "../../../../assets/image/errorlogo.png";
 
 export const SenadoNacionalDepartamento = () => {
   let { idDepartment } = useParams();
@@ -15,8 +16,9 @@ export const SenadoNacionalDepartamento = () => {
   const [search, setSearch] = useState("");
   const [searchMunicipio,setSearchMunicipio] = useState('');
   
-  const regresar = useNavigate();
-  const [seleccion, setSeleccion] = useState<number | undefined>();
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
+
   const [arrayVotesSenadoDepartamental, setArrayVotesSenadoDepartamental] =
     useState<VotesCongreso[]>([]);
   const [arrayMunicipios, setMunicipios] = useState<Municipality[]>([]);
@@ -29,6 +31,7 @@ export const SenadoNacionalDepartamento = () => {
     setArrayVotesSenadoDepartamental(result);
     if (result) {
       setArrayVotesSenadoDepartamental(result);
+      setShow(false);
     }
   };
  
@@ -163,7 +166,7 @@ export const SenadoNacionalDepartamento = () => {
                   })).map((myVotes, contador) => (
                     <tr key={contador}>
                       <td className="text-center">
-                        <b>{myVotes.candidate_name}</b>
+                        {myVotes.candidate_name}
                       </td>
                       <td className="text-center">
                         {myVotes.description_politicparty}
@@ -211,6 +214,28 @@ export const SenadoNacionalDepartamento = () => {
             </div>
           </div>
         </div>
+        <Modal
+            show={show}
+            backdrop="static"
+            keyboard={false}
+            onHide={handleClose}
+            centered
+            style={{background:"#FFFFFFBF !important"}}
+          >
+            <Modal.Body className="text-center">
+              <div className="text-center">
+                <img src={ImageSpinner} />
+                <div className="mt-4">
+                  <div
+                    className="spinner-border text-danger"
+                    role="status"
+                  >
+                    <span className=" visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </div>
+            </Modal.Body>
+          </Modal>
       </div>
 
       <div className="position-absolute bottom-50 end-50"></div>
