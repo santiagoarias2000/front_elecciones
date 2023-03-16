@@ -6,16 +6,20 @@ import Form from "react-bootstrap/Form";
 import camara from "../../../../assets/image/camara.jpg";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
-import { Col, Dropdown, InputGroup, Pagination, Row, Table, } from "react-bootstrap";
+import { Col, Dropdown, InputGroup, Modal, Pagination, Row, Table, } from "react-bootstrap";
 import Department from "../../../models/Department";
 import CandidatosCamara from "../../../mocks/models/CandidatosCamara";
 import { ARREGLO_CANDIDATOS_ELEGIDOS } from "../../../mocks/candidatos-mocks";
+import ImageSpinner from "../../../../assets/image/errorlogo.png";
+
 
 export const CamaraTerritorialDepartamentoMunicipio = () => {
   const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState<
     CandidatosCamara[]
   >(ARREGLO_CANDIDATOS_ELEGIDOS);
   const [search, setSearch] = useState("");
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
   const [searchMunicipio, setSearchMunicipio] = useState("");
   let active = 1;
   let items = [];
@@ -45,6 +49,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
         idMunicipality
     );
     setArrayVotosCamaraTerritorial(result);
+    setShow(false);
     
   };
   const getMunicipality = async () => {
@@ -305,6 +310,28 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
             </div>
           </div>
         </div>
+        <Modal
+            show={show}
+            backdrop="static"
+            keyboard={false}
+            onHide={handleClose}
+            centered
+            style={{background:"#FFFFFFBF !important"}}
+          >
+            <Modal.Body className="text-center">
+              <div className="text-center">
+                <img src={ImageSpinner} />
+                <div className="mt-4">
+                  <div
+                    className="spinner-border text-danger"
+                    role="status"
+                  >
+                    <span className=" visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </div>
+            </Modal.Body>
+          </Modal>
       </div>
       {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>
