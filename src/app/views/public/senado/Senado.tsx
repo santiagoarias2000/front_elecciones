@@ -107,7 +107,7 @@ export const Senado = () => {
                             myVotes.department.idDepartment
                           }
                         >
-                          <i className="fa-solid fa-magnifying-glass fa-sm"></i>
+                          <i className="fa-solid fa-magnifying-glass fa-sm text-danger"></i>
                         </Link>
                       </td>
                     </tr>
@@ -207,7 +207,7 @@ export const Senado = () => {
                       <td className="text-center">{myVotes.votos}</td>
                       <td className="text-center align-middle">
                         <Link className="text-center" to={"/guiaelectoral/senado/indigena/departamento/"+myVotes.department.idDepartment}>
-                          <i className="fa-solid fa-magnifying-glass fa-sm"></i>
+                          <i className="fa-solid fa-magnifying-glass fa-sm text-danger"></i>
                         </Link>
                       </td>
                     </tr>

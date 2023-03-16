@@ -6,7 +6,16 @@ import Form from "react-bootstrap/Form";
 import camara from "../../../../assets/image/camara.jpg";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
-import { Col, InputGroup, Pagination, Row, Table } from "react-bootstrap";
+import ImageSpinner from "../../../../assets/image/errorlogo.png";
+import {
+  Col,
+  InputGroup,
+  Modal,
+  Pagination,
+  Row,
+  Spinner,
+  Table,
+} from "react-bootstrap";
 import Department from "../../../models/Department";
 import CandidatosCamara from "../../../mocks/models/CandidatosCamara";
 import { ARREGLO_CANDIDATOS_ELEGIDOS } from "../../../mocks/candidatos-mocks";
@@ -18,6 +27,9 @@ export const CamaraTerritorialDepartamento = () => {
   const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState<
       CandidatosCamara[]
     >(ARREGLO_CANDIDATOS_ELEGIDOS);
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
+  const regresar = useNavigate();
 
   let active = 1;
   let items = [];
@@ -40,6 +52,7 @@ export const CamaraTerritorialDepartamento = () => {
       ApiBack.CAMARA_TERRITORIAL_DEPARTAMENTO + "/" + idDepartment
     );
     setArrayVotosCamaraTerritorial(result);
+    setShow(false);
   };
   const getMuniciaplity = async () => {
     const result = await ServicePrivate.requestGET(
@@ -75,6 +88,32 @@ export const CamaraTerritorialDepartamento = () => {
 
   return (
     <main id="main" className="main">
+      <div
+        id="modalCargando"
+        className="modal fade"
+        tabIndex={-1}
+        role="dialog"
+        style={{ display: "none", textAlign: "left" }}
+      >
+        <div className="modal-dialog modal-sm" role="document">
+          <div className="modal-content" style={{ border: "0px" }}>
+            <div
+              className="modal-body text-center"
+              style={{ paddingLeft: "47%" }}
+            >
+              <div className="loader"></div>
+            </div>
+            <div
+              className="modal-body text-center"
+              style={{ padding: "0px 0px 20px 0px" }}
+            >
+              <div className="loader-txt" style={{ textAlign: "center" }}>
+                <p>Cargando...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <img
         src={camara}
         style={{
@@ -131,6 +170,7 @@ export const CamaraTerritorialDepartamento = () => {
                           "/municipio/" +
                           myMunicipality.id_municipality
                         }
+                        
                       >
                         {myMunicipality.name_municipality}
                       </a>
@@ -140,11 +180,11 @@ export const CamaraTerritorialDepartamento = () => {
               </div>
             </div>
             <div className="col">
-              <h5 className="text-center my-4" style={{ color: "#052851" }}>
+              <h6 className="text-center my-4" style={{ color: "#052851" }}>
                 {arrayDepartamento.map((myDepartment) => (
                   <b>{myDepartment.name_department}</b>
                 ))}
-              </h5>
+              </h6>
             </div>
             <div className="col-sm">
               <Form id="form_conta">
@@ -232,7 +272,11 @@ export const CamaraTerritorialDepartamento = () => {
           >
             <h6
               className="my-4"
-              style={{ color: "#052851", textAlign: "right" }}
+              style={{
+                color: "#052851",
+                textAlign: "right",
+                paddingRight: "100px",
+              }}
             >
               {arrayDepartamento.map((myDepartment) => (
                 <b style={{ color: "#D9224E" }}>
@@ -264,6 +308,28 @@ export const CamaraTerritorialDepartamento = () => {
             </div>
           </div>
         </div>
+        <Modal
+            show={show}
+            backdrop="static"
+            keyboard={false}
+            onHide={handleClose}
+            centered
+            style={{background:"#FFFFFFBF !important"}}
+          >
+            <Modal.Body className="text-center">
+              <div className="text-center">
+                <img src={ImageSpinner} />
+                <div className="mt-4">
+                  <div
+                    className="spinner-border text-danger"
+                    role="status"
+                  >
+                    <span className=" visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </div>
+            </Modal.Body>
+          </Modal>
       </div>
 
       {/* Ejemplo de una tabla para presentación de datos: Fin */}

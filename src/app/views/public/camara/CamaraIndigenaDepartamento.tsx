@@ -5,8 +5,9 @@ import ApiBack from "../../../utilities/domains/ApiBack";
 import camara from "../../../../assets/image/camara.jpg";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
+import ImageSpinner from "../../../../assets/image/errorlogo.png";
 
-import { Col, Form, InputGroup, Pagination, Row, Table } from "react-bootstrap";
+import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
 import Department from "../../../models/Department";
 import CandidatosCamara from "../../../mocks/models/CandidatosCamara";
 import { ARREGLO_CANDIDATOS_ELEGIDOS } from "../../../mocks/candidatos-mocks";
@@ -16,6 +17,10 @@ export const CamaraIndigenaDepartamento = () => {
     CandidatosCamara[]
   >(ARREGLO_CANDIDATOS_ELEGIDOS);
   const [search, setSearch] = useState("");
+  const [searchMunicipio,setSearchMunicipio] = useState('');
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
+  const regresar = useNavigate();
 
   let active = 1;
   let items = [];
@@ -40,6 +45,7 @@ export const CamaraIndigenaDepartamento = () => {
       ApiBack.CAMARA_INDIGENA_DEPARTAMENTO + "/" + idDepartment
     );
     setArrayVotosCamaraIndigena(result);
+    setShow(false);
   };
   const getMuniciaplity = async () => {
     const result = await ServicePrivate.requestGET(
@@ -109,7 +115,7 @@ export const CamaraIndigenaDepartamento = () => {
         <div className="container">
           <div className="row">
             <div className="col-sm ">
-              <div className="dropdown align-content-center my-3">
+            <div className="dropdown text-center my-3">
                 <button
                   type="button"
                   className="buttonBack buttonBack-primary dropdown-toggle"
@@ -123,8 +129,15 @@ export const CamaraIndigenaDepartamento = () => {
                   data-live-search="true"
                   style={{ maxHeight: "200px", overflowY: "auto" }}
                 >
+                  <input type="text" placeholder="Busqueda..." onChange={event=>{setSearchMunicipio(event.target.value)}}/>
                   <li>
-                    {arrayMunicipio.map((myMunicipality, indice) => (
+                    {arrayMunicipio.filter((val)=>{
+                        if (searchMunicipio == "") {
+                         return val;
+                        }else if(val.name_municipality.toLocaleLowerCase().includes(searchMunicipio.toLocaleLowerCase())){
+                         return val;
+                        }})
+                    .map((myMunicipality, indice) => (
                       <a
                         className="dropdown-item"
                         href={
@@ -251,17 +264,37 @@ export const CamaraIndigenaDepartamento = () => {
             }}
           >
             <div className="text-center">
-              <a
-                type="button"
-                className="buttonBack buttonBack-primary"
-                href={"/guiaelectoral/camara/"}
-              >
-                <i className="bi bi-arrow-left-circle"></i>
-                &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
-              </a>
+              <button type="button" className="buttonBack buttonBack-primary">
+                <a className="link_hitdata" href={"/guiaelectoral/camara/"}>
+                  <i className="bi bi-arrow-left-circle"></i>
+                  &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                </a>
+              </button>
             </div>
           </div>
         </div>
+        <Modal
+            show={show}
+            backdrop="static"
+            keyboard={false}
+            onHide={handleClose}
+            centered
+            style={{background:"#FFFFFFBF !important"}}
+          >
+            <Modal.Body className="text-center">
+              <div className="text-center">
+                <img src={ImageSpinner} />
+                <div className="mt-4">
+                  <div
+                    className="spinner-border text-danger"
+                    role="status"
+                  >
+                    <span className=" visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </div>
+            </Modal.Body>
+          </Modal>
       </div>
       {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>

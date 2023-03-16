@@ -5,10 +5,19 @@ import ApiBack from "../../../utilities/domains/ApiBack";
 import camara from "../../../../assets/image/camara.jpg";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
-import { Col, Form, InputGroup, Pagination, Row, Table } from "react-bootstrap";
+import {
+  Col,
+  Form,
+  InputGroup,
+  Modal,
+  Pagination,
+  Row,
+  Table,
+} from "react-bootstrap";
 import Department from "../../../models/Department";
 import CandidatosCamara from "../../../mocks/models/CandidatosCamara";
 import { ARREGLO_CANDIDATOS_ELEGIDOS } from "../../../mocks/candidatos-mocks";
+import ImageSpinner from "../../../../assets/image/errorlogo.png";
 
 export const CamaraAfroDescendienteDepartamento = () => {
   const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState<
@@ -16,6 +25,8 @@ export const CamaraAfroDescendienteDepartamento = () => {
   >(ARREGLO_CANDIDATOS_ELEGIDOS);
   const [search, setSearch] = useState("");
   const [searchMunicipio, setSearchMunicipio] = useState("");
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
 
   let active = 1;
   let items = [];
@@ -40,6 +51,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
     );
     setArrayMunicipio(result);
+    setShow(false);
   };
 
   const getVotosCamaraAfroDescendiente = async () => {
@@ -101,7 +113,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
         <div className="container">
           <div className="row">
             <div className="col-sm ">
-              <div className="dropdown align-content-center my-3">
+              <div className="dropdown text-center my-3">
                 <button
                   type="button"
                   className="buttonBack buttonBack-primary dropdown-toggle"
@@ -252,7 +264,11 @@ export const CamaraAfroDescendienteDepartamento = () => {
           >
             <h6
               className="my-4"
-              style={{ color: "#052851", textAlign: "right" }}
+              style={{
+                color: "#052851",
+                textAlign: "right",
+                paddingRight: "100px",
+              }}
             >
               {arrayDepartamento.map((myDepartment) => (
                 <b style={{ color: "#D9224E" }}>
@@ -273,17 +289,34 @@ export const CamaraAfroDescendienteDepartamento = () => {
             }}
           >
             <div className="text-center">
-              <a
-                type="button"
-                className="buttonBack buttonBack-primary"
-                href={"/guiaelectoral/camara/"}
-              >
-                <i className="bi bi-arrow-left-circle"></i>
-                &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
-              </a>
+              <button type="button" className="buttonBack buttonBack-primary">
+                <a className="link_hitdata" href={"/guiaelectoral/camara/"}>
+                  <i className="bi bi-arrow-left-circle"></i>
+                  &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                </a>
+              </button>
             </div>
           </div>
         </div>
+        <Modal
+          show={show}
+          backdrop="static"
+          keyboard={false}
+          onHide={handleClose}
+          centered
+          style={{ background: "#FFFFFFBF !important" }}
+        >
+          <Modal.Body className="text-center">
+            <div className="text-center">
+              <img src={ImageSpinner} />
+              <div className="mt-4">
+                <div className="spinner-border text-danger" role="status">
+                  <span className=" visually-hidden">Loading...</span>
+                </div>
+              </div>
+            </div>
+          </Modal.Body>
+        </Modal>
       </div>
       {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>

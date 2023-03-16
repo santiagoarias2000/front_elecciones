@@ -75,7 +75,7 @@ export const SenadoNacionalDepartamento = () => {
           <div className="container">
             <div className="row">
               <div className="col-sm ">
-                <div className="dropdown align-content-center my-3">
+                <div className="dropdown text-center my-3">
                   <div className="dropdown">
                   <button
                     type="button"

@@ -82,7 +82,7 @@ export const SenadoIndigenaMunicipio = () => {
           <div className="container">
             <div className="row">
               <div className="col-sm ">
-                <div className="dropdown align-content-center my-3">
+                <div className="dropdown text-center my-3">
                   <button
                     type="button"
                     className="buttonBack buttonBack-primary dropdown-toggle"
