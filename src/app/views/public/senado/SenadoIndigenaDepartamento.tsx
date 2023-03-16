@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Col, Form, InputGroup, Pagination, Row, Table } from "react-bootstrap";
+import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import senado from "../../../../assets/image/SENADO.jpg";
 import VotesCongreso from "../../../models/VotesCongreso";
@@ -7,6 +7,7 @@ import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
 import Municipality from "../../../models/Municipality";
 import Department from "../../../models/Department";
+import ImageSpinner from "../../../../assets/image/errorlogo.png";
 
 export const SenadoIndigenaDepartamento = () => {
   let { idDepartment } = useParams();
@@ -16,8 +17,9 @@ export const SenadoIndigenaDepartamento = () => {
   const [arrayMunicipios, setMunicipios] = useState<Municipality[]>([]);
   const [arrayDepartamento, setArrayDepartamento] = useState<Department[]>([]);
 
-  const regresar = useNavigate();
-  const [seleccion, setSeleccion] = useState<number | undefined>();
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
+
   const [arrayVotesSenadoDepartamental, setArrayVotesSenadoDepartamental] =
     useState<VotesCongreso[]>([]);
   const getMunicipios = async () => {
@@ -41,6 +43,7 @@ export const SenadoIndigenaDepartamento = () => {
     setArrayVotesSenadoDepartamental(result);
     if (result) {
       setArrayVotesSenadoDepartamental(result);
+      setShow(false);
     }
   };
   useEffect(() => {
@@ -137,7 +140,7 @@ export const SenadoIndigenaDepartamento = () => {
             >
               <thead className="container_table">
                 <tr>
-                <th className="text-center position-sticky" style={{ width: "20%" }}>
+                <th className="text-center" style={{ width: "20%" }}>
                     ROLE
                   </th>
                   <th className="text-center" style={{ width: "40%" }}>
@@ -163,7 +166,7 @@ export const SenadoIndigenaDepartamento = () => {
                         {myVotes.description_politicparty}
                       </td>
                       <td className="text-center">
-                        <b>{myVotes.candidate_name}</b>
+                        {myVotes.candidate_name}
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
                     </tr>
@@ -208,8 +211,29 @@ export const SenadoIndigenaDepartamento = () => {
             </div>
           </div>
         </div>
+        <Modal
+            show={show}
+            backdrop="static"
+            keyboard={false}
+            onHide={handleClose}
+            centered
+            style={{background:"#FFFFFFBF !important"}}
+          >
+            <Modal.Body className="text-center">
+              <div className="text-center">
+                <img src={ImageSpinner} />
+                <div className="mt-4">
+                  <div
+                    className="spinner-border text-danger"
+                    role="status"
+                  >
+                    <span className=" visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </div>
+            </Modal.Body>
+          </Modal>
       </div>
-
       <div className="position-absolute bottom-50 end-50"></div>
       {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>

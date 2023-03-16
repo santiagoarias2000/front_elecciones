@@ -4,16 +4,20 @@ import VotesCongreso from "../../../models/VotesCongreso";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
 import senado from "../../../../assets/image/SENADO.jpg";
-import { Form, InputGroup, Pagination } from "react-bootstrap";
+import { Form, InputGroup, Modal, Pagination } from "react-bootstrap";
 import Municipality from "../../../models/Municipality";
+import ImageSpinner from "../../../../assets/image/errorlogo.png";
 
-type miObjeto = { nombreMuni: number };
+
 export const SenadoIndigenaMunicipio = () => {
   let { idDepartment } = useParams();
   let { idMunicipality } = useParams();
-  const [miMuni, setMiMuni] = useState(Number);
+  
   const [search, setSearch] = useState("");
   const [searchMunicipio,setSearchMunicipio] = useState('');
+
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
 
   const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
     useState<VotesCongreso[]>([]);
@@ -28,6 +32,7 @@ export const SenadoIndigenaMunicipio = () => {
         idMunicipality
     );
     setArrayVotosCamaraTerritorial(result);
+    setShow(false);
   };
 
   // get vehicle to be displayed in the combo
@@ -124,7 +129,7 @@ export const SenadoIndigenaMunicipio = () => {
                 </div>
               </div>
               <div className="col">
-                <h5 className="text-center my-4" style={{ color: "#052851" }}>
+                <h6 className="text-center my-4" style={{ color: "#052851" }}>
                   {arrayNameMunicipality.map((myNameMunicipality) => (
                     <b>
                       {myNameMunicipality.name_municipality}
@@ -133,7 +138,7 @@ export const SenadoIndigenaMunicipio = () => {
                       {")"}
                     </b>
                   ))}
-                </h5>
+                </h6>
               </div>
               <div className="col-sm">
                 <Form id="form_conta">
@@ -185,7 +190,7 @@ export const SenadoIndigenaMunicipio = () => {
                         {myVotes.description_politicparty}
                       </td>
                       <td className="text-center">
-                        <b>{myVotes.candidate_name}</b>
+                        {myVotes.candidate_name}
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
                       <td className="text-center">{myVotes.votos_muicipio}</td>
@@ -216,6 +221,28 @@ export const SenadoIndigenaMunicipio = () => {
             </div>
           </div>
         </div>
+        <Modal
+            show={show}
+            backdrop="static"
+            keyboard={false}
+            onHide={handleClose}
+            centered
+            style={{background:"#FFFFFFBF !important"}}
+          >
+            <Modal.Body className="text-center">
+              <div className="text-center">
+                <img src={ImageSpinner} />
+                <div className="mt-4">
+                  <div
+                    className="spinner-border text-danger"
+                    role="status"
+                  >
+                    <span className=" visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </div>
+            </Modal.Body>
+          </Modal>
       </div>
 
       {/* Ejemplo de una tabla para presentación de datos: Fin */}
