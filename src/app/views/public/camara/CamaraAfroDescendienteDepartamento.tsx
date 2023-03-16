@@ -51,7 +51,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
     );
     setArrayMunicipio(result);
-    setShow(false);
+    
   };
 
   const getVotosCamaraAfroDescendiente = async () => {
@@ -59,6 +59,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
       ApiBack.CAMARA_AFRODESCENDIENTE_DEPARTAMENTO + "/" + idDepartment
     );
     setArrayVotosCamaraAfroDescendiente(result);
+    setShow(false);
   };
   const getDepartamento = async () => {
     const result = await ServicePrivate.requestGET(
@@ -289,12 +290,17 @@ export const CamaraAfroDescendienteDepartamento = () => {
             }}
           >
             <div className="text-center">
-              <button type="button" className="buttonBack buttonBack-primary">
-                <a className="link_hitdata" href={"/guiaelectoral/camara/"}>
-                  <i className="bi bi-arrow-left-circle"></i>
-                  &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
-                </a>
-              </button>
+            <a
+                type="button"
+                className="buttonBack buttonBack-primary"
+                href={
+                  "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
+                  idDepartment
+                }
+              >
+                <i className="bi bi-arrow-left-circle"></i>
+                &nbsp;&nbsp;REGRESAR A ELEGIR MUNICIPIO
+              </a>
             </div>
           </div>
         </div>
