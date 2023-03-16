@@ -6,10 +6,11 @@ import Form from "react-bootstrap/Form";
 import camara from "../../../../assets/image/camara.jpg";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
-import { Col, InputGroup, Pagination, Row, Table } from "react-bootstrap";
+import { Col, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
 import Department from "../../../models/Department";
 import CandidatosCamara from "../../../mocks/models/CandidatosCamara";
 import { ARREGLO_CANDIDATOS_ELEGIDOS } from "../../../mocks/candidatos-mocks";
+import ImageSpinner from "../../../../assets/image/errorlogo.png";
 
 export const CamaraIndigenaDepartamentoMunicipio = () => {
   const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState<
@@ -17,6 +18,8 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
   >(ARREGLO_CANDIDATOS_ELEGIDOS);
   const [search, setSearch] = useState("");
   const [searchMunicipio,setSearchMunicipio] = useState('');
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
 
   const regresar = useNavigate();
 
@@ -49,6 +52,7 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
         idMunicipality
     );
     setArrayVotosCamaraIndiegena(result);
+    setShow(false);
   };
   // get vehicle to be displayed in the combo
   const getMuniciaplity = async () => {
@@ -126,7 +130,7 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
         <div className="container">
           <div className="row">
             <div className="col-sm ">
-              <div className="dropdown align-content-center my-3">
+              <div className="dropdown text-center my-3">
                 <button
                   type="button"
                   className="buttonBack buttonBack-primary dropdown-toggle"
@@ -267,7 +271,11 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
           >
             <h6
               className="my-4"
-              style={{ color: "#052851", textAlign: "right" }}
+              style={{
+                color: "#052851",
+                textAlign: "right",
+                paddingRight: "100px",
+              }}
             >
               {arrayDepartamento.map((myDepartment) => (
                 <b style={{ color: "#D9224E" }}>
@@ -302,6 +310,28 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
             </div>
           </div>
         </div>
+        <Modal
+            show={show}
+            backdrop="static"
+            keyboard={false}
+            onHide={handleClose}
+            centered
+            style={{background:"#FFFFFFBF !important"}}
+          >
+            <Modal.Body className="text-center">
+              <div className="text-center">
+                <img src={ImageSpinner} />
+                <div className="mt-4">
+                  <div
+                    className="spinner-border text-danger"
+                    role="status"
+                  >
+                    <span className=" visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </div>
+            </Modal.Body>
+          </Modal>
       </div>
 
       {/* Ejemplo de una tabla para presentación de datos: Fin */}
