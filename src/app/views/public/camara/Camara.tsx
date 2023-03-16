@@ -159,7 +159,7 @@ export const Camara = () => {
                
                   <a  type="button" className="buttonBack buttonBack-primary" href={"/"}>
                     <i className="bi bi-arrow-left-circle"></i>
-                    &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                    &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
                   </a>
               </div>
             </div>
@@ -270,7 +270,7 @@ export const Camara = () => {
                   href={"/"}
                 >
                   <i className="bi bi-arrow-left-circle"></i>
-                  &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                  &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
                 </a>
               </div>
             </div>
@@ -381,7 +381,7 @@ export const Camara = () => {
                   href={"/"}
                 >
                   <i className="bi bi-arrow-left-circle"></i>
-                  &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                  &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
                 </a>
               </div>
             </div>

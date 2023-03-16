@@ -8,10 +8,15 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
 import { Col, InputGroup, Pagination, Row, Table } from "react-bootstrap";
 import Department from "../../../models/Department";
+import CandidatosCamara from "../../../mocks/models/CandidatosCamara";
+import { ARREGLO_CANDIDATOS_ELEGIDOS } from "../../../mocks/candidatos-mocks";
+import { log } from "console";
 
 export const CamaraTerritorialDepartamento = () => {
   const [search, setSearch] = useState("");
-  const regresar = useNavigate();
+  const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState<
+      CandidatosCamara[]
+    >(ARREGLO_CANDIDATOS_ELEGIDOS);
 
   let active = 1;
   let items = [];
@@ -35,7 +40,6 @@ export const CamaraTerritorialDepartamento = () => {
     );
     setArrayVotosCamaraTerritorial(result);
   };
-  // get vehicle to be displayed in the combo
   const getMuniciaplity = async () => {
     const result = await ServicePrivate.requestGET(
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
@@ -48,6 +52,18 @@ export const CamaraTerritorialDepartamento = () => {
       ApiBack.NOMBRE_DEPARTAMENTO_TERRITORIAL + "/" + idDepartment
     );
     setArrayDepartamento(result);
+  };
+  const CandidatosElegidosCamara = (miCandidato: any) => {
+    var elegidosi: any;
+    var elegidono: any;
+    arrayCandidatosElegidos.map((item) => {
+      if (item.candidate_name === miCandidato) {
+        elegidosi = "True";
+      } else {
+        elegidono = "False";
+      }
+    });
+    return elegidosi;
   };
 
   useEffect(() => {
@@ -83,7 +99,7 @@ export const CamaraTerritorialDepartamento = () => {
         <div className="container">
           <div className="row">
             <div className="col-sm ">
-              <div className="dropdown align-content-center my-3">
+              <div className="dropdown text-center my-3">
                 <button
                   type="button"
                   className="buttonBack buttonBack-primary dropdown-toggle"
@@ -137,17 +153,17 @@ export const CamaraTerritorialDepartamento = () => {
         </div>
 
         <div className="table-wrapper-scroll-y my-custom-scrollbar">
-          <table
+        <table
             className="colorTable table table-hover"
             style={{ background: "#05285190 !important" }}
           >
             <thead className="container_table">
               <tr>
+              <th className="text-center" style={{ width: "35%" }}>
+                  PARTIDO POLÍTICO
+                </th>
                 <th className="text-center" style={{ width: "40%" }}>
                   NOMBRE CANDIDATO
-                </th>
-                <th className="text-center" style={{ width: "35%" }}>
-                  PARTIDO POLÍTICO
                 </th>
                 <th className="text-center" style={{ width: "25 %" }}>
                   VOTOS DEPARTAMENTO
@@ -155,6 +171,7 @@ export const CamaraTerritorialDepartamento = () => {
               </tr>
             </thead>
             <tbody className="color container_table">
+              
               {arrayVotesCamaraTerritorial
                 .filter((myVotes) => {
                   return search.toLowerCase() === ""
@@ -165,13 +182,28 @@ export const CamaraTerritorialDepartamento = () => {
                 })
                 .map((myVotes, contador) => (
                   <tr key={contador}>
-                    <td className="text-left">
-                      <b>{myVotes.candidate_name}</b>
-                    </td>
-                    <td className="text-left">
+                    <td className={
+                        CandidatosElegidosCamara(myVotes.candidate_name) === "True"
+                          ? "text-center text-danger fst-italic font-weight-bold"
+                          : "text-center"
+                      }>
+                        
                       {myVotes.description_politicparty}
                     </td>
-                    <td className="text-center">{myVotes.votos}</td>
+                    <td
+                      className={
+                        CandidatosElegidosCamara(myVotes.candidate_name) === "True"
+                          ? "text-center align-middle text-danger fst-italic"
+                          : "text-center"
+                      }
+                    >
+                      {myVotes.candidate_name}
+                    </td>
+                    <td className={
+                        CandidatosElegidosCamara(myVotes.candidate_name) === "True"
+                          ? "text-center align-middle text-danger fst-italic"
+                          : "text-center"
+                      }>{myVotes.votos}</td>
                   </tr>
                 ))}
             </tbody>

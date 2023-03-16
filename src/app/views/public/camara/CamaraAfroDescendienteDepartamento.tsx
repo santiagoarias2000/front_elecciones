@@ -7,8 +7,13 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
 import { Col, Form, InputGroup, Pagination, Row, Table } from "react-bootstrap";
 import Department from "../../../models/Department";
+import CandidatosCamara from "../../../mocks/models/CandidatosCamara";
+import { ARREGLO_CANDIDATOS_ELEGIDOS } from "../../../mocks/candidatos-mocks";
 
 export const CamaraAfroDescendienteDepartamento = () => {
+  const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState<
+    CandidatosCamara[]
+  >(ARREGLO_CANDIDATOS_ELEGIDOS);
   const [search, setSearch] = useState("");
   let active = 1;
   let items = [];
@@ -46,6 +51,18 @@ export const CamaraAfroDescendienteDepartamento = () => {
       ApiBack.NOMBRE_DEPARTAMENTO_AFRODESCENDIENTE + "/" + idDepartment
     );
     setArrayDepartamento(result);
+  };
+  const CandidatosElegidosCamara = (miCandidato: any) => {
+    var elegidosi: any;
+    var elegidono: any;
+    arrayCandidatosElegidos.map((item) => {
+      if (item.candidate_name === miCandidato) {
+        elegidosi = "True";
+      } else {
+        elegidono = "False";
+      }
+    });
+    return elegidosi;
   };
   useEffect(() => {
     getVotosCamaraAfroDescendiente();
@@ -101,7 +118,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
                       <a
                         className="dropdown-item"
                         href={
-                          "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
+                          "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
                           myMunicipality.id_department +
                           "/municipio/" +
                           myMunicipality.id_municipality
@@ -112,24 +129,6 @@ export const CamaraAfroDescendienteDepartamento = () => {
                     ))}
                   </li>
                 </ul>
-              </div>
-              <div className="col">
-                <h6 className="text-center my-4" style={{ color: "#052851" }}>
-                  {arrayDepartamento.map((myDepartment) => (
-                    <b>{myDepartment.name_department}</b>
-                  ))}
-                </h6>
-              </div>
-              <div className="col">
-                <Form>
-                  <InputGroup className="my-3">
-                    <Form.Control
-                      onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Buscar Partido Político"
-                      style={{ textAlign: "right", marginRight: "5px" }}
-                    ></Form.Control>
-                  </InputGroup>
-                </Form>
               </div>
             </div>
             <div className="col">
@@ -154,24 +153,25 @@ export const CamaraAfroDescendienteDepartamento = () => {
         </div>
 
         <div className="table-wrapper-scroll-y my-custom-scrollbar">
-          <table
+        <table
             className="colorTable table table-hover"
             style={{ background: "#05285190 !important" }}
           >
-            <thead>
+            <thead className="container_table">
               <tr>
+              <th className="text-center" style={{ width: "35%" }}>
+                  PARTIDO POLÍTICO
+                </th>
                 <th className="text-center" style={{ width: "40%" }}>
                   NOMBRE CANDIDATO
-                </th>
-                <th className="text-center" style={{ width: "35%" }}>
-                  PARTIDO POLÍTICO
                 </th>
                 <th className="text-center" style={{ width: "25 %" }}>
                   VOTOS DEPARTAMENTO
                 </th>
               </tr>
             </thead>
-            <tbody className="color">
+            <tbody className="color container_table">
+              
               {arrayVotesCamaraAfroDescendiente
                 .filter((myVotes) => {
                   return search.toLowerCase() === ""
@@ -182,13 +182,27 @@ export const CamaraAfroDescendienteDepartamento = () => {
                 })
                 .map((myVotes, contador) => (
                   <tr key={contador}>
-                    <td className="text-left">
-                      <b>{myVotes.candidate_name}</b>
-                    </td>
-                    <td className="text-left">
+                    <td className={
+                        CandidatosElegidosCamara(myVotes.candidate_name) === "True"
+                          ? "text-center text-danger fst-italic font-weight-bold"
+                          : "text-center"
+                      }>
                       {myVotes.description_politicparty}
                     </td>
-                    <td className="text-center">{myVotes.votos}</td>
+                    <td
+                      className={
+                        CandidatosElegidosCamara(myVotes.candidate_name) === "True"
+                          ? "text-center align-middle text-danger fst-italic"
+                          : "text-center"
+                      }
+                    >
+                      {myVotes.candidate_name}
+                    </td>
+                    <td className={
+                        CandidatosElegidosCamara(myVotes.candidate_name) === "True"
+                          ? "text-center align-middle text-danger fst-italic"
+                          : "text-center"
+                      }>{myVotes.votos}</td>
                   </tr>
                 ))}
             </tbody>
