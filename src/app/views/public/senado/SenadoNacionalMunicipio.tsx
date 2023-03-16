@@ -164,7 +164,7 @@ export const SenadoNacionalMunicipio = () => {
                     <InputGroup className="my-3 container_form">
                       <Form.Control
                         onChange={(e) => setSearch(e.target.value)}
-                        placeholder="Buscar un Partido Político o Candidato"
+                        placeholder="Buscar un Candidato"
                         style={{ textAlign: "right", marginRight: "5px" }}
                       ></Form.Control>
                     </InputGroup>
@@ -200,8 +200,6 @@ export const SenadoNacionalMunicipio = () => {
                   .filter((val=>{
                     if(search == ""){
                       return val;
-                    }else if(val.description_politicparty.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
-                      return val;
                     }else if(val.candidate_name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
                       return val;
                     }
@@ -236,7 +234,7 @@ export const SenadoNacionalMunicipio = () => {
                 <a
                   type="button"
                   className="buttonBack buttonBack-primary"
-                  href={"/guiaelectoral/senado/senadoDetails/" + idDepartment}
+                  href={"/guiaelectoral/senado/nacional/" + idDepartment}
                 >
                   <i className="bi bi-arrow-left-circle"></i>
                   &nbsp;&nbsp;REGRESAR A ELEGIR UN MUNICIPIO

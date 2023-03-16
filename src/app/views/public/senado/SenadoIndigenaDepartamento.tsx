@@ -121,7 +121,7 @@ export const SenadoIndigenaDepartamento = () => {
                   <InputGroup className="my-3 container_form">
                   <Form.Control
                     onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Buscar un Partido Político o Candidato"
+                    placeholder="Buscar un Partido Político"
                     style={{ textAlign: "right", marginRight: "5px" }}
                   ></Form.Control>
                   </InputGroup>
@@ -154,8 +154,6 @@ export const SenadoIndigenaDepartamento = () => {
                     if(search == ""){
                       return val;
                     }else if(val.description_politicparty.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
-                      return val;
-                    }else if(val.candidate_name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
                       return val;
                     }
                   }))

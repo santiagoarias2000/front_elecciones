@@ -51,7 +51,7 @@ export const Senado = () => {
           <div className="container">
             <div className="row">
               <div className="col-sm">
-                <div className="name_table">SENADO</div>
+              
               </div>
               <div className="col-sm">
                 <Form id="form_conta">
@@ -66,7 +66,7 @@ export const Senado = () => {
                 </Form>
               </div>
             </div>
-          </div>
+          </div>  
 
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
@@ -157,7 +157,7 @@ export const Senado = () => {
           <div className="container">
             <div className="row">
               <div className="col-sm">
-                <div className="name_table">SENADO</div>
+                
               </div>
               <div className="col-sm">
                 <Form id="form_conta">
