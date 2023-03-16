@@ -264,12 +264,14 @@ export const CamaraIndigenaDepartamento = () => {
             }}
           >
             <div className="text-center">
-              <button type="button" className="buttonBack buttonBack-primary">
-                <a className="link_hitdata" href={"/guiaelectoral/camara/"}>
-                  <i className="bi bi-arrow-left-circle"></i>
-                  &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
-                </a>
-              </button>
+            <a
+                type="button"
+                className="buttonBack buttonBack-primary"
+                href="/guiaelectoral/camara/"
+              >
+                <i className="bi bi-arrow-left-circle"></i>
+                &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO &nbsp;
+              </a>
             </div>
           </div>
         </div>
