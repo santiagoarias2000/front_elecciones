@@ -6,11 +6,14 @@ import Form from "react-bootstrap/Form";
 import camara from "../../../../assets/image/camara.jpg";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
-import { Col, InputGroup, Pagination, Row, Table } from "react-bootstrap";
+import { Col, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
 import Department from "../../../models/Department";
+import ImageSpinner from "../../../../assets/image/errorlogo.png";
 
 export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
   const [search, setSearch] = useState("");
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
   const regresar = useNavigate();
 
   let active = 1;
@@ -42,6 +45,7 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
         idMunicipality
     );
     setArrayVotosCamaraAfroDescendiente(result);
+    setShow(false);
   };
   // get vehicle to be displayed in the combo
   const getMuniciaplity = async () => {
@@ -165,11 +169,11 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
           >
             <thead className="container_table">
               <tr>
+                <th className="text-center" style={{ width: "35%" }}>
+                  PARTIDO POLÍTICO
+                </th>
                 <th className="text-center" style={{ width: "30%" }}>
                   NOMBRE CANDIDATO
-                </th>
-                <th className="text-center" style={{ width: "25%" }}>
-                  PARTIDO POLÍTICO
                 </th>
                 <th className="text-center" style={{ width: "25 %" }}>
                   VOTOS DEPARTAMENTO
@@ -188,11 +192,11 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                 })
                 .map((myVotes, contador) => (
                   <tr key={contador}>
-                    <td className="text-left">
-                      <b>{myVotes.candidate_name}</b>
-                    </td>
-                    <td className="text-left">
+                    <td className="text-center">
                       {myVotes.description_politicparty}
+                    </td>
+                    <td className="text-center">
+                      <b className="fst-italic">{myVotes.candidate_name}</b>
                     </td>
                     <td className="text-center">{myVotes.votos}</td>
 
@@ -228,6 +232,28 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
             </div>
           </div>
         </div>
+        <Modal
+            show={show}
+            backdrop="static"
+            keyboard={false}
+            onHide={handleClose}
+            centered
+            style={{background:"#FFFFFFBF !important"}}
+          >
+            <Modal.Body className="text-center">
+              <div className="text-center">
+                <img src={ImageSpinner} />
+                <div className="mt-4">
+                  <div
+                    className="spinner-border text-danger"
+                    role="status"
+                  >
+                    <span className=" visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </div>
+            </Modal.Body>
+          </Modal>
       </div>
 
       {/* Ejemplo de una tabla para presentación de datos: Fin */}

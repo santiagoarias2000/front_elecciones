@@ -11,26 +11,8 @@ type miObjeto = { nombreMuni: number };
 export const SenadoIndigenaDepartamentalMunicipio = () => {
   let { idDepartment } = useParams();
   let { idMunicipality } = useParams();
-<<<<<<< HEAD
     const [search, setSearch] = useState("");
   
-=======
-  const [search, setSearch] = useState("");
-  console.log(search);
-  const setOption = ["nameDepartment", "descriptionRole", "votos"];
-  const [sort, setSort] = useState("");
-
-  let active = 1;
-  let items = [];
-  for (let number = 1; number <= 5; number++) {
-    items.push(
-      <Pagination.Item key={number} active={number === active}>
-        {number}
-      </Pagination.Item>
-    );
-  }
-
->>>>>>> main
   const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
     useState<VotesCongreso[]>([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
@@ -101,7 +83,7 @@ export const SenadoIndigenaDepartamentalMunicipio = () => {
           <div className="container">
             <div className="row">
               <div className="col-sm ">
-                <div className="dropdown align-content-center my-3">
+                <div className="dropdown text-center my-3">
                   <button
                     type="button"
                     className="buttonBack buttonBack-primary dropdown-toggle"

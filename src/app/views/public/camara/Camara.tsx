@@ -4,14 +4,16 @@ import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import camara from "../../../../assets/image/camara.jpg";
 import { Link, useNavigate } from "react-router-dom";
-import { Col, Form, InputGroup, Pagination, Row, Table } from "react-bootstrap";
-import { totalmem } from "os";
+import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
+import ImageSpinner from "../../../../assets/image/errorlogo.png";
 
 export const Camara = () => {
   const [searchTerritorial, setSearchTerritorial] = useState("");
   const [searchIndigena, setSearchIndigena] = useState("");
   const [searchAfro, setSearchAfro] = useState("");
-  const regresar = useNavigate();
+
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
 
   const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
     useState<VotesCongreso[]>([]);
@@ -25,10 +27,14 @@ export const Camara = () => {
     setArrayVotosCamaraAfroDescendiente,
   ] = useState<VotesCongreso[]>([]);
 
+  
+  
+
   const getVotosCamaraTerritorial = async () => {
     //const parametrosPaginador= {paginaActual: activo, cantidadMostrar:numeroElemPag};
     const result = await ServicePrivate.requestGET(ApiBack.CAMARA_TERRITORIAL);
     setArrayVotosCamaraTerritorial(result);
+    setShow(false);
   };
   const getVotosCamaraIndigena = async () => {
     const result = await ServicePrivate.requestGET(ApiBack.CAMARA_INDIGENA);
@@ -39,7 +45,10 @@ export const Camara = () => {
       ApiBack.CAMARA_AFRODESCENDIENTE
     );
     setArrayVotosCamaraAfroDescendiente(result);
+    
   };
+  
+
 
   useEffect(() => {
     getVotosCamaraIndigena();
@@ -410,6 +419,28 @@ export const Camara = () => {
                 </div>
               </div>
         </div>
+        <Modal
+            show={show}
+            backdrop="static"
+            keyboard={false}
+            onHide={handleClose}
+            centered
+            style={{background:"#FFFFFFBF !important"}}
+          >
+            <Modal.Body className="text-center">
+              <div className="text-center">
+                <img src={ImageSpinner} />
+                <div className="mt-4">
+                  <div
+                    className="spinner-border text-danger"
+                    role="status"
+                  >
+                    <span className=" visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </div>
+            </Modal.Body>
+          </Modal>
       </div>
 
       {/* Ejemplo de una tabla para presentación de datos: Fin */}

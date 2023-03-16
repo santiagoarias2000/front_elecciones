@@ -6,11 +6,22 @@ import Form from "react-bootstrap/Form";
 import camara from "../../../../assets/image/camara.jpg";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
-import { Col, InputGroup, Pagination, Row, Table } from "react-bootstrap";
+import ImageSpinner from "../../../../assets/image/errorlogo.png";
+import {
+  Col,
+  InputGroup,
+  Modal,
+  Pagination,
+  Row,
+  Spinner,
+  Table,
+} from "react-bootstrap";
 import Department from "../../../models/Department";
 
 export const CamaraTerritorialDepartamento = () => {
   const [search, setSearch] = useState("");
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
   const regresar = useNavigate();
 
   let active = 1;
@@ -23,7 +34,7 @@ export const CamaraTerritorialDepartamento = () => {
     );
   }
   let { idDepartment } = useParams();
-  
+
   const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
     useState<VotesCongreso[]>([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
@@ -34,6 +45,7 @@ export const CamaraTerritorialDepartamento = () => {
       ApiBack.CAMARA_TERRITORIAL_DEPARTAMENTO + "/" + idDepartment
     );
     setArrayVotosCamaraTerritorial(result);
+    setShow(false);
   };
   // get vehicle to be displayed in the combo
   const getMuniciaplity = async () => {
@@ -50,7 +62,6 @@ export const CamaraTerritorialDepartamento = () => {
     setArrayDepartamento(result);
   };
 
-
   useEffect(() => {
     getVotosCamaraTerritorial();
     getMuniciaplity();
@@ -59,6 +70,32 @@ export const CamaraTerritorialDepartamento = () => {
 
   return (
     <main id="main" className="main">
+      <div
+        id="modalCargando"
+        className="modal fade"
+        tabIndex={-1}
+        role="dialog"
+        style={{ display: "none", textAlign: "left" }}
+      >
+        <div className="modal-dialog modal-sm" role="document">
+          <div className="modal-content" style={{ border: "0px" }}>
+            <div
+              className="modal-body text-center"
+              style={{ paddingLeft: "47%" }}
+            >
+              <div className="loader"></div>
+            </div>
+            <div
+              className="modal-body text-center"
+              style={{ padding: "0px 0px 20px 0px" }}
+            >
+              <div className="loader-txt" style={{ textAlign: "center" }}>
+                <p>Cargando...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <img
         src={camara}
         style={{
@@ -108,6 +145,7 @@ export const CamaraTerritorialDepartamento = () => {
                           "/municipio/" +
                           myMunicipality.id_municipality
                         }
+                        
                       >
                         {myMunicipality.name_municipality}
                       </a>
@@ -117,11 +155,11 @@ export const CamaraTerritorialDepartamento = () => {
               </div>
             </div>
             <div className="col">
-              <h5 className="text-center my-4" style={{ color: "#052851" }}>
+              <h6 className="text-center my-4" style={{ color: "#052851" }}>
                 {arrayDepartamento.map((myDepartment) => (
                   <b>{myDepartment.name_department}</b>
                 ))}
-              </h5>
+              </h6>
             </div>
             <div className="col-sm">
               <Form id="form_conta">
@@ -144,11 +182,11 @@ export const CamaraTerritorialDepartamento = () => {
           >
             <thead className="container_table">
               <tr>
-                <th className="text-center" style={{ width: "40%" }}>
-                  NOMBRE CANDIDATO
-                </th>
                 <th className="text-center" style={{ width: "35%" }}>
                   PARTIDO POLÍTICO
+                </th>
+                <th className="text-center" style={{ width: "40%" }}>
+                  NOMBRE CANDIDATO
                 </th>
                 <th className="text-center" style={{ width: "25 %" }}>
                   VOTOS DEPARTAMENTO
@@ -166,11 +204,11 @@ export const CamaraTerritorialDepartamento = () => {
                 })
                 .map((myVotes, contador) => (
                   <tr key={contador}>
-                    <td className="text-left">
-                      <b>{myVotes.candidate_name}</b>
-                    </td>
-                    <td className="text-left">
+                    <td className="text-center">
                       {myVotes.description_politicparty}
+                    </td>
+                    <td className="text-center">
+                      <b className="fst-italic">{myVotes.candidate_name}</b>
                     </td>
                     <td className="text-center">{myVotes.votos}</td>
                   </tr>
@@ -179,21 +217,30 @@ export const CamaraTerritorialDepartamento = () => {
           </table>
         </div>
         <div className="dropdown">
-                  <div
-                    className="container-fluid display-flex justify-content-center"
-                    style={{
-                      color: "#FFFFFF",
-                      height: "40px",
-                      alignItems: "right",
-                    }}
-                  >
-                    <h6 className="my-4" style={{ color: "#052851", textAlign:"right" }}>
-                    {arrayDepartamento.map((myDepartment) => (
-                      <b style={{color:"#D9224E"}}>VOTACIÓN TOTAL: {myDepartment.votos}</b>
-                    ))}
-                  </h6>
-                  </div>
-                </div>
+          <div
+            className="container-fluid display-flex justify-content-center"
+            style={{
+              color: "#FFFFFF",
+              height: "40px",
+              alignItems: "right",
+            }}
+          >
+            <h6
+              className="my-4"
+              style={{
+                color: "#052851",
+                textAlign: "right",
+                paddingRight: "100px",
+              }}
+            >
+              {arrayDepartamento.map((myDepartment) => (
+                <b style={{ color: "#D9224E" }}>
+                  VOTACIÓN TOTAL: {myDepartment.votos}
+                </b>
+              ))}
+            </h6>
+          </div>
+        </div>
         <div className="dropdown">
           <div
             className="container-fluid display-flex justify-content-center"
@@ -214,6 +261,28 @@ export const CamaraTerritorialDepartamento = () => {
             </div>
           </div>
         </div>
+        <Modal
+            show={show}
+            backdrop="static"
+            keyboard={false}
+            onHide={handleClose}
+            centered
+            style={{background:"#FFFFFFBF !important"}}
+          >
+            <Modal.Body className="text-center">
+              <div className="text-center">
+                <img src={ImageSpinner} />
+                <div className="mt-4">
+                  <div
+                    className="spinner-border text-danger"
+                    role="status"
+                  >
+                    <span className=" visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </div>
+            </Modal.Body>
+          </Modal>
       </div>
 
       {/* Ejemplo de una tabla para presentación de datos: Fin */}
