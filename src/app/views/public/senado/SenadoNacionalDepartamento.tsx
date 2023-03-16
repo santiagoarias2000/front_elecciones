@@ -75,7 +75,7 @@ export const SenadoNacionalDepartamento = () => {
           <div className="container">
             <div className="row">
               <div className="col-sm ">
-                <div className="dropdown align-content-center my-3">
+                <div className="dropdown text-center my-3">
                   <div className="dropdown">
                   <button
                     type="button"
@@ -125,7 +125,7 @@ export const SenadoNacionalDepartamento = () => {
             <InputGroup className="my-3 container_form">
             <Form.Control
                     onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Buscar un Partido Político o Candidato"
+                    placeholder="Buscar un Partido Político"
                     style={{ textAlign: "right", marginRight: "5px" }}
             ></Form.Control>
             </InputGroup>
@@ -158,8 +158,6 @@ export const SenadoNacionalDepartamento = () => {
                     if(search == ""){
                       return val;
                     }else if(val.description_politicparty.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
-                      return val;
-                    }else if(val.candidate_name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
                       return val;
                     }
                   })).map((myVotes, contador) => (

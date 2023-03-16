@@ -11,12 +11,8 @@ export const Senado = () => {
 
   const regresar = useNavigate();
 
-  const [arrayVotesSenadoNacional, setArrayVotesSenadoNacional] = useState<
-    VotesCongreso[]
-  >([]);
-  const [arrayVotesSenadoIndigena, setArrayVotesSenadoIndigena] = useState<
-    VotesCongreso[]
-  >([]);
+  const [arrayVotesSenadoNacional, setArrayVotesSenadoNacional] = useState< VotesCongreso[] >([]);
+  const [arrayVotesSenadoIndigena, setArrayVotesSenadoIndigena] = useState< VotesCongreso[] >([]);
 
   const getVotosSenadoTerritorial = async () => {
     const result = await ServicePrivate.requestGET(ApiBack.SENADO_NACIONAL);
@@ -55,7 +51,7 @@ export const Senado = () => {
           <div className="container">
             <div className="row">
               <div className="col-sm">
-                <div className="name_table">SENADO</div>
+              
               </div>
               <div className="col-sm">
                 <Form id="form_conta">
@@ -70,7 +66,7 @@ export const Senado = () => {
                 </Form>
               </div>
             </div>
-          </div>
+          </div>  
 
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
@@ -161,7 +157,7 @@ export const Senado = () => {
           <div className="container">
             <div className="row">
               <div className="col-sm">
-                <div className="name_table">SENADO</div>
+                
               </div>
               <div className="col-sm">
                 <Form id="form_conta">

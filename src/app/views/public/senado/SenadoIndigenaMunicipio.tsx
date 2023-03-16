@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ApiBack from "../../../utilities/domains/ApiBack";
@@ -11,29 +11,15 @@ type miObjeto = { nombreMuni: number };
 export const SenadoIndigenaMunicipio = () => {
   let { idDepartment } = useParams();
   let { idMunicipality } = useParams();
+  const [miMuni, setMiMuni] = useState(Number);
   const [search, setSearch] = useState("");
   const [searchMunicipio,setSearchMunicipio] = useState('');
-
-
-  let active = 1;
-  let items = [];
-  for (let number = 1; number <= 5; number++) {
-    items.push(
-      <Pagination.Item key={number} active={number === active}>
-        {number}
-      </Pagination.Item>
-    );
-  }
 
   const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
     useState<VotesCongreso[]>([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
-  const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
-    Municipality[]
-  >([]);
-  const regresar = useNavigate();
-
-  const getVotosCamaraTerritorial = async () => {
+  const [arrayNameMunicipality, setArrayNameMunicipality] = useState< Municipality[] >([]);
+  const getVotosSenadoIndigena = async () => {
     const result = await ServicePrivate.requestGET(
       ApiBack.SENADO_INDIGENA_MUNICIPIO +
         "/" +
@@ -43,6 +29,7 @@ export const SenadoIndigenaMunicipio = () => {
     );
     setArrayVotosCamaraTerritorial(result);
   };
+
   // get vehicle to be displayed in the combo
   const getMuniciaplity = async () => {
     const result = await ServicePrivate.requestGET(
@@ -57,11 +44,11 @@ export const SenadoIndigenaMunicipio = () => {
     setArrayNameMunicipality(result);
   };
   useEffect(() => {
-    getVotosCamaraTerritorial();
+    getVotosSenadoIndigena()
     getMuniciaplity();
     getNameMunicipality();
+    
   }, []);
-
   return (
     <main id="main" className="main">
       <img
@@ -95,7 +82,7 @@ export const SenadoIndigenaMunicipio = () => {
           <div className="container">
             <div className="row">
               <div className="col-sm ">
-                <div className="dropdown align-content-center my-3">
+                <div className="dropdown text-center my-3">
                   <button
                     type="button"
                     className="buttonBack buttonBack-primary dropdown-toggle"
@@ -122,7 +109,7 @@ export const SenadoIndigenaMunicipio = () => {
                         <a
                           className="dropdown-item"
                           href={
-                            "/guiaelectoral/senado/indigena/departamento/municipio/departamento/" +
+                            "/guiaelectoral/senado/indigena/departamento/" +
                             myMunicipality.id_department +
                             "/municipio/" +
                             myMunicipality.id_municipality
@@ -153,7 +140,7 @@ export const SenadoIndigenaMunicipio = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Buscar un Partido Político o Candidato"
+                      placeholder="Buscar un Candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
                     ></Form.Control>
                   </InputGroup>
@@ -187,8 +174,6 @@ export const SenadoIndigenaMunicipio = () => {
                 {arrayVotesCamaraTerritorial
                   .filter((val=>{
                     if(search == ""){
-                      return val;
-                    }else if(val.description_politicparty.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
                       return val;
                     }else if(val.candidate_name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
                       return val;
