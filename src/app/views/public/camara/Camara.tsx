@@ -136,7 +136,7 @@ export const Camara = () => {
                             myVotes.department.idDepartment
                           }
                         >
-                          <i className="fa-solid fa-magnifying-glass fa-sm"></i>
+                          <i className="fa-solid fa-magnifying-glass fa-sm text-danger"></i>
                         </Link>
                       </td>
                     </tr>
@@ -245,7 +245,7 @@ export const Camara = () => {
                             myVotes.department.idDepartment
                           }
                         >
-                          <i className="fa-solid fa-magnifying-glass fa-sm"></i>
+                          <i className="fa-solid fa-magnifying-glass fa-sm text-danger"></i>
                         </Link>
                       </td>
                     </tr>
@@ -356,7 +356,7 @@ export const Camara = () => {
                             myVotes.department.idDepartment
                           }
                         >
-                          <i className="fa-solid fa-magnifying-glass fa-sm"></i>
+                          <i className="fa-solid fa-magnifying-glass fa-sm text-danger"></i>
                         </Link>
                       </td>
                     </tr>
