@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Col, Form, InputGroup, Pagination, Row, Table } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
-import senado from "../../../../assets/image/SENADO.jpg";
+import senado from "../../../../assets/image/SENADO.webp";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";

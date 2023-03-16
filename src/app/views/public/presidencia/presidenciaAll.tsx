@@ -1,5 +1,5 @@
 import { Form, InputGroup } from "react-bootstrap";
-import camara from "../../../../assets/image/SENADO.jpg";
+import camara from "../../../../assets/image/SENADO.webp";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -151,7 +151,7 @@ export const PresidenciaAll = () => {
                     <button
                       type="button"
                       className="buttonBack buttonBack-primary"
-                      onClick={() => regresar("/guiaelectoral/welcome")}
+                      onClick={() => regresar("/")}
                     >
                       <i className="bi bi-arrow-left-circle"></i>
                       &nbsp;&nbsp;REGRESAR A ELEGIR VOTACIÓN
@@ -274,7 +274,7 @@ export const PresidenciaAll = () => {
                     <button
                       type="button"
                       className="buttonBack buttonBack-primary"
-                      onClick={() => regresar("/guiaelectoral/welcome")}
+                      onClick={() => regresar("/")}
                     >
                       <i className="bi bi-arrow-left-circle"></i>
                       &nbsp;&nbsp;REGRESAR A ELEGIR VOTACIÓN

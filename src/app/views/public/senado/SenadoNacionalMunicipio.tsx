@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
-import senado from "../../../../assets/image/SENADO.jpg";
+import senado from "../../../../assets/image/SENADO.webp";
 import { Form, InputGroup, Pagination } from "react-bootstrap";
 import Municipality from "../../../models/Municipality";
 

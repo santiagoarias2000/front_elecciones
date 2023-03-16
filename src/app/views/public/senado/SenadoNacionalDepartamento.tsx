@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import senado from "../../../../assets/image/SENADO.jpg";
+import senado from "../../../../assets/image/SENADO.webp";
 import VotesCongreso from "../../../models/VotesCongreso";
 import { Col, Form, InputGroup, Pagination, Row, Table } from "react-bootstrap";
 import ServicePrivate from "../../../services/ServicePrivate";
