@@ -4,12 +4,15 @@ import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import senado from "../../../../assets/image/SENADO.jpg";
 import { Link, useNavigate } from "react-router-dom";
-import { Form, InputGroup } from "react-bootstrap";
+import { Form, InputGroup, Modal } from "react-bootstrap";
+import ImageSpinner from "../../../../assets/image/errorlogo.png";
+
 export const Senado = () => {
   const [searchNacional, setSearchNacional] = useState("");
   const [searchIndigena, setSearchIndigena] = useState("");
 
-  const regresar = useNavigate();
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
 
   const [arrayVotesSenadoNacional, setArrayVotesSenadoNacional] = useState< VotesCongreso[] >([]);
   const [arrayVotesSenadoIndigena, setArrayVotesSenadoIndigena] = useState< VotesCongreso[] >([]);
@@ -17,6 +20,7 @@ export const Senado = () => {
   const getVotosSenadoTerritorial = async () => {
     const result = await ServicePrivate.requestGET(ApiBack.SENADO_NACIONAL);
     setArrayVotesSenadoNacional(result);
+    setShow(false);
   };
   const getVotosSenadoIndigena = async () => {
     const result = await ServicePrivate.requestGET(ApiBack.SENADO_INDIGENA);
@@ -246,6 +250,28 @@ export const Senado = () => {
           </div>
         </div>
       </div>
+      <Modal
+            show={show}
+            backdrop="static"
+            keyboard={false}
+            onHide={handleClose}
+            centered
+            style={{background:"#FFFFFFBF !important"}}
+          >
+            <Modal.Body className="text-center">
+              <div className="text-center">
+                <img src={ImageSpinner} />
+                <div className="mt-4">
+                  <div
+                    className="spinner-border text-danger"
+                    role="status"
+                  >
+                    <span className=" visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </div>
+            </Modal.Body>
+          </Modal>
       <div className="position-absolute bottom-50 end-50"></div>
       {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>

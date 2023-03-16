@@ -18,9 +18,7 @@ export const Camara = () => {
   const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
     useState<VotesCongreso[]>([]);
 
-  const [arrayVotesCamaraIndigena, setArrayVotosCamaraIndigena] = useState<
-    VotesCongreso[]
-  >([]);
+  const [arrayVotesCamaraIndigena, setArrayVotosCamaraIndigena] = useState< VotesCongreso[] >([]);
 
   const [
     arrayVotesCamaraAfroDescendiente,
