@@ -11,12 +11,8 @@ export const Senado = () => {
 
   const regresar = useNavigate();
 
-  const [arrayVotesSenadoNacional, setArrayVotesSenadoNacional] = useState<
-    VotesCongreso[]
-  >([]);
-  const [arrayVotesSenadoIndigena, setArrayVotesSenadoIndigena] = useState<
-    VotesCongreso[]
-  >([]);
+  const [arrayVotesSenadoNacional, setArrayVotesSenadoNacional] = useState< VotesCongreso[] >([]);
+  const [arrayVotesSenadoIndigena, setArrayVotesSenadoIndigena] = useState< VotesCongreso[] >([]);
 
   const getVotosSenadoTerritorial = async () => {
     const result = await ServicePrivate.requestGET(ApiBack.SENADO_NACIONAL);
