@@ -137,7 +137,7 @@ export const SenadoIndigenaDepartamento = () => {
             >
               <thead className="container_table">
                 <tr>
-                <th className="text-center" style={{ width: "20%" }}>
+                <th className="text-center position-sticky" style={{ width: "20%" }}>
                     ROLE
                   </th>
                   <th className="text-center" style={{ width: "40%" }}>
