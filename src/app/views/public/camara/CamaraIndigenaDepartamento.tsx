@@ -175,11 +175,11 @@ export const CamaraIndigenaDepartamento = () => {
               </div>
             </div>
             <div className="col">
-              <h5 className="text-center my-4" style={{ color: "#052851" }}>
+              <h6 className="text-center my-4" style={{ color: "#052851" }}>
                 {arrayDepartamento.map((myDepartment) => (
                   <b>{myDepartment.name_department}</b>
                 ))}
-              </h5>
+              </h6>
             </div>
             <div className="col-sm">
               <Form id="form_conta">

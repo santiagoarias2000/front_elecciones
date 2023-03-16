@@ -170,7 +170,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
               </div>
             </div>
             <div className="col">
-              <h5 className="text-center my-4" style={{ color: "#052851" }}>
+              <h6 className="text-center my-4" style={{ color: "#052851" }}>
                 {arrayNameMunicipality.map((myNameMunicipality) => (
                   <b>
                     {myNameMunicipality.name_municipality}
@@ -179,7 +179,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                     {")"}
                   </b>
                 ))}
-              </h5>
+              </h6>
             </div>
             <div className="col-sm">
             <Form id="form_conta">
