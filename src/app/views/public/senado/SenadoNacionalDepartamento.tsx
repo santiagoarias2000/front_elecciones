@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import senado from "../../../../assets/image/SENADO.jpg";
+import senado from "../../../../assets/image/SENADO.webp";
 import VotesCongreso from "../../../models/VotesCongreso";
 import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
 import ServicePrivate from "../../../services/ServicePrivate";
@@ -8,7 +8,7 @@ import Municipality from "../../../models/Municipality";
 import e from "express";
 import { useNavigate, useParams } from "react-router-dom";
 import Department from "../../../models/Department";
-import ImageSpinner from "../../../../assets/image/errorlogo.png";
+import ImageSpinner from "../../../../assets/image/errorlogo.webp";
 
 export const SenadoNacionalDepartamento = () => {
   let { idDepartment } = useParams();

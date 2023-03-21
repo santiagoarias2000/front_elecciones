@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import footerimg from "../../assets/image/PNGelecciones.png";
+import footerimg from "../../assets/image/PNGelecciones.webp";
 
 
 

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import img404 from "../../../assets/image/error404.png";
-import imglogo from "../../../assets/image/errorlogo.png";
+import img404 from "../../../assets/image/error404.webp";
+import imglogo from "../../../assets/image/errorlogo.webp";
 
 export const NotFound = () => {
   const regresar = useNavigate();
