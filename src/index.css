@@ -1339,6 +1339,15 @@ h6 {
   --bs-table-hover-color: #052851 !important;
   color: #052851 !important;
 }
+.colorTableCamara {
+  --bs-table-hover-color: #d9224e !important;
+  color: #052851 !important;
+}
+.colorTableCamara i:hover{
+  --bs-table-hover-color: #052851 !important;
+  color: #d9224e !important;
+}
+
 
 .color {
   color: #052851 !important;
@@ -1482,6 +1491,17 @@ h6 {
 .link_hitdata :hover {
   color: #fff3cd;
 }
+.link_departamento{
+  text-decoration: none;
+  color: #052851;
+}
+.link_departamento:hover{
+  color: #d9224e;
+}
+
+
+
+
 
 @media (max-width: 768px) {
   .card-title {
@@ -1670,6 +1690,9 @@ h6 {
 .container_table tr .text_left{
   padding-left: 8vw;
   text-align: justify !important; 
+}
+.container_table a :hover{
+  color: #d9224e; 
 }
 
 .container_total{

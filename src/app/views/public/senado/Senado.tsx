@@ -14,8 +14,12 @@ export const Senado = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesSenadoNacional, setArrayVotesSenadoNacional] = useState< VotesCongreso[] >([]);
-  const [arrayVotesSenadoIndigena, setArrayVotesSenadoIndigena] = useState< VotesCongreso[] >([]);
+  const [arrayVotesSenadoNacional, setArrayVotesSenadoNacional] = useState<
+    VotesCongreso[]
+  >([]);
+  const [arrayVotesSenadoIndigena, setArrayVotesSenadoIndigena] = useState<
+    VotesCongreso[]
+  >([]);
 
   const getVotosSenadoTerritorial = async () => {
     const result = await ServicePrivate.requestGET(ApiBack.SENADO_NACIONAL);
@@ -54,9 +58,7 @@ export const Senado = () => {
           </div>
           <div className="container">
             <div className="row">
-              <div className="col-sm">
-              
-              </div>
+              <div className="col-sm"></div>
               <div className="col-sm">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
@@ -70,11 +72,11 @@ export const Senado = () => {
                 </Form>
               </div>
             </div>
-          </div>  
+          </div>
 
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
-              className="colorTable table table-hover"
+              className="colorTableCamara table table-hover"
               style={{ background: "#05285190 !important" }}
             >
               <thead className="container_table">
@@ -100,19 +102,27 @@ export const Senado = () => {
                   .map((myVotes, contador) => (
                     <tr key={contador}>
                       <td className="text-center">
-                        <b>{myVotes.department.name_department}</b>
+                        <a
+                          className="link_departamento"
+                          href={
+                            "/guiaelectoral/senado/nacional/" +
+                            myVotes.department.idDepartment
+                          }
+                        >
+                          {myVotes.department.name_department}
+                        </a>
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
                       <td className="text-center align-middle">
-                        <Link
-                          className="text-center"
-                          to={
+                        <a
+                          className="link_departamento"
+                          href={
                             "/guiaelectoral/senado/nacional/" +
                             myVotes.department.idDepartment
                           }
                         >
                           <i className="fa-solid fa-magnifying-glass fa-sm text-danger"></i>
-                        </Link>
+                        </a>
                       </td>
                     </tr>
                   ))}
@@ -160,9 +170,7 @@ export const Senado = () => {
 
           <div className="container">
             <div className="row">
-              <div className="col-sm">
-                
-              </div>
+              <div className="col-sm"></div>
               <div className="col-sm">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
@@ -180,7 +188,7 @@ export const Senado = () => {
 
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
-              className="colorTable table table-hover"
+              className="colorTableCamara table table-hover"
               style={{ background: "#05285190 !important" }}
             >
               <thead className="container_table">
@@ -206,13 +214,27 @@ export const Senado = () => {
                   .map((myVotes, contador) => (
                     <tr key={contador}>
                       <td className="text-center">
-                        <b>{myVotes.department.name_department}</b>
+                        <a
+                          className="link_departamento"
+                          href={
+                            "/guiaelectoral/senado/indigena/departamento/" +
+                            myVotes.department.idDepartment
+                          }
+                        >
+                          {myVotes.department.name_department}
+                        </a>
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
                       <td className="text-center align-middle">
-                        <Link className="text-center" to={"/guiaelectoral/senado/indigena/departamento/"+myVotes.department.idDepartment}>
+                        <a
+                          className="text-center"
+                          href={
+                            "/guiaelectoral/senado/indigena/departamento/" +
+                            myVotes.department.idDepartment
+                          }
+                        >
                           <i className="fa-solid fa-magnifying-glass fa-sm text-danger"></i>
-                        </Link>
+                        </a>
                       </td>
                     </tr>
                   ))}
@@ -251,27 +273,24 @@ export const Senado = () => {
         </div>
       </div>
       <Modal
-            show={show}
-            backdrop="static"
-            keyboard={false}
-            onHide={handleClose}
-            centered
-            style={{background:"#FFFFFFBF !important"}}
-          >
-            <Modal.Body className="text-center">
-              <div className="text-center">
-                <img src={ImageSpinner} />
-                <div className="mt-4">
-                  <div
-                    className="spinner-border text-danger"
-                    role="status"
-                  >
-                    <span className=" visually-hidden">Loading...</span>
-                  </div>
-                </div>
+        show={show}
+        backdrop="static"
+        keyboard={false}
+        onHide={handleClose}
+        centered
+        style={{ background: "#FFFFFFBF !important" }}
+      >
+        <Modal.Body className="text-center">
+          <div className="text-center">
+            <img src={ImageSpinner} />
+            <div className="mt-4">
+              <div className="spinner-border text-danger" role="status">
+                <span className=" visually-hidden">Loading...</span>
               </div>
-            </Modal.Body>
-          </Modal>
+            </div>
+          </div>
+        </Modal.Body>
+      </Modal>
       <div className="position-absolute bottom-50 end-50"></div>
       {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>
