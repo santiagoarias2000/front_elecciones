@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logoHeader from "../../assets/image/logoHeader.png";
+import logoHeader from "../../assets/image/logoHeader.webp";
 import camara from "../../assets/image/camara.jpg";
 
 export const Header = () => {

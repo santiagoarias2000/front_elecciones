@@ -1,5 +1,5 @@
 import { Form, InputGroup } from "react-bootstrap";
-import camara from "../../../../assets/image/SENADO.jpg";
+import camara from "../../../../assets/image/SENADO.webp";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -33,7 +33,7 @@ export const PresidenciaAll = () => {
           <div className="container">
             <div className="row">
               <div className="col-sm">
-                <div className="name_table">27 DE MAYO DEL 2018</div>
+                <div className="name_table title_table">27 DE MAYO DEL 2018</div>
               </div>
               <div className="col-sm">
                 <Form id="form_conta">
@@ -184,7 +184,7 @@ export const PresidenciaAll = () => {
           <div className="container">
             <div className="row">
               <div className="col-sm">
-                <div className="name_table">17 DE MAYO DE 2018</div>
+                <div className="name_table title_table">17 DE MAYO DE 2018</div>
               </div>
               <div className="col-sm">
                 <Form id="form_conta">

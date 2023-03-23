@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import camara from "../../../../assets/image/camara.jpg";
+import camara from "../../../../assets/image/camara.webp";
 import { Link, useNavigate } from "react-router-dom";
 import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
-import ImageSpinner from "../../../../assets/image/errorlogo.png";
+import ImageSpinner from "../../../../assets/image/errorlogo.webp";
 
 export const Camara = () => {
   const [searchTerritorial, setSearchTerritorial] = useState("");

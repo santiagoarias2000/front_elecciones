@@ -1,8 +1,8 @@
-import petro from "../../assets/image/petro.jpg";
-import duque from "../../assets/image/duque.jpg";
-import bannerpeque from "../../assets/image/banner2.jpg";
-import verticalbanner from "../../assets/image/verticalbanner.jpg";
-import banner from "../../assets/image/bannerpublicidad.jpg";
+import petro from "../../assets/image/petro.webp";
+import duque from "../../assets/image/duque.webp";
+import bannerpeque from "../../assets/image/banner2.webp";
+import verticalbanner from "../../assets/image/verticalbanner.webp";
+import banner from "../../assets/image/bannerpublicidad.webp";
 
 export const Blog = () => {
   return (
