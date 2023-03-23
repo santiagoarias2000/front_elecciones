@@ -81,10 +81,26 @@ export const Camara = () => {
             </div>
           </div>
 
-          <div className="container">
+          <div className="container responsive_pe">
             <div className="row">
               <div className="col-sm"></div>
-              <div className="col-6">
+              <div className="col-12">
+                <Form id="form_conta">
+                  <InputGroup className="my-3 container_form">
+                    <Form.Control
+                      onChange={(e) => setSearchTerritorial(e.target.value)}
+                      placeholder="Buscar departamento"
+                      style={{ textAlign: "right", marginRight: "5px" }}
+                    ></Form.Control>
+                  </InputGroup>
+                </Form>
+              </div>
+            </div>
+          </div>
+          <div className="container responsive_gra">
+            <div className="row">
+              <div className="col-sm"></div>
+              <div className="col-3">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
                     <Form.Control
@@ -190,10 +206,28 @@ export const Camara = () => {
             </div>
           </div>
 
-          <div className="container">
+          <div className="container responsive_pe">
             <div className="row">
               <div className="col-sm"></div>
-              <div className="col-6">
+              <div className="col-12">
+                <Form id="form_conta">
+                  <InputGroup className="my-3 container_form">
+                    <Form.Control
+                      onChange={(e) => setSearchIndigena(e.target.value)}
+                      placeholder="Buscar departamento"
+                      style={{ textAlign: "right", marginRight: "5px" }}
+                    ></Form.Control>
+                  </InputGroup>
+                </Form>
+              </div>
+            </div>
+          </div>
+
+          
+          <div className="container responsive_gra">
+            <div className="row">
+              <div className="col-sm"></div>
+              <div className="col-3">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
                     <Form.Control
@@ -301,10 +335,27 @@ export const Camara = () => {
             </div>
           </div>
 
-          <div className="container">
+          <div className="container responsive_pe">
             <div className="row">
               <div className="col-sm"></div>
-              <div className="col-6">
+              <div className="col-12">
+                <Form id="form_conta">
+                  <InputGroup className="my-3 container_form">
+                    <Form.Control
+                      onChange={(e) => setSearchAfro(e.target.value)}
+                      placeholder="Buscar departamento"
+                      style={{ textAlign: "right", marginRight: "5px" }}
+                    ></Form.Control>
+                  </InputGroup>
+                </Form>
+              </div>
+            </div>
+          </div>
+
+          <div className="container responsive_gra">
+            <div className="row">
+              <div className="col-sm"></div>
+              <div className="col-3">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
                     <Form.Control

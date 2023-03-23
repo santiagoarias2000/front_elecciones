@@ -47,6 +47,9 @@ const LazyCamaraTerritorialepartamentoMunicipio =lazy(()=>import("../../views/pu
 const LazyCamaraIndigenaDepartamentoMunicipio =lazy(()=>import("../../views/public/camara/CamaraIndigenaDepartamentoMunicipio").then(()=>({default:CamaraIndigenaDepartamentoMunicipio})));
 const LazyCamaraAfroDescendienteDepartamentoMunicipio =lazy(()=>import("../../views/public/camara/CamaraAfroDescendienteDepartamentoMunicipio").then(()=>({default:CamaraAfroDescendienteDepartamentoMunicipio})));
 const LazyPresidente = lazy(() => import("../../views/public/presidencia/presidenciaAll").then(() => ({default: PresidenciaAll,})));
+//blog
+const LazyBlog = lazy(() => import("../../containers/Blog").then(() => ({default: Blog,})));
+
 
 export const InternalRouting = () => {
   return (
@@ -78,6 +81,8 @@ export const InternalRouting = () => {
       <Route path="/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/:idDepartment/municipio/:idMunicipality" element={<LazyCamaraAfroDescendienteDepartamentoMunicipio />} />
       //Routes presidente
       <Route path="/guiaelectoral/presidencia" element={<LazyPresidente />} />
+      //Route blog
+      <Route path="/blog" element={<LazyBlog/>}/>
       
     </Routes>
   );

@@ -1,6 +1,5 @@
 const ApiBack = {
-  URL: "https://3.95.63.32",
-  // URL: "http://localhost:3123",
+  URL: "https://guiaelectoraldecolombia.onrender.com",
 
   
   COMBOBOX_MUNICIPIO: "/api/public/municipio",

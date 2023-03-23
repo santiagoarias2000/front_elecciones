@@ -52,12 +52,26 @@ export const Senado = () => {
               <b className="title_table">TERRITORIAL NACIONAL</b> &nbsp;
             </div>
           </div>
-          <div className="container">
+          <div className="container responsive_pe">
             <div className="row">
-              <div className="col-sm">
-              
+              <div className="col-12">
+                <Form id="form_conta">
+                  <InputGroup className="my-3 container_form">
+                    <Form.Control
+                      onChange={(e) => setSearchNacional(e.target.value)}
+                      placeholder="Buscar nombre departamento"
+                      style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
+                    ></Form.Control>
+                  </InputGroup>
+                </Form>
               </div>
-              <div className="col-sm">
+            </div>
+          </div>  
+          <div className="container responsive_gra">
+            <div className="row">
+            <div className="col-sm"></div>
+              <div className="col-3">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
                     <Form.Control
@@ -137,7 +151,7 @@ export const Senado = () => {
                 <i className="bi bi-arrow-left-circle"></i>
                 &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
               </a>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;
               <a
                 href="/guiaelectoral/senadoelegidos"
                 className="buttonBack buttonBack-primary"
@@ -158,12 +172,26 @@ export const Senado = () => {
             </div>
           </div>
 
-          <div className="container">
+          <div className="container responsive_pe">
             <div className="row">
-              <div className="col-sm">
-                
+              <div className="col-12">
+                <Form id="form_conta">
+                  <InputGroup className="my-3 container_form">
+                    <Form.Control
+                      onChange={(e) => setSearchIndigena(e.target.value)}
+                      placeholder="Buscar nombre departamento"
+                      style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
+                    ></Form.Control>
+                  </InputGroup>
+                </Form>
               </div>
-              <div className="col-sm">
+            </div>
+          </div>
+          <div className="container responsive_gra">
+            <div className="row">
+            <div className="col-sm"></div>
+              <div className="col-3">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
                     <Form.Control
@@ -238,7 +266,7 @@ export const Senado = () => {
                 <i className="bi bi-arrow-left-circle"></i>
                 &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
               </a>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;
               <a
                 href="/guiaelectoral/senadoelegidos"
                 className="buttonBack buttonBack-primary link_hitdata"

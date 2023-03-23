@@ -13,7 +13,7 @@ export const LegalWarning = () => {
         <br />
         <p>
           Domicilio social se encuentra en Calle 36 Numero 16c-02 Tunja, Boyaca
-          Email: julianyureafyt@gmail.com
+          Email: josegilza@gmail.com
         </p>
         <b>1.2. FINALIDAD DE LA PÁGINA WEB</b>
         <p>
@@ -52,7 +52,7 @@ export const LegalWarning = () => {
           La página web https://guiaelectoralcolombiana.com/ (en adelante
           “guiaelectoralcolombiana.com”) proporciona el acceso a artículos,
           informaciones, servicios y datos (en adelante, “Sobre contendios de
-          gammers”) propiedad de JULIAN ALEJANDRO CARDENAS GARCÍA (en adelante,
+          elecciones colombianas”) propiedad de José Celestino Gil Zapata (en adelante,
           “EL DUEÑO”). El USUARIO asume la responsabilidad del uso de la web.
         </p>
         <p>
@@ -318,7 +318,7 @@ export const LegalWarning = () => {
         <p>
           También puede dirigir su reclamación por correo postal dirigido a:
         </p>
-        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX@gmail.com.
+        josegilza@gmail.com
         <h2>
           <b>10. Legislación aplicable y jurisdicción</b>
         </h2>

@@ -23,10 +23,10 @@ import { log } from "console";
 
 export const CamaraTerritorialDepartamento = () => {
   const [search, setSearch] = useState("");
-  const [searchMunicipio,setSearchMunicipio] = useState('');
+  const [searchMunicipio, setSearchMunicipio] = useState("");
   const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState<
-      CandidatosCamara[]
-    >(ARREGLO_CANDIDATOS_ELEGIDOS);
+    CandidatosCamara[]
+  >(ARREGLO_CANDIDATOS_ELEGIDOS);
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
   const regresar = useNavigate();
@@ -153,28 +153,39 @@ export const CamaraTerritorialDepartamento = () => {
                   data-live-search="true"
                   style={{ maxHeight: "200px", overflowY: "auto" }}
                 >
-                  <input type="text" placeholder="Busqueda..." onChange={event=>{setSearchMunicipio(event.target.value)}}/>
+                  <input
+                    type="text"
+                    placeholder="Busqueda..."
+                    onChange={(event) => {
+                      setSearchMunicipio(event.target.value);
+                    }}
+                  />
                   <li>
-                    {arrayMunicipio.filter((val)=>{
+                    {arrayMunicipio
+                      .filter((val) => {
                         if (searchMunicipio == "") {
-                         return val;
-                        }else if(val.name_municipality.toLocaleLowerCase().includes(searchMunicipio.toLocaleLowerCase())){
-                         return val;
-                        }})
-                    .map((myMunicipality, indice) => (
-                      <a
-                        className="dropdown-item"
-                        href={
-                          "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
-                          myMunicipality.id_department +
-                          "/municipio/" +
-                          myMunicipality.id_municipality
+                          return val;
+                        } else if (
+                          val.name_municipality
+                            .toLocaleLowerCase()
+                            .includes(searchMunicipio.toLocaleLowerCase())
+                        ) {
+                          return val;
                         }
-                        
-                      >
-                        {myMunicipality.name_municipality}
-                      </a>
-                    ))}
+                      })
+                      .map((myMunicipality, indice) => (
+                        <a
+                          className="dropdown-item"
+                          href={
+                            "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
+                            myMunicipality.id_department +
+                            "/municipio/" +
+                            myMunicipality.id_municipality
+                          }
+                        >
+                          {myMunicipality.name_municipality}
+                        </a>
+                      ))}
                   </li>
                 </ul>
               </div>
@@ -201,13 +212,13 @@ export const CamaraTerritorialDepartamento = () => {
         </div>
 
         <div className="table-wrapper-scroll-y my-custom-scrollbar">
-        <table
+          <table
             className="colorTable table table-hover"
             style={{ background: "#05285190 !important" }}
           >
             <thead className="container_table">
               <tr>
-              <th className="text-center" style={{ width: "35%" }}>
+                <th className="text-center" style={{ width: "35%" }}>
                   PARTIDO POLÍTICO
                 </th>
                 <th className="text-center" style={{ width: "40%" }}>
@@ -219,43 +230,50 @@ export const CamaraTerritorialDepartamento = () => {
               </tr>
             </thead>
             <tbody className="color container_table">
-              
               {arrayVotesCamaraTerritorial
-               .filter((val) => {
-                if (search == "") {
-                  return val;
-                } else if (
-                  val.description_politicparty
-                    .toLocaleLowerCase()
-                    .includes(search.toLocaleLowerCase())
-                ) {
-                  return val;
-                }
-              })
+                .filter((val) => {
+                  if (search == "") {
+                    return val;
+                  } else if (
+                    val.description_politicparty
+                      .toLocaleLowerCase()
+                      .includes(search.toLocaleLowerCase())
+                  ) {
+                    return val;
+                  }
+                })
                 .map((myVotes, contador) => (
                   <tr key={contador}>
-                    <td className={
-                        CandidatosElegidosCamara(myVotes.candidate_name) === "True"
+                    <td
+                      className={
+                        CandidatosElegidosCamara(myVotes.candidate_name) ===
+                        "True"
                           ? "text-center text-danger fst-italic font-weight-bold"
                           : "text-center"
-                      }>
-                        
+                      }
+                    >
                       {myVotes.description_politicparty}
                     </td>
                     <td
                       className={
-                        CandidatosElegidosCamara(myVotes.candidate_name) === "True"
+                        CandidatosElegidosCamara(myVotes.candidate_name) ===
+                        "True"
                           ? "text-center align-middle text-danger fst-italic"
                           : "text-center"
                       }
                     >
                       {myVotes.candidate_name}
                     </td>
-                    <td className={
-                        CandidatosElegidosCamara(myVotes.candidate_name) === "True"
+                    <td
+                      className={
+                        CandidatosElegidosCamara(myVotes.candidate_name) ===
+                        "True"
                           ? "text-center align-middle text-danger fst-italic"
                           : "text-center"
-                      }>{myVotes.votos}</td>
+                      }
+                    >
+                      {myVotes.votos}
+                    </td>
                   </tr>
                 ))}
             </tbody>
@@ -309,27 +327,24 @@ export const CamaraTerritorialDepartamento = () => {
           </div>
         </div>
         <Modal
-            show={show}
-            backdrop="static"
-            keyboard={false}
-            onHide={handleClose}
-            centered
-            style={{background:"#FFFFFFBF !important"}}
-          >
-            <Modal.Body className="text-center">
-              <div className="text-center">
-                <img src={ImageSpinner} />
-                <div className="mt-4">
-                  <div
-                    className="spinner-border text-danger"
-                    role="status"
-                  >
-                    <span className=" visually-hidden">Loading...</span>
-                  </div>
+          show={show}
+          backdrop="static"
+          keyboard={false}
+          onHide={handleClose}
+          centered
+          style={{ background: "#FFFFFFBF !important" }}
+        >
+          <Modal.Body className="text-center">
+            <div className="text-center">
+              <img src={ImageSpinner} />
+              <div className="mt-4">
+                <div className="spinner-border text-danger" role="status">
+                  <span className=" visually-hidden">Loading...</span>
                 </div>
               </div>
-            </Modal.Body>
-          </Modal>
+            </div>
+          </Modal.Body>
+        </Modal>
       </div>
 
       {/* Ejemplo de una tabla para presentación de datos: Fin */}
