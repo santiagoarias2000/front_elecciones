@@ -4,31 +4,35 @@ import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import camara from "../../../../assets/image/camara.jpg";
 import { Link, useNavigate } from "react-router-dom";
-import { Col, Form, InputGroup, Pagination, Row, Table } from "react-bootstrap";
-import { totalmem } from "os";
+import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
+import ImageSpinner from "../../../../assets/image/errorlogo.png";
 
 export const Camara = () => {
   const [searchTerritorial, setSearchTerritorial] = useState("");
   const [searchIndigena, setSearchIndigena] = useState("");
   const [searchAfro, setSearchAfro] = useState("");
-  const regresar = useNavigate();
+
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
 
   const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
     useState<VotesCongreso[]>([]);
 
-  const [arrayVotesCamaraIndigena, setArrayVotosCamaraIndigena] = useState<
-    VotesCongreso[]
-  >([]);
+  const [arrayVotesCamaraIndigena, setArrayVotosCamaraIndigena] = useState< VotesCongreso[] >([]);
 
   const [
     arrayVotesCamaraAfroDescendiente,
     setArrayVotosCamaraAfroDescendiente,
   ] = useState<VotesCongreso[]>([]);
 
+  
+  
+
   const getVotosCamaraTerritorial = async () => {
     //const parametrosPaginador= {paginaActual: activo, cantidadMostrar:numeroElemPag};
     const result = await ServicePrivate.requestGET(ApiBack.CAMARA_TERRITORIAL);
     setArrayVotosCamaraTerritorial(result);
+    setShow(false);
   };
   const getVotosCamaraIndigena = async () => {
     const result = await ServicePrivate.requestGET(ApiBack.CAMARA_INDIGENA);
@@ -39,7 +43,10 @@ export const Camara = () => {
       ApiBack.CAMARA_AFRODESCENDIENTE
     );
     setArrayVotosCamaraAfroDescendiente(result);
+    
   };
+  
+
 
   useEffect(() => {
     getVotosCamaraIndigena();
@@ -74,11 +81,26 @@ export const Camara = () => {
             </div>
           </div>
 
-          <div className="container">
+          <div className="container responsive_pe">
             <div className="row">
-              <div className="col-sm">
+              <div className="col-sm"></div>
+              <div className="col-12">
+                <Form id="form_conta">
+                  <InputGroup className="my-3 container_form">
+                    <Form.Control
+                      onChange={(e) => setSearchTerritorial(e.target.value)}
+                      placeholder="Buscar departamento"
+                      style={{ textAlign: "right", marginRight: "5px" }}
+                    ></Form.Control>
+                  </InputGroup>
+                </Form>
               </div>
-              <div className="col-6">
+            </div>
+          </div>
+          <div className="container responsive_gra">
+            <div className="row">
+              <div className="col-sm"></div>
+              <div className="col-3">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
                     <Form.Control
@@ -114,11 +136,11 @@ export const Camara = () => {
               <tbody className="color container_table">
                 {arrayVotesCamaraTerritorial
                   .filter((myVotes) => {
-                    return searchTerritorial.toLowerCase() === ""
+                    return searchTerritorial === ""
                       ? myVotes
                       : myVotes.department.name_department
                           .toLowerCase()
-                          .includes(searchTerritorial);
+                          .includes(searchTerritorial.toLowerCase());
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
@@ -137,43 +159,34 @@ export const Camara = () => {
                             myVotes.department.idDepartment
                           }
                         >
-                          <i className="fa-solid fa-magnifying-glass fa-sm"></i>
+                          <i className="fa-solid fa-magnifying-glass fa-sm text-danger"></i>
                         </Link>
                       </td>
                     </tr>
                   ))}
               </tbody>
             </table>
-            
           </div>
-          
+
           <div className="dropdown">
-                <div
-                  className="container-fluid display-flex justify-content-center"
-                  style={{
-                    color: "#FFFFFF",
-                    height: "80px",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <div className="text-center">
-                    <button
-                      type="button"
-                      className="buttonBack buttonBack-primary"
-                    >
-                      <a className="link_hitdata"
-                        href={
-                          "/"
-                        }
-                      >
-                        <i className="bi bi-arrow-left-circle"></i>
-                        &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
-                      </a>
-                    </button>
-                  </div>
-                </div>
+            <div
+              className="container-fluid display-flex justify-content-center"
+              style={{
+                color: "#FFFFFF",
+                height: "80px",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <div className="text-center">
+               
+                  <a  type="button" className="buttonBack buttonBack-primary" href={"/"}>
+                    <i className="bi bi-arrow-left-circle"></i>
+                    &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
+                  </a>
               </div>
+            </div>
+          </div>
         </div>
       </div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
@@ -193,12 +206,28 @@ export const Camara = () => {
             </div>
           </div>
 
-          <div className="container">
+          <div className="container responsive_pe">
             <div className="row">
-              <div className="col-sm">
-
+              <div className="col-sm"></div>
+              <div className="col-12">
+                <Form id="form_conta">
+                  <InputGroup className="my-3 container_form">
+                    <Form.Control
+                      onChange={(e) => setSearchIndigena(e.target.value)}
+                      placeholder="Buscar departamento"
+                      style={{ textAlign: "right", marginRight: "5px" }}
+                    ></Form.Control>
+                  </InputGroup>
+                </Form>
               </div>
-              <div className="col-6">
+            </div>
+          </div>
+
+          
+          <div className="container responsive_gra">
+            <div className="row">
+              <div className="col-sm"></div>
+              <div className="col-3">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
                     <Form.Control
@@ -234,11 +263,11 @@ export const Camara = () => {
               <tbody className="color container_table">
                 {arrayVotesCamaraIndigena
                   .filter((myVotes) => {
-                    return searchIndigena.toLowerCase() === ""
+                    return searchIndigena === ""
                       ? myVotes
                       : myVotes.department.name_department
                           .toLowerCase()
-                          .includes(searchIndigena);
+                          .includes(searchIndigena.toLowerCase());
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
@@ -257,7 +286,7 @@ export const Camara = () => {
                             myVotes.department.idDepartment
                           }
                         >
-                          <i className="fa-solid fa-magnifying-glass fa-sm"></i>
+                          <i className="fa-solid fa-magnifying-glass fa-sm text-danger"></i>
                         </Link>
                       </td>
                     </tr>
@@ -266,32 +295,27 @@ export const Camara = () => {
             </table>
           </div>
           <div className="dropdown">
-                <div
-                  className="container-fluid display-flex justify-content-center"
-                  style={{
-                    color: "#FFFFFF",
-                    height: "80px",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
+            <div
+              className="container-fluid display-flex justify-content-center"
+              style={{
+                color: "#FFFFFF",
+                height: "80px",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <div className="text-center">
+                <a
+                  type="button"
+                  className="buttonBack buttonBack-primary"
+                  href={"/"}
                 >
-                  <div className="text-center">
-                    <button
-                      type="button"
-                      className="buttonBack buttonBack-primary"
-                    >
-                      <a className="link_hitdata"
-                        href={
-                          "/"
-                        }
-                      >
-                        <i className="bi bi-arrow-left-circle"></i>
-                        &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
-                      </a>
-                    </button>
-                  </div>
-                </div>
+                  <i className="bi bi-arrow-left-circle"></i>
+                  &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
+                </a>
               </div>
+            </div>
+          </div>
         </div>
       </div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
@@ -311,11 +335,27 @@ export const Camara = () => {
             </div>
           </div>
 
-          <div className="container">
+          <div className="container responsive_pe">
             <div className="row">
-              <div className="col-sm">
+              <div className="col-sm"></div>
+              <div className="col-12">
+                <Form id="form_conta">
+                  <InputGroup className="my-3 container_form">
+                    <Form.Control
+                      onChange={(e) => setSearchAfro(e.target.value)}
+                      placeholder="Buscar departamento"
+                      style={{ textAlign: "right", marginRight: "5px" }}
+                    ></Form.Control>
+                  </InputGroup>
+                </Form>
               </div>
-              <div className="col-6">
+            </div>
+          </div>
+
+          <div className="container responsive_gra">
+            <div className="row">
+              <div className="col-sm"></div>
+              <div className="col-3">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
                     <Form.Control
@@ -351,11 +391,11 @@ export const Camara = () => {
               <tbody className="color container_table">
                 {arrayVotesCamaraAfroDescendiente
                   .filter((myVotes) => {
-                    return searchAfro.toLowerCase() === ""
+                    return searchAfro === ""
                       ? myVotes
                       : myVotes.department.name_department
                           .toLowerCase()
-                          .includes(searchAfro);
+                          .includes(searchAfro.toLowerCase());
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
@@ -374,7 +414,7 @@ export const Camara = () => {
                             myVotes.department.idDepartment
                           }
                         >
-                          <i className="fa-solid fa-magnifying-glass fa-sm"></i>
+                          <i className="fa-solid fa-magnifying-glass fa-sm text-danger"></i>
                         </Link>
                       </td>
                     </tr>
@@ -383,33 +423,50 @@ export const Camara = () => {
             </table>
           </div>
           <div className="dropdown">
-                <div
-                  className="container-fluid display-flex justify-content-center"
-                  style={{
-                    color: "#FFFFFF",
-                    height: "80px",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
+            <div
+              className="container-fluid display-flex justify-content-center"
+              style={{
+                color: "#FFFFFF",
+                height: "80px",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <div className="text-center">
+                <a
+                  type="button"
+                  className="buttonBack buttonBack-primary"
+                  href={"/"}
                 >
-                  <div className="text-center">
-                    <button
-                      type="button"
-                      className="buttonBack buttonBack-primary"
-                    >
-                      <a className="link_hitdata"
-                        href={
-                          "/"
-                        }
-                      >
-                        <i className="bi bi-arrow-left-circle"></i>
-                        &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
-                      </a>
-                    </button>
+                  <i className="bi bi-arrow-left-circle"></i>
+                  &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Modal
+            show={show}
+            backdrop="static"
+            keyboard={false}
+            onHide={handleClose}
+            centered
+            style={{background:"#FFFFFFBF !important"}}
+          >
+            <Modal.Body className="text-center">
+              <div className="text-center">
+                <img src={ImageSpinner} />
+                <div className="mt-4">
+                  <div
+                    className="spinner-border text-danger"
+                    role="status"
+                  >
+                    <span className=" visually-hidden">Loading...</span>
                   </div>
                 </div>
               </div>
-        </div>
+            </Modal.Body>
+          </Modal>
       </div>
 
       {/* Ejemplo de una tabla para presentación de datos: Fin */}

@@ -4,23 +4,23 @@ import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import senado from "../../../../assets/image/SENADO.webp";
 import { Link, useNavigate } from "react-router-dom";
-import { Form, InputGroup } from "react-bootstrap";
+import { Form, InputGroup, Modal } from "react-bootstrap";
+import ImageSpinner from "../../../../assets/image/errorlogo.png";
+
 export const Senado = () => {
   const [searchNacional, setSearchNacional] = useState("");
   const [searchIndigena, setSearchIndigena] = useState("");
 
-  const regresar = useNavigate();
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
 
-  const [arrayVotesSenadoNacional, setArrayVotesSenadoNacional] = useState<
-    VotesCongreso[]
-  >([]);
-  const [arrayVotesSenadoIndigena, setArrayVotesSenadoIndigena] = useState<
-    VotesCongreso[]
-  >([]);
+  const [arrayVotesSenadoNacional, setArrayVotesSenadoNacional] = useState< VotesCongreso[] >([]);
+  const [arrayVotesSenadoIndigena, setArrayVotesSenadoIndigena] = useState< VotesCongreso[] >([]);
 
   const getVotosSenadoTerritorial = async () => {
     const result = await ServicePrivate.requestGET(ApiBack.SENADO_NACIONAL);
     setArrayVotesSenadoNacional(result);
+    setShow(false);
   };
   const getVotosSenadoIndigena = async () => {
     const result = await ServicePrivate.requestGET(ApiBack.SENADO_INDIGENA);
@@ -52,12 +52,9 @@ export const Senado = () => {
               <b className="title_table">TERRITORIAL NACIONAL</b> &nbsp;
             </div>
           </div>
-          <div className="container">
+          <div className="container responsive_pe">
             <div className="row">
-              <div className="col-sm">
-                <div className="name_table">SENADO</div>
-              </div>
-              <div className="col-sm">
+              <div className="col-12">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
                     <Form.Control
@@ -70,7 +67,24 @@ export const Senado = () => {
                 </Form>
               </div>
             </div>
-          </div>
+          </div>  
+          <div className="container responsive_gra">
+            <div className="row">
+            <div className="col-sm"></div>
+              <div className="col-3">
+                <Form id="form_conta">
+                  <InputGroup className="my-3 container_form">
+                    <Form.Control
+                      onChange={(e) => setSearchNacional(e.target.value)}
+                      placeholder="Buscar nombre departamento"
+                      style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
+                    ></Form.Control>
+                  </InputGroup>
+                </Form>
+              </div>
+            </div>
+          </div>  
 
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
@@ -91,11 +105,11 @@ export const Senado = () => {
               <tbody className="color container_table">
                 {arrayVotesSenadoNacional
                   .filter((myVotes) => {
-                    return searchNacional.toLowerCase() === ""
+                    return searchNacional === ""
                       ? myVotes
-                      : myVotes.candidate_name
+                      : myVotes.department.name_department
                           .toLowerCase()
-                          .includes(searchNacional);
+                          .includes(searchNacional.toLocaleLowerCase());
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
@@ -111,7 +125,7 @@ export const Senado = () => {
                             myVotes.department.idDepartment
                           }
                         >
-                          <i className="fa-solid fa-magnifying-glass fa-sm"></i>
+                          <i className="fa-solid fa-magnifying-glass fa-sm text-danger"></i>
                         </Link>
                       </td>
                     </tr>
@@ -137,7 +151,7 @@ export const Senado = () => {
                 <i className="bi bi-arrow-left-circle"></i>
                 &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
               </a>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;
               <a
                 href="/guiaelectoral/senadoelegidos"
                 className="buttonBack buttonBack-primary"
@@ -158,17 +172,31 @@ export const Senado = () => {
             </div>
           </div>
 
-          <div className="container">
+          <div className="container responsive_pe">
             <div className="row">
-              <div className="col-sm">
-                <div className="name_table">SENADO</div>
-              </div>
-              <div className="col-sm">
+              <div className="col-12">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchIndigena(e.target.value)}
-                      placeholder="Buscar Nombre Candidato"
+                      placeholder="Buscar nombre departamento"
+                      style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
+                    ></Form.Control>
+                  </InputGroup>
+                </Form>
+              </div>
+            </div>
+          </div>
+          <div className="container responsive_gra">
+            <div className="row">
+            <div className="col-sm"></div>
+              <div className="col-3">
+                <Form id="form_conta">
+                  <InputGroup className="my-3 container_form">
+                    <Form.Control
+                      onChange={(e) => setSearchIndigena(e.target.value)}
+                      placeholder="Buscar nombre departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
                     ></Form.Control>
@@ -197,11 +225,11 @@ export const Senado = () => {
               <tbody className="color container_table">
                 {arrayVotesSenadoIndigena
                   .filter((myVotes) => {
-                    return searchNacional.toLowerCase() === ""
+                    return searchIndigena === ""
                       ? myVotes
-                      : myVotes.candidate_name
+                      : myVotes.department.name_department
                           .toLowerCase()
-                          .includes(searchNacional);
+                          .includes(searchIndigena.toLocaleLowerCase());
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
@@ -211,7 +239,7 @@ export const Senado = () => {
                       <td className="text-center">{myVotes.votos}</td>
                       <td className="text-center align-middle">
                         <Link className="text-center" to={"/guiaelectoral/senado/indigena/departamento/"+myVotes.department.idDepartment}>
-                          <i className="fa-solid fa-magnifying-glass fa-sm"></i>
+                          <i className="fa-solid fa-magnifying-glass fa-sm text-danger"></i>
                         </Link>
                       </td>
                     </tr>
@@ -238,10 +266,10 @@ export const Senado = () => {
                 <i className="bi bi-arrow-left-circle"></i>
                 &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
               </a>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;
               <a
                 href="/guiaelectoral/senadoelegidos"
-                className="buttonBack buttonBack-primary"
+                className="buttonBack buttonBack-primary link_hitdata"
               >
                 <i className="bi bi-search "></i> &nbsp; CONOZCA LOS 108
                 ELEGIDOS
@@ -250,6 +278,28 @@ export const Senado = () => {
           </div>
         </div>
       </div>
+      <Modal
+            show={show}
+            backdrop="static"
+            keyboard={false}
+            onHide={handleClose}
+            centered
+            style={{background:"#FFFFFFBF !important"}}
+          >
+            <Modal.Body className="text-center">
+              <div className="text-center">
+                <img src={ImageSpinner} />
+                <div className="mt-4">
+                  <div
+                    className="spinner-border text-danger"
+                    role="status"
+                  >
+                    <span className=" visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </div>
+            </Modal.Body>
+          </Modal>
       <div className="position-absolute bottom-50 end-50"></div>
       {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>

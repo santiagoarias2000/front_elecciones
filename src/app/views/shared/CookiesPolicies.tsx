@@ -447,9 +447,9 @@ export const CookiesPolices = () => {
 
           <p>A continuación, le dejamos los siguientes enlaces de interés:</p>
 
-          <p>Aviso Legal – XXXXXXXXXXXXXXXXXXXXXX</p>
+          <p>Aviso Legal – <a href="/guiaelectoral/avisolegal">Guia Electoral de Colombia aviso legal</a></p>
 
-          <p>Política de Privacidad – XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+          <p>Política de Privacidad – <a href="/guiaelectoral/politicasprivacidad">Guia Electoral de Colombia politica de privacidad</a></p>
 
           <p>Política de Cookies a 1 de Marzo de 2023</p>
         </div>

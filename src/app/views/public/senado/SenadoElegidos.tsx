@@ -4,34 +4,25 @@ import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import camara from "../../../../assets/image/SENADO.webp";
 import { Link, useNavigate } from "react-router-dom";
-import { Col, Form, InputGroup, Pagination, Row, Table } from "react-bootstrap";
+import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
+import ImageSpinner from "../../../../assets/image/errorlogo.png";
 
 export const SenadoElegidos = () => {
-  const [searchNacional, setSearchNacional] = useState("");
-  const [searchIndigena, setSearchIndigena] = useState("");
+  const [search, setSearch] = useState("");
+  const [searchIndigenas, setSearchIndigenas] = useState("");
+
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
 
   const regresar = useNavigate();
 
-  let active = 1;
-  let items = [];
-  for (let number = 1; number <= 5; number++) {
-    items.push(
-      <Pagination.Item key={number} active={number === active}>
-        {number}
-      </Pagination.Item>
-    );
-  }
-
-  const [arrayVotesSenadoNacional, setArrayVotesSenadoNacional] = useState<
-    VotesCongreso[]
-  >([]);
-  const [arrayVotesSenadoIndigena, setArrayVotesSenadoIndigena] = useState<
-    VotesCongreso[]
-  >([]);
+  const [arrayVotesSenadoNacional, setArrayVotesSenadoNacional] = useState< VotesCongreso[] >([]);
+  const [arrayVotesSenadoIndigena, setArrayVotesSenadoIndigena] = useState< VotesCongreso[] >([]);
 
   const getVotosSenadoTerritorial = async () => {
     const result = await ServicePrivate.requestGET(ApiBack.SENADO_LIST_102);
     setArrayVotesSenadoNacional(result);
+    setShow(false);
   };
   const getVotosSenadoIndigena = async () => {
     const result = await ServicePrivate.requestGET(
@@ -76,10 +67,9 @@ export const SenadoElegidos = () => {
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
                     <Form.Control
-                      onChange={(e) => setSearchNacional(e.target.value)}
-                      placeholder="Buscar Nombre candidato"
+                      onChange={(e) => setSearch(e.target.value)}
+                      placeholder="Buscar un Partido Político o Candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
-                      className="form_co"
                     ></Form.Control>
                   </InputGroup>
                 </Form>
@@ -94,11 +84,11 @@ export const SenadoElegidos = () => {
             >
               <thead className="container_table">
                 <tr>
-                  <th className="text-center" style={{ width: "30%" }}>
-                    NOMBRE CANDIDATO
-                  </th>
                   <th className="text-center" style={{ width: "20%" }}>
                     PARTIDO
+                  </th>
+                  <th className="text-center" style={{ width: "30%" }}>
+                    NOMBRE CANDIDATO
                   </th>
                   <th className="text-center" style={{ width: "20%" }}>
                     TOTAL VOTOS NACIONAL
@@ -113,20 +103,22 @@ export const SenadoElegidos = () => {
               </thead>
               <tbody className="color container_table">
                 {arrayVotesSenadoNacional
-                  .filter((myVotes) => {
-                    return searchNacional.toLowerCase() === ""
-                      ? myVotes
-                      : myVotes.candidate_name
-                          .toLowerCase()
-                          .includes(searchNacional);
-                  })
+                  .filter((val=>{
+                    if(search == ""){
+                      return val;
+                    }else if(val.description_politicparty.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                      return val;
+                    }else if(val.candidate_name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                      return val;
+                    }
+                  }))
                   .map((myVotes, contador) => (
                     <tr key={contador}>
                       <td className="text-center">
-                        <b>{myVotes.candidate_name}</b>
+                        {myVotes.description_politicparty}
                       </td>
                       <td className="text-center">
-                        {myVotes.description_politicparty}
+                        {myVotes.candidate_name}
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
                       <td className="text-center">
@@ -176,12 +168,11 @@ export const SenadoElegidos = () => {
               <div className="col-sm">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
-                    <Form.Control
-                      onChange={(e) => setSearchNacional(e.target.value)}
-                      placeholder="Buscar nombre candidato"
-                      style={{ textAlign: "right", marginRight: "5px" }}
-                      className="form_co"
-                    ></Form.Control>
+                  <Form.Control
+                    onChange={(e) => setSearchIndigenas(e.target.value)}
+                    placeholder="Buscar un Partido Político o Candidato"
+                    style={{ textAlign: "right", marginRight: "5px" }}
+                  ></Form.Control>
                   </InputGroup>
                 </Form>
               </div>
@@ -213,13 +204,15 @@ export const SenadoElegidos = () => {
               </thead>
               <tbody className="color container_table">
                 {arrayVotesSenadoIndigena
-                  .filter((myVotes) => {
-                    return searchNacional.toLowerCase() === ""
-                      ? myVotes
-                      : myVotes.candidate_name
-                          .toLowerCase()
-                          .includes(searchNacional);
-                  })
+                  .filter((val=>{
+                    if(searchIndigenas == ""){
+                      return val;
+                    }else if(val.description_politicparty.toLocaleLowerCase().includes(searchIndigenas.toLocaleLowerCase())){
+                      return val;
+                    }else if(val.candidate_name.toLocaleLowerCase().includes(searchIndigenas.toLocaleLowerCase())){
+                      return val;
+                    }
+                  }))
                   .map((myVotes, contador) => (
                     <tr key={contador}>
                       <td className="text-center">
@@ -260,6 +253,28 @@ export const SenadoElegidos = () => {
             </div>
           </div>
         </div>
+        <Modal
+            show={show}
+            backdrop="static"
+            keyboard={false}
+            onHide={handleClose}
+            centered
+            style={{background:"#FFFFFFBF !important"}}
+          >
+            <Modal.Body className="text-center">
+              <div className="text-center">
+                <img src={ImageSpinner} />
+                <div className="mt-4">
+                  <div
+                    className="spinner-border text-danger"
+                    role="status"
+                  >
+                    <span className=" visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </div>
+            </Modal.Body>
+          </Modal>
       </div>
       <div className="position-absolute bottom-50 end-50"></div>
       {/* Ejemplo de una tabla para presentación de datos: Fin */}

@@ -1,5 +1,5 @@
 import { Form, InputGroup } from "react-bootstrap";
-import camara from "../../../../assets/image/SENADO.webp";
+import camara from "../../../../assets/image/ELLECIONESPRESIDENCIA.webp";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -33,7 +33,7 @@ export const PresidenciaAll = () => {
           <div className="container">
             <div className="row">
               <div className="col-sm">
-                <div className="name_table">27 DE MAYO DEL 2018</div>
+                <div className="name_table">29 DE JUNIO DEL 2022</div>
               </div>
               <div className="col-sm">
                 <Form id="form_conta">
@@ -71,65 +71,79 @@ export const PresidenciaAll = () => {
               <tbody className="color container_table">
                 <tr>
                   <td className="text_left">
-                    <b className="fst-italic">Iván Duque M.</b>
+                    <b className="fst-italic text-danger">Gustavo Petro U.</b>
                   </td>
-                  <td className="text-center">7'616.857</td>
+                  <td className="text-center">8.527.768</td>
                   <td className="text-center">987.744</td>
                 </tr>
                 <tr>
                   <td className="text_left">
-                    <b className="fst-italic">Gustavo Petro U.</b>
+                    <b className="fst-italic text-danger">Rodolfo Hernández</b>
                   </td>
-                  <td className="text-center">4'855.069</td>
+                  <td className="text-center">5.953.209</td>
                   <td className="text-center">1'099.955</td>
                 </tr>
                 <tr>
                   <td className="text_left">
-                    <b>Sergio Fajardo V.</b>
+                    <b>Federico Guitiérrez Z.</b>
                   </td>
-                  <td className="text-center">4'602.916</td>
+                  <td className="text-center">5.058.010</td>
                   <td className="text-center">1'244.477</td>
                 </tr>
                 <tr>
                   <td className="text_left">
-                    <b>Germán Vargas LI</b>
+                    <b>Segio Fajardo V.</b>
                   </td>
-                  <td className="text-center">1'412.392</td>
+                  <td className="text-center">888.585</td>
                   <td className="text-center">172.684</td>
                 </tr>
                 <tr>
                   <td className="text_left">
-                    <b>Humberto De la Calle</b>
+                    <b>Jhon Milton Rodríguez G.</b>
                   </td>
-                  <td className="text-center">396.151</td>
+                  <td className="text-center">274.250</td>
                   <td className="text-center">93.401</td>
                 </tr>
                 <tr>
                   <td className="text_left">
-                    <b>Demás candidatos:(3)</b>
+                    <b>Enrique Gómez M.</b>
                   </td>
-                  <td className="text-center">132.033</td>
+                  <td className="text-center">50.539</td>
+                  <td className="text-center">20.089</td>
+                </tr>
+                <tr>
+                  <td className="text_left">
+                    <b>Ingrit Betancurt</b>
+                  </td>
+                  <td className="text-center">14,878</td>
+                  <td className="text-center">20.089</td>
+                </tr>
+                <tr>
+                  <td className="text_left">
+                    <b>Luis Pérez</b>
+                  </td>
+                  <td className="text-center">12,425</td>
                   <td className="text-center">20.089</td>
                 </tr>
                 <tr>
                   <td className="text_left">
                     <b>Votos en Blanco</b>
                   </td>
-                  <td className="text-center">338.581</td>
+                  <td className="text-center">366,623</td>
                   <td className="text-center">55.867</td>
                 </tr>
                 <tr>
                   <td className="text_left">
                     <b>Votos Nulos</b>
                   </td>
-                  <td className="text-center">242.002</td>
+                  <td className="text-center">242,629</td>
                   <td className="text-center">27.858</td>
                 </tr>
                 <tr>
                   <td className="text_left">
                     <b>Votos No Marcados</b>
                   </td>
-                  <td className="text-center">47.675</td>
+                  <td className="text-center">29,715</td>
                   <td className="text-center">1.885</td>
                 </tr>
               </tbody>
@@ -159,7 +173,7 @@ export const PresidenciaAll = () => {
                   </div>
                   <div className="col-4">
                     <div>
-                      <tr className="container_total">
+                      <tr className="container_total text-danger">
                         <td>
                           <b>VOTACIÓN TOTAL</b>
                         </td>
@@ -184,7 +198,7 @@ export const PresidenciaAll = () => {
           <div className="container">
             <div className="row">
               <div className="col-sm">
-                <div className="name_table">17 DE MAYO DE 2018</div>
+                <div className="name_table">19 DE JUNIO DE 2022</div>
               </div>
               <div className="col-sm">
                 <Form id="form_conta">
@@ -221,37 +235,37 @@ export const PresidenciaAll = () => {
               <tbody className="color container_table">
                 <tr>
                   <td className="text_left">
-                    <b className="fst-italic">Iván Duque M.</b>
+                    <b className="fst-italic text-danger">Gustavo Petro U.</b>
                   </td>
-                  <td className="text-center">10'395.689</td>
+                  <td className="text-center">11.281.013</td>
                   <td className="text-center">1'449.092</td>
                 </tr>
                 <tr>
                   <td className="text_left">
-                    <b>Gustavo Petro U.</b>
+                    <b>Rodolfo Hernández</b>
                   </td>
-                  <td className="text-center">8'040.449</td>
+                  <td className="text-center">10.580.412</td>
                   <td className="text-center">1'889.050</td>
                 </tr>
                 <tr>
                   <td className="text_left">
                     <b>Votos en Blanco</b>
                   </td>
-                  <td className="text-center">807.924</td>
+                  <td className="text-center">501.987</td>
                   <td className="text-center">200.249</td>
                 </tr>
                 <tr>
                   <td className="text_left">
                     <b>Votos nulos</b>
                   </td>
-                  <td className="text-center">263.373</td>
+                  <td className="text-center">271.667</td>
                   <td className="text-center">38.322</td>
                 </tr>
                 <tr>
                   <td className="text_left">
                     <b>Votos no Marcados</b>
                   </td>
-                  <td className="text-center">25.969</td>
+                  <td className="text-center">21 459</td>
                   <td className="text-center">1.417</td>
                 </tr>
               </tbody>
@@ -282,11 +296,11 @@ export const PresidenciaAll = () => {
                   </div>
                   <div className="col-4">
                     <div>
-                      <tr className="container_total">
+                      <tr className="container_total text-danger">
                         <td>
                           <b>VOTACIÓN TOTAL</b>
                         </td>
-                        <td>19'536.404</td>
+                        <td>22.658.694</td>
                       </tr>
                     </div>
                   </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Col, Form, InputGroup, Pagination, Row, Table } from "react-bootstrap";
+import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import senado from "../../../../assets/image/SENADO.webp";
 import VotesCongreso from "../../../models/VotesCongreso";
@@ -7,25 +7,19 @@ import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
 import Municipality from "../../../models/Municipality";
 import Department from "../../../models/Department";
+import ImageSpinner from "../../../../assets/image/errorlogo.png";
 
 export const SenadoIndigenaDepartamento = () => {
   let { idDepartment } = useParams();
-
-  const [searchNacional, setSearchNacional] = useState("");
-  let active = 1;
-  let items = [];
-  for (let number = 1; number <= 5; number++) {
-    items.push(
-      <Pagination.Item key={number} active={number === active}>
-        {number}
-      </Pagination.Item>
-    );
-  }
+  const [search, setSearch] = useState("");
+  const [searchMunicipio,setSearchMunicipio] = useState('');
+ 
   const [arrayMunicipios, setMunicipios] = useState<Municipality[]>([]);
   const [arrayDepartamento, setArrayDepartamento] = useState<Department[]>([]);
 
-  const regresar = useNavigate();
-  const [seleccion, setSeleccion] = useState<number | undefined>();
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
+
   const [arrayVotesSenadoDepartamental, setArrayVotesSenadoDepartamental] =
     useState<VotesCongreso[]>([]);
   const getMunicipios = async () => {
@@ -49,6 +43,7 @@ export const SenadoIndigenaDepartamento = () => {
     setArrayVotesSenadoDepartamental(result);
     if (result) {
       setArrayVotesSenadoDepartamental(result);
+      setShow(false);
     }
   };
   useEffect(() => {
@@ -82,7 +77,7 @@ export const SenadoIndigenaDepartamento = () => {
           <div className="container">
             <div className="row">
               <div className="col-sm ">
-                <div className="dropdown align-content-center my-3">
+                <div className="dropdown text-center my-3">
                   <button
                     type="button"
                     className="buttonBack buttonBack-primary dropdown-toggle"
@@ -92,9 +87,15 @@ export const SenadoIndigenaDepartamento = () => {
                     Municipios
                   </button>
                   <ul className="dropdown-menu selectpicker" data-live-search="true" style={{ maxHeight: "200px", overflowY: "auto" }} >
-                    <input type="text" placeholder="Busqueda..." />
+                  <input type="text" placeholder="Busqueda..." onChange={event=>{setSearchMunicipio(event.target.value)}}/>
                     <li>
-                      {arrayMunicipios.map((miMunicipio, indice) => (
+                      {arrayMunicipios.filter((val)=>{
+                        if (searchMunicipio == "") {
+                         return val;
+                        }else if(val.name_municipality.toLocaleLowerCase().includes(searchMunicipio.toLocaleLowerCase())){
+                         return val;
+                        }})
+                      .map((miMunicipio, indice) => (
                         <a
                           className="dropdown-item"
                           href={
@@ -112,20 +113,20 @@ export const SenadoIndigenaDepartamento = () => {
                 </div>
               </div>
               <div className="col">
-                <h5 className="text-center my-4" style={{ color: "#052851" }}>
+                <h6 className="text-center my-4" style={{ color: "#052851" }}>
                   {arrayDepartamento.map((myDepartment) => (
                     <b>{myDepartment.name_department}</b>
                   ))}
-                </h5>
+                </h6>
               </div>
               <div className="col-sm">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
-                    <Form.Control
-                      onChange={(e) => setSearchNacional(e.target.value)}
-                      placeholder="Buscar partido político"
-                      style={{ textAlign: "right", marginRight: "5px" }}
-                    ></Form.Control>
+                  <Form.Control
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Buscar un Partido Político"
+                    style={{ textAlign: "right", marginRight: "5px" }}
+                  ></Form.Control>
                   </InputGroup>
                 </Form>
               </div>
@@ -152,20 +153,20 @@ export const SenadoIndigenaDepartamento = () => {
               </thead>
               <tbody className="color container_table">
                 {arrayVotesSenadoDepartamental
-                  .filter((myVotes) => {
-                    return searchNacional.toLowerCase() === ""
-                      ? myVotes
-                      : myVotes.candidate_name
-                          .toLowerCase()
-                          .includes(searchNacional);
-                  })
+                  .filter((val=>{
+                    if(search == ""){
+                      return val;
+                    }else if(val.description_politicparty.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                      return val;
+                    }
+                  }))
                   .map((myVotes, contador) => (
                     <tr key={contador}>
                       <td className="text-center">
                         {myVotes.description_politicparty}
                       </td>
                       <td className="text-center">
-                        <b>{myVotes.candidate_name}</b>
+                        {myVotes.candidate_name}
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
                     </tr>
@@ -182,7 +183,7 @@ export const SenadoIndigenaDepartamento = () => {
                       alignItems: "right",
                     }}
                   >
-                    <h6 className="my-4" style={{ color: "#052851", textAlign:"right" }}>
+                    <h6 className="my-4" style={{ color: "#052851", textAlign:"right",paddingRight:"100px" }}>
                     {arrayDepartamento.map((myDepartment) => (
                       <b style={{color:"#D9224E"}}>VOTACIÓN TOTAL: {myDepartment.votos}</b>
                     ))}
@@ -210,8 +211,29 @@ export const SenadoIndigenaDepartamento = () => {
             </div>
           </div>
         </div>
+        <Modal
+            show={show}
+            backdrop="static"
+            keyboard={false}
+            onHide={handleClose}
+            centered
+            style={{background:"#FFFFFFBF !important"}}
+          >
+            <Modal.Body className="text-center">
+              <div className="text-center">
+                <img src={ImageSpinner} />
+                <div className="mt-4">
+                  <div
+                    className="spinner-border text-danger"
+                    role="status"
+                  >
+                    <span className=" visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </div>
+            </Modal.Body>
+          </Modal>
       </div>
-
       <div className="position-absolute bottom-50 end-50"></div>
       {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>

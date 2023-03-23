@@ -7,7 +7,7 @@ export const PrivacyPolicies = () => {
           <h2>Quiénes somos</h2>
 
           <p>
-            Nuestra dirección de sitio web es: https://yureplays.com. <br />
+            Nuestra dirección de sitio web es: https://guiaelectoraldecolombia.com <br />
             <b style={{ fontSize: "17px" }}>
               Qué datos personales recopilamos y por qué lo recogemos{" "}
             </b>
@@ -24,7 +24,7 @@ export const PrivacyPolicies = () => {
             servicio gravatar para ver si la está utilizando. La política de
             privacidad del servicio Gravatar está disponible aquí:
             <br />
-            https://automattic.com/privacy/. Después de la aprobación de tu
+            <a href="https://automattic.com/privacy/">https://automattic.com/privacy/</a>. Después de la aprobación de tu
             comentario, su imagen de perfil será visible para el público en el
             contexto de tu comentario.
             <br />
