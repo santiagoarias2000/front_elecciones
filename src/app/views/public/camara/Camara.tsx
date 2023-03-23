@@ -3,8 +3,16 @@ import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import camara from "../../../../assets/image/camara.jpg";
-import { Link, useNavigate } from "react-router-dom";
-import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
+import { Link, redirect, useNavigate } from "react-router-dom";
+import {
+  Col,
+  Form,
+  InputGroup,
+  Modal,
+  Pagination,
+  Row,
+  Table,
+} from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/errorlogo.png";
 
 export const Camara = () => {
@@ -18,15 +26,14 @@ export const Camara = () => {
   const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
     useState<VotesCongreso[]>([]);
 
-  const [arrayVotesCamaraIndigena, setArrayVotosCamaraIndigena] = useState< VotesCongreso[] >([]);
+  const [arrayVotesCamaraIndigena, setArrayVotosCamaraIndigena] = useState<
+    VotesCongreso[]
+  >([]);
 
   const [
     arrayVotesCamaraAfroDescendiente,
     setArrayVotosCamaraAfroDescendiente,
   ] = useState<VotesCongreso[]>([]);
-
-  
-  
 
   const getVotosCamaraTerritorial = async () => {
     //const parametrosPaginador= {paginaActual: activo, cantidadMostrar:numeroElemPag};
@@ -43,10 +50,7 @@ export const Camara = () => {
       ApiBack.CAMARA_AFRODESCENDIENTE
     );
     setArrayVotosCamaraAfroDescendiente(result);
-    
   };
-  
-
 
   useEffect(() => {
     getVotosCamaraIndigena();
@@ -100,21 +104,18 @@ export const Camara = () => {
 
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
-              className="colorTable table table-hover"
+              className="colorTableCamara table table-hover"
               style={{ background: "#05285190 !important" }}
             >
               <thead className="container_table">
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }}>
+                  <th className="text-center" style={{ width: "50%" }}>
                     DEPARTAMENTO
                   </th>
-                  <th className="text-center" style={{ width: "30%" }}>
-                    ROLE
-                  </th>
-                  <th className="text-center" style={{ width: "25%" }}>
+                  <th className="text-center" style={{ width: "35%" }}>
                     TOTAL VOTOS
                   </th>
-                  <th className="text-center" style={{ width: "10%" }}></th>
+                  <th className="text-center" style={{ width: "15%" }}></th>
                 </tr>
               </thead>
               <tbody className="color container_table">
@@ -129,22 +130,27 @@ export const Camara = () => {
                   .map((myVotes, contador) => (
                     <tr key={contador}>
                       <td className="text-center">
-                        <b>{myVotes.department.name_department}</b>
-                      </td>
-                      <td className="text-center">
-                        {myVotes.description_role}
+                        <a
+                          className="link_departamento"
+                          href={
+                            "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
+                            myVotes.department.idDepartment
+                          }
+                        >
+                          {myVotes.department.name_department}
+                        </a>
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
                       <td className="text-center align-middle">
-                        <Link
-                          className="text-center"
-                          to={
+                        <a
+                          className="link_departamento"
+                          href={
                             "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
                           <i className="fa-solid fa-magnifying-glass fa-sm text-danger"></i>
-                        </Link>
+                        </a>
                       </td>
                     </tr>
                   ))}
@@ -163,11 +169,14 @@ export const Camara = () => {
               }}
             >
               <div className="text-center">
-               
-                  <a  type="button" className="buttonBack buttonBack-primary" href={"/"}>
-                    <i className="bi bi-arrow-left-circle"></i>
-                    &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
-                  </a>
+                <a
+                  type="button"
+                  className="buttonBack buttonBack-primary"
+                  href={"/"}
+                >
+                  <i className="bi bi-arrow-left-circle"></i>
+                  &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
+                </a>
               </div>
             </div>
           </div>
@@ -209,21 +218,18 @@ export const Camara = () => {
 
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
-              className="colorTable table table-hover"
+              className="colorTableCamara table table-hover"
               style={{ background: "#05285190 !important" }}
             >
               <thead className="container_table">
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }}>
+                  <th className="text-center" style={{ width: "50%" }}>
                     DEPARTAMENTO
                   </th>
-                  <th className="text-center" style={{ width: "30%" }}>
-                    ROLE
-                  </th>
-                  <th className="text-center" style={{ width: "25%" }}>
+                  <th className="text-center" style={{ width: "35%" }}>
                     TOTAL VOTOS
                   </th>
-                  <th className="text-center" style={{ width: "10%" }}></th>
+                  <th className="text-center" style={{ width: "15%" }}></th>
                 </tr>
               </thead>
               <tbody className="color container_table">
@@ -238,22 +244,28 @@ export const Camara = () => {
                   .map((myVotes, contador) => (
                     <tr key={contador}>
                       <td className="text-center">
-                        <b>{myVotes.department.name_department}</b>
+                        <a
+                          className="link_departamento"
+                          href={
+                            "/guiaelectoral/camara/circuncripcion/indigena/departamento/" +
+                            myVotes.department.idDepartment
+                          }
+                        >
+                          {myVotes.department.name_department}
+                        </a>
                       </td>
-                      <td className="text-center">
-                        {myVotes.description_role}
-                      </td>
+
                       <td className="text-center">{myVotes.votos}</td>
                       <td className="text-center align-middle">
-                        <Link
-                          className="text-center"
-                          to={
+                        <a
+                          className="link_departamento"
+                          href={
                             "/guiaelectoral/camara/circuncripcion/indigena/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
                           <i className="fa-solid fa-magnifying-glass fa-sm text-danger"></i>
-                        </Link>
+                        </a>
                       </td>
                     </tr>
                   ))}
@@ -320,16 +332,13 @@ export const Camara = () => {
 
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
-              className="colorTable table table-hover"
+              className="colorTableCamara table table-hover"
               style={{ background: "#05285190 !important" }}
             >
               <thead className="container_table">
                 <tr>
                   <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
-                  </th>
-                  <th className="text-center" style={{ width: "30%" }}>
-                    ROLE
                   </th>
                   <th className="text-center" style={{ width: "25%" }}>
                     TOTAL VOTOS
@@ -349,22 +358,26 @@ export const Camara = () => {
                   .map((myVotes, contador) => (
                     <tr key={contador}>
                       <td className="text-center">
-                        <b>{myVotes.department.name_department}</b>
-                      </td>
-                      <td className="text-center">
-                        {myVotes.description_role}
+                        <a className="link_departamento"
+                          href={
+                            "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
+                            myVotes.department.idDepartment
+                          }
+                        >
+                          {myVotes.department.name_department}
+                        </a>
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
                       <td className="text-center align-middle">
-                        <Link
-                          className="text-center"
-                          to={
+                        <a
+                          className="link_departamento"
+                          href={
                             "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
                           <i className="fa-solid fa-magnifying-glass fa-sm text-danger"></i>
-                        </Link>
+                        </a>
                       </td>
                     </tr>
                   ))}
@@ -395,27 +408,24 @@ export const Camara = () => {
           </div>
         </div>
         <Modal
-            show={show}
-            backdrop="static"
-            keyboard={false}
-            onHide={handleClose}
-            centered
-            style={{background:"#FFFFFFBF !important"}}
-          >
-            <Modal.Body className="text-center">
-              <div className="text-center">
-                <img src={ImageSpinner} />
-                <div className="mt-4">
-                  <div
-                    className="spinner-border text-danger"
-                    role="status"
-                  >
-                    <span className=" visually-hidden">Loading...</span>
-                  </div>
+          show={show}
+          backdrop="static"
+          keyboard={false}
+          onHide={handleClose}
+          centered
+          style={{ background: "#FFFFFFBF !important" }}
+        >
+          <Modal.Body className="text-center">
+            <div className="text-center">
+              <img src={ImageSpinner} />
+              <div className="mt-4">
+                <div className="spinner-border text-danger" role="status">
+                  <span className=" visually-hidden">Loading...</span>
                 </div>
               </div>
-            </Modal.Body>
-          </Modal>
+            </div>
+          </Modal.Body>
+        </Modal>
       </div>
 
       {/* Ejemplo de una tabla para presentación de datos: Fin */}
