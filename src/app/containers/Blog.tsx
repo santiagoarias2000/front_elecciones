@@ -3,7 +3,7 @@ import petro from "../../assets/image/gustavopetro.webp";
 import rodolfo from "../../assets/image/rodolfo.webp";
 import elecciones from "../../assets/image/eleccionesnoticia.webp";
 import loteriabanner from "../../assets/image/publicidadloteria.jpeg";
-import verticalbanner from "../../assets/image/verticalbanner.jpg";
+import verticalbanner from "../../assets/image/verticalbanner.webp";
 import banner from "../../assets/image/bannerpublicidad.jpg";
 
 export const Blog = () => {

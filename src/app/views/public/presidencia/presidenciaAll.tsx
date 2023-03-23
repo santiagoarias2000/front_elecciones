@@ -1,5 +1,5 @@
 import { Form, InputGroup } from "react-bootstrap";
-import camara from "../../../../assets/image/ELLECIONESPRESIDENCIA.webp";
+import camara from "../../../../assets/image/SENADO.webp";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 

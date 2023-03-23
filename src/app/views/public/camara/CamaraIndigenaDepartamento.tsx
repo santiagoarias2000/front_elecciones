@@ -2,12 +2,20 @@ import { useState, useEffect } from "react";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import camara from "../../../../assets/image/camara.jpg";
+import camara from "../../../../assets/image/camara.webp";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
-import ImageSpinner from "../../../../assets/image/errorlogo.png";
+import ImageSpinner from "../../../../assets/image/errorlogo.webp";
 
-import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
+import {
+  Col,
+  Form,
+  InputGroup,
+  Modal,
+  Pagination,
+  Row,
+  Table,
+} from "react-bootstrap";
 import Department from "../../../models/Department";
 import CandidatosCamara from "../../../mocks/models/CandidatosCamara";
 import { ARREGLO_CANDIDATOS_ELEGIDOS } from "../../../mocks/candidatos-mocks";
@@ -17,7 +25,7 @@ export const CamaraIndigenaDepartamento = () => {
     CandidatosCamara[]
   >(ARREGLO_CANDIDATOS_ELEGIDOS);
   const [search, setSearch] = useState("");
-  const [searchMunicipio,setSearchMunicipio] = useState('');
+  const [searchMunicipio, setSearchMunicipio] = useState("");
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
   const regresar = useNavigate();
@@ -115,7 +123,7 @@ export const CamaraIndigenaDepartamento = () => {
         <div className="container">
           <div className="row">
             <div className="col-sm ">
-            <div className="dropdown text-center my-3">
+              <div className="dropdown text-center my-3">
                 <button
                   type="button"
                   className="buttonBack buttonBack-primary dropdown-toggle"
@@ -129,27 +137,39 @@ export const CamaraIndigenaDepartamento = () => {
                   data-live-search="true"
                   style={{ maxHeight: "200px", overflowY: "auto" }}
                 >
-                  <input type="text" placeholder="Busqueda..." onChange={event=>{setSearchMunicipio(event.target.value)}}/>
+                  <input
+                    type="text"
+                    placeholder="Busqueda..."
+                    onChange={(event) => {
+                      setSearchMunicipio(event.target.value);
+                    }}
+                  />
                   <li>
-                    {arrayMunicipio.filter((val)=>{
+                    {arrayMunicipio
+                      .filter((val) => {
                         if (searchMunicipio == "") {
-                         return val;
-                        }else if(val.name_municipality.toLocaleLowerCase().includes(searchMunicipio.toLocaleLowerCase())){
-                         return val;
-                        }})
-                    .map((myMunicipality, indice) => (
-                      <a
-                        className="dropdown-item"
-                        href={
-                          "/guiaelectoral/camara/circuncripcion/indigena/departamento/" +
-                          myMunicipality.id_department +
-                          "/municipio/" +
-                          myMunicipality.id_municipality
+                          return val;
+                        } else if (
+                          val.name_municipality
+                            .toLocaleLowerCase()
+                            .includes(searchMunicipio.toLocaleLowerCase())
+                        ) {
+                          return val;
                         }
-                      >
-                        {myMunicipality.name_municipality}
-                      </a>
-                    ))}
+                      })
+                      .map((myMunicipality, indice) => (
+                        <a
+                          className="dropdown-item"
+                          href={
+                            "/guiaelectoral/camara/circuncripcion/indigena/departamento/" +
+                            myMunicipality.id_department +
+                            "/municipio/" +
+                            myMunicipality.id_municipality
+                          }
+                        >
+                          {myMunicipality.name_municipality}
+                        </a>
+                      ))}
                   </li>
                 </ul>
               </div>
@@ -176,13 +196,13 @@ export const CamaraIndigenaDepartamento = () => {
         </div>
 
         <div className="table-wrapper-scroll-y my-custom-scrollbar">
-        <table
+          <table
             className="colorTable table table-hover"
             style={{ background: "#05285190 !important" }}
           >
             <thead className="container_table">
               <tr>
-              <th className="text-center" style={{ width: "35%" }}>
+                <th className="text-center" style={{ width: "35%" }}>
                   PARTIDO POLÍTICO
                 </th>
                 <th className="text-center" style={{ width: "40%" }}>
@@ -194,7 +214,6 @@ export const CamaraIndigenaDepartamento = () => {
               </tr>
             </thead>
             <tbody className="color container_table">
-              
               {arrayVotesCamaraIndigena
                 .filter((myVotes) => {
                   return search.toLowerCase() === ""
@@ -205,27 +224,36 @@ export const CamaraIndigenaDepartamento = () => {
                 })
                 .map((myVotes, contador) => (
                   <tr key={contador}>
-                    <td className={
-                        CandidatosElegidosCamara(myVotes.candidate_name) === "True"
+                    <td
+                      className={
+                        CandidatosElegidosCamara(myVotes.candidate_name) ===
+                        "True"
                           ? "text-center text-danger fst-italic font-weight-bold"
                           : "text-center"
-                      }>
+                      }
+                    >
                       {myVotes.description_politicparty}
                     </td>
                     <td
                       className={
-                        CandidatosElegidosCamara(myVotes.candidate_name) === "True"
+                        CandidatosElegidosCamara(myVotes.candidate_name) ===
+                        "True"
                           ? "text-center align-middle text-danger fst-italic"
                           : "text-center"
                       }
                     >
                       {myVotes.candidate_name}
                     </td>
-                    <td className={
-                        CandidatosElegidosCamara(myVotes.candidate_name) === "True"
+                    <td
+                      className={
+                        CandidatosElegidosCamara(myVotes.candidate_name) ===
+                        "True"
                           ? "text-center align-middle text-danger fst-italic"
                           : "text-center"
-                      }>{myVotes.votos}</td>
+                      }
+                    >
+                      {myVotes.votos}
+                    </td>
                   </tr>
                 ))}
             </tbody>
@@ -242,7 +270,11 @@ export const CamaraIndigenaDepartamento = () => {
           >
             <h6
               className="my-4"
-              style={{ color: "#052851", textAlign: "right" }}
+              style={{
+                color: "#052851",
+                textAlign: "right",
+                paddingRight: "100px",
+              }}
             >
               {arrayDepartamento.map((myDepartment) => (
                 <b style={{ color: "#D9224E" }}>
@@ -264,7 +296,7 @@ export const CamaraIndigenaDepartamento = () => {
             }}
           >
             <div className="text-center">
-            <a
+              <a
                 type="button"
                 className="buttonBack buttonBack-primary"
                 href="/guiaelectoral/camara/"
@@ -276,27 +308,24 @@ export const CamaraIndigenaDepartamento = () => {
           </div>
         </div>
         <Modal
-            show={show}
-            backdrop="static"
-            keyboard={false}
-            onHide={handleClose}
-            centered
-            style={{background:"#FFFFFFBF !important"}}
-          >
-            <Modal.Body className="text-center">
-              <div className="text-center">
-                <img src={ImageSpinner} />
-                <div className="mt-4">
-                  <div
-                    className="spinner-border text-danger"
-                    role="status"
-                  >
-                    <span className=" visually-hidden">Loading...</span>
-                  </div>
+          show={show}
+          backdrop="static"
+          keyboard={false}
+          onHide={handleClose}
+          centered
+          style={{ background: "#FFFFFFBF !important" }}
+        >
+          <Modal.Body className="text-center">
+            <div className="text-center">
+              <img src={ImageSpinner} />
+              <div className="mt-4">
+                <div className="spinner-border text-danger" role="status">
+                  <span className=" visually-hidden">Loading...</span>
                 </div>
               </div>
-            </Modal.Body>
-          </Modal>
+            </div>
+          </Modal.Body>
+        </Modal>
       </div>
       {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>

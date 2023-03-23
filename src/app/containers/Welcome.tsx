@@ -1,6 +1,7 @@
-import img from "../../assets/image/eleccioneshe.jpg";
-import president from "../../assets/image/imgenroll.png";
-import camera from "../../assets/image/imgen_rol.png";
+import img from "../../assets/image/eleccioneshe.webp";
+import president from "../../assets/image/imgenroll.webp";
+import camera from "../../assets/image/imgen_rol.webp";
+import { Link } from "react-router-dom";
 
 export const Welcome = () => {
   return (
