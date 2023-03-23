@@ -1175,6 +1175,15 @@ h6 {
   --bs-table-hover-color: #052851 !important;
   color: #052851 !important;
 }
+.colorTableCamara {
+  --bs-table-hover-color: #d9224e !important;
+  color: #052851 !important;
+}
+.colorTableCamara i:hover{
+  --bs-table-hover-color: #052851 !important;
+  color: #d9224e !important;
+}
+
 
 .color {
   color: #052851 !important;
@@ -1296,7 +1305,7 @@ h6 {
 .containner_footers {
   padding-top: 5vw;
   padding-bottom: 0.7vw;
-  background-image: url("/src/assets/image/img.png");
+  background-image: url("/src/assets/image/img.webp");
   background-repeat: no-repeat;
   color: #ffffff;
   font-family: 2vw;
@@ -1358,6 +1367,17 @@ h6 {
 .link_hitdata :hover {
   color: #fff3cd;
 }
+.link_departamento{
+  text-decoration: none;
+  color: #052851;
+}
+.link_departamento:hover{
+  color: #d9224e;
+}
+
+
+
+
 
 @media (max-width: 768px) {
   .card-title {
@@ -1375,7 +1395,7 @@ h6 {
   .containner_footers {
     padding-top: 8vw;
     padding-bottom: 1vw;
-    background-image: url("/src/assets/image/img.png");
+    background-image: url("/src/assets/image/img.webp");
     background-repeat: no-repeat;
     color: #fff;
     font-family: 20rem;
@@ -1460,7 +1480,7 @@ h6 {
 }
 
 .container_error {
-  background-image: url("../src/assets/image/errorfondo.jpg");
+  background-image: url("../src/assets/image/errorfondo.webp");
 }
 .container_error .btn {
   background-color: #052851;
@@ -1547,6 +1567,9 @@ h6 {
   padding-left: 8vw;
   text-align: justify !important;
 }
+.container_table a :hover{
+  color: #d9224e; 
+}
 
 .container_total {
   color: #052851;
@@ -1608,7 +1631,7 @@ h6 {
   padding: 10px;
   margin-top: 120px;
   margin-bottom: 40px;
-  background-image: url("../src/assets/image/BLOG_atras.jpg");
+  background-image: url("../src/assets/image/BLOG_atras.webp");
   background-repeat: no-repeat;
   color: #fff;
   padding-left: 40px;
@@ -1628,7 +1651,7 @@ h6 {
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 40px;
-    background-image: url("../src/assets/image/BLOG_atras.jpg");
+    background-image: url("../src/assets/image/BLOG_atras.webp");
     background-repeat: no-repeat;
     color: #fff;
     font-size: 10px;

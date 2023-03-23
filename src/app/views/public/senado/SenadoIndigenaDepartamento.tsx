@@ -7,7 +7,7 @@ import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
 import Municipality from "../../../models/Municipality";
 import Department from "../../../models/Department";
-import ImageSpinner from "../../../../assets/image/errorlogo.png";
+import ImageSpinner from "../../../../assets/image/errorlogo.webp";
 
 export const SenadoIndigenaDepartamento = () => {
   let { idDepartment } = useParams();

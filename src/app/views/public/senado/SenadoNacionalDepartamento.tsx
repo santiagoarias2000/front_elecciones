@@ -8,7 +8,7 @@ import Municipality from "../../../models/Municipality";
 import e from "express";
 import { useNavigate, useParams } from "react-router-dom";
 import Department from "../../../models/Department";
-import ImageSpinner from "../../../../assets/image/errorlogo.png";
+import ImageSpinner from "../../../../assets/image/errorlogo.webp";
 
 export const SenadoNacionalDepartamento = () => {
   let { idDepartment } = useParams();

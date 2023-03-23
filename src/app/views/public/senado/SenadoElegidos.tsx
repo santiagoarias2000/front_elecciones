@@ -5,7 +5,7 @@ import ApiBack from "../../../utilities/domains/ApiBack";
 import camara from "../../../../assets/image/SENADO.webp";
 import { Link, useNavigate } from "react-router-dom";
 import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
-import ImageSpinner from "../../../../assets/image/errorlogo.png";
+import ImageSpinner from "../../../../assets/image/errorlogo.webp";
 
 export const SenadoElegidos = () => {
   const [search, setSearch] = useState("");

@@ -6,7 +6,7 @@ import loteriabanner from "../../assets/image/publicidadloteria.webp";
 import verticalbanner from "../../assets/image/verticalbanner.webp";
 import banner from "../../assets/image/bannerpublicidad.webp";
 import banner2 from "../../assets/image/BANNER-CAMPANA.jpg";
-import banner3 from "../../assets/image/banner2.jpg";
+import banner3 from "../../assets/image/banner2.webp";
 
 export const Blog = () => {
   return (
