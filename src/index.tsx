@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import './assets/js/carrusel.js';
 import 'bootstrap/dist/js/bootstrap.bundle'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -9,6 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

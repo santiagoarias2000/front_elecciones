@@ -1,13 +1,4 @@
-import img from "../../assets/image/eleccioneshe.jpg";
-
 import president from "../../assets/image/imgenroll.webp";
-import camera from "../../assets/image/imgen_rol.png";
-import Img1Carrusel from "../../assets/image/Img1.jpg";
-import Img2Carrusel from "../../assets/image/Img2.jpg";
-import Img3Carrusel from "../../assets/image/Img3.jpg";
-import Img4Carrusel from "../../assets/image/Img4.jpg";
-import Img5Carrusel from "../../assets/image/Img5.jpg";
-import Img6Carrusel from "../../assets/image/Img6.jpg";
 import Img7Carrusel from "../../assets/image/Img8.jpg";
 import Img1Carr from "../../assets/image/GuiasAntiguas/Img1.jpg";
 import Img2Carr from "../../assets/image/GuiasAntiguas/Img2.jpg";
@@ -21,6 +12,7 @@ import ImgLoteriaBoyaca from "../../assets/image/LoteriaBoyaca.jpg";
 import ImgDonJose from "../../assets/image/DonJose.jpg";
 import { Carousel } from "react-bootstrap";
 import "../../assets/js/carrusel.js";
+import { Link } from "react-router-dom";
 
 export const Welcome = () => {
   return (
@@ -50,12 +42,14 @@ export const Welcome = () => {
 
               <div className="icon-box" data-aos="fade-up" data-aos-delay="100">
                 <div className="icon">
-                  <i className="bi bi-fingerprint"></i>
+                  <Link to={"/blog"} style={{ textDecorationLine: "none" }}>
+                    <i className="bi bi-fingerprint"></i>
+                  </Link>
                 </div>
                 <h4 className="title">
-                  <a href="#" style={{ textDecorationLine: "none" }}>
+                  <Link to={"/blog"} style={{ textDecorationLine: "none" }}>
                     Visita nuestro Blog
-                  </a>
+                  </Link>
                 </h4>
                 <p className="description text-justify">
                   Bienvenidos a nuestro blog de elecciones, donde encontrarás
@@ -180,7 +174,7 @@ export const Welcome = () => {
                   style={{ width: "12%" }}
                 />
               </span>
-              <h4>Gobernación</h4>
+              <h4>Gobernaciones</h4>
               <p>
                 Registros correspondientes a las votaciones realizadas en torno
                 a las elecciones a nivel departamental para la gobernación.
@@ -205,7 +199,32 @@ export const Welcome = () => {
                   style={{ width: "12%" }}
                 />
               </span>
-              <h4>Alcaldia</h4>
+              <h4>Asamblea</h4>
+              <p>
+                Registros correspondientes a las votaciones realizadas en torno
+                a las elecciones a nivel nacional para la asamblea.
+              </p>
+              <div className="cards-btn text-center">
+                <a href="#" className="btn-cards mt-4">
+                  <i className="bi bi-bar-chart-line-fill"></i>
+                  &nbsp; Ver resultados
+                </a>
+              </div>
+            </div>
+
+            <div
+              className="col-lg-4 col-md-6 content-item"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <span style={{ textAlign: "right" }}>
+                <img
+                  src={president}
+                  alt="Imagen de presidencia"
+                  style={{ width: "12%" }}
+                />
+              </span>
+              <h4>Alcaldias</h4>
               <p>
                 Registros correspondientes a las votaciones realizadas en torno
                 a las elecciones a nivel municipal para la alcaldia.
@@ -217,7 +236,6 @@ export const Welcome = () => {
                 </a>
               </div>
             </div>
-
             <div
               className="col-lg-4 col-md-6 content-item"
               data-aos="fade-up"
@@ -234,6 +252,32 @@ export const Welcome = () => {
               <p>
                 Registros correspondientes a las votaciones realizadas en torno
                 a las elecciones a nivel municipal para el concejo.
+              </p>
+              <div className="cards-btn text-center">
+                <a href="#" className="btn-cards mt-4">
+                  <i className="bi bi-bar-chart-line-fill"></i>
+                  &nbsp; Ver resultados
+                </a>
+              </div>
+            </div>
+
+            <div
+              className="col-lg-4 col-md-6 content-item"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <span style={{ textAlign: "right" }}>
+                <img
+                  src={president}
+                  alt="Imagen de presidencia"
+                  style={{ width: "12%" }}
+                />
+              </span>
+              <h4>JAL</h4>
+              <p>
+                Registros correspondientes a las votaciones realizadas en torno
+                a las elecciones a nivel municipal para las juntas de acción
+                comunal.
               </p>
               <div className="cards-btn text-center">
                 <a href="#" className="btn-cards mt-4">
@@ -374,7 +418,12 @@ export const Welcome = () => {
             <div className="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up">
               <div className="member">
                 <div className="pic">
-                  <img src={ImgDonJose} className="img-fluid" alt="" />
+                  <img
+                    src={ImgDonJose}
+                    className="img-fluid"
+                    alt=""
+                    style={{ maxHeight: "261px !important" }}
+                  />
                 </div>
                 <div className="member-info">
                   <h4>Jose Celestino Gil Zapata</h4>
