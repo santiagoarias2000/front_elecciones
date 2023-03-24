@@ -57,7 +57,7 @@ export const Camara = () => {
         style={{
           width: "100%",
           maxHeight: "80%",
-          marginTop: "10vw",
+          marginTop: "5vw",
           borderRadius: "5px 5px 0 0",
           boxShadow: "0px 0 20px #052851",
         }}
