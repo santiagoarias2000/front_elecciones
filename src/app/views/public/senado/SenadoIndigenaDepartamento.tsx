@@ -165,7 +165,7 @@ export const SenadoIndigenaDepartamento = () => {
                       <td className="text-center">
                         {myVotes.description_politicparty}
                       </td>
-                      <td className="text-center">
+                      <td className="text-left">
                         {myVotes.candidate_name}
                       </td>
                       <td className="text-center">{myVotes.votos}</td>

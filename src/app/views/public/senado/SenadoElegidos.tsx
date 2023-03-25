@@ -101,7 +101,7 @@ export const SenadoElegidos = () => {
                       <td className="text-center">
                         {myVotes.description_politicparty}
                       </td>
-                      <td className="text-center" style={{fontWeight:"600"}}>
+                      <td className="text-left" style={{fontWeight:"600"}}>
                         {myVotes.candidate_name}
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
