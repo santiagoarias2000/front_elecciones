@@ -141,7 +141,7 @@ export const SenadoIndigenaDepartamento = () => {
               <thead className="container_table">
                 <tr>
                 <th className="text-center" style={{ width: "20%" }}>
-                    ROLE
+                  PARTIDO POLÍTICO
                   </th>
                   <th className="text-center" style={{ width: "40%" }}>
                     NOMBRE CANDIDATO
