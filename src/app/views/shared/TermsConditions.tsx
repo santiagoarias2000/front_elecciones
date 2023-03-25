@@ -15,8 +15,8 @@ export const TermsConditions = () => {
           que:
         </p>
         <ul>
-          <li>Domicilio social: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</li>
-          <li>Email: XXXXXXXXXXXXXXXXXxxXXXXXXXXXX</li>
+          <li>Domicilio social: Cra. 2 32 49 T1 ap 702 conjunto Quinta Santana</li>
+          <li>Email: josegilza@gmail.com</li>
         </ul>
         <h2>
           <b>2. OBJETO DE LAS CONDICIONES</b>
@@ -104,7 +104,7 @@ export const TermsConditions = () => {
           <li>
             Segunda Fase. El usuario enviará justificante junto con sus datos
             fiscales para la factura a la siguiente dirección de correo:
-            XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+            josegilza@gmail.com
           </li>
           <li>
             Tercera Fase: Una vez que el ingreso aparezca reflejado en el banco
@@ -267,7 +267,7 @@ export const TermsConditions = () => {
           LA EMPRESA no puede garantizar la continuidad técnica del Sitio Web,
           la ausencia de fallo o interrupciones del servicio ni que el Sitio Web
           estará disponible o accesible el cien por cien del tiempo por causas
-          ajenas al control de https://yureplays.com o causas fortuitas y/o de
+          ajenas al control de https://guiaelectoraldecolombia.com o causas fortuitas y/o de
           fuerza mayor, virus, ataques informáticos y/o actuaciones de terceros
           que ocasionen la imposibilidad total o parcial de la prestación de los
           servicios así como otras causas imprevisibles como pudieren ser el

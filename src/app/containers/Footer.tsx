@@ -20,7 +20,7 @@ export const Footer = () => {
                 </li>
                 <li>
                   <i className="bi bi-envelope icon_footer"></i>&nbsp;
-                  guiaelectoral@colombia.com
+                  guiaelectoral@gmail.com
                 </li>
                 <li>
                   <i className="bi bi-geo-alt icon_footer"></i>&nbsp;Av. Calle 26 N°

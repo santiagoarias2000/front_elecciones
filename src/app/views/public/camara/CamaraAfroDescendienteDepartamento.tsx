@@ -294,12 +294,11 @@ export const CamaraAfroDescendienteDepartamento = () => {
                 type="button"
                 className="buttonBack buttonBack-primary"
                 href={
-                  "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
-                  idDepartment
+                  "/guiaelectoral/camara/"
                 }
               >
                 <i className="bi bi-arrow-left-circle"></i>
-                &nbsp;&nbsp;REGRESAR A ELEGIR MUNICIPIO
+                &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
               </a>
             </div>
           </div>
