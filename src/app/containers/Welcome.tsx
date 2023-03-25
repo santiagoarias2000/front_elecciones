@@ -1,5 +1,5 @@
 import president from "../../assets/image/imgenroll.webp";
-import Img7Carrusel from "../../assets/image/Img8.jpg";
+import Img7Carrusel from "../../assets/image/Img8.webp";
 import Img1Carr from "../../assets/image/GuiasAntiguas/Img1.jpg";
 import Img2Carr from "../../assets/image/GuiasAntiguas/Img2.jpg";
 import Img3Carr from "../../assets/image/GuiasAntiguas/Img3.jpg";
@@ -10,6 +10,7 @@ import Img7Carr from "../../assets/image/GuiasAntiguas/Img7.jpg";
 import ImgHitData from "../../assets/image/HitData.jpg";
 import ImgLoteriaBoyaca from "../../assets/image/LoteriaBoyaca.jpg";
 import ImgDonJose from "../../assets/image/DonJose.jpg";
+import editor from "../../assets/image/editor.jpeg";
 import { Carousel } from "react-bootstrap";
 import "../../assets/js/carrusel.js";
 import { Link } from "react-router-dom";
@@ -21,7 +22,7 @@ export const Welcome = () => {
         <div className="container" data-aos="fade-up">
           <div className="row no-gutters">
             <div className="col-lg-6 video-box">
-              <img src={Img7Carrusel} className="img-fluid" alt="" />
+              <img src={Img7Carrusel} className="img-fluid" alt="Imagen de la guia electoral de comlombia" />
               {/* <a
                 href="https://www.youtube.com/watch?v=t5ahimIQBmU"
                 className="venobox play-btn mb-4"
@@ -32,10 +33,13 @@ export const Welcome = () => {
 
             <div className="col-lg-6 d-flex flex-column justify-content-center about-content">
               <div className="section-title">
-                <h2>Bienvenido a Guia Electoral Colombiana</h2>
-                <p className="text-justify">
+                <h6 className="fst-italic text_extr">
+                  ¡¡¡Para estrategias...Documéntese!!!
+                </h6>
+                <h2>Bienvenido a Guia Electoral de Colombia</h2>
+                <p className="text-center text_exfl">
                   Documento exclusivo para la consulta de resultados electorales
-                  en el país, de uso estratégico en la toma de decisiones en
+                  en el país y de uso estratégico en la toma de decisiones en
                   marketing político.
                 </p>
               </div>
@@ -99,8 +103,8 @@ export const Welcome = () => {
               <h4>Presidencia</h4>
               <p>
                 Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel nacional para la presidencia de la
-                republica.
+                a las elecciones a nivel nacional y por total departamentos para
+                la Presidencia de la Republica.
               </p>
               <div className="cards-btn text-center">
                 <a href="/guiaelectoral/presidencia" className="btn-cards mt-4">
@@ -125,8 +129,8 @@ export const Welcome = () => {
               <h4>Senado</h4>
               <p>
                 Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel nacional para la camara de la
-                republica.
+                a las elecciones a nivel nacional, por total departamentos y por
+                total municipios.
               </p>
               <div className="cards-btn text-center">
                 <a href="/guiaelectoral/senado" className="btn-cards mt-4">
@@ -148,11 +152,11 @@ export const Welcome = () => {
                   style={{ width: "12%" }}
                 />
               </span>
-              <h4>Camara</h4>
+              <h4>Cámara</h4>
               <p>
                 Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel nacional para el senado de la
-                republica.
+                a las elecciones a nivel regional, total municipios y total
+                departamento.
               </p>
               <div className="cards-btn text-center">
                 <a href="/guiaelectoral/camara" className="btn-cards mt-4">
@@ -177,7 +181,8 @@ export const Welcome = () => {
               <h4>Gobernaciones</h4>
               <p>
                 Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel departamental para la gobernación.
+                a las elecciones a nivel departamental y
+                total municipios.
               </p>
               <div className="cards-btn text-center">
                 <a href="#" className="btn-cards mt-4">
@@ -199,10 +204,11 @@ export const Welcome = () => {
                   style={{ width: "12%" }}
                 />
               </span>
-              <h4>Asamblea</h4>
+              <h4>Asambleas</h4>
               <p>
                 Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel nacional para la asamblea.
+                a las elecciones a nivel departamental, total departamento y
+                total municipios.
               </p>
               <div className="cards-btn text-center">
                 <a href="#" className="btn-cards mt-4">
@@ -224,10 +230,10 @@ export const Welcome = () => {
                   style={{ width: "12%" }}
                 />
               </span>
-              <h4>Alcaldias</h4>
+              <h4>Alcaldías</h4>
               <p>
                 Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel municipal para la alcaldia.
+                a las elecciones a nivel municipal.
               </p>
               <div className="cards-btn text-center">
                 <a href="#" className="btn-cards mt-4">
@@ -248,10 +254,10 @@ export const Welcome = () => {
                   style={{ width: "12%" }}
                 />
               </span>
-              <h4>Concejo</h4>
+              <h4>Concejos</h4>
               <p>
                 Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel municipal para el concejo.
+                a las elecciones a nivel municipal y/o distrital.
               </p>
               <div className="cards-btn text-center">
                 <a href="#" className="btn-cards mt-4">
@@ -276,8 +282,7 @@ export const Welcome = () => {
               <h4>JAL</h4>
               <p>
                 Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel municipal para las juntas de acción
-                comunal.
+                a las elecciones a nivel distrital y por total localidades.
               </p>
               <div className="cards-btn text-center">
                 <a href="#" className="btn-cards mt-4">
@@ -292,19 +297,27 @@ export const Welcome = () => {
 
       <div className="container" data-aos="fade-up">
         <div className="row">
-          <div className="col-lg-6" style={{ marginTop: "10%" }}>
+          <div className="col-lg-6" style={{ marginTop: "4%" }}>
             <p className="text-justify">
-              Los patrocinadores de este proyecto son un grupo de empresas
-              líderes en la industria que han reconocido la importancia de la
-              iniciativa y han decidido apoyarla financieramente y con recursos
-              humanos.Gracias a la colaboración y el compromiso de nuestros
-              patrocinadores, este proyecto cuenta con los recursos necesarios
-              para llevarse a cabo y alcanzar los objetivos planteados. Además,
-              la participación de estas empresas aporta un valor adicional al
-              proyecto al brindar su experiencia y conocimientos en las
-              distintas áreas relacionadas con el mismo. Agradecemos
-              profundamente el apoyo de nuestros patrocinadores y esperamos
-              continuar trabajando juntos en futuros proyectos y colaboraciones.
+              La <b>Guía Electoral de Colombia</b> es un producto de iniciativa
+              privada, que inicia en 1984 en la ciudad de Tunja, como tésis de
+              grado en su estudio de mercados para optar el título de
+              Administrador de Empresas de su editor en la universidad Pedagógia
+              y Tecnológica de Colombia. Esta Guia aporta a distintos públicos
+              una herramenta para el análisis de conocimiento electoral de los
+              protagonistas de elección popular como: Ediles, Concejales,
+              Alcades, Diputados, Gobernadores, Congresistas y Presidente de la
+              República.
+              <p>
+                La Guia Electoral se ha pubicado para los departamentos de
+                Antioquia, Casanare, Cundinamarca, Santander, Valle del Cauca,
+                Bogotá D.C y continuamente para Boyaca durante 34 años; una
+                edición nacional con motivo de la elección de los miembros de la
+                Asamblea Nacional Constituyente 1990, además de la edición
+                especial con motivo del Plebiscito por la Paz 2016 y últimamente
+                con información sobre la elección del pasado Gobierno Nacional
+                2018-2022
+              </p>
             </p>
           </div>
           <div className="col-lg-6">
@@ -401,16 +414,16 @@ export const Welcome = () => {
             <h2>PATROCINADORES</h2>
             <p className="text-justify">
               Los patrocinadores de este proyecto son un grupo de empresas
-              líderes en la industria que han reconocido la importancia de la
-              iniciativa y han decidido apoyarla financieramente y con recursos
-              humanos.Gracias a la colaboración y el compromiso de nuestros
-              patrocinadores, este proyecto cuenta con los recursos necesarios
-              para llevarse a cabo y alcanzar los objetivos planteados. Además,
-              la participación de estas empresas aporta un valor adicional al
-              proyecto al brindar su experiencia y conocimientos en las
-              distintas áreas relacionadas con el mismo. Agradecemos
-              profundamente el apoyo de nuestros patrocinadores y esperamos
-              continuar trabajando juntos en futuros proyectos y colaboraciones.
+              líderes del sector publico y privado que han reconocido la
+              importancia de la iniciativa. Gracias a la colaboración y el
+              compromiso de nuestros patrocinadores, este proyecto cuenta con
+              los recursos economicos y humanos necesarios para llevarse a cabo
+              y alcanzar los objetivos planteados. Además, la participación de
+              estas empresas aporta un valor adicional al proyecto al brindar su
+              experiencia y conocimientos en las distintas áreas relacionadas
+              con el mismo. Agradecemos profundamente el apoyo de nuestros
+              patrocinadores y esperamos continuar trabajando juntos en futuros
+              proyectos y colaboraciones.
             </p>
           </div>
 
@@ -502,6 +515,72 @@ export const Welcome = () => {
                       <i className="bi bi-linkedin"></i>
                     </a>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="container" data-aos="fade-up">
+            <div className="section-title">
+              <h2>EL AUTOR/EDITOR: JOSÉ CELESTINO GIL ZAPATA</h2>
+              <div className="row">
+                <div className="col-lg-6 " style={{ marginTop: "8%" }}>
+                  <div
+                    className="mb-5"
+                    style={{
+                      paddingLeft: "10%",
+                      paddingRight: "10%",
+                      width: "100%",
+                      height: "auto",
+                    }}
+                  >
+                    <img
+                      src={editor}
+                      style={{
+                        maxHeight: "400px !important",
+                        maxWidth: "400px !important",
+                      }}
+                      alt="Foto del editor de la guia electoral"
+                    />
+                  </div>
+                </div>
+                <div className="col-lg-6">
+                  <p className="text-justify text_editor">
+                    Este boyacense, creativo de cuna, heraldista del escudo de
+                    Armas de su natal San Miguel de Sema, residente en Tunja,
+                    desde 1976, Administrador de Empresas de la UPTC,
+                    Especialista en Gobierno y Gestión Pública de la Universidad
+                    Católica, Líder Democrático de la ESAP con amplia
+                    experiencia en Gestión pública y privada. Nacido en una gran
+                    familia que, desde temprana edad, aprendió los valores de la
+                    perseverancia, la honestidad y el trabajo en equipo.
+                    Visionario que, gracias a su dedicación y esfuerzo, logró
+                    materializar 35 publicaciones especializadas sobre
+                    estadística institucional:{" "}
+                    <b className="fst-italic">
+                      Guía Colombia con Nosotros, Guía de Normas Técnicas
+                      oficiales obligatorias editadas para la Superintendencia
+                      de Industria y Comercio, Guía Deportiva para Campeonatos
+                      Mundiales de Ciclismo, Guía Electoral
+                    </b>
+                    , entre otras. Desde entonces, este autor ha puesto su
+                    talento y creatividad al servicio de su país, trabajando en
+                    proyectos que han trascendido en el mundo político y
+                    económico. Como proyecto innovador, ha sido un defensor
+                    acérrimo de la justicia social y la igualdad de
+                    oportunidades para todos los ciudadanos, especialmente
+                    aquellos que más necesitan. Su proyecto se encamina a
+                    facilitarle a la población información para que asuma un
+                    papel protagónico en procesos electorales y pueda elegir
+                    libremente. Pero no solo ha destacado su trabajo innovador.
+                    Como padre de familia, ha demostrado su compromiso con su
+                    esposa e hijos, especialmente con su hijo autista. Con una
+                    dedicación y entrega ejemplar, ha buscado siempre las
+                    mejores opciones de tratamiento para su hijo, y ha luchado
+                    por garantizar sus derechos. El autor es un ejemplo de éxito
+                    en diferentes ámbitos de la vida, destacado por su talento,
+                    su dedicación, su compromiso con su familia y su país, y su
+                    sensibilidad y solidaridad con los más necesitados.
+                  </p>
                 </div>
               </div>
             </div>
