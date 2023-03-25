@@ -6,35 +6,19 @@ import camara from "../../../../assets/image/SENADO.webp";
 import { Link, useNavigate } from "react-router-dom";
 import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/errorlogo.webp";
+import CandidatosSenado from "../../../mocks/models/CandidatosSenado";
+import { ARREGLO_SENADO_108, ARREGLO_SENADO_INDIGENAS } from "../../../mocks/Senado108Marzo2022";
 
 export const SenadoElegidos = () => {
   const [search, setSearch] = useState("");
   const [searchIndigenas, setSearchIndigenas] = useState("");
 
-  const [show, setShow] = useState(true);
-  const handleClose = () => setShow(false);
-
+  
   const regresar = useNavigate();
 
-  const [arrayVotesSenadoNacional, setArrayVotesSenadoNacional] = useState< VotesCongreso[] >([]);
-  const [arrayVotesSenadoIndigena, setArrayVotesSenadoIndigena] = useState< VotesCongreso[] >([]);
+  const [arrayVotesSenadoNacional, setArrayVotesSenadoNacional] = useState< CandidatosSenado[] >(ARREGLO_SENADO_108);
+  const [arrayVotesSenadoIndigena, setArrayVotesSenadoIndigena] = useState< CandidatosSenado[] >(ARREGLO_SENADO_INDIGENAS);
 
-  const getVotosSenadoTerritorial = async () => {
-    const result = await ServicePrivate.requestGET(ApiBack.SENADO_LIST_102);
-    setArrayVotesSenadoNacional(result);
-    setShow(false);
-  };
-  const getVotosSenadoIndigena = async () => {
-    const result = await ServicePrivate.requestGET(
-      ApiBack.SENADO_LIST_2_INDIGENA
-    );
-    setArrayVotesSenadoIndigena(result);
-  };
-
-  useEffect(() => {
-    getVotosSenadoTerritorial();
-    getVotosSenadoIndigena();
-  }, []);
 
   return (
     <main id="main" className="main">
@@ -85,7 +69,7 @@ export const SenadoElegidos = () => {
               <thead className="container_table">
                 <tr>
                   <th className="text-center" style={{ width: "20%" }}>
-                    PARTIDO
+                  PARTIDO POLÍTICO
                   </th>
                   <th className="text-center" style={{ width: "30%" }}>
                     NOMBRE CANDIDATO
@@ -113,19 +97,21 @@ export const SenadoElegidos = () => {
                     }
                   }))
                   .map((myVotes, contador) => (
-                    <tr key={contador}>
+                    <tr key={contador} >
                       <td className="text-center">
                         {myVotes.description_politicparty}
                       </td>
-                      <td className="text-center">
+                      <td className="text-center" style={{fontWeight:"600"}}>
                         {myVotes.candidate_name}
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
                       <td className="text-center">
-                        {myVotes.department.name_department}
+                        {myVotes.name_department}
                       </td>
                       <td className="text-center">{myVotes.max_votes}</td>
                     </tr>
+                  
+                    
                   ))}
               </tbody>
             </table>
@@ -185,11 +171,11 @@ export const SenadoElegidos = () => {
             >
               <thead className="container_table">
                 <tr>
-                  <th className="text-center" style={{ width: "30%" }}>
-                    NOMBRE CANDIDATO
-                  </th>
                   <th className="text-center" style={{ width: "20%" }}>
                     PARTIDO
+                  </th>
+                  <th className="text-center" style={{ width: "30%" }}>
+                    NOMBRE CANDIDATO
                   </th>
                   <th className="text-center" style={{ width: "20%" }}>
                     TOTAL VOTOS NACIONAL
@@ -215,18 +201,19 @@ export const SenadoElegidos = () => {
                   }))
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text-center">
-                        <b>{myVotes.candidate_name}</b>
-                      </td>
-                      <td className="text-center">
+                      <td className="text-center" >
                         {myVotes.description_politicparty}
+                      </td>
+                      <td className="text-center" style={{fontWeight:"600"}}>
+                        {myVotes.candidate_name}
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
                       <td className="text-center">
-                        {myVotes.department.name_department}
+                        {myVotes.name_department}
                       </td>
                       <td className="text-center">{myVotes.max_votes}</td>
                     </tr>
+                    
                   ))}
               </tbody>
             </table>
@@ -253,28 +240,7 @@ export const SenadoElegidos = () => {
             </div>
           </div>
         </div>
-        <Modal
-            show={show}
-            backdrop="static"
-            keyboard={false}
-            onHide={handleClose}
-            centered
-            style={{background:"#FFFFFFBF !important"}}
-          >
-            <Modal.Body className="text-center">
-              <div className="text-center">
-                <img src={ImageSpinner} />
-                <div className="mt-4">
-                  <div
-                    className="spinner-border text-danger"
-                    role="status"
-                  >
-                    <span className=" visually-hidden">Loading...</span>
-                  </div>
-                </div>
-              </div>
-            </Modal.Body>
-          </Modal>
+      
       </div>
       <div className="position-absolute bottom-50 end-50"></div>
       {/* Ejemplo de una tabla para presentación de datos: Fin */}
