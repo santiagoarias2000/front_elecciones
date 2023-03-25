@@ -11,7 +11,7 @@ import banner3 from "../../assets/image/banner2.webp";
 export const Blog = () => {
   return (
     <main id="main" className="main ">
-      <section id="blog" className="blog ">
+      <section id="blog" className="blog">
         <div className="container containner_blog" data-aos="fade-up">
           <div className="row">
             <div className="col-lg-8 entries">

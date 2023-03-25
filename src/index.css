@@ -1620,7 +1620,6 @@ h6 {
 }
 
 .containner_blog {
-  padding-top: 100px;
   font-family: "Tilt Warp", cursive;
 }
 .blog_f {
@@ -2221,7 +2220,7 @@ h6,
 # Blog
 --------------------------------------------------------------*/
 .blog {
-  padding: 40px 0 20px 0;
+  padding: 0px 0 20px 0;
 }
 
 .blog .entry {
@@ -3989,7 +3988,6 @@ section {
 .banner_responsive{
   display: block;
   padding: 0 20px;
-  background: #428bca;
   color: #fff;
   transition: 0.3s;
   border-radius: 4;
