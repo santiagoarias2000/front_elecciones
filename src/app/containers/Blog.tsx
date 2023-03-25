@@ -2,6 +2,7 @@ import sergio from "../../assets/image/sergiofagardo.webp";
 import petro from "../../assets/image/gustavopetro.webp";
 import rodolfo from "../../assets/image/rodolfo.webp";
 import elecciones from "../../assets/image/eleccionesnoticia.webp";
+import uribe from "../../assets/image/uribe.webp";
 import loteriabanner from "../../assets/image/publicidadloteria.webp";
 import verticalbanner from "../../assets/image/verticalbanner.webp";
 import banner from "../../assets/image/bannerpublicidad.webp";
@@ -11,232 +12,258 @@ import banner3 from "../../assets/image/banner2.webp";
 export const Blog = () => {
   return (
     <main id="main" className="main ">
-      <section id="blog" className="blog">
-        <div className="container containner_blog" data-aos="fade-up">
+      <section>
+        <div className="container">
           <div className="row">
-            <div className="col-lg-8 entries">
-              <div className="container" data-aos="fade-up">
-                <article className="entry">
-                  <div className="entry-img">
-                    <img
-                      src={sergio}
-                      alt="Imagen de Segio Fajardo"
-                      className="img-fluid"
-                    />
-                  </div>
+            <div className="col-md-9" data-aos="fade-up">
+              <h3 className="category-title">CATEGORIA: POLÍTICA</h3>
 
-                  <h2 className="entry-title text_title_respo">
+              <div className="d-md-flex post-entry-2 half">
+                <a href="single-post.html" className="me-4 thumbnail">
+                  <img
+                    src={petro}
+                    alt="imagen de petro"
+                    className="img-fluid"
+                  />
+                </a>
+                <div>
+                  <div className="post-meta">
+                    <span className="date">Política</span>{" "}
+                    <span>14:18 ET(18:18 GMT) 7 agosto, 2022</span>
+                  </div>
+                  <h3>
+                    ¿Cómo podría ser Petro el presidente que una a todos los
+                    colombianos? Estos son sus principales retos
+                  </h3>
+                  <p>
+                    Gustavo Petro fue elegido para ser el próximo presidente de
+                    Colombia con una ambiciosa agenda que va desde implementar
+                    la justicia social, acabar las desigualdades económicas,
+                    garantizar derechos básicos como la educación y salud
+                    gratuitas y universales, hasta poner a Colombia como líder
+                    en temas de medio ambiente en el mundo.
+                  </p>
+                  <div className="d-flex align-items-center author">
+                    <div className="name">
+                      <h3 className="m-0 p-0">Melissa Velásquez Loaiza</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="d-md-flex post-entry-2 half">
+                <a href="single-post.html" className="me-4 thumbnail">
+                  <img
+                    src={sergio}
+                    alt="Imagen de sergio"
+                    className="img-fluid"
+                  />
+                </a>
+                <div>
+                  <div className="post-meta">
+                    <span className="date">Politica</span>{" "}
+                    <span>02 mar 2023 - 05:15 COT</span>
+                  </div>
+                  <h3>
                     Sergio Fajardo: “Es una fortuna para Colombia que Ocampo sea
                     ministro de Hacienda”
-                  </h2>
-
-                  <div className="entry-meta">
-                    <ul className="meta_responsive">
-                      <li className="d-flex align-items-center ">
-                        <i className="bi bi-person"></i>
-                        <a
-                          href="blog-single.html"
-                          className="text_meta_responsive"
-                        >
-                          Santiago Torrado
-                        </a>
-                      </li>
-                      <li className="d-flex align-items-center">
-                        <i className="bi bi-clock"></i>
-                        <a
-                          href="blog-single.html"
-                          className="text_meta_responsive"
-                        >
-                          <time dateTime="2020-01-01">
-                            {" "}
-                            02 mar 2023 - 05:15 COT
-                          </time>
-                        </a>
-                      </li>
-                    </ul>
+                  </h3>
+                  <p>
+                    El excandidato presidencial, muy crítico del presidente
+                    Gustavo Petro, acaba de lanzar el partido Dignidad y
+                    Compromiso junto al exsenador Jorge Enrique Robledo
+                  </p>
+                  <div className="d-flex align-items-center author">
+                    <div className="name">
+                      <h3 className="m-0 p-0">Santiago Torrado</h3>
+                    </div>
                   </div>
-
-                  <div className="entry-content">
-                    <p>
-                      El excandidato presidencial, muy crítico del presidente
-                      Gustavo Petro, acaba de lanzar el partido Dignidad y
-                      Compromiso junto al exsenador Jorge Enrique Robledo
-                    </p>
-                  </div>
-                </article>
+                </div>
               </div>
 
-              <article className="entrys">
-                <img
-                  src={banner2}
-                  alt="Publicidad de loteria de boyaca"
-                  style={{ width: "100%" }}
-                />
-              </article>
-
-              <div className="container" data-aos="fade-up">
-                <article className="entry">
-                  <div className="entry-img">
-                    <img
-                      src={petro}
-                      alt="Imagen de Gustavo Petro"
-                      className="img-fluid"
-                    />
+              <div className="d-md-flex post-entry-2 half ">
+                <a href="single-post.html" className="me-4 thumbnail"  style={{marginTop:"5%"}}>
+                  <img
+                    src={rodolfo}
+                    alt="Imangen de rodolfo"
+                    className="img-fluid"
+                   
+                  />
+                </a>
+                <div>
+                  <div className="post-meta">
+                    <span className="date">Política</span>{" "}
+                    <span>05/02/2023</span>
                   </div>
-
-                  <h2 className="entry-title text_title_respo">
-                    Quién es Gustavo Petro, el presidente electo de Colombia que
-                    alcanzó más de 11 millones de votos
-                  </h2>
-
-                  <div className="entry-meta">
-                    <ul className="meta_responsive">
-                      <li className="d-flex align-items-center">
-                        <i className="bi bi-person"></i>{" "}
-                        <a href="blog-single.html">Melissa Velásquez Loaiza</a>
-                      </li>
-                      <li className="d-flex align-items-center">
-                        <i className="bi bi-clock"></i>{" "}
-                        <a href="blog-single.html">
-                          <time dateTime="2020-01-01">
-                            07:10 ET(11:10 GMT) 7 agosto, 2022
-                          </time>
-                        </a>
-                      </li>
-                    </ul>
+                  <h3>Rodolfo Hernández: 'acepto el resultado'</h3>
+                  <p>
+                    Después de perder las elecciones presidenciales contra
+                    Gustavo Petro, Rodolfo Hernández se dirigió al país a través
+                    de sus redes sociales. Hernández, quien aspiró por la Liga
+                    de Gobernantes Anticorrupción, obtuvo más de 10 millones de
+                    votos en la jornada de este domingo y en un discurso que no
+                    duró más de dos minutos reconoció su derrota y le pidió a
+                    Petro que no defraude a sus electores.
+                  </p>
+                  <div className="d-flex align-items-center author">
+                    <div className="name">
+                      <h3 className="m-0 p-0">NACIÓN</h3>
+                    </div>
                   </div>
-
-                  <div className="entry-content">
-                    <p>
-                      El candidato de izquierda Gustavo Petro ganó las
-                      elecciones en Colombia al lograr más de 11 millones de
-                      votos en la segunda vuelta presidencial realizada el 19 de
-                      junio, según los resultados de la Registraduría. Asumirá
-                      su cargo este domingo.
-                    </p>
-                  </div>
-                </article>
+                </div>
               </div>
 
-              <div className="container" data-aos="fade-up">
-                <article className="entry">
-                  <div className="entry-img">
-                    <img src={rodolfo} alt="" className="img-fluid" />
+              <div className="d-md-flex post-entry-2 half">
+                <a href="single-post.html" className="me-4 thumbnail">
+                  <img
+                    src={elecciones}
+                    alt="Imagen de las eleciones"
+                    className="img-fluid"
+                  />
+                </a>
+                <div>
+                  <div className="post-meta">
+                    <span className="date">Política</span>{" "}
+                    <span>05/02/2023</span>
                   </div>
-
-                  <h2 className="entry-title text_title_respo">
-                    La decepción de Jaime Bayly con Rodolfo Hernández por su
-                    reunión con Petro
-                  </h2>
-
-                  <div className="entry-meta">
-                    <ul className="meta_responsive">
-                      <li className="d-flex align-items-center">
-                        <i className="bi bi-person"></i>{" "}
-                        <a href="blog-single.html">Redacción Política</a>
-                      </li>
-                      <li className="d-flex align-items-center">
-                        <i className="bi bi-clock"></i>{" "}
-                        <a href="blog-single.html">
-                          <time dateTime="2020-01-01">
-                            01 de julio 2022, 11:18 A. M
-                          </time>
-                        </a>
-                      </li>
-                    </ul>
+                  <h3>
+                    Registrador Nacional no afectó las elecciones a Congreso de
+                    2022: Tribunal
+                  </h3>
+                  <p>
+                    Un fallo del Tribunal Administrativo de Cundinamarca
+                    determinó que no hay pruebas de supuesto plan para alterar
+                    los resultados como en su momento lo denunció el
+                    expresidente Andrés Pastrana
+                  </p>
+                  <div className="d-flex align-items-center author">
+                    <div className="name">
+                      <h3 className="m-0 p-0">Alexander Vega</h3>
+                    </div>
                   </div>
-
-                  <div className="entry-content">
-                    <p>
-                      Hace pocas semanas Rodolfo, estuviste aquí conmigo, te
-                      entrevisté, dijiste que Petro estaba rodeado de lo peor de
-                      la política colombiana, de hampones, de bandoleros.
-                      Dijiste que Petro quería matarte
-                    </p>
-                  </div>
-                </article>
-              </div>
-              <article className="entrys">
-                <img
-                  src={banner3}
-                  alt="Publicidad de loteria de boyaca"
-                  style={{ width: "100%" }}
-                />
-              </article>
-              <div className="container" data-aos="fade-up">
-                <article className="entry">
-                  <div className="entry-img">
-                    <img src={elecciones} alt="" className="img-fluid" />
-                  </div>
-
-                  <h2 className="entry-title text_title_respo">
-                    Elecciones: así puede consultar su puesto de votación este
-                    19 de junio
-                  </h2>
-
-                  <div className="entry-meta">
-                    <ul className="meta_responsive">
-                      <li className="d-flex align-items-center">
-                        <i className="bi bi-person"></i>{" "}
-                        <a href="blog-single.html">Redacción el Tiempo</a>
-                      </li>
-                      <li className="d-flex align-items-center">
-                        <i className="bi bi-clock"></i>{" "}
-                        <a href="blog-single.html">
-                          <time dateTime="2020-01-01">
-                            19 de junio 2022, 09:51 A. M.
-                          </time>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="entry-content">
-                    <p>
-                      Este 19 de junio se realizará la segunda vuelta de las
-                      elecciones para escoger al nuevo presidente de la
-                      República, quien empezará su mandato el 7 de agosto, en
-                      reemplazo de Iván Duque. Gustavo Petro y Rodolfo Hernández
-                      son los dos candidatos que estarán en el tarjetón del
-                      balotaje, junto a la opción del voto en blanco.
-                    </p>
-                  </div>
-                </article>
+                </div>
               </div>
 
-              <div className="blog-pagination">
-                <ul className="justify-content-center">
-                  <li>
-                    <a href="#">1</a>
-                  </li>
-                  <li className="active">
-                    <a href="#">2</a>
-                  </li>
-                  <li>
-                    <a href="#">3</a>
-                  </li>
-                </ul>
+              <div className="d-md-flex post-entry-2 half">
+                <a href="single-post.html" className="me-4 thumbnail">
+                  <img
+                    src={uribe}
+                    alt="imagen del expresidente uribe"
+                    className="img-fluid"
+                  
+                  />
+                </a>
+                <div>
+                  <div className="post-meta">
+                    <span className="date">Política</span>{" "}
+                    <span>22/3/2023</span>
+                  </div>
+                  <h3>
+                    Expresidente Álvaro Uribe presenta borrador de su propuesta
+                    de consulta popular: pide “suspender cualquier reforma
+                    laboral”
+                  </h3>
+                  <p>
+                    Tal como lo había anunciado hace dos semanas, el
+                    expresidente Álvaro Uribe Vélez presentó este miércoles
+                    algunas de las preguntas que tendría la consulta popular,
+                    con la cual busca convocar a los ciudadanos para que se
+                    pronuncien sobre los cambios que quieren en materia
+                    pensional y de salud.
+                  </p>
+                  <div className="d-flex align-items-center author">
+                    <div className="name">
+                      <h3 className="m-0 p-0">Semana</h3>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="col-lg-4 banner_responsive">
-              <div className="container sidebar" data-aos="fade-up">
-                <img
-                  src={loteriabanner}
-                  alt="Publicidad de loteria de boyaca"
-                  style={{ width: "100%" }}
-                />
-                <hr className="hr" />
-                <img
-                  src={verticalbanner}
-                  alt="Publicidad de hitdata"
-                  style={{ width: "100%" }}
-                />
-                <hr className="hr" />
-                <img
-                  src={banner}
-                  alt="Publicidad de hitdata"
-                  style={{ width: "100%" }}
-                />
+
+            <div className="col-md-3">
+              <div className="aside-block">
+                <div className="tab-content" id="pills-tabContent">
+                  <div
+                    className="tab-pane fade show active"
+                    id="pills-popular"
+                    role="tabpanel"
+                    aria-labelledby="pills-popular-tab"
+                  >
+                    <div className="post-entry-1 border-bottom">
+                      <div className="post-meta">
+                        <span className="date">Política</span>{" "}
+                        <span>15 sept 2022</span>
+                      </div>
+                      <h2 className="mb-2">
+                        Demanda pide tumbar elección de Gustavo Petro y Francia
+                        Márquez: ¿por qué?
+                      </h2>
+                      <span className="author mb-3 d-block">El Espectador</span>
+                    </div>
+
+                    <div className="post-entry-1 border-bottom">
+                      <div className="post-meta">
+                        <span className="date">Política</span>{" "}
+                        <span>12 ago 2022</span>
+                      </div>
+                      <h2 className="mb-2">
+                        17 % de encuestados por Cifras y Conceptos no reconoce
+                        triunfo de presidente Petro
+                      </h2>
+                      <span className="author mb-3 d-block">El Espectador</span>
+                    </div>
+
+                    <div className="post-entry-1 border-bottom">
+                      <div className="post-meta">
+                        <span className="date">Politica</span>{" "}
+                        <span>27 jul 2022</span>
+                      </div>
+                      <h2 className="mb-2">
+                        ¿Sí o no?: los debates presidenciales en Brasil están en
+                        duda por Lula y Bolsonaro
+                      </h2>
+                      <span className="author mb-3 d-block">El Espectador</span>
+                    </div>
+
+                    <div className="post-entry-1 border-bottom">
+                      <div className="post-meta">
+                        <span className="date">Política</span>{" "}
+                        <span>20 jun 2022</span>
+                      </div>
+                      <h2 className="mb-2">
+                        “Hay que hacer un acuerdo nacional que incluya a Álvaro
+                        Uribe Vélez”: Benedetti
+                      </h2>
+                      <span className="author mb-3 d-block">El Espectador</span>
+                    </div>
+
+                    <div className="post-entry-1 border-bottom">
+                      <div className="post-meta">
+                        <span className="date">Política</span>{" "}
+                        <span>13 jun 2022</span>
+                      </div>
+                      <h2 className="mb-2">
+                        Gustavo Petro - Rodolfo Hernández, el último (no) debate
+                      </h2>
+                      <span className="author mb-3 d-block">El Espectador</span>
+                    </div>
+                    <div className="col-lg-4 banner_responsive">
+                      <div className="container sidebar" data-aos="fade-up">
+                        <img
+                          src={loteriabanner}
+                          alt="Publicidad de loteria de boyaca"
+                          style={{ width: "1000%" }}
+                        />
+                        <hr className="hr" />
+                        <img
+                          src={banner}
+                          alt="Publicidad de hitdata"
+                          style={{ width: "1000%" }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

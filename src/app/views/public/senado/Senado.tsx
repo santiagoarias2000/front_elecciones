@@ -117,9 +117,9 @@ export const Senado = () => {
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text-center">
+                      <td className="text-left left_alination">
                         <a
-                          className="link_departamento"
+                          className="link_departamento text-left"
                           href={
                             "/guiaelectoral/senado/nacional/" +
                             myVotes.department.idDepartment
@@ -129,7 +129,7 @@ export const Senado = () => {
                         </a>
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
-                      <td className="text-center align-middle">
+                      <td className="text-left align-middle">
                         <a
                           className="link_departamento"
                           href={
@@ -245,7 +245,7 @@ export const Senado = () => {
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text-center">
+                      <td className="text-left">
                         <a
                           className="link_departamento"
                           href={
@@ -259,7 +259,7 @@ export const Senado = () => {
                       <td className="text-center">{myVotes.votos}</td>
                       <td className="text-center align-middle">
                         <a
-                          className="text-center"
+                          className="text-left"
                           href={
                             "/guiaelectoral/senado/indigena/departamento/" +
                             myVotes.department.idDepartment
