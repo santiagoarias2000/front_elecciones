@@ -109,47 +109,30 @@ export const SenadoNacionalMunicipio = () => {
                     >
                       Municipios
                     </button>
-                    <ul
-                      className="dropdown-menu selectpicker"
-                      data-live-search="true"
-                      style={{ maxHeight: "200px", overflowY: "auto" }}
-                    >
-                      <input
-                        type="text"
-                        placeholder="Busqueda..."
-                        onChange={(event) => {
-                          setSearchMunicipio(event.target.value);
-                        }}
-                      />
-                      <li>
-                        {arrayMunicipio
-                          .filter((val) => {
-                            if (searchMunicipio == "") {
-                              return val;
-                            } else if (
-                              val.name_municipality
-                                .toLocaleLowerCase()
-                                .includes(searchMunicipio.toLocaleLowerCase())
-                            ) {
-                              return val;
-                            }
-                          })
-                          .map((myMunicipality) => (
-                            <a
-                              className="dropdown-item"
-                              href={
-                                "/guiaelectoral/senado/nacional/" +
-                                myMunicipality.id_department +
-                                "/municipio/" +
-                                myMunicipality.id_municipality
-                              }
-                            >
-                              {" "}
-                              {myMunicipality.name_municipality}{" "}
-                            </a>
-                          ))}
-                      </li>
-                    </ul>
+                    <ul className="dropdown-menu selectpicker" data-live-search="true" style={{ maxHeight: "200px", overflowY: "auto" }} >
+                  <input type="text" placeholder="Busqueda..." onChange={event=>{setSearchMunicipio(event.target.value)}}/>
+                    <li>
+                      {arrayMunicipio.filter((val)=>{
+                        if (searchMunicipio == "") {
+                         return val;
+                        }else if(val.name_municipality.toLocaleLowerCase().includes(searchMunicipio.toLocaleLowerCase())){
+                         return val;
+                        }})
+                      .map((miMunicipio, indice) => (
+                        <a
+                          className="dropdown-item"
+                          href={
+                            "/guiaelectoral/senado/indigena/departamento/" +
+                            idDepartment +
+                            "/municipio/" +
+                            miMunicipio.id_municipality
+                          }
+                        >
+                          {miMunicipio.name_municipality}
+                        </a>
+                      ))}
+                    </li>
+                  </ul>
                   </div>
                 </div>
 
