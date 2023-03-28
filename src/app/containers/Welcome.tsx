@@ -1,12 +1,11 @@
 import president from "../../assets/image/imgenroll.webp";
 import Img7Carrusel from "../../assets/image/Img8.webp";
-import Img1Carr from "../../assets/image/GuiasAntiguas/Img1.jpg";
-import Img2Carr from "../../assets/image/GuiasAntiguas/Img2.jpg";
-import Img3Carr from "../../assets/image/GuiasAntiguas/Img3.jpg";
-import Img4Carr from "../../assets/image/GuiasAntiguas/Img4.jpg";
-import Img5Carr from "../../assets/image/GuiasAntiguas/Img5.jpg";
-import Img6Carr from "../../assets/image/GuiasAntiguas/Img6.jpg";
-import Img7Carr from "../../assets/image/GuiasAntiguas/Img7.jpg";
+import Img1Carr from "../../assets/image/GuiasAntiguas/Img1.webp";
+import Img2Carr from "../../assets/image/GuiasAntiguas/Img2.webp";
+import Img3Carr from "../../assets/image/GuiasAntiguas/Img3.webp";
+import Img4Carr from "../../assets/image/GuiasAntiguas/Img4.webp";
+import Img5Carr from "../../assets/image/GuiasAntiguas/Img5.webp";
+import Img6Carr from "../../assets/image/GuiasAntiguas/Img6.webp";
 import ImgHitData from "../../assets/image/HitData.jpg";
 import ImgLoteriaBoyaca from "../../assets/image/LoteriaBoyaca.jpg";
 import ImgDonJose from "../../assets/image/DonJose.jpg";
@@ -22,7 +21,11 @@ export const Welcome = () => {
         <div className="container" data-aos="fade-up">
           <div className="row no-gutters">
             <div className="col-lg-6 video-box">
-              <img src={Img7Carrusel} className="img-fluid" alt="Imagen de la guia electoral de comlombia" />
+              <img
+                src={Img7Carrusel}
+                className="img-fluid"
+                alt="Imagen de la guia electoral de comlombia"
+              />
               {/* <a
                 href="https://www.youtube.com/watch?v=t5ahimIQBmU"
                 className="venobox play-btn mb-4"
@@ -132,9 +135,9 @@ export const Welcome = () => {
                 a las elecciones a nivel nacional, por total departamentos y por
                 total municipios.
               </p>
-              <div className="cards-btn text-center">
+              <div className="cards-btn text-center botton_responsive">
                 <a href="/guiaelectoral/senado" className="btn-cards mt-4">
-                  <i className="bi bi-bar-chart-line-fill"></i>
+                  <i className="bi bi-bar-chart-line-fill "></i>
                   &nbsp; Ver resultados
                 </a>
               </div>
@@ -181,8 +184,7 @@ export const Welcome = () => {
               <h4>Gobernaciones</h4>
               <p>
                 Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel departamental y
-                total municipios.
+                a las elecciones a nivel departamental y total municipios.
               </p>
               <div className="cards-btn text-center">
                 <a href="#" className="btn-cards mt-4">
