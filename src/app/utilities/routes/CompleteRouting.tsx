@@ -4,7 +4,6 @@ import { MainBoard } from "../../containers/MainBoard";
 import { Welcome } from "../../containers/Welcome";
 import { NotFound } from "../../views/shared/NotFound";
 import { Blog } from "../../containers/Blog";
-import { SiteMap } from "../../views/shared/SiteMap";
 
 
 const LazyMainBoard = lazy(()=>import("../../containers/MainBoard").then(()=>({default:MainBoard})));
