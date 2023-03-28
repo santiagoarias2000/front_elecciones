@@ -94,14 +94,15 @@ export const ARREGLO_CANDIDATOS_ELEGIDOS:Array<CandidatosCamara>=[
   new CandidatosCamara('CARLOS ALBERTO CUENCA CHAUX'),
   new CandidatosCamara('ALEXANDER GUARIN SILVA'),
   //17.GUAVIARE
-  new CandidatosCamara('JORGE ALEXANDER QUEVEDO'),
-  new CandidatosCamara('ALEXANDER ARLEY BERMUDEZ'),
+  new CandidatosCamara('JORGE ALEXANDER QUEVEDO HERRERA'),
+  new CandidatosCamara('ALEXANDER HARLEY BERMUDEZ LASSO'),
   //18.HUILA
   new CandidatosCamara('FLORA PERDOMO ANDRADE'),
-  new CandidatosCamara('VICTOR ANDRES TOVAR JULIO CESAR TRIANA'),
-  //19.LA GUAJIRA
-  new CandidatosCamara('JUAN LORETO GOMEZ'),
-  new CandidatosCamara('JORGE ALBERTO CERHIARO'),
+  new CandidatosCamara('VICTOR ANDRES TOVAR TRUJILLO'),
+  new CandidatosCamara('JULIO CESAR TRIANA QUINTERO'),
+  //19.LA GUAJIRA *
+  new CandidatosCamara('JUAN LORETO GOMEZ SOTO'),
+  new CandidatosCamara('JORGE ALBERTO CERCHIARO FIGUEROA'),
   //20.MAGDALENA
   new CandidatosCamara('KELYN JOHANA GONZALEZ'),
   new CandidatosCamara('SANDRA MILENA RAMIREZ'),

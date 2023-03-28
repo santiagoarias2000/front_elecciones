@@ -20,11 +20,10 @@ export const Footer = () => {
                 </li>
                 <li>
                   <i className="bi bi-envelope icon_footer"></i>&nbsp;
-                  guiaelectoral@gmail.com
+                  josegilza@gmail.com
                 </li>
                 <li>
-                  <i className="bi bi-geo-alt icon_footer"></i>&nbsp;Av. Calle 26 N°
-                  51-50, CAN, Bogotá, Colombia
+                  <i className="bi bi-geo-alt icon_footer"></i>&nbsp; Cr 2 32 49 T1 Ap 702
                 </li>
               </ul>
             </div>
