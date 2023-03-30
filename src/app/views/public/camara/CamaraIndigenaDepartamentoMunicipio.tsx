@@ -99,7 +99,7 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
         style={{
           width: "100%",
           maxHeight: "80%",
-          marginTop: "10vw",
+          marginTop: "3vw",
           borderRadius: "5px 5px 0 0",
           boxShadow: "0px 0 20px #052851",
         }}
@@ -127,7 +127,7 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
             <b className="title_table">TERRITORIAL INDIGENA</b>
           </div>
         </div>
-        <div className="container">
+        <div className="container responsive">
           <div className="row">
             <div className="col-sm ">
               <div className="dropdown text-center my-3">
@@ -144,7 +144,7 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
                   data-live-search="true"
                   style={{ maxHeight: "200px", overflowY: "auto" }}
                 >
-                  <input type="text" placeholder="Busqueda..." onChange={event=>{setSearchMunicipio(event.target.value)}}/>
+                  <input type="text" placeholder="Busqueda..."  className="sticky-top" onChange={event=>{setSearchMunicipio(event.target.value)}}/>
                   <li>
                     {arrayMunicipio.filter((val)=>{
                         if (searchMunicipio == "") {
@@ -188,6 +188,78 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Buscar nombre Candidato"
                     style={{ textAlign: "right", marginRight: "5px" }}
+                    className="form_co"
+                  ></Form.Control>
+                </InputGroup>
+              </Form>
+            </div>
+          </div>
+        </div>
+        <div className="container no_responsive">
+          <div className="row">
+            <div className="col-sm ">
+              <div className="dropdown text-center my-1">
+                <button
+                  type="button"
+                  className="buttonBack buttonBack-primary dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Municipios
+                </button>
+                <ul
+                  className="dropdown-menu selectpicker"
+                  data-live-search="true"
+                  style={{ maxHeight: "200px", overflowY: "auto" }}
+                >
+                  <input type="text" placeholder="Busqueda..."  className="sticky-top" onChange={event=>{setSearchMunicipio(event.target.value)}}/>
+                  <li>
+                    {arrayMunicipio.filter((val)=>{
+                        if (searchMunicipio == "") {
+                         return val;
+                        }else if(val.name_municipality.toLocaleLowerCase().includes(searchMunicipio.toLocaleLowerCase())){
+                         return val;
+                        }})
+                    .map((myMunicipality, indice) => (
+                      <a
+                        className="dropdown-item"
+                        href={
+                          "/guiaelectoral/camara/circuncripcion/indigena/departamento/" +
+                          myMunicipality.id_department +
+                          "/municipio/" +
+                          myMunicipality.id_municipality
+                        }
+                      >
+                        <b className="name_text">
+
+                        {myMunicipality.name_municipality}
+                        </b>
+                      </a>
+                    ))}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="col">
+              <h6 className="text-center my-2" style={{ color: "#052851" }}>
+                {arrayNameMunicipality.map((myNameMunicipality) => (
+                  <b>
+                    {myNameMunicipality.name_municipality}
+                    {" ("}
+                    {myNameMunicipality.department}
+                    {")"}
+                  </b>
+                ))}
+              </h6>
+            </div>
+            <div className="col-sm">
+              <Form id="form_conta">
+                <InputGroup className="my-1 container_form">
+                <Form.Control
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Buscar nombre Candidato"
+                    style={{ textAlign: "right", marginRight: "5px" }}
+                    className="form_co"
                   ></Form.Control>
                 </InputGroup>
               </Form>
@@ -200,7 +272,7 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
             className="colorTable table table-hover"
             style={{ background: "#05285190 !important" }}
           >
-            <thead className="container_table">
+            <thead className="container_table sticky" style={{backgroundColor:"#fff"}}>
               <tr>
                 <th className="text-center" style={{ width: "30%" }}>
                   PARTIDO POLÍTICO
@@ -235,14 +307,18 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
                         CandidatosElegidosCamara(myVotes.candidate_name) === "True"
                           ? "text-center text-danger fst-italic font-weight-bold"
                           : "text-center"
-                      }>
+                      }
+                      id="text_left_name"
+                      >
                       {myVotes.description_politicparty}
                     </td>
                     <td className={
                         CandidatosElegidosCamara(myVotes.candidate_name) === "True"
                           ? "text-center text-danger fst-italic font-weight-bold"
                           : "text-center"
-                      }>
+                      }
+                      id="text_left_name"
+                      >
                       {myVotes.candidate_name}
                     </td>
                     <td className={
@@ -270,15 +346,14 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
             }}
           >
             <h6
-              className="my-4"
+              className="my-2"
               style={{
                 color: "#052851",
-                textAlign: "right",
-                paddingRight: "100px",
+                textAlign: "center",
               }}
             >
               {arrayDepartamento.map((myDepartment) => (
-                <b style={{ color: "#D9224E" }}>
+                <b  className="vota_respo" style={{ color: "#D9224E" }}>
                   VOTACIÓN TOTAL: {myDepartment.votos}
                 </b>
               ))}

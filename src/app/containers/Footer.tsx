@@ -5,7 +5,6 @@ import footerimg from "../../assets/image/LOGOBLANCO.webp";
 
 export const Footer = () => {
   return (
-    <section>
       <div className="containner_footers">
         <div className="container text-center">
           <div className="row">
@@ -16,7 +15,7 @@ export const Footer = () => {
               <ul>
                 <li>
                   <i className="bi bi-globe icon_footer"></i>&nbsp;
-                  www.guiaelectoralcolombiana.com
+                  www.guiaelectoraldecolombia.com
                 </li>
                 <li>
                   <i className="bi bi-envelope icon_footer"></i>&nbsp;
@@ -88,6 +87,5 @@ export const Footer = () => {
           </span>
         </div>
       </div>
-    </section>
   );
 };

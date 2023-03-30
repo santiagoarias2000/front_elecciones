@@ -57,7 +57,7 @@ export const Camara = () => {
         style={{
           width: "100%",
           maxHeight: "80%",
-          marginTop: "5vw",
+          marginTop: "3vw",
           borderRadius: "5px 5px 0 0",
           boxShadow: "0px 0 20px #052851",
         }}
@@ -87,6 +87,7 @@ export const Camara = () => {
                       onChange={(e) => setSearchTerritorial(e.target.value)}
                       placeholder="Buscar departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
                     ></Form.Control>
                   </InputGroup>
                 </Form>
@@ -115,7 +116,7 @@ export const Camara = () => {
               className="colorTableCamara table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead className="container_table">
+              <thead className="container_table sticky" style={{backgroundColor:"#fff"}}>
                 <tr>
                   <th className="text-center" style={{ width: "50%" }}>
                     DEPARTAMENTO
@@ -137,7 +138,7 @@ export const Camara = () => {
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text-center">
+                      <td className="text_left">
                         <a
                           className="link_departamento"
                           href={
@@ -247,7 +248,7 @@ export const Camara = () => {
               className="colorTableCamara table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead className="container_table">
+              <thead className="container_table sticky " style={{backgroundColor:"#fff"}}>
                 <tr>
                   <th className="text-center" style={{ width: "50%" }}>
                     DEPARTAMENTO
@@ -269,7 +270,7 @@ export const Camara = () => {
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text-center">
+                      <td className="text_left">
                         <a
                           className="link_departamento"
                           href={
@@ -378,7 +379,7 @@ export const Camara = () => {
               className="colorTableCamara table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead className="container_table">
+              <thead className="container_table sticky" style={{backgroundColor:"#fff"}}>
                 <tr>
                   <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
@@ -400,7 +401,7 @@ export const Camara = () => {
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text-center">
+                      <td className="text_left">
                         <a className="link_departamento"
                           href={
                             "/camara/circuncripcion/afrodescendiente/departamento/" +

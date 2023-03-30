@@ -14,7 +14,13 @@ export const Header = () => {
       <Navbar id="header" collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
           <div className="logo">
-            <img src={logo} alt="" className="img-fluid" />
+            <Link to={"/"}>
+              <img
+                src={logo}
+                alt="Imagen de logo para header de guia electoral"
+                className="img-fluid"
+              />
+            </Link>
           </div>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">

@@ -12,7 +12,7 @@ export const SenadoNacionalMunicipio = () => {
   //Variables
   let { idDepartment } = useParams();
   let { idMunicipality } = useParams();
-  
+
   const [search, setSearch] = useState("");
   const [searchMunicipio, setSearchMunicipio] = useState("");
 
@@ -65,7 +65,7 @@ export const SenadoNacionalMunicipio = () => {
         style={{
           width: "100%",
           maxHeight: "80%",
-          marginTop: "10vw",
+          marginTop: "3vw",
           borderRadius: "5px 5px 0 0",
           boxShadow: "0px 0 20px #052851",
         }}
@@ -97,7 +97,7 @@ export const SenadoNacionalMunicipio = () => {
           </div>
 
           <div className="d-flex">
-            <div className="container">
+            <div className="container responsive">
               <div className="row">
                 <div className="dropdown col-sm align-content-center my-3">
                   <div className="dropdown">
@@ -117,6 +117,7 @@ export const SenadoNacionalMunicipio = () => {
                       <input
                         type="text"
                         placeholder="Busqueda..."
+                        className="sticky-top"
                         onChange={(event) => {
                           setSearchMunicipio(event.target.value);
                         }}
@@ -172,6 +173,90 @@ export const SenadoNacionalMunicipio = () => {
                         onChange={(e) => setSearch(e.target.value)}
                         placeholder="Buscar un Candidato"
                         style={{ textAlign: "right", marginRight: "5px" }}
+                        className="form_co"
+                      ></Form.Control>
+                    </InputGroup>
+                  </Form>
+                </div>
+              </div>
+            </div>
+            <div className="container no_responsive">
+              <div className="row">
+                <div className="dropdown col-sm align-content-center my-1">
+                  <div className="dropdown">
+                    <button
+                      type="button"
+                      className="buttonBack buttonBack-primary dropdown-toggle"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Municipios
+                    </button>
+                    <ul
+                      className="dropdown-menu selectpicker"
+                      data-live-search="true"
+                      style={{ maxHeight: "200px", overflowY: "auto" }}
+                    >
+                      <input
+                        type="text"
+                        placeholder="Busqueda..."
+                        className="sticky-top"
+                        onChange={(event) => {
+                          setSearchMunicipio(event.target.value);
+                        }}
+                      />
+                      <li>
+                        {arrayMunicipio
+                          .filter((val) => {
+                            if (searchMunicipio == "") {
+                              return val;
+                            } else if (
+                              val.name_municipality
+                                .toLocaleLowerCase()
+                                .includes(searchMunicipio.toLocaleLowerCase())
+                            ) {
+                              return val;
+                            }
+                          })
+                          .map((myMunicipality) => (
+                            <a
+                              className="dropdown-item"
+                              href={
+                                "/guiaelectoral/senado/nacional/" +
+                                myMunicipality.id_department +
+                                "/municipio/" +
+                                myMunicipality.id_municipality
+                              }
+                            >
+                              {" "}
+                              <b className="name_text">{myMunicipality.name_municipality} </b>
+                            </a>
+                          ))}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="col">
+                  <h6 className="text-center my-2" style={{ color: "#052851" }}>
+                    {arrayNameMunicipality.map((myNameMunicipality) => (
+                      <b>
+                        {myNameMunicipality.name_municipality}
+                        {" ("}
+                        {myNameMunicipality.department}
+                        {")"}
+                      </b>
+                    ))}
+                  </h6>
+                </div>
+                <div className="col-sm">
+                  <Form id="form_conta">
+                    <InputGroup className="my-1 container_form">
+                      <Form.Control
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Buscar un Candidato"
+                        style={{ textAlign: "right", marginRight: "5px" }}
+                        className="form_co"
                       ></Form.Control>
                     </InputGroup>
                   </Form>
@@ -185,7 +270,10 @@ export const SenadoNacionalMunicipio = () => {
               className="colorTable table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead className="container_table">
+              <thead
+                className="container_table sticky"
+                style={{ backgroundColor: "#fff" }}
+              >
                 <tr>
                   <th className="text-center" style={{ width: "30%" }}>
                     PARTIDO POLÍTICO
@@ -203,19 +291,23 @@ export const SenadoNacionalMunicipio = () => {
               </thead>
               <tbody className="color">
                 {arrayVotesSenadoTerritorial
-                  .filter((val=>{
-                    if(search == ""){
+                  .filter((val) => {
+                    if (search == "") {
                       return val;
-                    }else if(val.candidate_name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                    } else if (
+                      val.candidate_name
+                        .toLocaleLowerCase()
+                        .includes(search.toLocaleLowerCase())
+                    ) {
                       return val;
                     }
-                  }))
+                  })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
                       <td className="text-center">
                         {myVotes.description_politicparty}
                       </td>
-                      <td className="text-center">
+                      <td className="text_left_name">
                         {myVotes.candidate_name}
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
@@ -250,27 +342,24 @@ export const SenadoNacionalMunicipio = () => {
           </div>
         </div>
         <Modal
-            show={show}
-            backdrop="static"
-            keyboard={false}
-            onHide={handleClose}
-            centered
-            style={{background:"#FFFFFFBF !important"}}
-          >
-            <Modal.Body className="text-center">
-              <div className="text-center">
-                <img src={ImageSpinner} />
-                <div className="mt-4">
-                  <div
-                    className="spinner-border text-danger"
-                    role="status"
-                  >
-                    <span className=" visually-hidden">Loading...</span>
-                  </div>
+          show={show}
+          backdrop="static"
+          keyboard={false}
+          onHide={handleClose}
+          centered
+          style={{ background: "#FFFFFFBF !important" }}
+        >
+          <Modal.Body className="text-center">
+            <div className="text-center">
+              <img src={ImageSpinner} />
+              <div className="mt-4">
+                <div className="spinner-border text-danger" role="status">
+                  <span className=" visually-hidden">Loading...</span>
                 </div>
               </div>
-            </Modal.Body>
-          </Modal>
+            </div>
+          </Modal.Body>
+        </Modal>
       </div>
 
       {/* Ejemplo de una tabla para presentación de datos: Fin */}
