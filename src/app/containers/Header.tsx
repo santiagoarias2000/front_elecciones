@@ -14,15 +14,30 @@ export const Header = () => {
       <Navbar id="header" collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
           <div className="logo">
-            <img src={logo} alt="" className="img-fluid" />
+            <Link to={"/"}>
+              <img
+                src={logo}
+                alt="Imagen de logo para header de guia electoral"
+                className="img-fluid"
+              />
+            </Link>
           </div>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-                <Link to={"/"} style={{textDecoration:"none"}}>Inicio</Link>
-                <Link to={"/blog"} style={{textDecoration:"none"}}>Nuestro Blog</Link>
-                <Link to={"/"} style={{textDecoration:"none"}}>Preguntas Frecuentes</Link>
-                <Nav.Link className="getstarted scrollto pruebita">
+              <Link to={"/"} style={{ textDecoration: "none" }}>
+                Inicio
+              </Link>
+              <Link to={"/blog"} style={{ textDecoration: "none" }}>
+                Nuestro Blog
+              </Link>
+              <Link to={"/"} style={{ textDecoration: "none" }}>
+                Preguntas Frecuentes
+              </Link>
+              <Link to={"/#votos"} style={{ textDecoration: "none" }}>
+                Ver resultados
+              </Link>
+              <Nav.Link className="getstarted scrollto pruebita">
                 &nbsp;Iniciar Sesión&nbsp;
               </Nav.Link>
             </Nav>

@@ -10,11 +10,23 @@ import ImgHitData from "../../assets/image/HitData.jpg";
 import ImgLoteriaBoyaca from "../../assets/image/LoteriaBoyaca.jpg";
 import ImgDonJose from "../../assets/image/DonJose.jpg";
 import editor from "../../assets/image/editor.jpeg";
-import { Carousel } from "react-bootstrap";
+import { Carousel, Modal } from "react-bootstrap";
 import "../../assets/js/carrusel.js";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import ImageSpinner from "../../assets/image/publicidadloteria.webp";
 
 export const Welcome = () => {
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
+  function hideModal() {
+    setTimeout(() => {
+      setShow(false);
+    }, 2000);
+  }
+  useEffect(() => {
+    hideModal();
+  }, []);
   return (
     <div className="containner-welcome">
       <section id="about" className="about">
@@ -39,7 +51,7 @@ export const Welcome = () => {
                 <h6 className="fst-italic text_extr">
                   ¡¡¡Para estrategias...Documéntese!!!
                 </h6>
-                <h2>Bienvenido a Guia Electoral de Colombia</h2>
+                <h2>Bienvenido a Guía Electoral de Colombia</h2>
                 <p className="text-center text_exfl">
                   Documento exclusivo para la consulta de resultados electorales
                   en el país y de uso estratégico en la toma de decisiones en
@@ -110,8 +122,11 @@ export const Welcome = () => {
                 la Presidencia de la Republica.
               </p>
               <div className="cards-btn text-center">
-                <a href="/guiaelectoral/presidencia" className="btn-cards mt-4">
-                  <i className="bi bi-bar-chart-line-fill"></i>
+                <a
+                  href="/guiaelectoral/presidencia"
+                  className="btn-cards mt-4 responsive_botton"
+                >
+                  <i className="bi bi-bar-chart-line-fill "></i>
                   &nbsp; Ver resultados
                 </a>
               </div>
@@ -136,7 +151,10 @@ export const Welcome = () => {
                 total municipios.
               </p>
               <div className="cards-btn text-center botton_responsive">
-                <a href="/guiaelectoral/senado" className="btn-cards mt-4">
+                <a
+                  href="/guiaelectoral/senado"
+                  className="btn-cards mt-4 responsive_botton"
+                >
                   <i className="bi bi-bar-chart-line-fill "></i>
                   &nbsp; Ver resultados
                 </a>
@@ -162,7 +180,10 @@ export const Welcome = () => {
                 departamento.
               </p>
               <div className="cards-btn text-center">
-                <a href="/guiaelectoral/camara" className="btn-cards mt-4">
+                <a
+                  href="/guiaelectoral/camara"
+                  className="btn-cards mt-4 responsive_botton"
+                >
                   <i className="bi bi-bar-chart-line-fill"></i>
                   &nbsp; Ver resultados
                 </a>
@@ -187,7 +208,7 @@ export const Welcome = () => {
                 a las elecciones a nivel departamental y total municipios.
               </p>
               <div className="cards-btn text-center">
-                <a href="#" className="btn-cards mt-4">
+                <a href="#" className="btn-cards mt-4 responsive_botton">
                   <i className="bi bi-bar-chart-line-fill"></i>
                   &nbsp; Ver resultados
                 </a>
@@ -213,7 +234,7 @@ export const Welcome = () => {
                 total municipios.
               </p>
               <div className="cards-btn text-center">
-                <a href="#" className="btn-cards mt-4">
+                <a href="#" className="btn-cards mt-4 responsive_botton">
                   <i className="bi bi-bar-chart-line-fill"></i>
                   &nbsp; Ver resultados
                 </a>
@@ -238,7 +259,7 @@ export const Welcome = () => {
                 a las elecciones a nivel municipal.
               </p>
               <div className="cards-btn text-center">
-                <a href="#" className="btn-cards mt-4">
+                <a href="#" className="btn-cards mt-4 responsive_botton">
                   <i className="bi bi-bar-chart-line-fill"></i>
                   &nbsp; Ver resultados
                 </a>
@@ -262,7 +283,7 @@ export const Welcome = () => {
                 a las elecciones a nivel municipal y/o distrital.
               </p>
               <div className="cards-btn text-center">
-                <a href="#" className="btn-cards mt-4">
+                <a href="#" className="btn-cards mt-4 responsive_botton">
                   <i className="bi bi-bar-chart-line-fill"></i>
                   &nbsp; Ver resultados
                 </a>
@@ -287,7 +308,7 @@ export const Welcome = () => {
                 a las elecciones a nivel distrital y por total localidades.
               </p>
               <div className="cards-btn text-center">
-                <a href="#" className="btn-cards mt-4">
+                <a href="#" className="btn-cards mt-4 responsive_botton">
                   <i className="bi bi-bar-chart-line-fill"></i>
                   &nbsp; Ver resultados
                 </a>
@@ -589,6 +610,20 @@ export const Welcome = () => {
           </div>
         </div>
       </section>
+      <Modal
+        show={show}
+        backdrop="static"
+        keyboard={false}
+        onHide={handleClose}
+        centered
+        style={{ backgroundColor: "transparent !important" , opacity: 0.9}}
+      >
+        <Modal.Body className="text-center text-bg-light">
+          <div className="text-center">
+            <img style={{ maxWidth: "100%", opacity:1}} src={ImageSpinner} />
+          </div>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };

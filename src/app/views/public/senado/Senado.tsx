@@ -40,7 +40,7 @@ export const Senado = () => {
     <main id="main" className="main">
       <img
         src={senado}
-        style={{ width: "100%", maxHeight: "80%", marginTop: "10vw" }}
+        style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
         alt="logo principal para la parte superior de la pagina web"
       />
       {/* Navegación estilo breadcrumb: Inicio */}
@@ -71,10 +71,10 @@ export const Senado = () => {
                 </Form>
               </div>
             </div>
-          </div>  
+          </div>
           <div className="container responsive_gra">
             <div className="row">
-            <div className="col-sm"></div>
+              <div className="col-sm"></div>
               <div className="col-3">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
@@ -95,7 +95,10 @@ export const Senado = () => {
               className="colorTableCamara table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead className="container_table">
+              <thead
+                className="container_table sticky"
+                style={{ backgroundColor: "#fff" }}
+              >
                 <tr>
                   <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
@@ -117,9 +120,9 @@ export const Senado = () => {
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text-left left_alination">
+                      <td className="text_left left_alination">
                         <a
-                          className="link_departamento text-left"
+                          className="link_departamento"
                           href={
                             "/guiaelectoral/senado/nacional/" +
                             myVotes.department.idDepartment
@@ -154,7 +157,7 @@ export const Senado = () => {
               alignItems: "center",
             }}
           >
-            <div className="text-center">
+            <div className="text-center responsive">
               <a
                 type="button"
                 className="buttonBack buttonBack-primary"
@@ -170,6 +173,24 @@ export const Senado = () => {
               >
                 <i className="bi bi-search "></i> &nbsp; CONOZCA LOS 108
                 ELEGIDOS
+              </a>
+            </div>
+            <div className="text-center no_responsive">
+              <a
+                type="button"
+                className="buttonBack buttonBack-primary"
+                href="/"
+              >
+                <i className="bi bi-arrow-left-circle"></i>
+                &nbsp;REGRESAR A ELEGIR ELECCIÓN
+              </a>
+
+              <a
+                href="/guiaelectoral/senadoelegidos"
+                className="buttonBack buttonBack-primary my-1"
+              >
+                <i className="bi bi-search "></i>&nbsp;&nbsp;&nbsp;CONOZCA LOS
+                108 ELEGIDOS
               </a>
             </div>
           </div>
@@ -202,7 +223,7 @@ export const Senado = () => {
           </div>
           <div className="container responsive_gra">
             <div className="row">
-            <div className="col-sm"></div>
+              <div className="col-sm"></div>
               <div className="col-3">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
@@ -223,7 +244,10 @@ export const Senado = () => {
               className="colorTableCamara table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead className="container_table">
+              <thead
+                className="container_table sticky"
+                style={{ backgroundColor: "#fff" }}
+              >
                 <tr>
                   <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
@@ -245,7 +269,7 @@ export const Senado = () => {
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text-left">
+                      <td className="text_left">
                         <a
                           className="link_departamento"
                           href={
@@ -283,7 +307,7 @@ export const Senado = () => {
               alignItems: "center",
             }}
           >
-            <div className="text-center">
+            <div className="text-center responsive">
               <a
                 type="button"
                 className="buttonBack buttonBack-primary"
@@ -299,6 +323,25 @@ export const Senado = () => {
               >
                 <i className="bi bi-search "></i> &nbsp; CONOZCA LOS 108
                 ELEGIDOS
+              </a>
+            </div>
+
+            <div className="text-center no_responsive">
+              <a
+                type="button"
+                className="buttonBack buttonBack-primary"
+                href="/"
+              >
+                <i className="bi bi-arrow-left-circle"></i>
+                &nbsp;REGRESAR A ELEGIR ELECCIÓN
+              </a>
+
+              <a
+                href="/guiaelectoral/senadoelegidos"
+                className="buttonBack buttonBack-primary my-1"
+              >
+                <i className="bi bi-search "></i>&nbsp;&nbsp;&nbsp;CONOZCA LOS
+                108 ELEGIDOS
               </a>
             </div>
           </div>
