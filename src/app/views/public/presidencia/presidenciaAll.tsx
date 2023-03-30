@@ -1,9 +1,9 @@
 import { Form, InputGroup } from "react-bootstrap";
 import { ScrollMenu } from "react-horizontal-scrolling-menu";
-import camara from "../../../../assets/image/ELLECIONESPRESIDENCIA.webp";
+import presidencia from "../../../../assets/image/HeaderTable/presidencia.webp"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Precidencia from "../../../mocks/models/Precidencia";
+import Precidencia from "../../../mocks/models/Presidencia";
 import { ARREGLO_PRIMERA_VUELTA, ARRGLO_SEGUNDA_VUELTA } from "../../../mocks/precidencia-mocks";
 
 export const PresidenciaAll = () => {
@@ -22,7 +22,7 @@ export const PresidenciaAll = () => {
   return (
     <main id="main" className="main">
       <img
-        src={camara}
+        src={presidencia}
         style={{ width: "100%", maxHeight: "80%", marginTop: "10vw" }}
         alt="logo principal para la parte superior de la pagina web"
       />

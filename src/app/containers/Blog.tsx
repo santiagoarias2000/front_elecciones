@@ -1,13 +1,10 @@
-import sergio from "../../assets/image/sergiofagardo.webp";
-import petro from "../../assets/image/gustavopetro.webp";
-import rodolfo from "../../assets/image/rodolfo.webp";
-import elecciones from "../../assets/image/eleccionesnoticia.webp";
-import uribe from "../../assets/image/uribe.webp";
-import loteriabanner from "../../assets/image/publicidadloteria.webp";
-import verticalbanner from "../../assets/image/verticalbanner.webp";
-import banner from "../../assets/image/bannerpublicidad.webp";
-import banner2 from "../../assets/image/BANNER-CAMPANA.jpg";
-import banner3 from "../../assets/image/banner2.webp";
+import sergio from "../../assets/image/Blog/sergiofagardo.webp";
+import petro from "../../assets/image/Blog/gustavopetro.webp";
+import rodolfo from "../../assets/image/Blog/rodolfo.webp";
+import elecciones from "../../assets/image/Blog/eleccionesnoticia.webp";
+import uribe from "../../assets/image/Blog/uribe.webp";
+import loteriabanner from "../../assets/image/Blog/publicidadloteria.webp";
+import banner from "../../assets/image/Blog/bannerpublicidad.webp";
 
 export const Blog = () => {
   return (
@@ -19,7 +16,7 @@ export const Blog = () => {
               <h3 className="category-title">CATEGORIA: POLÍTICA</h3>
 
               <div className="d-md-flex post-entry-2 half">
-                <a href="single-post.html" className="me-4 thumbnail">
+                <a href="single-post.html" className="me-4 mt-5 thumbnail">
                   <img
                     src={petro}
                     alt="imagen de petro"
@@ -82,7 +79,7 @@ export const Blog = () => {
               </div>
 
               <div className="d-md-flex post-entry-2 half ">
-                <a href="single-post.html" className="me-4 thumbnail"  style={{marginTop:"5%"}}>
+                <a href="single-post.html" className="me-4 thumbnail"  style={{marginTop:"8%"}}>
                   <img
                     src={rodolfo}
                     alt="Imangen de rodolfo"
@@ -114,7 +111,7 @@ export const Blog = () => {
               </div>
 
               <div className="d-md-flex post-entry-2 half">
-                <a href="single-post.html" className="me-4 thumbnail">
+                <a href="single-post.html" className="me-4 mt-4 thumbnail">
                   <img
                     src={elecciones}
                     alt="Imagen de las eleciones"
@@ -145,7 +142,7 @@ export const Blog = () => {
               </div>
 
               <div className="d-md-flex post-entry-2 half">
-                <a href="single-post.html" className="me-4 thumbnail">
+                <a href="single-post.html" className="me-4 mt-5 thumbnail">
                   <img
                     src={uribe}
                     alt="imagen del expresidente uribe"
@@ -180,7 +177,7 @@ export const Blog = () => {
               </div>
             </div>
 
-            <div className="col-md-3">
+            <div className="col-md-3" data-aos="fade-up">
               <div className="aside-block">
                 <div className="tab-content" id="pills-tabContent">
                   <div

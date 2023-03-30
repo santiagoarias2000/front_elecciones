@@ -3,7 +3,7 @@ import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import Form from "react-bootstrap/Form";
-import camara from "../../../../assets/image/camara.webp";
+import camara from "../../../../assets/image/HeaderTable/camara.webp";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
 import ImageSpinner from "../../../../assets/image/errorlogo.webp";
@@ -177,7 +177,7 @@ export const CamaraTerritorialDepartamento = () => {
                         <a
                           className="dropdown-item"
                           href={
-                            "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
+                            "/camara/circuncripcion/territorial/departamento/" +
                             myMunicipality.id_department +
                             "/municipio/" +
                             myMunicipality.id_municipality
@@ -318,7 +318,7 @@ export const CamaraTerritorialDepartamento = () => {
               <a
                 type="button"
                 className="buttonBack buttonBack-primary"
-                href="/guiaelectoral/camara/"
+                href="/camara/"
               >
                 <i className="bi bi-arrow-left-circle"></i>
                 &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO &nbsp;

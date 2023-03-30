@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import camara from "../../../../assets/image/camara.webp";
+import camara from "../../../../assets/image/HeaderTable/camara.webp";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
 import {
@@ -152,7 +152,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
                         <a
                           className="dropdown-item"
                           href={
-                            "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
+                            "/camara/circuncripcion/afrodescendiente/departamento/" +
                             myMunicipality.id_department +
                             "/municipio/" +
                             myMunicipality.id_municipality
@@ -294,7 +294,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
                 type="button"
                 className="buttonBack buttonBack-primary"
                 href={
-                  "/guiaelectoral/camara/"
+                  "/camara/"
                 }
               >
                 <i className="bi bi-arrow-left-circle"></i>

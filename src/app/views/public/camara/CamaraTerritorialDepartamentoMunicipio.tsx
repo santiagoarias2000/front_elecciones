@@ -3,7 +3,7 @@ import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import Form from "react-bootstrap/Form";
-import camara from "../../../../assets/image/camara.webp";
+import camara from "../../../../assets/image/HeaderTable/camara.webp";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
 import { Col, Dropdown, InputGroup, Modal, Pagination, Row, Table, } from "react-bootstrap";
@@ -156,7 +156,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                       <a
                         className="dropdown-item"
                         href={
-                          "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
+                          "/camara/circuncripcion/territorial/departamento/" +
                           myMunicipality.id_department +
                           "/municipio/" +
                           myMunicipality.id_municipality
@@ -300,7 +300,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                 type="button"
                 className="buttonBack buttonBack-primary"
                 href={
-                  "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
+                  "/camara/circuncripcion/territorial/departamento/" +
                   idDepartment
                 }
               >

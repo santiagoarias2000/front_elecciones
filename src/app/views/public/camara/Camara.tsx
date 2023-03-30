@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import camara from "../../../../assets/image/camara.webp";
+import camara from "../../../../assets/image/HeaderTable/camara.webp";
 import { Link, useNavigate } from "react-router-dom";
 import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
-import ImageSpinner from "../../../../assets/image/errorlogo.webp";
+import ImageSpinner from "../../../../assets/image/PNGelecciones.webp";
 
 export const Camara = () => {
   const [searchTerritorial, setSearchTerritorial] = useState("");
@@ -141,7 +141,7 @@ export const Camara = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
+                            "/camara/circuncripcion/territorial/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -153,7 +153,7 @@ export const Camara = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
+                            "/camara/circuncripcion/territorial/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -273,7 +273,7 @@ export const Camara = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/guiaelectoral/camara/circuncripcion/indigena/departamento/" +
+                            "/camara/circuncripcion/indigena/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -286,7 +286,7 @@ export const Camara = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/guiaelectoral/camara/circuncripcion/indigena/departamento/" +
+                            "/camara/circuncripcion/indigena/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -403,7 +403,7 @@ export const Camara = () => {
                       <td className="text-center">
                         <a className="link_departamento"
                           href={
-                            "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
+                            "/camara/circuncripcion/afrodescendiente/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -415,7 +415,7 @@ export const Camara = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
+                            "/camara/circuncripcion/afrodescendiente/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >

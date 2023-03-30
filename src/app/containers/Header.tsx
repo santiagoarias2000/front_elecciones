@@ -19,9 +19,9 @@ export const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-                <Link to={"/"} style={{textDecoration:"none"}}>Inicio</Link>
+                <a href="/#about" style={{textDecoration:"none"}}>Inicio</a>
+                <a href="/#resultados" style={{textDecoration:"none"}}>Resultados</a>
                 <Link to={"/blog"} style={{textDecoration:"none"}}>Nuestro Blog</Link>
-                <Link to={"/"} style={{textDecoration:"none"}}>Preguntas Frecuentes</Link>
                 <Nav.Link className="getstarted scrollto pruebita">
                 &nbsp;Iniciar Sesión&nbsp;
               </Nav.Link>

@@ -1,11 +1,7 @@
 import { useState, useEffect } from "react";
-import VotesCongreso from "../../../models/VotesCongreso";
-import ServicePrivate from "../../../services/ServicePrivate";
-import ApiBack from "../../../utilities/domains/ApiBack";
-import camara from "../../../../assets/image/SENADO.webp";
+import camara from "../../../../assets/image/HeaderTable/SENADO.webp";
 import { Link, useNavigate } from "react-router-dom";
 import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
-import ImageSpinner from "../../../../assets/image/errorlogo.webp";
 import CandidatosSenado from "../../../mocks/models/CandidatosSenado";
 import { ARREGLO_SENADO_108, ARREGLO_SENADO_INDIGENAS } from "../../../mocks/Senado108Marzo2022";
 

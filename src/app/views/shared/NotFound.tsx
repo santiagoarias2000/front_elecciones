@@ -10,7 +10,7 @@ export const NotFound = () => {
         <section className="section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center ">
         <img src={imglogo} alt="Imagen logo" />
           <img src={img404} alt="Imagen de error 404" />
-          <a className="btn" onClick={() => regresar(-1)}>
+          <a className="btn" href="/">
             Regresar
           </a>
         </section>

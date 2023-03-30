@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import footerimg from "../../assets/image/PNGelecciones.webp";
+import footerimg from "../../assets/image/LOGOBLANCO.webp";
 
 
 
@@ -36,7 +36,7 @@ export const Footer = () => {
                   <ul className="list">
                     <li>
                       <a
-                        href={"/guiaelectoral/politicasprivacidad"}
+                        href={"/politicasprivacidad"}
                         className="link"
                         style={{ color: "#fff", textDecoration: "none" }}
                       >
@@ -45,7 +45,7 @@ export const Footer = () => {
                     </li>
                     <li>
                       <a
-                        href={"/guiaelectoral/avisolegal"}
+                        href={"/avisolegal"}
                         style={{ color: "#fff", textDecoration: "none" }}
                       >
                         Aviso legales
@@ -53,7 +53,7 @@ export const Footer = () => {
                     </li>
                     <li>
                       <a
-                        href={"/guiaelectoral/politicascookies"}
+                        href={"/politicascookies"}
                         style={{ color: "#fff", textDecoration: "none" }}
                       >
                         Políticas de Cookies
@@ -61,7 +61,7 @@ export const Footer = () => {
                     </li>
                     <li>
                       <a
-                        href={"/guiaelectoral/terminoscondiciones"}
+                        href={"/terminoscondiciones"}
                         style={{ color: "#fff", textDecoration: "none" }}
                       >
                         Términos y Condiciones

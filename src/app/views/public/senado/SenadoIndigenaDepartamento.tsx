@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
-import senado from "../../../../assets/image/SENADO.webp";
+import senado from "../../../../assets/image/HeaderTable/SENADO.webp";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
@@ -99,7 +99,7 @@ export const SenadoIndigenaDepartamento = () => {
                         <a
                           className="dropdown-item"
                           href={
-                            "/guiaelectoral/senado/indigena/departamento/" +
+                            "/senado/indigena/departamento/" +
                             idDepartment +
                             "/municipio/" +
                             miMunicipio.id_municipality
@@ -202,7 +202,7 @@ export const SenadoIndigenaDepartamento = () => {
             >
               <div className="text-center">
                 
-                  <a href="/guiaelectoral/senado"  type="button" className="buttonBack buttonBack-primary">
+                  <a href="/senado"  type="button" className="buttonBack buttonBack-primary">
                     <i className="bi bi-arrow-left-circle"></i>
                     &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
                   </a>

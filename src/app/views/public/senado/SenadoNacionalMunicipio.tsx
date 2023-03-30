@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
-import senado from "../../../../assets/image/SENADO.webp";
+import senado from "../../../../assets/image/HeaderTable/SENADO.webp";
 import { Form, InputGroup, Modal, Pagination } from "react-bootstrap";
 import Municipality from "../../../models/Municipality";
 import ImageSpinner from "../../../../assets/image/errorlogo.webp";
@@ -138,7 +138,7 @@ export const SenadoNacionalMunicipio = () => {
                             <a
                               className="dropdown-item"
                               href={
-                                "/guiaelectoral/senado/nacional/" +
+                                "/senado/nacional/" +
                                 myMunicipality.id_department +
                                 "/municipio/" +
                                 myMunicipality.id_municipality
@@ -240,7 +240,7 @@ export const SenadoNacionalMunicipio = () => {
                 <a
                   type="button"
                   className="buttonBack buttonBack-primary"
-                  href={"/guiaelectoral/senado/nacional/" + idDepartment}
+                  href={"/senado/nacional/" + idDepartment}
                 >
                   <i className="bi bi-arrow-left-circle"></i>
                   &nbsp;&nbsp;REGRESAR A ELEGIR UN MUNICIPIO

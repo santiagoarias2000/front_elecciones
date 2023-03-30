@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import senado from "../../../../assets/image/SENADO.webp";
+import senado from "../../../../assets/image/HeaderTable/SENADO.webp";
 import VotesCongreso from "../../../models/VotesCongreso";
 import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
 import ServicePrivate from "../../../services/ServicePrivate";
@@ -102,7 +102,7 @@ export const SenadoNacionalDepartamento = () => {
                         <a
                           className="dropdown-item"
                           href={
-                            "/guiaelectoral/senado/nacional/" +
+                            "/senado/nacional/" +
                             idDepartment +
                             "/municipio/" +
                             miMunicipio.id_municipality
@@ -207,7 +207,7 @@ export const SenadoNacionalDepartamento = () => {
             >
               <div className="text-center">
                 
-                  <a  type="button" className="buttonBack buttonBack-primary" href="/guiaelectoral/senado">
+                  <a  type="button" className="buttonBack buttonBack-primary" href="/senado">
                     <i className="bi bi-arrow-left-circle"></i>
                     &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
                   </a>

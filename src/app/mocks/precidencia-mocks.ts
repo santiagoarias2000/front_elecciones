@@ -1,8 +1,8 @@
 import { preProcessFile } from "typescript";
-import Precidencia from "./models/Precidencia";
+import Presidencia from "./models/Presidencia";
 
-export const ARRGLO_SEGUNDA_VUELTA: Array<Precidencia> = [
-  new Precidencia(
+export const ARRGLO_SEGUNDA_VUELTA: Array<Presidencia> = [
+  new Presidencia(
     "GUSTAVO PETRO U/FRANCIA MARQUEZ",
     "8.796.020",
     "2.255.941",
@@ -39,7 +39,7 @@ export const ARRGLO_SEGUNDA_VUELTA: Array<Precidencia> = [
     "6.557",
     "7633"
   ),
-  new Precidencia(
+  new Presidencia(
     "M. RODOLFO HERNANDEZ/MARLEN CASTILLO T.",
     "9.121.789",
     "1.482.612",
@@ -76,7 +76,7 @@ export const ARRGLO_SEGUNDA_VUELTA: Array<Precidencia> = [
     "2157",
     "11450"
   ),
-  new Precidencia(
+  new Presidencia(
     "VOTOS EN BLANCO",
     "376.401",
     "112.411",
@@ -113,7 +113,7 @@ export const ARRGLO_SEGUNDA_VUELTA: Array<Precidencia> = [
     "112",
     "313"
   ),
-  new Precidencia(
+  new Presidencia(
     "VOTOS NULO",
     "227.517",
     "3.850.964",
@@ -150,7 +150,7 @@ export const ARRGLO_SEGUNDA_VUELTA: Array<Precidencia> = [
     "43",
     "164"
   ),
-  new Precidencia(
+  new Presidencia(
     "VOTOS NO MARCADOS",
     "19.799",
     "1350",
@@ -187,7 +187,7 @@ export const ARRGLO_SEGUNDA_VUELTA: Array<Precidencia> = [
     "11",
     "40"
   ),
-  new Precidencia(
+  new Presidencia(
     "VOTOS TOAL",
     "18.541.581",
     "3.891.656",
@@ -225,8 +225,8 @@ export const ARRGLO_SEGUNDA_VUELTA: Array<Precidencia> = [
     "19600"
   ),
 ];
-export const ARREGLO_PRIMERA_VUELTA: Array<Precidencia> = [
-  new Precidencia(
+export const ARREGLO_PRIMERA_VUELTA: Array<Presidencia> = [
+  new Presidencia(
     "GUSTAVO PETRO U/FRANCIA MARQUEZ",
     "6.625.878",
     "1772001",
@@ -263,7 +263,7 @@ export const ARREGLO_PRIMERA_VUELTA: Array<Precidencia> = [
     "4741",
     "5655"
   ),
-  new Precidencia(
+  new Presidencia(
     "M. RODOLFO HERNANDEZ/MARLEN CASTILLO T.",
     "5.094.221",
     "833770",
@@ -300,7 +300,7 @@ export const ARREGLO_PRIMERA_VUELTA: Array<Precidencia> = [
     "1053",
     "6671"
   ),
-  new Precidencia(
+  new Presidencia(
     "FEDERICO GUTIERREZ Z./RODRIGO LARA S.",
     "4.297.747",
     "725861",
@@ -337,7 +337,7 @@ export const ARREGLO_PRIMERA_VUELTA: Array<Precidencia> = [
     "763",
     "3262"
   ),
-  new Precidencia(
+  new Presidencia(
     "SERGIO FAJARDO V. /LUIS GILBERTO",
     "582.880",
     "299050",
@@ -374,7 +374,7 @@ export const ARREGLO_PRIMERA_VUELTA: Array<Precidencia> = [
     "253",
     "553"
   ),
-  new Precidencia(
+  new Presidencia(
     "JHON MILTON RODRIGUEZ G/SANDRA TORRES P.",
     "221.760",
     "46913",
@@ -411,7 +411,7 @@ export const ARREGLO_PRIMERA_VUELTA: Array<Precidencia> = [
     "29",
     "272"
   ),
-  new Precidencia(
+  new Presidencia(
     "ENRIQUE GOMEZ M/CARLOS A.",
     "38.164",
     "9835",
@@ -448,7 +448,7 @@ export const ARREGLO_PRIMERA_VUELTA: Array<Precidencia> = [
     "30",
     "81"
   ),
-  new Precidencia(
+  new Presidencia(
     "INGRID BETANCURT/JOSE LUIS. LUIS PEREZ",
     "11.574",
     "2374",
@@ -485,7 +485,7 @@ export const ARREGLO_PRIMERA_VUELTA: Array<Precidencia> = [
     "26",
     "42"
   ),
-  new Precidencia(
+  new Presidencia(
     "VOTOS EN BLANCO",
     "290.013",
     "73445",
@@ -522,7 +522,7 @@ export const ARREGLO_PRIMERA_VUELTA: Array<Precidencia> = [
     "103",
     "278"
   ),
-  new Precidencia(
+  new Presidencia(
     "VOTOS NULO",
     "206.505",
     "34014",
@@ -559,7 +559,7 @@ export const ARREGLO_PRIMERA_VUELTA: Array<Precidencia> = [
     "32",
     "174"
   ),
-  new Precidencia(
+  new Presidencia(
     "VOTOS NO MARCADOS",
     "24.888",
     "1410",
@@ -596,7 +596,7 @@ export const ARREGLO_PRIMERA_VUELTA: Array<Precidencia> = [
     "12",
     "48"
   ),
-  new Precidencia(
+  new Presidencia(
     "VOTACION TOTAL",
     "17.431.413",
     "3801013",

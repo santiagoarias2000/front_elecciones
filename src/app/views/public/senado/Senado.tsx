@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import senado from "../../../../assets/image/SENADO.webp";
+import senado from "../../../../assets/image/HeaderTable/SENADO.webp";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, InputGroup, Modal } from "react-bootstrap";
-import ImageSpinner from "../../../../assets/image/errorlogo.webp";
+import ImageSpinner from "../../../../assets/image/PNGelecciones.webp";
 
 export const Senado = () => {
   const [searchNacional, setSearchNacional] = useState("");
@@ -121,7 +121,7 @@ export const Senado = () => {
                         <a
                           className="link_departamento text-left"
                           href={
-                            "/guiaelectoral/senado/nacional/" +
+                            "/senado/nacional/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -133,7 +133,7 @@ export const Senado = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/guiaelectoral/senado/nacional/" +
+                            "/senado/nacional/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -158,14 +158,14 @@ export const Senado = () => {
               <a
                 type="button"
                 className="buttonBack buttonBack-primary"
-                href="/"
+                href="/#resultados"
               >
                 <i className="bi bi-arrow-left-circle"></i>
                 &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
               </a>
               &nbsp;&nbsp;
               <a
-                href="/guiaelectoral/senadoelegidos"
+                href="/senadoelegidos"
                 className="buttonBack buttonBack-primary"
               >
                 <i className="bi bi-search "></i> &nbsp; CONOZCA LOS 108
@@ -249,7 +249,7 @@ export const Senado = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/guiaelectoral/senado/indigena/departamento/" +
+                            "/senado/indigena/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -261,7 +261,7 @@ export const Senado = () => {
                         <a
                           className="text-left"
                           href={
-                            "/guiaelectoral/senado/indigena/departamento/" +
+                            "/senado/indigena/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -287,14 +287,14 @@ export const Senado = () => {
               <a
                 type="button"
                 className="buttonBack buttonBack-primary"
-                href="/"
+                href="/#resultados"
               >
                 <i className="bi bi-arrow-left-circle"></i>
                 &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
               </a>
               &nbsp;&nbsp;
               <a
-                href="/guiaelectoral/senadoelegidos"
+                href="/senadoelegidos"
                 className="buttonBack buttonBack-primary link_hitdata"
               >
                 <i className="bi bi-search "></i> &nbsp; CONOZCA LOS 108
