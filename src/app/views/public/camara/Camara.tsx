@@ -181,7 +181,7 @@ export const Camara = () => {
                 <a
                   type="button"
                   className="buttonBack buttonBack-primary"
-                  href={"/"}
+                  href={"/#resultados"}
                 >
                   <i className="bi bi-arrow-left-circle"></i>
                   &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
@@ -313,7 +313,7 @@ export const Camara = () => {
                 <a
                   type="button"
                   className="buttonBack buttonBack-primary"
-                  href={"/"}
+                  href={"/#resultados"}
                 >
                   <i className="bi bi-arrow-left-circle"></i>
                   &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
@@ -442,7 +442,7 @@ export const Camara = () => {
                 <a
                   type="button"
                   className="buttonBack buttonBack-primary"
-                  href={"/"}
+                  href={"/#resultados"}
                 >
                   <i className="bi bi-arrow-left-circle"></i>
                   &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN

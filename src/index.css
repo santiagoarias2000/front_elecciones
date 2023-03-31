@@ -1483,6 +1483,25 @@ h6 {
   font-family: "Tilt Warp", cursive;
   color: #ffffff;
 }
+@media (max-width: 768px) {
+  .container_error {
+    background-image: url("../src/assets/image/errorfondo.webp");
+    background-size: 200%;
+    background-repeat: no-repeat;
+  }
+  .imagen_logo{
+    max-width: 60%;
+  }
+  .imagen_error{
+    max-width: 120%;
+  }
+  .container_error .btn {
+    background-color: #052851;
+    font-size: 14px;
+    font-family: "Tilt Warp", cursive;
+    color: #ffffff;
+  }
+}
 
 .container_error .btn:hover {
   background-color: #052870;

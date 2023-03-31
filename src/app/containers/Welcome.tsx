@@ -21,7 +21,7 @@ export const Welcome = () => {
   function hideModal() {
     setTimeout(() => {
       setShow(false);
-    }, 1000);
+    }, 2000);
   }
   useEffect(() => {
     hideModal();
@@ -47,7 +47,7 @@ export const Welcome = () => {
 
             <div className="col-lg-6 d-flex flex-column justify-content-center about-content">
               <div className="section-title">
-                <h2>Bienvenido a Guia Electoral de Colombia</h2>
+                <h2>Bienvenido a Guía Electoral de Colombia</h2>
                 <h6 className="fst-italic text_extr">
                   ¡¡¡Para estrategias...Documéntese!!!
                 </h6>
