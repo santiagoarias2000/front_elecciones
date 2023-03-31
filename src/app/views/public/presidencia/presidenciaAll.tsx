@@ -23,7 +23,7 @@ export const PresidenciaAll = () => {
     <main id="main" className="main">
       <img
         src={camara}
-        style={{ width: "100%", maxHeight: "80%", marginTop: "10vw" }}
+        style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
         alt="logo principal para la parte superior de la pagina web"
       />
       {/* Navegación estilo breadcrumb: Inicio */}
