@@ -234,7 +234,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
                         <a
                           className="dropdown-item name_deparment_respo"
                           href={
-                            "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
+                            "/camara/circuncripcion/afrodescendiente/departamento/" +
                             myMunicipality.id_department +
                             "/municipio/" +
                             myMunicipality.id_municipality
@@ -387,7 +387,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
                 type="button"
                 className="buttonBack buttonBack-primary"
                 href={
-                  "/camara/"
+                  "/camara"
                 }
               >
                 <i className="bi bi-arrow-left-circle"></i>

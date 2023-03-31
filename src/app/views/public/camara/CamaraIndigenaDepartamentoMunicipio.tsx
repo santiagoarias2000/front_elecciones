@@ -224,7 +224,7 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
                       <a
                         className="dropdown-item"
                         href={
-                          "/guiaelectoral/camara/circuncripcion/indigena/departamento/" +
+                          "/camara/circuncripcion/indigena/departamento/" +
                           myMunicipality.id_department +
                           "/municipio/" +
                           myMunicipality.id_municipality

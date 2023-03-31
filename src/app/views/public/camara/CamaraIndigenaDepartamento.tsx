@@ -238,7 +238,7 @@ export const CamaraIndigenaDepartamento = () => {
                         <a
                           className="dropdown-item"
                           href={
-                            "/guiaelectoral/camara/circuncripcion/indigena/departamento/" +
+                            "/camara/circuncripcion/indigena/departamento/" +
                             myMunicipality.id_department +
                             "/municipio/" +
                             myMunicipality.id_municipality
@@ -381,7 +381,7 @@ export const CamaraIndigenaDepartamento = () => {
               <a
                 type="button"
                 className="buttonBack buttonBack-primary"
-                href="/camara/"
+                href="/camara"
               >
                 <i className="bi bi-arrow-left-circle"></i>
                 &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO &nbsp;
