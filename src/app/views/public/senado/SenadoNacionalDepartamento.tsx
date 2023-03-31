@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import senado from "../../../../assets/image/HeaderTable/SENADO.webp";
+import senado from "../../../../assets/image/HeaderTable/CRsenadonacional.webp";
 import VotesCongreso from "../../../models/VotesCongreso";
 import {
   Col,
@@ -16,7 +16,7 @@ import Municipality from "../../../models/Municipality";
 import e from "express";
 import { useNavigate, useParams } from "react-router-dom";
 import Department from "../../../models/Department";
-import ImageSpinner from "../../../../assets/image/errorlogo.webp";
+import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
 export const SenadoNacionalDepartamento = () => {
   let { idDepartment } = useParams();
@@ -338,7 +338,7 @@ export const SenadoNacionalDepartamento = () => {
         >
           <Modal.Body className="text-center">
             <div className="text-center">
-              <img src={ImageSpinner} />
+              <img src={ImageSpinner} style={{height:"100px", width:"200px"}}/>
               <div className="mt-4">
                 <div className="spinner-border text-danger" role="status">
                   <span className=" visually-hidden">Loading...</span>

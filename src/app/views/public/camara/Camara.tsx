@@ -5,7 +5,7 @@ import ApiBack from "../../../utilities/domains/ApiBack";
 import camara from "../../../../assets/image/HeaderTable/camara.webp";
 import { Link, useNavigate } from "react-router-dom";
 import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
-import ImageSpinner from "../../../../assets/image/PNGelecciones.webp";
+import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
 export const Camara = () => {
   const [searchTerritorial, setSearchTerritorial] = useState("");
@@ -461,7 +461,7 @@ export const Camara = () => {
         >
           <Modal.Body className="text-center">
             <div className="text-center">
-              <img src={ImageSpinner} />
+              <img src={ImageSpinner} style={{height:"100px", width:"200px"}} />
               <div className="mt-4">
                 <div className="spinner-border text-danger" role="status">
                   <span className=" visually-hidden">Loading...</span>

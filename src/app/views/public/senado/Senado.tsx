@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import senado from "../../../../assets/image/HeaderTable/SENADO.webp";
+import senado from "../../../../assets/image/HeaderTable/senado.webp";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, InputGroup, Modal } from "react-bootstrap";
-import ImageSpinner from "../../../../assets/image/PNGelecciones.webp";
+import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
 export const Senado = () => {
   const [searchNacional, setSearchNacional] = useState("");
@@ -357,7 +357,7 @@ export const Senado = () => {
       >
         <Modal.Body className="text-center">
           <div className="text-center">
-            <img src={ImageSpinner} />
+            <img src={ImageSpinner} style={{height:"100px", width:"200px"}}/>
             <div className="mt-4">
               <div className="spinner-border text-danger" role="status">
                 <span className=" visually-hidden">Loading...</span>

@@ -3,10 +3,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
-import senado from "../../../../assets/image/HeaderTable/SENADO.webp";
+import senado from "../../../../assets/image/HeaderTable/CRsenadoindigena.webp";
 import { Form, InputGroup, Modal, Pagination } from "react-bootstrap";
 import Municipality from "../../../models/Municipality";
-import ImageSpinner from "../../../../assets/image/errorlogo.webp";
+import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
 export const SenadoIndigenaMunicipio = () => {
   let { idDepartment } = useParams();
@@ -333,7 +333,7 @@ export const SenadoIndigenaMunicipio = () => {
         >
           <Modal.Body className="text-center">
             <div className="text-center">
-              <img src={ImageSpinner} />
+              <img src={ImageSpinner} style={{height:"100px", width:"200px"}}/>
               <div className="mt-4">
                 <div className="spinner-border text-danger" role="status">
                   <span className=" visually-hidden">Loading...</span>

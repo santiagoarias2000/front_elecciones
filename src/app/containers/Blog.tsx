@@ -5,6 +5,7 @@ import elecciones from "../../assets/image/Blog/eleccionesnoticia.webp";
 import uribe from "../../assets/image/Blog/uribe.webp";
 import loteriabanner from "../../assets/image/Blog/publicidadloteria.webp";
 import banner from "../../assets/image/Blog/bannerpublicidad.webp";
+import bannerPublicidad from "../../assets/image/Blog/publicidadLoteriaHori.webp";
 
 export const Blog = () => {
   return (
@@ -14,7 +15,13 @@ export const Blog = () => {
           <div className="row">
             <div className="col-md-9" data-aos="fade-up">
               <h3 className="category-title">CATEGORIA: POLÍTICA</h3>
-
+              <div className="col-lg-4 mb-4 no_responsive">
+                      <img
+                        src={bannerPublicidad}
+                        alt="Publicidad de hitdata"
+                        style={{ width: "100%" }}
+                      />
+                    </div>
               <div className="d-md-flex post-entry-2 half">
                 <a href="single-post.html" className="me-4 mt-5 thumbnail">
                   <img
@@ -79,12 +86,15 @@ export const Blog = () => {
               </div>
 
               <div className="d-md-flex post-entry-2 half ">
-                <a href="single-post.html" className="me-4 thumbnail"  style={{marginTop:"8%"}}>
+                <a
+                  href="single-post.html"
+                  className="me-4 thumbnail"
+                  style={{ marginTop: "8%" }}
+                >
                   <img
                     src={rodolfo}
                     alt="Imangen de rodolfo"
                     className="img-fluid"
-                   
                   />
                 </a>
                 <div>
@@ -147,7 +157,6 @@ export const Blog = () => {
                     src={uribe}
                     alt="imagen del expresidente uribe"
                     className="img-fluid"
-                  
                   />
                 </a>
                 <div>
@@ -209,7 +218,7 @@ export const Blog = () => {
                       </h2>
                       <span className="author mb-3 d-block">El Espectador</span>
                     </div>
-
+                    
                     <div className="post-entry-1 border-bottom">
                       <div className="post-meta">
                         <span className="date">Politica</span>{" "}
@@ -257,6 +266,7 @@ export const Blog = () => {
                           alt="Publicidad de hitdata"
                           style={{ width: "1000%" }}
                         />
+                        <hr className="hr" />
                       </div>
                     </div>
                   </div>

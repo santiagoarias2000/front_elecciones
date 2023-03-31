@@ -157,7 +157,7 @@ const AboutUs = () => {
                     la Registraduria Nacional del Estado Civil, a los
                     anunciantes por su convicción en el producto. A mi familia:
                     esposa Dora Inés, e hijos Diana Patricia y Juan José quienes
-                    animan dia a dia este proyecto.
+                    animan día a día este proyecto.
                   </em>
                 </p>
               </div>

@@ -21,7 +21,7 @@ export const Welcome = () => {
   function hideModal() {
     setTimeout(() => {
       setShow(false);
-    }, 2000);
+    }, 1000);
   }
   useEffect(() => {
     hideModal();

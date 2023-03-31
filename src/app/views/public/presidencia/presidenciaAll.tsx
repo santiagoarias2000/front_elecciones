@@ -1,29 +1,47 @@
 import { Form, InputGroup } from "react-bootstrap";
 import { ScrollMenu } from "react-horizontal-scrolling-menu";
-import presidencia from "../../../../assets/image/HeaderTable/presidencia.webp"
-import { useState } from "react";
+import presidencia from "../../../../assets/image/HeaderTable/presidencia.webp";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Precidencia from "../../../mocks/models/Presidencia";
-import { ARREGLO_PRIMERA_VUELTA, ARRGLO_SEGUNDA_VUELTA } from "../../../mocks/precidencia-mocks";
+import {
+  ARREGLO_PRIMERA_VUELTA,
+  ARRGLO_SEGUNDA_VUELTA,
+} from "../../../mocks/precidencia-mocks";
+import ServicePrivate from "../../../services/ServicePrivate";
+import VotesCongreso from "../../../models/VotesCongreso";
+import ApiBack from "../../../utilities/domains/ApiBack";
 
 export const PresidenciaAll = () => {
   const [arrayPrecidenciaPrimera, setArrayPrecidenciaPrimera] = useState<
     Precidencia[]
   >(ARREGLO_PRIMERA_VUELTA);
-  
+
   const [arrayPrecidenciaSegunda, setArrayPrecidenciaSegunda] = useState<
     Precidencia[]
   >(ARRGLO_SEGUNDA_VUELTA);
 
+  const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
+    useState<VotesCongreso[]>([]);
+
   const [searchNacional, setSearchNacional] = useState("");
 
   const regresar = useNavigate();
+  const getVotosCamaraTerritorial = async () => {
+    //const parametrosPaginador= {paginaActual: activo, cantidadMostrar:numeroElemPag};
+    const result = await ServicePrivate.requestGET(ApiBack.CAMARA_TERRITORIAL);
+    setArrayVotosCamaraTerritorial(result);
+  };
+
+  useEffect(() => {
+    getVotosCamaraTerritorial();
+  }, []);
 
   return (
     <main id="main" className="main">
       <img
         src={presidencia}
-        style={{ width: "100%", maxHeight: "80%", marginTop: "10vw" }}
+        style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
         alt="logo principal para la parte superior de la pagina web"
       />
       {/* Navegación estilo breadcrumb: Inicio */}
@@ -62,21 +80,40 @@ export const PresidenciaAll = () => {
           </div>
 
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
-            <ScrollMenu>
             <table
               className="colorTable table table-hover"
-              style={{ background: "#05285190 !important" }}
+              style={{
+                background: "#05285190 !important",
+                color: "#052851",
+                backgroundColor: "#ffffff !important",
+              }}
             >
-              <thead className="container_table">
+              <thead
+                className="container_table primeraFila"
+                style={{ backgroundColor: "#fff" }}
+              >
                 <tr>
-                  <th className="text-left" style={{ width: "80%" }}>
+                  <th
+                    className="text-left celdaSuperiorIzquierda"
+                    style={{
+                      width: "85%",
+                      paddingLeft: "1%",
+                      color: "#052851 !important",
+                    }}
+                  >
                     NOMBRE CANDIDATO
                   </th>
-                  <th className="text-center" style={{ width: "10%" }}>
+                  <th
+                    className="text-center celdaSuperiorIzquierdaEstaticoTotalVotos"
+                    style={{ width: "5%", color: "#052851 !important" }}
+                  >
                     TOTAL
                   </th>
-                  <th className="text-center" style={{ width: "1%" }}>
-                    BOGOTA
+                  <th
+                    className="text-center celdaSuperiorIzquierdaEstaticoVotosBogota"
+                    style={{ width: "1%", color: "#052851 !important" }}
+                  >
+                    BOGOTÁ
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
                     AMAZONAS
@@ -88,19 +125,19 @@ export const PresidenciaAll = () => {
                     ARAUCA
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
-                    ATLANTICO
+                    ATLÁNTICO
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
-                    BOLIVAR
+                    BOLÍVAR
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
-                    BOYACA
+                    BOYACÁ
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
                     CALDAS
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
-                    CAQUETA
+                    CAQUETÁ
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
                     CASANARE
@@ -112,19 +149,19 @@ export const PresidenciaAll = () => {
                     CESAR
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
-                    CHOCO
+                    CHOCÓ
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
                     CONSULADOS
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
-                    CORDOBA
+                    CÓRDOBA
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
                     CUNDINAMARCA
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
-                    GUAINIA
+                    GUAINÍA
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
                     GUAVIARE
@@ -148,13 +185,13 @@ export const PresidenciaAll = () => {
                     PUTUMAYO
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
-                    QUINDIO
+                    QUINDÍO
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
                     RISARALDA
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
-                    SAN ANDRES
+                    SAN ANDRÉS
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
                     SANTANDER
@@ -169,134 +206,127 @@ export const PresidenciaAll = () => {
                     VALLE
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
-                    VAUPEZ
+                    VAUPÉS
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
                     VICHADA
                   </th>
                 </tr>
               </thead>
-              <tbody className="color container_table">
-              {arrayPrecidenciaPrimera
-                  .filter((myVotes) => {
-                    return searchNacional === ""
-                      ? myVotes
-                      : myVotes.candidate_name
-                          .toLowerCase()
-                          .includes(searchNacional.toLocaleLowerCase());
-                  })
-                  .map((myVotes, contador) => (
-                    <tr key={contador}>
-                    <td className="text">
+              <tbody className="container_table">
+                {arrayPrecidenciaPrimera.map((myVotes, contador) => (
+                  <tr key={contador} className="primeraColumna">
+                    <td
+                      className="text celdaSuperiorIzquierda"
+                      style={{ paddingLeft: "1%" }}
+                    >
                       {myVotes.candidate_name}
                     </td>
-                    <td className="text-center align-middle">{myVotes.total}</td>
-                    <td className="text-center align-middle">
-                     {myVotes.BOGOTA}
+                    <td className="text-center align-middle celdaSuperiorIzquierdaEstaticoTotalVotos">
+                      {myVotes.total}
+                    </td>
+                    <td className="text-center align-middle celdaSuperiorIzquierdaEstaticoVotosBogota">
+                      {myVotes.BOGOTA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.AMAZONAS}
+                      {myVotes.AMAZONAS}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.ANTIOQUIA}
+                      {myVotes.ANTIOQUIA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.ARAUCA}
+                      {myVotes.ARAUCA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.ATLANTICO}
+                      {myVotes.ATLANTICO}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.BOLIVAR}
+                      {myVotes.BOLIVAR}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.BOYACA}
+                      {myVotes.BOYACA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.CALDAS}
+                      {myVotes.CALDAS}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.CAQUETA}
+                      {myVotes.CAQUETA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.CASANARE}
+                      {myVotes.CASANARE}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.CAUCA}
+                      {myVotes.CAUCA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.CESAR}
+                      {myVotes.CESAR}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.CHOCO}
+                      {myVotes.CHOCO}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.CONSULADOS}
+                      {myVotes.CONSULADOS}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.CORDOBA}
+                      {myVotes.CORDOBA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.CUNDINAMARCA}
+                      {myVotes.CUNDINAMARCA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.GUAINIA}
+                      {myVotes.GUAINIA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.GUAVIARE}
+                      {myVotes.GUAVIARE}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.HUILA}
+                      {myVotes.HUILA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.MAGDALENA}
+                      {myVotes.MAGDALENA}
+                    </td>
+                    <td className="text-center align-middle">{myVotes.META}</td>
+                    <td className="text-center align-middle">
+                      {myVotes.NARIÑO}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.META}
+                      {myVotes.N_SANTANDER}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.NARIÑO}
+                      {myVotes.PUTUMAYO}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.N_SANTANDER}
+                      {myVotes.QUINDIO}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.PUTUMAYO}
+                      {myVotes.RISARALDA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.QUINDIO}
+                      {myVotes.SAN_ANDRES}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.RISARALDA}
+                      {myVotes.SANTANDER}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.SAN_ANDRES}
+                      {myVotes.SUCRE}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.SANTANDER}
+                      {myVotes.TOLIMA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.SUCRE}
+                      {myVotes.VALLE}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.TOLIMA}
+                      {myVotes.VAUPES}
                     </td>
+
                     <td className="text-center align-middle">
-                     {myVotes.VALLE}
-                    </td>
-                    <td className="text-center align-middle">
-                     {myVotes.VAUPES}
-                    </td>
-                    
-                    <td className="text-center align-middle">
-                     {myVotes.VICHADA}
+                      {myVotes.VICHADA}
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
-            </ScrollMenu>
-            
           </div>
           <div className="dropdown">
             <div
@@ -352,21 +382,40 @@ export const PresidenciaAll = () => {
           </div>
 
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
-            <ScrollMenu>
-            <table
-              className="colorTable table table-hover"
-              style={{ background: "#05285190 !important" }}
-            >
-              <thead className="container_table">
-                <tr>
-                  <th className="text-left" style={{ width: "80%" }}>
+              <table
+                className="colorTable table table-hover"
+                style={{
+                  background: "#05285190 !important",
+                  color: "#052851",
+                  backgroundColor: "#ffffff !important",
+                }}
+              >
+                <thead
+                  className="container_table primeraFila"
+                  style={{ backgroundColor: "#fff" }}
+                >
+                  <tr>
+                  <th
+                    className="text-left celdaSuperiorIzquierda"
+                    style={{
+                      width: "85%",
+                      paddingLeft: "1%",
+                      color: "#052851 !important",
+                    }}
+                  >
                     NOMBRE CANDIDATO
                   </th>
-                  <th className="text-center" style={{ width: "20%" }}>
+                  <th
+                    className="text-center celdaSuperiorIzquierdaEstaticoTotalVotos"
+                    style={{ width: "5%", color: "#052851 !important" }}
+                  >
                     TOTAL
                   </th>
-                  <th className="text-center" style={{ width: "1%" }}>
-                    BOGOTA
+                  <th
+                    className="text-center celdaSuperiorIzquierdaEstaticoVotosBogota"
+                    style={{ width: "1%", color: "#052851 !important" }}
+                  >
+                    BOGOTÁ
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
                     AMAZONAS
@@ -378,19 +427,19 @@ export const PresidenciaAll = () => {
                     ARAUCA
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
-                    ATLANTICO
+                    ATLÁNTICO
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
-                    BOLIVAR
+                    BOLÍVAR
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
-                    BOYACA
+                    BOYACÁ
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
                     CALDAS
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
-                    CAQUETA
+                    CAQUETÁ
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
                     CASANARE
@@ -402,19 +451,19 @@ export const PresidenciaAll = () => {
                     CESAR
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
-                    CHOCO
+                    CHOCÓ
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
                     CONSULADOS
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
-                    CORDOBA
+                    CÓRDOBA
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
                     CUNDINAMARCA
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
-                    GUAINIA
+                    GUAINÍA
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
                     GUAVIARE
@@ -438,13 +487,13 @@ export const PresidenciaAll = () => {
                     PUTUMAYO
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
-                    QUINDIO
+                    QUINDÍO
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
                     RISARALDA
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
-                    SAN ANDRES
+                    SAN ANDRÉS
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
                     SANTANDER
@@ -459,134 +508,135 @@ export const PresidenciaAll = () => {
                     VALLE
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
-                    VAUPEZ
+                    VAUPÉS
                   </th>
                   <th className="text-center" style={{ width: "1%" }}>
                     VICHADA
                   </th>
                 </tr>
-              </thead>
-              <tbody className="color container_table">
-              {arrayPrecidenciaSegunda
-                  .filter((myVotes) => {
-                    return searchNacional === ""
-                      ? myVotes
-                      : myVotes.candidate_name
-                          .toLowerCase()
-                          .includes(searchNacional.toLocaleLowerCase());
-                  })
-                  .map((myVotes, contador) => (
-                    <tr key={contador}>
-                    <td className="text">
+                </thead>
+                <tbody className="color container_table">
+                  {arrayPrecidenciaSegunda
+                    .filter((myVotes) => {
+                      return searchNacional === ""
+                        ? myVotes
+                        : myVotes.candidate_name
+                            .toLowerCase()
+                            .includes(searchNacional.toLocaleLowerCase());
+                    })
+                    .map((myVotes, contador) => (
+                      <tr key={contador} className="primeraColumna">
+                    <td
+                      className="text celdaSuperiorIzquierda"
+                      style={{ paddingLeft: "1%" }}
+                    >
                       {myVotes.candidate_name}
                     </td>
-                    <td className="text-center align-middle">{myVotes.total}</td>
-                    <td className="text-center align-middle">
-                     {myVotes.BOGOTA}
+                    <td className="text-center align-middle celdaSuperiorIzquierdaEstaticoTotalVotos">
+                      {myVotes.total}
+                    </td>
+                    <td className="text-center align-middle celdaSuperiorIzquierdaEstaticoVotosBogota">
+                      {myVotes.BOGOTA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.AMAZONAS}
+                      {myVotes.AMAZONAS}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.ANTIOQUIA}
+                      {myVotes.ANTIOQUIA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.ARAUCA}
+                      {myVotes.ARAUCA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.ATLANTICO}
+                      {myVotes.ATLANTICO}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.BOLIVAR}
+                      {myVotes.BOLIVAR}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.BOYACA}
+                      {myVotes.BOYACA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.CALDAS}
+                      {myVotes.CALDAS}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.CAQUETA}
+                      {myVotes.CAQUETA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.CASANARE}
+                      {myVotes.CASANARE}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.CAUCA}
+                      {myVotes.CAUCA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.CESAR}
+                      {myVotes.CESAR}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.CHOCO}
+                      {myVotes.CHOCO}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.CONSULADOS}
+                      {myVotes.CONSULADOS}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.CORDOBA}
+                      {myVotes.CORDOBA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.CUNDINAMARCA}
+                      {myVotes.CUNDINAMARCA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.GUAINIA}
+                      {myVotes.GUAINIA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.GUAVIARE}
+                      {myVotes.GUAVIARE}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.HUILA}
+                      {myVotes.HUILA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.MAGDALENA}
+                      {myVotes.MAGDALENA}
+                    </td>
+                    <td className="text-center align-middle">{myVotes.META}</td>
+                    <td className="text-center align-middle">
+                      {myVotes.NARIÑO}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.META}
+                      {myVotes.N_SANTANDER}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.NARIÑO}
+                      {myVotes.PUTUMAYO}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.N_SANTANDER}
+                      {myVotes.QUINDIO}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.PUTUMAYO}
+                      {myVotes.RISARALDA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.QUINDIO}
+                      {myVotes.SAN_ANDRES}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.RISARALDA}
+                      {myVotes.SANTANDER}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.SAN_ANDRES}
+                      {myVotes.SUCRE}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.SANTANDER}
+                      {myVotes.TOLIMA}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.SUCRE}
+                      {myVotes.VALLE}
                     </td>
                     <td className="text-center align-middle">
-                     {myVotes.TOLIMA}
+                      {myVotes.VAUPES}
                     </td>
+
                     <td className="text-center align-middle">
-                     {myVotes.VALLE}
-                    </td>
-                    <td className="text-center align-middle">
-                     {myVotes.VAUPES}
-                    </td>
-                    
-                    <td className="text-center align-middle">
-                     {myVotes.VICHADA}
+                      {myVotes.VICHADA}
                     </td>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-            </ScrollMenu>
-            
+                    ))}
+                </tbody>
+              </table>
           </div>
           <div className="dropdown">
             <div

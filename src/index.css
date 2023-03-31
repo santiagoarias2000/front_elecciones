@@ -1180,11 +1180,10 @@ h6 {
   --bs-table-hover-color: #d9224e !important;
   color: #052851 !important;
 }
-.colorTableCamara i:hover{
+.colorTableCamara i:hover {
   --bs-table-hover-color: #052851 !important;
   color: #d9224e !important;
 }
-
 
 .color {
   color: #052851 !important;
@@ -1368,17 +1367,13 @@ h6 {
 .link_hitdata :hover {
   color: #fff3cd;
 }
-.link_departamento{
+.link_departamento {
   text-decoration: none;
   color: #052851;
 }
-.link_departamento:hover{
+.link_departamento:hover {
   color: #d9224e;
 }
-
-
-
-
 
 @media (max-width: 768px) {
   .card-title {
@@ -1579,8 +1574,8 @@ h6 {
   padding-left: 8vw;
   text-align: left !important;
 }
-.container_table a :hover{
-  color: #d9224e; 
+.container_table a :hover {
+  color: #d9224e;
 }
 
 .container_total {
@@ -1593,7 +1588,7 @@ h6 {
   }
 }
 
-.no_responsive{
+.no_responsive {
   display: none;
 }
 
@@ -1601,23 +1596,22 @@ h6 {
   .container_table {
     font-size: 9px;
   }
-  .vota_respo{
+  .vota_respo {
     font-size: 10px;
   }
-  .text_title_respo{
+  .text_title_respo {
     font-size: 10px;
   }
-  .name_deparment_respo{
+  .name_deparment_respo {
     font-size: 30px;
   }
-  .responsive{
+  .responsive {
     display: none;
   }
-  .no_responsive{
+  .no_responsive {
     display: block;
   }
 }
-
 
 .container_form {
   width: 100%;
@@ -1834,7 +1828,7 @@ h6 {
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
       border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
-  .name_text{
+  .name_text {
     font-size: 0.7rem;
   }
 }
@@ -2263,7 +2257,7 @@ h6,
   border-radius: 10px;
 }
 .blog .entrys {
-display: none;
+  display: none;
 }
 .blog .entry .entry-img {
   max-height: 440px;
@@ -2289,7 +2283,6 @@ display: none;
 }
 
 .blog .entry .entry-meta {
-  
   margin-bottom: 15px;
   color: #052851;
 }
@@ -2301,7 +2294,6 @@ display: none;
   align-items: center;
   padding: 0;
   margin: 0;
-  
 }
 
 .blog .entry .entry-meta ul li + li {
@@ -2319,7 +2311,7 @@ display: none;
   font-size: 14px;
   display: inline-block;
   line-height: 1;
-  text-decoration: none ;
+  text-decoration: none;
   cursor: auto;
 }
 
@@ -2960,7 +2952,6 @@ section {
 .img {
   padding: 0 0 0 0;
 }
-
 
 .section-title {
   text-align: center;
@@ -3887,7 +3878,6 @@ section {
   font-size: 16px;
 }
 
-
 .blog .sidebar .search-form form button i {
   line-height: 0;
 }
@@ -4005,7 +3995,7 @@ section {
     font-size: 2vw;
     line-height: 15px;
   }
-  .banner_responsive{
+  .banner_responsive {
     display: none !important;
   }
   .blog .entrys {
@@ -4015,7 +4005,7 @@ section {
     margin-bottom: 48px;
   }
 }
-.banner_responsive{
+.banner_responsive {
   display: block;
   padding: 0 20px;
   color: #fff;
@@ -4085,24 +4075,22 @@ section {
   text-align: justify;
 }
 
-
-.left_alination{
+.left_alination {
   margin-left: 20px;
 }
-.text_editor{
-  font-family:  sans-serif;
+.text_editor {
+  font-family: sans-serif;
 }
-.text_extr{
-  color:#5e5e5e;
+.text_extr {
+  color: #5e5e5e;
 }
-.text_exfl{
+.text_exfl {
   margin: 20px 20px;
 }
 
 /*--------------------------------------------------------------
 # Sections & Section Header
 --------------------------------------------------------------*/
-
 
 .section-header {
   border-bottom: 2px solid var(--color-black);
@@ -4187,7 +4175,6 @@ section {
   background: #f2f2f2;
 }
 
-
 .header .logo img {
   max-height: 40px;
   margin-right: 6px;
@@ -4261,8 +4248,6 @@ section {
   scroll-margin-top: 70px;
 }
 
-
-
 /*--------------------------------------------------------------
 # Posts
 --------------------------------------------------------------*/
@@ -4305,7 +4290,7 @@ section {
   .custom-border {
     border: none !important;
   }
-  .responsive_botton{
+  .responsive_botton {
     font-size: 15px;
   }
 }
@@ -4331,7 +4316,7 @@ section {
   border: 1px solid rgba(var(--color-black-rgb), 0.1);
 }
 
-.trending>h3 {
+.trending > h3 {
   color: var(--color-black);
   padding: 20px;
   border-bottom: 1px solid rgba(var(--color-black-rgb), 0.1);
@@ -4504,7 +4489,6 @@ section {
 }
 
 @media (max-width: 768px) {
-
   .custom-swiper-button-next,
   .custom-swiper-button-prev {
     display: none;
@@ -4779,7 +4763,9 @@ section {
   position: absolute;
   top: 0;
   left: 0;
-  background: rgba(var(--color-black-rgba), 0.1) url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='%23fff' d='M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z'/%3e%3c/svg%3e") no-repeat center/1.75rem;
+  background: rgba(var(--color-black-rgba), 0.1)
+    url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='%23fff' d='M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z'/%3e%3c/svg%3e")
+    no-repeat center/1.75rem;
 }
 
 .comment .avatar-indicator {
@@ -4797,7 +4783,7 @@ section {
   display: inline-flex;
 }
 
-.comment .avatar-group .avatar+.avatar {
+.comment .avatar-group .avatar + .avatar {
   margin-left: -0.75rem;
 }
 
@@ -4806,34 +4792,34 @@ section {
 }
 
 .comment .avatar-sm,
-.comment .avatar-group-sm>.avatar {
+.comment .avatar-group-sm > .avatar {
   width: 2.125rem;
   height: 2.125rem;
   font-size: 1rem;
 }
 
 .comment .avatar-sm .avatar-placeholder,
-.comment .avatar-group-sm>.avatar .avatar-placeholder {
+.comment .avatar-group-sm > .avatar .avatar-placeholder {
   background-size: 1.25rem;
 }
 
-.comment .avatar-group-sm>.avatar+.avatar {
+.comment .avatar-group-sm > .avatar + .avatar {
   margin-left: -0.53125rem;
 }
 
 .comment .avatar-lg,
-.comment .avatar-group-lg>.avatar {
+.comment .avatar-group-lg > .avatar {
   width: 4rem;
   height: 4rem;
   font-size: 1.5rem;
 }
 
 .comment .avatar-lg .avatar-placeholder,
-.comment .avatar-group-lg>.avatar .avatar-placeholder {
+.comment .avatar-group-lg > .avatar .avatar-placeholder {
   background-size: 2.25rem;
 }
 
-.comment .avatar-group-lg>.avatar+.avatar {
+.comment .avatar-group-lg > .avatar + .avatar {
   margin-left: -1rem;
 }
 
@@ -4841,7 +4827,7 @@ section {
   box-shadow: 0 0 0 2px rgba(var(--color-white-rgba), 0.75);
 }
 
-.comment .avatar-group-light>.avatar {
+.comment .avatar-group-light > .avatar {
   box-shadow: 0 0 0 2px rgba(var(--color-white-rgba), 0.75);
 }
 
@@ -4849,7 +4835,7 @@ section {
   box-shadow: 0 0 0 2px rgba(var(--color-black-rgba), 0.25);
 }
 
-.comment .avatar-group-dark>.avatar {
+.comment .avatar-group-dark > .avatar {
   box-shadow: 0 0 0 2px rgba(var(--color-black-rgba), 0.25);
 }
 
@@ -4933,7 +4919,7 @@ section {
   font-weight: 600;
 }
 
-.contact .php-email-form .error-message br+br {
+.contact .php-email-form .error-message br + br {
   margin-top: 25px;
 }
 
@@ -4982,7 +4968,7 @@ section {
   background-color: var(--color-primary);
 }
 
-.contact .php-email-form button[type=submit] {
+.contact .php-email-form button[type="submit"] {
   background: var(--color-primary);
   border: 0;
   padding: 10px 30px;
@@ -4991,7 +4977,7 @@ section {
   cursor: pointer;
 }
 
-.contact .php-email-form button[type=submit]:hover {
+.contact .php-email-form button[type="submit"]:hover {
   background: rgba(var(--color-primary-rgb), 0.8);
 }
 
@@ -5004,7 +4990,6 @@ section {
     transform: rotate(360deg);
   }
 }
-
 
 /*--------------------------------------------------------------
 # Sections & Section Header
@@ -5086,11 +5071,11 @@ section {
   text-decoration: underline;
 }
 
-.breadcrumbs ol li+li {
+.breadcrumbs ol li + li {
   padding-left: 10px;
 }
 
-.breadcrumbs ol li+li::before {
+.breadcrumbs ol li + li::before {
   display: inline-block;
   padding-right: 10px;
   color: #fff;
@@ -5218,7 +5203,6 @@ section {
   color: #fff;
 }
 
-
 /*--------------------------------------------------------------
 # Resume
 --------------------------------------------------------------*/
@@ -5278,7 +5262,6 @@ section {
   border: 2px solid #d9224e;
 }
 
-
 /*******************
 
     SPINNER DE CARGA
@@ -5305,6 +5288,93 @@ section {
     transform: rotate(360deg);
   }
 }
-.container h4{
+.container h4 {
   text-transform: capitalize;
+}
+
+/**********************
+
+      STICKY
+
+***************************/
+
+/* Estilo para la primera fila */
+.primeraFila {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: #ffffff !important; /* opcional, para evitar que se superponga el contenido */
+}
+
+/* Estilo para la primera columna */
+.primeraColumna {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background-color: #ffffff !important; /* opcional, para evitar que se superponga el contenido */
+}
+
+/* Estilo para la celda en la esquina superior izquierda */
+.celdaSuperiorIzquierda {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  background-color: #ffffff !important; /* opcional, para evitar que se superponga el contenido */
+}
+/* Estilo para la celda en la esquina superior izquierda */
+.celdaSuperiorIzquierdaEstaticoTotalVotos {
+  position: sticky;
+  top: 0;
+  left: 13.6%;
+  z-index: 3;
+  background-color: #ffffff !important; /* opcional, para evitar que se superponga el contenido */
+} /* Estilo para la celda en la esquina superior izquierda */
+.celdaSuperiorIzquierdaEstaticoVotosBogota {
+  position: sticky;
+  top: 0;
+  left: 21%;
+  z-index: 3;
+  background-color: #ffffff !important; /* opcional, para evitar que se superponga el contenido */
+}
+@media (max-width: 768px) {
+  /* Estilo para la primera fila */
+  .primeraFila {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: #ffffff !important; /* opcional, para evitar que se superponga el contenido */
+  }
+
+  /* Estilo para la primera columna */
+  .primeraColumna {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background-color: #ffffff !important; /* opcional, para evitar que se superponga el contenido */
+  }
+
+  /* Estilo para la celda en la esquina superior izquierda */
+  .celdaSuperiorIzquierda {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    background-color: #ffffff !important; /* opcional, para evitar que se superponga el contenido */
+  }
+  /* Estilo para la celda en la esquina superior izquierda */
+  .celdaSuperiorIzquierdaEstaticoTotalVotos {
+    position: sticky;
+    top: 0;
+    left: 25.2%;
+    z-index: 3;
+    background-color: #ffffff !important; /* opcional, para evitar que se superponga el contenido */
+  } /* Estilo para la celda en la esquina superior izquierda */
+  .celdaSuperiorIzquierdaEstaticoVotosBogota {
+    position: sticky;
+    top: 0;
+    left: 40.2%;
+    z-index: 3;
+    background-color: #ffffff !important; /* opcional, para evitar que se superponga el contenido */
+  }
 }

@@ -1,11 +1,7 @@
-import logoHeader from "../../assets/image/logoHeader.png";
 import logo from "../../assets/image/imgHeader.webp";
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link, redirect } from "react-router-dom";
 
 export const Header = () => {
@@ -27,6 +23,7 @@ export const Header = () => {
             <Nav className="me-auto">
                 <a href="/#about" style={{textDecoration:"none"}}>Inicio</a>
                 <a href="/#resultados" style={{textDecoration:"none"}}>Resultados</a>
+                <a href="#" style={{textDecoration:"none"}}>Preguntas frecuentes</a>
                 <Link to={"/blog"} style={{textDecoration:"none"}}>Nuestro Blog</Link>
                 <Nav.Link className="getstarted scrollto pruebita">
                 &nbsp;Iniciar Sesión&nbsp;

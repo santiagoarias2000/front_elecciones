@@ -3,7 +3,7 @@ import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import Form from "react-bootstrap/Form";
-import camara from "../../../../assets/image/HeaderTable/camara.webp";
+import camara from "../../../../assets/image/HeaderTable/CRindigena.webp";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
 import { Col, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
@@ -395,7 +395,7 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
           >
             <Modal.Body className="text-center">
               <div className="text-center">
-                <img src={ImageSpinner} />
+                <img src={ImageSpinner} style={{height:"100px", width:"200px"}}/>
                 <div className="mt-4">
                   <div
                     className="spinner-border text-danger"
