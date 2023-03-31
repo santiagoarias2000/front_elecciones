@@ -222,7 +222,7 @@ export const SenadoNacionalMunicipio = () => {
                             <a
                               className="dropdown-item"
                               href={
-                                "/guiaelectoral/senado/nacional/" +
+                                "/senado/nacional/" +
                                 myMunicipality.id_department +
                                 "/municipio/" +
                                 myMunicipality.id_municipality

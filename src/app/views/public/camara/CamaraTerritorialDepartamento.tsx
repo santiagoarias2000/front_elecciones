@@ -255,7 +255,7 @@ export const CamaraTerritorialDepartamento = () => {
                         <a
                           className="dropdown-item name_deparment_respo"
                           href={
-                            "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
+                            "/camara/circuncripcion/territorial/departamento/" +
                             myMunicipality.id_department +
                             "/municipio/" +
                             myMunicipality.id_municipality
@@ -401,7 +401,7 @@ export const CamaraTerritorialDepartamento = () => {
               <a
                 type="button"
                 className="buttonBack buttonBack-primary"
-                href="/camara/"
+                href="/camara"
               >
                 <i className="bi bi-arrow-left-circle"></i>
                 &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO &nbsp;

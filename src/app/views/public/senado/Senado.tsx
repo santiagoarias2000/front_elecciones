@@ -179,14 +179,14 @@ export const Senado = () => {
               <a
                 type="button"
                 className="buttonBack buttonBack-primary"
-                href="/"
+                href="/#resultados"
               >
                 <i className="bi bi-arrow-left-circle"></i>
                 &nbsp;REGRESAR A ELEGIR ELECCIÓN
               </a>
 
               <a
-                href="/guiaelectoral/senadoelegidos"
+                href="/senadoelegidos"
                 className="buttonBack buttonBack-primary my-1"
               >
                 <i className="bi bi-search "></i>&nbsp;&nbsp;&nbsp;CONOZCA LOS
@@ -337,7 +337,7 @@ export const Senado = () => {
               </a>
 
               <a
-                href="/guiaelectoral/senadoelegidos"
+                href="/senadoelegidos"
                 className="buttonBack buttonBack-primary my-1"
               >
                 <i className="bi bi-search "></i>&nbsp;&nbsp;&nbsp;CONOZCA LOS
