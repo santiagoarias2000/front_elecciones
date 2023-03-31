@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import camara from "../../../../assets/image/HeaderTable/senado.webp";
+import camara from "../../../../assets/image/HeaderTable/SENADO.webp";
 import { Link, useNavigate } from "react-router-dom";
 import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
 import CandidatosSenado from "../../../mocks/models/CandidatosSenado";

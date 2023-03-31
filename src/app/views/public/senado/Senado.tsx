@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import senado from "../../../../assets/image/HeaderTable/senado.webp";
+import senado from "../../../../assets/image/HeaderTable/SENADO.webp";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, InputGroup, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
