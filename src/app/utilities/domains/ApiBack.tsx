@@ -2,7 +2,6 @@ const ApiBack = {
   // URL: "https://guiaelectoral.onrender.com",
   URL: "https://guiaelectoraldecolombia.onrender.com",
 
-  
   COMBOBOX_MUNICIPIO: "/api/public/municipio",
   NOMBRE_MUNICIPIO: "/api/public/municipio/one",
   NOMBRE_DEPARTAMENTO_TERRITORIAL: "/api/public/departamento/territorial",
