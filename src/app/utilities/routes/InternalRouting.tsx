@@ -24,6 +24,7 @@ import { SenadoIndigenaMunicipio } from "../../views/public/senado/SenadoIndigen
 import { PresidenciaAll } from "../../views/public/presidencia/presidenciaAll";
 import { SenadoNacionalDepartamento } from "../../views/public/senado/SenadoNacionalDepartamento";
 import AboutUs from "../../views/shared/AboutUs";
+import { Gobernacion } from "../../views/public/gobernacion/Gobernacion";
 
 //Lazy structure from use the all tsx
 
@@ -48,6 +49,7 @@ const LazyCamaraTerritorialepartamentoMunicipio =lazy(()=>import("../../views/pu
 const LazyCamaraIndigenaDepartamentoMunicipio =lazy(()=>import("../../views/public/camara/CamaraIndigenaDepartamentoMunicipio").then(()=>({default:CamaraIndigenaDepartamentoMunicipio})));
 const LazyCamaraAfroDescendienteDepartamentoMunicipio =lazy(()=>import("../../views/public/camara/CamaraAfroDescendienteDepartamentoMunicipio").then(()=>({default:CamaraAfroDescendienteDepartamentoMunicipio})));
 const LazyPresidente = lazy(() => import("../../views/public/presidencia/presidenciaAll").then(() => ({default: PresidenciaAll})));
+const LazyGobernacion = lazy(() => import("../../views/public/gobernacion/Gobernacion").then(() => ({default: Gobernacion})));
 //Blog
 const LazyBlog = lazy(() => import("../../containers/Blog").then(() => ({default: Blog})));
 const LazyNosotros = lazy(() => import("../../views/shared/AboutUs").then(() => ({default: AboutUs})));
@@ -87,6 +89,8 @@ export const InternalRouting = () => {
       <Route path="/blog" element={<LazyBlog/>}/>
       <Route path="/nosotros" element={<LazyNosotros/>}/>
       <Route path="*" element={<NotFound/>}/>
+      //Routes Gobernacion
+      <Route path="/gobernacion" element={<LazyGobernacion/>}/>
       
     </Routes>
   );

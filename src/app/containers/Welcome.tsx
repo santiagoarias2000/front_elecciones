@@ -6,6 +6,11 @@ import Img3Carr from "../../assets/image/GuiasAntiguas/Img3.webp";
 import Img4Carr from "../../assets/image/GuiasAntiguas/Img4.webp";
 import Img5Carr from "../../assets/image/GuiasAntiguas/Img5.webp";
 import Img6Carr from "../../assets/image/GuiasAntiguas/Img6.webp";
+import Imgfotoantigua1 from "../../assets/image/GuiasAntiguas/fotosantiguas2.jpeg";
+import Imgfotoantigua2 from "../../assets/image/GuiasAntiguas/fotosantiguas3.jpeg";
+import Imgfotoantigua3 from "../../assets/image/GuiasAntiguas/fotosantiguas4.jpeg";
+import Imgfotoantigua4 from "../../assets/image/GuiasAntiguas/fotosantiguas5.jpeg";
+import Imgfotoantigua5 from "../../assets/image/GuiasAntiguas/fotoantigua1.webp";
 import ImgHitData from "../../assets/image/Patrocinadores/azul.jpg";
 import ImgLoteriaBoyaca from "../../assets/image/Patrocinadores/LoteriaBoyaca.jpg";
 import ImgDonJose from "../../assets/image/Patrocinadores/DonJose.jpg";
@@ -35,6 +40,7 @@ export const Welcome = () => {
               <img
                 src={Img7Carrusel}
                 className="img-fluid"
+                style={{ maxWidth: "100%", maxHeight: "auto" }}
                 alt="Imagen de la guia electoral de comlombia"
               />
               {/* <a
@@ -112,7 +118,7 @@ export const Welcome = () => {
                 <img
                   src={president}
                   alt="Imagen de presidencia"
-                  style={{ width: "12%" }}
+                  style={{ width: "12%", height: "auto" }}
                 />
               </span>
 
@@ -142,7 +148,7 @@ export const Welcome = () => {
                 <img
                   src={president}
                   alt="Imagen de presidencia"
-                  style={{ width: "12%" }}
+                  style={{ width: "12%", height: "auto" }}
                 />
               </span>
               <h4>Senado</h4>
@@ -152,10 +158,7 @@ export const Welcome = () => {
                 total municipios.
               </p>
               <div className="cards-btn text-center botton_responsive">
-                <a
-                  href="/senado"
-                  className="btn-cards mt-4 responsive_botton"
-                >
+                <a href="/senado" className="btn-cards mt-4 responsive_botton">
                   <i className="bi bi-bar-chart-line-fill "></i>
                   &nbsp; Ver resultados
                 </a>
@@ -171,7 +174,7 @@ export const Welcome = () => {
                 <img
                   src={president}
                   alt="Imagen de presidencia"
-                  style={{ width: "12%" }}
+                  style={{ width: "12%", height: "auto" }}
                 />
               </span>
               <h4>Cámara</h4>
@@ -181,10 +184,7 @@ export const Welcome = () => {
                 departamento.
               </p>
               <div className="cards-btn text-center">
-                <a
-                  href="/camara"
-                  className="btn-cards mt-4 responsive_botton"
-                >
+                <a href="/camara" className="btn-cards mt-4 responsive_botton">
                   <i className="bi bi-bar-chart-line-fill"></i>
                   &nbsp; Ver resultados
                 </a>
@@ -199,8 +199,8 @@ export const Welcome = () => {
               <span style={{ textAlign: "right" }}>
                 <img
                   src={president}
-                  alt="Imagen de presidencia"
-                  style={{ width: "12%" }}
+                  alt="Imagen de gobernacion"
+                  style={{ width: "12%", height: "auto" }}
                 />
               </span>
               <h4>Gobernaciones</h4>
@@ -209,7 +209,7 @@ export const Welcome = () => {
                 a las elecciones a nivel departamental y total municipios.
               </p>
               <div className="cards-btn text-center">
-                <a href="#" className="btn-cards mt-4 responsive_botton">
+                <a href="/gobernacion" className="btn-cards mt-4 responsive_botton">
                   <i className="bi bi-bar-chart-line-fill"></i>
                   &nbsp; Ver resultados
                 </a>
@@ -225,7 +225,7 @@ export const Welcome = () => {
                 <img
                   src={president}
                   alt="Imagen de presidencia"
-                  style={{ width: "12%" }}
+                  style={{ width: "12%", height: "auto" }}
                 />
               </span>
               <h4>Asambleas</h4>
@@ -251,7 +251,7 @@ export const Welcome = () => {
                 <img
                   src={president}
                   alt="Imagen de presidencia"
-                  style={{ width: "12%" }}
+                  style={{ width: "12%", height: "auto" }}
                 />
               </span>
               <h4>Alcaldías</h4>
@@ -275,7 +275,7 @@ export const Welcome = () => {
                 <img
                   src={president}
                   alt="Imagen de presidencia"
-                  style={{ width: "12%" }}
+                  style={{ width: "12%", height: "auto" }}
                 />
               </span>
               <h4>Concejos</h4>
@@ -300,7 +300,7 @@ export const Welcome = () => {
                 <img
                   src={president}
                   alt="Imagen de presidencia"
-                  style={{ width: "12%" }}
+                  style={{ width: "12%", height: "auto" }}
                 />
               </span>
               <h4>JAL</h4>
@@ -458,24 +458,18 @@ export const Welcome = () => {
                   <img
                     src={ImgDonJose}
                     className="img-fluid"
-                    alt=""
-                    style={{ maxHeight: "261px !important" }}
+                    alt="Imagen de jose gil zapata para patrocinio"
+                    style={{ maxHeight: "261px !important", maxWidth:"auto" }}
                   />
                 </div>
                 <div className="member-info">
                   <h4>Jose Celestino Gil Zapata</h4>
                   <span>Autor/Editor</span>
                   <div className="social">
-                    <a href="">
-                      <i className="bi bi-twitter"></i>
-                    </a>
-                    <a href="">
+                    <a href="https://www.facebook.com/josegilza/?locale=es_LA">
                       <i className="bi bi-facebook"></i>
                     </a>
-                    <a href="">
-                      <i className="bi bi-instagram"></i>
-                    </a>
-                    <a href="">
+                    <a href="https://co.linkedin.com/in/jose-gil-a76aa6a6">
                       <i className="bi bi-linkedin"></i>
                     </a>
                   </div>
@@ -490,22 +484,27 @@ export const Welcome = () => {
             >
               <div className="member">
                 <div className="pic">
-                  <img src={ImgHitData} className="img-fluid" alt="" />
+                  <img
+                    src={ImgHitData}
+                    className="img-fluid"
+                    style={{maxWidth:"100%", maxHeight:"auto"}}
+                    alt="Imagen de hitdata para patrocinio"
+                  />
                 </div>
                 <div className="member-info">
                   <h4>Hit Data</h4>
                   <span>Empresa de desarrollo</span>
                   <div className="social">
-                    <a href="">
+                    <a href="https://twitter.com/HitData">
                       <i className="bi bi-twitter"></i>
                     </a>
-                    <a href="">
+                    <a href="https://www.facebook.com/HitdataColombia">
                       <i className="bi bi-facebook"></i>
                     </a>
-                    <a href="">
+                    <a href="https://www.instagram.com/hitdata/">
                       <i className="bi bi-instagram"></i>
                     </a>
-                    <a href="">
+                    <a href="https://co.linkedin.com/in/hit-data-soluciones">
                       <i className="bi bi-linkedin"></i>
                     </a>
                   </div>
@@ -520,28 +519,107 @@ export const Welcome = () => {
             >
               <div className="member">
                 <div className="pic">
-                  <img src={ImgLoteriaBoyaca} className="img-fluid" alt="" />
+                  <img
+                    src={ImgLoteriaBoyaca}
+                    className="img-fluid"
+                    style={{ maxWidth: "100%", maxHeight: "auto" }}
+                    alt="Imagen de la loteria de boyaca para patrocinio"
+                  />
                 </div>
                 <div className="member-info">
                   <h4>Lotería de Boyacá</h4>
                   <span>Patrocinador</span>
                   <div className="social">
-                    <a href="">
+                    <a href="https://twitter.com/LoteriadeBoyaca">
                       <i className="bi bi-twitter"></i>
                     </a>
-                    <a href="">
+                    <a href="https://www.facebook.com/LoteriaDeBoyacaOficial/?locale=es_LA">
                       <i className="bi bi-facebook"></i>
                     </a>
-                    <a href="">
+                    <a href="https://www.instagram.com/loteriadeboyacaoficial/?hl=es">
                       <i className="bi bi-instagram"></i>
                     </a>
-                    <a href="">
+                    <a href="https://co.linkedin.com/company/loter%C3%ADa-de-boyac%C3%A1">
                       <i className="bi bi-linkedin"></i>
                     </a>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+          <hr />
+
+          <div className="row " data-aos="fade-up">
+            <div className="col-lg-2"></div>
+            <div className="col-lg-8">
+              <Carousel
+                className="mb-5"
+                style={{
+                  paddingLeft: "10%",
+                  paddingRight: "10%",
+                  width: "100%",
+                  height: "auto",
+                }}
+              >
+                <Carousel.Item interval={1000}>
+                  <img
+                    className="d-block w-100"
+                    src={Imgfotoantigua1}
+                    style={{
+                      maxHeight: "600px !important",
+                      maxWidth: "400px !important",
+                    }}
+                    alt="First slide"
+                  />
+                </Carousel.Item>
+
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={Imgfotoantigua2}
+                    style={{
+                      maxHeight: "600px !important",
+                      maxWidth: "400px !important",
+                    }}
+                    alt="Second slide"
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={Imgfotoantigua3}
+                    style={{
+                      maxHeight: "600px !important",
+                      maxWidth: "400px !important",
+                    }}
+                    alt="Third slide"
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={Imgfotoantigua4}
+                    style={{
+                      maxHeight: "600px !important",
+                      maxWidth: "400px !important",
+                    }}
+                    alt="Third slide"
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={Imgfotoantigua5}
+                    style={{
+                      maxHeight: "600px !important",
+                      maxWidth: "400px !important",
+                    }}
+                    alt="Third slide"
+                  />
+                </Carousel.Item>
+              </Carousel>
+            </div>
+            <div className="col-lg-2"></div>
           </div>
         </div>
       </section>
@@ -551,11 +629,14 @@ export const Welcome = () => {
         keyboard={false}
         onHide={handleClose}
         centered
-        style={{ backgroundColor: "transparent !important" , opacity: 0.9}}
+        style={{ backgroundColor: "transparent !important", opacity: 0.9 }}
       >
         <Modal.Body className="text-center text-bg-light">
           <div className="text-center">
-            <img style={{ maxWidth: "100%", opacity:1}} src={ImageSpinner} />
+            <img
+              style={{ maxWidth: "100%", height: "auto", opacity: 1 }}
+              src={ImageSpinner}
+            />
           </div>
         </Modal.Body>
       </Modal>

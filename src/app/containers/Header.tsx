@@ -15,6 +15,7 @@ export const Header = () => {
                 src={logo}
                 alt="Imagen de logo para header de guia electoral"
                 className="img-fluid"
+                style={{maxWidth:"100%", maxHeight:"auto"}}
               />
             </Link>
           </div>
