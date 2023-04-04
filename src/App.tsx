@@ -4,17 +4,9 @@ import { BrowserRouter } from "react-router-dom";
 import { CompleteRouting } from "./app/utilities/routes/CompleteRouting";
 
 const loading = (
-  <body className="Contanner_loding">
-    <div>
-      <h1>Guia Electoral de Colombia</h1>
-      <h2>
-        Sea paciente mientras carga la información de las elecciones que
-        seleccionó
-      </h2>
-      {/* Vamos a colocar un circulo para la carga de los elementos */}
-      <div className="circle"></div>
-    </div>
-  </body>
+  <div className="justify-content-center align-item-center">
+    <div className="spinner"></div>
+  </div>
 );
 
 function App() {

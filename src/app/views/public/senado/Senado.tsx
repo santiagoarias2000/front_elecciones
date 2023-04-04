@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import senado from "../../../../assets/image/SENADO.webp";
+import senado from "../../../../assets/image/HeaderTable/SENADO.webp";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, InputGroup, Modal } from "react-bootstrap";
-import ImageSpinner from "../../../../assets/image/errorlogo.webp";
+import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
 export const Senado = () => {
   const [searchNacional, setSearchNacional] = useState("");
@@ -40,7 +40,7 @@ export const Senado = () => {
     <main id="main" className="main">
       <img
         src={senado}
-        style={{ width: "100%", maxHeight: "80%", marginTop: "10vw" }}
+        style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
         alt="logo principal para la parte superior de la pagina web"
       />
       {/* Navegación estilo breadcrumb: Inicio */}
@@ -71,10 +71,10 @@ export const Senado = () => {
                 </Form>
               </div>
             </div>
-          </div>  
+          </div>
           <div className="container responsive_gra">
             <div className="row">
-            <div className="col-sm"></div>
+              <div className="col-sm"></div>
               <div className="col-3">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
@@ -95,7 +95,10 @@ export const Senado = () => {
               className="colorTableCamara table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead className="container_table">
+              <thead
+                className="container_table sticky"
+                style={{ backgroundColor: "#fff" }}
+              >
                 <tr>
                   <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
@@ -117,11 +120,11 @@ export const Senado = () => {
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text-left left_alination">
+                      <td className="text_left left_alination">
                         <a
-                          className="link_departamento text-left"
+                          className="link_departamento"
                           href={
-                            "/guiaelectoral/senado/nacional/" +
+                            "/senado/nacional/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -133,7 +136,7 @@ export const Senado = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/guiaelectoral/senado/nacional/" +
+                            "/senado/nacional/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -154,22 +157,40 @@ export const Senado = () => {
               alignItems: "center",
             }}
           >
-            <div className="text-center">
+            <div className="text-center responsive">
               <a
                 type="button"
                 className="buttonBack buttonBack-primary"
-                href="/"
+                href="/#resultados"
               >
                 <i className="bi bi-arrow-left-circle"></i>
                 &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
               </a>
               &nbsp;&nbsp;
               <a
-                href="/guiaelectoral/senadoelegidos"
+                href="/senadoelegidos"
                 className="buttonBack buttonBack-primary"
               >
                 <i className="bi bi-search "></i> &nbsp; CONOZCA LOS 108
                 ELEGIDOS
+              </a>
+            </div>
+            <div className="text-center no_responsive">
+              <a
+                type="button"
+                className="buttonBack buttonBack-primary"
+                href="/#resultados"
+              >
+                <i className="bi bi-arrow-left-circle"></i>
+                &nbsp;REGRESAR A ELEGIR ELECCIÓN
+              </a>
+
+              <a
+                href="/senadoelegidos"
+                className="buttonBack buttonBack-primary my-1"
+              >
+                <i className="bi bi-search "></i>&nbsp;&nbsp;&nbsp;CONOZCA LOS
+                108 ELEGIDOS
               </a>
             </div>
           </div>
@@ -202,7 +223,7 @@ export const Senado = () => {
           </div>
           <div className="container responsive_gra">
             <div className="row">
-            <div className="col-sm"></div>
+              <div className="col-sm"></div>
               <div className="col-3">
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
@@ -223,7 +244,10 @@ export const Senado = () => {
               className="colorTableCamara table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead className="container_table">
+              <thead
+                className="container_table sticky"
+                style={{ backgroundColor: "#fff" }}
+              >
                 <tr>
                   <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
@@ -245,11 +269,11 @@ export const Senado = () => {
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text-left">
+                      <td className="text_left">
                         <a
                           className="link_departamento"
                           href={
-                            "/guiaelectoral/senado/indigena/departamento/" +
+                            "/senado/indigena/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -261,7 +285,7 @@ export const Senado = () => {
                         <a
                           className="text-left"
                           href={
-                            "/guiaelectoral/senado/indigena/departamento/" +
+                            "/senado/indigena/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -283,22 +307,41 @@ export const Senado = () => {
               alignItems: "center",
             }}
           >
-            <div className="text-center">
+            <div className="text-center responsive">
               <a
                 type="button"
                 className="buttonBack buttonBack-primary"
-                href="/"
+                href="/#resultados"
               >
                 <i className="bi bi-arrow-left-circle"></i>
                 &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
               </a>
               &nbsp;&nbsp;
               <a
-                href="/guiaelectoral/senadoelegidos"
+                href="/senadoelegidos"
                 className="buttonBack buttonBack-primary link_hitdata"
               >
                 <i className="bi bi-search "></i> &nbsp; CONOZCA LOS 108
                 ELEGIDOS
+              </a>
+            </div>
+
+            <div className="text-center no_responsive">
+              <a
+                type="button"
+                className="buttonBack buttonBack-primary"
+                href="/"
+              >
+                <i className="bi bi-arrow-left-circle"></i>
+                &nbsp;REGRESAR A ELEGIR ELECCIÓN
+              </a>
+
+              <a
+                href="/senadoelegidos"
+                className="buttonBack buttonBack-primary my-1"
+              >
+                <i className="bi bi-search "></i>&nbsp;&nbsp;&nbsp;CONOZCA LOS
+                108 ELEGIDOS
               </a>
             </div>
           </div>
@@ -314,7 +357,7 @@ export const Senado = () => {
       >
         <Modal.Body className="text-center">
           <div className="text-center">
-            <img src={ImageSpinner} />
+            <img src={ImageSpinner} style={{height:"100px", width:"200px"}}/>
             <div className="mt-4">
               <div className="spinner-border text-danger" role="status">
                 <span className=" visually-hidden">Loading...</span>

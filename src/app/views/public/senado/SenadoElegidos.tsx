@@ -1,11 +1,7 @@
 import { useState, useEffect } from "react";
-import VotesCongreso from "../../../models/VotesCongreso";
-import ServicePrivate from "../../../services/ServicePrivate";
-import ApiBack from "../../../utilities/domains/ApiBack";
-import camara from "../../../../assets/image/SENADO.webp";
+import camara from "../../../../assets/image/HeaderTable/SENADO.webp";
 import { Link, useNavigate } from "react-router-dom";
 import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
-import ImageSpinner from "../../../../assets/image/errorlogo.webp";
 import CandidatosSenado from "../../../mocks/models/CandidatosSenado";
 import { ARREGLO_SENADO_108, ARREGLO_SENADO_INDIGENAS } from "../../../mocks/Senado108Marzo2022";
 
@@ -24,7 +20,7 @@ export const SenadoElegidos = () => {
     <main id="main" className="main">
       <img
         src={camara}
-        style={{ width: "100%", maxHeight: "80%", marginTop: "10vw" }}
+        style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
         alt="logo principal para la parte superior de la pagina web"
       />
       {/* Navegación estilo breadcrumb: Inicio */}
@@ -54,6 +50,7 @@ export const SenadoElegidos = () => {
                       onChange={(e) => setSearch(e.target.value)}
                       placeholder="Buscar un Partido Político o Candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
                     ></Form.Control>
                   </InputGroup>
                 </Form>
@@ -66,7 +63,7 @@ export const SenadoElegidos = () => {
               className="colorTable table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead className="container_table">
+              <thead className="container_table sticky" style={{backgroundColor:"#fff"}}>
                 <tr>
                   <th className="text-center" style={{ width: "20%" }}>
                   PARTIDO POLÍTICO
@@ -101,7 +98,7 @@ export const SenadoElegidos = () => {
                       <td className="text-center">
                         {myVotes.description_politicparty}
                       </td>
-                      <td className="text-left" style={{fontWeight:"600"}}>
+                      <td className="text_left_name" style={{fontWeight:"600"}}>
                         {myVotes.candidate_name}
                       </td>
                       <td className="text-center">{myVotes.votos}</td>
@@ -169,7 +166,7 @@ export const SenadoElegidos = () => {
               className="colorTable table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead className="container_table">
+              <thead className="container_table sticky" style={{backgroundColor:"#fff"}}>
                 <tr>
                   <th className="text-center" style={{ width: "20%" }}>
                     PARTIDO
@@ -204,7 +201,7 @@ export const SenadoElegidos = () => {
                       <td className="text-center" >
                         {myVotes.description_politicparty}
                       </td>
-                      <td className="text-center" style={{fontWeight:"600"}}>
+                      <td className="text-left" style={{fontWeight:"600", paddingLeft:"5vw"}}>
                         {myVotes.candidate_name}
                       </td>
                       <td className="text-center">{myVotes.votos}</td>

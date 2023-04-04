@@ -3,7 +3,7 @@ import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import Form from "react-bootstrap/Form";
-import camara from "../../../../assets/image/camara.webp";
+import camara from "../../../../assets/image/HeaderTable/CRterrirorial.webp";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
 import { Col, Dropdown, InputGroup, Modal, Pagination, Row, Table, } from "react-bootstrap";
@@ -98,7 +98,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
         style={{
           width: "100%",
           maxHeight: "80%",
-          marginTop: "10vw",
+          marginTop: "3vw",
           borderRadius: "5px 5px 0 0",
           boxShadow: "0px 0 20px #052851",
         }}
@@ -156,7 +156,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                       <a
                         className="dropdown-item"
                         href={
-                          "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
+                          "/camara/circuncripcion/territorial/departamento/" +
                           myMunicipality.id_department +
                           "/municipio/" +
                           myMunicipality.id_municipality
@@ -265,31 +265,6 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
             className="container-fluid display-flex justify-content-center"
             style={{
               color: "#FFFFFF",
-              height: "40px",
-              alignItems: "right",
-            }}
-          >
-            <h6
-              className="my-4"
-              style={{
-                color: "#052851",
-                textAlign: "right",
-                paddingRight: "100px",
-              }}
-            >
-              {arrayDepartamento.map((myDepartment) => (
-                <b style={{ color: "#D9224E" }}>
-                  VOTACIÓN TOTAL: {myDepartment.votos}
-                </b>
-              ))}
-            </h6>
-          </div>
-        </div>
-        <div className="dropdown">
-          <div
-            className="container-fluid display-flex justify-content-center"
-            style={{
-              color: "#FFFFFF",
               height: "80px",
               display: "flex",
               alignItems: "center",
@@ -300,7 +275,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                 type="button"
                 className="buttonBack buttonBack-primary"
                 href={
-                  "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
+                  "/camara/circuncripcion/territorial/departamento/" +
                   idDepartment
                 }
               >
@@ -320,7 +295,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
           >
             <Modal.Body className="text-center">
               <div className="text-center">
-                <img src={ImageSpinner} />
+                <img src={ImageSpinner} style={{height:"100px", width:"200px"}}/>
                 <div className="mt-4">
                   <div
                     className="spinner-border text-danger"

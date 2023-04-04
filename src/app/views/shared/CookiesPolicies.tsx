@@ -1,6 +1,6 @@
 export const CookiesPolices = () => {
   return (
-    <main id="main" className="main" style={{ paddingTop: "10vw" }}>
+    <main id="main" className="main" style={{ paddingTop: "4vw" }}>
       <div className="card" style={{ display: "flex", textAlign: "justify" }}>
         <div style={{ margin: "30px" }}>
           <div style={{display:"flex", textAlign:"center"}}>
@@ -77,7 +77,7 @@ export const CookiesPolices = () => {
           </p>
 
           <p>
-            Las cookies empleadas en https://guiaelectoralcolombiana.com/ (en
+            Las cookies empleadas en https:/colombiana.com/ (en
             adelante LA WEB) se asocian únicamente con un Usuario anónimo y su
             ordenador, no proporcionan referencias que permitan deducir el
             nombre y apellidos del Usuario y no pueden leer datos de su disco
@@ -447,9 +447,9 @@ export const CookiesPolices = () => {
 
           <p>A continuación, le dejamos los siguientes enlaces de interés:</p>
 
-          <p>Aviso Legal – <a href="/guiaelectoral/avisolegal">Guia Electoral de Colombia aviso legal</a></p>
+          <p>Aviso Legal – <a href="/avisolegal">Guia Electoral de Colombia aviso legal</a></p>
 
-          <p>Política de Privacidad – <a href="/guiaelectoral/politicasprivacidad">Guia Electoral de Colombia politica de privacidad</a></p>
+          <p>Política de Privacidad – <a href="/politicasprivacidad">Guia Electoral de Colombia politica de privacidad</a></p>
 
           <p>Política de Cookies a 1 de Marzo de 2023</p>
         </div>

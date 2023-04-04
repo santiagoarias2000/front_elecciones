@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
-import footerimg from "../../assets/image/PNGelecciones.webp";
+import footerimg from "../../assets/image/LOGOBLANCO.webp";
 
 
 
 export const Footer = () => {
   return (
-    <section>
       <div className="containner_footers">
         <div className="container text-center">
           <div className="row">
@@ -16,7 +15,7 @@ export const Footer = () => {
               <ul>
                 <li>
                   <i className="bi bi-globe icon_footer"></i>&nbsp;
-                  www.guiaelectoralcolombiana.com
+                  www.guiaelectoraldecolombia.com
                 </li>
                 <li>
                   <i className="bi bi-envelope icon_footer"></i>&nbsp;
@@ -36,7 +35,7 @@ export const Footer = () => {
                   <ul className="list">
                     <li>
                       <a
-                        href={"/guiaelectoral/politicasprivacidad"}
+                        href={"/politicasprivacidad"}
                         className="link"
                         style={{ color: "#fff", textDecoration: "none" }}
                       >
@@ -45,7 +44,7 @@ export const Footer = () => {
                     </li>
                     <li>
                       <a
-                        href={"/guiaelectoral/avisolegal"}
+                        href={"/avisolegal"}
                         style={{ color: "#fff", textDecoration: "none" }}
                       >
                         Aviso legales
@@ -53,7 +52,7 @@ export const Footer = () => {
                     </li>
                     <li>
                       <a
-                        href={"/guiaelectoral/politicascookies"}
+                        href={"/politicascookies"}
                         style={{ color: "#fff", textDecoration: "none" }}
                       >
                         Políticas de Cookies
@@ -61,7 +60,7 @@ export const Footer = () => {
                     </li>
                     <li>
                       <a
-                        href={"/guiaelectoral/terminoscondiciones"}
+                        href={"/terminoscondiciones"}
                         style={{ color: "#fff", textDecoration: "none" }}
                       >
                         Términos y Condiciones
@@ -88,6 +87,5 @@ export const Footer = () => {
           </span>
         </div>
       </div>
-    </section>
   );
 };

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import camara from "../../../../assets/image/camara.webp";
+import camara from "../../../../assets/image/HeaderTable/CRafro.webp";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
 import {
@@ -51,7 +51,6 @@ export const CamaraAfroDescendienteDepartamento = () => {
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
     );
     setArrayMunicipio(result);
-    
   };
 
   const getVotosCamaraAfroDescendiente = async () => {
@@ -92,7 +91,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
         style={{
           width: "100%",
           maxHeight: "80%",
-          marginTop: "10vw",
+          marginTop: "3vw",
           borderRadius: "5px 5px 0 0",
           boxShadow: "0px 0 20px #052851",
         }}
@@ -111,9 +110,9 @@ export const CamaraAfroDescendienteDepartamento = () => {
             <b className="title_table">TERRITORIAL AFRO-DESCENDIENTE</b>
           </div>
         </div>
-        <div className="container">
+        <div className="container responsive">
           <div className="row">
-            <div className="col-sm ">
+            <div className="col-lg-4">
               <div className="dropdown text-center my-3">
                 <button
                   type="button"
@@ -131,6 +130,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
                   <input
                     type="text"
                     placeholder="Busqueda..."
+                    className="sticky-top"
                     onChange={(event) => {
                       setSearchMunicipio(event.target.value);
                     }}
@@ -150,9 +150,9 @@ export const CamaraAfroDescendienteDepartamento = () => {
                       })
                       .map((myMunicipality, indice) => (
                         <a
-                          className="dropdown-item"
+                          className="dropdown-item name_deparment_respo"
                           href={
-                            "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
+                            "/camara/circuncripcion/afrodescendiente/departamento/" +
                             myMunicipality.id_department +
                             "/municipio/" +
                             myMunicipality.id_municipality
@@ -165,20 +165,26 @@ export const CamaraAfroDescendienteDepartamento = () => {
                 </ul>
               </div>
             </div>
-            <div className="col">
-              <h6 className="text-center my-4" style={{ color: "#052851" }}>
+            <div className="col-lg-4">
+              <h6
+                className="text-center my-4 text_title_respo"
+                style={{ color: "#052851" }}
+              >
                 {arrayDepartamento.map((myDepartment) => (
-                  <b>{myDepartment.name_department}</b>
+                  <b className="text_title_respo">
+                    {myDepartment.name_department}
+                  </b>
                 ))}
               </h6>
             </div>
-            <div className="col-sm">
+            <div className="col-lg-4">
               <Form id="form_conta">
                 <InputGroup className="my-3 container_form">
                   <Form.Control
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Buscar un Partido Político"
                     style={{ textAlign: "right", marginRight: "5px" }}
+                    className="form_co"
                   ></Form.Control>
                 </InputGroup>
               </Form>
@@ -186,12 +192,98 @@ export const CamaraAfroDescendienteDepartamento = () => {
           </div>
         </div>
 
+        <div className="container no_responsive">
+          <div className="row">
+            <div className="col-lg-4">
+              <div className="dropdown text-center my-1">
+                <button
+                  type="button"
+                  className="buttonBack buttonBack-primary dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Municipios
+                </button>
+                <ul
+                  className="dropdown-menu selectpicker"
+                  data-live-search="true"
+                  style={{ maxHeight: "200px", overflowY: "auto" }}
+                >
+                  <input
+                    type="text"
+                    placeholder="Busqueda..."
+                    className="sticky-top"
+                    onChange={(event) => {
+                      setSearchMunicipio(event.target.value);
+                    }}
+                  />
+                  <li>
+                    {arrayMunicipio
+                      .filter((val) => {
+                        if (searchMunicipio == "") {
+                          return val;
+                        } else if (
+                          val.name_municipality
+                            .toLocaleLowerCase()
+                            .includes(searchMunicipio.toLocaleLowerCase())
+                        ) {
+                          return val;
+                        }
+                      })
+                      .map((myMunicipality, indice) => (
+                        <a
+                          className="dropdown-item name_deparment_respo"
+                          href={
+                            "/camara/circuncripcion/afrodescendiente/departamento/" +
+                            myMunicipality.id_department +
+                            "/municipio/" +
+                            myMunicipality.id_municipality
+                          }
+                        >
+                          <b className="name_text">
+                            {myMunicipality.name_municipality}
+                          </b>
+                        </a>
+                      ))}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="col-lg-4">
+              <h6
+                className="text-center my-2 text_title_respo"
+                style={{ color: "#052851" }}
+              >
+                {arrayDepartamento.map((myDepartment) => (
+                  <b className="text_title_respo">
+                    {myDepartment.name_department}
+                  </b>
+                ))}
+              </h6>
+            </div>
+            <div className="col-lg-4">
+              <Form id="form_conta">
+                <InputGroup className="my-1 container_form">
+                  <Form.Control
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Buscar un Partido Político"
+                    style={{ textAlign: "right", marginRight: "5px" }}
+                    className="form_co"
+                  ></Form.Control>
+                </InputGroup>
+              </Form>
+            </div>
+          </div>
+        </div>
         <div className="table-wrapper-scroll-y my-custom-scrollbar">
           <table
             className="colorTable table table-hover"
             style={{ background: "#05285190 !important" }}
           >
-            <thead className="container_table">
+            <thead
+              className="container_table sticky"
+              style={{ backgroundColor: "#fff" }}
+            >
               <tr>
                 <th className="text-center" style={{ width: "35%" }}>
                   PARTIDO POLÍTICO
@@ -226,6 +318,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
                           ? "text-center text-danger fst-italic font-weight-bold"
                           : "text-center"
                       }
+                      id="text_left_name"
                     >
                       {myVotes.description_politicparty}
                     </td>
@@ -236,6 +329,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
                           ? "text-center align-middle text-danger fst-italic"
                           : "text-center"
                       }
+                      id="text_left_name"
                     >
                       {myVotes.candidate_name}
                     </td>
@@ -264,15 +358,14 @@ export const CamaraAfroDescendienteDepartamento = () => {
             }}
           >
             <h6
-              className="my-4"
+              className="my-2"
               style={{
                 color: "#052851",
-                textAlign: "right",
-                paddingRight: "100px",
+                textAlign: "center",
               }}
             >
               {arrayDepartamento.map((myDepartment) => (
-                <b style={{ color: "#D9224E" }}>
+                <b className="vota_respo" style={{ color: "#D9224E" }}>
                   VOTACIÓN TOTAL: {myDepartment.votos}
                 </b>
               ))}
@@ -290,11 +383,11 @@ export const CamaraAfroDescendienteDepartamento = () => {
             }}
           >
             <div className="text-center">
-            <a
+              <a
                 type="button"
                 className="buttonBack buttonBack-primary"
                 href={
-                  "/guiaelectoral/camara/"
+                  "/camara"
                 }
               >
                 <i className="bi bi-arrow-left-circle"></i>
@@ -313,7 +406,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
         >
           <Modal.Body className="text-center">
             <div className="text-center">
-              <img src={ImageSpinner} />
+              <img src={ImageSpinner} style={{height:"100px", width:"200px"}}/>
               <div className="mt-4">
                 <div className="spinner-border text-danger" role="status">
                   <span className=" visually-hidden">Loading...</span>

@@ -1,6 +1,6 @@
 export const LegalWarning = () => {
   return (
-    <main id="main" className="main" style={{ paddingTop: "10vw" }}>
+    <main id="main" className="main" style={{ paddingTop: "4vw" }}>
       <div className="card" style={{ display: "flex", textAlign: "justify" }}>
        <div style={{ margin: "30px" }}>
        <h1>Aviso legal</h1>
@@ -49,7 +49,7 @@ export const LegalWarning = () => {
         </h3>
         <b>1.4.1 USO DEL SITIO WEB</b>
         <p>
-          La página web https://guiaelectoralcolombiana.com/ (en adelante
+          La página web https:/colombiana.com/ (en adelante
           “guiaelectoralcolombiana.com”) proporciona el acceso a artículos,
           informaciones, servicios y datos (en adelante, “Sobre contendios de
           elecciones colombianas”) propiedad de José Celestino Gil Zapata (en adelante,
