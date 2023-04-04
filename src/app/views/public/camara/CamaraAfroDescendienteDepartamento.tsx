@@ -17,9 +17,12 @@ import {
 import Department from "../../../models/Department";
 import CandidatosCamara from "../../../mocks/models/CandidatosCamara";
 import { ARREGLO_CANDIDATOS_ELEGIDOS } from "../../../mocks/candidatos-mocks";
-import ImageSpinner from "../../../../assets/image/errorlogo.webp";
+import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
 export const CamaraAfroDescendienteDepartamento = () => {
+  //Format Number Votes 
+  const format = new Intl.NumberFormat('es');
+
   const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState<
     CandidatosCamara[]
   >(ARREGLO_CANDIDATOS_ELEGIDOS);
@@ -341,7 +344,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
                           : "text-center"
                       }
                     >
-                      {myVotes.votos}
+                      {format.format(myVotes.votos)}
                     </td>
                   </tr>
                 ))}

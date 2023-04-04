@@ -5,7 +5,7 @@ import ApiBack from "../../../utilities/domains/ApiBack";
 import camara from "../../../../assets/image/HeaderTable/CRindigena.webp";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
-import ImageSpinner from "../../../../assets/image/errorlogo.webp";
+import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
 import {
   Col,
@@ -21,6 +21,9 @@ import CandidatosCamara from "../../../mocks/models/CandidatosCamara";
 import { ARREGLO_CANDIDATOS_ELEGIDOS } from "../../../mocks/candidatos-mocks";
 
 export const CamaraIndigenaDepartamento = () => {
+  //Format Number Votes 
+  const format = new Intl.NumberFormat('es');
+
   const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState<
     CandidatosCamara[]
   >(ARREGLO_CANDIDATOS_ELEGIDOS);
@@ -335,7 +338,7 @@ export const CamaraIndigenaDepartamento = () => {
                           : "text-center"
                       }
                     >
-                      {myVotes.votos}
+                      {format.format(myVotes.votos)}
                     </td>
                   </tr>
                 ))}
@@ -360,7 +363,7 @@ export const CamaraIndigenaDepartamento = () => {
             >
               {arrayDepartamento.map((myDepartment) => (
                 <b style={{ color: "#D9224E" }} className="vota_respo">
-                  VOTACIÓN TOTAL: {myDepartment.votos}
+                  VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
                 </b>
               ))}
             </h6>

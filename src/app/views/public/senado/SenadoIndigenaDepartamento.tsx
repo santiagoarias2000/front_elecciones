@@ -54,6 +54,8 @@ export const SenadoIndigenaDepartamento = () => {
       setShow(false);
     }
   };
+  //Format Number Votes 
+  const format = new Intl.NumberFormat(); 
   useEffect(() => {
     getVotosSenadoDepartamental();
     getMunicipios();
@@ -279,7 +281,7 @@ export const SenadoIndigenaDepartamento = () => {
                       <td className="text_left_name">
                         {myVotes.candidate_name}
                       </td>
-                      <td className="text-center">{myVotes.votos}</td>
+                      <td className="text-center">{format.format(myVotes.votos)}</td>
                     </tr>
                   ))}
               </tbody>
@@ -303,7 +305,7 @@ export const SenadoIndigenaDepartamento = () => {
               >
                 {arrayDepartamento.map((myDepartment) => (
                   <b style={{ color: "#D9224E" }}>
-                    VOTACIÓN TOTAL: {myDepartment.votos}
+                    VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
                   </b>
                 ))}
               </h6>
