@@ -8,6 +8,9 @@ import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-boot
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
 export const Camara = () => {
+  //Format Number Votes 
+  const format = new Intl.NumberFormat('es');
+  
   const [searchTerritorial, setSearchTerritorial] = useState("");
   const [searchIndigena, setSearchIndigena] = useState("");
   const [searchAfro, setSearchAfro] = useState("");
@@ -149,7 +152,7 @@ export const Camara = () => {
                           {myVotes.department.name_department}
                         </a>
                       </td>
-                      <td className="text-center">{myVotes.votos}</td>
+                      <td className="text-center">{format.format(myVotes.votos)}</td>
                       <td className="text-center align-middle">
                         <a
                           className="link_departamento"
@@ -282,7 +285,7 @@ export const Camara = () => {
                         </a>
                       </td>
 
-                      <td className="text-center">{myVotes.votos}</td>
+                      <td className="text-center">{format.format(myVotes.votos)}</td>
                       <td className="text-center align-middle">
                         <a
                           className="link_departamento"
@@ -411,7 +414,7 @@ export const Camara = () => {
                           {myVotes.department.name_department}
                         </a>
                       </td>
-                      <td className="text-center">{myVotes.votos}</td>
+                      <td className="text-center">{format.format(myVotes.votos)}</td>
                       <td className="text-center align-middle">
                         <a
                           className="link_departamento"

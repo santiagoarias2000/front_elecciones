@@ -6,7 +6,7 @@ import ServicePrivate from "../../../services/ServicePrivate";
 import senado from "../../../../assets/image/HeaderTable/CRsenadoindigena.webp";
 import { Form, InputGroup, Modal, Pagination } from "react-bootstrap";
 import Municipality from "../../../models/Municipality";
-import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
+import ImageSpinner from "../../../../assets/image/LOGOBLANCO.webp";
 
 export const SenadoIndigenaMunicipio = () => {
   let { idDepartment } = useParams();
@@ -49,6 +49,10 @@ export const SenadoIndigenaMunicipio = () => {
     );
     setArrayNameMunicipality(result);
   };
+
+  //Format Number Votes 
+  const format = new Intl.NumberFormat(); 
+  
   useEffect(() => {
     getVotosSenadoIndigena();
     getMuniciaplity();
@@ -273,7 +277,7 @@ export const SenadoIndigenaMunicipio = () => {
                   </th>
                 </tr>
               </thead>
-              <tbody className="color">
+              <tbody className="color container_table">
                 {arrayVotesCamaraTerritorial
                   .filter((val) => {
                     if (search == "") {
@@ -294,8 +298,8 @@ export const SenadoIndigenaMunicipio = () => {
                       <td className="text_left_name">
                         {myVotes.candidate_name}
                       </td>
-                      <td className="text-center">{myVotes.votos}</td>
-                      <td className="text-center">{myVotes.votos_muicipio}</td>
+                      <td className="text-center">{format.format(myVotes.votos)}</td>
+                      <td className="text-center">{format.format(myVotes.votos_muicipio)}</td>
                     </tr>
                   ))}
               </tbody>
