@@ -57,6 +57,9 @@ export const SenadoNacionalDepartamento = () => {
     );
     setArrayDepartamento(result);
   };
+
+  //Format Number Votes 
+  const format = new Intl.NumberFormat('es');
   useEffect(() => {
     getVotosSenadoDepartamental();
     getMunicipios();
@@ -279,10 +282,8 @@ export const SenadoNacionalDepartamento = () => {
                       <td className="text-center">
                         {myVotes.description_politicparty}
                       </td>
-                      <td className="text_left_name">
-                        {myVotes.candidate_name}
-                      </td>
-                      <td className="text-center">{myVotes.votos}</td>
+                      <td className="text_left_name">{myVotes.candidate_name}</td>
+                      <td className="text-center">{format.format(myVotes.votos)}</td>
                     </tr>
                   ))}
               </tbody>
@@ -306,7 +307,7 @@ export const SenadoNacionalDepartamento = () => {
               >
                 {arrayDepartamento.map((myDepartment) => (
                   <b style={{ color: "#D9224E" }} className="vota_respo">
-                    VOTACIÓN TOTAL: {myDepartment.votos}
+                    VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
                   </b>
                 ))}
               </h6>
