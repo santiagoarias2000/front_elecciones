@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import camara from "../../../../assets/image/HeaderTable/camara.webp";
+import camara from "../../../../assets/image/HeaderTable/ELEJAL.webp";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Col,
@@ -15,7 +15,7 @@ import {
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 import VotesGober from "../../../models/VotesGober";
 
-export const jal = () => {
+export const Jal = () => {
     //Format Number Votes 
   const format = new Intl.NumberFormat('es');
 
@@ -29,7 +29,7 @@ export const jal = () => {
 
   const getVotosjalTerritorial = async () => {
     //const parametrosPaginador= {paginaActual: activo, cantidadMostrar:numeroElemPag};
-    const result = await ServicePrivate.requestGET(ApiBack.CAMARA_TERRITORIAL);
+    const result = await ServicePrivate.requestGET(ApiBack.JAL);
     setArrayVotesjalTerritorial(result);
     setShow(false);
   };
@@ -61,7 +61,7 @@ export const jal = () => {
         <div className="cardBorder card">
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b className="title_table">TERRITORIAL DEPARTAMENTAL</b>
+              <b className="title_table">TERRITORIAL MUNICIPALES</b>
             </div>
           </div>
 

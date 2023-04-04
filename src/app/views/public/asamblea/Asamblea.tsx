@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import camara from "../../../../assets/image/HeaderTable/camara.webp";
+import camara from "../../../../assets/image/HeaderTable/ELEASAMBLEA.webp";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Col,
@@ -29,7 +29,7 @@ export const Asamblea = () => {
 
   const getVotosAsambleaTerritorial = async () => {
     //const parametrosPaginador= {paginaActual: activo, cantidadMostrar:numeroElemPag};
-    const result = await ServicePrivate.requestGET(ApiBack.CAMARA_TERRITORIAL);
+    const result = await ServicePrivate.requestGET(ApiBack.ASAMBLEA);
     setArrayVotesAsambleaTerritorial(result);
     setShow(false);
   };
@@ -61,7 +61,7 @@ export const Asamblea = () => {
         <div className="cardBorder card">
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b className="title_table">TERRITORIAL DEPARTAMENTAL</b>
+              <b className="title_table">TERRITORIAL MUNICIPALES</b>
             </div>
           </div>
 

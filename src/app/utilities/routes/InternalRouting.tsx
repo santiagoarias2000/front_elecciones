@@ -26,6 +26,9 @@ import { SenadoNacionalDepartamento } from "../../views/public/senado/SenadoNaci
 import AboutUs from "../../views/shared/AboutUs";
 import { Gobernacion } from "../../views/public/gobernacion/Gobernacion";
 import { Alcaldia } from "../../views/public/alcaldia/Alcaldia";
+import { Consejo } from "../../views/public/consejo/Consejo";
+import { Asamblea } from "../../views/public/asamblea/Asamblea";
+import { Jal } from "../../views/public/jal/Jal";
 
 //Lazy structure from use the all tsx
 
@@ -52,6 +55,9 @@ const LazyCamaraAfroDescendienteDepartamentoMunicipio =lazy(()=>import("../../vi
 const LazyPresidente = lazy(() => import("../../views/public/presidencia/presidenciaAll").then(() => ({default: PresidenciaAll})));
 const LazyGobernacion = lazy(() => import("../../views/public/gobernacion/Gobernacion").then(() => ({default: Gobernacion})));
 const LazyAlcadia = lazy(() => import("../../views/public/alcaldia/Alcaldia").then(() => ({default: Alcaldia})));
+const LazyConsejo = lazy(() => import("../../views/public/consejo/Consejo").then(() => ({default: Consejo})));
+const LazyAsamblea = lazy(() => import("../../views/public/asamblea/Asamblea").then(() => ({default: Asamblea})));
+const LazyJal = lazy(() => import("../../views/public/jal/Jal").then(() => ({default: Jal})));
 //Blog
 const LazyBlog = lazy(() => import("../../containers/Blog").then(() => ({default: Blog})));
 const LazyNosotros = lazy(() => import("../../views/shared/AboutUs").then(() => ({default: AboutUs})));
@@ -96,8 +102,11 @@ export const InternalRouting = () => {
       //Routes Alcadia
       <Route path="/alcaldia" element={<LazyAlcadia/>}/>
       //Routes Consejo
+      <Route path="/consejo" element={<LazyConsejo/>}/>
       //Routes Asamblea
+      <Route path="/asamblea" element={<LazyAsamblea/>}/>
       //Routes jal
+      <Route path="/jal" element={<LazyJal/>}/>
       
     </Routes>
   );
