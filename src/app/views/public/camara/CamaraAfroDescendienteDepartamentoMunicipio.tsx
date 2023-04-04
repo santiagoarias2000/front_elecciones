@@ -3,7 +3,7 @@ import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import Form from "react-bootstrap/Form";
-import camara from "../../../../assets/image/camara.webp";
+import camara from "../../../../assets/image/HeaderTable/CRafro.webp";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
 import {
@@ -106,7 +106,7 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
         style={{
           width: "100%",
           maxHeight: "80%",
-          marginTop: "10vw",
+          marginTop: "3vw",
           borderRadius: "5px 5px 0 0",
           boxShadow: "0px 0 20px #052851",
         }}
@@ -134,13 +134,13 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
             <b className="title_table">TERRITORIAL AFRO-DESCENDIENTE</b>
           </div>
         </div>
-        <div className="container">
+        <div className="container responsive">
           <div className="row">
             <div className="col-sm ">
               <div className="dropdown text-center my-3">
                 <button
                   type="button"
-                  className="buttonBack buttonBack-primary dropdown-toggle"
+                  className="buttonBack buttonBack-primary dropdown-toggle name_deparment_respo"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
@@ -154,6 +154,7 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                   <input
                     type="text"
                     placeholder="Busqueda..."
+                    className="sticky-top"
                     onChange={(event) => {
                       setSearchMunicipio(event.target.value);
                     }}
@@ -173,9 +174,9 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                       })
                       .map((myMunicipality, indice) => (
                         <a
-                          className="dropdown-item"
+                          className="dropdown-item name_deparment_respo"
                           href={
-                            "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
+                            "/camara/circuncripcion/afrodescendiente/departamento/" +
                             myMunicipality.id_department +
                             "/municipio/" +
                             myMunicipality.id_municipality
@@ -207,6 +208,91 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Buscar nombre Candidato"
                     style={{ textAlign: "right", marginRight: "5px" }}
+                    className="form_co"
+                  ></Form.Control>
+                </InputGroup>
+              </Form>
+            </div>
+          </div>
+        </div>
+        <div className="container no_responsive">
+          <div className="row">
+            <div className="col-sm ">
+              <div className="dropdown text-center my-1">
+                <button
+                  type="button"
+                  className="buttonBack buttonBack-primary dropdown-toggle name_deparment_respo"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Municipios
+                </button>
+                <ul
+                  className="dropdown-menu selectpicker"
+                  data-live-search="true"
+                  style={{ maxHeight: "200px", overflowY: "auto" }}
+                >
+                  <input
+                    type="text"
+                    placeholder="Busqueda..."
+                    className="sticky-top"
+                    onChange={(event) => {
+                      setSearchMunicipio(event.target.value);
+                    }}
+                  />
+                  <li>
+                    {arrayMunicipio
+                      .filter((val) => {
+                        if (searchMunicipio == "") {
+                          return val;
+                        } else if (
+                          val.name_municipality
+                            .toLocaleLowerCase()
+                            .includes(searchMunicipio.toLocaleLowerCase())
+                        ) {
+                          return val;
+                        }
+                      })
+                      .map((myMunicipality, indice) => (
+                        <a
+                          className="dropdown-item name_deparment_respo"
+                          href={
+                            "/camara/circuncripcion/afrodescendiente/departamento/" +
+                            myMunicipality.id_department +
+                            "/municipio/" +
+                            myMunicipality.id_municipality
+                          }
+                        >
+                          <b className="name_text">
+
+                          {myMunicipality.name_municipality}
+                          </b>
+                        </a>
+                      ))}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="col">
+              <h6 className="text-center my-2" style={{ color: "#052851" }}>
+                {arrayNameMunicipality.map((myNameMunicipality) => (
+                  <b>
+                    {myNameMunicipality.name_municipality}
+                    {" ("}
+                    {myNameMunicipality.department}
+                    {")"}
+                  </b>
+                ))}
+              </h6>
+            </div>
+            <div className="col-sm">
+              <Form id="form_conta">
+                <InputGroup className="my-1 container_form">
+                  <Form.Control
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Buscar nombre Candidato"
+                    style={{ textAlign: "right", marginRight: "5px" }}
+                    className="form_co"
                   ></Form.Control>
                 </InputGroup>
               </Form>
@@ -219,7 +305,7 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
             className="colorTable table table-hover"
             style={{ background: "#05285190 !important" }}
           >
-            <thead className="container_table">
+            <thead className="container_table sticky" style={{backgroundColor:"#fff"}}>
               <tr>
                 <th className="text-center" style={{ width: "30%" }}>
                   PARTIDO POLÍTICO
@@ -257,6 +343,7 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                           ? "text-center text-danger fst-italic font-weight-bold"
                           : "text-center"
                       }
+                      id="text_left_name"
                     >
                       {myVotes.description_politicparty}
                     </td>
@@ -267,6 +354,7 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                           ? "text-center text-danger fst-italic font-weight-bold"
                           : "text-center"
                       }
+                      id="text_left_name"
                     >
                       {myVotes.candidate_name}
                     </td>
@@ -305,15 +393,14 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
             }}
           >
             <h6
-              className="my-4"
+              className="my-2"
               style={{
                 color: "#052851",
-                textAlign: "right",
-                paddingRight: "100px",
+                textAlign: "center",
               }}
             >
               {arrayDepartamento.map((myDepartment) => (
-                <b style={{ color: "#D9224E" }}>
+                <b className="vota_respo" style={{ color: "#D9224E" }}>
                   VOTACIÓN TOTAL: {myDepartment.votos}
                 </b>
               ))}
@@ -335,7 +422,7 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                 type="button"
                 className="buttonBack buttonBack-primary"
                 href={
-                  "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
+                  "/camara/circuncripcion/afrodescendiente/departamento/" +
                   idDepartment
                 }
               >
@@ -355,7 +442,7 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
         >
           <Modal.Body className="text-center">
             <div className="text-center">
-              <img src={ImageSpinner} />
+              <img src={ImageSpinner} style={{height:"100px", width:"200px"}}/>
               <div className="mt-4">
                 <div className="spinner-border text-danger" role="status">
                   <span className=" visually-hidden">Loading...</span>

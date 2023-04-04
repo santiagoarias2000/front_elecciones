@@ -6,18 +6,29 @@ import Img3Carr from "../../assets/image/GuiasAntiguas/Img3.webp";
 import Img4Carr from "../../assets/image/GuiasAntiguas/Img4.webp";
 import Img5Carr from "../../assets/image/GuiasAntiguas/Img5.webp";
 import Img6Carr from "../../assets/image/GuiasAntiguas/Img6.webp";
-import ImgHitData from "../../assets/image/HitData.jpg";
-import ImgLoteriaBoyaca from "../../assets/image/LoteriaBoyaca.jpg";
-import ImgDonJose from "../../assets/image/DonJose.jpg";
-import editor from "../../assets/image/editor.jpeg";
-import { Carousel } from "react-bootstrap";
+import ImgHitData from "../../assets/image/Patrocinadores/azul.jpg";
+import ImgLoteriaBoyaca from "../../assets/image/Patrocinadores/LoteriaBoyaca.jpg";
+import ImgDonJose from "../../assets/image/Patrocinadores/DonJose.jpg";
+import { Carousel, Modal } from "react-bootstrap";
 import "../../assets/js/carrusel.js";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import ImageSpinner from "../../assets/image/Blog/publicidadloteria.webp";
 
 export const Welcome = () => {
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
+  function hideModal() {
+    setTimeout(() => {
+      setShow(false);
+    }, 1000);
+  }
+  useEffect(() => {
+    hideModal();
+  }, []);
   return (
-    <div className="containner-welcome">
-      <section id="about" className="about">
+    <div id="about" className="containner-welcome">
+      <section className="about">
         <div className="container" data-aos="fade-up">
           <div className="row no-gutters">
             <div className="col-lg-6 video-box">
@@ -36,10 +47,10 @@ export const Welcome = () => {
 
             <div className="col-lg-6 d-flex flex-column justify-content-center about-content">
               <div className="section-title">
+                <h2>Bienvenido a Guia Electoral de Colombia</h2>
                 <h6 className="fst-italic text_extr">
                   ¡¡¡Para estrategias...Documéntese!!!
                 </h6>
-                <h2>Bienvenido a Guia Electoral de Colombia</h2>
                 <p className="text-center text_exfl">
                   Documento exclusivo para la consulta de resultados electorales
                   en el país y de uso estratégico en la toma de decisiones en
@@ -72,12 +83,14 @@ export const Welcome = () => {
 
               <div className="icon-box" data-aos="fade-up" data-aos-delay="100">
                 <div className="icon">
-                  <i className="bi bi-people-fill"></i>
+                  <Link to={"/nosotros"} style={{ textDecorationLine: "none" }}>
+                    <i className="bi bi-people-fill"></i>
+                  </Link>
                 </div>
                 <h4 className="title">
-                  <a href="#" style={{ textDecorationLine: "none" }}>
+                  <Link to={"/nosotros"} style={{ textDecorationLine: "none" }}>
                     Nosotros
-                  </a>
+                  </Link>
                 </h4>
                 <p className="description text-justify">
                   Bienvenidos al apartado "Nosotros" de nuestra página web,
@@ -91,7 +104,7 @@ export const Welcome = () => {
         </div>
       </section>
 
-      <section className="about-lists">
+      <section id="resultados" className="about-lists">
         <div className="container">
           <div className="row no-gutters">
             <div className="col-lg-4 col-md-6 content-item" data-aos="fade-up">
@@ -110,8 +123,11 @@ export const Welcome = () => {
                 la Presidencia de la Republica.
               </p>
               <div className="cards-btn text-center">
-                <a href="/guiaelectoral/presidencia" className="btn-cards mt-4">
-                  <i className="bi bi-bar-chart-line-fill"></i>
+                <a
+                  href="/presidencia"
+                  className="btn-cards mt-4 responsive_botton"
+                >
+                  <i className="bi bi-bar-chart-line-fill "></i>
                   &nbsp; Ver resultados
                 </a>
               </div>
@@ -136,7 +152,10 @@ export const Welcome = () => {
                 total municipios.
               </p>
               <div className="cards-btn text-center botton_responsive">
-                <a href="/guiaelectoral/senado" className="btn-cards mt-4">
+                <a
+                  href="/senado"
+                  className="btn-cards mt-4 responsive_botton"
+                >
                   <i className="bi bi-bar-chart-line-fill "></i>
                   &nbsp; Ver resultados
                 </a>
@@ -162,7 +181,10 @@ export const Welcome = () => {
                 departamento.
               </p>
               <div className="cards-btn text-center">
-                <a href="/guiaelectoral/camara" className="btn-cards mt-4">
+                <a
+                  href="/camara"
+                  className="btn-cards mt-4 responsive_botton"
+                >
                   <i className="bi bi-bar-chart-line-fill"></i>
                   &nbsp; Ver resultados
                 </a>
@@ -187,7 +209,7 @@ export const Welcome = () => {
                 a las elecciones a nivel departamental y total municipios.
               </p>
               <div className="cards-btn text-center">
-                <a href="#" className="btn-cards mt-4">
+                <a href="#" className="btn-cards mt-4 responsive_botton">
                   <i className="bi bi-bar-chart-line-fill"></i>
                   &nbsp; Ver resultados
                 </a>
@@ -213,7 +235,7 @@ export const Welcome = () => {
                 total municipios.
               </p>
               <div className="cards-btn text-center">
-                <a href="#" className="btn-cards mt-4">
+                <a href="#" className="btn-cards mt-4 responsive_botton">
                   <i className="bi bi-bar-chart-line-fill"></i>
                   &nbsp; Ver resultados
                 </a>
@@ -238,7 +260,7 @@ export const Welcome = () => {
                 a las elecciones a nivel municipal.
               </p>
               <div className="cards-btn text-center">
-                <a href="#" className="btn-cards mt-4">
+                <a href="#" className="btn-cards mt-4 responsive_botton">
                   <i className="bi bi-bar-chart-line-fill"></i>
                   &nbsp; Ver resultados
                 </a>
@@ -262,7 +284,7 @@ export const Welcome = () => {
                 a las elecciones a nivel municipal y/o distrital.
               </p>
               <div className="cards-btn text-center">
-                <a href="#" className="btn-cards mt-4">
+                <a href="#" className="btn-cards mt-4 responsive_botton">
                   <i className="bi bi-bar-chart-line-fill"></i>
                   &nbsp; Ver resultados
                 </a>
@@ -287,7 +309,7 @@ export const Welcome = () => {
                 a las elecciones a nivel distrital y por total localidades.
               </p>
               <div className="cards-btn text-center">
-                <a href="#" className="btn-cards mt-4">
+                <a href="#" className="btn-cards mt-4 responsive_botton">
                   <i className="bi bi-bar-chart-line-fill"></i>
                   &nbsp; Ver resultados
                 </a>
@@ -521,74 +543,22 @@ export const Welcome = () => {
               </div>
             </div>
           </div>
-          <div className="container" data-aos="fade-up">
-            <div className="section-title">
-              <h2>EL AUTOR/EDITOR: JOSÉ CELESTINO GIL ZAPATA</h2>
-              <div className="row">
-                <div className="col-lg-6 " style={{ marginTop: "8%" }}>
-                  <div
-                    className="mb-5"
-                    style={{
-                      paddingLeft: "10%",
-                      paddingRight: "10%",
-                      width: "100%",
-                      height: "auto",
-                    }}
-                  >
-                    <img
-                      src={editor}
-                      style={{
-                        maxHeight: "400px !important",
-                        maxWidth: "400px !important",
-                      }}
-                      alt="Foto del editor de la guia electoral"
-                    />
-                  </div>
-                </div>
-                <div className="col-lg-6">
-                  <p className="text-justify text_editor">
-                    Este boyacense, creativo de cuna, heraldista del escudo de
-                    Armas de su natal San Miguel de Sema, residente en Tunja,
-                    desde 1976, Administrador de Empresas de la UPTC,
-                    Especialista en Gobierno y Gestión Pública de la Universidad
-                    Católica, Líder Democrático de la ESAP con amplia
-                    experiencia en Gestión pública y privada. Nacido en una gran
-                    familia que, desde temprana edad, aprendió los valores de la
-                    perseverancia, la honestidad y el trabajo en equipo.
-                    Visionario que, gracias a su dedicación y esfuerzo, logró
-                    materializar 35 publicaciones especializadas sobre
-                    estadística institucional:{" "}
-                    <b className="fst-italic">
-                      Guía Colombia con Nosotros, Guía de Normas Técnicas
-                      oficiales obligatorias editadas para la Superintendencia
-                      de Industria y Comercio, Guía Deportiva para Campeonatos
-                      Mundiales de Ciclismo, Guía Electoral
-                    </b>
-                    , entre otras. Desde entonces, este autor ha puesto su
-                    talento y creatividad al servicio de su país, trabajando en
-                    proyectos que han trascendido en el mundo político y
-                    económico. Como proyecto innovador, ha sido un defensor
-                    acérrimo de la justicia social y la igualdad de
-                    oportunidades para todos los ciudadanos, especialmente
-                    aquellos que más necesitan. Su proyecto se encamina a
-                    facilitarle a la población información para que asuma un
-                    papel protagónico en procesos electorales y pueda elegir
-                    libremente. Pero no solo ha destacado su trabajo innovador.
-                    Como padre de familia, ha demostrado su compromiso con su
-                    esposa e hijos, especialmente con su hijo autista. Con una
-                    dedicación y entrega ejemplar, ha buscado siempre las
-                    mejores opciones de tratamiento para su hijo, y ha luchado
-                    por garantizar sus derechos. El autor es un ejemplo de éxito
-                    en diferentes ámbitos de la vida, destacado por su talento,
-                    su dedicación, su compromiso con su familia y su país, y su
-                    sensibilidad y solidaridad con los más necesitados.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
+      <Modal
+        show={show}
+        backdrop="static"
+        keyboard={false}
+        onHide={handleClose}
+        centered
+        style={{ backgroundColor: "transparent !important" , opacity: 0.9}}
+      >
+        <Modal.Body className="text-center text-bg-light">
+          <div className="text-center">
+            <img style={{ maxWidth: "100%", opacity:1}} src={ImageSpinner} />
+          </div>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };

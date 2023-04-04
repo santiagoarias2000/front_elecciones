@@ -1,6 +1,6 @@
 export const TermsConditions = () => {
   return (
-    <main id="main" className="main" style={{ paddingTop: "10vw" }}>
+    <main id="main" className="main" style={{ paddingTop: "4vw" }}>
       <div className="card" style={{ display: "flex", textAlign: "justify" }}>
         <div style={{ margin: "30px" }}>
         <h1>

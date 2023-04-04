@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import camara from "../../../../assets/image/camara.webp";
+import camara from "../../../../assets/image/HeaderTable/camara.webp";
 import { Link, useNavigate } from "react-router-dom";
 import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
-import ImageSpinner from "../../../../assets/image/errorlogo.webp";
+import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
 export const Camara = () => {
   const [searchTerritorial, setSearchTerritorial] = useState("");
@@ -57,7 +57,7 @@ export const Camara = () => {
         style={{
           width: "100%",
           maxHeight: "80%",
-          marginTop: "5vw",
+          marginTop: "3vw",
           borderRadius: "5px 5px 0 0",
           boxShadow: "0px 0 20px #052851",
         }}
@@ -87,6 +87,7 @@ export const Camara = () => {
                       onChange={(e) => setSearchTerritorial(e.target.value)}
                       placeholder="Buscar departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
                     ></Form.Control>
                   </InputGroup>
                 </Form>
@@ -115,7 +116,7 @@ export const Camara = () => {
               className="colorTableCamara table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead className="container_table">
+              <thead className="container_table sticky" style={{backgroundColor:"#fff"}}>
                 <tr>
                   <th className="text-center" style={{ width: "50%" }}>
                     DEPARTAMENTO
@@ -137,11 +138,11 @@ export const Camara = () => {
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text-center">
+                      <td className="text_left">
                         <a
                           className="link_departamento"
                           href={
-                            "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
+                            "/camara/circuncripcion/territorial/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -153,7 +154,7 @@ export const Camara = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/guiaelectoral/camara/circuncripcion/territorial/departamento/" +
+                            "/camara/circuncripcion/territorial/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -180,7 +181,7 @@ export const Camara = () => {
                 <a
                   type="button"
                   className="buttonBack buttonBack-primary"
-                  href={"/"}
+                  href={"/#resultados"}
                 >
                   <i className="bi bi-arrow-left-circle"></i>
                   &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
@@ -247,7 +248,7 @@ export const Camara = () => {
               className="colorTableCamara table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead className="container_table">
+              <thead className="container_table sticky " style={{backgroundColor:"#fff"}}>
                 <tr>
                   <th className="text-center" style={{ width: "50%" }}>
                     DEPARTAMENTO
@@ -269,11 +270,11 @@ export const Camara = () => {
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text-center">
+                      <td className="text_left">
                         <a
                           className="link_departamento"
                           href={
-                            "/guiaelectoral/camara/circuncripcion/indigena/departamento/" +
+                            "/camara/circuncripcion/indigena/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -286,7 +287,7 @@ export const Camara = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/guiaelectoral/camara/circuncripcion/indigena/departamento/" +
+                            "/camara/circuncripcion/indigena/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -312,7 +313,7 @@ export const Camara = () => {
                 <a
                   type="button"
                   className="buttonBack buttonBack-primary"
-                  href={"/"}
+                  href={"/#resultados"}
                 >
                   <i className="bi bi-arrow-left-circle"></i>
                   &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
@@ -378,7 +379,7 @@ export const Camara = () => {
               className="colorTableCamara table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead className="container_table">
+              <thead className="container_table sticky" style={{backgroundColor:"#fff"}}>
                 <tr>
                   <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
@@ -400,10 +401,10 @@ export const Camara = () => {
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text-center">
+                      <td className="text_left">
                         <a className="link_departamento"
                           href={
-                            "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
+                            "/camara/circuncripcion/afrodescendiente/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -415,7 +416,7 @@ export const Camara = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/guiaelectoral/camara/circuncripcion/afrodescendiente/departamento/" +
+                            "/camara/circuncripcion/afrodescendiente/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -441,7 +442,7 @@ export const Camara = () => {
                 <a
                   type="button"
                   className="buttonBack buttonBack-primary"
-                  href={"/"}
+                  href={"/#resultados"}
                 >
                   <i className="bi bi-arrow-left-circle"></i>
                   &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
@@ -460,7 +461,7 @@ export const Camara = () => {
         >
           <Modal.Body className="text-center">
             <div className="text-center">
-              <img src={ImageSpinner} />
+              <img src={ImageSpinner} style={{height:"100px", width:"200px"}} />
               <div className="mt-4">
                 <div className="spinner-border text-danger" role="status">
                   <span className=" visually-hidden">Loading...</span>
