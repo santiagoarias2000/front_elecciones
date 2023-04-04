@@ -52,6 +52,8 @@ export const SenadoNacionalMunicipio = () => {
     setArrayNameMunicipality(result);
   };
 
+  //Format Number Votes 
+  const format = new Intl.NumberFormat(); 
   useEffect(() => {
     getVotosSenadoTerritorial();
     getMuniciaplity();
@@ -310,8 +312,8 @@ export const SenadoNacionalMunicipio = () => {
                       <td className="text_left_name">
                         {myVotes.candidate_name}
                       </td>
-                      <td className="text-center">{myVotes.votos}</td>
-                      <td className="text-center">{myVotes.votos_muicipio}</td>
+                      <td className="text-center">{format.format(myVotes.votos)}</td>
+                      <td className="text-center">{format.format(myVotes.votos_muicipio)}</td>
                     </tr>
                   ))}
               </tbody>

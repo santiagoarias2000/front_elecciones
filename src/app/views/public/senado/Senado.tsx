@@ -8,6 +8,7 @@ import { Form, InputGroup, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
 export const Senado = () => {
+  
   const [searchNacional, setSearchNacional] = useState("");
   const [searchIndigena, setSearchIndigena] = useState("");
 
@@ -30,6 +31,9 @@ export const Senado = () => {
     const result = await ServicePrivate.requestGET(ApiBack.SENADO_INDIGENA);
     setArrayVotesSenadoIndigena(result);
   };
+
+  //Format Number Votes 
+  const format = new Intl.NumberFormat(); 
 
   useEffect(() => {
     getVotosSenadoTerritorial();
@@ -131,7 +135,7 @@ export const Senado = () => {
                           {myVotes.department.name_department}
                         </a>
                       </td>
-                      <td className="text-center">{myVotes.votos}</td>
+                      <td className="text-center">{format.format(myVotes.votos)}</td>
                       <td className="text-left align-middle">
                         <a
                           className="link_departamento"
@@ -280,7 +284,7 @@ export const Senado = () => {
                           {myVotes.department.name_department}
                         </a>
                       </td>
-                      <td className="text-center">{myVotes.votos}</td>
+                      <td className="text-center">{format.format(myVotes.votos)}</td>
                       <td className="text-center align-middle">
                         <a
                           className="text-left"
