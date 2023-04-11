@@ -133,7 +133,7 @@ export const Gobernacion = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/camara/circuncripcion/territorial/departamento/" +
+                            "/gobernacion/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -145,7 +145,7 @@ export const Gobernacion = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/camara/circuncripcion/territorial/departamento/" +
+                            "/gobernacion/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >

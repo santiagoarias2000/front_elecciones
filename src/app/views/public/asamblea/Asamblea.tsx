@@ -61,7 +61,7 @@ export const Asamblea = () => {
         <div className="cardBorder card">
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b className="title_table">TERRITORIAL MUNICIPALES</b>
+              <b className="title_table">VOTOS REGIONALES</b>
             </div>
           </div>
 
@@ -133,7 +133,7 @@ export const Asamblea = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/camara/circuncripcion/territorial/departamento/" +
+                            "/asamblea/regional/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -145,7 +145,7 @@ export const Asamblea = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/camara/circuncripcion/territorial/departamento/" +
+                            "/asamblea/regional/" +
                             myVotes.department.idDepartment
                           }
                         >

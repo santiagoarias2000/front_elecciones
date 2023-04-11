@@ -8,6 +8,12 @@ const ApiBack = {
   NOMBRE_DEPARTAMENTO_TERRITORIAL: "/api/public/departamento/territorial",
   NOMBRE_DEPARTAMENTO_INDIGENA: "/api/public/departamento/indigenaCamara",
   NOMBRE_DEPARTAMENTO_AFRODESCENDIENTE: "/api/public/departamento/afrodescendiente",
+  
+  NOMBRE_DEPARTAMENTO_GOBERNACION: "/api/public/departamento/gobernacion",
+  NOMBRE_DEPARTAMENTO_ASAMBLEA: "/api/public/departamento/asamblea",
+  NOMBRE_DEPARTAMENTO_ALCADIA: "/api/public/departamento/alcaldia",
+
+
 
   NOMBRE_DEPARTAMENTO_NACIONAL: "/api/public/departamento/nacional",
   NOMBRE_DEPARTAMENTO_INDIGENA_SENADO: "/api/public/departamento/indigenaSenado",
@@ -36,8 +42,15 @@ const ApiBack = {
   CAMARA_AFRODESCENDIENTE_DEPARTAMENTO_MUNICIPIO:"/api/public/camara/circuncripcion/afrodescendiente/departamento",
 
   GOBERNACION:"/api/public/gobernacion",
+  GOBERNACION_DEPARTAMENTO:"/api/public/gobernacion/departamento",
+
+  
   ASAMBLEA:"/api/public/asamblea",
+  ASAMBLEA_DEPARTAMENTO:"/api/public/asamblea/departamento",
+
   ALCALDIA:"/api/public/alcaldia",
+  ALCALDIA_DEPARTAMENTO:"/api/public/alcaldia/departamento",
+
   CONCEJO:"/api/public/concejo",
   JAL:"/api/public/jal"
   

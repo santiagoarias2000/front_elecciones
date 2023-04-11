@@ -133,7 +133,7 @@ export const Alcaldia = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/camara/circuncripcion/territorial/departamento/" +
+                            "/alcaldia/regional/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -145,7 +145,7 @@ export const Alcaldia = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/camara/circuncripcion/territorial/departamento/" +
+                            "/alcaldia/regional/" +
                             myVotes.department.idDepartment
                           }
                         >

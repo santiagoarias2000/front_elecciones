@@ -29,6 +29,9 @@ import { Alcaldia } from "../../views/public/alcaldia/Alcaldia";
 import { Consejo } from "../../views/public/consejo/Consejo";
 import { Asamblea } from "../../views/public/asamblea/Asamblea";
 import { Jal } from "../../views/public/jal/Jal";
+import { GobernacionDepartamento } from "../../views/public/gobernacion/GobernacionDepartamento";
+import { AsambleaRegional } from "../../views/public/asamblea/AsambleaRegional";
+import { AlcaldiaRegional } from "../../views/public/alcaldia/AlcaldiaRegional";
 
 //Lazy structure from use the all tsx
 
@@ -58,6 +61,9 @@ const LazyAlcadia = lazy(() => import("../../views/public/alcaldia/Alcaldia").th
 const LazyConsejo = lazy(() => import("../../views/public/consejo/Consejo").then(() => ({default: Consejo})));
 const LazyAsamblea = lazy(() => import("../../views/public/asamblea/Asamblea").then(() => ({default: Asamblea})));
 const LazyJal = lazy(() => import("../../views/public/jal/Jal").then(() => ({default: Jal})));
+const LazyGobernacionDepartamento = lazy(() => import("../../views/public/gobernacion/GobernacionDepartamento").then(() => ({default: GobernacionDepartamento})));
+const LazyAsambleaRegional = lazy(() => import("../../views/public/asamblea/AsambleaRegional").then(() => ({default: AsambleaRegional})));
+const LazyAlcadiaRegional = lazy(() => import("../../views/public/alcaldia/AlcaldiaRegional").then(() => ({default: AlcaldiaRegional})));
 //Blog
 const LazyBlog = lazy(() => import("../../containers/Blog").then(() => ({default: Blog})));
 const LazyNosotros = lazy(() => import("../../views/shared/AboutUs").then(() => ({default: AboutUs})));
@@ -99,12 +105,15 @@ export const InternalRouting = () => {
       <Route path="*" element={<NotFound/>}/>
       //Routes Gobernacion
       <Route path="/gobernacion" element={<LazyGobernacion/>}/>
+      <Route path="/gobernacion/departamento/:idDepartment" element={<LazyGobernacionDepartamento />} />
       //Routes Alcadia
       <Route path="/alcaldia" element={<LazyAlcadia/>}/>
+      <Route path="/alcaldia/regional/:idDepartment" element={<LazyAlcadiaRegional />} />
       //Routes Consejo
       <Route path="/consejo" element={<LazyConsejo/>}/>
       //Routes Asamblea
       <Route path="/asamblea" element={<LazyAsamblea/>}/>
+      <Route path="/asamblea/regional/:idDepartment" element={<LazyAsambleaRegional />} />
       //Routes jal
       <Route path="/jal" element={<LazyJal/>}/>
       
