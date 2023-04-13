@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react";
-import ServicePrivate from "../../../services/ServicePrivate";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import jal from "../../../../assets/image/HeaderTable/ELEJAL.webp";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import ServicePrivate from "../../../services/ServicePrivate";
 import { Col, Form, InputGroup, Modal, Pagination, Row, Table, } from "react-bootstrap";
-import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 import VotesGober from "../../../models/VotesGober";
+import concejo from "../../../../assets/image/HeaderTable/ELECONCEJO.webp";
+import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
-export const JalDepartamento = () => {
-  let { idDepartment } = useParams();
+
+export const ConcejoDepartamento = () => {
+    let { idDepartment } = useParams();
     //Format Number Votes 
   const format = new Intl.NumberFormat('es');
 
@@ -17,24 +18,23 @@ export const JalDepartamento = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesjalTerritorial, setArrayVotesjalTerritorial] =
+  const [arrayVotesConcejoDepartamental, setarrayVotesConcejoDepartamental] =
     useState<VotesGober[]>([]);
 
-  const getVotosjalTerritorial = async () => {
-    const urlCargarDepartamento = ApiBack.JAL_DEPARTAMENTO + "/" + idDepartment;
+  const getVotosJalTerritorial = async () => {
+    const urlCargarDepartamento = ApiBack.CONCEJO_DEPARTAMENTO + "/" + idDepartment;
     const result = await ServicePrivate.requestGET(urlCargarDepartamento);
-    setArrayVotesjalTerritorial(result);
+    setarrayVotesConcejoDepartamental(result);
     setShow(false);
   };
 
   useEffect(() => {
-    getVotosjalTerritorial();
-  }, []);
-
-  return (
+    getVotosJalTerritorial();
+  }, [idDepartment]);
+  return(
     <main id="main" className="main">
       <img
-        src={jal}
+        src={concejo}
         style={{
           width: "100%",
           maxHeight: "80%",
@@ -54,7 +54,7 @@ export const JalDepartamento = () => {
         <div className="cardBorder card">
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b className="title_table">JAL MUNICIPAL</b>
+              <b className="title_table">CONCEJO MUNICIPAL</b>
             </div>
           </div>
 
@@ -102,18 +102,18 @@ export const JalDepartamento = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "40%" }} id="text_left_name">
+                  <th className="text-center" style={{ width: "50%" }} id="text_left_name">
                     DEPARTAMENTO
                   </th>
-                  <th className="text-center" style={{ width: "35%" }} >
+                  <th className="text-center" style={{ width: "40%" }} >
                     TOTAL VOTOS
                   </th>
-                  <th className="text-center" style={{ width: "15%" }} ></th>
+                  <th className="text-center" style={{ width: "10%" }} ></th>
 
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotesjalTerritorial
+                {arrayVotesConcejoDepartamental
                   .filter((myVotes) => {
                     return searchTerritorial === ""
                       ? myVotes
@@ -127,7 +127,7 @@ export const JalDepartamento = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/jal/departamento/"+idDepartment+"/municipio/"+
+                            "/concejo/departamento/"+idDepartment+"/municipio/"+
                             myVotes.municipality.id_municipality
                           }
                         >
@@ -139,7 +139,7 @@ export const JalDepartamento = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/jal/departamento/"+idDepartment+"/municipio/"+
+                            "/concejo/departamento/"+idDepartment+"/municipio/"+
                             myVotes.municipality.id_municipality
                           }
                         >
@@ -166,7 +166,7 @@ export const JalDepartamento = () => {
                 <a
                   type="button"
                   className="buttonBack buttonBack-primary"
-                  href={"/jal"}
+                  href={"/concejo"}
                 >
                   <i className="bi bi-arrow-left-circle"></i>
                   &nbsp;&nbsp;REGRESAR A ELEGIR UN DEPARTAMENTO

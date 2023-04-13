@@ -284,7 +284,7 @@ export const Welcome = () => {
                 a las elecciones a nivel municipal y/o distrital.
               </p>
               <div className="cards-btn text-center">
-                <a href="/consejo" className="btn-cards mt-4 responsive_botton">
+                <a href="/concejo" className="btn-cards mt-4 responsive_botton">
                   <i className="bi bi-bar-chart-line-fill"></i>
                   &nbsp; Ver resultados
                 </a>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import camara from "../../../../assets/image/HeaderTable/ELECONCEJO.webp";
+import concejo from "../../../../assets/image/HeaderTable/ELECONCEJO.webp";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Col,
@@ -15,7 +15,7 @@ import {
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 import VotesGober from "../../../models/VotesGober";
 
-export const Consejo = () => {
+export const Concejo = () => {
     //Format Number Votes 
   const format = new Intl.NumberFormat('es');
 
@@ -41,7 +41,7 @@ export const Consejo = () => {
   return (
     <main id="main" className="main">
       <img
-        src={camara}
+        src={concejo}
         style={{
           width: "100%",
           maxHeight: "80%",
@@ -61,7 +61,7 @@ export const Consejo = () => {
         <div className="cardBorder card">
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b className="title_table">TERRITORIAL MUNICIPALES</b>
+              <b className="title_table">CONJEO MUNICIPALES</b>
             </div>
           </div>
 
@@ -133,7 +133,7 @@ export const Consejo = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/camara/circuncripcion/territorial/departamento/" +
+                            "/concejo/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -145,7 +145,7 @@ export const Consejo = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/camara/circuncripcion/territorial/departamento/" +
+                            "/concejo/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >

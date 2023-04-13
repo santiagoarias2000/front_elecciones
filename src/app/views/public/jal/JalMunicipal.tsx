@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import VotesGober from "../../../models/VotesGober";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import senado from "../../../../assets/image/HeaderTable/CRsenadonacional.webp";
+import jal from "../../../../assets/image/HeaderTable/ELEJAL.webp";
 import ServicePrivate from "../../../services/ServicePrivate";
 import Municipality from "../../../models/Municipality";
 import { Form, InputGroup, Modal, Pagination } from "react-bootstrap";
@@ -12,6 +12,7 @@ import { useForm } from "../../../utilities/hooks/useForm";
 
 export const JalMunicipal = () => {
     //Variables
+    let { idDepartment } = useParams();
     let { idMunicipality } = useParams();
     const regresar = useNavigate();
     const [search, setSearch] = useState("");
@@ -50,7 +51,7 @@ export const JalMunicipal = () => {
     return (
       <main id="main" className="main">
         <img
-          src={senado}
+          src={jal}
           style={{
             width: "100%",
             maxHeight: "80%",
@@ -73,7 +74,7 @@ export const JalMunicipal = () => {
             >
               <div className="text-center">
                 <b className="title_table">
-                  JAL MUNICIPAL
+                  VOTOS JAL MUNICIPAL
                 </b>
               </div>
             </div>
@@ -155,13 +156,13 @@ export const JalMunicipal = () => {
                   style={{ backgroundColor: "#fff" }}
                 >
                   <tr>
-                    <th className="text-center" style={{ width: "30%" }}>
+                    <th className="text-center" style={{ width: "35%" }} id="text_left_name">
                       PARTIDO POLÍTICO
                     </th>
-                    <th className="text-center" style={{ width: "30%" }}>
+                    <th className="text-center" style={{ width: "40%" }} id="text_left_name">
                       NOMBRE CANDIDATO
                     </th>
-                    <th className="text-center" style={{ width: "20%" }}>
+                    <th className="text-center" style={{ width: "25%" }} id="text_left_name">
                       VOTOS MUNICIPIO
                     </th>
                   </tr>
@@ -177,13 +178,13 @@ export const JalMunicipal = () => {
                       })
                     .map((myVotes, contador) => (
                       <tr key={contador}>
-                        <td className="text-center">
+                        <td className="text_left_name">
                           {myVotes.description_politicparty}
                         </td>
                         <td className="text_left_name">
                           {myVotes.candidate_name}
                         </td>
-                        <td className="text-center">{format.format(myVotes.votos)}</td>
+                        <td className="text_left_name">{format.format(myVotes.votos)}</td>
                       </tr>
                     ))}
                 </tbody>
@@ -203,10 +204,10 @@ export const JalMunicipal = () => {
                   <a
                     type="button"
                     className="buttonBack buttonBack-primary"
-                    onClick={() => regresar(-1)}
+                    href={"/jal/departamento/"+idDepartment}
                   >
                     <i className="bi bi-arrow-left-circle"></i>
-                    &nbsp;&nbsp;REGRESAR A ELEGIR UN DEPARTAMENTO
+                    &nbsp;&nbsp;REGRESAR A ELEGIR UN MUNICIPIO
                   </a>
                 </div>
               </div>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import camara from "../../../../assets/image/HeaderTable/ELEJAL.webp";
+import jal from "../../../../assets/image/HeaderTable/ELEJAL.webp";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Col,
@@ -30,11 +30,7 @@ export const Jal = () => {
   const getVotosjalTerritorial = async () => {
     //const parametrosPaginador= {paginaActual: activo, cantidadMostrar:numeroElemPag};
     const result = await ServicePrivate.requestGET(ApiBack.JAL);
-<<<<<<< HEAD
     setarrayVotesJalTerritorial(result);
-=======
-    setArrayVotesjalTerritorial(result);
->>>>>>> main
     setShow(false);
   };
 
@@ -45,7 +41,7 @@ export const Jal = () => {
   return (
     <main id="main" className="main">
       <img
-        src={camara}
+        src={jal}
         style={{
           width: "100%",
           maxHeight: "80%",
@@ -116,9 +112,10 @@ export const Jal = () => {
                   <th className="text-center" style={{ width: "50%" }}>
                     DEPARTAMENTO
                   </th>
-                  <th className="text-center" style={{ width: "50%" }}>
+                  <th className="text-center" style={{ width: "35%" }}>
                     TOTAL VOTOS
                   </th>
+                  <th className="text-center" style={{ width: "15%" }} ></th>
                 </tr>
               </thead>
               <tbody className="color container_table">
@@ -144,6 +141,17 @@ export const Jal = () => {
                         </a>
                       </td>
                       <td className="text-center">{format.format(myVotes.votos)}</td>
+                      <td className="text-center align-middle">
+                        <a
+                          className="link_departamento"
+                          href={
+                            "/jal/departamento/" +
+                            myVotes.department.idDepartment
+                          }
+                        >
+                          <i className="fa-solid fa-magnifying-glass fa-sm text-danger"></i>
+                        </a>
+                      </td>
                     </tr>
                   ))}
               </tbody>
