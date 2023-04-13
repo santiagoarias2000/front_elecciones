@@ -52,6 +52,8 @@ export const SenadoNacionalMunicipio = () => {
     setArrayNameMunicipality(result);
   };
 
+  //Format Number Votes 
+  const format = new Intl.NumberFormat(); 
   useEffect(() => {
     getVotosSenadoTerritorial();
     getMuniciaplity();
@@ -80,14 +82,7 @@ export const SenadoNacionalMunicipio = () => {
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
           <div
-            className="container-fluid display-flex justify-content-center"
-            style={{
-              background: "#052851",
-              color: "#FFFFFF",
-              height: "40px",
-              display: "flex",
-              alignItems: "center",
-            }}
+            className="container-fluid display-flex justify-content-center container_title"
           >
             <div className="text-center">
               <b className="title_table">
@@ -182,7 +177,9 @@ export const SenadoNacionalMunicipio = () => {
             </div>
             <div className="container no_responsive">
               <div className="row">
-                <div className="dropdown col-sm align-content-center my-1">
+                <div className="col-sm">
+
+                <div className="dropdown  text-center my-1">
                   <div className="dropdown">
                     <button
                       type="button"
@@ -236,6 +233,8 @@ export const SenadoNacionalMunicipio = () => {
                     </ul>
                   </div>
                 </div>
+                </div>
+                
 
                 <div className="col">
                   <h6 className="text-center my-2" style={{ color: "#052851" }}>
@@ -275,10 +274,10 @@ export const SenadoNacionalMunicipio = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "30%" }}>
+                  <th className="text-center" style={{ width: "30%" }} id="text_left_name">
                     PARTIDO POLÍTICO
                   </th>
-                  <th className="text-center" style={{ width: "30%" }}>
+                  <th className="text-center" style={{ width: "30%" }} id="text_left_name">
                     NOMBRE CANDIDATO
                   </th>
                   <th className="text-center" style={{ width: "20%" }}>
@@ -289,7 +288,7 @@ export const SenadoNacionalMunicipio = () => {
                   </th>
                 </tr>
               </thead>
-              <tbody className="color">
+              <tbody className="color container_table">
                 {arrayVotesSenadoTerritorial
                   .filter((val) => {
                     if (search == "") {
@@ -304,14 +303,14 @@ export const SenadoNacionalMunicipio = () => {
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text-center">
+                      <td className="text_left_name">
                         {myVotes.description_politicparty}
                       </td>
                       <td className="text_left_name">
                         {myVotes.candidate_name}
                       </td>
-                      <td className="text-center">{myVotes.votos}</td>
-                      <td className="text-center">{myVotes.votos_muicipio}</td>
+                      <td className="text-center">{format.format(myVotes.votos)}</td>
+                      <td className="text-center">{format.format(myVotes.votos_muicipio)}</td>
                     </tr>
                   ))}
               </tbody>
@@ -323,9 +322,8 @@ export const SenadoNacionalMunicipio = () => {
               className="container-fluid display-flex justify-content-center"
               style={{
                 color: "#FFFFFF",
-                height: "80px",
-                display: "flex",
-                alignItems: "center",
+                height: "40px",
+                alignItems: "right",
               }}
             >
               <div className="text-center">

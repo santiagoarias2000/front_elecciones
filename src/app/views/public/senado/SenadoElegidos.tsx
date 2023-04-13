@@ -15,6 +15,14 @@ export const SenadoElegidos = () => {
   const [arrayVotesSenadoNacional, setArrayVotesSenadoNacional] = useState< CandidatosSenado[] >(ARREGLO_SENADO_108);
   const [arrayVotesSenadoIndigena, setArrayVotesSenadoIndigena] = useState< CandidatosSenado[] >(ARREGLO_SENADO_INDIGENAS);
 
+  //Format Number Votes 
+  const format = new Intl.NumberFormat('es');
+
+  function myFormat(formats: string) {
+    const newFormat:number = Number(formats);
+    return format.format(newFormat);
+
+  }
 
   return (
     <main id="main" className="main">
@@ -78,7 +86,7 @@ export const SenadoElegidos = () => {
                     DEPARTAMENTO
                   </th>
                   <th className="text-center" style={{ width: "20%" }}>
-                    MAS VOTACION
+                    MAYOR VOTACIÓN
                   </th>
                 </tr>
               </thead>
@@ -101,11 +109,11 @@ export const SenadoElegidos = () => {
                       <td className="text_left_name" style={{fontWeight:"600"}}>
                         {myVotes.candidate_name}
                       </td>
-                      <td className="text-center">{myVotes.votos}</td>
+                      <td className="text-center">{myFormat(myVotes.votos)}</td>
                       <td className="text-center">
                         {myVotes.name_department}
                       </td>
-                      <td className="text-center">{myVotes.max_votes}</td>
+                      <td className="text-center">{myFormat(myVotes.max_votes)}</td>
                     </tr>
                   
                     
@@ -181,7 +189,7 @@ export const SenadoElegidos = () => {
                     DEPARTAMENTO
                   </th>
                   <th className="text-center" style={{ width: "20%" }}>
-                    MAS VOTACION
+                    MAYOR VOTACIÓN
                   </th>
                 </tr>
               </thead>
@@ -204,11 +212,11 @@ export const SenadoElegidos = () => {
                       <td className="text-left" style={{fontWeight:"600", paddingLeft:"5vw"}}>
                         {myVotes.candidate_name}
                       </td>
-                      <td className="text-center">{myVotes.votos}</td>
+                      <td className="text-center">{myFormat(myVotes.votos)}</td>
                       <td className="text-center">
                         {myVotes.name_department}
                       </td>
-                      <td className="text-center">{myVotes.max_votes}</td>
+                      <td className="text-center">{myFormat(myVotes.max_votes)}</td>
                     </tr>
                     
                   ))}

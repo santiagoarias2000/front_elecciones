@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 import camara from "../../../../assets/image/HeaderTable/CRterrirorial.webp";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
-import ImageSpinner from "../../../../assets/image/errorlogo.webp";
+import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 import {
   Col,
   InputGroup,
@@ -22,6 +22,9 @@ import { ARREGLO_CANDIDATOS_ELEGIDOS } from "../../../mocks/candidatos-mocks";
 import { log } from "console";
 
 export const CamaraTerritorialDepartamento = () => {
+  //Format Number Votes 
+  const format = new Intl.NumberFormat('es');
+
   const [search, setSearch] = useState("");
   const [searchMunicipio, setSearchMunicipio] = useState("");
   const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState<
@@ -300,13 +303,13 @@ export const CamaraTerritorialDepartamento = () => {
           >
             <thead className="container_table sticky" style={{backgroundColor:"#fff"}}>
               <tr>
-                <th className="text-center" style={{ width: "35%" }}>
+                <th className="text-center" style={{ width: "35%" }} id="text_left_name">
                   PARTIDO POLÍTICO
                 </th>
-                <th className="text-center" style={{ width: "40%" }}>
+                <th className="text-center" style={{ width: "40%" }} id="text_left_name">
                   NOMBRE CANDIDATO
                 </th>
-                <th className="text-center" style={{ width: "25 %" }}>
+                <th className="text-center" style={{ width: "25%" }}>
                   VOTOS DEPARTAMENTO
                 </th>
               </tr>
@@ -330,8 +333,8 @@ export const CamaraTerritorialDepartamento = () => {
                       className={
                         CandidatosElegidosCamara(myVotes.candidate_name) ===
                         "True"
-                          ? "text-center text-danger fst-italic font-weight-bold"
-                          : "text-center"
+                          ? "text_left text-danger fst-italic font-weight-bold"
+                          : "text_left"
                       }
                       id="text_left_name"
                     >
@@ -356,7 +359,7 @@ export const CamaraTerritorialDepartamento = () => {
                           : "text-center"
                       }
                     >
-                      {myVotes.votos}
+                      {format.format(myVotes.votos)}
                     </td>
                   </tr>
                 ))}
@@ -381,7 +384,7 @@ export const CamaraTerritorialDepartamento = () => {
             >
               {arrayDepartamento.map((myDepartment) => (
                 <b style={{ color: "#D9224E" }} className="vota_respo">
-                  VOTACIÓN TOTAL: {myDepartment.votos}
+                  VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
                 </b>
               ))}
             </h6>

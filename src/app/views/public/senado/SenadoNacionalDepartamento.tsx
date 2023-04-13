@@ -57,6 +57,9 @@ export const SenadoNacionalDepartamento = () => {
     );
     setArrayDepartamento(result);
   };
+
+  //Format Number Votes 
+  const format = new Intl.NumberFormat('es');
   useEffect(() => {
     getVotosSenadoDepartamental();
     getMunicipios();
@@ -245,16 +248,19 @@ export const SenadoNacionalDepartamento = () => {
               className="colorTable table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead className="container_table sticky" style={{backgroundColor:"#fff"}}>
+              <thead
+                className="container_table sticky"
+                style={{ backgroundColor: "#fff" }}
+              >
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }}>
+                  <th className="text-center" style={{ width: "35%" }} id="text_left_name">
                     PARTIDO POLÍTICO
                   </th>
-                  <th className="text-center" style={{ width: "35%" }}>
+                  <th className="text-center" style={{ width: "40%" }} id="text_left_name">
                     NOMBRE CANDIDATO
                   </th>
-                  <th className="text-center" style={{ width: "30%" }}>
-                    TOTAL VOTOS NACIONAL
+                  <th className="text-center" style={{ width: "25%" }}>
+                    VOTOS DEPARTAMENTO
                   </th>
                 </tr>
               </thead>
@@ -273,11 +279,11 @@ export const SenadoNacionalDepartamento = () => {
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text-center">
+                      <td className="text_left_name">
                         {myVotes.description_politicparty}
                       </td>
                       <td className="text_left_name">{myVotes.candidate_name}</td>
-                      <td className="text-center">{myVotes.votos}</td>
+                      <td className="text-center">{format.format(myVotes.votos)}</td>
                     </tr>
                   ))}
               </tbody>
@@ -301,7 +307,7 @@ export const SenadoNacionalDepartamento = () => {
               >
                 {arrayDepartamento.map((myDepartment) => (
                   <b style={{ color: "#D9224E" }} className="vota_respo">
-                    VOTACIÓN TOTAL: {myDepartment.votos}
+                    VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
                   </b>
                 ))}
               </h6>
@@ -318,12 +324,14 @@ export const SenadoNacionalDepartamento = () => {
               }}
             >
               <div className="text-center">
-                
-                  <a  type="button" className="buttonBack buttonBack-primary" href="/senado">
-                    <i className="bi bi-arrow-left-circle"></i>
-                    &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
-                  </a>
-                
+                <a
+                  type="button"
+                  className="buttonBack buttonBack-primary"
+                  href="/senado"
+                >
+                  <i className="bi bi-arrow-left-circle"></i>
+                  &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                </a>
               </div>
             </div>
           </div>
@@ -338,7 +346,10 @@ export const SenadoNacionalDepartamento = () => {
         >
           <Modal.Body className="text-center">
             <div className="text-center">
-              <img src={ImageSpinner} style={{height:"100px", width:"200px"}}/>
+              <img
+                src={ImageSpinner}
+                style={{ height: "100px", width: "200px" }}
+              />
               <div className="mt-4">
                 <div className="spinner-border text-danger" role="status">
                   <span className=" visually-hidden">Loading...</span>

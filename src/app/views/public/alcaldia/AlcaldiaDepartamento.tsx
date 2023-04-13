@@ -1,23 +1,16 @@
 import { useEffect, useState } from "react";
-import {
-  Col,
-  Form,
-  InputGroup,
-  Modal,
-  Pagination,
-  Row,
-  Table,
-} from "react-bootstrap";
+import { Form, InputGroup, Modal, } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
-import senado from "../../../../assets/image/HeaderTable/CRsenadoindigena.webp";
+import camara from "../../../../assets/image/HeaderTable/ELEALCALDIA.webp";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
 import Municipality from "../../../models/Municipality";
 import Department from "../../../models/Department";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
+import VotesGober from "../../../models/VotesGober";
 
-export const SenadoIndigenaDepartamento = () => {
+export const AlcaldiaDepartamento = () => {
   let { idDepartment } = useParams();
   const [search, setSearch] = useState("");
   const [searchMunicipio, setSearchMunicipio] = useState("");
@@ -28,8 +21,8 @@ export const SenadoIndigenaDepartamento = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesSenadoDepartamental, setArrayVotesSenadoDepartamental] =
-    useState<VotesCongreso[]>([]);
+  const [arrayVotesAsambleaDepartamental, setarrayVotesAsambleaDepartamental] =
+    useState<VotesGober[]>([]);
   const getMunicipios = async () => {
     const resultado = await ServicePrivate.requestGET(
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
@@ -40,30 +33,31 @@ export const SenadoIndigenaDepartamento = () => {
 
   const getDepartamento = async () => {
     const result = await ServicePrivate.requestGET(
-      ApiBack.NOMBRE_DEPARTAMENTO_INDIGENA_SENADO + "/" + idDepartment
+      ApiBack.NOMBRE_DEPARTAMENTO_ASAMBLEA + "/" + idDepartment
     );
     setArrayDepartamento(result);
   };
-  const getVotosSenadoDepartamental = async () => {
-    const urlCargarDepartamento = ApiBack.SENADO_INDIGENA_DEPARTAMENTAL + "/" + idDepartment;
+  const getVotosAsambleaDepartamental = async () => {
+    const urlCargarDepartamento =
+      ApiBack.ALCALDIA_DEPARTAMENTO + "/" + idDepartment;
     const result = await ServicePrivate.requestGET(urlCargarDepartamento);
-    setArrayVotesSenadoDepartamental(result);
+    setarrayVotesAsambleaDepartamental(result);
     if (result) {
-      setArrayVotesSenadoDepartamental(result);
+      setarrayVotesAsambleaDepartamental(result);
       setShow(false);
     }
   };
-  //Format Number Votes 
-  const format = new Intl.NumberFormat(); 
+  //Format Number Votes
+  const format = new Intl.NumberFormat();
   useEffect(() => {
-    getVotosSenadoDepartamental();
+    getVotosAsambleaDepartamental();
     getMunicipios();
     getDepartamento();
   }, [idDepartment]);
   return (
     <main id="main" className="main">
       <img
-        src={senado}
+        src={camara}
         style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
         alt="logo principal para la parte superior de la pagina web"
       />
@@ -78,7 +72,7 @@ export const SenadoIndigenaDepartamento = () => {
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
               <b className="title_table">
-                CIRCUNCRIPCIÓN DEPARTAMENTAL INDÍGENA
+                VOTOS ASAMBLEA
               </b>{" "}
               &nbsp;
             </div>
@@ -125,7 +119,7 @@ export const SenadoIndigenaDepartamento = () => {
                           <a
                             className="dropdown-item"
                             href={
-                              "/senado/indigena/departamento/" +
+                              "/asamblea/departamento/" +
                               idDepartment +
                               "/municipio/" +
                               miMunicipio.id_municipality
@@ -199,19 +193,17 @@ export const SenadoIndigenaDepartamento = () => {
                         })
                         .map((miMunicipio, indice) => (
                           <a
-                            className="dropdown-item"
-                            href={
-                              "/senado/indigena/departamento/" +
-                              idDepartment +
-                              "/municipio/" +
-                              miMunicipio.id_municipality
-                            }
-                          >
-                            <b className="name_text">
-                              {miMunicipio.name_municipality}
-                            </b>
-                          </a>
-                        ))}
+                          className="dropdown-item"
+                          href={
+                            "/asamblea/departamento/" +
+                            idDepartment +
+                            "/municipio/" +
+                            miMunicipio.id_municipality
+                          }
+                        >
+                          {miMunicipio.name_municipality}
+                        </a>
+                      ))}
                     </li>
                   </ul>
                 </div>
@@ -248,19 +240,19 @@ export const SenadoIndigenaDepartamento = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
+                  <th className="text-center" style={{ width: "50%" }} id="text_left_name">
+                    MUNICIPIO
+                  </th>
                   <th className="text-center" style={{ width: "35%" }} id="text_left_name">
-                    PARTIDO POLÍTICO
+                    TOTAL VOTOS
                   </th>
-                  <th className="text-center" style={{ width: "40%" }} id="text_left_name">
-                    NOMBRE CANDIDATO
-                  </th>
-                  <th className="text-center" style={{ width: "25%" }}>
+                  <th className="text-center" style={{ width: "15%" }}>
                     VOTOS DEPARTAMENTO
                   </th>
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotesSenadoDepartamental
+                {arrayVotesAsambleaDepartamental
                   .filter((val) => {
                     if (search == "") {
                       return val;
@@ -280,7 +272,9 @@ export const SenadoIndigenaDepartamento = () => {
                       <td className="text_left_name">
                         {myVotes.candidate_name}
                       </td>
-                      <td className="text-center">{format.format(myVotes.votos)}</td>
+                      <td className="text-center">
+                        {format.format(myVotes.votos)}
+                      </td>
                     </tr>
                   ))}
               </tbody>
@@ -321,12 +315,14 @@ export const SenadoIndigenaDepartamento = () => {
               }}
             >
               <div className="text-center">
-                
-                  <a href="/senado"  type="button" className="buttonBack buttonBack-primary">
-                    <i className="bi bi-arrow-left-circle"></i>
-                    &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
-                  </a>
-                
+                <a
+                  href="/asamblea"
+                  type="button"
+                  className="buttonBack buttonBack-primary"
+                >
+                  <i className="bi bi-arrow-left-circle"></i>
+                  &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                </a>
               </div>
             </div>
           </div>
@@ -341,7 +337,10 @@ export const SenadoIndigenaDepartamento = () => {
         >
           <Modal.Body className="text-center">
             <div className="text-center">
-              <img src={ImageSpinner} style={{height:"100px", width:"200px"}}/>
+              <img
+                src={ImageSpinner}
+                style={{ height: "100px", width: "200px" }}
+              />
               <div className="mt-4">
                 <div className="spinner-border text-danger" role="status">
                   <span className=" visually-hidden">Loading...</span>

@@ -23,7 +23,8 @@ export const PresidenciaAll = () => {
   const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
     useState<VotesCongreso[]>([]);
 
-  const [searchNacional, setSearchNacional] = useState("");
+  const [searchVuelta1, setSearchVuelta1] = useState("");
+  const [searchVuelta2, setSearchVuelta2] = useState("");
 
   const regresar = useNavigate();
   const getVotosCamaraTerritorial = async () => {
@@ -67,7 +68,7 @@ export const PresidenciaAll = () => {
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
                     <Form.Control
-                      onChange={(e) => setSearchNacional(e.target.value)}
+                      onChange={(e) => setSearchVuelta1(e.target.value)}
                       placeholder="Buscar Nombre Candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
@@ -213,7 +214,16 @@ export const PresidenciaAll = () => {
                 </tr>
               </thead>
               <tbody className="container_table">
-                {arrayPrecidenciaPrimera.map((myVotes, contador) => (
+                {arrayPrecidenciaPrimera
+                .filter((myPresident)=>{
+                  return searchVuelta1 === ""
+                  ? myPresident
+                  :myPresident.candidate_name
+                  .toLowerCase()
+                  .includes(searchVuelta1.toLocaleLowerCase());
+
+                })
+                .map((myVotes, contador) => (
                   <tr key={contador} className="primeraColumna">
                     <td
                       className="text celdaSuperiorIzquierda"
@@ -369,7 +379,7 @@ export const PresidenciaAll = () => {
                 <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
                     <Form.Control
-                      onChange={(e) => setSearchNacional(e.target.value)}
+                      onChange={(e) => setSearchVuelta2(e.target.value)}
                       placeholder="Buscar Nombre Candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
@@ -517,11 +527,11 @@ export const PresidenciaAll = () => {
                 <tbody className="color container_table">
                   {arrayPrecidenciaSegunda
                     .filter((myVotes) => {
-                      return searchNacional === ""
+                      return searchVuelta2 === ""
                         ? myVotes
                         : myVotes.candidate_name
                             .toLowerCase()
-                            .includes(searchNacional.toLocaleLowerCase());
+                            .includes(searchVuelta2.toLocaleLowerCase());
                     })
                     .map((myVotes, contador) => (
                       <tr key={contador} className="primeraColumna">

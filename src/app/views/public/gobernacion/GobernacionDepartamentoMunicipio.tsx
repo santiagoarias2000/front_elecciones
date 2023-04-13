@@ -1,71 +1,46 @@
-import { useState, useEffect } from "react";
-import VotesCongreso from "../../../models/VotesCongreso";
-import ServicePrivate from "../../../services/ServicePrivate";
-import ApiBack from "../../../utilities/domains/ApiBack";
-import Form from "react-bootstrap/Form";
-import camara from "../../../../assets/image/HeaderTable/CRterrirorial.webp";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import Municipality from "../../../models/Municipality";
+import { useEffect, useState } from "react";
 import {
   Col,
-  Dropdown,
+  Form,
   InputGroup,
   Modal,
   Pagination,
   Row,
   Table,
 } from "react-bootstrap";
+import { useNavigate, useParams } from "react-router-dom";
+import senado from "../../../../assets/image/HeaderTable/ELEGOBERNACION.webp";
+import VotesCongreso from "../../../models/VotesCongreso";
+import ApiBack from "../../../utilities/domains/ApiBack";
+import ServicePrivate from "../../../services/ServicePrivate";
+import Municipality from "../../../models/Municipality";
 import Department from "../../../models/Department";
-import CandidatosCamara from "../../../mocks/models/CandidatosCamara";
-import { ARREGLO_CANDIDATOS_ELEGIDOS } from "../../../mocks/candidatos-mocks";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
+import VotesGober from "../../../models/VotesGober";
 
-export const CamaraTerritorialDepartamentoMunicipio = () => {
-  //Format Number Votes 
-  const format = new Intl.NumberFormat('es');
-
-  const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState<
-    CandidatosCamara[]
-  >(ARREGLO_CANDIDATOS_ELEGIDOS);
-  const [search, setSearch] = useState("");
-  const [show, setShow] = useState(true);
-  const handleClose = () => setShow(false);
-  const [searchMunicipio, setSearchMunicipio] = useState("");
-  let active = 1;
-  let items = [];
-  for (let number = 1; number <= 5; number++) {
-    items.push(
-      <Pagination.Item key={number} active={number === active}>
-        {number}
-      </Pagination.Item>
-    );
-  }
+export const GobernacionDepartamentoMunicipio = () => {
   let { idDepartment } = useParams();
   let { idMunicipality } = useParams();
-  const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
-    useState<VotesCongreso[]>([]);
-  const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
+  const [search, setSearch] = useState("");
+  const [searchMunicipio, setSearchMunicipio] = useState("");
+
+  const [arrayMunicipios, setMunicipios] = useState<Municipality[]>([]);
   const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
     Municipality[]
   >([]);
-  const [arrayDepartamento, setArrayDepartamento] = useState<Department[]>([]);
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
 
-  const getVotosCamaraTerritorial = async () => {
-    const result = await ServicePrivate.requestGET(
-      ApiBack.CAMARA_TERRITORIAL_DEPARTAMENTO_MUNICIPIO +
-        "/" +
-        idDepartment +
-        "/municipio/" +
-        idMunicipality
-    );
-    setArrayVotosCamaraTerritorial(result);
-    setShow(false);
-  };
-  const getMunicipality = async () => {
-    const result = await ServicePrivate.requestGET(
+  const [
+    arrayVotesGobernacionDepartamental,
+    setarrayVotesGobernacionDepartamental,
+  ] = useState<VotesGober[]>([]);
+  const getMunicipios = async () => {
+    const resultado = await ServicePrivate.requestGET(
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
     );
-    setArrayMunicipio(result);
+    setMunicipios(resultado);
+    return resultado;
   };
 
   const getNameMunicipality = async () => {
@@ -74,68 +49,47 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
     );
     setArrayNameMunicipality(result);
   };
-  const getDepartamento = async () => {
-    const result = await ServicePrivate.requestGET(
-      ApiBack.NOMBRE_DEPARTAMENTO_TERRITORIAL + "/" + idDepartment
-    );
-    setArrayDepartamento(result);
+  const getVotosGobernacionDepartamental = async () => {
+    const urlCargarDepartamento =
+      ApiBack.GOBERNACION_DEPARTAMENTO_MUNICIPIO +
+      "/" +
+      idDepartment +
+      "/municipio/" +
+      idMunicipality;
+    const result = await ServicePrivate.requestGET(urlCargarDepartamento);
+    setarrayVotesGobernacionDepartamental(result);
+    if (result) {
+      setarrayVotesGobernacionDepartamental(result);
+      setShow(false);
+    }
   };
-  const CandidatosElegidosCamara = (miCandidato: any) => {
-    var elegidosi: any;
-    var elegidono: any;
-    arrayCandidatosElegidos.map((item) => {
-      if (item.candidate_name === miCandidato) {
-        elegidosi = "True";
-      } else {
-        elegidono = "False";
-      }
-    });
-    return elegidosi;
-  };
-
+  //Format Number Votes
+  const format = new Intl.NumberFormat();
   useEffect(() => {
-    getVotosCamaraTerritorial();
-    getMunicipality();
+    getVotosGobernacionDepartamental();
+    getMunicipios();
     getNameMunicipality();
-    getDepartamento();
-  }, []);
-
+  }, [idDepartment]);
   return (
     <main id="main" className="main">
       <img
-        src={camara}
-        style={{
-          width: "100%",
-          maxHeight: "80%",
-          marginTop: "3vw",
-          borderRadius: "5px 5px 0 0",
-          boxShadow: "0px 0 20px #052851",
-        }}
+        src={senado}
+        style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
         alt="logo principal para la parte superior de la pagina web"
       />
-      <div className="side_bar"></div>
       {/* Navegación estilo breadcrumb: Inicio */}
 
       {/* Navegación estilo breadcrumb: Fin */}
 
       {/* Ejemplo de una tabla para presentación de datos: Inicio */}
+      <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div
-            className="container-fluid display-flex justify-content-center"
-            style={{
-              background: "#052851",
-              color: "#FFFFFF",
-              height: "40px",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
+          <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b className="title_table">TERRITORIAL DEPARTAMENTAL</b>
+              <b className="title_table">VOTOS GOBERNACIÓN</b> &nbsp;
             </div>
           </div>
-
           <div className="container responsive">
             <div className="row">
               <div className="col-sm ">
@@ -162,7 +116,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                       }}
                     />
                     <li>
-                      {arrayMunicipio
+                      {arrayMunicipios
                         .filter((val) => {
                           if (searchMunicipio == "") {
                             return val;
@@ -174,17 +128,17 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                             return val;
                           }
                         })
-                        .map((myMunicipality, indice) => (
+                        .map((miMunicipio, indice) => (
                           <a
-                            className="dropdown-item name_deparment_respo"
+                            className="dropdown-item"
                             href={
-                              "/camara/circuncripcion/territorial/departamento/" +
-                              myMunicipality.id_department +
+                              "/gobernacion/departamento/" +
+                              idDepartment +
                               "/municipio/" +
-                              myMunicipality.id_municipality
+                              miMunicipio.id_municipality
                             }
                           >
-                            {myMunicipality.name_municipality}
+                            {miMunicipio.name_municipality}
                           </a>
                         ))}
                     </li>
@@ -210,6 +164,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                       onChange={(e) => setSearch(e.target.value)}
                       placeholder="Buscar nombre Candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
                     ></Form.Control>
                   </InputGroup>
                 </Form>
@@ -218,11 +173,11 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
           </div>
           <div className="container no_responsive">
             <div className="row">
-              <div className="col-sm">
+              <div className="col-sm ">
                 <div className="dropdown text-center my-1">
                   <button
                     type="button"
-                    className="buttonBack buttonBack-primary dropdown-toggle name_deparment_respo"
+                    className="buttonBack buttonBack-primary dropdown-toggle"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
@@ -242,7 +197,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                       }}
                     />
                     <li>
-                      {arrayMunicipio
+                      {arrayMunicipios
                         .filter((val) => {
                           if (searchMunicipio == "") {
                             return val;
@@ -254,20 +209,17 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                             return val;
                           }
                         })
-                        .map((myMunicipality, indice) => (
+                        .map((miMunicipio, indice) => (
                           <a
-                            className="dropdown-item name_deparment_respo"
+                            className="dropdown-item"
                             href={
-                              "/camara/circuncripcion/territorial/departamento/" +
-                              myMunicipality.id_department +
+                              "/gobernacion/departamento/" +
+                              idDepartment +
                               "/municipio/" +
-                              myMunicipality.id_municipality
+                              miMunicipio.id_municipality
                             }
                           >
-                            <b className="name_text">
-                            {myMunicipality.name_municipality}
-                            </b>
-                            
+                            {miMunicipio.name_municipality}
                           </a>
                         ))}
                     </li>
@@ -293,6 +245,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                       onChange={(e) => setSearch(e.target.value)}
                       placeholder="Buscar nombre Candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
                     ></Form.Control>
                   </InputGroup>
                 </Form>
@@ -305,12 +258,23 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
               className="colorTable table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead className="container_table sticky" style={{backgroundColor:"#fff"}}>
+              <thead
+                className="container_table sticky"
+                style={{ backgroundColor: "#fff" }}
+              >
                 <tr>
-                  <th className="text-center" style={{ width: "30%" }} id="text_left_name">
+                  <th
+                    className="text-center"
+                    style={{ width: "30%" }}
+                    id="text_left_name"
+                  >
                     PARTIDO POLÍTICO
                   </th>
-                  <th className="text-center" style={{ width: "30%" }} id="text_left_name">
+                  <th
+                    className="text-center"
+                    style={{ width: "30%" }}
+                    id="text_left_name"
+                  >
                     NOMBRE CANDIDATO
                   </th>
                   <th className="text-center" style={{ width: "20%" }}>
@@ -322,61 +286,30 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotesCamaraTerritorial
+                {arrayVotesGobernacionDepartamental
                   .filter((val) => {
                     if (search == "") {
                       return val;
                     } else if (
-                      val.candidate_name
+                      val.description_politicparty
                         .toLocaleLowerCase()
                         .includes(search.toLocaleLowerCase())
                     ) {
                       return val;
                     }
                   })
-                  .map((myVotes) => (
-                    <tr>
-                      <td
-                        className={
-                          CandidatosElegidosCamara(myVotes.candidate_name) ===
-                          "True"
-                            ? "text-center text-danger fst-italic font-weight-bold"
-                            : "text-center"
-                        }
-                        id="text_left_name"
-                      >
+                  .map((myVotes, contador) => (
+                    <tr key={contador}>
+                      <td className="text_left_name">
                         {myVotes.description_politicparty}
                       </td>
-                      <td
-                        className={
-                          CandidatosElegidosCamara(myVotes.candidate_name) ===
-                          "True"
-                            ? "text-center text-danger fst-italic font-weight-bold"
-                            : "text-center"
-                        }
-                        id="text_left_name"
-                      >
-                        
+                      <td className="text_left_name">
                         {myVotes.candidate_name}
                       </td>
-                      <td
-                        className={
-                          CandidatosElegidosCamara(myVotes.candidate_name) ===
-                          "True"
-                            ? "text-center text-danger fst-italic font-weight-bold"
-                            : "text-center"
-                        }
-                      >
+                      <td className="text-center">
                         {format.format(myVotes.votos)}
                       </td>
-                      <td
-                        className={
-                          CandidatosElegidosCamara(myVotes.candidate_name) ===
-                          "True"
-                            ? "text-center text-danger fst-italic font-weight-bold"
-                            : "text-center"
-                        }
-                      >
+                      <td className="text-center">
                         {format.format(myVotes.votos_muicipio)}
                       </td>
                     </tr>
@@ -384,6 +317,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
               </tbody>
             </table>
           </div>
+
           <div className="dropdown">
             <div
               className="container-fluid display-flex justify-content-center"
@@ -396,12 +330,9 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
             >
               <div className="text-center">
                 <a
+                  href={"/gobernacion/departamento/" + idDepartment}
                   type="button"
                   className="buttonBack buttonBack-primary"
-                  href={
-                    "/camara/circuncripcion/territorial/departamento/" +
-                    idDepartment
-                  }
                 >
                   <i className="bi bi-arrow-left-circle"></i>
                   &nbsp;&nbsp;REGRESAR A ELEGIR MUNICIPIO
@@ -409,30 +340,31 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
               </div>
             </div>
           </div>
-          <Modal
-            show={show}
-            backdrop="static"
-            keyboard={false}
-            onHide={handleClose}
-            centered
-            style={{ background: "#FFFFFFBF !important" }}
-          >
-            <Modal.Body className="text-center">
-              <div className="text-center">
-                <img
-                  src={ImageSpinner}
-                  style={{ height: "100px", width: "200px" }}
-                />
-                <div className="mt-4">
-                  <div className="spinner-border text-danger" role="status">
-                    <span className=" visually-hidden">Loading...</span>
-                  </div>
+        </div>
+        <Modal
+          show={show}
+          backdrop="static"
+          keyboard={false}
+          onHide={handleClose}
+          centered
+          style={{ background: "#FFFFFFBF !important" }}
+        >
+          <Modal.Body className="text-center">
+            <div className="text-center">
+              <img
+                src={ImageSpinner}
+                style={{ height: "100px", width: "200px" }}
+              />
+              <div className="mt-4">
+                <div className="spinner-border text-danger" role="status">
+                  <span className=" visually-hidden">Loading...</span>
                 </div>
               </div>
-            </Modal.Body>
-          </Modal>
-        </div>
+            </div>
+          </Modal.Body>
+        </Modal>
       </div>
+      <div className="position-absolute bottom-50 end-50"></div>
       {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>
   );
