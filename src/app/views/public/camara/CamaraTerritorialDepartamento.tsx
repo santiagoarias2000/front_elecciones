@@ -303,13 +303,13 @@ export const CamaraTerritorialDepartamento = () => {
           >
             <thead className="container_table sticky" style={{backgroundColor:"#fff"}}>
               <tr>
-                <th className="text-center" style={{ width: "35%" }}>
+                <th className="text-center" style={{ width: "35%" }} id="text_left_name">
                   PARTIDO POLÍTICO
                 </th>
-                <th className="text-center" style={{ width: "40%" }}>
+                <th className="text-center" style={{ width: "40%" }} id="text_left_name">
                   NOMBRE CANDIDATO
                 </th>
-                <th className="text-center" style={{ width: "25 %" }}>
+                <th className="text-center" style={{ width: "25%" }}>
                   VOTOS DEPARTAMENTO
                 </th>
               </tr>
@@ -333,8 +333,8 @@ export const CamaraTerritorialDepartamento = () => {
                       className={
                         CandidatosElegidosCamara(myVotes.candidate_name) ===
                         "True"
-                          ? "text-center text-danger fst-italic font-weight-bold"
-                          : "text-center"
+                          ? "text_left text-danger fst-italic font-weight-bold"
+                          : "text_left"
                       }
                       id="text_left_name"
                     >

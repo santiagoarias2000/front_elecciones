@@ -19,6 +19,7 @@ import CandidatosCamara from "../../../mocks/models/CandidatosCamara";
 import { ARREGLO_CANDIDATOS_ELEGIDOS } from "../../../mocks/candidatos-mocks";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
+
 export const CamaraIndigenaDepartamentoMunicipio = () => {
   //Format Number Votes 
   const format = new Intl.NumberFormat('es');
@@ -305,13 +306,13 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "30%" }}>
+                  <th className="text-center" style={{ width: "30%" }} id="text_left_name">
                     PARTIDO POLÍTICO
                   </th>
-                  <th className="text-center" style={{ width: "25%" }}>
+                  <th className="text-center" style={{ width: "30%" }} id="text_left_name">
                     NOMBRE CANDIDATO
                   </th>
-                  <th className="text-center" style={{ width: "25%" }}>
+                  <th className="text-center" style={{ width: "20%" }}>
                     VOTOS DEPARTAMENTO
                   </th>
                   <th className="text-center" style={{ width: "20%" }}>
@@ -431,27 +432,24 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
             </div>
           </div>
           <Modal
-            show={show}
-            backdrop="static"
-            keyboard={false}
-            onHide={handleClose}
-            centered
-            style={{ background: "#FFFFFFBF !important" }}
-          >
-            <Modal.Body className="text-center">
-              <div className="text-center">
-                <img
-                  src={ImageSpinner}
-                  style={{ height: "100px", width: "200px" }}
-                />
-                <div className="mt-4">
-                  <div className="spinner-border text-danger" role="status">
-                    <span className=" visually-hidden">Loading...</span>
-                  </div>
+          show={show}
+          backdrop="static"
+          keyboard={false}
+          onHide={handleClose}
+          centered
+          style={{ background: "#FFFFFFBF !important" }}
+        >
+          <Modal.Body className="text-center">
+            <div className="text-center">
+              <img src={ImageSpinner} style={{height:"100px", width:"200px"}}/>
+              <div className="mt-4">
+                <div className="spinner-border text-danger" role="status">
+                  <span className=" visually-hidden">Loading...</span>
                 </div>
               </div>
-            </Modal.Body>
-          </Modal>
+            </div>
+          </Modal.Body>
+        </Modal>
         </div>
       </div>
 

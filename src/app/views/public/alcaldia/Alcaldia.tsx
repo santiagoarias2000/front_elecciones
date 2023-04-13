@@ -133,7 +133,7 @@ export const Alcaldia = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/alcaldia/regional/" +
+                            "/alcaldia/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >

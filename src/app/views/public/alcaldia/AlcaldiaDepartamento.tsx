@@ -1,15 +1,7 @@
 import { useEffect, useState } from "react";
-import {
-  Col,
-  Form,
-  InputGroup,
-  Modal,
-  Pagination,
-  Row,
-  Table,
-} from "react-bootstrap";
+import { Form, InputGroup, Modal, } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
-import senado from "../../../../assets/image/HeaderTable/ELEASAMBLEA.webp";
+import camara from "../../../../assets/image/HeaderTable/ELEALCALDIA.webp";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
@@ -18,7 +10,7 @@ import Department from "../../../models/Department";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 import VotesGober from "../../../models/VotesGober";
 
-export const AsambleaRegional = () => {
+export const AlcaldiaDepartamento = () => {
   let { idDepartment } = useParams();
   const [search, setSearch] = useState("");
   const [searchMunicipio, setSearchMunicipio] = useState("");
@@ -45,9 +37,9 @@ export const AsambleaRegional = () => {
     );
     setArrayDepartamento(result);
   };
-  const getVotosSenadoDepartamental = async () => {
+  const getVotosAsambleaDepartamental = async () => {
     const urlCargarDepartamento =
-      ApiBack.ASAMBLEA_DEPARTAMENTO + "/" + idDepartment;
+      ApiBack.ALCALDIA_DEPARTAMENTO + "/" + idDepartment;
     const result = await ServicePrivate.requestGET(urlCargarDepartamento);
     setarrayVotesAsambleaDepartamental(result);
     if (result) {
@@ -58,14 +50,14 @@ export const AsambleaRegional = () => {
   //Format Number Votes
   const format = new Intl.NumberFormat();
   useEffect(() => {
-    getVotosSenadoDepartamental();
+    getVotosAsambleaDepartamental();
     getMunicipios();
     getDepartamento();
   }, [idDepartment]);
   return (
     <main id="main" className="main">
       <img
-        src={senado}
+        src={camara}
         style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
         alt="logo principal para la parte superior de la pagina web"
       />
@@ -80,7 +72,7 @@ export const AsambleaRegional = () => {
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
               <b className="title_table">
-                VOTOS REGIONALES
+                VOTOS ASAMBLEA
               </b>{" "}
               &nbsp;
             </div>
@@ -127,7 +119,7 @@ export const AsambleaRegional = () => {
                           <a
                             className="dropdown-item"
                             href={
-                              "/senado/indigena/departamento/" +
+                              "/asamblea/departamento/" +
                               idDepartment +
                               "/municipio/" +
                               miMunicipio.id_municipality
@@ -201,19 +193,17 @@ export const AsambleaRegional = () => {
                         })
                         .map((miMunicipio, indice) => (
                           <a
-                            className="dropdown-item"
-                            href={
-                              "/senado/indigena/departamento/" +
-                              idDepartment +
-                              "/municipio/" +
-                              miMunicipio.id_municipality
-                            }
-                          >
-                            <b className="name_text">
-                              {miMunicipio.name_municipality}
-                            </b>
-                          </a>
-                        ))}
+                          className="dropdown-item"
+                          href={
+                            "/asamblea/departamento/" +
+                            idDepartment +
+                            "/municipio/" +
+                            miMunicipio.id_municipality
+                          }
+                        >
+                          {miMunicipio.name_municipality}
+                        </a>
+                      ))}
                     </li>
                   </ul>
                 </div>
@@ -250,14 +240,14 @@ export const AsambleaRegional = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "40%" }}>
-                    PARTIDO POLÍTICO
+                  <th className="text-center" style={{ width: "50%" }} id="text_left_name">
+                    MUNICIPIO
                   </th>
-                  <th className="text-center" style={{ width: "40%" }}>
-                    NOMBRE CANDIDATO
+                  <th className="text-center" style={{ width: "35%" }} id="text_left_name">
+                    TOTAL VOTOS
                   </th>
-                  <th className="text-center" style={{ width: "20%" }}>
-                    TOTAL VOTOS NACIONAL
+                  <th className="text-center" style={{ width: "15%" }}>
+                    VOTOS DEPARTAMENTO
                   </th>
                 </tr>
               </thead>
