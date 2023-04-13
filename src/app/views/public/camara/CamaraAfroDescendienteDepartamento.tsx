@@ -288,10 +288,10 @@ export const CamaraAfroDescendienteDepartamento = () => {
               style={{ backgroundColor: "#fff" }}
             >
               <tr>
-                <th className="text-center" style={{ width: "35%" }}>
+                <th className="text-center" style={{ width: "35%" }} id="text_left_name">
                   PARTIDO POLÍTICO
                 </th>
-                <th className="text-center" style={{ width: "40%" }}>
+                <th className="text-center" style={{ width: "40%" }} id="text_left_name">
                   NOMBRE CANDIDATO
                 </th>
                 <th className="text-center" style={{ width: "25 %" }}>

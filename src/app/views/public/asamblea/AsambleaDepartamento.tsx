@@ -1,15 +1,7 @@
 import { useEffect, useState } from "react";
-import {
-  Col,
-  Form,
-  InputGroup,
-  Modal,
-  Pagination,
-  Row,
-  Table,
-} from "react-bootstrap";
+import { Form, InputGroup, Modal, } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
-import senado from "../../../../assets/image/HeaderTable/ELEGOBERNACION.webp";
+import asamblea from "../../../../assets/image/HeaderTable/ELEASAMBLEA.webp";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
@@ -18,7 +10,7 @@ import Department from "../../../models/Department";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 import VotesGober from "../../../models/VotesGober";
 
-export const GobernacionDepartamento = () => {
+export const AsambleaDepartamento = () => {
   let { idDepartment } = useParams();
   const [search, setSearch] = useState("");
   const [searchMunicipio, setSearchMunicipio] = useState("");
@@ -29,7 +21,7 @@ export const GobernacionDepartamento = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesGobernacionDepartamental, setarrayVotesGobernacionDepartamental] =
+  const [arrayVotesAsambleaDepartamental, setarrayVotesAsambleaDepartamental] =
     useState<VotesGober[]>([]);
   const getMunicipios = async () => {
     const resultado = await ServicePrivate.requestGET(
@@ -41,31 +33,31 @@ export const GobernacionDepartamento = () => {
 
   const getDepartamento = async () => {
     const result = await ServicePrivate.requestGET(
-      ApiBack.NOMBRE_DEPARTAMENTO_GOBERNACION + "/" + idDepartment
+      ApiBack.NOMBRE_DEPARTAMENTO_ASAMBLEA + "/" + idDepartment
     );
     setArrayDepartamento(result);
   };
-  const getVotosSenadoDepartamental = async () => {
+  const getVotosAsambleaDepartamental = async () => {
     const urlCargarDepartamento =
-      ApiBack.GOBERNACION_DEPARTAMENTO + "/" + idDepartment;
+      ApiBack.ASAMBLEA_DEPARTAMENTO + "/" + idDepartment;
     const result = await ServicePrivate.requestGET(urlCargarDepartamento);
-    setarrayVotesGobernacionDepartamental(result);
+    setarrayVotesAsambleaDepartamental(result);
     if (result) {
-      setarrayVotesGobernacionDepartamental(result);
+      setarrayVotesAsambleaDepartamental(result);
       setShow(false);
     }
   };
   //Format Number Votes
   const format = new Intl.NumberFormat();
   useEffect(() => {
-    getVotosSenadoDepartamental();
+    getVotosAsambleaDepartamental();
     getMunicipios();
     getDepartamento();
   }, [idDepartment]);
   return (
     <main id="main" className="main">
       <img
-        src={senado}
+        src={asamblea}
         style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
         alt="logo principal para la parte superior de la pagina web"
       />
@@ -80,7 +72,7 @@ export const GobernacionDepartamento = () => {
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
               <b className="title_table">
-                VOTOS GOBERNACIÓN
+                VOTOS ASAMBLEA
               </b>{" "}
               &nbsp;
             </div>
@@ -127,7 +119,7 @@ export const GobernacionDepartamento = () => {
                           <a
                             className="dropdown-item"
                             href={
-                              "/gobernacion/departamento/" +
+                              "/asamblea/departamento/" +
                               idDepartment +
                               "/municipio/" +
                               miMunicipio.id_municipality
@@ -201,17 +193,17 @@ export const GobernacionDepartamento = () => {
                         })
                         .map((miMunicipio, indice) => (
                           <a
-                            className="dropdown-item"
-                            href={
-                              "/gobernacion/departamento/" +
-                              idDepartment +
-                              "/municipio/" +
-                              miMunicipio.id_municipality
-                            }
-                          >
-                            {miMunicipio.name_municipality}
-                          </a>
-                        ))}
+                          className="dropdown-item"
+                          href={
+                            "/asamblea/departamento/" +
+                            idDepartment +
+                            "/municipio/" +
+                            miMunicipio.id_municipality
+                          }
+                        >
+                          {miMunicipio.name_municipality}
+                        </a>
+                      ))}
                     </li>
                   </ul>
                 </div>
@@ -260,7 +252,7 @@ export const GobernacionDepartamento = () => {
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotesGobernacionDepartamental
+                {arrayVotesAsambleaDepartamental
                   .filter((val) => {
                     if (search == "") {
                       return val;
@@ -324,7 +316,7 @@ export const GobernacionDepartamento = () => {
             >
               <div className="text-center">
                 <a
-                  href="/gobernacion"
+                  href="/asamblea"
                   type="button"
                   className="buttonBack buttonBack-primary"
                 >

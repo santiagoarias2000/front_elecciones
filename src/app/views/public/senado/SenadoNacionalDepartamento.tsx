@@ -253,14 +253,14 @@ export const SenadoNacionalDepartamento = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }}>
+                  <th className="text-center" style={{ width: "35%" }} id="text_left_name">
                     PARTIDO POLÍTICO
                   </th>
-                  <th className="text-center" style={{ width: "35%" }}>
+                  <th className="text-center" style={{ width: "40%" }} id="text_left_name">
                     NOMBRE CANDIDATO
                   </th>
-                  <th className="text-center" style={{ width: "30%" }}>
-                    TOTAL VOTOS NACIONAL
+                  <th className="text-center" style={{ width: "25%" }}>
+                    VOTOS DEPARTAMENTO
                   </th>
                 </tr>
               </thead>
@@ -279,7 +279,7 @@ export const SenadoNacionalDepartamento = () => {
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text-center">
+                      <td className="text_left_name">
                         {myVotes.description_politicparty}
                       </td>
                       <td className="text_left_name">{myVotes.candidate_name}</td>

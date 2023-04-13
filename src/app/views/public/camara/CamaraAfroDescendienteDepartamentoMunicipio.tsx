@@ -310,13 +310,13 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
           >
             <thead className="container_table sticky" style={{backgroundColor:"#fff"}}>
               <tr>
-                <th className="text-center" style={{ width: "30%" }}>
+                <th className="text-center" style={{ width: "30%" }} id="text_left_name">
                   PARTIDO POLÍTICO
                 </th>
-                <th className="text-center" style={{ width: "25%" }}>
+                <th className="text-center" style={{ width: "30%" }} id="text_left_name">
                   NOMBRE CANDIDATO
                 </th>
-                <th className="text-center" style={{ width: "25%" }}>
+                <th className="text-center" style={{ width: "20%" }}>
                   VOTOS DEPARTAMENTO
                 </th>
                 <th className="text-center" style={{ width: "20%" }}>

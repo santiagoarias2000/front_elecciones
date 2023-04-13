@@ -25,6 +25,12 @@ export const Header = () => {
               <a href="/#about" style={{ textDecoration: "none" }}>
                 Inicio
               </a>
+              <a href="#" style={{ textDecoration: "none" }}>
+                Preguntas frecuentes
+              </a>
+              <Link to={"/blog"} style={{ textDecoration: "none" }}>
+                Nuestro Blog
+              </Link>
               <a
                 href="/#resultados"
                 className="getstarted scrollto pruebita"
@@ -32,12 +38,6 @@ export const Header = () => {
               >
                 Resultados&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </a>
-              <a href="#" style={{ textDecoration: "none" }}>
-                Preguntas frecuentes
-              </a>
-              <Link to={"/blog"} style={{ textDecoration: "none" }}>
-                Nuestro Blog
-              </Link>
               {/* <Nav.Link className="getstarted scrollto pruebita">
                 &nbsp;Iniciar Sesión&nbsp;
               </Nav.Link> */}

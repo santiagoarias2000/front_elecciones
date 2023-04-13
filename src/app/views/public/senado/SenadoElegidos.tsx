@@ -86,7 +86,7 @@ export const SenadoElegidos = () => {
                     DEPARTAMENTO
                   </th>
                   <th className="text-center" style={{ width: "20%" }}>
-                    MAS VOTACION
+                    MAYOR VOTACIÓN
                   </th>
                 </tr>
               </thead>
@@ -189,7 +189,7 @@ export const SenadoElegidos = () => {
                     DEPARTAMENTO
                   </th>
                   <th className="text-center" style={{ width: "20%" }}>
-                    MAS VOTACION
+                    MAYOR VOTACIÓN
                   </th>
                 </tr>
               </thead>

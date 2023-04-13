@@ -1,15 +1,7 @@
 import { useEffect, useState } from "react";
-import {
-  Col,
-  Form,
-  InputGroup,
-  Modal,
-  Pagination,
-  Row,
-  Table,
-} from "react-bootstrap";
+import { Form, InputGroup, Modal } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
-import senado from "../../../../assets/image/HeaderTable/ELEALCALDIA.webp";
+import asamblea from "../../../../assets/image/HeaderTable/ELEASAMBLEA.webp";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
@@ -18,18 +10,22 @@ import Department from "../../../models/Department";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 import VotesGober from "../../../models/VotesGober";
 
-export const AlcaldiaRegional = () => {
+export const AsambleaDepartamentoMunicipio = () => {
   let { idDepartment } = useParams();
+  let { idMunicipality } = useParams();
+
   const [search, setSearch] = useState("");
   const [searchMunicipio, setSearchMunicipio] = useState("");
 
   const [arrayMunicipios, setMunicipios] = useState<Municipality[]>([]);
-  const [arrayDepartamento, setArrayDepartamento] = useState<Department[]>([]);
+  const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
+    Municipality[]
+  >([]);
 
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesAlacadiaDepartamental, setarrayVotesAlacadiaDepartamental] =
+  const [arrayVotesAsambleaDepartamental, setarrayVotesAsambleaDepartamental] =
     useState<VotesGober[]>([]);
   const getMunicipios = async () => {
     const resultado = await ServicePrivate.requestGET(
@@ -39,33 +35,37 @@ export const AlcaldiaRegional = () => {
     return resultado;
   };
 
-  const getDepartamento = async () => {
+  const getNameMunicipality = async () => {
     const result = await ServicePrivate.requestGET(
-      ApiBack.NOMBRE_DEPARTAMENTO_ALCADIA + "/" + idDepartment
+      ApiBack.NOMBRE_MUNICIPIO + "/" + idMunicipality
     );
-    setArrayDepartamento(result);
+    setArrayNameMunicipality(result);
   };
-  const getVotosAlcaldiaDepartamental = async () => {
+  const getVotosAsambleaDepartamental = async () => {
     const urlCargarDepartamento =
-      ApiBack.ALCALDIA_DEPARTAMENTO + "/" + idDepartment;
+    ApiBack.ASAMBLEA_DEPARTAMENTO_MUNICIPIO +
+    "/" +
+    idDepartment +
+    "/municipio/" +
+    idMunicipality;
     const result = await ServicePrivate.requestGET(urlCargarDepartamento);
-    setarrayVotesAlacadiaDepartamental(result);
+    setarrayVotesAsambleaDepartamental(result);
     if (result) {
-      setarrayVotesAlacadiaDepartamental(result);
+      setarrayVotesAsambleaDepartamental(result);
       setShow(false);
     }
   };
   //Format Number Votes
   const format = new Intl.NumberFormat();
   useEffect(() => {
-    getVotosAlcaldiaDepartamental();
+    getVotosAsambleaDepartamental();
     getMunicipios();
-    getDepartamento();
+    getNameMunicipality();
   }, [idDepartment]);
   return (
     <main id="main" className="main">
       <img
-        src={senado}
+        src={asamblea}
         style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
         alt="logo principal para la parte superior de la pagina web"
       />
@@ -79,18 +79,73 @@ export const AlcaldiaRegional = () => {
         <div className="cardBorder card">
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b className="title_table">
-                VOTOS AlCALDIAS
-              </b>{" "}
-              &nbsp;
+              <b className="title_table">VOTOS ASAMBLEA</b> &nbsp;
             </div>
           </div>
           <div className="container responsive">
             <div className="row">
+              <div className="col-sm ">
+                <div className="dropdown text-center my-3">
+                  <button
+                    type="button"
+                    className="buttonBack buttonBack-primary dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Municipios
+                  </button>
+                  <ul
+                    className="dropdown-menu selectpicker"
+                    data-live-search="true"
+                    style={{ maxHeight: "200px", overflowY: "auto" }}
+                  >
+                    <input
+                      type="text"
+                      placeholder="Busqueda..."
+                      className="sticky-top"
+                      onChange={(event) => {
+                        setSearchMunicipio(event.target.value);
+                      }}
+                    />
+                    <li>
+                      {arrayMunicipios
+                        .filter((val) => {
+                          if (searchMunicipio == "") {
+                            return val;
+                          } else if (
+                            val.name_municipality
+                              .toLocaleLowerCase()
+                              .includes(searchMunicipio.toLocaleLowerCase())
+                          ) {
+                            return val;
+                          }
+                        })
+                        .map((miMunicipio, indice) => (
+                            <a
+                            className="dropdown-item"
+                            href={
+                              "/asamblea/departamento/" +
+                              idDepartment +
+                              "/municipio/" +
+                              miMunicipio.id_municipality
+                            }
+                          >
+                            {miMunicipio.name_municipality}
+                          </a>
+                        ))}
+                    </li>
+                  </ul>
+                </div>
+              </div>
               <div className="col">
                 <h6 className="text-center my-4" style={{ color: "#052851" }}>
-                  {arrayDepartamento.map((myDepartment) => (
-                    <b>{myDepartment.name_department}</b>
+                  {arrayNameMunicipality.map((myNameMunicipality) => (
+                    <b>
+                      {myNameMunicipality.name_municipality}
+                      {" ("}
+                      {myNameMunicipality.department}
+                      {")"}
+                    </b>
                   ))}
                 </h6>
               </div>
@@ -110,10 +165,68 @@ export const AlcaldiaRegional = () => {
           </div>
           <div className="container no_responsive">
             <div className="row">
+              <div className="col-sm ">
+                <div className="dropdown text-center my-1">
+                  <button
+                    type="button"
+                    className="buttonBack buttonBack-primary dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Municipios
+                  </button>
+                  <ul
+                    className="dropdown-menu selectpicker"
+                    data-live-search="true"
+                    style={{ maxHeight: "200px", overflowY: "auto" }}
+                  >
+                    <input
+                      type="text"
+                      placeholder="Busqueda..."
+                      className="sticky-top"
+                      onChange={(event) => {
+                        setSearchMunicipio(event.target.value);
+                      }}
+                    />
+                    <li>
+                      {arrayMunicipios
+                        .filter((val) => {
+                          if (searchMunicipio == "") {
+                            return val;
+                          } else if (
+                            val.name_municipality
+                              .toLocaleLowerCase()
+                              .includes(searchMunicipio.toLocaleLowerCase())
+                          ) {
+                            return val;
+                          }
+                        })
+                        .map((miMunicipio, indice) => (
+                            <a
+                            className="dropdown-item"
+                            href={
+                              "/asamblea/departamento/" +
+                              idDepartment +
+                              "/municipio/" +
+                              miMunicipio.id_municipality
+                            }
+                          >
+                            {miMunicipio.name_municipality}
+                          </a>
+                        ))}
+                    </li>
+                  </ul>
+                </div>
+              </div>
               <div className="col">
                 <h6 className="text-center my-2" style={{ color: "#052851" }}>
-                  {arrayDepartamento.map((myDepartment) => (
-                    <b>{myDepartment.name_department}</b>
+                  {arrayNameMunicipality.map((myNameMunicipality) => (
+                    <b>
+                      {myNameMunicipality.name_municipality}
+                      {" ("}
+                      {myNameMunicipality.department}
+                      {")"}
+                    </b>
                   ))}
                 </h6>
               </div>
@@ -142,19 +255,30 @@ export const AlcaldiaRegional = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "40%" }}>
-                    MUNICIPIO
+                  <th
+                    className="text-center"
+                    style={{ width: "30%" }}
+                    id="text_left_name"
+                  >
+                    PARTIDO POLÍTICO
                   </th>
-                  <th className="text-center" style={{ width: "40%" }}>
-                    TOTAL VOTOS NACIONAL
+                  <th
+                    className="text-center"
+                    style={{ width: "30%" }}
+                    id="text_left_name"
+                  >
+                    NOMBRE CANDIDATO
                   </th>
                   <th className="text-center" style={{ width: "20%" }}>
-                    
+                    VOTOS DEPARTAMENTO
+                  </th>
+                  <th className="text-center" style={{ width: "20%" }}>
+                    VOTOS MUNICIPIO
                   </th>
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotesAlacadiaDepartamental
+                {arrayVotesAsambleaDepartamental
                   .filter((val) => {
                     if (search == "") {
                       return val;
@@ -168,51 +292,22 @@ export const AlcaldiaRegional = () => {
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text_left_name" style={{paddingLeft:"17%"}}>
-                        {myVotes.municipality.name_municipality}
+                      <td className="text_left_name">
+                        {myVotes.description_politicparty}
+                      </td>
+                      <td className="text_left_name">
+                        {myVotes.candidate_name}
                       </td>
                       <td className="text-center">
                         {format.format(myVotes.votos)}
                       </td>
-                      <td className="text-center align-middle">
-                        <a
-                          className="link_departamento"
-                          href={
-                            "/alcaldia/regional/" +
-                            myVotes.municipality.id_municipality
-                          }
-                        >
-                          <i className="fa-solid fa-magnifying-glass fa-sm text-danger"></i>
-                        </a>
+                      <td className="text-center">
+                        {format.format(myVotes.votos_muicipio)}
                       </td>
                     </tr>
                   ))}
               </tbody>
             </table>
-          </div>
-          <div className="dropdown">
-            <div
-              className="container-fluid display-flex justify-content-center"
-              style={{
-                color: "#FFFFFF",
-                height: "40px",
-                alignItems: "right",
-              }}
-            >
-              <h6
-                className="my-2"
-                style={{
-                  color: "#052851",
-                  textAlign: "center",
-                }}
-              >
-                {arrayDepartamento.map((myDepartment) => (
-                  <b style={{ color: "#D9224E" }}>
-                    VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
-                  </b>
-                ))}
-              </h6>
-            </div>
           </div>
           <div className="dropdown">
             <div

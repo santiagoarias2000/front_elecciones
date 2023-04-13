@@ -43,10 +43,12 @@ const ApiBack = {
 
   GOBERNACION:"/api/public/gobernacion",
   GOBERNACION_DEPARTAMENTO:"/api/public/gobernacion/departamento",
+  GOBERNACION_DEPARTAMENTO_MUNICIPIO:"/api/public/gobernacion/departamento",
 
   
   ASAMBLEA:"/api/public/asamblea",
   ASAMBLEA_DEPARTAMENTO:"/api/public/asamblea/departamento",
+  ASAMBLEA_DEPARTAMENTO_MUNICIPIO:"/api/public/asamblea/departamento",
 
   ALCALDIA:"/api/public/alcaldia",
   ALCALDIA_DEPARTAMENTO:"/api/public/alcaldia/departamento",

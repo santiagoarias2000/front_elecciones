@@ -32,14 +32,15 @@ import { JalMunicipal } from "../../views/public/jal/JalMunicipal";
 
 import { Asamblea } from "../../views/public/asamblea/Asamblea";
 import { GobernacionDepartamento } from "../../views/public/gobernacion/GobernacionDepartamento";
-import { AsambleaRegional } from "../../views/public/asamblea/AsambleaRegional";
-import { AlcaldiaRegional } from "../../views/public/alcaldia/AlcaldiaRegional";
+import { AsambleaDepartamento} from "../../views/public/asamblea/AsambleaDepartamento";
+import { AlcaldiaDepartamento } from "../../views/public/alcaldia/AlcaldiaDepartamento";
+import { GobernacionDepartamentoMunicipio } from "../../views/public/gobernacion/GobernacionDepartamentoMunicipio";
+import { AsambleaDepartamentoMunicipio } from "../../views/public/asamblea/AsambleaDepartamentoMunicipio";
 import { Concejo } from "../../views/public/concejo/Concejo";
 import { ConcejoDepartamento } from "../../views/public/concejo/ConcejoDepartamento";
 import { ConcejoMunicipal } from "../../views/public/concejo/ConcejoMunicipal";
 
 //Lazy structure from use the all tsx
-
 
 const LazySenadoNacionalMunicipio =lazy(()=>import("../../views/public/senado/SenadoNacionalMunicipio").then(()=>({default:SenadoNacionalMunicipio})));
 const LazySenadoElegidos =lazy(()=>import("../../views/public/senado/SenadoElegidos").then(()=>({default:SenadoElegidos})));
@@ -71,8 +72,10 @@ const LazyConcejoDepartamento = lazy(() => import("../../views/public/concejo/Co
 const LazyConcejoDMunicipal = lazy(() => import("../../views/public/concejo/ConcejoMunicipal").then(() => ({default: ConcejoMunicipal})));
 const LazyAsamblea = lazy(() => import("../../views/public/asamblea/Asamblea").then(() => ({default: Asamblea})));
 const LazyGobernacionDepartamento = lazy(() => import("../../views/public/gobernacion/GobernacionDepartamento").then(() => ({default: GobernacionDepartamento})));
-const LazyAsambleaRegional = lazy(() => import("../../views/public/asamblea/AsambleaRegional").then(() => ({default: AsambleaRegional})));
-const LazyAlcadiaRegional = lazy(() => import("../../views/public/alcaldia/AlcaldiaRegional").then(() => ({default: AlcaldiaRegional})));
+const LazyGobernacionDepartamentoMunicipio = lazy(() => import("../../views/public/gobernacion/GobernacionDepartamentoMunicipio").then(() => ({default: GobernacionDepartamentoMunicipio})));
+const LazyAsambleaDepartamento = lazy(() => import("../../views/public/asamblea/AsambleaDepartamento").then(() => ({default:  AsambleaDepartamento})));
+const LazyAsambleaDepartamentoMunicipio = lazy(() => import("../../views/public/asamblea/AsambleaDepartamentoMunicipio").then(() => ({default:  AsambleaDepartamentoMunicipio})));
+const LazyAlcadiaDepartamento = lazy(() => import("../../views/public/alcaldia/AlcaldiaDepartamento").then(() => ({default: AlcaldiaDepartamento})));
 //Blog
 const LazyBlog = lazy(() => import("../../containers/Blog").then(() => ({default: Blog})));
 const LazyNosotros = lazy(() => import("../../views/shared/AboutUs").then(() => ({default: AboutUs})));
@@ -115,16 +118,18 @@ export const InternalRouting = () => {
       //Routes Gobernacion
       <Route path="/gobernacion" element={<LazyGobernacion/>}/>
       <Route path="/gobernacion/departamento/:idDepartment" element={<LazyGobernacionDepartamento />} />
+      <Route path="/gobernacion/departamento/:idDepartment/municipio/:idMunicipality" element={<LazyGobernacionDepartamentoMunicipio />} />
       //Routes Alcadia
       <Route path="/alcaldia" element={<LazyAlcadia/>}/>
-      <Route path="/alcaldia/regional/:idDepartment" element={<LazyAlcadiaRegional />} />
+      <Route path="/alcaldia/departamento/:idDepartment" element={<LazyAlcadiaDepartamento />} />
       //Routes Consejo
       <Route path="/concejo" element={<LazyConcejo/>}/>
       <Route path="/concejo/departamento/:idDepartment" element={<LazyConcejoDepartamento/>}/>
       <Route path="/concejo/departamento/:idDepartment/municipio/:idMunicipality" element={<LazyConcejoDMunicipal/>}/>
       //Routes Asamblea
       <Route path="/asamblea" element={<LazyAsamblea/>}/>
-      <Route path="/asamblea/regional/:idDepartment" element={<LazyAsambleaRegional />} />
+      <Route path="/asamblea/departamento/:idDepartment" element={<LazyAsambleaDepartamento />} />
+      <Route path="/asamblea/departamento/:idDepartment/municipio/:idMunicipality" element={<LazyAsambleaDepartamentoMunicipio />} />
       //Routes jal
       <Route path="/jal" element={<LazyJal/>}/>
       <Route path="/jal/departamento/:idDepartment" element={<LazyJalDepartamento/>}/>
