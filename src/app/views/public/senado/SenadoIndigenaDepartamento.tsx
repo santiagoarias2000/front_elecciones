@@ -45,8 +45,7 @@ export const SenadoIndigenaDepartamento = () => {
     setArrayDepartamento(result);
   };
   const getVotosSenadoDepartamental = async () => {
-    const urlCargarDepartamento =
-      ApiBack.SENADO_INDIGENA_DEPARTAMENTAL + "/" + idDepartment;
+    const urlCargarDepartamento = ApiBack.SENADO_INDIGENA_DEPARTAMENTAL + "/" + idDepartment;
     const result = await ServicePrivate.requestGET(urlCargarDepartamento);
     setArrayVotesSenadoDepartamental(result);
     if (result) {

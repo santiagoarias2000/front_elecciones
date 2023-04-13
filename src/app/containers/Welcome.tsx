@@ -309,7 +309,7 @@ export const Welcome = () => {
                 a las elecciones a nivel distrital y por total localidades.
               </p>
               <div className="cards-btn text-center">
-                <a href="#" className="btn-cards mt-4 responsive_botton">
+                <a href="/jal" className="btn-cards mt-4 responsive_botton">
                   <i className="bi bi-bar-chart-line-fill"></i>
                   &nbsp; Ver resultados
                 </a>

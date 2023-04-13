@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import camara from "../../../../assets/image/HeaderTable/camara.webp";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   Col,
   Form,
@@ -15,7 +15,9 @@ import {
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 import VotesGober from "../../../models/VotesGober";
 
-export const Jal = () => {
+export const JalDepartamento = () => {
+    let { idDepartment } = useParams();
+    let { idMunicipality } = useParams();
     //Format Number Votes 
   const format = new Intl.NumberFormat('es');
 
@@ -24,13 +26,13 @@ export const Jal = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesJalTerritorial, setarrayVotesJalTerritorial] =
+  const [arrayVotesjalTerritorial, setArrayVotesjalTerritorial] =
     useState<VotesGober[]>([]);
 
   const getVotosjalTerritorial = async () => {
-    //const parametrosPaginador= {paginaActual: activo, cantidadMostrar:numeroElemPag};
-    const result = await ServicePrivate.requestGET(ApiBack.JAL);
-    setarrayVotesJalTerritorial(result);
+    const urlCargarDepartamento = ApiBack.JAL_DEPARTAMENTO + "/" + idDepartment;
+    const result = await ServicePrivate.requestGET(urlCargarDepartamento);
+    setArrayVotesjalTerritorial(result);
     setShow(false);
   };
 
@@ -118,11 +120,11 @@ export const Jal = () => {
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotesJalTerritorial
+                {arrayVotesjalTerritorial
                   .filter((myVotes) => {
                     return searchTerritorial === ""
                       ? myVotes
-                      : myVotes.department.name_department
+                      : myVotes.municipality.name_municipality
                           .toLowerCase()
                           .includes(searchTerritorial.toLowerCase());
                   })
@@ -132,11 +134,11 @@ export const Jal = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/jal/departamento/" +
-                            myVotes.department.idDepartment
+                            "/jal/municipio/"+
+                            myVotes.municipality.id_municipality
                           }
                         >
-                          {myVotes.department.name_department}
+                          {myVotes.municipality.name_municipality}
                         </a>
                       </td>
                       <td className="text-center">{format.format(myVotes.votos)}</td>
