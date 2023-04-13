@@ -4067,7 +4067,7 @@ section {
 }
 
 #header .logo img {
-  margin-left: 50%;
+  margin-left: 40%;
   max-height: 40px;
 }
 
@@ -5326,14 +5326,14 @@ section {
 .celdaSuperiorIzquierdaEstaticoTotalVotos {
   position: sticky;
   top: 0;
-  left: 13.6%;
+  left: 11.8%;
   z-index: 3;
   background-color: #ffffff !important; /* opcional, para evitar que se superponga el contenido */
 } /* Estilo para la celda en la esquina superior izquierda */
 .celdaSuperiorIzquierdaEstaticoVotosBogota {
   position: sticky;
   top: 0;
-  left: 21%;
+  left: 17.8%;
   z-index: 3;
   background-color: #ffffff !important; /* opcional, para evitar que se superponga el contenido */
 }
