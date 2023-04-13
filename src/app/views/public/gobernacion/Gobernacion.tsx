@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import camara from "../../../../assets/image/HeaderTable/camara.webp";
+import camara from "../../../../assets/image/HeaderTable/ELEGOBERNACION.webp";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Col,
@@ -29,7 +29,7 @@ export const Gobernacion = () => {
 
   const getVotosGobernacionTerritorial = async () => {
     //const parametrosPaginador= {paginaActual: activo, cantidadMostrar:numeroElemPag};
-    const result = await ServicePrivate.requestGET(ApiBack.CAMARA_TERRITORIAL);
+    const result = await ServicePrivate.requestGET(ApiBack.GOBERNACION);
     setArrayVotesGobernacionTerritorial(result);
     setShow(false);
   };
@@ -133,7 +133,7 @@ export const Gobernacion = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/camara/circuncripcion/territorial/departamento/" +
+                            "/gobernacion/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -145,7 +145,7 @@ export const Gobernacion = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/camara/circuncripcion/territorial/departamento/" +
+                            "/gobernacion/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >

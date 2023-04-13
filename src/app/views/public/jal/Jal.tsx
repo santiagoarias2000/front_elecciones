@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import camara from "../../../../assets/image/HeaderTable/camara.webp";
+import camara from "../../../../assets/image/HeaderTable/ELEJAL.webp";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Col,
@@ -30,7 +30,11 @@ export const Jal = () => {
   const getVotosjalTerritorial = async () => {
     //const parametrosPaginador= {paginaActual: activo, cantidadMostrar:numeroElemPag};
     const result = await ServicePrivate.requestGET(ApiBack.JAL);
+<<<<<<< HEAD
     setarrayVotesJalTerritorial(result);
+=======
+    setArrayVotesjalTerritorial(result);
+>>>>>>> main
     setShow(false);
   };
 

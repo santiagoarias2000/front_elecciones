@@ -15,20 +15,32 @@ export const Header = () => {
                 src={logo}
                 alt="Imagen de logo para header de guia electoral"
                 className="img-fluid"
-                style={{maxWidth:"100%", maxHeight:"auto"}}
+                style={{ maxWidth: "100%", maxHeight: "auto" }}
               />
             </Link>
           </div>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-                <a href="/#about" style={{textDecoration:"none"}}>Inicio</a>
-                <a href="/#resultados" style={{textDecoration:"none"}}>Resultados</a>
-                <a href="#" style={{textDecoration:"none"}}>Preguntas frecuentes</a>
-                <Link to={"/blog"} style={{textDecoration:"none"}}>Nuestro Blog</Link>
-                <Nav.Link className="getstarted scrollto pruebita">
+              <a href="/#about" style={{ textDecoration: "none" }}>
+                Inicio
+              </a>
+              <a
+                href="/#resultados"
+                className="getstarted scrollto pruebita"
+                style={{ textDecoration: "none" }}
+              >
+                Resultados&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </a>
+              <a href="#" style={{ textDecoration: "none" }}>
+                Preguntas frecuentes
+              </a>
+              <Link to={"/blog"} style={{ textDecoration: "none" }}>
+                Nuestro Blog
+              </Link>
+              {/* <Nav.Link className="getstarted scrollto pruebita">
                 &nbsp;Iniciar Sesión&nbsp;
-              </Nav.Link>
+              </Nav.Link> */}
             </Nav>
           </Navbar.Collapse>
         </Container>
