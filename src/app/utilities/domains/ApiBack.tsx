@@ -12,6 +12,8 @@ const ApiBack = {
   NOMBRE_DEPARTAMENTO_GOBERNACION: "/api/public/departamento/gobernacion",
   NOMBRE_DEPARTAMENTO_ASAMBLEA: "/api/public/departamento/asamblea",
   NOMBRE_DEPARTAMENTO_ALCADIA: "/api/public/departamento/alcaldia",
+  NOMBRE_DEPARTAMENTO_JAL: "/api/public/departamento/jal",
+  NOMBRE_DEPARTAMENTO_CONCEJO: "/api/public/departamento/concejo",
 
 
 

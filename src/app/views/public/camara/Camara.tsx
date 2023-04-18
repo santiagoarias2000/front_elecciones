@@ -10,6 +10,10 @@ import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 export const Camara = () => {
   //Format Number Votes 
   const format = new Intl.NumberFormat('es');
+  //Prevent enter in search box
+  function submitHandler(e:any) {
+    e.preventDefault();
+  }
   
   const [searchTerritorial, setSearchTerritorial] = useState("");
   const [searchIndigena, setSearchIndigena] = useState("");
@@ -84,7 +88,7 @@ export const Camara = () => {
             <div className="row">
               <div className="col-sm"></div>
               <div className="col-12">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchTerritorial(e.target.value)}
@@ -101,7 +105,7 @@ export const Camara = () => {
             <div className="row">
               <div className="col-sm"></div>
               <div className="col-3">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchTerritorial(e.target.value)}
@@ -215,7 +219,7 @@ export const Camara = () => {
             <div className="row">
               <div className="col-sm"></div>
               <div className="col-12">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchIndigena(e.target.value)}
@@ -233,7 +237,7 @@ export const Camara = () => {
             <div className="row">
               <div className="col-sm"></div>
               <div className="col-3">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchIndigena(e.target.value)}
@@ -347,7 +351,7 @@ export const Camara = () => {
             <div className="row">
               <div className="col-sm"></div>
               <div className="col-12">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchAfro(e.target.value)}
@@ -364,7 +368,7 @@ export const Camara = () => {
             <div className="row">
               <div className="col-sm"></div>
               <div className="col-3">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchAfro(e.target.value)}

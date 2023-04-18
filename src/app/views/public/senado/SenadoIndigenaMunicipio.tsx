@@ -1,12 +1,12 @@
-import { useState, useEffect, useMemo } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import VotesCongreso from "../../../models/VotesCongreso";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import VotosSenado from "../../../models/VotesCongreso";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
 import senado from "../../../../assets/image/HeaderTable/CRsenadoindigena.webp";
-import { Form, InputGroup, Modal, Pagination } from "react-bootstrap";
+import { Form, InputGroup, Modal } from "react-bootstrap";
 import Municipality from "../../../models/Municipality";
-import ImageSpinner from "../../../../assets/image/LOGOBLANCO.webp";
+import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp"
 
 export const SenadoIndigenaMunicipio = () => {
   let { idDepartment } = useParams();
@@ -18,12 +18,9 @@ export const SenadoIndigenaMunicipio = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
-    useState<VotesCongreso[]>([]);
+  const [arrayVotesSenadoMunicipal, setArrayVotosSenadoMunicipal] = useState<VotosSenado[]>([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
-  const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
-    Municipality[]
-  >([]);
+  const [arrayNameMunicipality, setArrayNameMunicipality] = useState< Municipality[] >([]);
   const getVotosSenadoIndigena = async () => {
     const result = await ServicePrivate.requestGET(
       ApiBack.SENADO_INDIGENA_MUNICIPIO +
@@ -32,11 +29,10 @@ export const SenadoIndigenaMunicipio = () => {
         "/municipio/" +
         idMunicipality
     );
-    setArrayVotosCamaraTerritorial(result);
+    setArrayVotosSenadoMunicipal(result);
     setShow(false);
   };
 
-  // get vehicle to be displayed in the combo
   const getMuniciaplity = async () => {
     const result = await ServicePrivate.requestGET(
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
@@ -50,6 +46,10 @@ export const SenadoIndigenaMunicipio = () => {
     setArrayNameMunicipality(result);
   };
 
+  //Prevent enter in search box
+  function submitHandler(e:any) {
+    e.preventDefault();
+  }
   //Format Number Votes 
   const format = new Intl.NumberFormat(); 
   
@@ -57,7 +57,7 @@ export const SenadoIndigenaMunicipio = () => {
     getVotosSenadoIndigena();
     getMuniciaplity();
     getNameMunicipality();
-  }, []);
+  }, [idDepartment,idMunicipality]);
   return (
     <main id="main" className="main">
       <img
@@ -157,7 +157,7 @@ export const SenadoIndigenaMunicipio = () => {
                 </h6>
               </div>
               <div className="col-sm">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
@@ -239,7 +239,7 @@ export const SenadoIndigenaMunicipio = () => {
                 </h6>
               </div>
               <div className="col-sm">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-1 container_form">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
@@ -278,7 +278,7 @@ export const SenadoIndigenaMunicipio = () => {
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotesCamaraTerritorial
+                {arrayVotesSenadoMunicipal
                   .filter((val) => {
                     if (search == "") {
                       return val;

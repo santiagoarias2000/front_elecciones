@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import camara from "../../../../assets/image/HeaderTable/SENADO.webp";
-import { Link, useNavigate } from "react-router-dom";
-import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import {Form, InputGroup} from "react-bootstrap";
 import CandidatosSenado from "../../../mocks/models/CandidatosSenado";
 import { ARREGLO_SENADO_108, ARREGLO_SENADO_INDIGENAS } from "../../../mocks/Senado108Marzo2022";
 
@@ -9,11 +9,15 @@ export const SenadoElegidos = () => {
   const [search, setSearch] = useState("");
   const [searchIndigenas, setSearchIndigenas] = useState("");
 
-  
   const regresar = useNavigate();
 
   const [arrayVotesSenadoNacional, setArrayVotesSenadoNacional] = useState< CandidatosSenado[] >(ARREGLO_SENADO_108);
   const [arrayVotesSenadoIndigena, setArrayVotesSenadoIndigena] = useState< CandidatosSenado[] >(ARREGLO_SENADO_INDIGENAS);
+
+  //Prevent enter in search box
+  function submitHandler(e:any) {
+    e.preventDefault();
+  }
 
   //Format Number Votes 
   const format = new Intl.NumberFormat('es');
@@ -31,11 +35,6 @@ export const SenadoElegidos = () => {
         style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
         alt="logo principal para la parte superior de la pagina web"
       />
-      {/* Navegación estilo breadcrumb: Inicio */}
-
-      {/* Navegación estilo breadcrumb: Fin */}
-
-      {/* Ejemplo de una tabla para presentación de datos: Inicio */}
 
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
@@ -52,7 +51,7 @@ export const SenadoElegidos = () => {
                 <div className="name_table">LISTA DE 108 ELEGIDOS</div>
               </div>
               <div className="col-sm">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
@@ -157,7 +156,7 @@ export const SenadoElegidos = () => {
                 <div className="name_table">Lista 2 elegidos</div>
               </div>
               <div className="col-sm">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                   <Form.Control
                     onChange={(e) => setSearchIndigenas(e.target.value)}
@@ -248,7 +247,6 @@ export const SenadoElegidos = () => {
       
       </div>
       <div className="position-absolute bottom-50 end-50"></div>
-      {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>
   );
 };

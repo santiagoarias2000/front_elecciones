@@ -16,7 +16,7 @@ import ServicePrivate from "../../../services/ServicePrivate";
 import Municipality from "../../../models/Municipality";
 import Department from "../../../models/Department";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
-import VotesGober from "../../../models/VotesGober";
+import VotesGober from "../../../models/DataElection";
 
 export const GobernacionDepartamentoMunicipio = () => {
   let { idDepartment } = useParams();
@@ -65,6 +65,10 @@ export const GobernacionDepartamentoMunicipio = () => {
   };
   //Format Number Votes
   const format = new Intl.NumberFormat();
+  //Prevent enter in search box
+  function submitHandler(e:any) {
+    e.preventDefault();
+  }
   useEffect(() => {
     getVotosGobernacionDepartamental();
     getMunicipios();
@@ -158,7 +162,7 @@ export const GobernacionDepartamentoMunicipio = () => {
                 </h6>
               </div>
               <div className="col-sm">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
@@ -173,7 +177,7 @@ export const GobernacionDepartamentoMunicipio = () => {
           </div>
           <div className="container no_responsive">
             <div className="row">
-              <div className="col-sm ">
+              <div className="col-sm">
                 <div className="dropdown text-center my-1">
                   <button
                     type="button"
@@ -239,7 +243,7 @@ export const GobernacionDepartamentoMunicipio = () => {
                 </h6>
               </div>
               <div className="col-sm">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-1 container_form">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}

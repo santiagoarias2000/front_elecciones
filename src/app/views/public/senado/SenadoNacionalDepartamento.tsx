@@ -1,20 +1,11 @@
 import { useEffect, useState } from "react";
 import senado from "../../../../assets/image/HeaderTable/CRsenadonacional.webp";
-import VotesCongreso from "../../../models/VotesCongreso";
-import {
-  Col,
-  Form,
-  InputGroup,
-  Modal,
-  Pagination,
-  Row,
-  Table,
-} from "react-bootstrap";
+import VotosSenado from "../../../models/VotesCongreso";
+import { Form, InputGroup, Modal } from "react-bootstrap";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import Municipality from "../../../models/Municipality";
-import e from "express";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Department from "../../../models/Department";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
@@ -27,8 +18,7 @@ export const SenadoNacionalDepartamento = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesSenadoDepartamental, setArrayVotesSenadoDepartamental] =
-    useState<VotesCongreso[]>([]);
+  const [arrayVotesSenadoDepartamental, setArrayVotesSenadoDepartamental] = useState<VotosSenado[]>([]);
   const [arrayMunicipios, setMunicipios] = useState<Municipality[]>([]);
   const [arrayDepartamento, setArrayDepartamento] = useState<Department[]>([]);
 
@@ -58,6 +48,10 @@ export const SenadoNacionalDepartamento = () => {
     setArrayDepartamento(result);
   };
 
+  //Prevent enter in search box
+  function submitHandler(e:any) {
+    e.preventDefault();
+  }
   //Format Number Votes 
   const format = new Intl.NumberFormat('es');
   useEffect(() => {
@@ -73,11 +67,6 @@ export const SenadoNacionalDepartamento = () => {
         style={{ width: "100%", maxHeight: "80%", marginTop: "4vw" }}
         alt="logo principal para la parte superior de la pagina web"
       />
-      {/* Navegación estilo breadcrumb: Inicio */}
-
-      {/* Navegación estilo breadcrumb: Fin */}
-
-      {/* Ejemplo de una tabla para presentación de datos: Inicio */}
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
@@ -151,7 +140,7 @@ export const SenadoNacionalDepartamento = () => {
                 </h6>
               </div>
               <div className="col-sm">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
@@ -229,7 +218,7 @@ export const SenadoNacionalDepartamento = () => {
                 </h6>
               </div>
               <div className="col-sm">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-1 container_form">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
@@ -260,7 +249,7 @@ export const SenadoNacionalDepartamento = () => {
                     NOMBRE CANDIDATO
                   </th>
                   <th className="text-center" style={{ width: "25%" }}>
-                    VOTOS DEPARTAMENTO
+                    VOTOS MUNICIPALES
                   </th>
                 </tr>
               </thead>
@@ -361,7 +350,6 @@ export const SenadoNacionalDepartamento = () => {
       </div>
 
       <div className="position-absolute bottom-50 end-50"></div>
-      {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>
   );
 };

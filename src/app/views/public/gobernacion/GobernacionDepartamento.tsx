@@ -16,7 +16,7 @@ import ServicePrivate from "../../../services/ServicePrivate";
 import Municipality from "../../../models/Municipality";
 import Department from "../../../models/Department";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
-import VotesGober from "../../../models/VotesGober";
+import VotesGober from "../../../models/DataElection";
 
 export const GobernacionDepartamento = () => {
   let { idDepartment } = useParams();
@@ -57,6 +57,10 @@ export const GobernacionDepartamento = () => {
   };
   //Format Number Votes
   const format = new Intl.NumberFormat();
+  //Prevent enter in search box
+  function submitHandler(e:any) {
+    e.preventDefault();
+  }
   useEffect(() => {
     getVotosSenadoDepartamental();
     getMunicipios();
@@ -148,7 +152,7 @@ export const GobernacionDepartamento = () => {
                 </h6>
               </div>
               <div className="col-sm">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
@@ -224,7 +228,7 @@ export const GobernacionDepartamento = () => {
                 </h6>
               </div>
               <div className="col-sm">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-1 container_form">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}

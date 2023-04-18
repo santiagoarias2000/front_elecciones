@@ -13,12 +13,15 @@ import {
   Table,
 } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
-import VotesGober from "../../../models/VotesGober";
+import VotesGober from "../../../models/DataElection";
 
 export const Asamblea = () => {
     //Format Number Votes 
   const format = new Intl.NumberFormat('es');
-
+  //Prevent enter in search box
+  function submitHandler(e:any) {
+    e.preventDefault();
+  }
   const [searchTerritorial, setSearchTerritorial] = useState("");
 
   const [show, setShow] = useState(true);
@@ -69,7 +72,7 @@ export const Asamblea = () => {
             <div className="row">
               <div className="col-sm"></div>
               <div className="col-12">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchTerritorial(e.target.value)}
@@ -86,7 +89,7 @@ export const Asamblea = () => {
             <div className="row">
               <div className="col-sm"></div>
               <div className="col-3">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchTerritorial(e.target.value)}

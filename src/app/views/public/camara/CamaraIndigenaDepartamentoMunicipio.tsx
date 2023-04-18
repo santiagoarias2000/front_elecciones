@@ -23,6 +23,10 @@ import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 export const CamaraIndigenaDepartamentoMunicipio = () => {
   //Format Number Votes 
   const format = new Intl.NumberFormat('es');
+  //Prevent enter in search box
+  function submitHandler(e:any) {
+    e.preventDefault();
+  }
 
   const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState<
     CandidatosCamara[]
@@ -199,7 +203,7 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
                 </h6>
               </div>
               <div className="col-sm">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
@@ -282,7 +286,7 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
                 </h6>
               </div>
               <div className="col-sm">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-1 container_form">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
