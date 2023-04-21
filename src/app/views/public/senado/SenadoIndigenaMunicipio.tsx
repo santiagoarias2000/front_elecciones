@@ -6,7 +6,7 @@ import ServicePrivate from "../../../services/ServicePrivate";
 import senado from "../../../../assets/image/HeaderTable/CRsenadoindigena.webp";
 import { Form, InputGroup, Modal } from "react-bootstrap";
 import Municipality from "../../../models/Municipality";
-import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp"
+import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
 export const SenadoIndigenaMunicipio = () => {
   let { idDepartment } = useParams();
@@ -18,9 +18,13 @@ export const SenadoIndigenaMunicipio = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesSenadoMunicipal, setArrayVotosSenadoMunicipal] = useState<VotosSenado[]>([]);
+  const [arrayVotesSenadoMunicipal, setArrayVotosSenadoMunicipal] = useState<
+    VotosSenado[]
+  >([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
-  const [arrayNameMunicipality, setArrayNameMunicipality] = useState< Municipality[] >([]);
+  const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
+    Municipality[]
+  >([]);
   const getVotosSenadoIndigena = async () => {
     const result = await ServicePrivate.requestGET(
       ApiBack.SENADO_INDIGENA_MUNICIPIO +
@@ -47,17 +51,17 @@ export const SenadoIndigenaMunicipio = () => {
   };
 
   //Prevent enter in search box
-  function submitHandler(e:any) {
+  function submitHandler(e: any) {
     e.preventDefault();
   }
-  //Format Number Votes 
-  const format = new Intl.NumberFormat(); 
-  
+  //Format Number Votes
+  const format = new Intl.NumberFormat();
+
   useEffect(() => {
     getVotosSenadoIndigena();
     getMuniciaplity();
     getNameMunicipality();
-  }, [idDepartment,idMunicipality]);
+  }, [idDepartment, idMunicipality]);
   return (
     <main id="main" className="main">
       <img
@@ -172,7 +176,25 @@ export const SenadoIndigenaMunicipio = () => {
           <div className="container no_responsive">
             <div className="row">
               <div className="col-sm ">
-                <div className="dropdown text-center my-1">
+                <div className="col">
+                  <h6 className="text-center my-2" style={{ color: "#052851" }}>
+                    {arrayNameMunicipality.map((myNameMunicipality) => (
+                      <b className="name_text">
+                        {myNameMunicipality.name_municipality}
+                        {" ("}
+                        {myNameMunicipality.department}
+                        {")"}
+                      </b>
+                    ))}
+                  </h6>
+                </div>
+              </div>
+
+              <div className="d-flex align-items-center mt-2 mb-2 justify-content-between">
+                <div
+                  className="dropdown text-left mb-1"
+                  style={{ marginLeft: "3%" }}
+                >
                   <button
                     type="button"
                     className="buttonBack buttonBack-primary dropdown-toggle"
@@ -225,30 +247,18 @@ export const SenadoIndigenaMunicipio = () => {
                     </li>
                   </ul>
                 </div>
-              </div>
-              <div className="col">
-                <h6 className="text-center my-2" style={{ color: "#052851" }}>
-                  {arrayNameMunicipality.map((myNameMunicipality) => (
-                    <b>
-                      {myNameMunicipality.name_municipality}
-                      {" ("}
-                      {myNameMunicipality.department}
-                      {")"}
-                    </b>
-                  ))}
-                </h6>
-              </div>
-              <div className="col-sm">
-                <Form id="form_conta" onSubmit={submitHandler}>
-                  <InputGroup className="my-1 container_form">
-                    <Form.Control
-                      onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Buscar un Candidato"
-                      style={{ textAlign: "right", marginRight: "5px" }}
-                      className="form_co"
-                    ></Form.Control>
-                  </InputGroup>
-                </Form>
+                <div className="col-sm">
+                  <Form id="form_conta" onSubmit={submitHandler}>
+                    <InputGroup className="my-1 container_form">
+                      <Form.Control
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Buscar un Candidato"
+                        style={{ textAlign: "right", marginRight: "5px" }}
+                        className="form_co"
+                      ></Form.Control>
+                    </InputGroup>
+                  </Form>
+                </div>
               </div>
             </div>
           </div>
@@ -263,10 +273,18 @@ export const SenadoIndigenaMunicipio = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "30%" }} id="text_left_name">
+                  <th
+                    className="text-center"
+                    style={{ width: "30%" }}
+                    id="text_left_name"
+                  >
                     PARTIDO POLÍTICO
                   </th>
-                  <th className="text-center" style={{ width: "30%" }} id="text_left_name">
+                  <th
+                    className="text-center"
+                    style={{ width: "30%" }}
+                    id="text_left_name"
+                  >
                     NOMBRE CANDIDATO
                   </th>
                   <th className="text-center" style={{ width: "20%" }}>
@@ -298,8 +316,12 @@ export const SenadoIndigenaMunicipio = () => {
                       <td className="text_left_name">
                         {myVotes.candidate_name}
                       </td>
-                      <td className="text-center">{format.format(myVotes.votos)}</td>
-                      <td className="text-center">{format.format(myVotes.votos_muicipio)}</td>
+                      <td className="text-center">
+                        {format.format(myVotes.votos)}
+                      </td>
+                      <td className="text-center">
+                        {format.format(myVotes.votos_muicipio)}
+                      </td>
                     </tr>
                   ))}
               </tbody>
@@ -318,11 +340,14 @@ export const SenadoIndigenaMunicipio = () => {
             >
               <div className="text-center">
                 ¿
-                  <a type="button" className="buttonBack buttonBack-primary" href={ "/senado/indigena/departamento/" + idDepartment }>
-                    <i className="bi bi-arrow-left-circle"></i>
-                    &nbsp;&nbsp;REGRESAR A ELEGIR UN MUNICIPIO
-                  </a>
-                
+                <a
+                  type="button"
+                  className="buttonBack buttonBack-primary"
+                  href={"/senado/indigena/departamento/" + idDepartment}
+                >
+                  <i className="bi bi-arrow-left-circle"></i>
+                  &nbsp;&nbsp;REGRESAR A ELEGIR UN MUNICIPIO
+                </a>
               </div>
             </div>
           </div>
@@ -337,7 +362,10 @@ export const SenadoIndigenaMunicipio = () => {
         >
           <Modal.Body className="text-center">
             <div className="text-center">
-              <img src={ImageSpinner} style={{height:"100px", width:"200px"}}/>
+              <img
+                src={ImageSpinner}
+                style={{ height: "100px", width: "200px" }}
+              />
               <div className="mt-4">
                 <div className="spinner-border text-danger" role="status">
                   <span className=" visually-hidden">Loading...</span>

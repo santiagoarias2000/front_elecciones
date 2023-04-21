@@ -4,9 +4,9 @@ import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import Form from "react-bootstrap/Form";
 import camara from "../../../../assets/image/HeaderTable/CRterrirorial.webp";
-import {useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
-import { InputGroup, Modal} from "react-bootstrap";
+import { InputGroup, Modal } from "react-bootstrap";
 import CandidatosCamara from "../../../mocks/models/CandidatosCamara";
 import { ARREGLO_CANDIDATOS_ELEGIDOS } from "../../../mocks/candidatos-mocks";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
@@ -14,17 +14,22 @@ import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 export const CamaraTerritorialDepartamentoMunicipio = () => {
   let { idDepartment } = useParams();
   let { idMunicipality } = useParams();
-  //Format Number Votes 
+  //Format Number Votes
   const format = new Intl.NumberFormat();
 
-  const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState< CandidatosCamara[] >(ARREGLO_CANDIDATOS_ELEGIDOS);
+  const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState<
+    CandidatosCamara[]
+  >(ARREGLO_CANDIDATOS_ELEGIDOS);
   const [search, setSearch] = useState("");
   const [show, setShow] = useState(true);
   const [searchMunicipio, setSearchMunicipio] = useState("");
-  
-  const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] = useState<VotesCongreso[]>([]);
+
+  const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
+    useState<VotesCongreso[]>([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
-  const [arrayNameMunicipality, setArrayNameMunicipality] = useState< Municipality[] >([]);
+  const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
+    Municipality[]
+  >([]);
   const handleClose = () => setShow(false);
 
   const getVotosCamaraTerritorial = async () => {
@@ -64,14 +69,14 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
     return elegidosi;
   };
   //Prevent enter in search box
-  function submitHandler(e:any) {
+  function submitHandler(e: any) {
     e.preventDefault();
   }
   useEffect(() => {
     getNameMunicipality();
-    getComboBoxMunicipio(); 
+    getComboBoxMunicipio();
     getVotosCamaraTerritorial();
-  }, [idDepartment,idMunicipality]);
+  }, [idDepartment, idMunicipality]);
 
   return (
     <main id="main" className="main">
@@ -178,6 +183,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                       onChange={(e) => setSearch(e.target.value)}
                       placeholder="Buscar nombre Candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
                     ></Form.Control>
                   </InputGroup>
                 </Form>
@@ -187,7 +193,25 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
           <div className="container no_responsive">
             <div className="row">
               <div className="col-sm">
-                <div className="dropdown text-center my-1">
+                <div className="col">
+                  <h6 className="text-center my-2" style={{ color: "#052851" }}>
+                    {arrayNameMunicipality.map((myNameMunicipality) => (
+                      <b className="name_text">
+                        {myNameMunicipality.name_municipality}
+                        {" ("}
+                        {myNameMunicipality.department}
+                        {")"}
+                      </b>
+                    ))}
+                  </h6>
+                </div>
+              </div>
+
+              <div className="d-flex align-items-center mt-2 mb-2 justify-content-between">
+                <div
+                  className="dropdown text-left mb-1"
+                  style={{ marginLeft: "3%" }}
+                >
                   <button
                     type="button"
                     className="buttonBack buttonBack-primary dropdown-toggle name_deparment_respo"
@@ -233,37 +257,25 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                             }
                           >
                             <b className="name_text">
-                            {myMunicipality.name_municipality}
+                              {myMunicipality.name_municipality}
                             </b>
-                            
                           </a>
                         ))}
                     </li>
                   </ul>
                 </div>
-              </div>
-              <div className="col">
-                <h6 className="text-center my-2" style={{ color: "#052851" }}>
-                  {arrayNameMunicipality.map((myNameMunicipality) => (
-                    <b>
-                      {myNameMunicipality.name_municipality}
-                      {" ("}
-                      {myNameMunicipality.department}
-                      {")"}
-                    </b>
-                  ))}
-                </h6>
-              </div>
-              <div className="col-sm">
-                <Form id="form_conta" onSubmit={submitHandler}>
-                  <InputGroup className="my-1 container_form">
-                    <Form.Control
-                      onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Buscar nombre Candidato"
-                      style={{ textAlign: "right", marginRight: "5px" }}
-                    ></Form.Control>
-                  </InputGroup>
-                </Form>
+                <div className="col-sm">
+                  <Form id="form_conta" onSubmit={submitHandler}>
+                    <InputGroup className="my-1 container_form">
+                      <Form.Control
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Buscar nombre Candidato"
+                        style={{ textAlign: "right", marginRight: "5px" }}
+                        className="form_co"
+                      ></Form.Control>
+                    </InputGroup>
+                  </Form>
+                </div>
               </div>
             </div>
           </div>
@@ -273,12 +285,23 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
               className="colorTable table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead className="container_table sticky" style={{backgroundColor:"#fff"}}>
+              <thead
+                className="container_table sticky"
+                style={{ backgroundColor: "#fff" }}
+              >
                 <tr>
-                  <th className="text-center" style={{ width: "30%" }} id="text_left_name">
+                  <th
+                    className="text-center"
+                    style={{ width: "30%" }}
+                    id="text_left_name"
+                  >
                     PARTIDO POLÍTICO
                   </th>
-                  <th className="text-center" style={{ width: "30%" }} id="text_left_name">
+                  <th
+                    className="text-center"
+                    style={{ width: "30%" }}
+                    id="text_left_name"
+                  >
                     NOMBRE CANDIDATO
                   </th>
                   <th className="text-center" style={{ width: "20%" }}>
@@ -324,7 +347,6 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                         }
                         id="text_left_name"
                       >
-                        
                         {myVotes.candidate_name}
                       </td>
                       <td

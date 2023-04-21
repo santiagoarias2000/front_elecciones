@@ -129,7 +129,7 @@ export const Concejo = () => {
                         </a>
                       </td>
                       <td className="text-center">{format.format(myVotes.votos)}</td>
-                      <td className="text-left align-middle">
+                      <td className="text-center align-middle">
                         <a
                           className="link_departamento"
                           href={

@@ -136,7 +136,7 @@ export const Camara = () => {
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text_left_name">
+                      <td className="text_left">
                         <a
                           className="link_departamento"
                           href={

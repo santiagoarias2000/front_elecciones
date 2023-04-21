@@ -132,7 +132,7 @@ export const ConcejoDepartamento = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }} id="text_left_name">
+                  <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
                   </th>
                   <th className="text-center" style={{ width: "35%" }} >
@@ -165,7 +165,7 @@ export const ConcejoDepartamento = () => {
                         </a>
                       </td>
                       <td className="text-center">{format.format(myVotes.votos)}</td>
-                      <td className="text-left align-middle">
+                      <td className="text-center align-middle">
                         <a
                           className="link_departamento"
                           href={
@@ -191,18 +191,14 @@ export const ConcejoDepartamento = () => {
             }}
           >
             <h6
-              className="my-2"
-              style={{
-                color: "#052851",
-                textAlign: "center",
-              }}
-            >
-              {arrayDepartamento.map((myDepartment) => (
-                <b style={{ color: "#D9224E" }} className="vota_respo">
-                  VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
-                </b>
-              ))}
-            </h6>
+                className="tituloVotosTotales my-2"
+              >
+                {arrayDepartamento.map((myDepartment) => (
+                  <b style={{ color: "#D9224E" }}>
+                    VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
+                  </b>
+                ))}
+              </h6>
           </div>
         </div>
           <div className="dropdown">

@@ -120,7 +120,7 @@ export const Jal = () => {
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text_left left_alination">
+                      <td className="text_left">
                         <a
                           className="link_departamento"
                           href={
@@ -132,7 +132,7 @@ export const Jal = () => {
                         </a>
                       </td>
                       <td className="text-center">{format.format(myVotes.votos)}</td>
-                      <td className="text-left align-middle">
+                      <td className="text-center align-middle">
                         <a
                           className="link_departamento"
                           href={

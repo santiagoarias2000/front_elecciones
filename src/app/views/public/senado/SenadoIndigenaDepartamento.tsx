@@ -37,7 +37,8 @@ export const SenadoIndigenaDepartamento = () => {
     setArrayDepartamento(result);
   };
   const getVotosSenadoDepartamental = async () => {
-    const urlCargarDepartamento = ApiBack.SENADO_INDIGENA_DEPARTAMENTAL + "/" + idDepartment;
+    const urlCargarDepartamento =
+      ApiBack.SENADO_INDIGENA_DEPARTAMENTAL + "/" + idDepartment;
     const result = await ServicePrivate.requestGET(urlCargarDepartamento);
     setArrayVotesSenadoDepartamental(result);
     if (result) {
@@ -46,11 +47,11 @@ export const SenadoIndigenaDepartamento = () => {
     }
   };
   //Prevent enter in search box
-  function submitHandler(e:any) {
+  function submitHandler(e: any) {
     e.preventDefault();
   }
-  //Format Number Votes 
-  const format = new Intl.NumberFormat(); 
+  //Format Number Votes
+  const format = new Intl.NumberFormat();
   useEffect(() => {
     getVotosSenadoDepartamental();
     getMunicipios();
@@ -153,7 +154,22 @@ export const SenadoIndigenaDepartamento = () => {
           <div className="container no_responsive">
             <div className="row">
               <div className="col-sm ">
-                <div className="dropdown text-center my-1">
+                <div className="col">
+                  <h6 className="text-center my-2" style={{ color: "#052851" }}>
+                    {arrayDepartamento.map((myDepartment) => (
+                      <b className="name_text">
+                        {myDepartment.name_department}
+                      </b>
+                    ))}
+                  </h6>
+                </div>
+              </div>
+
+              <div className="d-flex align-items-center mt-2 mb-2 justify-content-between">
+                <div
+                  className="dropdown text-left mb-1"
+                  style={{ marginLeft: "3%" }}
+                >
                   <button
                     type="button"
                     className="buttonBack buttonBack-primary dropdown-toggle"
@@ -206,25 +222,18 @@ export const SenadoIndigenaDepartamento = () => {
                     </li>
                   </ul>
                 </div>
-              </div>
-              <div className="col">
-                <h6 className="text-center my-2" style={{ color: "#052851" }}>
-                  {arrayDepartamento.map((myDepartment) => (
-                    <b>{myDepartment.name_department}</b>
-                  ))}
-                </h6>
-              </div>
-              <div className="col-sm">
-                <Form id="form_conta" onSubmit={submitHandler}>
-                  <InputGroup className="my-1 container_form">
-                    <Form.Control
-                      onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Buscar un Partido Político"
-                      style={{ textAlign: "right", marginRight: "5px" }}
-                      className="form_co"
-                    ></Form.Control>
-                  </InputGroup>
-                </Form>
+                <div className="col-sm">
+                  <Form id="form_conta" onSubmit={submitHandler}>
+                    <InputGroup className="my-1 container_form">
+                      <Form.Control
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Buscar un Partido Político"
+                        style={{ textAlign: "right", marginRight: "5px" }}
+                        className="form_co"
+                      ></Form.Control>
+                    </InputGroup>
+                  </Form>
+                </div>
               </div>
             </div>
           </div>
@@ -239,10 +248,18 @@ export const SenadoIndigenaDepartamento = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }} id="text_left_name">
+                  <th
+                    className="text-center"
+                    style={{ width: "35%" }}
+                    id="text_left_name"
+                  >
                     PARTIDO POLÍTICO
                   </th>
-                  <th className="text-center" style={{ width: "40%" }} id="text_left_name">
+                  <th
+                    className="text-center"
+                    style={{ width: "40%" }}
+                    id="text_left_name"
+                  >
                     NOMBRE CANDIDATO
                   </th>
                   <th className="text-center" style={{ width: "25%" }}>
@@ -271,7 +288,9 @@ export const SenadoIndigenaDepartamento = () => {
                       <td className="text_left_name">
                         {myVotes.candidate_name}
                       </td>
-                      <td className="text-center">{format.format(myVotes.votos)}</td>
+                      <td className="text-center">
+                        {format.format(myVotes.votos)}
+                      </td>
                     </tr>
                   ))}
               </tbody>
@@ -286,9 +305,7 @@ export const SenadoIndigenaDepartamento = () => {
                 alignItems: "right",
               }}
             >
-              <h6
-                className="tituloVotosTotales my-2"
-              >
+              <h6 className="tituloVotosTotales my-2">
                 {arrayDepartamento.map((myDepartment) => (
                   <b style={{ color: "#D9224E" }}>
                     VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
@@ -308,12 +325,14 @@ export const SenadoIndigenaDepartamento = () => {
               }}
             >
               <div className="text-center">
-                
-                  <a href="/senado"  type="button" className="buttonBack buttonBack-primary">
-                    <i className="bi bi-arrow-left-circle"></i>
-                    &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
-                  </a>
-                
+                <a
+                  href="/senado"
+                  type="button"
+                  className="buttonBack buttonBack-primary"
+                >
+                  <i className="bi bi-arrow-left-circle"></i>
+                  &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                </a>
               </div>
             </div>
           </div>
@@ -328,7 +347,10 @@ export const SenadoIndigenaDepartamento = () => {
         >
           <Modal.Body className="text-center">
             <div className="text-center">
-              <img src={ImageSpinner} style={{height:"100px", width:"200px"}}/>
+              <img
+                src={ImageSpinner}
+                style={{ height: "100px", width: "200px" }}
+              />
               <div className="mt-4">
                 <div className="spinner-border text-danger" role="status">
                   <span className=" visually-hidden">Loading...</span>
