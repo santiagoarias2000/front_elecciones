@@ -1,29 +1,23 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import VotesGober from "../../../models/VotesGober";
+import { useParams } from "react-router-dom";
+import VotosJal from "../../../models/DataElection";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import jal from "../../../../assets/image/HeaderTable/ELEJAL.webp";
 import ServicePrivate from "../../../services/ServicePrivate";
 import Municipality from "../../../models/Municipality";
-import { Form, InputGroup, Modal, Pagination } from "react-bootstrap";
+import { Form, InputGroup, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp"
-import { log } from "console";
-import { useForm } from "../../../utilities/hooks/useForm";
 
 export const JalMunicipal = () => {
     //Variables
     let { idDepartment } = useParams();
     let { idMunicipality } = useParams();
-    const regresar = useNavigate();
     const [search, setSearch] = useState("");
-    const [searchMunicipio, setSearchMunicipio] = useState("");
   
     const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
     const [arrayNameMunicipality, setArrayNameMunicipality] = useState< Municipality[] >([]);
-    const [arrayVotesSenadoTerritorial, setArrayVotosSenadoTerritorial] =
-      useState<VotesGober[]>([]);
-    const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
+    const [arrayVotesJalMunicipal, setArrayVotosJalMunicipal] = useState<VotosJal[]>([]);
     
     //Funciones
     const getVotosSenadoTerritorial = async () => {
@@ -31,7 +25,7 @@ export const JalMunicipal = () => {
         ApiBack.JAL_DEPARTAMENTO_MUNICIPIO + "/" + 
           idMunicipality
       );
-      setArrayVotosSenadoTerritorial(result);
+      setArrayVotosJalMunicipal(result);
       setShow(false);
     };
     const getNameMunicipality = async () => {
@@ -42,11 +36,15 @@ export const JalMunicipal = () => {
       };
       
     //Format Number Votes 
-    const format = new Intl.NumberFormat(); 
+    const format = new Intl.NumberFormat();
+    //Prevent enter in search box
+    function submitHandler(e:any) {
+      e.preventDefault();
+    }
     useEffect(() => {
       getVotosSenadoTerritorial();
       getNameMunicipality();
-    }, []);
+    }, [idDepartment,idMunicipality]);
     
     return (
       <main id="main" className="main">
@@ -62,11 +60,7 @@ export const JalMunicipal = () => {
           alt="logo principal para la parte superior de la pagina web"
         />
         <div className="side_bar"></div>
-        {/* Navegación estilo breadcrumb: Inicio */}
-  
-        {/* Navegación estilo breadcrumb: Fin */}
-  
-        {/* Ejemplo de una tabla para presentación de datos: Inicio */}
+
         <div className="col-lg-12" style={{ color: "#052851 !important" }}>
           <div className="cardBorder card">
             <div
@@ -79,45 +73,41 @@ export const JalMunicipal = () => {
               </div>
             </div>
   
-            <div className="d-flex">
-              <div className="container responsive">
-                <div className="row">
-                  
-  
-                  <div className="col">
-                    <h6 className="text-center my-4" style={{ color: "#052851" }}>
-                      {arrayNameMunicipality.map((myNameMunicipality) => (
-                        <b>
-                          {myNameMunicipality.name_municipality}
-                          {" ("}
-                          {myNameMunicipality.department}
-                          {")"}
-                        </b>
-                      ))}
-                    </h6>
-                  </div>
-                  <div className="col-sm">
-                    <Form id="form_conta">
-                      <InputGroup className="my-3 container_form">
-                        <Form.Control
-                          onChange={(e) => setSearch(e.target.value)}
-                          placeholder="Buscar un Candidato"
-                          style={{ textAlign: "right", marginRight: "5px" }}
-                          className="form_co"
-                        ></Form.Control>
-                      </InputGroup>
-                    </Form>
-                  </div>
-                </div>
+            <div className="container responsive">
+            <div className="row">
+              <div className="col-sm ">
+                
               </div>
+              <div className="col">
+                <h6 className="text-center my-4" style={{ color: "#052851" }}>
+                  {arrayNameMunicipality.map((myNameMunicipality) => (
+                    <b>
+                      {myNameMunicipality.name_municipality}
+                      {" ("}
+                      {myNameMunicipality.department}
+                      {")"}
+                    </b>
+                  ))}
+                </h6>
+              </div>
+              <div className="col-sm">
+                <Form id="form_conta" onSubmit={submitHandler}>
+                  <InputGroup className="my-3 container_form">
+                    <Form.Control
+                      onChange={(e) => setSearch(e.target.value)}
+                      placeholder="Buscar nombre Candidato"
+                      style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
+                    ></Form.Control>
+                  </InputGroup>
+                </Form>
+              </div>
+            </div>
+          </div>
               <div className="container no_responsive">
                 <div className="row">
                   <div className="col-sm">
-  
-                 
                   </div>
-                  
-  
                   <div className="col">
                     <h6 className="text-center my-2" style={{ color: "#052851" }}>
                       {arrayNameMunicipality.map((myNameMunicipality) => (
@@ -131,11 +121,11 @@ export const JalMunicipal = () => {
                     </h6>
                   </div>
                   <div className="col-sm">
-                    <Form id="form_conta">
+                    <Form id="form_conta" onSubmit={submitHandler}>
                       <InputGroup className="my-1 container_form">
                         <Form.Control
                           onChange={(e) => setSearch(e.target.value)}
-                          placeholder="Buscar un Candidato"
+                          placeholder="Buscar nombre Candidato"
                           style={{ textAlign: "right", marginRight: "5px" }}
                           className="form_co"
                         ></Form.Control>
@@ -144,11 +134,10 @@ export const JalMunicipal = () => {
                   </div>
                 </div>
               </div>
-            </div>
   
             <div className="table-wrapper-scroll-y my-custom-scrollbar">
               <table
-                className="colorTable table table-hover"
+                className="colorTableCamara table table-hover"
                 style={{ background: "#05285190 !important" }}
               >
                 <thead
@@ -162,13 +151,13 @@ export const JalMunicipal = () => {
                     <th className="text-center" style={{ width: "40%" }} id="text_left_name">
                       NOMBRE CANDIDATO
                     </th>
-                    <th className="text-center" style={{ width: "25%" }} id="text_left_name">
+                    <th className="text-center" style={{ width: "25%" }}>
                       VOTOS MUNICIPIO
                     </th>
                   </tr>
                 </thead>
                 <tbody className="color container_table">
-                  {arrayVotesSenadoTerritorial
+                  {arrayVotesJalMunicipal
                     .filter((myVotes) => {
                         return search === ""
                           ? myVotes
@@ -178,13 +167,13 @@ export const JalMunicipal = () => {
                       })
                     .map((myVotes, contador) => (
                       <tr key={contador}>
-                        <td className="text_left_name">
+                        <td className="text_left_name left_alination">
                           {myVotes.description_politicparty}
                         </td>
                         <td className="text_left_name">
                           {myVotes.candidate_name}
                         </td>
-                        <td className="text_left_name">{format.format(myVotes.votos)}</td>
+                        <td className="text-center align-middle">{format.format(myVotes.votos)}</td>
                       </tr>
                     ))}
                 </tbody>
@@ -233,8 +222,6 @@ export const JalMunicipal = () => {
             </Modal.Body>
           </Modal>
         </div>
-  
-        {/* Ejemplo de una tabla para presentación de datos: Fin */}
       </main>
     );
   };

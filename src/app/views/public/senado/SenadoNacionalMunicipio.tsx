@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import VotesCongreso from "../../../models/VotesCongreso";
+import { useParams } from "react-router-dom";
+import VotosSenado from "../../../models/VotesCongreso";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
 import senado from "../../../../assets/image/HeaderTable/CRsenadonacional.webp";
-import { Form, InputGroup, Modal, Pagination } from "react-bootstrap";
+import { Form, InputGroup, Modal} from "react-bootstrap";
 import Municipality from "../../../models/Municipality";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp"
 
@@ -19,15 +19,11 @@ export const SenadoNacionalMunicipio = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesSenadoTerritorial, setArrayVotosSenadoTerritorial] =
-    useState<VotesCongreso[]>([]);
+  const [arrayVotesSenadoMunicipal, setArrayVotosSenadoMunicipal] = useState<VotosSenado[]>([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
-  const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
-    Municipality[]
-  >([]);
+  const [arrayNameMunicipality, setArrayNameMunicipality] = useState< Municipality[] >([]);
 
-  //Funciones
-  const getVotosSenadoTerritorial = async () => {
+  const getVotosSenadoMunicipal = async () => {
     const result = await ServicePrivate.requestGET(
       ApiBack.SENADO_NACIONAL_MUNICIPIO +
         "/" +
@@ -35,10 +31,9 @@ export const SenadoNacionalMunicipio = () => {
         "/municipio/" +
         idMunicipality
     );
-    setArrayVotosSenadoTerritorial(result);
+    setArrayVotosSenadoMunicipal(result);
     setShow(false);
   };
-  // get vehicle to be displayed in the combo
   const getMuniciaplity = async () => {
     const result = await ServicePrivate.requestGET(
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
@@ -52,13 +47,17 @@ export const SenadoNacionalMunicipio = () => {
     setArrayNameMunicipality(result);
   };
 
+  //Prevent enter in search box
+  function submitHandler(e:any) {
+    e.preventDefault();
+  }
   //Format Number Votes 
   const format = new Intl.NumberFormat(); 
   useEffect(() => {
-    getVotosSenadoTerritorial();
+    getVotosSenadoMunicipal();
     getMuniciaplity();
     getNameMunicipality();
-  }, []);
+  }, [idDepartment,idMunicipality]);
 
   return (
     <main id="main" className="main">
@@ -74,11 +73,6 @@ export const SenadoNacionalMunicipio = () => {
         alt="logo principal para la parte superior de la pagina web"
       />
       <div className="side_bar"></div>
-      {/* Navegación estilo breadcrumb: Inicio */}
-
-      {/* Navegación estilo breadcrumb: Fin */}
-
-      {/* Ejemplo de una tabla para presentación de datos: Inicio */}
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
           <div
@@ -120,7 +114,7 @@ export const SenadoNacionalMunicipio = () => {
                       <li>
                         {arrayMunicipio
                           .filter((val) => {
-                            if (searchMunicipio == "") {
+                            if (searchMunicipio === "") {
                               return val;
                             } else if (
                               val.name_municipality
@@ -162,7 +156,7 @@ export const SenadoNacionalMunicipio = () => {
                   </h6>
                 </div>
                 <div className="col-sm">
-                  <Form id="form_conta">
+                  <Form id="form_conta" onSubmit={submitHandler}>
                     <InputGroup className="my-3 container_form">
                       <Form.Control
                         onChange={(e) => setSearch(e.target.value)}
@@ -205,7 +199,7 @@ export const SenadoNacionalMunicipio = () => {
                       <li>
                         {arrayMunicipio
                           .filter((val) => {
-                            if (searchMunicipio == "") {
+                            if (searchMunicipio === "") {
                               return val;
                             } else if (
                               val.name_municipality
@@ -249,7 +243,7 @@ export const SenadoNacionalMunicipio = () => {
                   </h6>
                 </div>
                 <div className="col-sm">
-                  <Form id="form_conta">
+                  <Form id="form_conta" onSubmit={submitHandler}>
                     <InputGroup className="my-1 container_form">
                       <Form.Control
                         onChange={(e) => setSearch(e.target.value)}
@@ -289,9 +283,9 @@ export const SenadoNacionalMunicipio = () => {
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotesSenadoTerritorial
+                {arrayVotesSenadoMunicipal
                   .filter((val) => {
-                    if (search == "") {
+                    if (search === "") {
                       return val;
                     } else if (
                       val.candidate_name
@@ -359,8 +353,6 @@ export const SenadoNacionalMunicipio = () => {
           </Modal.Body>
         </Modal>
       </div>
-
-      {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>
   );
 };
