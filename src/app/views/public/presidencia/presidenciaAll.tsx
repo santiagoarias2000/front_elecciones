@@ -1,40 +1,25 @@
 import { Form, InputGroup } from "react-bootstrap";
 import presidencia from "../../../../assets/image/HeaderTable/presidencia.webp";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Precidencia from "../../../mocks/models/Presidencia";
-import {
-  ARREGLO_PRIMERA_VUELTA,
-  ARRGLO_SEGUNDA_VUELTA,
-} from "../../../mocks/precidencia-mocks";
+import { ARREGLO_PRIMERA_VUELTA, ARRGLO_SEGUNDA_VUELTA, } from "../../../mocks/precidencia-mocks";
 import ServicePrivate from "../../../services/ServicePrivate";
 import VotesCongreso from "../../../models/VotesCongreso";
 import ApiBack from "../../../utilities/domains/ApiBack";
 
 export const PresidenciaAll = () => {
-  const [arrayPrecidenciaPrimera, setArrayPrecidenciaPrimera] = useState<
-    Precidencia[]
-  >(ARREGLO_PRIMERA_VUELTA);
+  const [arrayPrecidenciaPrimera, setArrayPrecidenciaPrimera] = useState< Precidencia[] >(ARREGLO_PRIMERA_VUELTA);
 
-  const [arrayPrecidenciaSegunda, setArrayPrecidenciaSegunda] = useState<
-    Precidencia[]
-  >(ARRGLO_SEGUNDA_VUELTA);
-
-  const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
-    useState<VotesCongreso[]>([]);
+  const [arrayPrecidenciaSegunda, setArrayPrecidenciaSegunda] = useState< Precidencia[] >(ARRGLO_SEGUNDA_VUELTA);
 
   const [searchVuelta1, setSearchVuelta1] = useState("");
   const [searchVuelta2, setSearchVuelta2] = useState("");
 
-  const regresar = useNavigate();
-  const getVotosCamaraTerritorial = async () => {
-    //const parametrosPaginador= {paginaActual: activo, cantidadMostrar:numeroElemPag};
-    const result = await ServicePrivate.requestGET(ApiBack.CAMARA_TERRITORIAL);
-    setArrayVotosCamaraTerritorial(result);
-  };
+  function submitHandler(e:any) {
+    e.preventDefault();
+  }
 
   useEffect(() => {
-    getVotosCamaraTerritorial();
   }, []);
 
   return (
@@ -44,12 +29,6 @@ export const PresidenciaAll = () => {
         style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
         alt="logo principal para la parte superior de la pagina web"
       />
-      {/* Navegación estilo breadcrumb: Inicio */}
-
-      {/* Navegación estilo breadcrumb: Fin */}
-
-      {/* Ejemplo de una tabla para presentación de datos: Inicio */}
-
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
@@ -65,7 +44,7 @@ export const PresidenciaAll = () => {
                 <div className="name_table">29 DE MARZO DEL 2022</div>
               </div>
               <div className="col-sm">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchVuelta1(e.target.value)}
@@ -376,7 +355,7 @@ export const PresidenciaAll = () => {
                 <div className="name_table">19 DE JUNIO DEL 2022</div>
               </div>
               <div className="col-sm">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchVuelta2(e.target.value)}
@@ -672,7 +651,6 @@ export const PresidenciaAll = () => {
         </div>
       </div>
       <div className="position-absolute bottom-50 end-50"></div>
-      {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>
   );
 };

@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import VotesCongreso from "../../../models/VotesCongreso";
+import VotosSenado from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import senado from "../../../../assets/image/HeaderTable/SENADO.webp";
-import { Link, useNavigate } from "react-router-dom";
 import { Form, InputGroup, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
@@ -15,12 +14,8 @@ export const Senado = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesSenadoNacional, setArrayVotesSenadoNacional] = useState<
-    VotesCongreso[]
-  >([]);
-  const [arrayVotesSenadoIndigena, setArrayVotesSenadoIndigena] = useState<
-    VotesCongreso[]
-  >([]);
+  const [arrayVotesSenadoNacional, setArrayVotesSenadoNacional] = useState< VotosSenado[] >([]);
+  const [arrayVotesSenadoIndigena, setArrayVotesSenadoIndigena] = useState< VotosSenado[] >([]);
 
   const getVotosSenadoTerritorial = async () => {
     const result = await ServicePrivate.requestGET(ApiBack.SENADO_NACIONAL);
@@ -31,6 +26,11 @@ export const Senado = () => {
     const result = await ServicePrivate.requestGET(ApiBack.SENADO_INDIGENA);
     setArrayVotesSenadoIndigena(result);
   };
+
+  //Prevent enter in search box
+  function submitHandler(e:any) {
+    e.preventDefault();
+  }
 
   //Format Number Votes 
   const format = new Intl.NumberFormat(); 
@@ -47,11 +47,6 @@ export const Senado = () => {
         style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
         alt="logo principal para la parte superior de la pagina web"
       />
-      {/* Navegación estilo breadcrumb: Inicio */}
-
-      {/* Navegación estilo breadcrumb: Fin */}
-
-      {/* Ejemplo de una tabla para presentación de datos: Inicio */}
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
@@ -63,7 +58,7 @@ export const Senado = () => {
           <div className="container responsive_pe">
             <div className="row">
               <div className="col-12">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchNacional(e.target.value)}
@@ -80,7 +75,7 @@ export const Senado = () => {
             <div className="row">
               <div className="col-sm"></div>
               <div className="col-3">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchNacional(e.target.value)}
@@ -212,7 +207,7 @@ export const Senado = () => {
           <div className="container responsive_pe">
             <div className="row">
               <div className="col-12">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchIndigena(e.target.value)}
@@ -229,7 +224,7 @@ export const Senado = () => {
             <div className="row">
               <div className="col-sm"></div>
               <div className="col-3">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchIndigena(e.target.value)}
@@ -371,7 +366,6 @@ export const Senado = () => {
         </Modal.Body>
       </Modal>
       <div className="position-absolute bottom-50 end-50"></div>
-      {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>
   );
 };

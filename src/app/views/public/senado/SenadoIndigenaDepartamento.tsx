@@ -1,16 +1,8 @@
 import { useEffect, useState } from "react";
-import {
-  Col,
-  Form,
-  InputGroup,
-  Modal,
-  Pagination,
-  Row,
-  Table,
-} from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { Form, InputGroup, Modal } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 import senado from "../../../../assets/image/HeaderTable/CRsenadoindigena.webp";
-import VotesCongreso from "../../../models/VotesCongreso";
+import VotosSenado from "../../../models/VotesCongreso";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
 import Municipality from "../../../models/Municipality";
@@ -29,7 +21,7 @@ export const SenadoIndigenaDepartamento = () => {
   const handleClose = () => setShow(false);
 
   const [arrayVotesSenadoDepartamental, setArrayVotesSenadoDepartamental] =
-    useState<VotesCongreso[]>([]);
+    useState<VotosSenado[]>([]);
   const getMunicipios = async () => {
     const resultado = await ServicePrivate.requestGET(
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
@@ -53,6 +45,10 @@ export const SenadoIndigenaDepartamento = () => {
       setShow(false);
     }
   };
+  //Prevent enter in search box
+  function submitHandler(e:any) {
+    e.preventDefault();
+  }
   //Format Number Votes 
   const format = new Intl.NumberFormat(); 
   useEffect(() => {
@@ -67,11 +63,6 @@ export const SenadoIndigenaDepartamento = () => {
         style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
         alt="logo principal para la parte superior de la pagina web"
       />
-      {/* Navegación estilo breadcrumb: Inicio */}
-
-      {/* Navegación estilo breadcrumb: Fin */}
-
-      {/* Ejemplo de una tabla para presentación de datos: Inicio */}
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
@@ -111,7 +102,7 @@ export const SenadoIndigenaDepartamento = () => {
                     <li>
                       {arrayMunicipios
                         .filter((val) => {
-                          if (searchMunicipio == "") {
+                          if (searchMunicipio === "") {
                             return val;
                           } else if (
                             val.name_municipality
@@ -146,7 +137,7 @@ export const SenadoIndigenaDepartamento = () => {
                 </h6>
               </div>
               <div className="col-sm">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
@@ -187,7 +178,7 @@ export const SenadoIndigenaDepartamento = () => {
                     <li>
                       {arrayMunicipios
                         .filter((val) => {
-                          if (searchMunicipio == "") {
+                          if (searchMunicipio === "") {
                             return val;
                           } else if (
                             val.name_municipality
@@ -224,7 +215,7 @@ export const SenadoIndigenaDepartamento = () => {
                 </h6>
               </div>
               <div className="col-sm">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-1 container_form">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
@@ -262,7 +253,7 @@ export const SenadoIndigenaDepartamento = () => {
               <tbody className="color container_table">
                 {arrayVotesSenadoDepartamental
                   .filter((val) => {
-                    if (search == "") {
+                    if (search === "") {
                       return val;
                     } else if (
                       val.description_politicparty
@@ -348,7 +339,6 @@ export const SenadoIndigenaDepartamento = () => {
         </Modal>
       </div>
       <div className="position-absolute bottom-50 end-50"></div>
-      {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>
   );
 };

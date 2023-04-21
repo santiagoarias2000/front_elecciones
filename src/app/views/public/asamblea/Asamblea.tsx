@@ -1,47 +1,41 @@
 import { useState, useEffect } from "react";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import camara from "../../../../assets/image/HeaderTable/ELEASAMBLEA.webp";
-import { Link, useNavigate } from "react-router-dom";
-import {
-  Col,
-  Form,
-  InputGroup,
-  Modal,
-  Pagination,
-  Row,
-  Table,
-} from "react-bootstrap";
+import asamblea from "../../../../assets/image/HeaderTable/ELEASAMBLEA.webp";
+import { Form, InputGroup, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
-import VotesGober from "../../../models/VotesGober";
+import VotesAsamblea from "../../../models/DataElection";
 
 export const Asamblea = () => {
-    //Format Number Votes 
-  const format = new Intl.NumberFormat('es');
+  //Format Number Votes
+  const format = new Intl.NumberFormat();
 
-  const [searchTerritorial, setSearchTerritorial] = useState("");
-
+  const [searchDepartamento, setSearchDepartamento] = useState("");
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesAsambleaTerritorial, setArrayVotesAsambleaTerritorial] =
-    useState<VotesGober[]>([]);
+  const [arrayVotosAsamblea, setArrayVotosAsamblea] = useState<VotesAsamblea[]>(
+    []
+  );
 
-  const getVotosAsambleaTerritorial = async () => {
-    //const parametrosPaginador= {paginaActual: activo, cantidadMostrar:numeroElemPag};
+  const getVotosAsamblea = async () => {
     const result = await ServicePrivate.requestGET(ApiBack.ASAMBLEA);
-    setArrayVotesAsambleaTerritorial(result);
+    setArrayVotosAsamblea(result);
     setShow(false);
   };
+  //Prevent enter in search box
+  function submitHandler(e:any) {
+    e.preventDefault();
+  }
 
   useEffect(() => {
-    getVotosAsambleaTerritorial();
+    getVotosAsamblea();
   }, []);
 
   return (
     <main id="main" className="main">
       <img
-        src={camara}
+        src={asamblea}
         style={{
           width: "100%",
           maxHeight: "80%",
@@ -52,16 +46,11 @@ export const Asamblea = () => {
         alt="logo principal para la parte superior de la pagina web"
       />
       <div className="side_bar"></div>
-      {/* Navegación estilo breadcrumb: Inicio */}
-
-      {/* Navegación estilo breadcrumb: Fin */}
-
-      {/* Ejemplo de una tabla para presentación de datos: Inicio */}
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b className="title_table">VOTOS ASAMBLEA</b>
+              <b className="title_table">ASAMBLEA TERRITORIAL</b>
             </div>
           </div>
 
@@ -69,10 +58,10 @@ export const Asamblea = () => {
             <div className="row">
               <div className="col-sm"></div>
               <div className="col-12">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
-                      onChange={(e) => setSearchTerritorial(e.target.value)}
+                      onChange={(e) => setSearchDepartamento(e.target.value)}
                       placeholder="Buscar nombre departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
@@ -86,10 +75,10 @@ export const Asamblea = () => {
             <div className="row">
               <div className="col-sm"></div>
               <div className="col-3">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
-                      onChange={(e) => setSearchTerritorial(e.target.value)}
+                      onChange={(e) => setSearchDepartamento(e.target.value)}
                       placeholder="Buscar nombre departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
@@ -120,13 +109,13 @@ export const Asamblea = () => {
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotesAsambleaTerritorial
+                {arrayVotosAsamblea
                   .filter((myVotes) => {
-                    return searchTerritorial === ""
+                    return searchDepartamento === ""
                       ? myVotes
                       : myVotes.department.name_department
                           .toLowerCase()
-                          .includes(searchTerritorial.toLowerCase());
+                          .includes(searchDepartamento.toLowerCase());
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
@@ -141,7 +130,9 @@ export const Asamblea = () => {
                           {myVotes.department.name_department}
                         </a>
                       </td>
-                      <td className="text-center">{format.format(myVotes.votos)}</td>
+                      <td className="text-center">
+                        {format.format(myVotes.votos)}
+                      </td>
                       <td className="text-center align-middle">
                         <a
                           className="link_departamento"
@@ -205,8 +196,6 @@ export const Asamblea = () => {
           </Modal.Body>
         </Modal>
       </div>
-
-      {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>
   );
 };

@@ -1,7 +1,7 @@
 import Department from "./Department";
 import Municipality from "./Municipality";
 
-class VotesGober {
+class DataElection {
   public id_votes: number;
   public department: Department;
   public municipality: Municipality;
@@ -59,4 +59,4 @@ class VotesGober {
   }
 }
 
-export default VotesGober;
+export default DataElection;

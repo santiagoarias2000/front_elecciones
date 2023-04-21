@@ -39,6 +39,7 @@ import { AsambleaDepartamentoMunicipio } from "../../views/public/asamblea/Asamb
 import { Concejo } from "../../views/public/concejo/Concejo";
 import { ConcejoDepartamento } from "../../views/public/concejo/ConcejoDepartamento";
 import { ConcejoMunicipal } from "../../views/public/concejo/ConcejoMunicipal";
+import { AlcaldiaDepartamentoMunicipio } from "../../views/public/alcaldia/AlcaldiaDepartamentoMunicipio";
 import { Resultados } from "../../views/shared/Resultados";
 
 //Lazy structure from use the all tsx
@@ -77,6 +78,7 @@ const LazyGobernacionDepartamentoMunicipio = lazy(() => import("../../views/publ
 const LazyAsambleaDepartamento = lazy(() => import("../../views/public/asamblea/AsambleaDepartamento").then(() => ({default:  AsambleaDepartamento})));
 const LazyAsambleaDepartamentoMunicipio = lazy(() => import("../../views/public/asamblea/AsambleaDepartamentoMunicipio").then(() => ({default:  AsambleaDepartamentoMunicipio})));
 const LazyAlcadiaDepartamento = lazy(() => import("../../views/public/alcaldia/AlcaldiaDepartamento").then(() => ({default: AlcaldiaDepartamento})));
+const LazyAlcadiaDepartamentoMunicipio = lazy(() => import("../../views/public/alcaldia/AlcaldiaDepartamentoMunicipio").then(() => ({default: AlcaldiaDepartamentoMunicipio})));
 //Blog
 const LazyBlog = lazy(() => import("../../containers/Blog").then(() => ({default: Blog})));
 const LazyResultados = lazy(() => import("../../views/shared/Resultados").then(() => ({default: Resultados})));
@@ -125,6 +127,7 @@ export const InternalRouting = () => {
       //Routes Alcadia
       <Route path="/alcaldia" element={<LazyAlcadia/>}/>
       <Route path="/alcaldia/departamento/:idDepartment" element={<LazyAlcadiaDepartamento />} />
+      <Route path="/alcaldia/departamento/:idDepartment/municipio/:idMunicipality" element={<LazyAlcadiaDepartamentoMunicipio />} />
       //Routes Consejo
       <Route path="/concejo" element={<LazyConcejo/>}/>
       <Route path="/concejo/departamento/:idDepartment" element={<LazyConcejoDepartamento/>}/>

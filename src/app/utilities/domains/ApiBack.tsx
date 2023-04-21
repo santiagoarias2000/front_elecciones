@@ -1,5 +1,4 @@
 const ApiBack = {
-  // URL: "https://guiaelectoral.onrender.com",
   //URL: "http://localhost:3123",
   URL: "https://guiaelectoraldecolombia.onrender.com",
 
@@ -12,6 +11,8 @@ const ApiBack = {
   NOMBRE_DEPARTAMENTO_GOBERNACION: "/api/public/departamento/gobernacion",
   NOMBRE_DEPARTAMENTO_ASAMBLEA: "/api/public/departamento/asamblea",
   NOMBRE_DEPARTAMENTO_ALCADIA: "/api/public/departamento/alcaldia",
+  NOMBRE_DEPARTAMENTO_JAL: "/api/public/departamento/jal",
+  NOMBRE_DEPARTAMENTO_CONCEJO: "/api/public/departamento/concejo",
 
 
 
@@ -52,6 +53,7 @@ const ApiBack = {
 
   ALCALDIA:"/api/public/alcaldia",
   ALCALDIA_DEPARTAMENTO:"/api/public/alcaldia/departamento",
+  ALCALDIA_DEPARTAMENTO_MUNICIPIO:"/api/public/alcaldia/municipio",
 
   CONCEJO:"/api/public/concejo",
   CONCEJO_DEPARTAMENTO:"/api/public/concejo/departamento",
