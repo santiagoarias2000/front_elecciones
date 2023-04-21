@@ -116,7 +116,7 @@ export const SenadoIndigenaMunicipio = () => {
                     <li>
                       {arrayMunicipio
                         .filter((val) => {
-                          if (searchMunicipio == "") {
+                          if (searchMunicipio === "") {
                             return val;
                           } else if (
                             val.name_municipality
@@ -197,7 +197,7 @@ export const SenadoIndigenaMunicipio = () => {
                     <li>
                       {arrayMunicipio
                         .filter((val) => {
-                          if (searchMunicipio == "") {
+                          if (searchMunicipio === "") {
                             return val;
                           } else if (
                             val.name_municipality
@@ -280,7 +280,7 @@ export const SenadoIndigenaMunicipio = () => {
               <tbody className="color container_table">
                 {arrayVotesSenadoMunicipal
                   .filter((val) => {
-                    if (search == "") {
+                    if (search === "") {
                       return val;
                     } else if (
                       val.candidate_name

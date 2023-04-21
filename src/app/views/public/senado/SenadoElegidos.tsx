@@ -92,7 +92,7 @@ export const SenadoElegidos = () => {
               <tbody className="color container_table">
                 {arrayVotesSenadoNacional
                   .filter((val=>{
-                    if(search == ""){
+                    if(search === ""){
                       return val;
                     }else if(val.description_politicparty.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
                       return val;
@@ -195,7 +195,7 @@ export const SenadoElegidos = () => {
               <tbody className="color container_table">
                 {arrayVotesSenadoIndigena
                   .filter((val=>{
-                    if(searchIndigenas == ""){
+                    if(searchIndigenas === ""){
                       return val;
                     }else if(val.description_politicparty.toLocaleLowerCase().includes(searchIndigenas.toLocaleLowerCase())){
                       return val;

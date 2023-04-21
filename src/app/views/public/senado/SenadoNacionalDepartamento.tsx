@@ -104,7 +104,7 @@ export const SenadoNacionalDepartamento = () => {
                       <li>
                         {arrayMunicipios
                           .filter((val) => {
-                            if (searchMunicipio == "") {
+                            if (searchMunicipio === "") {
                               return val;
                             } else if (
                               val.name_municipality
@@ -182,7 +182,7 @@ export const SenadoNacionalDepartamento = () => {
                       <li>
                         {arrayMunicipios
                           .filter((val) => {
-                            if (searchMunicipio == "") {
+                            if (searchMunicipio === "") {
                               return val;
                             } else if (
                               val.name_municipality
@@ -256,7 +256,7 @@ export const SenadoNacionalDepartamento = () => {
               <tbody className="color container_table">
                 {arrayVotesSenadoDepartamental
                   .filter((val) => {
-                    if (search == "") {
+                    if (search === "") {
                       return val;
                     } else if (
                       val.description_politicparty
