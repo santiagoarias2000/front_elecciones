@@ -291,7 +291,7 @@ export const GobernacionDepartamentoMunicipio = () => {
                     if (search == "") {
                       return val;
                     } else if (
-                      val.description_politicparty
+                      val.candidate_name
                         .toLocaleLowerCase()
                         .includes(search.toLocaleLowerCase())
                     ) {

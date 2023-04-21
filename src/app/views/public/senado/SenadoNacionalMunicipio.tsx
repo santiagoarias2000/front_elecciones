@@ -322,8 +322,9 @@ export const SenadoNacionalMunicipio = () => {
               className="container-fluid display-flex justify-content-center"
               style={{
                 color: "#FFFFFF",
-                height: "40px",
-                alignItems: "right",
+                height: "80px",
+                display: "flex",
+                alignItems: "center",
               }}
             >
               <div className="text-center">

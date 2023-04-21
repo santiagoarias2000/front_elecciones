@@ -25,14 +25,14 @@ export const Header = () => {
               <a href="/#about" style={{ textDecoration: "none" }}>
                 Inicio
               </a>
-              <a href="#" style={{ textDecoration: "none" }}>
-                Preguntas frecuentes
-              </a>
               <Link to={"/blog"} style={{ textDecoration: "none" }}>
                 Nuestro Blog
               </Link>
+              <Link to={"/nosotros"} style={{ textDecoration: "none" }}>
+                Nosotros
+              </Link>
               <a
-                href="/#resultados"
+                href="/resultados"
                 className="getstarted scrollto pruebita"
                 style={{ textDecoration: "none" }}
               >

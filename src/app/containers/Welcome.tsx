@@ -1,4 +1,3 @@
-import president from "../../assets/image/imgenroll.webp";
 import Img7Carrusel from "../../assets/image/Img8.webp";
 import Img1Carr from "../../assets/image/GuiasAntiguas/Img1.webp";
 import Img2Carr from "../../assets/image/GuiasAntiguas/Img2.webp";
@@ -51,8 +50,8 @@ export const Welcome = () => {
               ></a> */}
             </div>
 
-            <div className="col-lg-6 d-flex flex-column justify-content-center about-content">
-              <div className="section-title">
+            <div className="col-lg-6 d-flex flex-column justify-content-center about-content" >
+              <div className="section-title" style={{paddingBottom:"18%"}}>
                 <h2>Bienvenido a Guía Electoral de Colombia</h2>
                 <h6 className="fst-italic text_extr">
                   ¡¡¡Para estrategias...Documéntese!!!
@@ -63,256 +62,52 @@ export const Welcome = () => {
                   marketing político.
                 </p>
               </div>
-
-              <div className="icon-box" data-aos="fade-up" data-aos-delay="100">
-                <div className="icon">
-                  <Link to={"/blog"} style={{ textDecorationLine: "none" }}>
-                    <i className="bi bi-fingerprint"></i>
-                  </Link>
+              <div>
+                <div className="section-title">
+                  <h5>RESULTADOS DE VOTACIONES ELECTORALES</h5>
+                  <hr style={{color:"#052851"}}/>
                 </div>
-                <h4 className="title">
-                  <Link to={"/blog"} style={{ textDecorationLine: "none" }}>
-                    Visita nuestro Blog
-                  </Link>
-                </h4>
-                <p className="description text-justify">
-                  Bienvenidos a nuestro blog de elecciones, donde encontrarás
-                  información y análisis sobre los procesos electorales en
-                  Colombia. En este espacio, te mantendremos al tanto de las
-                  últimas noticias y tendencias en materia de política, desde
-                  las elecciones presidenciales y parlamentarias hasta las
-                  elecciones locales y regionales. Aquí podrás encontrar
-                  artículos de opinión, entrevistas con expertos en política y
-                  análisis detallados de los resultados electorales.
-                </p>
-              </div>
-
-              <div className="icon-box" data-aos="fade-up" data-aos-delay="100">
-                <div className="icon">
-                  <Link to={"/nosotros"} style={{ textDecorationLine: "none" }}>
-                    <i className="bi bi-people-fill"></i>
-                  </Link>
+                
+                <div className="herramientas">
+                
+                  <ul>
+                    <li className="RutasRiesgo">
+                      <a className="flex1" href="/presidencia">
+                        PRESIDENCIA
+                      </a>
+                      <a className="flex2" href="/senado">
+                        SENADO
+                      </a>
+                      <a className="flex3" href="/camara">
+                        CÁMARA
+                      </a>
+                      <a className="flex4" href="/asamblea">
+                        GOBERNACIONES
+                      </a>
+                    </li>
+                    
+                  </ul>
                 </div>
-                <h4 className="title">
-                  <Link to={"/nosotros"} style={{ textDecorationLine: "none" }}>
-                    Nosotros
-                  </Link>
-                </h4>
-                <p className="description text-justify">
-                  Bienvenidos al apartado "Nosotros" de nuestra página web,
-                  donde podrás conocer más sobre nuestra empresa y nuestra
-                  historia. En este espacio, te contaremos quiénes somos, qué
-                  hacemos y cuáles son nuestros valores y objetivos.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+                <div className="herramientas mt-4">
+                  <ul>
+                    <li className="RutasRiesgo">
 
-      <section id="resultados" className="about-lists">
-        <div className="container">
-          <div className="row no-gutters">
-            <div className="col-lg-4 col-md-6 content-item" data-aos="fade-up">
-              <span style={{ textAlign: "right" }}>
-                <img
-                  src={president}
-                  alt="Imagen de presidencia"
-                  style={{ width: "12%", height: "auto" }}
-                />
-              </span>
-
-              <h4>Presidencia</h4>
-              <p>
-                Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel nacional y por total departamentos para
-                la Presidencia de la Republica.
-              </p>
-              <div className="cards-btn text-center">
-                <a
-                  href="/presidencia"
-                  className="btn-cards mt-4 responsive_botton"
-                >
-                  <i className="bi bi-bar-chart-line-fill "></i>
-                  &nbsp; Ver resultados
-                </a>
-              </div>
-            </div>
-
-            <div
-              className="col-lg-4 col-md-6 content-item"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <span style={{ textAlign: "right" }}>
-                <img
-                  src={president}
-                  alt="Imagen de presidencia"
-                  style={{ width: "12%", height: "auto" }}
-                />
-              </span>
-              <h4>Senado</h4>
-              <p>
-                Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel nacional, por total departamentos y por
-                total municipios.
-              </p>
-              <div className="cards-btn text-center botton_responsive">
-                <a href="/senado" className="btn-cards mt-4 responsive_botton">
-                  <i className="bi bi-bar-chart-line-fill "></i>
-                  &nbsp; Ver resultados
-                </a>
-              </div>
-            </div>
-
-            <div
-              className="col-lg-4 col-md-6 content-item"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <span style={{ textAlign: "right" }}>
-                <img
-                  src={president}
-                  alt="Imagen de presidencia"
-                  style={{ width: "12%", height: "auto" }}
-                />
-              </span>
-              <h4>Cámara</h4>
-              <p>
-                Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel regional, total municipios y total
-                departamento.
-              </p>
-              <div className="cards-btn text-center">
-                <a href="/camara" className="btn-cards mt-4 responsive_botton">
-                  <i className="bi bi-bar-chart-line-fill"></i>
-                  &nbsp; Ver resultados
-                </a>
-              </div>
-            </div>
-
-            <div
-              className="col-lg-4 col-md-6 content-item"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <span style={{ textAlign: "right" }}>
-                <img
-                  src={president}
-                  alt="Imagen de gobernacion"
-                  style={{ width: "12%", height: "auto" }}
-                />
-              </span>
-              <h4>Gobernaciones</h4>
-              <p>
-                Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel departamental y total municipios.
-              </p>
-              <div className="cards-btn text-center">
-                <a href="/gobernacion" className="btn-cards mt-4 responsive_botton">
-                  <i className="bi bi-bar-chart-line-fill"></i>
-                  &nbsp; Ver resultados
-                </a>
-              </div>
-            </div>
-
-            <div
-              className="col-lg-4 col-md-6 content-item"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              <span style={{ textAlign: "right" }}>
-                <img
-                  src={president}
-                  alt="Imagen de presidencia"
-                  style={{ width: "12%", height: "auto" }}
-                />
-              </span>
-              <h4>Asambleas</h4>
-              <p>
-                Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel departamental, total departamento y
-                total municipios.
-              </p>
-              <div className="cards-btn text-center">
-                <a href="/asamblea" className="btn-cards mt-4 responsive_botton">
-                  <i className="bi bi-bar-chart-line-fill"></i>
-                  &nbsp; Ver resultados
-                </a>
-              </div>
-            </div>
-
-            <div
-              className="col-lg-4 col-md-6 content-item"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              <span style={{ textAlign: "right" }}>
-                <img
-                  src={president}
-                  alt="Imagen de presidencia"
-                  style={{ width: "12%", height: "auto" }}
-                />
-              </span>
-              <h4>Alcaldías</h4>
-              <p>
-                Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel municipal.
-              </p>
-              <div className="cards-btn text-center">
-                <a href="/alcaldia" className="btn-cards mt-4 responsive_botton">
-                  <i className="bi bi-bar-chart-line-fill"></i>
-                  &nbsp; Ver resultados
-                </a>
-              </div>
-            </div>
-            <div
-              className="col-lg-4 col-md-6 content-item"
-              data-aos="fade-up"
-              data-aos-delay="500"
-            >
-              <span style={{ textAlign: "right" }}>
-                <img
-                  src={president}
-                  alt="Imagen de presidencia"
-                  style={{ width: "12%", height: "auto" }}
-                />
-              </span>
-              <h4>Concejos</h4>
-              <p>
-                Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel municipal y/o distrital.
-              </p>
-              <div className="cards-btn text-center">
-                <a href="/concejo" className="btn-cards mt-4 responsive_botton">
-                  <i className="bi bi-bar-chart-line-fill"></i>
-                  &nbsp; Ver resultados
-                </a>
-              </div>
-            </div>
-
-            <div
-              className="col-lg-4 col-md-6 content-item"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              <span style={{ textAlign: "right" }}>
-                <img
-                  src={president}
-                  alt="Imagen de presidencia"
-                  style={{ width: "12%", height: "auto" }}
-                />
-              </span>
-              <h4>JAL</h4>
-              <p>
-                Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel distrital y por total localidades.
-              </p>
-              <div className="cards-btn text-center">
-                <a href="/jal" className="btn-cards mt-4 responsive_botton">
-                  <i className="bi bi-bar-chart-line-fill"></i>
-                  &nbsp; Ver resultados
-                </a>
+                      <a className="flex1" href="/asamblea">
+                        ASAMBLEAS
+                      </a>
+                      <a className="flex2" href="/alcaldia">
+                        ALCALDÍAS
+                      </a>
+                      <a className="flex3" href="/concejo">
+                        CONCEJO
+                      </a>
+                      <a className="flex4" href="/jal">
+                        JAL
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <hr style={{color:"#052851"}}/>
               </div>
             </div>
           </div>
@@ -459,7 +254,7 @@ export const Welcome = () => {
                     src={ImgDonJose}
                     className="img-fluid"
                     alt="Imagen de jose gil zapata para patrocinio"
-                    style={{ maxHeight: "261px !important", maxWidth:"auto" }}
+                    style={{ maxHeight: "261px !important", maxWidth: "auto" }}
                   />
                 </div>
                 <div className="member-info">
@@ -487,7 +282,7 @@ export const Welcome = () => {
                   <img
                     src={ImgHitData}
                     className="img-fluid"
-                    style={{maxWidth:"100%", maxHeight:"auto"}}
+                    style={{ maxWidth: "100%", maxHeight: "auto" }}
                     alt="Imagen de hitdata para patrocinio"
                   />
                 </div>

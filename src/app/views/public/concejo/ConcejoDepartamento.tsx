@@ -102,13 +102,13 @@ export const ConcejoDepartamento = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "50%" }} id="text_left_name">
+                  <th className="text-center" style={{ width: "35%" }} id="text_left_name">
                     DEPARTAMENTO
                   </th>
-                  <th className="text-center" style={{ width: "40%" }} >
+                  <th className="text-center" style={{ width: "35%" }} >
                     TOTAL VOTOS
                   </th>
-                  <th className="text-center" style={{ width: "10%" }} ></th>
+                  <th className="text-center" style={{ width: "30%" }} ></th>
 
                 </tr>
               </thead>

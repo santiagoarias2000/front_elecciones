@@ -382,30 +382,7 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
               </tbody>
             </table>
           </div>
-          <div className="dropdown">
-            <div
-              className="container-fluid display-flex justify-content-center"
-              style={{
-                color: "#FFFFFF",
-                height: "40px",
-                alignItems: "right",
-              }}
-            >
-              <h6
-                className="my-2"
-                style={{
-                  color: "#052851",
-                  textAlign: "center",
-                }}
-              >
-                {arrayDepartamento.map((myDepartment) => (
-                  <b className="vota_respo" style={{ color: "#D9224E" }}>
-                    VOTACIÓN TOTAL: {myDepartment.votos}
-                  </b>
-                ))}
-              </h6>
-            </div>
-          </div>
+          
           <div className="dropdown">
             <div
               className="container-fluid display-flex justify-content-center"

@@ -290,19 +290,15 @@ export const GobernacionDepartamento = () => {
           </div>
           <div className="dropdown">
             <div
-              className="container-fluid display-flex justify-content-center"
+              className="container-fluid display-flex justify-content-center mt-4"
               style={{
                 color: "#FFFFFF",
-                height: "40px",
+                height: "20px",
                 alignItems: "right",
               }}
             >
               <h6
-                className="my-2"
-                style={{
-                  color: "#052851",
-                  textAlign: "center",
-                }}
+                className="tituloVotosTotales my-2"
               >
                 {arrayDepartamento.map((myDepartment) => (
                   <b style={{ color: "#D9224E" }}>
