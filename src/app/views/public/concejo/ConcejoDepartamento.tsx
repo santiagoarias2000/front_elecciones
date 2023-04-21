@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
 import { Col, Form, InputGroup, Modal, Pagination, Row, Table, } from "react-bootstrap";
-import VotesGober from "../../../models/VotesGober";
+import VotesGober from "../../../models/DataElection";
 import concejo from "../../../../assets/image/HeaderTable/ELECONCEJO.webp";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 

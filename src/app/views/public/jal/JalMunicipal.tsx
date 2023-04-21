@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import VotesGober from "../../../models/VotesGober";
+import VotesGober from "../../../models/DataElection";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import jal from "../../../../assets/image/HeaderTable/ELEJAL.webp";
 import ServicePrivate from "../../../services/ServicePrivate";

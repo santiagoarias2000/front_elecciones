@@ -1,47 +1,37 @@
 import { useState, useEffect } from "react";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import camara from "../../../../assets/image/HeaderTable/ELEALCALDIA.webp";
-import { Link, useNavigate } from "react-router-dom";
-import {
-  Col,
-  Form,
-  InputGroup,
-  Modal,
-  Pagination,
-  Row,
-  Table,
-} from "react-bootstrap";
+import alcaldia from "../../../../assets/image/HeaderTable/ELEALCALDIA.webp";
+import { Form, InputGroup, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
-import VotesGober from "../../../models/VotesGober";
+import VotosAlcaldia from "../../../models/DataElection";
 
 export const Alcaldia = () => {
-    //Format Number Votes 
-  const format = new Intl.NumberFormat('es');
+  //Format Number Votes 
+  const format = new Intl.NumberFormat();
 
   const [searchTerritorial, setSearchTerritorial] = useState("");
 
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesAlcadiaTerritorial, setArrayVotesAlcadiaTerritorial] =
-    useState<VotesGober[]>([]);
+  const [arrayVotosAlcaldia, setArrayVotosAlcaldia] =
+    useState<VotosAlcaldia[]>([]);
 
-  const getVotosAlcadiaTerritorial = async () => {
-    //const parametrosPaginador= {paginaActual: activo, cantidadMostrar:numeroElemPag};
+  const getVotosAlcaldia = async () => {
     const result = await ServicePrivate.requestGET(ApiBack.ALCALDIA);
-    setArrayVotesAlcadiaTerritorial(result);
+    setArrayVotosAlcaldia(result);
     setShow(false);
   };
 
   useEffect(() => {
-    getVotosAlcadiaTerritorial();
+    getVotosAlcaldia();
   }, []);
 
   return (
     <main id="main" className="main">
       <img
-        src={camara}
+        src={alcaldia}
         style={{
           width: "100%",
           maxHeight: "80%",
@@ -52,16 +42,11 @@ export const Alcaldia = () => {
         alt="logo principal para la parte superior de la pagina web"
       />
       <div className="side_bar"></div>
-      {/* Navegación estilo breadcrumb: Inicio */}
-
-      {/* Navegación estilo breadcrumb: Fin */}
-
-      {/* Ejemplo de una tabla para presentación de datos: Inicio */}
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b className="title_table">TERRITORIAL MUNICIPALES</b>
+              <b className="title_table">ALCALDIA TERRITORIAL</b>
             </div>
           </div>
 
@@ -109,7 +94,7 @@ export const Alcaldia = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "50%" }}>
+                  <th className="text-center" style={{ width: "50%" }}  >
                     DEPARTAMENTO
                   </th>
                   <th className="text-center" style={{ width: "35%" }}>
@@ -119,7 +104,7 @@ export const Alcaldia = () => {
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotesAlcadiaTerritorial
+                {arrayVotosAlcaldia
                   .filter((myVotes) => {
                     return searchTerritorial === ""
                       ? myVotes
@@ -145,7 +130,7 @@ export const Alcaldia = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/alcaldia/regional/" +
+                            "/alcaldia/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -204,8 +189,6 @@ export const Alcaldia = () => {
           </Modal.Body>
         </Modal>
       </div>
-
-      {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>
   );
 };

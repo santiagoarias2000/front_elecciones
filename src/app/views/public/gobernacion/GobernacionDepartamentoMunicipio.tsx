@@ -1,26 +1,18 @@
 import { useEffect, useState } from "react";
-import {
-  Col,
-  Form,
-  InputGroup,
-  Modal,
-  Pagination,
-  Row,
-  Table,
-} from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
-import senado from "../../../../assets/image/HeaderTable/ELEGOBERNACION.webp";
-import VotesCongreso from "../../../models/VotesCongreso";
+import { Form, InputGroup, Modal } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import gobernacion from "../../../../assets/image/HeaderTable/ELEGOBERNACION.webp";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
 import Municipality from "../../../models/Municipality";
-import Department from "../../../models/Department";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
-import VotesGober from "../../../models/VotesGober";
+import VotesGoberenacion from "../../../models/DataElection";
 
 export const GobernacionDepartamentoMunicipio = () => {
   let { idDepartment } = useParams();
   let { idMunicipality } = useParams();
+  //Format Number Votes
+  const format = new Intl.NumberFormat();
   const [search, setSearch] = useState("");
   const [searchMunicipio, setSearchMunicipio] = useState("");
 
@@ -31,11 +23,9 @@ export const GobernacionDepartamentoMunicipio = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [
-    arrayVotesGobernacionDepartamental,
-    setarrayVotesGobernacionDepartamental,
-  ] = useState<VotesGober[]>([]);
-  const getMunicipios = async () => {
+  const [arrayVotesGobernacionMunicipio, setarrayVotesGobernacionMunicipio] =
+    useState<VotesGoberenacion[]>([]);
+  const getComboBoxMunicipios = async () => {
     const resultado = await ServicePrivate.requestGET(
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
     );
@@ -49,45 +39,38 @@ export const GobernacionDepartamentoMunicipio = () => {
     );
     setArrayNameMunicipality(result);
   };
-  const getVotosGobernacionDepartamental = async () => {
-    const urlCargarDepartamento =
+  const getVotosGobernacionMunicipio = async () => {
+    const urlCargarVotosMunicipio =
       ApiBack.GOBERNACION_DEPARTAMENTO_MUNICIPIO +
       "/" +
       idDepartment +
       "/municipio/" +
       idMunicipality;
-    const result = await ServicePrivate.requestGET(urlCargarDepartamento);
-    setarrayVotesGobernacionDepartamental(result);
+    const result = await ServicePrivate.requestGET(urlCargarVotosMunicipio);
+    setarrayVotesGobernacionMunicipio(result);
     if (result) {
-      setarrayVotesGobernacionDepartamental(result);
+      setarrayVotesGobernacionMunicipio(result);
       setShow(false);
     }
   };
-  //Format Number Votes
-  const format = new Intl.NumberFormat();
   useEffect(() => {
-    getVotosGobernacionDepartamental();
-    getMunicipios();
+    getComboBoxMunicipios();
     getNameMunicipality();
-  }, [idDepartment]);
+    getVotosGobernacionMunicipio();
+  }, [idDepartment, idMunicipality]);
   return (
     <main id="main" className="main">
       <img
-        src={senado}
+        src={gobernacion}
         style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
         alt="logo principal para la parte superior de la pagina web"
       />
-      {/* Navegación estilo breadcrumb: Inicio */}
-
-      {/* Navegación estilo breadcrumb: Fin */}
-
-      {/* Ejemplo de una tabla para presentación de datos: Inicio */}
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b className="title_table">VOTOS GOBERNACIÓN</b> &nbsp;
+              <b className="title_table">GOBERNACIÓN MUNICIPAL</b> &nbsp;
             </div>
           </div>
           <div className="container responsive">
@@ -286,12 +269,12 @@ export const GobernacionDepartamentoMunicipio = () => {
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotesGobernacionDepartamental
+                {arrayVotesGobernacionMunicipio
                   .filter((val) => {
                     if (search == "") {
                       return val;
                     } else if (
-                      val.description_politicparty
+                      val.candidate_name
                         .toLocaleLowerCase()
                         .includes(search.toLocaleLowerCase())
                     ) {
@@ -365,7 +348,6 @@ export const GobernacionDepartamentoMunicipio = () => {
         </Modal>
       </div>
       <div className="position-absolute bottom-50 end-50"></div>
-      {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>
   );
 };

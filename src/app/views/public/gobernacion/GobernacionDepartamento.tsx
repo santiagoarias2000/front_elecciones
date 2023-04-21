@@ -1,25 +1,18 @@
 import { useEffect, useState } from "react";
-import {
-  Col,
-  Form,
-  InputGroup,
-  Modal,
-  Pagination,
-  Row,
-  Table,
-} from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
-import senado from "../../../../assets/image/HeaderTable/ELEGOBERNACION.webp";
-import VotesCongreso from "../../../models/VotesCongreso";
+import { Form, InputGroup, Modal } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import gobernacion from "../../../../assets/image/HeaderTable/ELEGOBERNACION.webp";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
 import Municipality from "../../../models/Municipality";
 import Department from "../../../models/Department";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
-import VotesGober from "../../../models/VotesGober";
+import VotesGobernacion from "../../../models/DataElection";
 
 export const GobernacionDepartamento = () => {
   let { idDepartment } = useParams();
+  //Format Number Votes
+  const format = new Intl.NumberFormat();
   const [search, setSearch] = useState("");
   const [searchMunicipio, setSearchMunicipio] = useState("");
 
@@ -29,9 +22,11 @@ export const GobernacionDepartamento = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesGobernacionDepartamental, setarrayVotesGobernacionDepartamental] =
-    useState<VotesGober[]>([]);
-  const getMunicipios = async () => {
+  const [
+    arrayVotesGobernacionDepartamental,
+    setarrayVotesGobernacionDepartamental,
+  ] = useState<VotesGobernacion[]>([]);
+  const getComboBoxMunicipios = async () => {
     const resultado = await ServicePrivate.requestGET(
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
     );
@@ -45,44 +40,34 @@ export const GobernacionDepartamento = () => {
     );
     setArrayDepartamento(result);
   };
-  const getVotosSenadoDepartamental = async () => {
-    const urlCargarDepartamento =
+  const getVotosGobernacionDepartamento = async () => {
+    const urlCargarVotosDepartamento =
       ApiBack.GOBERNACION_DEPARTAMENTO + "/" + idDepartment;
-    const result = await ServicePrivate.requestGET(urlCargarDepartamento);
+    const result = await ServicePrivate.requestGET(urlCargarVotosDepartamento);
     setarrayVotesGobernacionDepartamental(result);
     if (result) {
       setarrayVotesGobernacionDepartamental(result);
       setShow(false);
     }
   };
-  //Format Number Votes
-  const format = new Intl.NumberFormat();
   useEffect(() => {
-    getVotosSenadoDepartamental();
-    getMunicipios();
     getDepartamento();
+    getComboBoxMunicipios();
+    getVotosGobernacionDepartamento();
   }, [idDepartment]);
   return (
     <main id="main" className="main">
       <img
-        src={senado}
+        src={gobernacion}
         style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
         alt="logo principal para la parte superior de la pagina web"
       />
-      {/* Navegación estilo breadcrumb: Inicio */}
-
-      {/* Navegación estilo breadcrumb: Fin */}
-
-      {/* Ejemplo de una tabla para presentación de datos: Inicio */}
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b className="title_table">
-                VOTOS GOBERNACIÓN
-              </b>{" "}
-              &nbsp;
+              <b className="title_table">GOBERNACIÓN DEPARTAMENTAL</b> &nbsp;
             </div>
           </div>
           <div className="container responsive">
@@ -248,10 +233,18 @@ export const GobernacionDepartamento = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }} id="text_left_name">
+                  <th
+                    className="text-center"
+                    style={{ width: "35%" }}
+                    id="text_left_name"
+                  >
                     PARTIDO POLÍTICO
                   </th>
-                  <th className="text-center" style={{ width: "40%" }} id="text_left_name">
+                  <th
+                    className="text-center"
+                    style={{ width: "40%" }}
+                    id="text_left_name"
+                  >
                     NOMBRE CANDIDATO
                   </th>
                   <th className="text-center" style={{ width: "25%" }}>
@@ -359,7 +352,6 @@ export const GobernacionDepartamento = () => {
         </Modal>
       </div>
       <div className="position-absolute bottom-50 end-50"></div>
-      {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>
   );
 };

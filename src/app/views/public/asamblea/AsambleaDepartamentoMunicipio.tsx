@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
 import { Form, InputGroup, Modal } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import asamblea from "../../../../assets/image/HeaderTable/ELEASAMBLEA.webp";
-import VotesCongreso from "../../../models/VotesCongreso";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
 import Municipality from "../../../models/Municipality";
-import Department from "../../../models/Department";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
-import VotesGober from "../../../models/VotesGober";
+import VotesAsamblea from "../../../models/DataElection";
 
 export const AsambleaDepartamentoMunicipio = () => {
   let { idDepartment } = useParams();
   let { idMunicipality } = useParams();
+
+  //Format Number Votes
+  const format = new Intl.NumberFormat();
 
   const [search, setSearch] = useState("");
   const [searchMunicipio, setSearchMunicipio] = useState("");
@@ -25,9 +26,9 @@ export const AsambleaDepartamentoMunicipio = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesAsambleaDepartamental, setarrayVotesAsambleaDepartamental] =
-    useState<VotesGober[]>([]);
-  const getMunicipios = async () => {
+  const [arrayVotesAsambleaMunicipio, setarrayVotesAsambleaMunicipio] =
+    useState<VotesAsamblea[]>([]);
+  const getComboBoxMunicipio = async () => {
     const resultado = await ServicePrivate.requestGET(
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
     );
@@ -41,27 +42,26 @@ export const AsambleaDepartamentoMunicipio = () => {
     );
     setArrayNameMunicipality(result);
   };
-  const getVotosAsambleaDepartamental = async () => {
-    const urlCargarDepartamento =
-    ApiBack.ASAMBLEA_DEPARTAMENTO_MUNICIPIO +
-    "/" +
-    idDepartment +
-    "/municipio/" +
-    idMunicipality;
-    const result = await ServicePrivate.requestGET(urlCargarDepartamento);
-    setarrayVotesAsambleaDepartamental(result);
+  const getVotosAsambleaMunicipio = async () => {
+    const urlCargarMunicipio =
+      ApiBack.ASAMBLEA_DEPARTAMENTO_MUNICIPIO +
+      "/" +
+      idDepartment +
+      "/municipio/" +
+      idMunicipality;
+    const result = await ServicePrivate.requestGET(urlCargarMunicipio);
+    setarrayVotesAsambleaMunicipio(result);
     if (result) {
-      setarrayVotesAsambleaDepartamental(result);
+      setarrayVotesAsambleaMunicipio(result);
       setShow(false);
     }
   };
-  //Format Number Votes
-  const format = new Intl.NumberFormat();
+
   useEffect(() => {
-    getVotosAsambleaDepartamental();
-    getMunicipios();
+    getComboBoxMunicipio();
     getNameMunicipality();
-  }, [idDepartment]);
+    getVotosAsambleaMunicipio();
+  }, [idDepartment, idMunicipality]);
   return (
     <main id="main" className="main">
       <img
@@ -69,17 +69,12 @@ export const AsambleaDepartamentoMunicipio = () => {
         style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
         alt="logo principal para la parte superior de la pagina web"
       />
-      {/* Navegación estilo breadcrumb: Inicio */}
-
-      {/* Navegación estilo breadcrumb: Fin */}
-
-      {/* Ejemplo de una tabla para presentación de datos: Inicio */}
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b className="title_table">VOTOS ASAMBLEA</b> &nbsp;
+              <b className="title_table">ASAMBLEA MUNICIPAL</b> &nbsp;
             </div>
           </div>
           <div className="container responsive">
@@ -121,7 +116,7 @@ export const AsambleaDepartamentoMunicipio = () => {
                           }
                         })
                         .map((miMunicipio, indice) => (
-                            <a
+                          <a
                             className="dropdown-item"
                             href={
                               "/asamblea/departamento/" +
@@ -202,7 +197,7 @@ export const AsambleaDepartamentoMunicipio = () => {
                           }
                         })
                         .map((miMunicipio, indice) => (
-                            <a
+                          <a
                             className="dropdown-item"
                             href={
                               "/asamblea/departamento/" +
@@ -278,7 +273,7 @@ export const AsambleaDepartamentoMunicipio = () => {
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotesAsambleaDepartamental
+                {arrayVotesAsambleaMunicipio
                   .filter((val) => {
                     if (search == "") {
                       return val;
@@ -321,7 +316,7 @@ export const AsambleaDepartamentoMunicipio = () => {
             >
               <div className="text-center">
                 <a
-                  href="/asamblea"
+                  href={"/asamblea/departamento/" + idDepartment}
                   type="button"
                   className="buttonBack buttonBack-primary"
                 >

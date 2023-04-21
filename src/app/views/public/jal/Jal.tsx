@@ -13,7 +13,7 @@ import {
   Table,
 } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
-import VotesGober from "../../../models/VotesGober";
+import VotesGober from "../../../models/DataElection";
 
 export const Jal = () => {
     //Format Number Votes 

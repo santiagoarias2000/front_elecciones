@@ -13,7 +13,7 @@ import {
   Table,
 } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
-import VotesGober from "../../../models/VotesGober";
+import VotesGober from "../../../models/DataElection";
 
 export const Concejo = () => {
     //Format Number Votes 
@@ -61,7 +61,7 @@ export const Concejo = () => {
         <div className="cardBorder card">
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b className="title_table">CONJEO MUNICIPALES</b>
+              <b className="title_table">CONCEJO TERRITORAL</b>
             </div>
           </div>
 

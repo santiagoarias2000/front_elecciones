@@ -3,53 +3,30 @@ import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import camara from "../../../../assets/image/HeaderTable/CRafro.webp";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
-import {
-  Col,
-  Form,
-  InputGroup,
-  Modal,
-  Pagination,
-  Row,
-  Table,
-} from "react-bootstrap";
+import { Form, InputGroup, Modal, Pagination } from "react-bootstrap";
 import Department from "../../../models/Department";
 import CandidatosCamara from "../../../mocks/models/CandidatosCamara";
 import { ARREGLO_CANDIDATOS_ELEGIDOS } from "../../../mocks/candidatos-mocks";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
 export const CamaraAfroDescendienteDepartamento = () => {
+  let { idDepartment } = useParams();
   //Format Number Votes 
-  const format = new Intl.NumberFormat('es');
+  const format = new Intl.NumberFormat();
 
-  const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState<
-    CandidatosCamara[]
-  >(ARREGLO_CANDIDATOS_ELEGIDOS);
+  const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState< CandidatosCamara[] >(ARREGLO_CANDIDATOS_ELEGIDOS);
   const [search, setSearch] = useState("");
   const [searchMunicipio, setSearchMunicipio] = useState("");
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
-
-  let active = 1;
-  let items = [];
-  for (let number = 1; number <= 5; number++) {
-    items.push(
-      <Pagination.Item key={number} active={number === active}>
-        {number}
-      </Pagination.Item>
-    );
-  }
-  let { idDepartment } = useParams();
-  const [
-    arrayVotesCamaraAfroDescendiente,
-    setArrayVotosCamaraAfroDescendiente,
-  ] = useState<VotesCongreso[]>([]);
+  const [ arrayVotesCamaraAfroDescendiente, setArrayVotosCamaraAfroDescendiente] = useState<VotesCongreso[]>([]);
 
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
   const [arrayDepartamento, setArrayDepartamento] = useState<Department[]>([]);
 
-  const getMuniciaplity = async () => {
+  const getComboBoxMunicipio = async () => {
     const result = await ServicePrivate.requestGET(
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
     );
@@ -82,10 +59,10 @@ export const CamaraAfroDescendienteDepartamento = () => {
     return elegidosi;
   };
   useEffect(() => {
-    getVotosCamaraAfroDescendiente();
-    getMuniciaplity();
     getDepartamento();
-  }, []);
+    getComboBoxMunicipio();
+    getVotosCamaraAfroDescendiente();
+  }, [idDepartment]);
 
   return (
     <main id="main" className="main">

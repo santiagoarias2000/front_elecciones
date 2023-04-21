@@ -5,7 +5,7 @@ import jal from "../../../../assets/image/HeaderTable/ELEJAL.webp";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Col, Form, InputGroup, Modal, Pagination, Row, Table, } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
-import VotesGober from "../../../models/VotesGober";
+import VotesGober from "../../../models/DataElection";
 
 export const JalDepartamento = () => {
   let { idDepartment } = useParams();

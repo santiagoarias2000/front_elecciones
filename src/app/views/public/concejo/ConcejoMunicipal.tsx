@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Col, Form, InputGroup, Modal, Pagination, Row, Table, } from "react-bootstrap";
 import Municipality from "../../../models/Municipality";
-import VotesGober from "../../../models/VotesGober";
+import VotesGober from "../../../models/DataElection";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import concejo from "../../../../assets/image/HeaderTable/ELECONCEJO.webp";
