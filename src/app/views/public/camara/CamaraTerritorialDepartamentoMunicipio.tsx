@@ -4,55 +4,28 @@ import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import Form from "react-bootstrap/Form";
 import camara from "../../../../assets/image/HeaderTable/CRterrirorial.webp";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
-import {
-  Col,
-  Dropdown,
-  InputGroup,
-  Modal,
-  Pagination,
-  Row,
-  Table,
-} from "react-bootstrap";
-import Department from "../../../models/Department";
+import { InputGroup, Modal} from "react-bootstrap";
 import CandidatosCamara from "../../../mocks/models/CandidatosCamara";
 import { ARREGLO_CANDIDATOS_ELEGIDOS } from "../../../mocks/candidatos-mocks";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
 export const CamaraTerritorialDepartamentoMunicipio = () => {
-  //Format Number Votes 
-  const format = new Intl.NumberFormat('es');
-  //Prevent enter in search box
-  function submitHandler(e:any) {
-    e.preventDefault();
-  }
-
-  const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState<
-    CandidatosCamara[]
-  >(ARREGLO_CANDIDATOS_ELEGIDOS);
-  const [search, setSearch] = useState("");
-  const [show, setShow] = useState(true);
-  const handleClose = () => setShow(false);
-  const [searchMunicipio, setSearchMunicipio] = useState("");
-  let active = 1;
-  let items = [];
-  for (let number = 1; number <= 5; number++) {
-    items.push(
-      <Pagination.Item key={number} active={number === active}>
-        {number}
-      </Pagination.Item>
-    );
-  }
   let { idDepartment } = useParams();
   let { idMunicipality } = useParams();
-  const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
-    useState<VotesCongreso[]>([]);
+  //Format Number Votes 
+  const format = new Intl.NumberFormat();
+
+  const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState< CandidatosCamara[] >(ARREGLO_CANDIDATOS_ELEGIDOS);
+  const [search, setSearch] = useState("");
+  const [show, setShow] = useState(true);
+  const [searchMunicipio, setSearchMunicipio] = useState("");
+  
+  const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] = useState<VotesCongreso[]>([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
-  const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
-    Municipality[]
-  >([]);
-  const [arrayDepartamento, setArrayDepartamento] = useState<Department[]>([]);
+  const [arrayNameMunicipality, setArrayNameMunicipality] = useState< Municipality[] >([]);
+  const handleClose = () => setShow(false);
 
   const getVotosCamaraTerritorial = async () => {
     const result = await ServicePrivate.requestGET(
@@ -65,7 +38,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
     setArrayVotosCamaraTerritorial(result);
     setShow(false);
   };
-  const getMunicipality = async () => {
+  const getComboBoxMunicipio = async () => {
     const result = await ServicePrivate.requestGET(
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
     );
@@ -77,12 +50,6 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
       ApiBack.NOMBRE_MUNICIPIO + "/" + idMunicipality
     );
     setArrayNameMunicipality(result);
-  };
-  const getDepartamento = async () => {
-    const result = await ServicePrivate.requestGET(
-      ApiBack.NOMBRE_DEPARTAMENTO_TERRITORIAL + "/" + idDepartment
-    );
-    setArrayDepartamento(result);
   };
   const CandidatosElegidosCamara = (miCandidato: any) => {
     var elegidosi: any;
@@ -96,13 +63,15 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
     });
     return elegidosi;
   };
-
+  //Prevent enter in search box
+  function submitHandler(e:any) {
+    e.preventDefault();
+  }
   useEffect(() => {
-    getVotosCamaraTerritorial();
-    getMunicipality();
     getNameMunicipality();
-    getDepartamento();
-  }, []);
+    getComboBoxMunicipio(); 
+    getVotosCamaraTerritorial();
+  }, [idDepartment,idMunicipality]);
 
   return (
     <main id="main" className="main">
@@ -118,11 +87,6 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
         alt="logo principal para la parte superior de la pagina web"
       />
       <div className="side_bar"></div>
-      {/* Navegación estilo breadcrumb: Inicio */}
-
-      {/* Navegación estilo breadcrumb: Fin */}
-
-      {/* Ejemplo de una tabla para presentación de datos: Inicio */}
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
           <div
@@ -168,7 +132,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                     <li>
                       {arrayMunicipio
                         .filter((val) => {
-                          if (searchMunicipio == "") {
+                          if (searchMunicipio === "") {
                             return val;
                           } else if (
                             val.name_municipality
@@ -248,7 +212,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                     <li>
                       {arrayMunicipio
                         .filter((val) => {
-                          if (searchMunicipio == "") {
+                          if (searchMunicipio === "") {
                             return val;
                           } else if (
                             val.name_municipality
@@ -328,7 +292,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
               <tbody className="color container_table">
                 {arrayVotesCamaraTerritorial
                   .filter((val) => {
-                    if (search == "") {
+                    if (search === "") {
                       return val;
                     } else if (
                       val.candidate_name
@@ -437,7 +401,6 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
           </Modal>
         </div>
       </div>
-      {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>
   );
 };

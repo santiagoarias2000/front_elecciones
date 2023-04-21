@@ -1,51 +1,41 @@
 import { useState, useEffect } from "react";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import camara from "../../../../assets/image/HeaderTable/ELEGOBERNACION.webp";
-import { Link, useNavigate } from "react-router-dom";
-import {
-  Col,
-  Form,
-  InputGroup,
-  Modal,
-  Pagination,
-  Row,
-  Table,
-} from "react-bootstrap";
+import gobernacion from "../../../../assets/image/HeaderTable/ELEGOBERNACION.webp";
+import { Form, InputGroup, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
-import VotesGober from "../../../models/DataElection";
+import VotesGobernacion from "../../../models/DataElection";
 
 export const Gobernacion = () => {
-    //Format Number Votes 
-  const format = new Intl.NumberFormat('es');
+  //Format Number Votes
+  const format = new Intl.NumberFormat();
+  const [show, setShow] = useState(true);
+  const [searchDepartamento, setSearchDepartamento] = useState("");
+
+  const handleClose = () => setShow(false);
+
+  const [arrayVotosGobernacion, setArrayVotosGobernacion] = useState<
+    VotesGobernacion[]
+  >([]);
+
+  const getVotosGobernacion = async () => {
+    const result = await ServicePrivate.requestGET(ApiBack.GOBERNACION);
+    setArrayVotosGobernacion(result);
+    setShow(false);
+  };
   //Prevent enter in search box
   function submitHandler(e:any) {
     e.preventDefault();
   }
 
-  const [searchTerritorial, setSearchTerritorial] = useState("");
-
-  const [show, setShow] = useState(true);
-  const handleClose = () => setShow(false);
-
-  const [arrayVotesGobernacionTerritorial, setArrayVotesGobernacionTerritorial] =
-    useState<VotesGober[]>([]);
-
-  const getVotosGobernacionTerritorial = async () => {
-    //const parametrosPaginador= {paginaActual: activo, cantidadMostrar:numeroElemPag};
-    const result = await ServicePrivate.requestGET(ApiBack.GOBERNACION);
-    setArrayVotesGobernacionTerritorial(result);
-    setShow(false);
-  };
-
   useEffect(() => {
-    getVotosGobernacionTerritorial();
+    getVotosGobernacion();
   }, []);
 
   return (
     <main id="main" className="main">
       <img
-        src={camara}
+        src={gobernacion}
         style={{
           width: "100%",
           maxHeight: "80%",
@@ -65,7 +55,7 @@ export const Gobernacion = () => {
         <div className="cardBorder card">
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b className="title_table">TERRITORIAL DEPARTAMENTAL</b>
+              <b className="title_table">GOBERNACIÓN TERRITORIAL</b>
             </div>
           </div>
 
@@ -76,7 +66,7 @@ export const Gobernacion = () => {
                 <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
-                      onChange={(e) => setSearchTerritorial(e.target.value)}
+                      onChange={(e) => setSearchDepartamento(e.target.value)}
                       placeholder="Buscar departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
@@ -93,7 +83,7 @@ export const Gobernacion = () => {
                 <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
-                      onChange={(e) => setSearchTerritorial(e.target.value)}
+                      onChange={(e) => setSearchDepartamento(e.target.value)}
                       placeholder="Buscar departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                     ></Form.Control>
@@ -123,13 +113,13 @@ export const Gobernacion = () => {
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotesGobernacionTerritorial
+                {arrayVotosGobernacion
                   .filter((myVotes) => {
-                    return searchTerritorial === ""
+                    return searchDepartamento === ""
                       ? myVotes
                       : myVotes.department.name_department
                           .toLowerCase()
-                          .includes(searchTerritorial.toLowerCase());
+                          .includes(searchDepartamento.toLowerCase());
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
@@ -144,7 +134,9 @@ export const Gobernacion = () => {
                           {myVotes.department.name_department}
                         </a>
                       </td>
-                      <td className="text-center">{format.format(myVotes.votos)}</td>
+                      <td className="text-center">
+                        {format.format(myVotes.votos)}
+                      </td>
                       <td className="text-center align-middle">
                         <a
                           className="link_departamento"

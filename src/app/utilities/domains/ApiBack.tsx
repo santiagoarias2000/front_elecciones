@@ -54,6 +54,7 @@ const ApiBack = {
 
   ALCALDIA:"/api/public/alcaldia",
   ALCALDIA_DEPARTAMENTO:"/api/public/alcaldia/departamento",
+  ALCALDIA_DEPARTAMENTO_MUNICIPIO:"/api/public/alcaldia/municipio",
 
   CONCEJO:"/api/public/concejo",
   CONCEJO_DEPARTAMENTO:"/api/public/concejo/departamento",

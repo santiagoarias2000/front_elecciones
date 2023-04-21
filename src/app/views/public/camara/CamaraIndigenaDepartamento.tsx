@@ -3,54 +3,24 @@ import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import camara from "../../../../assets/image/HeaderTable/CRindigena.webp";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
-
-import {
-  Col,
-  Form,
-  InputGroup,
-  Modal,
-  Pagination,
-  Row,
-  Table,
-} from "react-bootstrap";
+import { Form, InputGroup, Modal } from "react-bootstrap";
 import Department from "../../../models/Department";
-import CandidatosCamara from "../../../mocks/models/CandidatosCamara";
 import { ARREGLO_CANDIDATOS_ELEGIDOS } from "../../../mocks/candidatos-mocks";
+import CandidatosCamara from "../../../mocks/models/CandidatosCamara";
 
 export const CamaraIndigenaDepartamento = () => {
+  let { idDepartment } = useParams();
   //Format Number Votes 
-  const format = new Intl.NumberFormat('es');
-  //Prevent enter in search box
-  function submitHandler(e:any) {
-    e.preventDefault();
-  }
-
-  const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState<
-    CandidatosCamara[]
-  >(ARREGLO_CANDIDATOS_ELEGIDOS);
+  const format = new Intl.NumberFormat();
+  const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState< CandidatosCamara[] >(ARREGLO_CANDIDATOS_ELEGIDOS);
   const [search, setSearch] = useState("");
   const [searchMunicipio, setSearchMunicipio] = useState("");
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
-  const regresar = useNavigate();
-
-  let active = 1;
-  let items = [];
-  for (let number = 1; number <= 5; number++) {
-    items.push(
-      <Pagination.Item key={number} active={number === active}>
-        {number}
-      </Pagination.Item>
-    );
-  }
-
-  let { idDepartment } = useParams();
-  const [arrayVotesCamaraIndigena, setArrayVotosCamaraIndigena] = useState<
-    VotesCongreso[]
-  >([]);
+  const [arrayVotesCamaraIndigena, setArrayVotosCamaraIndigena] = useState< VotesCongreso[] >([]);
 
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
   const [arrayDepartamento, setArrayDepartamento] = useState<Department[]>([]);
@@ -62,7 +32,7 @@ export const CamaraIndigenaDepartamento = () => {
     setArrayVotosCamaraIndigena(result);
     setShow(false);
   };
-  const getMuniciaplity = async () => {
+  const getComboBoxMunicipio = async () => {
     const result = await ServicePrivate.requestGET(
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
     );
@@ -86,11 +56,15 @@ export const CamaraIndigenaDepartamento = () => {
     });
     return elegidosi;
   };
+  //Prevent enter in search box
+  function submitHandler(e:any) {
+    e.preventDefault();
+  }
   useEffect(() => {
-    getVotosCamaraIndigena();
-    getMuniciaplity();
     getDepartamento();
-  }, []);
+    getComboBoxMunicipio();
+    getVotosCamaraIndigena();
+  }, [idDepartment]);
 
   return (
     <main id="main" className="main">
@@ -106,11 +80,6 @@ export const CamaraIndigenaDepartamento = () => {
         alt="logo principal para la parte superior de la pagina web"
       />
       <div className="side_bar"></div>
-      {/* Navegación estilo breadcrumb: Inicio */}
-
-      {/* Navegación estilo breadcrumb: Fin */}
-
-      {/* Ejemplo de una tabla para presentación de datos: Inicio */}
       <div className="col-lg-12" style={{ color: "#052851 !important" }}></div>
       <div className="cardBorder card">
         <div
@@ -416,7 +385,6 @@ export const CamaraIndigenaDepartamento = () => {
           </Modal.Body>
         </Modal>
       </div>
-      {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>
   );
 };

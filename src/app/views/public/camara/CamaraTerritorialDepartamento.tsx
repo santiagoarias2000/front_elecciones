@@ -4,30 +4,18 @@ import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import Form from "react-bootstrap/Form";
 import camara from "../../../../assets/image/HeaderTable/CRterrirorial.webp";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
-import {
-  Col,
-  InputGroup,
-  Modal,
-  Pagination,
-  Row,
-  Spinner,
-  Table,
-} from "react-bootstrap";
+import { InputGroup, Modal } from "react-bootstrap";
 import Department from "../../../models/Department";
 import CandidatosCamara from "../../../mocks/models/CandidatosCamara";
 import { ARREGLO_CANDIDATOS_ELEGIDOS } from "../../../mocks/candidatos-mocks";
-import { log } from "console";
 
 export const CamaraTerritorialDepartamento = () => {
-  //Format Number Votes 
-  const format = new Intl.NumberFormat('es');
-  //Prevent enter in search box
-  function submitHandler(e:any) {
-    e.preventDefault();
-  }
+  let { idDepartment } = useParams();
+  //Format Number Votes
+  const format = new Intl.NumberFormat();
 
   const [search, setSearch] = useState("");
   const [searchMunicipio, setSearchMunicipio] = useState("");
@@ -36,18 +24,6 @@ export const CamaraTerritorialDepartamento = () => {
   >(ARREGLO_CANDIDATOS_ELEGIDOS);
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
-  const regresar = useNavigate();
-
-  let active = 1;
-  let items = [];
-  for (let number = 1; number <= 5; number++) {
-    items.push(
-      <Pagination.Item key={number} active={number === active}>
-        {number}
-      </Pagination.Item>
-    );
-  }
-  let { idDepartment } = useParams();
 
   const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
     useState<VotesCongreso[]>([]);
@@ -61,7 +37,7 @@ export const CamaraTerritorialDepartamento = () => {
     setArrayVotosCamaraTerritorial(result);
     setShow(false);
   };
-  const getMuniciaplity = async () => {
+  const getComboBoxMunicipio = async () => {
     const result = await ServicePrivate.requestGET(
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
     );
@@ -86,12 +62,15 @@ export const CamaraTerritorialDepartamento = () => {
     });
     return elegidosi;
   };
-
+  //Prevent enter in search box
+  function submitHandler(e: any) {
+    e.preventDefault();
+  }
   useEffect(() => {
     getVotosCamaraTerritorial();
-    getMuniciaplity();
+    getComboBoxMunicipio();
     getDepartamento();
-  }, []);
+  }, [idDepartment]);
 
   return (
     <main id="main" className="main">
@@ -133,9 +112,6 @@ export const CamaraTerritorialDepartamento = () => {
         alt="logo principal para la parte superior de la pagina web"
       />
       <div className="side_bar"></div>
-      {/* Navegación estilo breadcrumb: Inicio */}
-      {/* Navegación estilo breadcrumb: Fin */}
-      {/* Ejemplo de una tabla para presentación de datos: Inicio */}
       <div className="col-lg-12" style={{ color: "#052851 !important" }}></div>
       <div className="cardBorder card">
         <div className="container-fluid display-flex justify-content-center container_title">
@@ -171,7 +147,7 @@ export const CamaraTerritorialDepartamento = () => {
                   <li>
                     {arrayMunicipio
                       .filter((val) => {
-                        if (searchMunicipio == "") {
+                        if (searchMunicipio === "") {
                           return val;
                         } else if (
                           val.name_municipality
@@ -248,7 +224,7 @@ export const CamaraTerritorialDepartamento = () => {
                   <li>
                     {arrayMunicipio
                       .filter((val) => {
-                        if (searchMunicipio == "") {
+                        if (searchMunicipio === "") {
                           return val;
                         } else if (
                           val.name_municipality
@@ -269,8 +245,7 @@ export const CamaraTerritorialDepartamento = () => {
                           }
                         >
                           <b className="name_text">
-
-                          {myMunicipality.name_municipality}
+                            {myMunicipality.name_municipality}
                           </b>
                         </a>
                       ))}
@@ -305,12 +280,23 @@ export const CamaraTerritorialDepartamento = () => {
             className="colorTable table table-hover"
             style={{ background: "#05285190 !important" }}
           >
-            <thead className="container_table sticky" style={{backgroundColor:"#fff"}}>
+            <thead
+              className="container_table sticky"
+              style={{ backgroundColor: "#fff" }}
+            >
               <tr>
-                <th className="text-center" style={{ width: "35%" }} id="text_left_name">
+                <th
+                  className="text-center"
+                  style={{ width: "35%" }}
+                  id="text_left_name"
+                >
                   PARTIDO POLÍTICO
                 </th>
-                <th className="text-center" style={{ width: "40%" }} id="text_left_name">
+                <th
+                  className="text-center"
+                  style={{ width: "40%" }}
+                  id="text_left_name"
+                >
                   NOMBRE CANDIDATO
                 </th>
                 <th className="text-center" style={{ width: "25%" }}>
@@ -321,7 +307,7 @@ export const CamaraTerritorialDepartamento = () => {
             <tbody className="color container_table">
               {arrayVotesCamaraTerritorial
                 .filter((val) => {
-                  if (search == "") {
+                  if (search === "") {
                     return val;
                   } else if (
                     val.description_politicparty
@@ -426,7 +412,10 @@ export const CamaraTerritorialDepartamento = () => {
         >
           <Modal.Body className="text-center">
             <div className="text-center">
-              <img src={ImageSpinner} style={{height:"100px", width:"200px"}}/>
+              <img
+                src={ImageSpinner}
+                style={{ height: "100px", width: "200px" }}
+              />
               <div className="mt-4">
                 <div className="spinner-border text-danger" role="status">
                   <span className=" visually-hidden">Loading...</span>
@@ -436,8 +425,6 @@ export const CamaraTerritorialDepartamento = () => {
           </Modal.Body>
         </Modal>
       </div>
-
-      {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>
   );
 };

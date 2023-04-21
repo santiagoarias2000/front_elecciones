@@ -3,17 +3,12 @@ import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import camara from "../../../../assets/image/HeaderTable/camara.webp";
-import { Link, useNavigate } from "react-router-dom";
-import { Col, Form, InputGroup, Modal, Pagination, Row, Table } from "react-bootstrap";
+import { Form, InputGroup, Modal} from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
 export const Camara = () => {
   //Format Number Votes 
-  const format = new Intl.NumberFormat('es');
-  //Prevent enter in search box
-  function submitHandler(e:any) {
-    e.preventDefault();
-  }
+  const format = new Intl.NumberFormat();
   
   const [searchTerritorial, setSearchTerritorial] = useState("");
   const [searchIndigena, setSearchIndigena] = useState("");
@@ -22,20 +17,13 @@ export const Camara = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
-    useState<VotesCongreso[]>([]);
+  const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] = useState<VotesCongreso[]>([]);
 
-  const [arrayVotesCamaraIndigena, setArrayVotosCamaraIndigena] = useState<
-    VotesCongreso[]
-  >([]);
+  const [arrayVotesCamaraIndigena, setArrayVotosCamaraIndigena] = useState< VotesCongreso[] >([]);
 
-  const [
-    arrayVotesCamaraAfroDescendiente,
-    setArrayVotosCamaraAfroDescendiente,
-  ] = useState<VotesCongreso[]>([]);
+  const [ arrayVotesCamaraAfroDescendiente, setArrayVotosCamaraAfroDescendiente, ] = useState<VotesCongreso[]>([]);
 
   const getVotosCamaraTerritorial = async () => {
-    //const parametrosPaginador= {paginaActual: activo, cantidadMostrar:numeroElemPag};
     const result = await ServicePrivate.requestGET(ApiBack.CAMARA_TERRITORIAL);
     setArrayVotosCamaraTerritorial(result);
     setShow(false);
@@ -50,6 +38,10 @@ export const Camara = () => {
     );
     setArrayVotosCamaraAfroDescendiente(result);
   };
+  //Prevent enter in search box
+  function submitHandler(e:any) {
+    e.preventDefault();
+  }
 
   useEffect(() => {
     getVotosCamaraIndigena();
@@ -71,11 +63,6 @@ export const Camara = () => {
         alt="logo principal para la parte superior de la pagina web"
       />
       <div className="side_bar"></div>
-      {/* Navegación estilo breadcrumb: Inicio */}
-
-      {/* Navegación estilo breadcrumb: Fin */}
-
-      {/* Ejemplo de una tabla para presentación de datos: Inicio */}
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
           <div className="container-fluid display-flex justify-content-center container_title">
@@ -125,13 +112,13 @@ export const Camara = () => {
             >
               <thead className="container_table sticky" style={{backgroundColor:"#fff"}}>
                 <tr>
-                  <th className="text-center" style={{ width: "50%" }}>
+                  <th className="text-center" style={{ width: "45%" }}>
                     DEPARTAMENTO
                   </th>
-                  <th className="text-center" style={{ width: "35%" }}>
+                  <th className="text-center" style={{ width: "25%" }}>
                     TOTAL VOTOS
                   </th>
-                  <th className="text-center" style={{ width: "15%" }}></th>
+                  <th className="text-center" style={{ width: "30%" }}></th>
                 </tr>
               </thead>
               <tbody className="color container_table">
@@ -145,7 +132,7 @@ export const Camara = () => {
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text_left">
+                      <td className="text_left_name">
                         <a
                           className="link_departamento"
                           href={
@@ -478,8 +465,6 @@ export const Camara = () => {
           </Modal.Body>
         </Modal>
       </div>
-
-      {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>
   );
 };
