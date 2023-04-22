@@ -19,18 +19,18 @@ export const Header = () => {
               />
             </Link>
           </div>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
+          <Navbar.Toggle aria-controls="responsive-navbar-nav navbarCollapse" />
+          <Navbar.Collapse id="responsive-navbar-nav navbarCollapse">
             <Nav className="me-auto">
               <a href="/#about" style={{ textDecoration: "none" }}>
                 Inicio
               </a>
-              <Link to={"/blog"} style={{ textDecoration: "none" }}>
+              <a href={"/blog"} style={{ textDecoration: "none" }}>
                 Nuestro Blog
-              </Link>
-              <Link to={"/nosotros"} style={{ textDecoration: "none" }}>
+              </a>
+              <a href={"/nosotros"} style={{ textDecoration: "none" }}>
                 Nosotros
-              </Link>
+              </a>
               <a
                 href="/resultados"
                 className="getstarted scrollto pruebita"

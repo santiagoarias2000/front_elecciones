@@ -17,7 +17,7 @@ import { Carousel, Modal } from "react-bootstrap";
 import "../../assets/js/carrusel.js";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import ImageSpinner from "../../assets/image/Blog/publicidadloteria.webp";
+import ImageSpinner from "../../assets/image/Blog/publicidadloteria.png";
 
 export const Welcome = () => {
   const [show, setShow] = useState(true);

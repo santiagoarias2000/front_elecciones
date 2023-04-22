@@ -1495,6 +1495,13 @@ h6 {
   font-family: "Tilt Warp", cursive;
   color: #ffffff;
 }
+.imagen_404{
+  max-width: 18%;
+  max-height: auto;
+}
+.imagen_error{
+  max-width: 31%;
+}
 @media (max-width: 768px) {
   .container_error {
     background-image: url("../src/assets/image/errorfondo.webp");
@@ -1502,10 +1509,10 @@ h6 {
     background-repeat: no-repeat;
   }
   .imagen_logo{
-    max-width: 60%;
+    max-width: 40%;
   }
   .imagen_error{
-    max-width: 120%;
+    max-width: 80%;
   }
   .container_error .btn {
     background-color: #052851;
@@ -1874,6 +1881,7 @@ h6 {
   }
   .name_text {
     font-size: 0.7rem;
+    font-weight: 300;
   }
 }
 

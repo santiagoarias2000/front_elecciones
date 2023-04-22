@@ -157,9 +157,9 @@ export const SenadoIndigenaDepartamento = () => {
                 <div className="col">
                   <h6 className="text-center my-2" style={{ color: "#052851" }}>
                     {arrayDepartamento.map((myDepartment) => (
-                      <b className="name_text">
+                      <p className="name_text">
                         {myDepartment.name_department}
-                      </b>
+                      </p>
                     ))}
                   </h6>
                 </div>

@@ -98,7 +98,7 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
           style={{
             background: "#052851",
             color: "#FFFFFF",
-            height: "40px",
+            height: "20px",
             display: "flex",
             alignItems: "center",
           }}
