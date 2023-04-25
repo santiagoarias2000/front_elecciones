@@ -23,7 +23,7 @@ export const AlcaldiaDepartamento = () => {
 
   const getDepartamento = async () => {
     const result = await ServicePrivate.requestGET(
-      ApiBack.NOMBRE_DEPARTAMENTO_ASAMBLEA + "/" + idDepartment
+      ApiBack.NOMBRE_DEPARTAMENTO_ALCADIA + "/" + idDepartment
     );
     setArrayDepartamento(result);
   };
