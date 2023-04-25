@@ -192,7 +192,7 @@ export const SenadoNacionalDepartamento = () => {
                         <input
                           type="text"
                           placeholder="Busqueda..."
-                          className="position-relative" style={{padding:"5px 0",bottom:"10px"}}
+                          className="mi-sticky"
                           onChange={(event) => {
                             setSearchMunicipio(event.target.value);
                           }}
