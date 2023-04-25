@@ -99,7 +99,7 @@ export const SenadoNacionalDepartamento = () => {
                       <input
                         type="text"
                         placeholder="Busqueda..."
-                        className="position-relative" style={{padding:"5px 0",bottom:"10px"}}
+                        className="mi-sticky"
                         onChange={(event) => {
                           setSearchMunicipio(event.target.value);
                         }}
@@ -131,6 +131,7 @@ export const SenadoNacionalDepartamento = () => {
                               {miMunicipio.name_municipality}
                             </a>
                           ))}
+                          
                       </li>
                     </ul>
                   </div>
@@ -186,14 +187,16 @@ export const SenadoNacionalDepartamento = () => {
                       data-live-search="true"
                       style={{ maxHeight: "200px", overflowY: "auto" }}
                     >
-                      <input
-                        type="text"
-                        placeholder="Busqueda..."
-                        className="sticky-top"
-                        onChange={(event) => {
-                          setSearchMunicipio(event.target.value);
-                        }}
-                      />
+                      <div className="sticky-top">
+                        <input
+                          type="text"
+                          placeholder="Busqueda..."
+                          className="position-relative" style={{padding:"5px 0",bottom:"10px"}}
+                          onChange={(event) => {
+                            setSearchMunicipio(event.target.value);
+                          }}
+                        />
+                      </div>
                       <li>
                         {arrayMunicipios
                           .filter((val) => {

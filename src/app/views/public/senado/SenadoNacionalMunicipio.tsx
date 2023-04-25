@@ -105,14 +105,16 @@ export const SenadoNacionalMunicipio = () => {
                       data-live-search="true"
                       style={{ maxHeight: "200px", overflowY: "auto", background:"#fff"}}
                     >
+                       <div className="sticky-top">
                       <input
                         type="text"
                         placeholder="Busqueda..."
-                        style={{position:"sticky",top: 0, zIndex:1}}
+                        className="position-relative" style={{padding:"5px 0",bottom:"10px"}}
                         onChange={(event) => {
                           setSearchMunicipio(event.target.value);
                         }}
                       />
+                      </div>
                       <li style={{position:"sticky",top: 0,background:"#fff"}}>
                         {arrayMunicipio
                           .filter((val) => {
@@ -209,14 +211,16 @@ export const SenadoNacionalMunicipio = () => {
                       data-live-search="true"
                       style={{ maxHeight: "200px", overflowY: "auto" }}
                     >
-                      <input
-                        type="text"
-                        placeholder="Busqueda..."
-                        className="sticky-top"
-                        onChange={(event) => {
-                          setSearchMunicipio(event.target.value);
-                        }}
-                      />
+                      <div className="sticky-top">
+                        <input
+                          type="text"
+                          placeholder="Busqueda..."
+                          className="position-relative" style={{padding:"5px 0",bottom:"10px"}}
+                          onChange={(event) => {
+                            setSearchMunicipio(event.target.value);
+                          }}
+                        />
+                      </div>
                       <li>
                         {arrayMunicipio
                           .filter((val) => {
