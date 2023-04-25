@@ -96,14 +96,14 @@ export const SenadoNacionalDepartamento = () => {
                       style={{ maxHeight: "200px", overflowY: "auto" }}
                     >
                       <div className="sticky-top">
-                      <input
-                        type="text"
-                        placeholder="Busqueda..."
-                        className="mi-sticky"
-                        onChange={(event) => {
-                          setSearchMunicipio(event.target.value);
-                        }}
-                      />
+                        <input
+                          type="text"
+                          placeholder="Busqueda..."
+                          className="mi-sticky"
+                          onChange={(event) => {
+                            setSearchMunicipio(event.target.value);
+                          }}
+                        />
                       </div>
                       <li>
                         {arrayMunicipios
@@ -133,7 +133,6 @@ export const SenadoNacionalDepartamento = () => {
                               </b>
                             </a>
                           ))}
-                          
                       </li>
                     </ul>
                   </div>
