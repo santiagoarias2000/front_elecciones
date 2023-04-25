@@ -66,7 +66,7 @@ export const Camara = () => {
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
           <div className="container-fluid display-flex justify-content-center container_title">
-            <div className="text-center">
+            <div className="text-center d-flex align-items-center">
               <b className="title_table">TERRITORIAL DEPARTAMENTAL</b>
             </div>
           </div>
@@ -79,7 +79,7 @@ export const Camara = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchTerritorial(e.target.value)}
-                      placeholder="Buscar departamento"
+                      placeholder="Buscar nombre departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
                     ></Form.Control>
@@ -96,8 +96,9 @@ export const Camara = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchTerritorial(e.target.value)}
-                      placeholder="Buscar departamento"
+                      placeholder="Buscar nombre departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
                     ></Form.Control>
                   </InputGroup>
                 </Form>
@@ -110,15 +111,18 @@ export const Camara = () => {
               className="colorTableCamara table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead className="container_table sticky" style={{backgroundColor:"#fff"}}>
+              <thead
+                className="container_table sticky"
+                style={{ backgroundColor: "#fff" }}
+              >
                 <tr>
-                  <th className="text-center" style={{ width: "45%" }}>
+                  <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
                   </th>
-                  <th className="text-center" style={{ width: "25%" }}>
+                  <th className="text-center" style={{ width: "30%" }}>
                     TOTAL VOTOS
                   </th>
-                  <th className="text-center" style={{ width: "30%" }}></th>
+                  <th className="text-center" style={{ width: "35%" }}></th>
                 </tr>
               </thead>
               <tbody className="color container_table">
@@ -132,7 +136,7 @@ export const Camara = () => {
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text_left_name">
+                      <td className="text_left">
                         <a
                           className="link_departamento"
                           href={
@@ -143,7 +147,9 @@ export const Camara = () => {
                           {myVotes.department.name_department}
                         </a>
                       </td>
-                      <td className="text-center">{format.format(myVotes.votos)}</td>
+                      <td className="text-center">
+                        {format.format(myVotes.votos)}
+                      </td>
                       <td className="text-center align-middle">
                         <a
                           className="link_departamento"
@@ -175,7 +181,7 @@ export const Camara = () => {
                 <a
                   type="button"
                   className="buttonBack buttonBack-primary"
-                  href={"/#resultados"}
+                  href={"/resultados"}
                 >
                   <i className="bi bi-arrow-left-circle"></i>
                   &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
@@ -209,9 +215,10 @@ export const Camara = () => {
                 <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
-                      onChange={(e) => setSearchIndigena(e.target.value)}
-                      placeholder="Buscar departamento"
+                      onChange={(e) => setSearchAfro(e.target.value)}
+                      placeholder="Buscar nombre departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
                     ></Form.Control>
                   </InputGroup>
                 </Form>
@@ -219,7 +226,6 @@ export const Camara = () => {
             </div>
           </div>
 
-          
           <div className="container responsive_gra">
             <div className="row">
               <div className="col-sm"></div>
@@ -227,9 +233,10 @@ export const Camara = () => {
                 <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
-                      onChange={(e) => setSearchIndigena(e.target.value)}
-                      placeholder="Buscar departamento"
+                      onChange={(e) => setSearchAfro(e.target.value)}
+                      placeholder="Buscar nombre departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
                     ></Form.Control>
                   </InputGroup>
                 </Form>
@@ -242,15 +249,18 @@ export const Camara = () => {
               className="colorTableCamara table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead className="container_table sticky " style={{backgroundColor:"#fff"}}>
+              <thead
+                className="container_table sticky "
+                style={{ backgroundColor: "#fff" }}
+              >
                 <tr>
-                  <th className="text-center" style={{ width: "50%" }}>
+                  <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
                   </th>
-                  <th className="text-center" style={{ width: "35%" }}>
+                  <th className="text-center" style={{ width: "30%" }}>
                     TOTAL VOTOS
                   </th>
-                  <th className="text-center" style={{ width: "15%" }}></th>
+                  <th className="text-center" style={{ width: "35%" }}></th>
                 </tr>
               </thead>
               <tbody className="color container_table">
@@ -276,7 +286,9 @@ export const Camara = () => {
                         </a>
                       </td>
 
-                      <td className="text-center">{format.format(myVotes.votos)}</td>
+                      <td className="text-center">
+                        {format.format(myVotes.votos)}
+                      </td>
                       <td className="text-center align-middle">
                         <a
                           className="link_departamento"
@@ -307,7 +319,7 @@ export const Camara = () => {
                 <a
                   type="button"
                   className="buttonBack buttonBack-primary"
-                  href={"/#resultados"}
+                  href={"/resultados"}
                 >
                   <i className="bi bi-arrow-left-circle"></i>
                   &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
@@ -342,8 +354,9 @@ export const Camara = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchAfro(e.target.value)}
-                      placeholder="Buscar departamento"
+                      placeholder="Buscar nombre departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
                     ></Form.Control>
                   </InputGroup>
                 </Form>
@@ -359,8 +372,9 @@ export const Camara = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchAfro(e.target.value)}
-                      placeholder="Buscar departamento"
+                      placeholder="Buscar nombre departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
                     ></Form.Control>
                   </InputGroup>
                 </Form>
@@ -373,15 +387,18 @@ export const Camara = () => {
               className="colorTableCamara table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead className="container_table sticky" style={{backgroundColor:"#fff"}}>
+              <thead
+                className="container_table sticky"
+                style={{ backgroundColor: "#fff" }}
+              >
                 <tr>
                   <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
                   </th>
-                  <th className="text-center" style={{ width: "25%" }}>
+                  <th className="text-center" style={{ width: "30%" }}>
                     TOTAL VOTOS
                   </th>
-                  <th className="text-center" style={{ width: "10%" }}></th>
+                  <th className="text-center" style={{ width: "35%" }}></th>
                 </tr>
               </thead>
               <tbody className="color container_table">
@@ -396,7 +413,8 @@ export const Camara = () => {
                   .map((myVotes, contador) => (
                     <tr key={contador}>
                       <td className="text_left">
-                        <a className="link_departamento"
+                        <a
+                          className="link_departamento"
                           href={
                             "/camara/circuncripcion/afrodescendiente/departamento/" +
                             myVotes.department.idDepartment
@@ -405,7 +423,9 @@ export const Camara = () => {
                           {myVotes.department.name_department}
                         </a>
                       </td>
-                      <td className="text-center">{format.format(myVotes.votos)}</td>
+                      <td className="text-center">
+                        {format.format(myVotes.votos)}
+                      </td>
                       <td className="text-center align-middle">
                         <a
                           className="link_departamento"
@@ -436,7 +456,7 @@ export const Camara = () => {
                 <a
                   type="button"
                   className="buttonBack buttonBack-primary"
-                  href={"/#resultados"}
+                  href={"/resultados"}
                 >
                   <i className="bi bi-arrow-left-circle"></i>
                   &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
@@ -455,7 +475,10 @@ export const Camara = () => {
         >
           <Modal.Body className="text-center">
             <div className="text-center">
-              <img src={ImageSpinner} style={{height:"100px", width:"200px"}} />
+              <img
+                src={ImageSpinner}
+                style={{ height: "100px", width: "200px" }}
+              />
               <div className="mt-4">
                 <div className="spinner-border text-danger" role="status">
                   <span className=" visually-hidden">Loading...</span>

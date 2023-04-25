@@ -1,4 +1,3 @@
-import president from "../../assets/image/imgenroll.webp";
 import Img7Carrusel from "../../assets/image/Img8.webp";
 import Img1Carr from "../../assets/image/GuiasAntiguas/Img1.webp";
 import Img2Carr from "../../assets/image/GuiasAntiguas/Img2.webp";
@@ -6,14 +5,14 @@ import Img3Carr from "../../assets/image/GuiasAntiguas/Img3.webp";
 import Img4Carr from "../../assets/image/GuiasAntiguas/Img4.webp";
 import Img5Carr from "../../assets/image/GuiasAntiguas/Img5.webp";
 import Img6Carr from "../../assets/image/GuiasAntiguas/Img6.webp";
-import Imgfotoantigua1 from "../../assets/image/GuiasAntiguas/fotosantiguas2.jpeg";
-import Imgfotoantigua2 from "../../assets/image/GuiasAntiguas/fotosantiguas3.jpeg";
-import Imgfotoantigua3 from "../../assets/image/GuiasAntiguas/fotosantiguas4.jpeg";
-import Imgfotoantigua4 from "../../assets/image/GuiasAntiguas/fotosantiguas5.jpeg";
+import Imgfotoantigua1 from "../../assets/image/GuiasAntiguas/fotosantiguas2.webp";
+import Imgfotoantigua2 from "../../assets/image/GuiasAntiguas/fotosantiguas3.webp";
+import Imgfotoantigua3 from "../../assets/image/GuiasAntiguas/fotosantiguas4.webp";
+import Imgfotoantigua4 from "../../assets/image/GuiasAntiguas/fotosantiguas5.webp";
 import Imgfotoantigua5 from "../../assets/image/GuiasAntiguas/fotoantigua1.webp";
-import ImgHitData from "../../assets/image/Patrocinadores/azul.jpg";
-import ImgLoteriaBoyaca from "../../assets/image/Patrocinadores/LoteriaBoyaca.jpg";
-import ImgDonJose from "../../assets/image/Patrocinadores/DonJose.jpg";
+import ImgHitData from "../../assets/image/Patrocinadores/azul.webp";
+import ImgLoteriaBoyaca from "../../assets/image/Patrocinadores/LoteriaBoyaca.webp";
+import ImgDonJose from "../../assets/image/Patrocinadores/DonJose.webp";
 import { Carousel, Modal } from "react-bootstrap";
 import "../../assets/js/carrusel.js";
 import { Link } from "react-router-dom";
@@ -39,9 +38,9 @@ export const Welcome = () => {
             <div className="col-lg-6 video-box">
               <img
                 src={Img7Carrusel}
-                className="img-fluid"
-                style={{ maxWidth: "100%", maxHeight: "auto" }}
-                alt="Imagen de la guia electoral de comlombia"
+                className="img-fluid_seo"
+                style={{width:"100%", height:"100%", maxWidth: "100%", maxHeight: "auto" }}
+                alt="Imagen de la guia electoral de colombia"
               />
               {/* <a
                 href="https://www.youtube.com/watch?v=t5ahimIQBmU"
@@ -51,8 +50,8 @@ export const Welcome = () => {
               ></a> */}
             </div>
 
-            <div className="col-lg-6 d-flex flex-column justify-content-center about-content">
-              <div className="section-title">
+            <div className="col-lg-6 d-flex flex-column justify-content-center about-content" >
+              <div className="section-title" style={{paddingBottom:"18%"}}>
                 <h2>Bienvenido a Guía Electoral de Colombia</h2>
                 <h6 className="fst-italic text_extr">
                   ¡¡¡Para estrategias...Documéntese!!!
@@ -63,256 +62,52 @@ export const Welcome = () => {
                   marketing político.
                 </p>
               </div>
-
-              <div className="icon-box" data-aos="fade-up" data-aos-delay="100">
-                <div className="icon">
-                  <Link to={"/blog"} style={{ textDecorationLine: "none" }}>
-                    <i className="bi bi-fingerprint"></i>
-                  </Link>
+              <div>
+                <div className="section-title">
+                  <h5>RESULTADOS DE VOTACIONES ELECTORALES</h5>
+                  <hr style={{color:"#052851"}}/>
                 </div>
-                <h4 className="title">
-                  <Link to={"/blog"} style={{ textDecorationLine: "none" }}>
-                    Visita nuestro Blog
-                  </Link>
-                </h4>
-                <p className="description text-justify">
-                  Bienvenidos a nuestro blog de elecciones, donde encontrarás
-                  información y análisis sobre los procesos electorales en
-                  Colombia. En este espacio, te mantendremos al tanto de las
-                  últimas noticias y tendencias en materia de política, desde
-                  las elecciones presidenciales y parlamentarias hasta las
-                  elecciones locales y regionales. Aquí podrás encontrar
-                  artículos de opinión, entrevistas con expertos en política y
-                  análisis detallados de los resultados electorales.
-                </p>
-              </div>
-
-              <div className="icon-box" data-aos="fade-up" data-aos-delay="100">
-                <div className="icon">
-                  <Link to={"/nosotros"} style={{ textDecorationLine: "none" }}>
-                    <i className="bi bi-people-fill"></i>
-                  </Link>
+                
+                <div className="herramientas">
+                
+                  <ul>
+                    <li className="RutasRiesgo">
+                      <a className="flex1" href="/presidencia">
+                        PRESIDENCIA
+                      </a>
+                      <a className="flex2" href="/senado">
+                        SENADO
+                      </a>
+                      <a className="flex3" href="/camara">
+                        CÁMARA
+                      </a>
+                      <a className="flex4" href="/gobernacion">
+                        GOBERNACIONES
+                      </a>
+                    </li>
+                    
+                  </ul>
                 </div>
-                <h4 className="title">
-                  <Link to={"/nosotros"} style={{ textDecorationLine: "none" }}>
-                    Nosotros
-                  </Link>
-                </h4>
-                <p className="description text-justify">
-                  Bienvenidos al apartado "Nosotros" de nuestra página web,
-                  donde podrás conocer más sobre nuestra empresa y nuestra
-                  historia. En este espacio, te contaremos quiénes somos, qué
-                  hacemos y cuáles son nuestros valores y objetivos.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+                <div className="herramientas mt-4">
+                  <ul>
+                    <li className="RutasRiesgo">
 
-      <section id="resultados" className="about-lists">
-        <div className="container">
-          <div className="row no-gutters">
-            <div className="col-lg-4 col-md-6 content-item" data-aos="fade-up">
-              <span style={{ textAlign: "right" }}>
-                <img
-                  src={president}
-                  alt="Imagen de presidencia"
-                  style={{ width: "12%", height: "auto" }}
-                />
-              </span>
-
-              <h4>Presidencia</h4>
-              <p>
-                Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel nacional y por total departamentos para
-                la Presidencia de la Republica.
-              </p>
-              <div className="cards-btn text-center">
-                <a
-                  href="/presidencia"
-                  className="btn-cards mt-4 responsive_botton"
-                >
-                  <i className="bi bi-bar-chart-line-fill "></i>
-                  &nbsp; Ver resultados
-                </a>
-              </div>
-            </div>
-
-            <div
-              className="col-lg-4 col-md-6 content-item"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <span style={{ textAlign: "right" }}>
-                <img
-                  src={president}
-                  alt="Imagen de presidencia"
-                  style={{ width: "12%", height: "auto" }}
-                />
-              </span>
-              <h4>Senado</h4>
-              <p>
-                Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel nacional, por total departamentos y por
-                total municipios.
-              </p>
-              <div className="cards-btn text-center botton_responsive">
-                <a href="/senado" className="btn-cards mt-4 responsive_botton">
-                  <i className="bi bi-bar-chart-line-fill "></i>
-                  &nbsp; Ver resultados
-                </a>
-              </div>
-            </div>
-
-            <div
-              className="col-lg-4 col-md-6 content-item"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <span style={{ textAlign: "right" }}>
-                <img
-                  src={president}
-                  alt="Imagen de presidencia"
-                  style={{ width: "12%", height: "auto" }}
-                />
-              </span>
-              <h4>Cámara</h4>
-              <p>
-                Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel regional, total municipios y total
-                departamento.
-              </p>
-              <div className="cards-btn text-center">
-                <a href="/camara" className="btn-cards mt-4 responsive_botton">
-                  <i className="bi bi-bar-chart-line-fill"></i>
-                  &nbsp; Ver resultados
-                </a>
-              </div>
-            </div>
-
-            <div
-              className="col-lg-4 col-md-6 content-item"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <span style={{ textAlign: "right" }}>
-                <img
-                  src={president}
-                  alt="Imagen de gobernacion"
-                  style={{ width: "12%", height: "auto" }}
-                />
-              </span>
-              <h4>Gobernaciones</h4>
-              <p>
-                Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel departamental y total municipios.
-              </p>
-              <div className="cards-btn text-center">
-                <a href="/gobernacion" className="btn-cards mt-4 responsive_botton">
-                  <i className="bi bi-bar-chart-line-fill"></i>
-                  &nbsp; Ver resultados
-                </a>
-              </div>
-            </div>
-
-            <div
-              className="col-lg-4 col-md-6 content-item"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              <span style={{ textAlign: "right" }}>
-                <img
-                  src={president}
-                  alt="Imagen de presidencia"
-                  style={{ width: "12%", height: "auto" }}
-                />
-              </span>
-              <h4>Asambleas</h4>
-              <p>
-                Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel departamental, total departamento y
-                total municipios.
-              </p>
-              <div className="cards-btn text-center">
-                <a href="/asamblea" className="btn-cards mt-4 responsive_botton">
-                  <i className="bi bi-bar-chart-line-fill"></i>
-                  &nbsp; Ver resultados
-                </a>
-              </div>
-            </div>
-
-            <div
-              className="col-lg-4 col-md-6 content-item"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              <span style={{ textAlign: "right" }}>
-                <img
-                  src={president}
-                  alt="Imagen de presidencia"
-                  style={{ width: "12%", height: "auto" }}
-                />
-              </span>
-              <h4>Alcaldías</h4>
-              <p>
-                Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel municipal.
-              </p>
-              <div className="cards-btn text-center">
-                <a href="/alcaldia" className="btn-cards mt-4 responsive_botton">
-                  <i className="bi bi-bar-chart-line-fill"></i>
-                  &nbsp; Ver resultados
-                </a>
-              </div>
-            </div>
-            <div
-              className="col-lg-4 col-md-6 content-item"
-              data-aos="fade-up"
-              data-aos-delay="500"
-            >
-              <span style={{ textAlign: "right" }}>
-                <img
-                  src={president}
-                  alt="Imagen de presidencia"
-                  style={{ width: "12%", height: "auto" }}
-                />
-              </span>
-              <h4>Concejos</h4>
-              <p>
-                Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel municipal y/o distrital.
-              </p>
-              <div className="cards-btn text-center">
-                <a href="/concejo" className="btn-cards mt-4 responsive_botton">
-                  <i className="bi bi-bar-chart-line-fill"></i>
-                  &nbsp; Ver resultados
-                </a>
-              </div>
-            </div>
-
-            <div
-              className="col-lg-4 col-md-6 content-item"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              <span style={{ textAlign: "right" }}>
-                <img
-                  src={president}
-                  alt="Imagen de presidencia"
-                  style={{ width: "12%", height: "auto" }}
-                />
-              </span>
-              <h4>JAL</h4>
-              <p>
-                Registros correspondientes a las votaciones realizadas en torno
-                a las elecciones a nivel distrital y por total localidades.
-              </p>
-              <div className="cards-btn text-center">
-                <a href="/jal" className="btn-cards mt-4 responsive_botton">
-                  <i className="bi bi-bar-chart-line-fill"></i>
-                  &nbsp; Ver resultados
-                </a>
+                      <a className="flex1" href="/asamblea">
+                        ASAMBLEAS
+                      </a>
+                      <a className="flex2" href="/alcaldia">
+                        ALCALDÍAS
+                      </a>
+                      <a className="flex3" href="/concejo">
+                        CONCEJO
+                      </a>
+                      <a className="flex4" href="/jal">
+                        JAL
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <hr style={{color:"#052851"}}/>
               </div>
             </div>
           </div>
@@ -356,11 +151,10 @@ export const Welcome = () => {
             >
               <Carousel.Item interval={1000}>
                 <img
-                  className="d-block w-100"
+                  className="d-block"
                   src={Img1Carr}
                   style={{
-                    maxHeight: "600px !important",
-                    maxWidth: "400px !important",
+                    width:"400px !important", height:"600px !important",
                     opacity: "0.7",
                   }}
                   alt="First slide"
@@ -369,11 +163,10 @@ export const Welcome = () => {
 
               <Carousel.Item>
                 <img
-                  className="d-block w-100"
+                  className="d-block"
                   src={Img2Carr}
                   style={{
-                    maxHeight: "600px !important",
-                    maxWidth: "400px !important",
+                    width:"400px !important", height:"600px !important",
                     opacity: "0.7",
                   }}
                   alt="Second slide"
@@ -381,11 +174,10 @@ export const Welcome = () => {
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  className="d-block w-100"
+                  className="d-block"
                   src={Img3Carr}
                   style={{
-                    maxHeight: "600px !important",
-                    maxWidth: "400px !important",
+                    width:"400px !important", height:"600px !important",
                     opacity: "0.7",
                   }}
                   alt="Third slide"
@@ -393,11 +185,10 @@ export const Welcome = () => {
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  className="d-block w-100"
+                  className="d-block"
                   src={Img4Carr}
                   style={{
-                    maxHeight: "600px !important",
-                    maxWidth: "400px !important",
+                    width:"400px !important", height:"600px !important",
                     opacity: "0.7",
                   }}
                   alt="Third slide"
@@ -405,11 +196,10 @@ export const Welcome = () => {
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  className="d-block w-100"
+                  className="d-block"
                   src={Img5Carr}
                   style={{
-                    maxHeight: "600px !important",
-                    maxWidth: "400px !important",
+                    width:"400px !important", height:"600px !important",
                     opacity: "0.7",
                   }}
                   alt="Third slide"
@@ -417,11 +207,10 @@ export const Welcome = () => {
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  className="d-block w-100"
+                  className="d-block"
                   src={Img6Carr}
                   style={{
-                    maxHeight: "600px !important",
-                    maxWidth: "400px !important",
+                    width:"400px !important", height:"600px !important",
                     opacity: "0.7",
                   }}
                   alt="Third slide"
@@ -459,17 +248,17 @@ export const Welcome = () => {
                     src={ImgDonJose}
                     className="img-fluid"
                     alt="Imagen de jose gil zapata para patrocinio"
-                    style={{ maxHeight: "261px !important", maxWidth:"auto" }}
+                    style={{width:"261px !important", height:"100%"}}
                   />
                 </div>
                 <div className="member-info">
                   <h4>Jose Celestino Gil Zapata</h4>
                   <span>Autor/Editor</span>
                   <div className="social">
-                    <a href="https://www.facebook.com/josegilza/?locale=es_LA">
+                    <a href="https://www.facebook.com/josegilza/?locale=es_LA" aria-label="Facebook">
                       <i className="bi bi-facebook"></i>
                     </a>
-                    <a href="https://co.linkedin.com/in/jose-gil-a76aa6a6">
+                    <a href="https://co.linkedin.com/in/jose-gil-a76aa6a6" aria-label="Linkedin">
                       <i className="bi bi-linkedin"></i>
                     </a>
                   </div>
@@ -487,7 +276,7 @@ export const Welcome = () => {
                   <img
                     src={ImgHitData}
                     className="img-fluid"
-                    style={{maxWidth:"100%", maxHeight:"auto"}}
+                    style={{width:"100%", height:"100%" }}
                     alt="Imagen de hitdata para patrocinio"
                   />
                 </div>
@@ -495,16 +284,16 @@ export const Welcome = () => {
                   <h4>Hit Data</h4>
                   <span>Empresa de desarrollo</span>
                   <div className="social">
-                    <a href="https://twitter.com/HitData">
+                    <a href="https://twitter.com/HitData" aria-label="Twitter">
                       <i className="bi bi-twitter"></i>
                     </a>
-                    <a href="https://www.facebook.com/HitdataColombia">
+                    <a href="https://www.facebook.com/HitdataColombia" aria-label="Facebook">
                       <i className="bi bi-facebook"></i>
                     </a>
-                    <a href="https://www.instagram.com/hitdata/">
+                    <a href="https://www.instagram.com/hitdata/" aria-label="Instagram">
                       <i className="bi bi-instagram"></i>
                     </a>
-                    <a href="https://co.linkedin.com/in/hit-data-soluciones">
+                    <a href="https://co.linkedin.com/in/hit-data-soluciones" aria-label="Linkedin">
                       <i className="bi bi-linkedin"></i>
                     </a>
                   </div>
@@ -522,7 +311,7 @@ export const Welcome = () => {
                   <img
                     src={ImgLoteriaBoyaca}
                     className="img-fluid"
-                    style={{ maxWidth: "100%", maxHeight: "auto" }}
+                    style={{width:"100%", height:"100%" }}
                     alt="Imagen de la loteria de boyaca para patrocinio"
                   />
                 </div>
@@ -530,16 +319,16 @@ export const Welcome = () => {
                   <h4>Lotería de Boyacá</h4>
                   <span>Patrocinador</span>
                   <div className="social">
-                    <a href="https://twitter.com/LoteriadeBoyaca">
+                    <a href="https://twitter.com/LoteriadeBoyaca" aria-label="Twitter">
                       <i className="bi bi-twitter"></i>
                     </a>
-                    <a href="https://www.facebook.com/LoteriaDeBoyacaOficial/?locale=es_LA">
+                    <a href="https://www.facebook.com/LoteriaDeBoyacaOficial/?locale=es_LA" aria-label="Facebook">
                       <i className="bi bi-facebook"></i>
                     </a>
-                    <a href="https://www.instagram.com/loteriadeboyacaoficial/?hl=es">
+                    <a href="https://www.instagram.com/loteriadeboyacaoficial/?hl=es" aria-label="Instagram">
                       <i className="bi bi-instagram"></i>
                     </a>
-                    <a href="https://co.linkedin.com/company/loter%C3%ADa-de-boyac%C3%A1">
+                    <a href="https://co.linkedin.com/company/loter%C3%ADa-de-boyac%C3%A1" aria-label="Linkedin">
                       <i className="bi bi-linkedin"></i>
                     </a>
                   </div>
@@ -563,11 +352,10 @@ export const Welcome = () => {
               >
                 <Carousel.Item interval={1000}>
                   <img
-                    className="d-block w-100"
+                    className="d-block"
                     src={Imgfotoantigua1}
                     style={{
-                      maxHeight: "600px !important",
-                      maxWidth: "400px !important",
+                      width:"400px !important", height:"600px !important",
                     }}
                     alt="First slide"
                   />
@@ -575,44 +363,40 @@ export const Welcome = () => {
 
                 <Carousel.Item>
                   <img
-                    className="d-block w-100"
+                    className="d-block"
                     src={Imgfotoantigua2}
                     style={{
-                      maxHeight: "600px !important",
-                      maxWidth: "400px !important",
+                      width:"400px !important", height:"600px !important",
                     }}
                     alt="Second slide"
                   />
                 </Carousel.Item>
                 <Carousel.Item>
                   <img
-                    className="d-block w-100"
+                    className="d-block"
                     src={Imgfotoantigua3}
                     style={{
-                      maxHeight: "600px !important",
-                      maxWidth: "400px !important",
+                      width:"400px !important", height:"600px !important"
                     }}
                     alt="Third slide"
                   />
                 </Carousel.Item>
                 <Carousel.Item>
                   <img
-                    className="d-block w-100"
+                    className="d-block "
                     src={Imgfotoantigua4}
                     style={{
-                      maxHeight: "600px !important",
-                      maxWidth: "400px !important",
+                      width:"400px !important", height:"600px !important",
                     }}
                     alt="Third slide"
                   />
                 </Carousel.Item>
                 <Carousel.Item>
                   <img
-                    className="d-block w-100"
+                    className="d-block"
                     src={Imgfotoantigua5}
                     style={{
-                      maxHeight: "600px !important",
-                      maxWidth: "400px !important",
+                      width:"400px !important", height:"600px !important",
                     }}
                     alt="Third slide"
                   />
@@ -634,8 +418,9 @@ export const Welcome = () => {
         <Modal.Body className="text-center text-bg-light">
           <div className="text-center">
             <img
-              style={{ maxWidth: "100%", height: "auto", opacity: 1 }}
+              style={{width:"100%", height: "auto", opacity: 1 }}
               src={ImageSpinner}
+              alt="imagen de carga para el modal"
             />
           </div>
         </Modal.Body>

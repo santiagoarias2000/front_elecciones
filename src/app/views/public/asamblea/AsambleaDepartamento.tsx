@@ -284,23 +284,19 @@ export const AsambleaDepartamento = () => {
               className="container-fluid display-flex justify-content-center"
               style={{
                 color: "#FFFFFF",
-                height: "40px",
+                height: "20px",
                 alignItems: "right",
               }}
             >
               <h6
-                className="my-2"
-                style={{
-                  color: "#052851",
-                  textAlign: "center",
-                }}
-              >
-                {arrayDepartamento.map((myDepartment) => (
-                  <b style={{ color: "#D9224E" }}>
-                    VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
-                  </b>
-                ))}
-              </h6>
+              className="tituloVotosTotales my-2"
+            >
+              {arrayDepartamento.map((myDepartment) => (
+                <b style={{ color: "#D9224E" }} className="vota_respo">
+                  VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
+                </b>
+              ))}
+            </h6>
             </div>
           </div>
           <div className="dropdown">

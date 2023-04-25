@@ -13,14 +13,18 @@ import CandidatosCamara from "../../../mocks/models/CandidatosCamara";
 
 export const CamaraIndigenaDepartamento = () => {
   let { idDepartment } = useParams();
-  //Format Number Votes 
+  //Format Number Votes
   const format = new Intl.NumberFormat();
-  const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState< CandidatosCamara[] >(ARREGLO_CANDIDATOS_ELEGIDOS);
+  const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState<
+    CandidatosCamara[]
+  >(ARREGLO_CANDIDATOS_ELEGIDOS);
   const [search, setSearch] = useState("");
   const [searchMunicipio, setSearchMunicipio] = useState("");
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
-  const [arrayVotesCamaraIndigena, setArrayVotosCamaraIndigena] = useState< VotesCongreso[] >([]);
+  const [arrayVotesCamaraIndigena, setArrayVotosCamaraIndigena] = useState<
+    VotesCongreso[]
+  >([]);
 
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
   const [arrayDepartamento, setArrayDepartamento] = useState<Department[]>([]);
@@ -57,7 +61,7 @@ export const CamaraIndigenaDepartamento = () => {
     return elegidosi;
   };
   //Prevent enter in search box
-  function submitHandler(e:any) {
+  function submitHandler(e: any) {
     e.preventDefault();
   }
   useEffect(() => {
@@ -82,18 +86,9 @@ export const CamaraIndigenaDepartamento = () => {
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}></div>
       <div className="cardBorder card">
-        <div
-          className="container-fluid display-flex justify-content-center"
-          style={{
-            background: "#052851",
-            color: "#FFFFFF",
-            height: "40px",
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <div className="text-center">
-            <b>TERRITORIAL INDIGENA</b>
+      <div className="container-fluid display-flex justify-content-center container_title">
+          <div className="text-center d-flex align-items-center">
+            <b className="title_table">TERRITORIAL INDIGENA</b>
           </div>
         </div>
         <div className="container responsive">
@@ -175,7 +170,20 @@ export const CamaraIndigenaDepartamento = () => {
         <div className="container no_responsive">
           <div className="row">
             <div className="col-sm ">
-              <div className="dropdown text-center my-1">
+              <div className="col">
+                <h6 className="text-center my-2" style={{ color: "#052851" }}>
+                  {arrayDepartamento.map((myDepartment) => (
+                    <b className="name_text">{myDepartment.name_department}</b>
+                  ))}
+                </h6>
+              </div>
+            </div>
+
+            <div className="d-flex align-items-center mt-2 mb-2 justify-content-between">
+              <div
+                className="dropdown text-left mb-1"
+                style={{ marginLeft: "3%" }}
+              >
                 <button
                   type="button"
                   className="buttonBack buttonBack-primary dropdown-toggle"
@@ -221,33 +229,25 @@ export const CamaraIndigenaDepartamento = () => {
                           }
                         >
                           <b className="name_text">
-                            
-                          {myMunicipality.name_municipality}
+                            {myMunicipality.name_municipality}
                           </b>
                         </a>
                       ))}
                   </li>
                 </ul>
               </div>
-            </div>
-            <div className="col">
-              <h6 className="text-center my-2" style={{ color: "#052851" }}>
-                {arrayDepartamento.map((myDepartment) => (
-                  <b>{myDepartment.name_department}</b>
-                ))}
-              </h6>
-            </div>
-            <div className="col-sm">
-              <Form id="form_conta" onSubmit={submitHandler}>
-                <InputGroup className="my-1 container_form">
-                  <Form.Control
-                    onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Buscar un Partido Político"
-                    style={{ textAlign: "right", marginRight: "5px" }}
-                    className="form_co"
-                  ></Form.Control>
-                </InputGroup>
-              </Form>
+              <div className="col-sm">
+                <Form id="form_conta" onSubmit={submitHandler}>
+                  <InputGroup className="my-1 container_form">
+                    <Form.Control
+                      onChange={(e) => setSearch(e.target.value)}
+                      placeholder="Buscar un Partido Político"
+                      style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
+                    ></Form.Control>
+                  </InputGroup>
+                </Form>
+              </div>
             </div>
           </div>
         </div>
@@ -257,12 +257,23 @@ export const CamaraIndigenaDepartamento = () => {
             className="colorTable table table-hover"
             style={{ background: "#05285190 !important" }}
           >
-            <thead className="container_table sticky" style={{backgroundColor:"#fff"}}>
+            <thead
+              className="container_table sticky"
+              style={{ backgroundColor: "#fff" }}
+            >
               <tr>
-                <th className="text-center" style={{ width: "35%" }} id="text_left_name">
+                <th
+                  className="text-center"
+                  style={{ width: "35%" }}
+                  id="text_left_name"
+                >
                   PARTIDO POLÍTICO
                 </th>
-                <th className="text-center" style={{ width: "40%" }} id="text_left_name">
+                <th
+                  className="text-center"
+                  style={{ width: "40%" }}
+                  id="text_left_name"
+                >
                   NOMBRE CANDIDATO
                 </th>
                 <th className="text-center" style={{ width: "25 %" }}>
@@ -320,20 +331,14 @@ export const CamaraIndigenaDepartamento = () => {
         </div>
         <div className="dropdown">
           <div
-            className="container-fluid display-flex justify-content-center"
+            className="container-fluid display-flex justify-content-center mt-4"
             style={{
               color: "#FFFFFF",
-              height: "40px",
+              height: "20px",
               alignItems: "right",
             }}
           >
-            <h6
-              className="my-2"
-              style={{
-                color: "#052851",
-                textAlign: "center",
-              }}
-            >
+            <h6 className="tituloVotosTotales my-2">
               {arrayDepartamento.map((myDepartment) => (
                 <b style={{ color: "#D9224E" }} className="vota_respo">
                   VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
@@ -375,7 +380,10 @@ export const CamaraIndigenaDepartamento = () => {
         >
           <Modal.Body className="text-center">
             <div className="text-center">
-              <img src={ImageSpinner} style={{height:"100px", width:"200px"}}/>
+              <img
+                src={ImageSpinner}
+                style={{ height: "100px", width: "200px" }}
+              />
               <div className="mt-4">
                 <div className="spinner-border text-danger" role="status">
                   <span className=" visually-hidden">Loading...</span>

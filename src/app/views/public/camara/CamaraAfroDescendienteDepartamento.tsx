@@ -90,7 +90,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
       <div className="col-lg-12" style={{ color: "#052851 !important" }}></div>
       <div className="cardBorder card">
         <div className="container-fluid display-flex justify-content-center container_title">
-          <div className="text-center">
+          <div className="text-center d-flex align-items-center">
             <b className="title_table">TERRITORIAL AFRO-DESCENDIENTE</b>
           </div>
         </div>
@@ -178,8 +178,8 @@ export const CamaraAfroDescendienteDepartamento = () => {
 
         <div className="container no_responsive">
           <div className="row">
-            <div className="col-lg-4">
-              <div className="dropdown text-center my-1">
+            <div className="col-lg-4 d-flex mt-2 mb-2">
+              <div className="dropdown text-center" style={{marginLeft:"10%"}}>
                 <button
                   type="button"
                   className="buttonBack buttonBack-primary dropdown-toggle"
@@ -232,18 +232,18 @@ export const CamaraAfroDescendienteDepartamento = () => {
                   </li>
                 </ul>
               </div>
-            </div>
-            <div className="col-lg-4">
-              <h6
-                className="text-center my-2 text_title_respo"
-                style={{ color: "#052851" }}
-              >
-                {arrayDepartamento.map((myDepartment) => (
-                  <b className="text_title_respo">
-                    {myDepartment.name_department}
-                  </b>
-                ))}
-              </h6>
+              <div className="d-flex align-items-center mt-2" style={{marginLeft:"25%"}}>
+                <h6
+                  className="d-flex align-items-center text_title_respo"
+                  style={{ color: "#052851" }}
+                >
+                  {arrayDepartamento.map((myDepartment) => (
+                    <b className="text_title_respo">
+                      {myDepartment.name_department}
+                    </b>
+                  ))}
+                </h6>
+              </div>
             </div>
             <div className="col-lg-4">
               <Form id="form_conta" onSubmit={submitHandler}>
@@ -269,10 +269,18 @@ export const CamaraAfroDescendienteDepartamento = () => {
               style={{ backgroundColor: "#fff" }}
             >
               <tr>
-                <th className="text-center" style={{ width: "35%" }} id="text_left_name">
+                <th
+                  className="text-center"
+                  style={{ width: "35%" }}
+                  id="text_left_name"
+                >
                   PARTIDO POLÍTICO
                 </th>
-                <th className="text-center" style={{ width: "40%" }} id="text_left_name">
+                <th
+                  className="text-center"
+                  style={{ width: "40%" }}
+                  id="text_left_name"
+                >
                   NOMBRE CANDIDATO
                 </th>
                 <th className="text-center" style={{ width: "25 %" }}>
@@ -334,20 +342,14 @@ export const CamaraAfroDescendienteDepartamento = () => {
         </div>
         <div className="dropdown">
           <div
-            className="container-fluid display-flex justify-content-center"
+            className="container-fluid display-flex justify-content-center mt-4"
             style={{
               color: "#FFFFFF",
-              height: "40px",
+              height: "20px",
               alignItems: "right",
             }}
           >
-            <h6
-              className="my-2"
-              style={{
-                color: "#052851",
-                textAlign: "center",
-              }}
-            >
+            <h6 className="tituloVotosTotales my-2">
               {arrayDepartamento.map((myDepartment) => (
                 <b className="vota_respo" style={{ color: "#D9224E" }}>
                   VOTACIÓN TOTAL: {myDepartment.votos}
@@ -370,9 +372,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
               <a
                 type="button"
                 className="buttonBack buttonBack-primary"
-                href={
-                  "/camara"
-                }
+                href={"/camara"}
               >
                 <i className="bi bi-arrow-left-circle"></i>
                 &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
@@ -390,7 +390,10 @@ export const CamaraAfroDescendienteDepartamento = () => {
         >
           <Modal.Body className="text-center">
             <div className="text-center">
-              <img src={ImageSpinner} style={{height:"100px", width:"200px"}}/>
+              <img
+                src={ImageSpinner}
+                style={{ height: "100px", width: "200px" }}
+              />
               <div className="mt-4">
                 <div className="spinner-border text-danger" role="status">
                   <span className=" visually-hidden">Loading...</span>
