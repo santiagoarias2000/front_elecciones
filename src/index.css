@@ -1495,6 +1495,13 @@ h6 {
   font-family: "Tilt Warp", cursive;
   color: #ffffff;
 }
+.imagen_404 {
+  max-width: 18%;
+  max-height: auto;
+}
+.imagen_error {
+  max-width: 31%;
+}
 @media (max-width: 768px) {
   .container_error {
     background-image: url("../src/assets/image/errorfondo.webp");
@@ -1502,10 +1509,10 @@ h6 {
     background-repeat: no-repeat;
   }
   .imagen_logo {
-    max-width: 60%;
+    max-width: 40%;
   }
   .imagen_error {
-    max-width: 120%;
+    max-width: 80%;
   }
   .container_error .btn {
     background-color: #052851;
@@ -1879,6 +1886,7 @@ h6 {
   .name_text {
     color: #052851;
     font-size: 0.7rem;
+    font-weight: 300;
   }
 }
 
@@ -5498,10 +5506,11 @@ section {
   top: 0;
   right: 0;
   height: 35%;
-  margin-left: 14px;
+  margin-left: 1vw;
   width: 0px;
   background-color: white;
 }
+
 .herramientas ul {
   right: 0;
 }
@@ -5548,7 +5557,7 @@ ul li.RutasRiesgo {
   border-radius: 0px 0px 0px 0px;
 }
 .herramientas .RutasRiesgo .flex1 {
-  top: -50%;
+  top: -75%;
 }
 .herramientas .flex2 {
   position: absolute;
@@ -5569,7 +5578,7 @@ ul li.RutasRiesgo {
   border-radius: 0px 0px 0px 0px;
 }
 .herramientas .RutasRiesgo .flex2 {
-  top: 0%;
+  top: -25%;
 }
 .herramientas .flex3 {
   position: absolute;
@@ -5590,7 +5599,7 @@ ul li.RutasRiesgo {
   border-radius: 0px 0px 0px 0px;
 }
 .herramientas .RutasRiesgo .flex3 {
-  top: 50%;
+  top: 25%;
 }
 .herramientas .flex4 {
   position: absolute;
@@ -5611,7 +5620,91 @@ ul li.RutasRiesgo {
   border-radius: 0px 0px 0px 0px;
 }
 .herramientas .RutasRiesgo .flex4 {
-  top: 100%;
+  top: 75%;
+}
+.herramientas .flex5 {
+  position: absolute;
+  top: 50%;
+  width: 400px;
+  background-color: #e5e5e5;
+  height: 25px;
+  line-height: 22px;
+  text-align: center;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  color: #052851;
+  z-index: 0;
+  transition: width 0.5s;
+}
+.herramientas a.flex5 {
+  border-radius: 0px 0px 0px 0px;
+}
+.herramientas .RutasRiesgo .flex5 {
+  top: 128%;
+}
+.herramientas .flex6 {
+  position: absolute;
+  top: 50%;
+  width: 400px;
+  background-color: #e5e5e5;
+  height: 25px;
+  line-height: 22px;
+  text-align: center;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  color: #052851;
+  z-index: 0;
+  transition: width 0.5s;
+}
+.herramientas a.flex6 {
+  border-radius: 0px 0px 0px 0px;
+}
+.herramientas .RutasRiesgo .flex6 {
+  top: 180%;
+}
+.herramientas .flex7 {
+  position: absolute;
+  top: 50%;
+  width: 400px;
+  background-color: #e5e5e5;
+  height: 25px;
+  line-height: 22px;
+  text-align: center;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  color: #052851;
+  z-index: 0;
+  transition: width 0.5s;
+}
+.herramientas a.flex7 {
+  border-radius: 0px 0px 0px 0px;
+}
+.herramientas .RutasRiesgo .flex7 {
+  top: 230%;
+}
+.herramientas .flex8 {
+  position: absolute;
+  top: 50%;
+  width: 400px;
+  background-color: #e5e5e5;
+  height: 25px;
+  line-height: 22px;
+  text-align: center;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  color: #052851;
+  z-index: 0;
+  transition: width 0.5s;
+}
+.herramientas a.flex8 {
+  border-radius: 0px 0px 0px 0px;
+}
+.herramientas .RutasRiesgo .flex8 {
+  top: 280%;
 }
 
 @media only screen and (max-width: 767px) {
@@ -5744,6 +5837,308 @@ ul li.RutasRiesgo {
   .herramientas .RutasRiesgo .flex4 {
     top: 100%;
   }
+  .herramientas .flex5 {
+    position: absolute;
+    top: 50%;
+    width: 300px;
+    background-color: #e5e5e5;
+    height: 25px;
+    line-height: 22px;
+    text-align: center;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    color: #052851;
+    z-index: 0;
+    transition: width 0.5s;
+  }
+  .herramientas a.flex5 {
+    border-radius: 0px 0px 0px 0px;
+  }
+  .herramientas .RutasRiesgo .flex5 {
+    top: 150%;
+  }
+  .herramientas .flex6 {
+    position: absolute;
+    top: 50%;
+    width: 300px;
+    background-color: #e5e5e5;
+    height: 25px;
+    line-height: 22px;
+    text-align: center;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    color: #052851;
+    z-index: 0;
+    transition: width 0.5s;
+  }
+  .herramientas a.flex6 {
+    border-radius: 0px 0px 0px 0px;
+  }
+  .herramientas .RutasRiesgo .flex6 {
+    top: 200%;
+  }
+
+  .herramientas .flex7 {
+    position: absolute;
+    top: 50%;
+    width: 300px;
+    background-color: #e5e5e5;
+    height: 25px;
+    line-height: 22px;
+    text-align: center;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    color: #052851;
+    z-index: 0;
+    transition: width 0.5s;
+  }
+  .herramientas a.flex7 {
+    border-radius: 0px 0px 0px 0px;
+  }
+  .herramientas .RutasRiesgo .flex7 {
+    top: 250%;
+  }
+  .herramientas .flex8 {
+    position: absolute;
+    top: 50%;
+    width: 300px;
+    background-color: #e5e5e5;
+    height: 25px;
+    line-height: 22px;
+    text-align: center;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    color: #052851;
+    z-index: 0;
+    transition: width 0.5s;
+  }
+  .herramientas a.flex8 {
+    border-radius: 0px 0px 0px 0px;
+  }
+  .herramientas .RutasRiesgo .flex8 {
+    top: 300%;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .herramientas li {
+    list-style: none;
+  }
+  .herramientas a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+  .herramientas a:hover {
+    color: #aaaaaa;
+  }
+  .herramientas {
+    top: 0;
+    right: 0;
+    height: 35%;
+    margin-left:5vw;
+    width: 0px;
+    background-color: white;
+  }
+  .herramientas ul {
+    right: 0;
+  }
+  .herramientas ul li {
+    width: 65px;
+    height: 60px;
+    margin-bottom: 2px;
+    position: relative;
+  }
+  .herramientas ul .RutasRiesgo .herramientas-ico {
+    display: block;
+    width: 34px;
+    height: 35px;
+  }
+  ul li.RutasRiesgo {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+    border-radius: 50px;
+  }
+  .herramientas ul li:hover {
+    background-color: #ffffff;
+  }
+  .herramientas ul li:hover .flex {
+    width: 180px;
+    background-color: #e5e5e5;
+  }
+  .herramientas .flex1 {
+    position: absolute;
+    top: 50%;
+    width: 300px;
+    background-color: #e5e5e5;
+    height: 25px;
+    line-height: 22px;
+    text-align: center;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    color: #052851;
+    z-index: 0;
+    transition: width 1s;
+  }
+  .herramientas a.flex1 {
+    border-radius: 0px 0px 0px 0px;
+  }
+  .herramientas .RutasRiesgo .flex1 {
+    top: -50%;
+  }
+  .herramientas .flex2 {
+    position: absolute;
+    top: 50%;
+    width: 300px;
+    background-color: #e5e5e5;
+    height: 25px;
+    line-height: 22px;
+    text-align: center;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    color: #052851;
+    z-index: 0;
+    transition: width 0.7s;
+  }
+  .herramientas a.flex2 {
+    border-radius: 0px 0px 0px 0px;
+  }
+  .herramientas .RutasRiesgo .flex2 {
+    top: 0%;
+  }
+  .herramientas .flex3 {
+    position: absolute;
+    top: 50%;
+    width: 300px;
+    background-color: #e5e5e5;
+    height: 25px;
+    line-height: 22px;
+    text-align: center;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    color: #052851;
+    z-index: 0;
+    transition: width 0.6s;
+  }
+  .herramientas a.flex3 {
+    border-radius: 0px 0px 0px 0px;
+  }
+  .herramientas .RutasRiesgo .flex3 {
+    top: 50%;
+  }
+  .herramientas .flex4 {
+    position: absolute;
+    top: 50%;
+    width: 300px;
+    background-color: #e5e5e5;
+    height: 25px;
+    line-height: 22px;
+    text-align: center;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    color: #052851;
+    z-index: 0;
+    transition: width 0.5s;
+  }
+  .herramientas a.flex4 {
+    border-radius: 0px 0px 0px 0px;
+  }
+  .herramientas .RutasRiesgo .flex4 {
+    top: 100%;
+  }
+  .herramientas .flex5 {
+    position: absolute;
+    top: 50%;
+    width: 300px;
+    background-color: #e5e5e5;
+    height: 25px;
+    line-height: 22px;
+    text-align: center;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    color: #052851;
+    z-index: 0;
+    transition: width 0.5s;
+  }
+  .herramientas a.flex5 {
+    border-radius: 0px 0px 0px 0px;
+  }
+  .herramientas .RutasRiesgo .flex5 {
+    top: 150%;
+  }
+  .herramientas .flex6 {
+    position: absolute;
+    top: 50%;
+    width: 300px;
+    background-color: #e5e5e5;
+    height: 25px;
+    line-height: 22px;
+    text-align: center;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    color: #052851;
+    z-index: 0;
+    transition: width 0.5s;
+  }
+  .herramientas a.flex6 {
+    border-radius: 0px 0px 0px 0px;
+  }
+  .herramientas .RutasRiesgo .flex6 {
+    top: 200%;
+  }
+
+  .herramientas .flex7 {
+    position: absolute;
+    top: 50%;
+    width: 300px;
+    background-color: #e5e5e5;
+    height: 25px;
+    line-height: 22px;
+    text-align: center;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    color: #052851;
+    z-index: 0;
+    transition: width 0.5s;
+  }
+  .herramientas a.flex7 {
+    border-radius: 0px 0px 0px 0px;
+  }
+  .herramientas .RutasRiesgo .flex7 {
+    top: 250%;
+  }
+  .herramientas .flex8 {
+    position: absolute;
+    top: 50%;
+    width: 300px;
+    background-color: #e5e5e5;
+    height: 25px;
+    line-height: 22px;
+    text-align: center;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    color: #052851;
+    z-index: 0;
+    transition: width 0.5s;
+  }
+  .herramientas a.flex8 {
+    border-radius: 0px 0px 0px 0px;
+  }
+  .herramientas .RutasRiesgo .flex8 {
+    top: 300%;
+  }
 }
 
 .icono {
@@ -5778,4 +6173,11 @@ ul li.RutasRiesgo {
   .tableL3 {
     width: 15%;
   }
+  .ul_responsive {
+    padding-left: 2rem !important;
+  }
+}
+.img-fluid_seo {
+  width: 100%;
+  height: auto;
 }
