@@ -123,7 +123,7 @@ export const SenadoIndigenaDepartamento = () => {
                               miMunicipio.id_municipality
                             }
                           >
-                            {miMunicipio.name_municipality}
+                            <b className="name_text"> {miMunicipio.name_municipality}</b>
                           </a>
                         ))}
                     </li>

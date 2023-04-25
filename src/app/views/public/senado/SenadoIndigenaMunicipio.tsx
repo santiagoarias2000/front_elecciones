@@ -140,8 +140,10 @@ export const SenadoIndigenaMunicipio = () => {
                               myMunicipality.id_municipality
                             }
                           >
-                            {" "}
-                            {myMunicipality.name_municipality}{" "}
+                            <b className="name_text">
+                              {" "}
+                              {myMunicipality.name_municipality}
+                            </b>
                           </a>
                         ))}
                     </li>

@@ -167,7 +167,9 @@ export const CamaraTerritorialDepartamento = () => {
                             myMunicipality.id_municipality
                           }
                         >
-                          {myMunicipality.name_municipality}
+                          <b className="name_text">
+                            {myMunicipality.name_municipality}
+                          </b>
                         </a>
                       ))}
                   </li>
@@ -177,7 +179,7 @@ export const CamaraTerritorialDepartamento = () => {
             <div className="col">
               <h6 className="text-center my-4" style={{ color: "#052851" }}>
                 {arrayDepartamento.map((myDepartment) => (
-                  <b>{myDepartment.name_department}</b>
+                  <b >{myDepartment.name_department}</b>
                 ))}
               </h6>
             </div>

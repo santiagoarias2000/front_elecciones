@@ -5,11 +5,6 @@ import Img3Carr from "../../assets/image/GuiasAntiguas/Img3.webp";
 import Img4Carr from "../../assets/image/GuiasAntiguas/Img4.webp";
 import Img5Carr from "../../assets/image/GuiasAntiguas/Img5.webp";
 import Img6Carr from "../../assets/image/GuiasAntiguas/Img6.webp";
-import Imgfotoantigua1 from "../../assets/image/GuiasAntiguas/fotosantiguas2.webp";
-import Imgfotoantigua2 from "../../assets/image/GuiasAntiguas/fotosantiguas3.webp";
-import Imgfotoantigua3 from "../../assets/image/GuiasAntiguas/fotosantiguas4.webp";
-import Imgfotoantigua4 from "../../assets/image/GuiasAntiguas/fotosantiguas5.webp";
-import Imgfotoantigua5 from "../../assets/image/GuiasAntiguas/fotoantigua1.webp";
 import ImgHitData from "../../assets/image/Patrocinadores/azul.webp";
 import ImgLoteriaBoyaca from "../../assets/image/Patrocinadores/LoteriaBoyaca.webp";
 import ImgDonJose from "../../assets/image/Patrocinadores/DonJose.webp";
@@ -361,78 +356,7 @@ export const Welcome = () => {
           </div>
           <hr />
 
-          <div className="row " data-aos="fade-up">
-            <div className="col-lg-2"></div>
-            <div className="col-lg-8">
-              <Carousel
-                className="mb-5"
-                style={{
-                  paddingLeft: "10%",
-                  paddingRight: "10%",
-                  width: "100%",
-                  height: "auto",
-                }}
-              >
-                <Carousel.Item interval={1000}>
-                  <img
-                    className="d-block"
-                    src={Imgfotoantigua1}
-                    style={{
-                      width: "400px !important",
-                      height: "600px !important",
-                    }}
-                    alt="First slide"
-                  />
-                </Carousel.Item>
-
-                <Carousel.Item>
-                  <img
-                    className="d-block"
-                    src={Imgfotoantigua2}
-                    style={{
-                      width: "400px !important",
-                      height: "600px !important",
-                    }}
-                    alt="Second slide"
-                  />
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img
-                    className="d-block"
-                    src={Imgfotoantigua3}
-                    style={{
-                      width: "400px !important",
-                      height: "600px !important",
-                    }}
-                    alt="Third slide"
-                  />
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img
-                    className="d-block "
-                    src={Imgfotoantigua4}
-                    style={{
-                      width: "400px !important",
-                      height: "600px !important",
-                    }}
-                    alt="Third slide"
-                  />
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img
-                    className="d-block"
-                    src={Imgfotoantigua5}
-                    style={{
-                      width: "400px !important",
-                      height: "600px !important",
-                    }}
-                    alt="Third slide"
-                  />
-                </Carousel.Item>
-              </Carousel>
-            </div>
-            <div className="col-lg-2"></div>
-          </div>
+          
         </div>
       </section>
       <Modal

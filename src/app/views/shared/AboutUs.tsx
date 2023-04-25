@@ -7,6 +7,12 @@ import Img4Carr from "../../../assets/image/FotosHistoria/IMG_2457.webp";
 import Img5Carr from "../../../assets/image/FotosHistoria/IMG_2444.webp";
 import Img6Carr from "../../../assets/image/FotosHistoria/IMG_2449.webp";
 
+import Imgfotoantigua1 from "../../../assets/image/GuiasAntiguas/fotosantiguas2.webp";
+import Imgfotoantigua2 from "../../../assets/image/GuiasAntiguas/fotosantiguas3.webp";
+import Imgfotoantigua3 from "../../../assets/image/GuiasAntiguas/fotosantiguas4.webp";
+import Imgfotoantigua4 from "../../../assets/image/GuiasAntiguas/fotosantiguas5.webp";
+import Imgfotoantigua5 from "../../../assets/image/GuiasAntiguas/fotoantigua1.webp";
+
 import Img7Carr from "../../../assets/image/FotosHistoria/Verticales/IMG_2453.webp";
 import Img8Carr from "../../../assets/image/FotosHistoria/Verticales/IMG_2455.webp";
 import Img9Carr from "../../../assets/image/FotosHistoria/Verticales/IMG_2458.webp";
@@ -88,6 +94,78 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
+      <div className="row " data-aos="fade-up">
+            <div className="col-lg-2"></div>
+            <div className="col-lg-8">
+              <Carousel
+                className="mb-5"
+                style={{
+                  paddingLeft: "10%",
+                  paddingRight: "10%",
+                  width: "100%",
+                  height: "auto",
+                }}
+              >
+                <Carousel.Item interval={1000}>
+                  <img
+                    className="d-block"
+                    src={Imgfotoantigua1}
+                    style={{
+                      width: "400px !important",
+                      height: "600px !important",
+                    }}
+                    alt="First slide"
+                  />
+                </Carousel.Item>
+
+                <Carousel.Item>
+                  <img
+                    className="d-block"
+                    src={Imgfotoantigua2}
+                    style={{
+                      width: "400px !important",
+                      height: "600px !important",
+                    }}
+                    alt="Second slide"
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block"
+                    src={Imgfotoantigua3}
+                    style={{
+                      width: "400px !important",
+                      height: "600px !important",
+                    }}
+                    alt="Third slide"
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block "
+                    src={Imgfotoantigua4}
+                    style={{
+                      width: "400px !important",
+                      height: "600px !important",
+                    }}
+                    alt="Third slide"
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block"
+                    src={Imgfotoantigua5}
+                    style={{
+                      width: "400px !important",
+                      height: "600px !important",
+                    }}
+                    alt="Third slide"
+                  />
+                </Carousel.Item>
+              </Carousel>
+            </div>
+            <div className="col-lg-2"></div>
+          </div>
 
       <section
         id="resume"
