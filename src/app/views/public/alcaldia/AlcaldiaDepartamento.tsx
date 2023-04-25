@@ -120,26 +120,23 @@ export const AlcaldiaDepartamento = () => {
               >
                 <tr>
                   <th className="text-center" style={{ width: "35%" }}>
-                    MUNICIPIO
+                    DEPARTAMENTO
                   </th>
-                  <th className="text-center" style={{ width: "30%" }}>
+                  <th className="text-center" style={{ width: "35%" }} >
                     TOTAL VOTOS
                   </th>
-                  <th className="text-center" style={{ width: "35%" }}></th>
+                  <th className="text-center" style={{ width: "30%" }} ></th>
+
                 </tr>
               </thead>
               <tbody className="color container_table">
                 {arrayVotosAlcaldiaDepartamento
-                  .filter((val) => {
-                    if (search == "") {
-                      return val;
-                    } else if (
-                      val.municipality.name_municipality
-                        .toLocaleLowerCase()
-                        .includes(search.toLocaleLowerCase())
-                    ) {
-                      return val;
-                    }
+                  .filter((myVotes) => {
+                    return search === ""
+                      ? myVotes
+                      : myVotes.municipality.name_municipality
+                          .toLowerCase()
+                          .includes(search.toLowerCase());
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>

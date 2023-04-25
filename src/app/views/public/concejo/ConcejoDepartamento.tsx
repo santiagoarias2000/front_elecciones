@@ -106,7 +106,7 @@ export const ConcejoDepartamento = () => {
                     ))}
                   </h6>
                 </div>
-              </div>
+              </div>  
               <div className="col-sm">
                 <Form id="form_conta">
                   <InputGroup className="my-1 container_form">
