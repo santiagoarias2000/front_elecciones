@@ -8,6 +8,7 @@ import Municipality from "../../../models/Municipality";
 import { useParams } from "react-router-dom";
 import Department from "../../../models/Department";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
+import { relative } from "path";
 
 export const SenadoNacionalDepartamento = () => {
   let { idDepartment } = useParams();
@@ -94,14 +95,16 @@ export const SenadoNacionalDepartamento = () => {
                       data-live-search="true"
                       style={{ maxHeight: "200px", overflowY: "auto" }}
                     >
+                      <div className="sticky-top">
                       <input
                         type="text"
                         placeholder="Busqueda..."
-                        className="sticky-top"
+                        className="position-relative" style={{padding:"5px 0",bottom:"10px"}}
                         onChange={(event) => {
                           setSearchMunicipio(event.target.value);
                         }}
                       />
+                      </div>
                       <li>
                         {arrayMunicipios
                           .filter((val) => {
