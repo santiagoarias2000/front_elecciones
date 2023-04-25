@@ -18,13 +18,9 @@ export const SenadoIndigenaMunicipio = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesSenadoMunicipal, setArrayVotosSenadoMunicipal] = useState<
-    VotosSenado[]
-  >([]);
+  const [arrayVotesSenadoMunicipal, setArrayVotosSenadoMunicipal] = useState< VotosSenado[] >([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
-  const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
-    Municipality[]
-  >([]);
+  const [arrayNameMunicipality, setArrayNameMunicipality] = useState< Municipality[] >([]);
   const getVotosSenadoIndigena = async () => {
     const result = await ServicePrivate.requestGET(
       ApiBack.SENADO_INDIGENA_MUNICIPIO +
@@ -70,11 +66,7 @@ export const SenadoIndigenaMunicipio = () => {
         alt="logo principal para la parte superior de la pagina web"
       />
       <div className="side_bar"></div>
-      {/* Navegación estilo breadcrumb: Inicio */}
-
-      {/* Navegación estilo breadcrumb: Fin */}
-
-      {/* Ejemplo de una tabla para presentación de datos: Inicio */}
+      
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
           <div
@@ -109,14 +101,17 @@ export const SenadoIndigenaMunicipio = () => {
                     data-live-search="true"
                     style={{ maxHeight: "200px", overflowY: "auto" }}
                   >
-                    <input
-                      type="text"
-                      placeholder="Busqueda..."
-                      className="sticky-top"
-                      onChange={(event) => {
-                        setSearchMunicipio(event.target.value);
-                      }}
-                    />
+                    
+                    <div className="sticky-top">
+                      <input
+                        type="text"
+                        placeholder="Busqueda..."
+                        className="mi-sticky"
+                        onChange={(event) => {
+                          setSearchMunicipio(event.target.value);
+                        }}
+                      />
+                    </div>
                     <li>
                       {arrayMunicipio
                         .filter((val) => {
@@ -140,10 +135,7 @@ export const SenadoIndigenaMunicipio = () => {
                               myMunicipality.id_municipality
                             }
                           >
-                            <b className="name_text">
-                              {" "}
-                              {myMunicipality.name_municipality}
-                            </b>
+                            <b className="name_text">{myMunicipality.name_municipality}</b>
                           </a>
                         ))}
                     </li>
@@ -210,14 +202,16 @@ export const SenadoIndigenaMunicipio = () => {
                     data-live-search="true"
                     style={{ maxHeight: "200px", overflowY: "auto" }}
                   >
-                    <input
-                      type="text"
-                      placeholder="Busqueda..."
-                      className="sticky-top"
-                      onChange={(event) => {
-                        setSearchMunicipio(event.target.value);
-                      }}
-                    />
+                    <div className="sticky-top">
+                      <input
+                        type="text"
+                        placeholder="Busqueda..."
+                        className="mi-sticky"
+                        onChange={(event) => {
+                          setSearchMunicipio(event.target.value);
+                        }}
+                      />
+                    </div>
                     <li>
                       {arrayMunicipio
                         .filter((val) => {
@@ -378,7 +372,6 @@ export const SenadoIndigenaMunicipio = () => {
         </Modal>
       </div>
 
-      {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>
   );
 };

@@ -68,12 +68,12 @@ export const AlcaldiaDepartamentoMunicipio = () => {
               <div className="col">
                 <h6 className="text-center my-4" style={{ color: "#052851" }}>
                   {arrayNameMunicipality.map((myNameMunicipality) => (
-                    <p>
+                    <b>
                       {myNameMunicipality.name_municipality}
                       {" ("}
                       {myNameMunicipality.department}
                       {")"}
-                    </p>
+                    </b>
                   ))}
                 </h6>
               </div>

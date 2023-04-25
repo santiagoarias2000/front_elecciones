@@ -1,3 +1,6 @@
+*{
+  @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -6179,4 +6182,11 @@ ul li.RutasRiesgo {
 .img-fluid_seo {
   width: 100%;
   height: auto;
+}
+
+/* Siticky Search ComboBox */
+.mi-sticky{
+  position: relative;
+  padding: 5px 0;
+  bottom: 10px;
 }

@@ -136,14 +136,16 @@ export const CamaraTerritorialDepartamento = () => {
                   data-live-search="true"
                   style={{ maxHeight: "200px", overflowY: "auto" }}
                 >
-                  <input
-                    type="text"
-                    placeholder="Busqueda..."
-                    className="sticky"
-                    onChange={(event) => {
-                      setSearchMunicipio(event.target.value);
-                    }}
-                  />
+                  <div className="sticky-top">
+                    <input
+                      type="text"
+                      placeholder="Busqueda..."
+                      className="mi-sticky"
+                      onChange={(event) => {
+                        setSearchMunicipio(event.target.value);
+                      }}
+                    />
+                  </div>
                   <li>
                     {arrayMunicipio
                       .filter((val) => {
@@ -228,14 +230,16 @@ export const CamaraTerritorialDepartamento = () => {
                   data-live-search="true"
                   style={{ maxHeight: "200px", overflowY: "auto" }}
                 >
-                  <input
-                    type="text"
-                    placeholder="Busqueda..."
-                    className="sticky"
-                    onChange={(event) => {
-                      setSearchMunicipio(event.target.value);
-                    }}
-                  />
+                  <div className="sticky-top">
+                    <input
+                      type="text"
+                      placeholder="Busqueda..."
+                      className="mi-sticky"
+                      onChange={(event) => {
+                        setSearchMunicipio(event.target.value);
+                      }}
+                    />
+                  </div>
                   <li>
                     {arrayMunicipio
                       .filter((val) => {

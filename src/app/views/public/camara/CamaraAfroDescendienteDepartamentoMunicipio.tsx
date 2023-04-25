@@ -117,14 +117,16 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                   data-live-search="true"
                   style={{ maxHeight: "200px", overflowY: "auto" }}
                 >
-                  <input
-                    type="text"
-                    placeholder="Busqueda..."
-                    className="sticky-top"
-                    onChange={(event) => {
-                      setSearchMunicipio(event.target.value);
-                    }}
-                  />
+                  <div className="sticky-top">
+                    <input
+                      type="text"
+                      placeholder="Busqueda..."
+                      className="mi-sticky"
+                      onChange={(event) => {
+                        setSearchMunicipio(event.target.value);
+                      }}
+                    />
+                  </div>
                   <li>
                     {arrayMunicipio
                       .filter((val) => {
@@ -148,7 +150,9 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                             myMunicipality.id_municipality
                           }
                         >
-                          {myMunicipality.name_municipality}
+                          <b className="name_text">
+                            {myMunicipality.name_municipality}
+                          </b>
                         </a>
                       ))}
                   </li>
@@ -216,14 +220,16 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                   data-live-search="true"
                   style={{ maxHeight: "200px", overflowY: "auto" }}
                 >
-                  <input
-                    type="text"
-                    placeholder="Busqueda..."
-                    className="sticky-top"
-                    onChange={(event) => {
-                      setSearchMunicipio(event.target.value);
-                    }}
-                  />
+                  <div className="sticky-top">
+                    <input
+                      type="text"
+                      placeholder="Busqueda..."
+                      className="mi-sticky"
+                      onChange={(event) => {
+                        setSearchMunicipio(event.target.value);
+                      }}
+                    />
+                  </div>
                   <li>
                     {arrayMunicipio
                       .filter((val) => {
