@@ -1604,7 +1604,6 @@ h6 {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 1rem;
   }
 }
 
@@ -1821,6 +1820,11 @@ h6 {
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.name_text {
+  color: #052851;
+  font-size: 0.75rem;
+}
+
 @media (max-width: 758px) {
   .buttonBack:hover {
     color: var(--bs-btn-hover-color);
@@ -1883,6 +1887,7 @@ h6 {
       border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
   .name_text {
+    color: #052851;
     font-size: 0.7rem;
     font-weight: 300;
   }

@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 import camara from "../../../../assets/image/HeaderTable/CRafro.webp";
 import { useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
-import { InputGroup, Modal} from "react-bootstrap";
+import { InputGroup, Modal } from "react-bootstrap";
 import Department from "../../../models/Department";
 import CandidatosCamara from "../../../mocks/models/CandidatosCamara";
 import { ARREGLO_CANDIDATOS_ELEGIDOS } from "../../../mocks/candidatos-mocks";
@@ -29,7 +29,9 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
     setArrayVotosCamaraAfroDescendiente,
   ] = useState<VotesCongreso[]>([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
-  const [arrayNameMunicipality, setArrayNameMunicipality] = useState< Municipality[] >([]);
+  const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
+    Municipality[]
+  >([]);
 
   const getVotosCamaraAfroDescendiente = async () => {
     const result = await ServicePrivate.requestGET(
@@ -54,7 +56,7 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
     );
     setArrayNameMunicipality(result);
   };
-  
+
   const CandidatosElegidosCamara = (miCandidato: any) => {
     var elegidosi: any;
     var elegidono: any;
@@ -68,14 +70,14 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
     return elegidosi;
   };
   //Prevent enter in search box
-  function submitHandler(e:any) {
+  function submitHandler(e: any) {
     e.preventDefault();
   }
   useEffect(() => {
     getNameMunicipality();
     getComboBoxMunicipio();
     getVotosCamaraAfroDescendiente();
-  }, [idDepartment,idMunicipality]);
+  }, [idDepartment, idMunicipality]);
 
   return (
     <main id="main" className="main">
@@ -93,17 +95,8 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}></div>
       <div className="cardBorder card">
-        <div
-          className="container-fluid display-flex justify-content-center"
-          style={{
-            background: "#052851",
-            color: "#FFFFFF",
-            height: "20px",
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <div className="text-center">
+        <div className="container-fluid display-flex justify-content-center container_title">
+          <div className="text-center d-flex align-items-center">
             <b className="title_table">TERRITORIAL AFRO-DESCENDIENTE</b>
           </div>
         </div>
@@ -191,7 +184,25 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
         <div className="container no_responsive">
           <div className="row">
             <div className="col-sm ">
-              <div className="dropdown text-center my-1">
+              <div className="col">
+                <h6 className="text-center my-2" style={{ color: "#052851" }}>
+                  {arrayNameMunicipality.map((myNameMunicipality) => (
+                    <b className="name_text">
+                      {myNameMunicipality.name_municipality}
+                      {" ("}
+                      {myNameMunicipality.department}
+                      {")"}
+                    </b>
+                  ))}
+                </h6>
+              </div>
+            </div>
+
+            <div className="d-flex align-items-center mt-2 mb-2 justify-content-between">
+              <div
+                className="dropdown text-left mb-1"
+                style={{ marginLeft: "3%" }}
+              >
                 <button
                   type="button"
                   className="buttonBack buttonBack-primary dropdown-toggle name_deparment_respo"
@@ -244,30 +255,18 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
                   </li>
                 </ul>
               </div>
-            </div>
-            <div className="col">
-              <h6 className="text-center my-2" style={{ color: "#052851" }}>
-                {arrayNameMunicipality.map((myNameMunicipality) => (
-                  <b>
-                    {myNameMunicipality.name_municipality}
-                    {" ("}
-                    {myNameMunicipality.department}
-                    {")"}
-                  </b>
-                ))}
-              </h6>
-            </div>
-            <div className="col-sm">
-              <Form id="form_conta" onSubmit={submitHandler}>
-                <InputGroup className="my-1 container_form">
-                  <Form.Control
-                    onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Buscar nombre Candidato"
-                    style={{ textAlign: "right", marginRight: "5px" }}
-                    className="form_co"
-                  ></Form.Control>
-                </InputGroup>
-              </Form>
+              <div className="col-sm">
+                <Form id="form_conta" onSubmit={submitHandler}>
+                  <InputGroup className="my-3 container_form">
+                    <Form.Control
+                      onChange={(e) => setSearch(e.target.value)}
+                      placeholder="Buscar nombre Candidato"
+                      style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
+                    ></Form.Control>
+                  </InputGroup>
+                </Form>
+              </div>
             </div>
           </div>
         </div>
@@ -282,18 +281,10 @@ export const CamaraAfroDescendienteDepartamentoMunicipio = () => {
               style={{ backgroundColor: "#fff" }}
             >
               <tr>
-                <th
-                  className="text-center"
-                  style={{ width: "30%" }}
-                  id="text_left_name"
-                >
+                <th className="text-center" style={{ width: "30%" }}>
                   PARTIDO POLÍTICO
                 </th>
-                <th
-                  className="text-center"
-                  style={{ width: "30%" }}
-                  id="text_left_name"
-                >
+                <th className="text-center" style={{ width: "30%" }}>
                   NOMBRE CANDIDATO
                 </th>
                 <th className="text-center" style={{ width: "20%" }}>
