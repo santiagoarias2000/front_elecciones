@@ -5919,7 +5919,7 @@ ul li.RutasRiesgo {
   }
 }
 
-@media only screen and (max-width: 1900px) {
+@media only screen and (min-width: 1400px) {
   .herramientas li {
     list-style: none;
   }
