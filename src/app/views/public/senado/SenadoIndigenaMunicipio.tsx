@@ -165,7 +165,7 @@ export const SenadoIndigenaMunicipio = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Buscar un Candidato"
+                      placeholder="Buscar nombre Candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
                     ></Form.Control>
                   </InputGroup>
@@ -252,7 +252,7 @@ export const SenadoIndigenaMunicipio = () => {
                     <InputGroup className="my-1 container_form">
                       <Form.Control
                         onChange={(e) => setSearch(e.target.value)}
-                        placeholder="Buscar un Candidato"
+                        placeholder="Buscar nombre Candidato"
                         style={{ textAlign: "right", marginRight: "5px" }}
                         className="form_co"
                       ></Form.Control>

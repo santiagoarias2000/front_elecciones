@@ -73,7 +73,7 @@ export const SenadoNacionalDepartamento = () => {
         <div className="cardBorder card">
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b className="title_table">CIRCUNCRIPCIÓN NACIONAL</b> &nbsp;
+              <b className="title_table">CIRCUNSCRIPCIÓN NACIONAL</b> &nbsp;
             </div>
           </div>
           <div className="container responsive">
@@ -125,7 +125,9 @@ export const SenadoNacionalDepartamento = () => {
                                 miMunicipio.id_municipality
                               }
                             >
-                              {miMunicipio.name_municipality}
+                              <b className="name_text">
+                                {miMunicipio.name_municipality}
+                              </b>
                             </a>
                           ))}
                       </li>
@@ -162,10 +164,9 @@ export const SenadoNacionalDepartamento = () => {
                     <b className="name_text">{myDepartment.name_department}</b>
                   ))}
                 </h6>
-                
               </div>
               <div className="d-flex align-items-center mt-2 mb-2 justify-content-between">
-              <div
+                <div
                   className="dropdown text-left mb-1"
                   style={{ marginLeft: "3%" }}
                 >
@@ -214,7 +215,9 @@ export const SenadoNacionalDepartamento = () => {
                                 miMunicipio.id_municipality
                               }
                             >
-                              {miMunicipio.name_municipality}
+                              <b className="name_text">
+                                {miMunicipio.name_municipality}
+                              </b>
                             </a>
                           ))}
                       </li>
@@ -233,7 +236,6 @@ export const SenadoNacionalDepartamento = () => {
                     </InputGroup>
                   </Form>
                 </div>
-                
               </div>
             </div>
           </div>

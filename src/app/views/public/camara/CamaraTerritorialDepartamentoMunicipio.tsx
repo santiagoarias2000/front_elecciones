@@ -99,8 +99,6 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
             style={{
               background: "#052851",
               color: "#FFFFFF",
-              height: "40px",
-              display: "flex",
               alignItems: "center",
             }}
           >

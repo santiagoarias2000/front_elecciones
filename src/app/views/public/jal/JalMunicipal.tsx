@@ -111,7 +111,7 @@ export const JalMunicipal = () => {
                   <div className="col">
                     <h6 className="text-center my-2" style={{ color: "#052851" }}>
                       {arrayNameMunicipality.map((myNameMunicipality) => (
-                        <b>
+                        <b className="name_text">
                           {myNameMunicipality.name_municipality}
                           {" ("}
                           {myNameMunicipality.department}

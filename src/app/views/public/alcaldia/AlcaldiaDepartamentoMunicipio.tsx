@@ -97,7 +97,7 @@ export const AlcaldiaDepartamentoMunicipio = () => {
               <div className="col">
                 <h6 className="text-center my-2" style={{ color: "#052851" }}>
                   {arrayNameMunicipality.map((myNameMunicipality) => (
-                    <b>
+                    <b className="name_text">
                       {myNameMunicipality.name_municipality}
                       {" ("}
                       {myNameMunicipality.department}
@@ -134,10 +134,10 @@ export const AlcaldiaDepartamentoMunicipio = () => {
                   <th className="text-center" style={{ width: "35%" }} id="text_left_name">
                     PARTIDO POLITIO
                   </th>
-                  <th className="text-center" style={{ width: "40%" }} id="text_left_name">
+                  <th className="text-center" style={{ width: "30%" }} id="text_left_name">
                     NOMBRE CANDIDATO
                   </th>
-                  <th className="text-center" style={{ width: "25%" }}>
+                  <th className="text-center" style={{ width: "35%" }}>
                     VOTOS MUNICIPALES
                   </th>
                 </tr>

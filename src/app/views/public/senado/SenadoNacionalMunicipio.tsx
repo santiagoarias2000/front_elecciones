@@ -82,7 +82,7 @@ export const SenadoNacionalMunicipio = () => {
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
               <b className="title_table">
-                CIRCUNCRIPCIÓN TERRITORIAL MUNICIPAL
+                CIRCUNSCRIPCIÓN TERRITORIAL MUNICIPAL
               </b>
             </div>
           </div>
@@ -136,8 +136,9 @@ export const SenadoNacionalMunicipio = () => {
                                 myMunicipality.id_municipality
                               }
                             >
-                              {" "}
-                              {myMunicipality.name_municipality}{" "}
+                              <b className="name_text">
+                                {myMunicipality.name_municipality}
+                              </b>
                             </a>
                           ))}
                       </li>
@@ -162,7 +163,7 @@ export const SenadoNacionalMunicipio = () => {
                     <InputGroup className="my-3 container_form">
                       <Form.Control
                         onChange={(e) => setSearch(e.target.value)}
-                        placeholder="Buscar un Candidato"
+                        placeholder="Buscar nombre Candidato"
                         style={{ textAlign: "right", marginRight: "5px" }}
                         className="form_co"
                       ></Form.Control>
@@ -192,76 +193,77 @@ export const SenadoNacionalMunicipio = () => {
                 </div>
 
                 <div className="d-flex align-items-center mt-2 mb-2 justify-content-between">
-              <div
-                  className="dropdown text-left mb-1"
-                  style={{ marginLeft: "3%" }}
-                >
-                  <div className="dropdown">
-                    <button
-                      type="button"
-                      className="buttonBack buttonBack-primary dropdown-toggle"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      Municipios
-                    </button>
-                    <ul
-                      className="dropdown-menu selectpicker"
-                      data-live-search="true"
-                      style={{ maxHeight: "200px", overflowY: "auto" }}
-                    >
-                      <input
-                        type="text"
-                        placeholder="Busqueda..."
-                        className="sticky-top"
-                        onChange={(event) => {
-                          setSearchMunicipio(event.target.value);
-                        }}
-                      />
-                      <li>
-                        {arrayMunicipio
-                          .filter((val) => {
-                            if (searchMunicipio === "") {
-                              return val;
-                            } else if (
-                              val.name_municipality
-                                .toLocaleLowerCase()
-                                .includes(searchMunicipio.toLocaleLowerCase())
-                            ) {
-                              return val;
-                            }
-                          })
-                          .map((miMunicipio) => (
-                            <a
-                              className="dropdown-item"
-                              href={
-                                "/senado/nacional/" +
-                                idDepartment +
-                                "/municipio/" +
-                                miMunicipio.id_municipality
+                  <div
+                    className="dropdown text-left mb-1"
+                    style={{ marginLeft: "3%" }}
+                  >
+                    <div className="dropdown">
+                      <button
+                        type="button"
+                        className="buttonBack buttonBack-primary dropdown-toggle"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        Municipios
+                      </button>
+                      <ul
+                        className="dropdown-menu selectpicker"
+                        data-live-search="true"
+                        style={{ maxHeight: "200px", overflowY: "auto" }}
+                      >
+                        <input
+                          type="text"
+                          placeholder="Busqueda..."
+                          className="sticky-top"
+                          onChange={(event) => {
+                            setSearchMunicipio(event.target.value);
+                          }}
+                        />
+                        <li>
+                          {arrayMunicipio
+                            .filter((val) => {
+                              if (searchMunicipio === "") {
+                                return val;
+                              } else if (
+                                val.name_municipality
+                                  .toLocaleLowerCase()
+                                  .includes(searchMunicipio.toLocaleLowerCase())
+                              ) {
+                                return val;
                               }
-                            >
-                              {miMunicipio.name_municipality}
-                            </a>
-                          ))}
-                      </li>
-                    </ul>
+                            })
+                            .map((miMunicipio) => (
+                              <a
+                                className="dropdown-item"
+                                href={
+                                  "/senado/nacional/" +
+                                  idDepartment +
+                                  "/municipio/" +
+                                  miMunicipio.id_municipality
+                                }
+                              >
+                                <b className="name_text">
+                                  {miMunicipio.name_municipality}
+                                </b>
+                              </a>
+                            ))}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="col-sm">
+                    <Form id="form_conta" onSubmit={submitHandler}>
+                      <InputGroup className="my-1 container_form">
+                        <Form.Control
+                          onChange={(e) => setSearch(e.target.value)}
+                          placeholder="Buscar nombre Candidato"
+                          style={{ textAlign: "right", marginRight: "5px" }}
+                          className="form_co"
+                        ></Form.Control>
+                      </InputGroup>
+                    </Form>
                   </div>
                 </div>
-                <div className="col-sm">
-                  <Form id="form_conta" onSubmit={submitHandler}>
-                    <InputGroup className="my-1 container_form">
-                      <Form.Control
-                        onChange={(e) => setSearch(e.target.value)}
-                        placeholder="Buscar un Partido Político"
-                        style={{ textAlign: "right", marginRight: "5px" }}
-                        className="form_co"
-                      ></Form.Control>
-                    </InputGroup>
-                  </Form>
-                </div>
-                
-              </div>
               </div>
             </div>
           </div>
