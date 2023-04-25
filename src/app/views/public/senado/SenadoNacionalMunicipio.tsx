@@ -101,17 +101,17 @@ export const SenadoNacionalMunicipio = () => {
                     <ul
                       className="dropdown-menu selectpicker"
                       data-live-search="true"
-                      style={{ maxHeight: "200px", overflowY: "auto" }}
+                      style={{ maxHeight: "200px", overflowY: "auto", background:"#fff"}}
                     >
                       <input
                         type="text"
                         placeholder="Busqueda..."
-                        className="sticky-top"
+                        style={{position:"sticky",top: 0, zIndex:1}}
                         onChange={(event) => {
                           setSearchMunicipio(event.target.value);
                         }}
                       />
-                      <li>
+                      <li style={{position:"sticky",top: 0,background:"#fff"}}>
                         {arrayMunicipio
                           .filter((val) => {
                             if (searchMunicipio === "") {
@@ -134,8 +134,7 @@ export const SenadoNacionalMunicipio = () => {
                                 myMunicipality.id_municipality
                               }
                             >
-                              {" "}
-                              {myMunicipality.name_municipality}{" "}
+                              {myMunicipality.name_municipality}
                             </a>
                           ))}
                       </li>
