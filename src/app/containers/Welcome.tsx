@@ -5,19 +5,19 @@ import Img3Carr from "../../assets/image/GuiasAntiguas/Img3.webp";
 import Img4Carr from "../../assets/image/GuiasAntiguas/Img4.webp";
 import Img5Carr from "../../assets/image/GuiasAntiguas/Img5.webp";
 import Img6Carr from "../../assets/image/GuiasAntiguas/Img6.webp";
-import Imgfotoantigua1 from "../../assets/image/GuiasAntiguas/fotosantiguas2.jpeg";
-import Imgfotoantigua2 from "../../assets/image/GuiasAntiguas/fotosantiguas3.jpeg";
-import Imgfotoantigua3 from "../../assets/image/GuiasAntiguas/fotosantiguas4.jpeg";
-import Imgfotoantigua4 from "../../assets/image/GuiasAntiguas/fotosantiguas5.jpeg";
+import Imgfotoantigua1 from "../../assets/image/GuiasAntiguas/fotosantiguas2.webp";
+import Imgfotoantigua2 from "../../assets/image/GuiasAntiguas/fotosantiguas3.webp";
+import Imgfotoantigua3 from "../../assets/image/GuiasAntiguas/fotosantiguas4.webp";
+import Imgfotoantigua4 from "../../assets/image/GuiasAntiguas/fotosantiguas5.webp";
 import Imgfotoantigua5 from "../../assets/image/GuiasAntiguas/fotoantigua1.webp";
-import ImgHitData from "../../assets/image/Patrocinadores/azul.jpg";
-import ImgLoteriaBoyaca from "../../assets/image/Patrocinadores/LoteriaBoyaca.jpg";
-import ImgDonJose from "../../assets/image/Patrocinadores/DonJose.jpg";
+import ImgHitData from "../../assets/image/Patrocinadores/azul.webp";
+import ImgLoteriaBoyaca from "../../assets/image/Patrocinadores/LoteriaBoyaca.webp";
+import ImgDonJose from "../../assets/image/Patrocinadores/DonJose.webp";
 import { Carousel, Modal } from "react-bootstrap";
 import "../../assets/js/carrusel.js";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import ImageSpinner from "../../assets/image/Blog/publicidadloteria.png";
+import ImageSpinner from "../../assets/image/Blog/publicidadloteria.webp";
 
 export const Welcome = () => {
   const [show, setShow] = useState(true);
@@ -38,9 +38,9 @@ export const Welcome = () => {
             <div className="col-lg-6 video-box">
               <img
                 src={Img7Carrusel}
-                className="img-fluid"
-                style={{ maxWidth: "100%", maxHeight: "auto" }}
-                alt="Imagen de la guia electoral de comlombia"
+                className="img-fluid_seo"
+                style={{width:"100%", height:"100%", maxWidth: "100%", maxHeight: "auto" }}
+                alt="Imagen de la guia electoral de colombia"
               />
               {/* <a
                 href="https://www.youtube.com/watch?v=t5ahimIQBmU"
@@ -81,7 +81,7 @@ export const Welcome = () => {
                       <a className="flex3" href="/camara">
                         CÁMARA
                       </a>
-                      <a className="flex4" href="/asamblea">
+                      <a className="flex4" href="/gobernacion">
                         GOBERNACIONES
                       </a>
                     </li>
@@ -151,11 +151,10 @@ export const Welcome = () => {
             >
               <Carousel.Item interval={1000}>
                 <img
-                  className="d-block w-100"
+                  className="d-block"
                   src={Img1Carr}
                   style={{
-                    maxHeight: "600px !important",
-                    maxWidth: "400px !important",
+                    width:"400px !important", height:"600px !important",
                     opacity: "0.7",
                   }}
                   alt="First slide"
@@ -164,11 +163,10 @@ export const Welcome = () => {
 
               <Carousel.Item>
                 <img
-                  className="d-block w-100"
+                  className="d-block"
                   src={Img2Carr}
                   style={{
-                    maxHeight: "600px !important",
-                    maxWidth: "400px !important",
+                    width:"400px !important", height:"600px !important",
                     opacity: "0.7",
                   }}
                   alt="Second slide"
@@ -176,11 +174,10 @@ export const Welcome = () => {
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  className="d-block w-100"
+                  className="d-block"
                   src={Img3Carr}
                   style={{
-                    maxHeight: "600px !important",
-                    maxWidth: "400px !important",
+                    width:"400px !important", height:"600px !important",
                     opacity: "0.7",
                   }}
                   alt="Third slide"
@@ -188,11 +185,10 @@ export const Welcome = () => {
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  className="d-block w-100"
+                  className="d-block"
                   src={Img4Carr}
                   style={{
-                    maxHeight: "600px !important",
-                    maxWidth: "400px !important",
+                    width:"400px !important", height:"600px !important",
                     opacity: "0.7",
                   }}
                   alt="Third slide"
@@ -200,11 +196,10 @@ export const Welcome = () => {
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  className="d-block w-100"
+                  className="d-block"
                   src={Img5Carr}
                   style={{
-                    maxHeight: "600px !important",
-                    maxWidth: "400px !important",
+                    width:"400px !important", height:"600px !important",
                     opacity: "0.7",
                   }}
                   alt="Third slide"
@@ -212,11 +207,10 @@ export const Welcome = () => {
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  className="d-block w-100"
+                  className="d-block"
                   src={Img6Carr}
                   style={{
-                    maxHeight: "600px !important",
-                    maxWidth: "400px !important",
+                    width:"400px !important", height:"600px !important",
                     opacity: "0.7",
                   }}
                   alt="Third slide"
@@ -254,17 +248,17 @@ export const Welcome = () => {
                     src={ImgDonJose}
                     className="img-fluid"
                     alt="Imagen de jose gil zapata para patrocinio"
-                    style={{ maxHeight: "261px !important", maxWidth: "auto" }}
+                    style={{width:"261px !important", height:"100%"}}
                   />
                 </div>
                 <div className="member-info">
                   <h4>Jose Celestino Gil Zapata</h4>
                   <span>Autor/Editor</span>
                   <div className="social">
-                    <a href="https://www.facebook.com/josegilza/?locale=es_LA">
+                    <a href="https://www.facebook.com/josegilza/?locale=es_LA" aria-label="Facebook">
                       <i className="bi bi-facebook"></i>
                     </a>
-                    <a href="https://co.linkedin.com/in/jose-gil-a76aa6a6">
+                    <a href="https://co.linkedin.com/in/jose-gil-a76aa6a6" aria-label="Linkedin">
                       <i className="bi bi-linkedin"></i>
                     </a>
                   </div>
@@ -282,7 +276,7 @@ export const Welcome = () => {
                   <img
                     src={ImgHitData}
                     className="img-fluid"
-                    style={{ maxWidth: "100%", maxHeight: "auto" }}
+                    style={{width:"100%", height:"100%" }}
                     alt="Imagen de hitdata para patrocinio"
                   />
                 </div>
@@ -290,16 +284,16 @@ export const Welcome = () => {
                   <h4>Hit Data</h4>
                   <span>Empresa de desarrollo</span>
                   <div className="social">
-                    <a href="https://twitter.com/HitData">
+                    <a href="https://twitter.com/HitData" aria-label="Twitter">
                       <i className="bi bi-twitter"></i>
                     </a>
-                    <a href="https://www.facebook.com/HitdataColombia">
+                    <a href="https://www.facebook.com/HitdataColombia" aria-label="Facebook">
                       <i className="bi bi-facebook"></i>
                     </a>
-                    <a href="https://www.instagram.com/hitdata/">
+                    <a href="https://www.instagram.com/hitdata/" aria-label="Instagram">
                       <i className="bi bi-instagram"></i>
                     </a>
-                    <a href="https://co.linkedin.com/in/hit-data-soluciones">
+                    <a href="https://co.linkedin.com/in/hit-data-soluciones" aria-label="Linkedin">
                       <i className="bi bi-linkedin"></i>
                     </a>
                   </div>
@@ -317,7 +311,7 @@ export const Welcome = () => {
                   <img
                     src={ImgLoteriaBoyaca}
                     className="img-fluid"
-                    style={{ maxWidth: "100%", maxHeight: "auto" }}
+                    style={{width:"100%", height:"100%" }}
                     alt="Imagen de la loteria de boyaca para patrocinio"
                   />
                 </div>
@@ -325,16 +319,16 @@ export const Welcome = () => {
                   <h4>Lotería de Boyacá</h4>
                   <span>Patrocinador</span>
                   <div className="social">
-                    <a href="https://twitter.com/LoteriadeBoyaca">
+                    <a href="https://twitter.com/LoteriadeBoyaca" aria-label="Twitter">
                       <i className="bi bi-twitter"></i>
                     </a>
-                    <a href="https://www.facebook.com/LoteriaDeBoyacaOficial/?locale=es_LA">
+                    <a href="https://www.facebook.com/LoteriaDeBoyacaOficial/?locale=es_LA" aria-label="Facebook">
                       <i className="bi bi-facebook"></i>
                     </a>
-                    <a href="https://www.instagram.com/loteriadeboyacaoficial/?hl=es">
+                    <a href="https://www.instagram.com/loteriadeboyacaoficial/?hl=es" aria-label="Instagram">
                       <i className="bi bi-instagram"></i>
                     </a>
-                    <a href="https://co.linkedin.com/company/loter%C3%ADa-de-boyac%C3%A1">
+                    <a href="https://co.linkedin.com/company/loter%C3%ADa-de-boyac%C3%A1" aria-label="Linkedin">
                       <i className="bi bi-linkedin"></i>
                     </a>
                   </div>
@@ -358,11 +352,10 @@ export const Welcome = () => {
               >
                 <Carousel.Item interval={1000}>
                   <img
-                    className="d-block w-100"
+                    className="d-block"
                     src={Imgfotoantigua1}
                     style={{
-                      maxHeight: "600px !important",
-                      maxWidth: "400px !important",
+                      width:"400px !important", height:"600px !important",
                     }}
                     alt="First slide"
                   />
@@ -370,44 +363,40 @@ export const Welcome = () => {
 
                 <Carousel.Item>
                   <img
-                    className="d-block w-100"
+                    className="d-block"
                     src={Imgfotoantigua2}
                     style={{
-                      maxHeight: "600px !important",
-                      maxWidth: "400px !important",
+                      width:"400px !important", height:"600px !important",
                     }}
                     alt="Second slide"
                   />
                 </Carousel.Item>
                 <Carousel.Item>
                   <img
-                    className="d-block w-100"
+                    className="d-block"
                     src={Imgfotoantigua3}
                     style={{
-                      maxHeight: "600px !important",
-                      maxWidth: "400px !important",
+                      width:"400px !important", height:"600px !important"
                     }}
                     alt="Third slide"
                   />
                 </Carousel.Item>
                 <Carousel.Item>
                   <img
-                    className="d-block w-100"
+                    className="d-block "
                     src={Imgfotoantigua4}
                     style={{
-                      maxHeight: "600px !important",
-                      maxWidth: "400px !important",
+                      width:"400px !important", height:"600px !important",
                     }}
                     alt="Third slide"
                   />
                 </Carousel.Item>
                 <Carousel.Item>
                   <img
-                    className="d-block w-100"
+                    className="d-block"
                     src={Imgfotoantigua5}
                     style={{
-                      maxHeight: "600px !important",
-                      maxWidth: "400px !important",
+                      width:"400px !important", height:"600px !important",
                     }}
                     alt="Third slide"
                   />
@@ -429,8 +418,9 @@ export const Welcome = () => {
         <Modal.Body className="text-center text-bg-light">
           <div className="text-center">
             <img
-              style={{ maxWidth: "100%", height: "auto", opacity: 1 }}
+              style={{width:"100%", height: "auto", opacity: 1 }}
               src={ImageSpinner}
+              alt="imagen de carga para el modal"
             />
           </div>
         </Modal.Body>

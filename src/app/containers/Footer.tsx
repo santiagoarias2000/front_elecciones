@@ -9,7 +9,7 @@ export const Footer = () => {
           <div className="col img_footer_center">
             <img
               src={footerimg}
-              style={{ maxWidth: "100%", maxHeight: "auto" }}
+              style={{width:"100%", height:"100%" }}
               alt="imagen de footer para la pagina"
             />
           </div>

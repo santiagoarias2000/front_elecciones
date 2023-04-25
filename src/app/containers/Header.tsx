@@ -15,12 +15,12 @@ export const Header = () => {
                 src={logo}
                 alt="Imagen de logo para header de guia electoral"
                 className="img-fluid"
-                style={{ maxWidth: "100%", maxHeight: "auto" }}
+                style={{width:"100%", height:"100%" }}
               />
             </Link>
           </div>
           <Navbar.Toggle aria-controls="responsive-navbar-nav navbarCollapse" />
-          <Navbar.Collapse id="responsive-navbar-nav navbarCollapse">
+          <Navbar.Collapse id="responsive-navbar-nav navbarCollapse" aria-hidden="true">
             <Nav className="me-auto">
               <a href="/#about" style={{ textDecoration: "none" }}>
                 Inicio
