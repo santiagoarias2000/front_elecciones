@@ -48,7 +48,7 @@ export const SenadoElegidos = () => {
           <div className="container">
             <div className="row">
               <div className="col-sm">
-                <div className="name_table">LISTA DE 108 ELEGIDOS</div>
+                <div className="name_table mt-2">LISTA DE 108 ELEGIDOS</div>
               </div>
               <div className="col-sm">
                 <Form id="form_conta" onSubmit={submitHandler}>
@@ -178,7 +178,7 @@ export const SenadoElegidos = () => {
                   <th className="text-center" style={{ width: "20%" }}>
                     PARTIDO
                   </th>
-                  <th className="text-center" style={{ width: "30%" }}>
+                  <th className="text-center" style={{ width: "20%" }}>
                     NOMBRE CANDIDATO
                   </th>
                   <th className="text-center" style={{ width: "20%" }}>
@@ -239,7 +239,7 @@ export const SenadoElegidos = () => {
                 onClick={() => regresar(-1)}
               >
                 <i className="bi bi-arrow-left-circle"></i>
-                &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                &nbsp;&nbsp;REGRESAR A ELEGIR CIRCUNSCRIPCIÓN
               </button>
             </div>
           </div>

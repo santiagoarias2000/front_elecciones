@@ -62,7 +62,7 @@ export const Asamblea = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchDepartamento(e.target.value)}
-                      placeholder="Buscar departamento"
+                      placeholder="Buscar nombre departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
                     ></Form.Control>
@@ -79,8 +79,9 @@ export const Asamblea = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchDepartamento(e.target.value)}
-                      placeholder="Buscar departamento"
+                      placeholder="Buscar nombre departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
                     ></Form.Control>
                   </InputGroup>
                 </Form>
@@ -98,13 +99,13 @@ export const Asamblea = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "50%" }}>
+                  <th className="text-center" style={{ width: "35%" }} >
                     DEPARTAMENTO
                   </th>
-                  <th className="text-center" style={{ width: "35%" }}>
+                  <th className="text-center" style={{ width: "30%" }}>
                     TOTAL VOTOS
                   </th>
-                  <th className="text-center" style={{ width: "15%" }}></th>
+                  <th className="text-center" style={{ width: "35%" }}></th>
                 </tr>
               </thead>
               <tbody className="color container_table">
@@ -163,7 +164,7 @@ export const Asamblea = () => {
                 <a
                   type="button"
                   className="buttonBack buttonBack-primary"
-                  href={"/#resultados"}
+                  href={"/resultados"}
                 >
                   <i className="bi bi-arrow-left-circle"></i>
                   &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN

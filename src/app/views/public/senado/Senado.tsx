@@ -99,13 +99,13 @@ export const Senado = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }}>
+                  <th className="text-center" style={{ width: "35%" }} >
                     DEPARTAMENTO
                   </th>
-                  <th className="text-center" style={{ width: "25%" }}>
+                  <th className="text-center" style={{ width: "30%" }}>
                     TOTAL VOTOS
                   </th>
-                  <th className="text-center" style={{ width: "10%" }}></th>
+                  <th className="text-center" style={{ width: "35%" }}></th>
                 </tr>
               </thead>
               <tbody className="color container_table">
@@ -119,7 +119,7 @@ export const Senado = () => {
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text_left left_alination">
+                      <td className="text_left">
                         <a
                           className="link_departamento"
                           href={
@@ -131,7 +131,7 @@ export const Senado = () => {
                         </a>
                       </td>
                       <td className="text-center">{format.format(myVotes.votos)}</td>
-                      <td className="text-left align-middle">
+                      <td className="text-center align-middle">
                         <a
                           className="link_departamento"
                           href={
@@ -160,7 +160,7 @@ export const Senado = () => {
               <a
                 type="button"
                 className="buttonBack buttonBack-primary"
-                href="/#resultados"
+                href="/resultados"
               >
                 <i className="bi bi-arrow-left-circle"></i>
                 &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN
@@ -178,7 +178,7 @@ export const Senado = () => {
               <a
                 type="button"
                 className="buttonBack buttonBack-primary"
-                href="/#resultados"
+                href="/resultados"
               >
                 <i className="bi bi-arrow-left-circle"></i>
                 &nbsp;REGRESAR A ELEGIR ELECCIÓN
@@ -248,13 +248,13 @@ export const Senado = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }}>
+                  <th className="text-center" style={{ width: "35%" }} >
                     DEPARTAMENTO
                   </th>
-                  <th className="text-center" style={{ width: "25%" }}>
+                  <th className="text-center" style={{ width: "30%" }}>
                     TOTAL VOTOS
                   </th>
-                  <th className="text-center" style={{ width: "10%" }}></th>
+                  <th className="text-center" style={{ width: "35%" }}></th>
                 </tr>
               </thead>
               <tbody className="color container_table">
@@ -310,7 +310,7 @@ export const Senado = () => {
               <a
                 type="button"
                 className="buttonBack buttonBack-primary"
-                href="/#resultados"
+                href="/resultados"
               >
                 <i className="bi bi-arrow-left-circle"></i>
                 &nbsp;&nbsp;REGRESAR A ELEGIR ELECCIÓN

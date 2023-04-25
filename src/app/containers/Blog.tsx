@@ -9,7 +9,7 @@ import bannerPublicidad from "../../assets/image/Blog/publicidadLoteriaHori.webp
 
 export const Blog = () => {
   return (
-    <main id="main" className="main ">
+    <div id="about" className="containner-welcome">
       <section>
         <div className="container">
           <div className="row">
@@ -274,8 +274,9 @@ export const Blog = () => {
               </div>
             </div>
           </div>
+
         </div>
       </section>
-    </main>
+    </div>
   );
 };

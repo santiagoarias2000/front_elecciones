@@ -131,13 +131,13 @@ export const JalDepartamento = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "40%" }}>
+                  <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
                   </th>
                   <th className="text-center" style={{ width: "30%" }}>
                     TOTAL VOTOS
                   </th>
-                  <th className="text-center" style={{ width: "15%" }}></th>
+                  <th className="text-center" style={{ width: "35%" }}></th>
                 </tr>
               </thead>
               <tbody className="color container_table">
@@ -151,7 +151,7 @@ export const JalDepartamento = () => {
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text_left left_alination">
+                      <td className="text_left">
                         <a
                           className="link_departamento"
                           href={
@@ -167,7 +167,7 @@ export const JalDepartamento = () => {
                       <td className="text-center">
                         {format.format(myVotes.votos)}
                       </td>
-                      <td className="text-left align-middle">
+                      <td className="text-center align-middle">
                         <a
                           className="link_departamento"
                           href={
@@ -195,18 +195,14 @@ export const JalDepartamento = () => {
             }}
           >
             <h6
-              className="my-2"
-              style={{
-                color: "#052851",
-                textAlign: "center",
-              }}
-            >
-              {arrayDepartamento.map((myDepartment) => (
-                <b style={{ color: "#D9224E" }} className="vota_respo">
-                  VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
-                </b>
-              ))}
-            </h6>
+                className="tituloVotosTotales my-2"
+              >
+                {arrayDepartamento.map((myDepartment) => (
+                  <b style={{ color: "#D9224E" }}>
+                    VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
+                  </b>
+                ))}
+              </h6>
           </div>
         </div>
           <div className="dropdown">

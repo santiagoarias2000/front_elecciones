@@ -18,7 +18,8 @@ export const SenadoNacionalDepartamento = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesSenadoDepartamental, setArrayVotesSenadoDepartamental] = useState<VotosSenado[]>([]);
+  const [arrayVotesSenadoDepartamental, setArrayVotesSenadoDepartamental] =
+    useState<VotosSenado[]>([]);
   const [arrayMunicipios, setMunicipios] = useState<Municipality[]>([]);
   const [arrayDepartamento, setArrayDepartamento] = useState<Department[]>([]);
 
@@ -49,11 +50,11 @@ export const SenadoNacionalDepartamento = () => {
   };
 
   //Prevent enter in search box
-  function submitHandler(e:any) {
+  function submitHandler(e: any) {
     e.preventDefault();
   }
-  //Format Number Votes 
-  const format = new Intl.NumberFormat('es');
+  //Format Number Votes
+  const format = new Intl.NumberFormat("es");
   useEffect(() => {
     getVotosSenadoDepartamental();
     getMunicipios();
@@ -155,8 +156,19 @@ export const SenadoNacionalDepartamento = () => {
           </div>
           <div className="container no_responsive">
             <div className="row">
-              <div className="col-sm ">
-                <div className="dropdown text-center my-1">
+              <div>
+                <h6 className="text-center my-2" style={{ color: "#052851" }}>
+                  {arrayDepartamento.map((myDepartment) => (
+                    <b className="name_text">{myDepartment.name_department}</b>
+                  ))}
+                </h6>
+                
+              </div>
+              <div className="d-flex align-items-center mt-2 mb-2 justify-content-between">
+              <div
+                  className="dropdown text-left mb-1"
+                  style={{ marginLeft: "3%" }}
+                >
                   <div className="dropdown">
                     <button
                       type="button"
@@ -209,25 +221,19 @@ export const SenadoNacionalDepartamento = () => {
                     </ul>
                   </div>
                 </div>
-              </div>
-              <div className="col">
-                <h6 className="text-center my-2" style={{ color: "#052851" }}>
-                  {arrayDepartamento.map((myDepartment) => (
-                    <b className="name_text">{myDepartment.name_department}</b>
-                  ))}
-                </h6>
-              </div>
-              <div className="col-sm">
-                <Form id="form_conta" onSubmit={submitHandler}>
-                  <InputGroup className="my-1 container_form">
-                    <Form.Control
-                      onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Buscar un Partido Político"
-                      style={{ textAlign: "right", marginRight: "5px" }}
-                      className="form_co"
-                    ></Form.Control>
-                  </InputGroup>
-                </Form>
+                <div className="col-sm">
+                  <Form id="form_conta" onSubmit={submitHandler}>
+                    <InputGroup className="my-1 container_form">
+                      <Form.Control
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Buscar un Partido Político"
+                        style={{ textAlign: "right", marginRight: "5px" }}
+                        className="form_co"
+                      ></Form.Control>
+                    </InputGroup>
+                  </Form>
+                </div>
+                
               </div>
             </div>
           </div>
@@ -242,10 +248,18 @@ export const SenadoNacionalDepartamento = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }} id="text_left_name">
+                  <th
+                    className="text-center"
+                    style={{ width: "35%" }}
+                    id="text_left_name"
+                  >
                     PARTIDO POLÍTICO
                   </th>
-                  <th className="text-center" style={{ width: "40%" }} id="text_left_name">
+                  <th
+                    className="text-center"
+                    style={{ width: "40%" }}
+                    id="text_left_name"
+                  >
                     NOMBRE CANDIDATO
                   </th>
                   <th className="text-center" style={{ width: "25%" }}>
@@ -271,8 +285,12 @@ export const SenadoNacionalDepartamento = () => {
                       <td className="text_left_name">
                         {myVotes.description_politicparty}
                       </td>
-                      <td className="text_left_name">{myVotes.candidate_name}</td>
-                      <td className="text-center">{format.format(myVotes.votos)}</td>
+                      <td className="text_left_name">
+                        {myVotes.candidate_name}
+                      </td>
+                      <td className="text-center">
+                        {format.format(myVotes.votos)}
+                      </td>
                     </tr>
                   ))}
               </tbody>
@@ -280,20 +298,14 @@ export const SenadoNacionalDepartamento = () => {
           </div>
           <div className="dropdown">
             <div
-              className="container-fluid display-flex justify-content-center"
+              className="container-fluid display-flex justify-content-center mt-4"
               style={{
                 color: "#FFFFFF",
-                height: "40px",
+                height: "20px",
                 alignItems: "right",
               }}
             >
-              <h6
-                className="my-2"
-                style={{
-                  color: "#052851",
-                  textAlign: "center",
-                }}
-              >
+              <h6 className="tituloVotosTotales my-2">
                 {arrayDepartamento.map((myDepartment) => (
                   <b style={{ color: "#D9224E" }} className="vota_respo">
                     VOTACIÓN TOTAL: {format.format(myDepartment.votos)}

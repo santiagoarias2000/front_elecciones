@@ -4,9 +4,9 @@ import VotosSenado from "../../../models/VotesCongreso";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
 import senado from "../../../../assets/image/HeaderTable/CRsenadonacional.webp";
-import { Form, InputGroup, Modal} from "react-bootstrap";
+import { Form, InputGroup, Modal } from "react-bootstrap";
 import Municipality from "../../../models/Municipality";
-import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp"
+import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
 export const SenadoNacionalMunicipio = () => {
   //Variables
@@ -19,9 +19,13 @@ export const SenadoNacionalMunicipio = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesSenadoMunicipal, setArrayVotosSenadoMunicipal] = useState<VotosSenado[]>([]);
+  const [arrayVotesSenadoMunicipal, setArrayVotosSenadoMunicipal] = useState<
+    VotosSenado[]
+  >([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
-  const [arrayNameMunicipality, setArrayNameMunicipality] = useState< Municipality[] >([]);
+  const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
+    Municipality[]
+  >([]);
 
   const getVotosSenadoMunicipal = async () => {
     const result = await ServicePrivate.requestGET(
@@ -48,16 +52,16 @@ export const SenadoNacionalMunicipio = () => {
   };
 
   //Prevent enter in search box
-  function submitHandler(e:any) {
+  function submitHandler(e: any) {
     e.preventDefault();
   }
-  //Format Number Votes 
-  const format = new Intl.NumberFormat(); 
+  //Format Number Votes
+  const format = new Intl.NumberFormat();
   useEffect(() => {
     getVotosSenadoMunicipal();
     getMuniciaplity();
     getNameMunicipality();
-  }, [idDepartment,idMunicipality]);
+  }, [idDepartment, idMunicipality]);
 
   return (
     <main id="main" className="main">
@@ -75,9 +79,7 @@ export const SenadoNacionalMunicipio = () => {
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div
-            className="container-fluid display-flex justify-content-center container_title"
-          >
+          <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
               <b className="title_table">
                 CIRCUNCRIPCIÓN TERRITORIAL MUNICIPAL
@@ -171,8 +173,28 @@ export const SenadoNacionalMunicipio = () => {
             <div className="container no_responsive">
               <div className="row">
                 <div className="col-sm">
+                  <div className="col">
+                    <h6
+                      className="text-center my-2"
+                      style={{ color: "#052851" }}
+                    >
+                      {arrayNameMunicipality.map((myNameMunicipality) => (
+                        <b className="name_text">
+                          {myNameMunicipality.name_municipality}
+                          {" ("}
+                          {myNameMunicipality.department}
+                          {")"}
+                        </b>
+                      ))}
+                    </h6>
+                  </div>
+                </div>
 
-                <div className="dropdown  text-center my-1">
+                <div className="d-flex align-items-center mt-2 mb-2 justify-content-between">
+              <div
+                  className="dropdown text-left mb-1"
+                  style={{ marginLeft: "3%" }}
+                >
                   <div className="dropdown">
                     <button
                       type="button"
@@ -208,51 +230,37 @@ export const SenadoNacionalMunicipio = () => {
                               return val;
                             }
                           })
-                          .map((myMunicipality) => (
+                          .map((miMunicipio) => (
                             <a
                               className="dropdown-item"
                               href={
                                 "/senado/nacional/" +
-                                myMunicipality.id_department +
+                                idDepartment +
                                 "/municipio/" +
-                                myMunicipality.id_municipality
+                                miMunicipio.id_municipality
                               }
                             >
-                              {" "}
-                              <b className="name_text">{myMunicipality.name_municipality} </b>
+                              {miMunicipio.name_municipality}
                             </a>
                           ))}
                       </li>
                     </ul>
                   </div>
                 </div>
-                </div>
-                
-
-                <div className="col">
-                  <h6 className="text-center my-2" style={{ color: "#052851" }}>
-                    {arrayNameMunicipality.map((myNameMunicipality) => (
-                      <b>
-                        {myNameMunicipality.name_municipality}
-                        {" ("}
-                        {myNameMunicipality.department}
-                        {")"}
-                      </b>
-                    ))}
-                  </h6>
-                </div>
                 <div className="col-sm">
                   <Form id="form_conta" onSubmit={submitHandler}>
                     <InputGroup className="my-1 container_form">
                       <Form.Control
                         onChange={(e) => setSearch(e.target.value)}
-                        placeholder="Buscar un Candidato"
+                        placeholder="Buscar un Partido Político"
                         style={{ textAlign: "right", marginRight: "5px" }}
                         className="form_co"
                       ></Form.Control>
                     </InputGroup>
                   </Form>
                 </div>
+                
+              </div>
               </div>
             </div>
           </div>
@@ -267,10 +275,18 @@ export const SenadoNacionalMunicipio = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "30%" }} id="text_left_name">
+                  <th
+                    className="text-center"
+                    style={{ width: "30%" }}
+                    id="text_left_name"
+                  >
                     PARTIDO POLÍTICO
                   </th>
-                  <th className="text-center" style={{ width: "30%" }} id="text_left_name">
+                  <th
+                    className="text-center"
+                    style={{ width: "30%" }}
+                    id="text_left_name"
+                  >
                     NOMBRE CANDIDATO
                   </th>
                   <th className="text-center" style={{ width: "20%" }}>
@@ -302,8 +318,12 @@ export const SenadoNacionalMunicipio = () => {
                       <td className="text_left_name">
                         {myVotes.candidate_name}
                       </td>
-                      <td className="text-center">{format.format(myVotes.votos)}</td>
-                      <td className="text-center">{format.format(myVotes.votos_muicipio)}</td>
+                      <td className="text-center">
+                        {format.format(myVotes.votos)}
+                      </td>
+                      <td className="text-center">
+                        {format.format(myVotes.votos_muicipio)}
+                      </td>
                     </tr>
                   ))}
               </tbody>
@@ -315,8 +335,9 @@ export const SenadoNacionalMunicipio = () => {
               className="container-fluid display-flex justify-content-center"
               style={{
                 color: "#FFFFFF",
-                height: "40px",
-                alignItems: "right",
+                height: "80px",
+                display: "flex",
+                alignItems: "center",
               }}
             >
               <div className="text-center">
@@ -342,7 +363,10 @@ export const SenadoNacionalMunicipio = () => {
         >
           <Modal.Body className="text-center">
             <div className="text-center">
-              <img src={ImageSpinner} style={{height:"100px", width:"200px"}}/>
+              <img
+                src={ImageSpinner}
+                style={{ height: "100px", width: "200px" }}
+              />
               <div className="mt-4">
                 <div className="spinner-border text-danger" role="status">
                   <span className=" visually-hidden">Loading...</span>
