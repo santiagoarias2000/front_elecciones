@@ -1,7 +1,6 @@
 import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Welcome } from "../../containers/Welcome";
-import { MainBoard } from "../../containers/MainBoard";
 import { SenadoElegidos } from "../../views/public/senado/SenadoElegidos";
 import { PrivacyPolicies } from "../../views/shared/PrivacyPolicies";
 import { NotFound } from "../../views/shared/NotFound";
