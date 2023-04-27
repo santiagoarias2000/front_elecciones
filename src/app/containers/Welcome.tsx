@@ -92,7 +92,7 @@ export const Welcome = () => {
                     </li>
                   </ul>
                 </div>
-                <hr style={{ color: "#052851",marginTop:"120px" }} />
+                <hr style={{ color: "#052851", marginTop: "120px" }} />
               </div>
             </div>
           </div>
@@ -355,8 +355,6 @@ export const Welcome = () => {
             </div>
           </div>
           <hr />
-
-          
         </div>
       </section>
       <Modal
