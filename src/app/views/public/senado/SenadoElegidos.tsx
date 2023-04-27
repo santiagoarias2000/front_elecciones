@@ -70,7 +70,7 @@ export const SenadoElegidos = () => {
               className="colorTable table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead className="container_table sticky" style={{backgroundColor:"#fff"}}>
+              <thead className="container_table primeraFila" style={{backgroundColor:"#fff"}}>
                 <tr>
                   <th className="text-center" style={{ width: "20%" }}>
                   PARTIDO POLÍTICO
@@ -173,7 +173,7 @@ export const SenadoElegidos = () => {
               className="colorTable table table-hover"
               style={{ background: "#05285190 !important" }}
             >
-              <thead className="container_table sticky" style={{backgroundColor:"#fff"}}>
+              <thead className="container_table primeraFila" style={{backgroundColor:"#fff"}}>
                 <tr>
                   <th className="text-center" style={{ width: "20%" }}>
                     PARTIDO

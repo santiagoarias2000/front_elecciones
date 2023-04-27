@@ -55,44 +55,42 @@ export const Welcome = () => {
                   marketing político.
                 </p>
               </div>
-              <div>
-                <div className="section-title">
-                  <h5>RESULTADOS ELECTORALES</h5>
-                  <hr style={{ color: "#052851" }} />
-                </div>
-
-                <div className="herramientas">
-                  <ul className="ul_responsive">
-                    <li className="RutasRiesgo">
-                      <a className="flex1" href="/presidencia">
+              <div className="section-title">
+                <h5>RESULTADOS ELECTORALES</h5>
+                <hr style={{ color: "#052851" }} />
+              </div>
+              <div className="d-flex justify-content-center">
+              <ul className="prueba">
+                    <li>
+                      <a className="flex d-block" href="/presidencia">
                         PRESIDENCIA
                       </a>
-                      <a className="flex2" href="/senado">
+                      <a className="flex d-block" href="/senado">
                         SENADO
                       </a>
-                      <a className="flex3" href="/camara">
+                      <a className="flex d-block" href="/camara">
                         CÁMARA
                       </a>
-                      <a className="flex4" href="/gobernacion">
+                      <a className="flex d-block" href="/gobernacion">
                         GOBERNACIONES
                       </a>
-                      <a className="flex5" href="/asamblea">
+                      <a className="flex d-block" href="/asamblea">
                         ASAMBLEAS
                       </a>
-                      <a className="flex6" href="/alcaldia">
+                      <a className="flex d-block" href="/alcaldia">
                         ALCALDÍAS
                       </a>
-                      <a className="flex7" href="/concejo">
+                      <a className="flex d-block" href="/concejo">
                         CONCEJO
                       </a>
-                      <a className="flex8" href="/jal">
+                      <a className="flex d-block" href="/jal">
                         JAL
                       </a>
                     </li>
                   </ul>
-                </div>
-                <hr style={{ color: "#052851",marginTop:"120px" }} />
               </div>
+
+              <hr style={{ color: "#052851", marginTop: "60px" }} />
             </div>
           </div>
         </div>
@@ -354,8 +352,6 @@ export const Welcome = () => {
             </div>
           </div>
           <hr />
-
-          
         </div>
       </section>
       <Modal
