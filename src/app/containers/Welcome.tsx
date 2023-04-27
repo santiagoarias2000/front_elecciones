@@ -56,14 +56,16 @@ export const Welcome = () => {
                   marketing político.
                 </p>
               </div>
-              <div className="section-title">
-                <h5>RESULTADOS DE VOTACIONES ELECTORALES</h5>
-                <hr style={{ color: "#052851" }} />
-              </div>
-              <div className="d-flex justify-content-center">
-              <ul className="prueba">
-                    <li>
-                      <a className="flex d-block" href="/presidencia">
+              <div>
+                <div className="section-title">
+                  <h5>RESULTADOS ELECTORALES</h5>
+                  <hr style={{ color: "#052851" }} />
+                </div>
+
+                <div className="herramientas">
+                  <ul className="ul_responsive">
+                    <li className="RutasRiesgo">
+                      <a className="flex1" href="/presidencia">
                         PRESIDENCIA
                       </a>
                       <a className="flex d-block" href="/senado">
