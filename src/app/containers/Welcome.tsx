@@ -68,32 +68,32 @@ export const Welcome = () => {
                       <a className="flex1" href="/presidencia">
                         PRESIDENCIA
                       </a>
-                      <a className="flex d-block" href="/senado">
+                      <a className="flex2" href="/senado">
                         SENADO
                       </a>
-                      <a className="flex d-block" href="/camara">
+                      <a className="flex3" href="/camara">
                         CÁMARA
                       </a>
-                      <a className="flex d-block" href="/gobernacion">
+                      <a className="flex4" href="/gobernacion">
                         GOBERNACIONES
                       </a>
-                      <a className="flex d-block" href="/asamblea">
+                      <a className="flex5" href="/asamblea">
                         ASAMBLEAS
                       </a>
-                      <a className="flex d-block" href="/alcaldia">
+                      <a className="flex6" href="/alcaldia">
                         ALCALDÍAS
                       </a>
-                      <a className="flex d-block" href="/concejo">
+                      <a className="flex7" href="/concejo">
                         CONCEJO
                       </a>
-                      <a className="flex d-block" href="/jal">
+                      <a className="flex8" href="/jal">
                         JAL
                       </a>
                     </li>
                   </ul>
+                </div>
+                <hr style={{ color: "#052851",marginTop:"120px" }} />
               </div>
-
-              <hr style={{ color: "#052851", marginTop: "60px" }} />
             </div>
           </div>
         </div>
@@ -355,6 +355,8 @@ export const Welcome = () => {
             </div>
           </div>
           <hr />
+
+          
         </div>
       </section>
       <Modal
