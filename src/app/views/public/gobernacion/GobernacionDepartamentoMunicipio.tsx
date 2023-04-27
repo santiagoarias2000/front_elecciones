@@ -54,7 +54,7 @@ export const GobernacionDepartamentoMunicipio = () => {
     }
   };
   //Prevent enter in search box
-  function submitHandler(e:any) {
+  function submitHandler(e: any) {
     e.preventDefault();
   }
   useEffect(() => {
@@ -94,14 +94,16 @@ export const GobernacionDepartamentoMunicipio = () => {
                     data-live-search="true"
                     style={{ maxHeight: "200px", overflowY: "auto" }}
                   >
-                    <input
-                      type="text"
-                      placeholder="Busqueda..."
-                      className="sticky-top"
-                      onChange={(event) => {
-                        setSearchMunicipio(event.target.value);
-                      }}
-                    />
+                    <div className="sticky-top">
+                      <input
+                        type="text"
+                        placeholder="Busqueda..."
+                        className="mi-sticky"
+                        onChange={(event) => {
+                          setSearchMunicipio(event.target.value);
+                        }}
+                      />
+                    </div>
                     <li>
                       {arrayMunicipios
                         .filter((val) => {
@@ -125,7 +127,9 @@ export const GobernacionDepartamentoMunicipio = () => {
                               miMunicipio.id_municipality
                             }
                           >
-                            {miMunicipio.name_municipality}
+                            <b className="name_text">
+                              {miMunicipio.name_municipality}
+                            </b>
                           </a>
                         ))}
                     </li>
@@ -161,7 +165,25 @@ export const GobernacionDepartamentoMunicipio = () => {
           <div className="container no_responsive">
             <div className="row">
               <div className="col-sm">
-                <div className="dropdown text-center my-1">
+                <div className="col">
+                  <h6 className="text-center my-2" style={{ color: "#052851" }}>
+                    {arrayNameMunicipality.map((myNameMunicipality) => (
+                      <b className="name_text">
+                        {myNameMunicipality.name_municipality}
+                        {" ("}
+                        {myNameMunicipality.department}
+                        {")"}
+                      </b>
+                    ))}
+                  </h6>
+                </div>
+              </div>
+
+              <div className="d-flex align-items-center mt-2 mb-2 justify-content-between">
+                <div
+                  className="dropdown text-left mb-1"
+                  style={{ marginLeft: "3%" }}
+                >
                   <button
                     type="button"
                     className="buttonBack buttonBack-primary dropdown-toggle"
@@ -175,14 +197,16 @@ export const GobernacionDepartamentoMunicipio = () => {
                     data-live-search="true"
                     style={{ maxHeight: "200px", overflowY: "auto" }}
                   >
-                    <input
-                      type="text"
-                      placeholder="Busqueda..."
-                      className="sticky-top"
-                      onChange={(event) => {
-                        setSearchMunicipio(event.target.value);
-                      }}
-                    />
+                    <div className="sticky-top">
+                      <input
+                        type="text"
+                        placeholder="Busqueda..."
+                        className="mi-sticky"
+                        onChange={(event) => {
+                          setSearchMunicipio(event.target.value);
+                        }}
+                      />
+                    </div>
                     <li>
                       {arrayMunicipios
                         .filter((val) => {
@@ -206,36 +230,26 @@ export const GobernacionDepartamentoMunicipio = () => {
                               miMunicipio.id_municipality
                             }
                           >
-                            {miMunicipio.name_municipality}
+                            <b className="name_text">
+                              {miMunicipio.name_municipality}
+                            </b>
                           </a>
                         ))}
                     </li>
                   </ul>
                 </div>
-              </div>
-              <div className="col">
-                <h6 className="text-center my-2" style={{ color: "#052851" }}>
-                  {arrayNameMunicipality.map((myNameMunicipality) => (
-                    <b>
-                      {myNameMunicipality.name_municipality}
-                      {" ("}
-                      {myNameMunicipality.department}
-                      {")"}
-                    </b>
-                  ))}
-                </h6>
-              </div>
-              <div className="col-sm">
-                <Form id="form_conta" onSubmit={submitHandler}>
-                  <InputGroup className="my-1 container_form">
-                    <Form.Control
-                      onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Buscar nombre Candidato"
-                      style={{ textAlign: "right", marginRight: "5px" }}
-                      className="form_co"
-                    ></Form.Control>
-                  </InputGroup>
-                </Form>
+                <div className="col-sm">
+                  <Form id="form_conta" onSubmit={submitHandler}>
+                    <InputGroup className="my-1 container_form">
+                      <Form.Control
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Buscar nombre Candidato"
+                        style={{ textAlign: "right", marginRight: "5px" }}
+                        className="form_co"
+                      ></Form.Control>
+                    </InputGroup>
+                  </Form>
+                </div>
               </div>
             </div>
           </div>

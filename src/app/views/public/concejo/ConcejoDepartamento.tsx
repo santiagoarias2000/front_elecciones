@@ -96,20 +96,20 @@ export const ConcejoDepartamento = () => {
           </div>
           <div className="container no_responsive">
             <div className="row">
-              <div className="col-sm">
-              <div className="dropdown text-center my-3"></div>
-
-              </div>
-              <div className="col">
-                <h6 className="text-center my-2" style={{ color: "#052851" }}>
-                  {arrayDepartamento.map((myDepartment) => (
-                    <b>{myDepartment.name_department}</b>
-                  ))}
-                </h6>
-              </div>
+            <div className="col-sm ">
+                <div className="col">
+                  <h6 className="text-center my-2" style={{ color: "#052851" }}>
+                    {arrayDepartamento.map((myDepartment) => (
+                      <b className="name_text">
+                        {myDepartment.name_department}
+                      </b>
+                    ))}
+                  </h6>
+                </div>
+              </div>  
               <div className="col-sm">
                 <Form id="form_conta">
-                  <InputGroup className="my-3 container_form">
+                  <InputGroup className="my-1 container_form">
                     <Form.Control
                       onChange={(e) => setsearchDepartamental(e.target.value)}
                       placeholder="Buscar un Municipio"
@@ -183,7 +183,7 @@ export const ConcejoDepartamento = () => {
           </div>
           <div className="dropdown">
           <div
-            className="container-fluid display-flex justify-content-center"
+            className="container-fluid display-flex justify-content-center mt-4"
             style={{
               color: "#FFFFFF",
               height: "40px",

@@ -13,15 +13,20 @@ import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
 export const CamaraAfroDescendienteDepartamento = () => {
   let { idDepartment } = useParams();
-  //Format Number Votes 
+  //Format Number Votes
   const format = new Intl.NumberFormat();
 
-  const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState< CandidatosCamara[] >(ARREGLO_CANDIDATOS_ELEGIDOS);
+  const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState<
+    CandidatosCamara[]
+  >(ARREGLO_CANDIDATOS_ELEGIDOS);
   const [search, setSearch] = useState("");
   const [searchMunicipio, setSearchMunicipio] = useState("");
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
-  const [ arrayVotesCamaraAfroDescendiente, setArrayVotosCamaraAfroDescendiente] = useState<VotesCongreso[]>([]);
+  const [
+    arrayVotesCamaraAfroDescendiente,
+    setArrayVotosCamaraAfroDescendiente,
+  ] = useState<VotesCongreso[]>([]);
 
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
   const [arrayDepartamento, setArrayDepartamento] = useState<Department[]>([]);
@@ -59,7 +64,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
     return elegidosi;
   };
   //Prevent enter in search box
-  function submitHandler(e:any) {
+  function submitHandler(e: any) {
     e.preventDefault();
   }
   useEffect(() => {
@@ -111,14 +116,16 @@ export const CamaraAfroDescendienteDepartamento = () => {
                   data-live-search="true"
                   style={{ maxHeight: "200px", overflowY: "auto" }}
                 >
-                  <input
-                    type="text"
-                    placeholder="Busqueda..."
-                    className="sticky-top"
-                    onChange={(event) => {
-                      setSearchMunicipio(event.target.value);
-                    }}
-                  />
+                  <div className="sticky-top">
+                    <input
+                      type="text"
+                      placeholder="Busqueda..."
+                      className="mi-sticky"
+                      onChange={(event) => {
+                        setSearchMunicipio(event.target.value);
+                      }}
+                    />
+                  </div>
                   <li>
                     {arrayMunicipio
                       .filter((val) => {
@@ -142,7 +149,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
                             myMunicipality.id_municipality
                           }
                         >
-                          {myMunicipality.name_municipality}
+                          <b className="name_text">{myMunicipality.name_municipality}</b>
                         </a>
                       ))}
                   </li>
@@ -178,8 +185,20 @@ export const CamaraAfroDescendienteDepartamento = () => {
 
         <div className="container no_responsive">
           <div className="row">
-            <div className="col-lg-4 d-flex mt-2 mb-2">
-              <div className="dropdown text-center" style={{marginLeft:"10%"}}>
+            <div className="col-sm ">
+              <div className="col">
+                <h6 className="text-center my-2" style={{ color: "#052851" }}>
+                  {arrayDepartamento.map((myDepartment) => (
+                    <b className="name_text">{myDepartment.name_department}</b>
+                  ))}
+                </h6>
+              </div>
+            </div>
+            <div className="d-flex align-items-center mt-2 mb-2 justify-content-between">
+              <div
+                className="dropdown text-left mb-1"
+                style={{ marginLeft: "3%" }}
+              >
                 <button
                   type="button"
                   className="buttonBack buttonBack-primary dropdown-toggle"
@@ -193,14 +212,16 @@ export const CamaraAfroDescendienteDepartamento = () => {
                   data-live-search="true"
                   style={{ maxHeight: "200px", overflowY: "auto" }}
                 >
-                  <input
-                    type="text"
-                    placeholder="Busqueda..."
-                    className="sticky-top"
-                    onChange={(event) => {
-                      setSearchMunicipio(event.target.value);
-                    }}
-                  />
+                  <div className="sticky-top">
+                    <input
+                      type="text"
+                      placeholder="Busqueda..."
+                      className="mi-sticky"
+                      onChange={(event) => {
+                        setSearchMunicipio(event.target.value);
+                      }}
+                    />
+                  </div>
                   <li>
                     {arrayMunicipio
                       .filter((val) => {
@@ -232,30 +253,18 @@ export const CamaraAfroDescendienteDepartamento = () => {
                   </li>
                 </ul>
               </div>
-              <div className="d-flex align-items-center mt-2" style={{marginLeft:"25%"}}>
-                <h6
-                  className="d-flex align-items-center text_title_respo"
-                  style={{ color: "#052851" }}
-                >
-                  {arrayDepartamento.map((myDepartment) => (
-                    <b className="text_title_respo">
-                      {myDepartment.name_department}
-                    </b>
-                  ))}
-                </h6>
+              <div className="col-lg-4">
+                <Form id="form_conta" onSubmit={submitHandler}>
+                  <InputGroup className="my-1 container_form">
+                    <Form.Control
+                      onChange={(e) => setSearch(e.target.value)}
+                      placeholder="Buscar un Partido Político"
+                      style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
+                    ></Form.Control>
+                  </InputGroup>
+                </Form>
               </div>
-            </div>
-            <div className="col-lg-4">
-              <Form id="form_conta" onSubmit={submitHandler}>
-                <InputGroup className="my-1 container_form">
-                  <Form.Control
-                    onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Buscar un Partido Político"
-                    style={{ textAlign: "right", marginRight: "5px" }}
-                    className="form_co"
-                  ></Form.Control>
-                </InputGroup>
-              </Form>
             </div>
           </div>
         </div>

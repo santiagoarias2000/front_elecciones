@@ -92,14 +92,16 @@ export const SenadoIndigenaDepartamento = () => {
                     data-live-search="true"
                     style={{ maxHeight: "200px", overflowY: "auto" }}
                   >
-                    <input
-                      type="text"
-                      placeholder="Busqueda..."
-                      className="sticky-top"
-                      onChange={(event) => {
-                        setSearchMunicipio(event.target.value);
-                      }}
-                    />
+                    <div className="sticky-top">
+                      <input
+                        type="text"
+                        placeholder="Busqueda..."
+                        className="mi-sticky"
+                        onChange={(event) => {
+                          setSearchMunicipio(event.target.value);
+                        }}
+                      />
+                    </div>
                     <li>
                       {arrayMunicipios
                         .filter((val) => {
@@ -123,7 +125,7 @@ export const SenadoIndigenaDepartamento = () => {
                               miMunicipio.id_municipality
                             }
                           >
-                            {miMunicipio.name_municipality}
+                            <b className="name_text"> {miMunicipio.name_municipality}</b>
                           </a>
                         ))}
                     </li>
@@ -183,14 +185,16 @@ export const SenadoIndigenaDepartamento = () => {
                     data-live-search="true"
                     style={{ maxHeight: "200px", overflowY: "auto" }}
                   >
-                    <input
-                      type="text"
-                      placeholder="Busqueda..."
-                      className="sticky-top"
-                      onChange={(event) => {
-                        setSearchMunicipio(event.target.value);
-                      }}
-                    />
+                    <div className="sticky-top">
+                      <input
+                        type="text"
+                        placeholder="Busqueda..."
+                        className="mi-sticky"
+                        onChange={(event) => {
+                          setSearchMunicipio(event.target.value);
+                        }}
+                      />
+                    </div>
                     <li>
                       {arrayMunicipios
                         .filter((val) => {

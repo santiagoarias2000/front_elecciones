@@ -90,7 +90,7 @@ export const AlcaldiaDepartamento = () => {
               <div className="col">
                 <h6 className="text-center my-2" style={{ color: "#052851" }}>
                   {arrayDepartamento.map((myDepartment) => (
-                    <b>{myDepartment.name_department}</b>
+                    <b className="name_text">{myDepartment.name_department}</b>
                   ))}
                 </h6>
               </div>
@@ -119,31 +119,28 @@ export const AlcaldiaDepartamento = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "40%" }}>
-                    MUNICIPIO
+                  <th className="text-center" style={{ width: "35%" }}>
+                    DEPARTAMENTO
                   </th>
-                  <th className="text-center" style={{ width: "30%" }}>
+                  <th className="text-center" style={{ width: "35%" }} >
                     TOTAL VOTOS
                   </th>
-                  <th className="text-center" style={{ width: "15%" }}></th>
+                  <th className="text-center" style={{ width: "30%" }} ></th>
+
                 </tr>
               </thead>
               <tbody className="color container_table">
                 {arrayVotosAlcaldiaDepartamento
-                  .filter((val) => {
-                    if (search == "") {
-                      return val;
-                    } else if (
-                      val.municipality.name_municipality
-                        .toLocaleLowerCase()
-                        .includes(search.toLocaleLowerCase())
-                    ) {
-                      return val;
-                    }
+                  .filter((myVotes) => {
+                    return search === ""
+                      ? myVotes
+                      : myVotes.municipality.name_municipality
+                          .toLowerCase()
+                          .includes(search.toLowerCase());
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text_left">
+                      <td className="text_left left_alination">
                         <a
                           className="link_departamento"
                           href={
@@ -159,13 +156,13 @@ export const AlcaldiaDepartamento = () => {
                       <td className="text-center">
                         {format.format(myVotes.votos)}
                       </td>
-                      <td className="text-center align-middle">
+                      <td className="text-center">
                         <a
                           className="link_departamento"
                           href={
                             "/alcaldia/departamento/" +
                             idDepartment +
-                            "/municipio" +
+                            "/municipio/" +
                             myVotes.municipality.id_municipality
                           }
                         >
@@ -177,7 +174,26 @@ export const AlcaldiaDepartamento = () => {
               </tbody>
             </table>
           </div>
-
+          <div className="dropdown">
+            <div
+              className="container-fluid display-flex justify-content-center mt-4"
+              style={{
+                color: "#FFFFFF",
+                height: "40px",
+                alignItems: "right",
+              }}
+            >
+              <h6
+              className="tituloVotosTotales my-2"
+            >
+              {arrayDepartamento.map((myDepartment) => (
+                <b style={{ color: "#D9224E" }} className="vota_respo">
+                  VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
+                </b>
+              ))}
+            </h6>
+            </div>
+          </div>
           <div className="dropdown">
             <div
               className="container-fluid display-flex justify-content-center"

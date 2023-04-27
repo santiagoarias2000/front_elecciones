@@ -8,6 +8,7 @@ import Municipality from "../../../models/Municipality";
 import { useParams } from "react-router-dom";
 import Department from "../../../models/Department";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
+import { relative } from "path";
 
 export const SenadoNacionalDepartamento = () => {
   let { idDepartment } = useParams();
@@ -73,7 +74,7 @@ export const SenadoNacionalDepartamento = () => {
         <div className="cardBorder card">
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b className="title_table">CIRCUNCRIPCIÓN NACIONAL</b> &nbsp;
+              <b className="title_table">CIRCUNSCRIPCIÓN NACIONAL</b> &nbsp;
             </div>
           </div>
           <div className="container responsive">
@@ -94,14 +95,16 @@ export const SenadoNacionalDepartamento = () => {
                       data-live-search="true"
                       style={{ maxHeight: "200px", overflowY: "auto" }}
                     >
-                      <input
-                        type="text"
-                        placeholder="Busqueda..."
-                        className="sticky-top"
-                        onChange={(event) => {
-                          setSearchMunicipio(event.target.value);
-                        }}
-                      />
+                      <div className="sticky-top">
+                        <input
+                          type="text"
+                          placeholder="Busqueda..."
+                          className="mi-sticky"
+                          onChange={(event) => {
+                            setSearchMunicipio(event.target.value);
+                          }}
+                        />
+                      </div>
                       <li>
                         {arrayMunicipios
                           .filter((val) => {
@@ -125,7 +128,9 @@ export const SenadoNacionalDepartamento = () => {
                                 miMunicipio.id_municipality
                               }
                             >
-                              {miMunicipio.name_municipality}
+                              <b className="name_text">
+                                {miMunicipio.name_municipality}
+                              </b>
                             </a>
                           ))}
                       </li>
@@ -162,10 +167,9 @@ export const SenadoNacionalDepartamento = () => {
                     <b className="name_text">{myDepartment.name_department}</b>
                   ))}
                 </h6>
-                
               </div>
               <div className="d-flex align-items-center mt-2 mb-2 justify-content-between">
-              <div
+                <div
                   className="dropdown text-left mb-1"
                   style={{ marginLeft: "3%" }}
                 >
@@ -183,14 +187,16 @@ export const SenadoNacionalDepartamento = () => {
                       data-live-search="true"
                       style={{ maxHeight: "200px", overflowY: "auto" }}
                     >
-                      <input
-                        type="text"
-                        placeholder="Busqueda..."
-                        className="sticky-top"
-                        onChange={(event) => {
-                          setSearchMunicipio(event.target.value);
-                        }}
-                      />
+                      <div className="sticky-top">
+                        <input
+                          type="text"
+                          placeholder="Busqueda..."
+                          className="mi-sticky"
+                          onChange={(event) => {
+                            setSearchMunicipio(event.target.value);
+                          }}
+                        />
+                      </div>
                       <li>
                         {arrayMunicipios
                           .filter((val) => {
@@ -214,7 +220,9 @@ export const SenadoNacionalDepartamento = () => {
                                 miMunicipio.id_municipality
                               }
                             >
-                              {miMunicipio.name_municipality}
+                              <b className="name_text">
+                                {miMunicipio.name_municipality}
+                              </b>
                             </a>
                           ))}
                       </li>
@@ -233,7 +241,6 @@ export const SenadoNacionalDepartamento = () => {
                     </InputGroup>
                   </Form>
                 </div>
-                
               </div>
             </div>
           </div>
