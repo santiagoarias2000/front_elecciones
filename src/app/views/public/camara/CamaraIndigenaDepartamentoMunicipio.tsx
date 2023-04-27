@@ -281,7 +281,7 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
               style={{ background: "#05285190 !important" }}
             >
               <thead
-                className="container_table sticky"
+                className="container_table primeraFila"
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
