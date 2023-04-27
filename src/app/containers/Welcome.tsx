@@ -57,7 +57,7 @@ export const Welcome = () => {
               </div>
               <div>
                 <div className="section-title">
-                  <h5>RESULTADOS DE VOTACIONES ELECTORALES</h5>
+                  <h5>RESULTADOS ELECTORALES</h5>
                   <hr style={{ color: "#052851" }} />
                 </div>
 
