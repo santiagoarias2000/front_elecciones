@@ -63,7 +63,7 @@ export const Gobernacion = () => {
             <div className="row">
               <div className="col-sm"></div>
               <div className="col-12">
-              <Form id="form_conta">
+              <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchDepartamento(e.target.value)}
@@ -84,7 +84,7 @@ export const Gobernacion = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchDepartamento(e.target.value)}
-                      placeholder="Buscar nombre departamento"
+                      placeholder="Buscar nombre departamentoxxx"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
                     ></Form.Control>
