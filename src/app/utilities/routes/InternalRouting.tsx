@@ -1,7 +1,6 @@
 import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Welcome } from "../../containers/Welcome";
-import { MainBoard } from "../../containers/MainBoard";
 import { SenadoElegidos } from "../../views/public/senado/SenadoElegidos";
 import { PrivacyPolicies } from "../../views/shared/PrivacyPolicies";
 import { NotFound } from "../../views/shared/NotFound";
@@ -85,11 +84,13 @@ const LazyResultados = lazy(() => import("../../views/shared/Resultados").then((
 const LazyNosotros = lazy(() => import("../../views/shared/AboutUs").then(() => ({default: AboutUs})));
 
 
+
 export const InternalRouting = () => {
   return (
     <Routes>
       //Routes Default
       <Route path="/" element={<LazyWelcome/>}/>
+      
       <Route path="/camara" element={<LazyCamara />} />
       <Route path="/senadoelegidos" element={<LazySenadoElegidos />} />
       <Route path="/senado" element={<LazySenado/>} />

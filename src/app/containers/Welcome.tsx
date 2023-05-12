@@ -10,7 +10,6 @@ import ImgLoteriaBoyaca from "../../assets/image/Patrocinadores/LoteriaBoyaca.we
 import ImgDonJose from "../../assets/image/Patrocinadores/DonJose.webp";
 import { Carousel, Modal } from "react-bootstrap";
 import "../../assets/js/carrusel.js";
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ImageSpinner from "../../assets/image/Blog/publicidadloteria.webp";
 
@@ -22,11 +21,14 @@ export const Welcome = () => {
       setShow(false);
     }, 2000);
   }
+
   useEffect(() => {
     hideModal();
   }, []);
+
   return (
     <div id="about" className="containner-welcome">
+      
       <section className="about">
         <div className="container" data-aos="fade-up">
           <div className="row no-gutters">
@@ -61,34 +63,54 @@ export const Welcome = () => {
                 <hr style={{ color: "#052851" }} />
               </div>
               <div className="d-flex justify-content-center">
-              <ul className="prueba">
-                    <li>
-                      <a className="flex d-block" href="/presidencia">
-                        PRESIDENCIA
-                      </a>
-                      <a className="flex d-block" href="/senado">
-                        SENADO
-                      </a>
-                      <a className="flex d-block" href="/camara">
-                        CÁMARA
-                      </a>
-                      <a className="flex d-block" href="/gobernacion">
-                        GOBERNACIONES
-                      </a>
-                      <a className="flex d-block" href="/asamblea">
-                        ASAMBLEAS
-                      </a>
-                      <a className="flex d-block" href="/alcaldia">
-                        ALCALDÍAS
-                      </a>
-                      <a className="flex d-block" href="/concejo">
-                        CONCEJO
-                      </a>
-                      <a className="flex d-block" href="/jal">
-                        JAL
-                      </a>
-                    </li>
-                  </ul>
+                <ul className="prueba">
+                  <li>
+                    <a className="flex d-block" href="/presidencia">
+                      PRESIDENCIA
+                    </a>
+                    <a className="flex d-block" href="/senado">
+                      SENADO
+                    </a>
+                    <a className="flex d-block" href="/camara">
+                      CÁMARA
+                    </a>
+                    <a className="flex d-block" href="/gobernacion">
+                      GOBERNACIONES
+                    </a>
+                    <a className="flex d-block" href="/asamblea">
+                      ASAMBLEAS
+                    </a>
+                    <a className="flex d-block" href="/alcaldia">
+                      ALCALDÍAS
+                    </a>
+                    <a className="flex d-block" href="/concejo">
+                      CONCEJO
+                    </a>
+                    <a className="flex d-block" href="/jal">
+                      JAL
+                    </a>
+                    <form>
+                      <script
+                        src="https://checkout.epayco.co/checkout.js"
+                        data-epayco-key="a72afc02377f614d2826ec152d949872"
+                        className="epayco-button"
+                        data-epayco-amount="5000"
+                        data-epayco-tax="0.00"
+                        data-epayco-tax-ico="0.00"
+                        data-epayco-tax-base="5000"
+                        data-epayco-name="Prueba"
+                        data-epayco-description="Prueba"
+                        data-epayco-currency="cop"
+                        data-epayco-country="CO"
+                        data-epayco-test="false"
+                        data-epayco-external="false"
+                        data-epayco-response=""
+                        data-epayco-confirmation=""
+                        data-epayco-button="https://multimedia.epayco.co/dashboard/btns/btn11.png"
+                      ></script>
+                    </form>
+                  </li>
+                </ul>
               </div>
 
               <hr style={{ color: "#052851", marginTop: "60px" }} />
@@ -354,6 +376,7 @@ export const Welcome = () => {
           </div>
           <hr />
         </div>
+        
       </section>
       <Modal
         show={show}
@@ -374,5 +397,6 @@ export const Welcome = () => {
         </Modal.Body>
       </Modal>
     </div>
+    
   );
 };
