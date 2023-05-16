@@ -5753,7 +5753,7 @@ ul li {
   .bg-glass {
     background-color: hsla(0, 0%, 100%, 0.9) !important;
     backdrop-filter: saturate(200%) blur(25px);
-    margin-top: 30%;
-    margin-bottom: 30%;
+    margin-top: 40.5%;
+    margin-bottom: 40.5%;
   }
 }
