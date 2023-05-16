@@ -5707,7 +5707,7 @@ ul li {
   .bg-glass {
     background-color: hsla(0, 0%, 100%, 0.9) !important;
     backdrop-filter: saturate(200%) blur(25px);
-    margin-top: 41.5%;
+    margin-top: 42%;
     margin-bottom: 42%;
   }
 }
