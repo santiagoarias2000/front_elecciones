@@ -41,6 +41,8 @@ import { ConcejoDepartamento } from "../../views/public/concejo/ConcejoDepartame
 import { ConcejoMunicipal } from "../../views/public/concejo/ConcejoMunicipal";
 import { AlcaldiaDepartamentoMunicipio } from "../../views/public/alcaldia/AlcaldiaDepartamentoMunicipio";
 import { Resultados } from "../../views/shared/Resultados";
+import { PayButton } from "../../views/public/epayco/PayButton";
+
 
 //Lazy structure from use the all tsx
 
@@ -83,7 +85,8 @@ const LazyAlcadiaDepartamentoMunicipio = lazy(() => import("../../views/public/a
 const LazyBlog = lazy(() => import("../../containers/Blog").then(() => ({default: Blog})));
 const LazyResultados = lazy(() => import("../../views/shared/Resultados").then(() => ({default: Resultados})));
 const LazyNosotros = lazy(() => import("../../views/shared/AboutUs").then(() => ({default: AboutUs})));
-
+//PayCo
+const LazyPagar = lazy(() => import("../../views/public/epayco/PayButton").then(() => ({default: PayButton})));
 
 export const InternalRouting = () => {
   return (
@@ -140,7 +143,9 @@ export const InternalRouting = () => {
       <Route path="/jal" element={<LazyJal/>}/>
       <Route path="/jal/departamento/:idDepartment" element={<LazyJalDepartamento/>}/>
       <Route path="/jal/departamento/:idDepartment/municipio/:idMunicipality" element={<LazyJalMunicipio/>}/>
-      
+
+      //epayco
+      <Route path="/pagar" element={<LazyPagar/>}/>
     </Routes>
   );
 };

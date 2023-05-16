@@ -12,6 +12,7 @@ import { Carousel, Modal } from "react-bootstrap";
 import "../../assets/js/carrusel.js";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useEpayco } from 'react-epayco';
 import ImageSpinner from "../../assets/image/Blog/publicidadloteria.webp";
 
 export const Welcome = () => {
@@ -25,6 +26,37 @@ export const Welcome = () => {
   useEffect(() => {
     hideModal();
   }, []);
+
+  var data = {
+    //Parametros compra (obligatorio)
+    name: "Vestido Mujer Primavera",
+    description: "Vestido Mujer Primavera",
+    invoice: "12333322223",
+    currency: "cop",
+    amount: "12000",
+    tax_base: "0",
+    tax: "0",
+    country: "co",
+    lang: "es",
+
+    //Onpage="false" - Standard="true"
+    external: "false",
+
+    //Atributos opcionales
+    extra1: "extra1",
+    extra2: "extra2",
+    extra3: "extra3",
+    // confirmation: "http://secure2.payco.co/confirmation.php",
+    //response: "http://secure2.payco.co/response.php",
+
+    //Atributos cliente
+    name_billing: "Andres Perez",
+    address_billing: "Carrera 19 numero 14 91",
+    type_doc_billing: "cc",
+    mobilephone_billing: "3050000000",
+    number_doc_billing: "100000000",
+  };
+
   return (
     <div id="about" className="containner-welcome">
       <section className="about">
@@ -61,34 +93,34 @@ export const Welcome = () => {
                 <hr style={{ color: "#052851" }} />
               </div>
               <div className="d-flex justify-content-center">
-              <ul className="prueba">
-                    <li>
-                      <a className="flex d-block" href="/presidencia">
-                        PRESIDENCIA
-                      </a>
-                      <a className="flex d-block" href="/senado">
-                        SENADO
-                      </a>
-                      <a className="flex d-block" href="/camara">
-                        CÁMARA
-                      </a>
-                      <a className="flex d-block" href="/gobernacion">
-                        GOBERNACIONES
-                      </a>
-                      <a className="flex d-block" href="/asamblea">
-                        ASAMBLEAS
-                      </a>
-                      <a className="flex d-block" href="/alcaldia">
-                        ALCALDÍAS
-                      </a>
-                      <a className="flex d-block" href="/concejo">
-                        CONCEJO
-                      </a>
-                      <a className="flex d-block" href="/jal">
-                        JAL
-                      </a>
-                    </li>
-                  </ul>
+                <ul className="prueba">
+                  <li>
+                    <a className="flex d-block" href="/presidencia">
+                      PRESIDENCIA
+                    </a>
+                    <a className="flex d-block" href="/senado">
+                      SENADO
+                    </a>
+                    <a className="flex d-block" href="/camara">
+                      CÁMARA
+                    </a>
+                    <a className="flex d-block" href="/gobernacion">
+                      GOBERNACIONES
+                    </a>
+                    <a className="flex d-block" href="/asamblea">
+                      ASAMBLEAS
+                    </a>
+                    <a className="flex d-block" href="/alcaldia">
+                      ALCALDÍAS
+                    </a>
+                    <a className="flex d-block" href="/concejo">
+                      CONCEJO
+                    </a>
+                    <a className="flex d-block" href="/jal">
+                      JAL
+                    </a>
+                  </li>
+                </ul>
               </div>
 
               <hr style={{ color: "#052851", marginTop: "60px" }} />
