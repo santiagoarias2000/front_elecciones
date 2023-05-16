@@ -8,7 +8,7 @@ export const MessageToastify = (tipo: string, texto: string, milisegundos: numbe
       toast.error(texto,
         {
           position: "top-center", autoClose: milisegundos, hideProgressBar: false, closeOnClick: true, 
-          pauseOnHover: true, draggable: true, progress: undefined, theme: "dark",
+          pauseOnHover: true, draggable: true, progress: undefined, theme: "light",
         }
       );
       break;

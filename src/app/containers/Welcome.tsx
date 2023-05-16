@@ -10,7 +10,6 @@ import ImgLoteriaBoyaca from "../../assets/image/Patrocinadores/LoteriaBoyaca.we
 import ImgDonJose from "../../assets/image/Patrocinadores/DonJose.webp";
 import { Carousel, Modal } from "react-bootstrap";
 import "../../assets/js/carrusel.js";
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useEpayco } from 'react-epayco';
 import ImageSpinner from "../../assets/image/Blog/publicidadloteria.webp";
@@ -23,6 +22,7 @@ export const Welcome = () => {
       setShow(false);
     }, 2000);
   }
+
   useEffect(() => {
     hideModal();
   }, []);
@@ -59,6 +59,7 @@ export const Welcome = () => {
 
   return (
     <div id="about" className="containner-welcome">
+      
       <section className="about">
         <div className="container" data-aos="fade-up">
           <div className="row no-gutters">
@@ -386,6 +387,7 @@ export const Welcome = () => {
           </div>
           <hr />
         </div>
+        
       </section>
       <Modal
         show={show}
@@ -406,5 +408,6 @@ export const Welcome = () => {
         </Modal.Body>
       </Modal>
     </div>
+    
   );
 };

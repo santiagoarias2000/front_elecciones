@@ -1,6 +1,3 @@
-*{
-  @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
-}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -1409,7 +1406,6 @@ h6 {
     background-image: url("/src/assets/image/Footer/img.webp");
     background-repeat: no-repeat;
     color: #fff;
-    font-family: "Tilt Warp", cursive;
   }
   .containner_footers .side_stripe {
     margin-left: 0px;
@@ -4233,11 +4229,21 @@ section {
 }
 
 .btn.btn-primary {
-  background-color: var(--color-black);
-  color: var(--color-white);
-  border-color: var(--color-black);
+  background-color: #d9224e;
+  color: #ffffff;
+  border-color: #d9224e;
+}
+.btn:hover {
+  color: #ffffff !important;
+  background-color: #d9224e !important;
+  border-color: #d9224e !important;
 }
 
+.btnLogin:hover {
+  color: #ffffff !important;
+  background-color: #d9224e !important;
+  border-color: #d9224e !important;
+}
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -5538,15 +5544,126 @@ ul li {
   width: 180px;
   background-color: #e5e5e5;
 }
-.flex{
+.flex {
   background-color: #e5e5e5;
   margin-bottom: 3px;
 }
 
-
 /* Siticky Search ComboBox */
-.mi-sticky{
+.mi-sticky {
   position: relative;
   padding: 5px 0;
   bottom: 10px;
+}
+
+.background-radial-gradient {
+  background-color: #052851;
+  background-image: radial-gradient(
+      650px circle at 0% 0%,
+      #ffffff 15%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1250px circle at 100% 100%,
+      #fff 15%,
+      #052851 35%,
+      #052851 75%,
+      #052851 80%,
+      transparent 100%
+    );
+}
+
+#radius-shape-1 {
+  border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+  height: 220px;
+  width: 220px;
+  top: -60px;
+  left: -130px;
+  background: radial-gradient(#fff, #052851);
+  overflow: hidden;
+}
+
+#radius-shape-2 {
+  border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+  bottom: -60px;
+  right: -110px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(#052851, #052851);
+  overflow: hidden;
+}
+
+.bg-glass {
+  background-color: hsla(0, 0%, 100%, 0.9) !important;
+  backdrop-filter: saturate(200%) blur(25px);
+  margin-top: 107px;
+  margin-bottom: 107px;
+}
+
+.label {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.tittleLogin {
+  color: #d9224e;
+  font-family: "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+  font-size: 27px !important;
+}
+
+@media (max-width: 768px) {
+  .background-radial-gradient {
+    background-color: #052851;
+    padding-top: 20%;
+    background-image: radial-gradient(
+        650px circle at 0% 0%,
+        #ffffff 15%,
+        transparent 100%
+      ),
+      radial-gradient(
+        1250px circle at 100% 100%,
+        #fff 15%,
+        #052851 35%,
+        #052851 75%,
+        #052851 80%,
+        transparent 100%
+      );
+  }
+
+  #radius-shape-1 {
+    border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+    height: 220px;
+    width: 220px;
+    top: -60px;
+    left: -130px;
+    background: radial-gradient(#fff, #052851);
+    overflow: hidden;
+  }
+
+  #radius-shape-2 {
+    border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+    bottom: -60px;
+    right: -110px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(#052851, #052851);
+    overflow: hidden;
+  }
+
+  .bg-glass {
+    background-color: hsla(0, 0%, 100%, 0.9) !important;
+    backdrop-filter: saturate(200%) blur(25px);
+    margin-top: 30%;
+    margin-bottom: 36%;
+  }
+  @media (max-width: 768px) {
+    .Toastify__toast-container {
+      margin-left: 5% !important;
+      width: 80vw !important;
+      padding: 0;
+      left: 0;
+      margin: 0;
+      top: 25px !important;
+    }
+  }
 }

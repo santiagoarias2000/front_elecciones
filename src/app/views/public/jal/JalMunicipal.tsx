@@ -20,19 +20,38 @@ export const JalMunicipal = () => {
     const [arrayVotesJalMunicipal, setArrayVotosJalMunicipal] = useState<VotosJal[]>([]);
     
     //Funciones
-    const getVotosSenadoTerritorial = async () => {
-      const result = await ServicePrivate.requestGET(
-        ApiBack.JAL_DEPARTAMENTO_MUNICIPIO + "/" + 
-          idMunicipality
-      );
-      setArrayVotosJalMunicipal(result);
+    const getVotosJalTerritorial = async () => {
+      if(idDepartment==='11'){
+        const result = await ServicePrivate.requestGET(
+          ApiBack.JAL_LOCALIDAD + "/" + 
+            idMunicipality
+        );
+        setArrayVotosJalMunicipal(result);
+
+      }else{
+        const result = await ServicePrivate.requestGET(
+          ApiBack.JAL_DEPARTAMENTO_MUNICIPIO + "/" + 
+            idMunicipality
+        );
+        setArrayVotosJalMunicipal(result);
+
+      }
       setShow(false);
     };
     const getNameMunicipality = async () => {
+      if(idDepartment==='11'){
+        const result = await ServicePrivate.requestGET(
+          ApiBack.NOMBRE_LOCALIDAD + "/" + idMunicipality
+        );
+        setArrayNameMunicipality(result);
+
+      }else{
         const result = await ServicePrivate.requestGET(
           ApiBack.NOMBRE_MUNICIPIO + "/" + idMunicipality
         );
         setArrayNameMunicipality(result);
+
+      }
       };
       
     //Format Number Votes 
@@ -42,7 +61,7 @@ export const JalMunicipal = () => {
       e.preventDefault();
     }
     useEffect(() => {
-      getVotosSenadoTerritorial();
+      getVotosJalTerritorial();
       getNameMunicipality();
     }, [idDepartment,idMunicipality]);
     

@@ -7,6 +7,7 @@ import {Form, InputGroup, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 import VotosJal from "../../../models/DataElection";
 import Department from "../../../models/Department";
+import { log } from "console";
 
 export const JalDepartamento = () => {
   let { idDepartment } = useParams();
@@ -26,9 +27,15 @@ export const JalDepartamento = () => {
   const [arrayVotesjalTerritorial, setArrayVotesjalTerritorial] = useState<VotosJal[]>([]);
 
   const getVotosJalDepartamental = async () => {
+    if(idDepartment==='11'){
+    const urlCargarDepartamento = ApiBack.JAL_DEPARTAMENTO_BOGOTA + "/" + idDepartment;
+    const result = await ServicePrivate.requestGET(urlCargarDepartamento);
+    setArrayVotesjalTerritorial(result);
+    }else{
     const urlCargarDepartamento = ApiBack.JAL_DEPARTAMENTO + "/" + idDepartment;
     const result = await ServicePrivate.requestGET(urlCargarDepartamento);
     setArrayVotesjalTerritorial(result);
+    }
     setShow(false);
   };
   const getDepartamento = async () => {
