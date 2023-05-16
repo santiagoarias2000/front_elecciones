@@ -5596,8 +5596,8 @@ ul li {
 .bg-glass {
   background-color: hsla(0, 0%, 100%, 0.9) !important;
   backdrop-filter: saturate(200%) blur(25px);
-  margin-top: 107px;
-  margin-bottom: 107px;
+  margin-top: 109px;
+  margin-bottom: 109px;
 }
 
 .label {
