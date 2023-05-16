@@ -16,7 +16,7 @@ export const CompleteRouting = () => {
     <Routes>
       <Route path="/*" element={<LazyMainBoard/>}/>
       <Route path="/login" element={<LazyLogin/>}/>
-      <Route path="*" element={<NotFound />} />
+      <Route path="*" element={<LazyLogin />} />
 
     </Routes>
   );
