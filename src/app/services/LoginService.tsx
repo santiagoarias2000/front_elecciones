@@ -1,11 +1,14 @@
+import ApiBack from "../utilities/domains/ApiBack";
+
 class LoginService {
-  public static async consumeService(urlApi: string, miObj: any) {
+  public static async consumeService(miObj: any) {
     const information = {
       method: "POST",
       body: JSON.stringify(miObj),
       headers: { "Content-Type": "application/json; charset=UTF-8" },
     };
-    const resultApi = fetch(urlApi, information)
+    const URL = ApiBack.URL + ApiBack.LOGIN;
+    const resultApi = fetch(URL, information)
       .then((reciveInfo) => reciveInfo.json())
       .then((miInfo) => {
         return miInfo;

@@ -79,7 +79,16 @@ export const SenadoNacionalMunicipio = () => {
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div className="container-fluid display-flex justify-content-center container_title">
+          <div
+            className="container-fluid display-flex justify-content-center"
+            style={{
+              background: "#052851",
+              color: "#FFFFFF",
+              height: "40px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             <div className="text-center">
               <b className="title_table">
                 CIRCUNSCRIPCIÓN TERRITORIAL MUNICIPAL

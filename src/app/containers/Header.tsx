@@ -31,12 +31,15 @@ export const Header = () => {
               <a href={"/nosotros"} style={{ textDecoration: "none" }}>
                 Nosotros
               </a>
+              <a href={"/resultados"} style={{ textDecoration: "none" }}>
+                Resultados
+              </a>
               <a
-                href="/resultados"
+                href="/login"
                 className="getstarted scrollto pruebita"
                 style={{ textDecoration: "none" }}
               >
-                Resultados&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Iniciar Sesión&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </a>
               {/* <Nav.Link className="getstarted scrollto pruebita">
                 &nbsp;Iniciar Sesión&nbsp;

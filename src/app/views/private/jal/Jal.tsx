@@ -1,38 +1,42 @@
 import { useState, useEffect } from "react";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import concejo from "../../../../assets/image/HeaderTable/ELECONCEJO.webp";
-import {Form, InputGroup, Modal} from "react-bootstrap";
+import jal from "../../../../assets/image/HeaderTable/ELEJAL.webp";
+import { Form, InputGroup, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
-import VotesConcejo from "../../../models/DataElection";
+import VotosJal from "../../../models/DataElection";
 
-export const Concejo = () => {
-    //Format Number Votes 
+export const Jal = () => {
+  //Format Number Votes
   const format = new Intl.NumberFormat();
   //Prevent enter in search box
-  function submitHandler(e:any) {
+  function submitHandler(e: any) {
     e.preventDefault();
   }
+
   const [searchTerritorial, setSearchTerritorial] = useState("");
 
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesConsejoTerritorial, setArrayVotesConsejoTerritorial] = useState<VotesConcejo[]>([]);
-  const getVotosConsejoTerritorial = async () => {
-    const result = await ServicePrivate.requestGET(ApiBack.CONCEJO);
-    setArrayVotesConsejoTerritorial(result);
+  const [arrayVotesJalTerritorial, setarrayVotesJalTerritorial] = useState<
+    VotosJal[]
+  >([]);
+
+  const getVotosjalTerritorial = async () => {
+    const result = await ServicePrivate.requestGET(ApiBack.JAL);
+    setarrayVotesJalTerritorial(result);
     setShow(false);
   };
 
   useEffect(() => {
-    getVotosConsejoTerritorial();
+    getVotosjalTerritorial();
   }, []);
 
   return (
     <main id="main" className="main">
       <img
-        src={concejo}
+        src={jal}
         style={{
           width: "100%",
           maxHeight: "80%",
@@ -46,12 +50,6 @@ export const Concejo = () => {
 
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div className="container-fluid display-flex justify-content-center container_title">
-            <div className="text-center">
-              <b className="title_table">CONCEJO TERRITORIAL</b>
-            </div>
-          </div>
-
           <div className="container responsive_pe">
             <div className="row">
               <div className="col-sm"></div>
@@ -97,7 +95,7 @@ export const Concejo = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }} >
+                  <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
                   </th>
                   <th className="text-center" style={{ width: "30%" }}>
@@ -107,7 +105,7 @@ export const Concejo = () => {
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotesConsejoTerritorial
+                {arrayVotesJalTerritorial
                   .filter((myVotes) => {
                     return searchTerritorial === ""
                       ? myVotes
@@ -121,19 +119,30 @@ export const Concejo = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/concejo/departamento/" +
+                            "/jal/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
                           {myVotes.department.name_department}
                         </a>
                       </td>
-                      <td className="text-center">{format.format(myVotes.votos)}</td>
+                      <td className="text-center">
+                        <a
+                          className="link_departamento"
+                          href={
+                            "/jal/departamento/" +
+                            myVotes.department.idDepartment
+                          }
+                        >
+                          {format.format(myVotes.votos)}
+                        </a>
+                      </td>
+
                       <td className="text-center align-middle">
                         <a
                           className="link_departamento"
                           href={
-                            "/concejo/departamento/" +
+                            "/jal/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >

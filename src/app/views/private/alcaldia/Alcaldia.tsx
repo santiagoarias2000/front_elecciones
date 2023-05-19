@@ -1,41 +1,42 @@
 import { useState, useEffect } from "react";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import asamblea from "../../../../assets/image/HeaderTable/ELEASAMBLEA.webp";
+import alcaldia from "../../../../assets/image/HeaderTable/ELEALCALDIA.webp";
 import { Form, InputGroup, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
-import VotesAsamblea from "../../../models/DataElection";
+import VotosAlcaldia from "../../../models/DataElection";
 
-export const Asamblea = () => {
+export const Alcaldia = () => {
   //Format Number Votes
   const format = new Intl.NumberFormat();
 
-  const [searchDepartamento, setSearchDepartamento] = useState("");
+  const [searchTerritorial, setSearchTerritorial] = useState("");
+
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotosAsamblea, setArrayVotosAsamblea] = useState<VotesAsamblea[]>(
+  const [arrayVotosAlcaldia, setArrayVotosAlcaldia] = useState<VotosAlcaldia[]>(
     []
   );
 
-  const getVotosAsamblea = async () => {
-    const result = await ServicePrivate.requestGET(ApiBack.ASAMBLEA);
-    setArrayVotosAsamblea(result);
+  const getVotosAlcaldia = async () => {
+    const result = await ServicePrivate.requestGET(ApiBack.ALCALDIA);
+    setArrayVotosAlcaldia(result);
     setShow(false);
   };
   //Prevent enter in search box
-  function submitHandler(e:any) {
+  function submitHandler(e: any) {
     e.preventDefault();
   }
 
   useEffect(() => {
-    getVotosAsamblea();
+    getVotosAlcaldia();
   }, []);
 
   return (
     <main id="main" className="main">
       <img
-        src={asamblea}
+        src={alcaldia}
         style={{
           width: "100%",
           maxHeight: "80%",
@@ -50,7 +51,7 @@ export const Asamblea = () => {
         <div className="cardBorder card">
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b className="title_table">ASAMBLEA TERRITORIAL</b>
+              <b className="title_table">ALCALDIA TERRITORIAL</b>
             </div>
           </div>
 
@@ -61,7 +62,7 @@ export const Asamblea = () => {
                 <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
-                      onChange={(e) => setSearchDepartamento(e.target.value)}
+                      onChange={(e) => setSearchTerritorial(e.target.value)}
                       placeholder="Buscar nombre departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
@@ -78,7 +79,7 @@ export const Asamblea = () => {
                 <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
-                      onChange={(e) => setSearchDepartamento(e.target.value)}
+                      onChange={(e) => setSearchTerritorial(e.target.value)}
                       placeholder="Buscar nombre departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
@@ -99,7 +100,7 @@ export const Asamblea = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }} >
+                  <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
                   </th>
                   <th className="text-center" style={{ width: "30%" }}>
@@ -109,13 +110,13 @@ export const Asamblea = () => {
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotosAsamblea
+                {arrayVotosAlcaldia
                   .filter((myVotes) => {
-                    return searchDepartamento === ""
+                    return searchTerritorial === ""
                       ? myVotes
                       : myVotes.department.name_department
                           .toLowerCase()
-                          .includes(searchDepartamento.toLowerCase());
+                          .includes(searchTerritorial.toLowerCase());
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
@@ -123,7 +124,7 @@ export const Asamblea = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/asamblea/departamento/" +
+                            "/alcaldia/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -131,13 +132,21 @@ export const Asamblea = () => {
                         </a>
                       </td>
                       <td className="text-center">
-                        {format.format(myVotes.votos)}
+                        <a
+                          className="link_departamento"
+                          href={
+                            "/alcaldia/departamento/" +
+                            myVotes.department.idDepartment
+                          }
+                        >
+                          {format.format(myVotes.votos)}
+                        </a>
                       </td>
                       <td className="text-center align-middle">
                         <a
                           className="link_departamento"
                           href={
-                            "/asamblea/departamento/" +
+                            "/alcaldia/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >

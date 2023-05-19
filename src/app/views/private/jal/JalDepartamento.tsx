@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import jal from "../../../../assets/image/HeaderTable/ELEJAL.webp";
-import {useParams } from "react-router-dom";
-import {Form, InputGroup, Modal } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { Form, InputGroup, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 import VotosJal from "../../../models/DataElection";
 import Department from "../../../models/Department";
@@ -14,7 +14,7 @@ export const JalDepartamento = () => {
   //Format Number Votes
   const format = new Intl.NumberFormat();
   //Prevent enter in search box
-  function submitHandler(e:any) {
+  function submitHandler(e: any) {
     e.preventDefault();
   }
 
@@ -24,17 +24,21 @@ export const JalDepartamento = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesjalTerritorial, setArrayVotesjalTerritorial] = useState<VotosJal[]>([]);
+  const [arrayVotesjalTerritorial, setArrayVotesjalTerritorial] = useState<
+    VotosJal[]
+  >([]);
 
   const getVotosJalDepartamental = async () => {
-    if(idDepartment==='11'){
-    const urlCargarDepartamento = ApiBack.JAL_DEPARTAMENTO_BOGOTA + "/" + idDepartment;
-    const result = await ServicePrivate.requestGET(urlCargarDepartamento);
-    setArrayVotesjalTerritorial(result);
-    }else{
-    const urlCargarDepartamento = ApiBack.JAL_DEPARTAMENTO + "/" + idDepartment;
-    const result = await ServicePrivate.requestGET(urlCargarDepartamento);
-    setArrayVotesjalTerritorial(result);
+    if (idDepartment === "11") {
+      const urlCargarDepartamento =
+        ApiBack.JAL_DEPARTAMENTO_BOGOTA + "/" + idDepartment;
+      const result = await ServicePrivate.requestGET(urlCargarDepartamento);
+      setArrayVotesjalTerritorial(result);
+    } else {
+      const urlCargarDepartamento =
+        ApiBack.JAL_DEPARTAMENTO + "/" + idDepartment;
+      const result = await ServicePrivate.requestGET(urlCargarDepartamento);
+      setArrayVotesjalTerritorial(result);
     }
     setShow(false);
   };
@@ -47,7 +51,7 @@ export const JalDepartamento = () => {
 
   useEffect(() => {
     getVotosJalDepartamental();
-    getDepartamento()
+    getDepartamento();
   }, [idDepartment]);
 
   return (
@@ -67,12 +71,6 @@ export const JalDepartamento = () => {
 
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div className="container-fluid display-flex justify-content-center container_title">
-            <div className="text-center">
-              <b className="title_table">JAL DEPARTAMENTAL</b>
-            </div>
-          </div>
-
           <div className="container responsive">
             <div className="row">
               <div className="col-sm">
@@ -102,7 +100,7 @@ export const JalDepartamento = () => {
 
           <div className="container no_responsive">
             <div className="row">
-            <div className="col-sm ">
+              <div className="col-sm ">
                 <div className="col">
                   <h6 className="text-center my-2" style={{ color: "#052851" }}>
                     {arrayDepartamento.map((myDepartment) => (
@@ -172,7 +170,17 @@ export const JalDepartamento = () => {
                         </a>
                       </td>
                       <td className="text-center">
-                        {format.format(myVotes.votos)}
+                        <a
+                          className="link_departamento"
+                          href={
+                            "/jal/departamento/" +
+                            idDepartment +
+                            "/municipio/" +
+                            myVotes.municipality.id_municipality
+                          }
+                        >
+                          {format.format(myVotes.votos)}
+                        </a>
                       </td>
                       <td className="text-center align-middle">
                         <a
@@ -193,31 +201,31 @@ export const JalDepartamento = () => {
             </table>
           </div>
           <div className="dropdown">
-          <div
-            className="container-fluid display-flex justify-content-center mt-4"
-            style={{
-              color: "#FFFFFF",
-              height: "40px",
-              alignItems: "right",
-            }}
-          >
-            <h6
-                className="tituloVotosTotales my-2"
+            <div className="d-flex align-items-center mt-3">
+              <div
+                className="container-fluid"
+                style={{
+                  color: "#FFFFFF",
+                  height: "40px",
+                  alignItems: "right",
+                }}
               >
-                {arrayDepartamento.map((myDepartment) => (
-                  <b style={{ color: "#D9224E" }}>
-                    VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
-                  </b>
-                ))}
-              </h6>
+                <h6 className="tituloVotosTotales my-2">
+                  {arrayDepartamento.map((myDepartment) => (
+                    <b style={{ color: "#D9224E" }}>
+                      VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
+                    </b>
+                  ))}
+                </h6>
+              </div>
+            </div>
           </div>
-        </div>
           <div className="dropdown">
             <div
               className="container-fluid display-flex justify-content-center"
               style={{
                 color: "#FFFFFF",
-                height: "80px",
+                height: "70px",
                 display: "flex",
                 alignItems: "center",
               }}
