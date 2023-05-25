@@ -105,7 +105,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
             }}
           >
           <div className="text-center d-flex align-items-center">
-            <b className="title_table">TERRITORIAL AFRODESCENDIENTE</b>
+            <b className="title_table">CIRCUNSCRIPCIÓN AFRODESCENDIENTE</b>
           </div>
         </div>
         <div className="container responsive">

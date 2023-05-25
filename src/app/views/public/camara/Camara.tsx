@@ -87,7 +87,7 @@ export const Camara = () => {
             }}
           >
             <div className="text-center d-flex align-items-center">
-              <b className="title_table">REGIONAL</b>
+              <b className="title_table">CIRCUNSCRIPCIÓN TERRITORIAL</b>
             </div>
           </div>
 
@@ -232,7 +232,7 @@ export const Camara = () => {
             }}
           >
             <div className="text-center">
-              <b className="title_table">INDíGENA</b>
+              <b className="title_table">CIRCUNSCRIPCIÓN INDÍGENA</b>
             </div>
           </div>
 
@@ -378,7 +378,7 @@ export const Camara = () => {
             }}
           >
             <div className="text-center">
-              <b className="title_table">AFRODESCENDIENTES</b>
+              <b className="title_table">CIRCUNSCRIPCIÓN AFRODESCENDIENTES</b>
             </div>
           </div>
 

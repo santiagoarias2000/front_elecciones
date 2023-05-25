@@ -97,7 +97,7 @@ export const CamaraIndigenaDepartamento = () => {
             }}
           >
           <div className="text-center d-flex align-items-center">
-            <b className="title_table">TERRITORIAL INDIGENA</b>
+            <b className="title_table">CIRCUNSCRIPCIÓN INDÍGENA</b>
           </div>
         </div>
         <div className="container responsive">

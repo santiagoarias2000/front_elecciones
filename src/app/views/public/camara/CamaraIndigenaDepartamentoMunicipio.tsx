@@ -105,7 +105,7 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
             }}
           >
             <div className="text-center">
-              <b className="title_table">TERRITORIAL INDIGENA</b>
+              <b className="title_table">CIRCUNSCRIPCIÓN INDÍGENA</b>
             </div>
           </div>
           <div className="container responsive">

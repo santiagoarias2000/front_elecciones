@@ -84,7 +84,7 @@ export const SenadoIndigenaMunicipio = () => {
             }}
           >
             <div className="text-center">
-              <b className="title_table">CIRCUNCRIPCIÓN MUNICIPAL INDÍGENA</b>
+              <b className="title_table">CIRCUNCRIPCIÓN INDÍGENA</b>
             </div>
           </div>
 
