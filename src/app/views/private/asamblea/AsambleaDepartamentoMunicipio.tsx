@@ -81,7 +81,7 @@ export const AsambleaDepartamentoMunicipio = () => {
                 <div className="dropdown text-center my-3">
                   <button
                     type="button"
-                    className="buttonBack buttonBack-primary dropdown-toggle"
+                    className="buttonBack buttonBack-primary dropdown-toggle text-light"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
@@ -180,7 +180,7 @@ export const AsambleaDepartamentoMunicipio = () => {
                 >
                   <button
                     type="button"
-                    className="buttonBack buttonBack-primary dropdown-toggle"
+                    className="buttonBack buttonBack-primary dropdown-toggle text-light"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >

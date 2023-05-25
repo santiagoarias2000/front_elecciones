@@ -114,7 +114,7 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
                 <div className="dropdown text-center my-3">
                   <button
                     type="button"
-                    className="buttonBack buttonBack-primary dropdown-toggle"
+                    className="buttonBack buttonBack-primary dropdown-toggle text-light"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
@@ -158,7 +158,9 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
                               myMunicipality.id_municipality
                             }
                           >
-                            <b className="name_text">{myMunicipality.name_municipality}</b>
+                            <b className="name_text">
+                              {myMunicipality.name_municipality}
+                            </b>
                           </a>
                         ))}
                     </li>
@@ -215,7 +217,7 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
                 >
                   <button
                     type="button"
-                    className="buttonBack buttonBack-primary dropdown-toggle"
+                    className="buttonBack buttonBack-primary dropdown-toggle text-light"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >

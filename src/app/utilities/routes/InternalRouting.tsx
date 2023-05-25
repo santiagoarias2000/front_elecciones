@@ -42,6 +42,7 @@ import { AlcaldiaDepartamentoMunicipio } from "../../views/private/alcaldia/Alca
 import { Resultados } from "../../views/shared/Resultados";
 import { Login } from "../../containers/Login";
 import { Guard } from "../../security/Guard";
+import { Citrep } from "../../views/public/camara/Citrep";
 
 //Lazy structure from use the all tsx
 
@@ -64,6 +65,7 @@ const LazyWelcome =lazy(()=>import("../../containers/Welcome").then(()=>({defaul
 const LazyCamaraTerritorialepartamentoMunicipio =lazy(()=>import("../../views/public/camara/CamaraTerritorialDepartamentoMunicipio").then(()=>({default:CamaraTerritorialDepartamentoMunicipio})));
 const LazyCamaraIndigenaDepartamentoMunicipio =lazy(()=>import("../../views/public/camara/CamaraIndigenaDepartamentoMunicipio").then(()=>({default:CamaraIndigenaDepartamentoMunicipio})));
 const LazyCamaraAfroDescendienteDepartamentoMunicipio =lazy(()=>import("../../views/public/camara/CamaraAfroDescendienteDepartamentoMunicipio").then(()=>({default:CamaraAfroDescendienteDepartamentoMunicipio})));
+const LazyCamaraCitrep =lazy(()=>import("../../views/public/camara/Citrep").then(()=>({default:Citrep})));
 const LazyPresidente = lazy(() => import("../../views/public/presidencia/presidenciaAll").then(() => ({default: PresidenciaAll})));
 const LazyGobernacion = lazy(() => import("../../views/private/gobernacion/Gobernacion").then(() => ({default: Gobernacion})));
 const LazyAlcadia = lazy(() => import("../../views/private/alcaldia/Alcaldia").then(() => ({default: Alcaldia})));
@@ -117,6 +119,7 @@ export const InternalRouting = () => {
       <Route path="/camara/circuncripcion/territorial/departamento/:idDepartment/municipio/:idMunicipality" element={<LazyCamaraTerritorialepartamentoMunicipio />} />
       <Route path="/camara/circuncripcion/indigena/departamento/:idDepartment/municipio/:idMunicipality" element={<LazyCamaraIndigenaDepartamentoMunicipio />} />
       <Route path="/camara/circuncripcion/afrodescendiente/departamento/:idDepartment/municipio/:idMunicipality" element={<LazyCamaraAfroDescendienteDepartamentoMunicipio />} />
+      <Route path="/camara/circuncripcion/citrep/:idCitrep" element={<LazyCamaraCitrep />} />
       //Routes presidente
       <Route path="/presidencia" element={<LazyPresidente />} />
       //Route blog

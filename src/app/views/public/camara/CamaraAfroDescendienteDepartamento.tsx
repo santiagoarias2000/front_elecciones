@@ -105,7 +105,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
             }}
           >
           <div className="text-center d-flex align-items-center">
-            <b className="title_table">TERRITORIAL AFRO-DESCENDIENTE</b>
+            <b className="title_table">TERRITORIAL AFRODESCENDIENTE</b>
           </div>
         </div>
         <div className="container responsive">
@@ -114,7 +114,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
               <div className="dropdown text-center my-3">
                 <button
                   type="button"
-                  className="buttonBack buttonBack-primary dropdown-toggle"
+                  className="buttonBack buttonBack-primary dropdown-toggle text-light"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
@@ -210,7 +210,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
               >
                 <button
                   type="button"
-                  className="buttonBack buttonBack-primary dropdown-toggle"
+                  className="buttonBack buttonBack-primary dropdown-toggle text-light"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
