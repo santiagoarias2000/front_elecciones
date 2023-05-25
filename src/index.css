@@ -1579,8 +1579,17 @@ h6 {
 }
 
 @media (max-width: 768px) {
+  .name_table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #052851;
+    margin-top: 1vw;
+  }
   .title_table {
-    font-size: 2vw;
+    font-size: 0.7rem;
   }
 }
 
@@ -1639,7 +1648,7 @@ h6 {
 
 @media (max-width: 768px) {
   .container_table {
-    font-size: 9px;
+    font-size: 0.7rem;
   }
   .container_table tr .text_left {
     padding-left: 9vw;
@@ -1680,7 +1689,7 @@ h6 {
     font-size: 1px;
   }
   .form_co::placeholder {
-    font-size: 2.7vw;
+    font-size: 0.8rem;
   }
 }
 
@@ -2190,6 +2199,10 @@ h6,
   transition: 0.3s;
 }
 
+.dropdown-toggle {
+  color: #052851 !important;
+}
+
 .pruebita {
   color: #052851 !important;
 }
@@ -2269,6 +2282,9 @@ h6,
 
   .navbar .dropdown .dropdown:hover > ul {
     left: -100%;
+  }
+  .dropdown-toggle {
+    margin-left: 0px !important;
   }
 }
 
@@ -2803,9 +2819,34 @@ h6,
   line-height: 1;
   border-radius: 50px;
 }
+.getstarted2 {
+  background: #ffffff;
+  padding: 0px  12px 0px 25px;
+  margin-left: 20px;
+  color: #052851 !important;
+  border-radius: 50px;
+}
 
 @media screen and (max-width: 768px) {
   .getstarted {
+    background: #ffffff;
+    margin-left: 0px;
+    color: #052851;
+    line-height: 1;
+    border-radius: 0px;
+  }
+  .getstarted .scrollto {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0 10px 30px;
+    font-family: "Raleway", sans-serif;
+    font-size: 15px;
+    color: #ffffff;
+    white-space: nowrap;
+    transition: 0.3s;
+  }
+  .getstarted2 {
     background: #ffffff;
     margin-left: 0px;
     color: #052851;
@@ -3010,7 +3051,7 @@ section {
 
 .section-title {
   text-align: center;
-  padding-bottom: 40px;
+  padding-bottom: 30px;
 }
 
 .section-title h2 {
@@ -3114,7 +3155,7 @@ section {
 }
 
 .about .icon-box + .icon-box {
-  margin-top: 40px;
+  margin-top: 10px;
 }
 
 .about .icon-box .icon {
@@ -5742,9 +5783,9 @@ ul li {
 
   #radius-shape-2 {
     border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
-    bottom: -60px;
     right: -110px;
     width: 300px;
+    left: 105%;
     height: 300px;
     background: radial-gradient(#052851, #052851);
     overflow: hidden;
@@ -5756,4 +5797,128 @@ ul li {
     margin-top: 42%;
     margin-bottom: 42%;
   }
+}
+
+.alt-services .img-bg {
+  background-size: cover;
+  background-position: center center;
+  min-height: 400px;
+}
+
+.alt-services h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #052851;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.alt-services h3:after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background: #052851;
+  left: 0;
+  bottom: 0;
+}
+
+
+.alt-services .icon-box i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-right: 25px;
+  font-size: 28px;
+  width: 56px;
+  height: 56px;
+  border-radius: 4px;
+  line-height: 0;
+  box-shadow: 0px 2px 30px rgba(0, 0, 0, 0.08);
+  background-color: #052851;
+  transition: 0.3s;
+}
+
+.alt-services .icon-box:hover i {
+  background-color: white;
+  color: #052851;
+}
+
+.alt-services .icon-box h6 {
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.alt-services .icon-box h6 a {
+  color: #052851;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.alt-services .icon-box h6 a:hover {
+  color: white;
+}
+
+.alt-services .icon-box p {
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.why-us .box2 {
+  display: flex;
+  justify-content: center;
+  padding: 30px 30px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  transition: all ease-in-out 0.3s;
+  height: 100%;
+}
+
+
+@media (max-width: 768px) {
+  .why-us .box2 {
+    display: flex;
+    justify-content: left;
+    padding: 30px 30px;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    transition: all ease-in-out 0.3s;
+    height: 100%;
+  }
+}
+
+.why-us .box2 span {
+  display: block;
+  font-size: 28px;
+  font-weight: 700;
+  color: #052851;
+}
+
+.why-us .box2 h4 {
+  font-size: 24px;
+  font-weight: 600;
+  padding: 0;
+  margin: 20px 0;
+  color: #6c665c;
+}
+
+.why-us .box2 p {
+  color: #aaaaaa;
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.why-us .box2:hover {
+  background: #052851;
+  padding: 30px 30px 30px 30px;
+  box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18);
+}
+
+.why-us .box2:hover span,
+.why-us .box2:hover h4,
+.why-us .box2:hover a {
+  color: #fff;
 }

@@ -28,7 +28,6 @@ export const Welcome = () => {
 
   return (
     <div id="about" className="containner-welcome">
-      
       <section className="about">
         <div className="container" data-aos="fade-up">
           <div className="row no-gutters">
@@ -47,7 +46,7 @@ export const Welcome = () => {
             </div>
 
             <div className="col-lg-6 d-flex flex-column justify-content-center about-content">
-              <div className="section-title" style={{ paddingBottom: "18%" }}>
+              <div className="section-title" style={{ paddingBottom: "10%" }}>
                 <h2>Bienvenido a Guía Electoral de Colombia</h2>
                 <h6 className="fst-italic text_extr">
                   ¡¡¡Para estrategias...Documéntese!!!
@@ -56,6 +55,12 @@ export const Welcome = () => {
                   Documento exclusivo para la consulta de resultados electorales
                   en el país y de uso estratégico en la toma de decisiones en
                   marketing político.
+                  <br />
+                  <br />
+                  <b>
+                    Marca Comercial Registrada Resolución No.72407 del 25 de
+                    octubre de 2016 - SIC
+                  </b>
                 </p>
               </div>
               <div className="section-title">
@@ -89,58 +94,76 @@ export const Welcome = () => {
                     <a className="flex d-block" href="/jal">
                       JAL
                     </a>
-                    <form>
-                      <script
-                        src="https://checkout.epayco.co/checkout.js"
-                        data-epayco-key="a72afc02377f614d2826ec152d949872"
-                        className="epayco-button"
-                        data-epayco-amount="5000"
-                        data-epayco-tax="0.00"
-                        data-epayco-tax-ico="0.00"
-                        data-epayco-tax-base="5000"
-                        data-epayco-name="Prueba"
-                        data-epayco-description="Prueba"
-                        data-epayco-currency="cop"
-                        data-epayco-country="CO"
-                        data-epayco-test="false"
-                        data-epayco-external="false"
-                        data-epayco-response=""
-                        data-epayco-confirmation=""
-                        data-epayco-button="https://multimedia.epayco.co/dashboard/btns/btn11.png"
-                      ></script>
-                    </form>
                   </li>
                 </ul>
               </div>
 
-              <hr style={{ color: "#052851", marginTop: "60px" }} />
+              <hr
+                style={{
+                  color: "#052851",
+                  marginTop: "40px",
+                  marginBottom: "40px",
+                }}
+              />
+              {/* <div className="d-flex justify-content-center">
+                <div id="alt-services" className="alt-services">
+                  <div
+                    className="icon-box d-flex position-relative"
+                    data-aos-delay="100"
+                  >
+                    <i className="bi bi-calendar-week"></i>
+                    <div className="d-flex align-items-center">
+                      <h6>
+                        <a href="" className="stretched-link">
+                          CRONOGRAMA DE ELECCIONES 2023
+                        </a>
+                      </h6>
+                    </div>
+                  </div>
+                  <div
+                    className="icon-box d-flex position-relative"
+                    data-aos-delay="100"
+                  >
+                    <i className="bi bi-file-earmark-ruled"></i>
+                    <div className="d-flex align-items-center">
+                      <h6>
+                        <a href="" className="stretched-link">
+                          NORMATIVA ELECTORAL
+                        </a>
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+              </div> */}
             </div>
           </div>
         </div>
       </section>
 
+      
+
       <div className="container" data-aos="fade-up">
         <div className="row">
-          <div className="col-lg-6" style={{ marginTop: "4%" }}>
+          <div className="col-lg-6 d-flex align-items-center">
             <p className="text-justify">
               La <b>Guía Electoral de Colombia</b> es un producto de iniciativa
-              privada, que inicia en 1984 en la ciudad de Tunja, como tésis de
+              privada, que inicia en 1984 en la ciudad de Tunja, como tesis de
               grado en su estudio de mercados para optar el título de
-              Administrador de Empresas de su editor en la universidad Pedagógia
-              y Tecnológica de Colombia. Esta Guia aporta a distintos públicos
-              una herramenta para el análisis de conocimiento electoral de los
-              protagonistas de elección popular como: Ediles, Concejales,
-              Alcades, Diputados, Gobernadores, Congresistas y Presidente de la
-              República.
+              Administrador de Empresas de su editor en la universidad
+              Pedagógica y Tecnológica de Colombia. Esta guía aporta a distintos
+              públicos una herramienta para el análisis de conocimiento
+              electoral de los protagonistas de elección popular como: ediles,
+              concejales, alcaldes, diputados, gobernadores, congresistas y
+              presidente de la República.
               <p>
-                La Guia Electoral se ha pubicado para los departamentos de
+                La Guia Electoral se ha publicado para los departamentos de
                 Antioquia, Casanare, Cundinamarca, Santander, Valle del Cauca,
-                Bogotá D.C y continuamente para Boyaca durante 34 años; una
+                Bogotá D.C y continuamente para Boyacá durante 34 años; una
                 edición nacional con motivo de la elección de los miembros de la
                 Asamblea Nacional Constituyente 1990, además de la edición
                 especial con motivo del Plebiscito por la Paz 2016 y últimamente
                 con información sobre la elección del pasado Gobierno Nacional
-                2018-2022
+                2018-2022.
               </p>
             </p>
           </div>
@@ -148,8 +171,6 @@ export const Welcome = () => {
             <Carousel
               className="mb-5"
               style={{
-                paddingLeft: "10%",
-                paddingRight: "10%",
                 width: "100%",
                 height: "auto",
               }}
@@ -231,6 +252,51 @@ export const Welcome = () => {
           </div>
         </div>
       </div>
+      
+      <section id="why-us" className="why-us">
+        <div className="container" data-aos="fade-up">
+          <div className="row mb-5">
+            <div className="col-lg-6">
+              <div className="box2">
+                <div id="alt-services" className="alt-services">
+                  <div
+                    className="icon-box d-flex position-relative"
+                    data-aos-delay="100"
+                  >
+                    <i className="bi bi-calendar-week"></i>
+                    <div className="d-flex align-items-center">
+                      <h6>
+                        <a href="#" className="stretched-link">
+                          CRONOGRAMA DE ELECCIONES 2023
+                        </a>
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-6 mt-4 mt-lg-0">
+              <div className="box2">
+                <div id="alt-services" className="alt-services">
+                  <div
+                    className="icon-box d-flex position-relative"
+                    data-aos-delay="100"
+                  >
+                    <i className="bi bi-file-earmark-ruled"></i>
+                    <div className="d-flex align-items-center">
+                      <h6>
+                        <a href="#" className="stretched-link">
+                          NORMATIVA ELECTORAL
+                        </a>
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section id="team" className="team">
         <div className="container" data-aos="fade-up">
@@ -238,10 +304,10 @@ export const Welcome = () => {
             <h2>PATROCINADORES</h2>
             <p className="text-justify">
               Los patrocinadores de este proyecto son un grupo de empresas
-              líderes del sector publico y privado que han reconocido la
+              líderes del sector público y privado que han reconocido la
               importancia de la iniciativa. Gracias a la colaboración y el
               compromiso de nuestros patrocinadores, este proyecto cuenta con
-              los recursos economicos y humanos necesarios para llevarse a cabo
+              los recursos económicos y humanos necesarios para llevarse a cabo
               y alcanzar los objetivos planteados. Además, la participación de
               estas empresas aporta un valor adicional al proyecto al brindar su
               experiencia y conocimientos en las distintas áreas relacionadas
@@ -376,7 +442,6 @@ export const Welcome = () => {
           </div>
           <hr />
         </div>
-        
       </section>
       <Modal
         show={show}
@@ -397,6 +462,5 @@ export const Welcome = () => {
         </Modal.Body>
       </Modal>
     </div>
-    
   );
 };

@@ -3,13 +3,13 @@ import VotesCongreso from "../../../models/VotesCongreso";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import camara from "../../../../assets/image/HeaderTable/camara.webp";
-import { Form, InputGroup, Modal} from "react-bootstrap";
+import { Form, InputGroup, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
 export const Camara = () => {
-  //Format Number Votes 
+  //Format Number Votes
   const format = new Intl.NumberFormat();
-  
+
   const [searchTerritorial, setSearchTerritorial] = useState("");
   const [searchIndigena, setSearchIndigena] = useState("");
   const [searchAfro, setSearchAfro] = useState("");
@@ -17,11 +17,17 @@ export const Camara = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] = useState<VotesCongreso[]>([]);
+  const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
+    useState<VotesCongreso[]>([]);
 
-  const [arrayVotesCamaraIndigena, setArrayVotosCamaraIndigena] = useState< VotesCongreso[] >([]);
+  const [arrayVotesCamaraIndigena, setArrayVotosCamaraIndigena] = useState<
+    VotesCongreso[]
+  >([]);
 
-  const [ arrayVotesCamaraAfroDescendiente, setArrayVotosCamaraAfroDescendiente, ] = useState<VotesCongreso[]>([]);
+  const [
+    arrayVotesCamaraAfroDescendiente,
+    setArrayVotosCamaraAfroDescendiente,
+  ] = useState<VotesCongreso[]>([]);
 
   const getVotosCamaraTerritorial = async () => {
     const result = await ServicePrivate.requestGET(ApiBack.CAMARA_TERRITORIAL);
@@ -39,7 +45,7 @@ export const Camara = () => {
     setArrayVotosCamaraAfroDescendiente(result);
   };
   //Prevent enter in search box
-  function submitHandler(e:any) {
+  function submitHandler(e: any) {
     e.preventDefault();
   }
 
@@ -65,7 +71,16 @@ export const Camara = () => {
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div className="container-fluid display-flex justify-content-center container_title">
+          <div
+            className="container-fluid display-flex justify-content-center"
+            style={{
+              background: "#052851",
+              color: "#FFFFFF",
+              height: "40px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             <div className="text-center d-flex align-items-center">
               <b className="title_table">TERRITORIAL DEPARTAMENTAL</b>
             </div>
@@ -148,7 +163,15 @@ export const Camara = () => {
                         </a>
                       </td>
                       <td className="text-center">
-                        {format.format(myVotes.votos)}
+                        <a
+                          className="link_departamento"
+                          href={
+                            "/camara/circuncripcion/territorial/departamento/" +
+                            myVotes.department.idDepartment
+                          }
+                        >
+                          {format.format(myVotes.votos)}
+                        </a>
                       </td>
                       <td className="text-center align-middle">
                         <a
@@ -287,7 +310,15 @@ export const Camara = () => {
                       </td>
 
                       <td className="text-center">
-                        {format.format(myVotes.votos)}
+                      <a
+                          className="link_departamento"
+                          href={
+                            "/camara/circuncripcion/indigena/departamento/" +
+                            myVotes.department.idDepartment
+                          }
+                        >
+                          {format.format(myVotes.votos)}
+                        </a>
                       </td>
                       <td className="text-center align-middle">
                         <a
@@ -424,7 +455,15 @@ export const Camara = () => {
                         </a>
                       </td>
                       <td className="text-center">
-                        {format.format(myVotes.votos)}
+                      <a
+                          className="link_departamento"
+                          href={
+                            "/camara/circuncripcion/afrodescendiente/departamento/" +
+                            myVotes.department.idDepartment
+                          }
+                        >
+                          {format.format(myVotes.votos)}
+                        </a>
                       </td>
                       <td className="text-center align-middle">
                         <a

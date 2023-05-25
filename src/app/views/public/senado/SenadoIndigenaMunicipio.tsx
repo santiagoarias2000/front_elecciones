@@ -18,9 +18,13 @@ export const SenadoIndigenaMunicipio = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesSenadoMunicipal, setArrayVotosSenadoMunicipal] = useState< VotosSenado[] >([]);
+  const [arrayVotesSenadoMunicipal, setArrayVotosSenadoMunicipal] = useState<
+    VotosSenado[]
+  >([]);
   const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
-  const [arrayNameMunicipality, setArrayNameMunicipality] = useState< Municipality[] >([]);
+  const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
+    Municipality[]
+  >([]);
   const getVotosSenadoIndigena = async () => {
     const result = await ServicePrivate.requestGET(
       ApiBack.SENADO_INDIGENA_MUNICIPIO +
@@ -66,7 +70,7 @@ export const SenadoIndigenaMunicipio = () => {
         alt="logo principal para la parte superior de la pagina web"
       />
       <div className="side_bar"></div>
-      
+
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
           <div
@@ -74,7 +78,7 @@ export const SenadoIndigenaMunicipio = () => {
             style={{
               background: "#052851",
               color: "#FFFFFF",
-              height: "20px",
+              height: "40px",
               display: "flex",
               alignItems: "center",
             }}
@@ -101,7 +105,6 @@ export const SenadoIndigenaMunicipio = () => {
                     data-live-search="true"
                     style={{ maxHeight: "200px", overflowY: "auto" }}
                   >
-                    
                     <div className="sticky-top">
                       <input
                         type="text"
@@ -135,7 +138,9 @@ export const SenadoIndigenaMunicipio = () => {
                               myMunicipality.id_municipality
                             }
                           >
-                            <b className="name_text">{myMunicipality.name_municipality}</b>
+                            <b className="name_text">
+                              {myMunicipality.name_municipality}
+                            </b>
                           </a>
                         ))}
                     </li>
@@ -371,7 +376,6 @@ export const SenadoIndigenaMunicipio = () => {
           </Modal.Body>
         </Modal>
       </div>
-
     </main>
   );
 };

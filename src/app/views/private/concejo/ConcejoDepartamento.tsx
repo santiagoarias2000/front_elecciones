@@ -2,19 +2,18 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
-import {Form, InputGroup, Modal} from "react-bootstrap";
+import { Form, InputGroup, Modal } from "react-bootstrap";
 import VotesConcejo from "../../../models/DataElection";
 import concejo from "../../../../assets/image/HeaderTable/ELECONCEJO.webp";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 import Department from "../../../models/Department";
 
-
 export const ConcejoDepartamento = () => {
-    let { idDepartment } = useParams();
-    //Format Number Votes 
+  let { idDepartment } = useParams();
+  //Format Number Votes
   const format = new Intl.NumberFormat();
   //Prevent enter in search box
-  function submitHandler(e:any) {
+  function submitHandler(e: any) {
     e.preventDefault();
   }
 
@@ -35,7 +34,8 @@ export const ConcejoDepartamento = () => {
   };
 
   const getVotosConcejoDepartamental = async () => {
-    const urlCargarDepartamento = ApiBack.CONCEJO_DEPARTAMENTO + "/" + idDepartment;
+    const urlCargarDepartamento =
+      ApiBack.CONCEJO_DEPARTAMENTO + "/" + idDepartment;
     const result = await ServicePrivate.requestGET(urlCargarDepartamento);
     setarrayVotesConcejoDepartamental(result);
     setShow(false);
@@ -45,7 +45,7 @@ export const ConcejoDepartamento = () => {
     getDepartamento();
     getVotosConcejoDepartamental();
   }, [idDepartment]);
-  return(
+  return (
     <main id="main" className="main">
       <img
         src={concejo}
@@ -59,15 +59,9 @@ export const ConcejoDepartamento = () => {
         alt="logo principal para la parte superior de la pagina web"
       />
       <div className="side_bar"></div>
-      
+
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div className="container-fluid display-flex justify-content-center container_title">
-            <div className="text-center">
-              <b className="title_table">CONCEJO MUNICIPAL</b>
-            </div>
-          </div>
-
           <div className="container responsive">
             <div className="row">
               <div className="col-sm">
@@ -96,7 +90,7 @@ export const ConcejoDepartamento = () => {
           </div>
           <div className="container no_responsive">
             <div className="row">
-            <div className="col-sm ">
+              <div className="col-sm ">
                 <div className="col">
                   <h6 className="text-center my-2" style={{ color: "#052851" }}>
                     {arrayDepartamento.map((myDepartment) => (
@@ -106,7 +100,7 @@ export const ConcejoDepartamento = () => {
                     ))}
                   </h6>
                 </div>
-              </div>  
+              </div>
               <div className="col-sm">
                 <Form id="form_conta">
                   <InputGroup className="my-1 container_form">
@@ -135,11 +129,10 @@ export const ConcejoDepartamento = () => {
                   <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
                   </th>
-                  <th className="text-center" style={{ width: "35%" }} >
+                  <th className="text-center" style={{ width: "35%" }}>
                     TOTAL VOTOS
                   </th>
-                  <th className="text-center" style={{ width: "30%" }} ></th>
-
+                  <th className="text-center" style={{ width: "30%" }}></th>
                 </tr>
               </thead>
               <tbody className="color container_table">
@@ -157,19 +150,35 @@ export const ConcejoDepartamento = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/concejo/departamento/"+idDepartment+"/municipio/"+
+                            "/concejo/departamento/" +
+                            idDepartment +
+                            "/municipio/" +
                             myVotes.municipality.id_municipality
                           }
                         >
                           {myVotes.municipality.name_municipality}
                         </a>
                       </td>
-                      <td className="text-center">{format.format(myVotes.votos)}</td>
+                      <td className="text-center">
+                        <a
+                          className="link_departamento"
+                          href={
+                            "/concejo/departamento/" +
+                            idDepartment +
+                            "/municipio/" +
+                            myVotes.municipality.id_municipality
+                          }
+                        >
+                          {format.format(myVotes.votos)}
+                        </a>
+                      </td>
                       <td className="text-center align-middle">
                         <a
                           className="link_departamento"
                           href={
-                            "/concejo/departamento/"+idDepartment+"/municipio/"+
+                            "/concejo/departamento/" +
+                            idDepartment +
+                            "/municipio/" +
                             myVotes.municipality.id_municipality
                           }
                         >
@@ -182,31 +191,31 @@ export const ConcejoDepartamento = () => {
             </table>
           </div>
           <div className="dropdown">
-          <div
-            className="container-fluid display-flex justify-content-center mt-4"
-            style={{
-              color: "#FFFFFF",
-              height: "40px",
-              alignItems: "right",
-            }}
-          >
-            <h6
-                className="tituloVotosTotales my-2"
+            <div className="d-flex align-items-center mt-3">
+              <div
+                className="container-fluid"
+                style={{
+                  color: "#FFFFFF",
+                  height: "40px",
+                  alignItems: "right",
+                }}
               >
-                {arrayDepartamento.map((myDepartment) => (
-                  <b style={{ color: "#D9224E" }}>
-                    VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
-                  </b>
-                ))}
-              </h6>
+                <h6 className="tituloVotosTotales my-2">
+                  {arrayDepartamento.map((myDepartment) => (
+                    <b style={{ color: "#D9224E" }}>
+                      VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
+                    </b>
+                  ))}
+                </h6>
+              </div>
+            </div>
           </div>
-        </div>
           <div className="dropdown">
             <div
               className="container-fluid display-flex justify-content-center"
               style={{
                 color: "#FFFFFF",
-                height: "80px",
+                height: "70px",
                 display: "flex",
                 alignItems: "center",
               }}

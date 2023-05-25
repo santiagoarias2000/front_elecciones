@@ -1,41 +1,41 @@
 import { useState, useEffect } from "react";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import jal from "../../../../assets/image/HeaderTable/ELEJAL.webp";
-import {Form, InputGroup, Modal} from "react-bootstrap";
+import asamblea from "../../../../assets/image/HeaderTable/ELEASAMBLEA.webp";
+import { Form, InputGroup, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
-import VotosJal from "../../../models/DataElection";
+import VotesAsamblea from "../../../models/DataElection";
 
-export const Jal = () => {
-    //Format Number Votes 
+export const Asamblea = () => {
+  //Format Number Votes
   const format = new Intl.NumberFormat();
-  //Prevent enter in search box
-  function submitHandler(e:any) {
-    e.preventDefault();
-  }
 
-  const [searchTerritorial, setSearchTerritorial] = useState("");
-
+  const [searchDepartamento, setSearchDepartamento] = useState("");
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesJalTerritorial, setarrayVotesJalTerritorial] =
-    useState<VotosJal[]>([]);
+  const [arrayVotosAsamblea, setArrayVotosAsamblea] = useState<VotesAsamblea[]>(
+    []
+  );
 
-  const getVotosjalTerritorial = async () => {
-    const result = await ServicePrivate.requestGET(ApiBack.JAL);
-    setarrayVotesJalTerritorial(result);
+  const getVotosAsamblea = async () => {
+    const result = await ServicePrivate.requestGET(ApiBack.ASAMBLEA);
+    setArrayVotosAsamblea(result);
     setShow(false);
   };
+  //Prevent enter in search box
+  function submitHandler(e: any) {
+    e.preventDefault();
+  }
 
   useEffect(() => {
-    getVotosjalTerritorial();
+    getVotosAsamblea();
   }, []);
 
   return (
     <main id="main" className="main">
       <img
-        src={jal}
+        src={asamblea}
         style={{
           width: "100%",
           maxHeight: "80%",
@@ -46,15 +46,8 @@ export const Jal = () => {
         alt="logo principal para la parte superior de la pagina web"
       />
       <div className="side_bar"></div>
-      
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div className="container-fluid display-flex justify-content-center container_title">
-            <div className="text-center">
-              <b className="title_table">JAL TERRITORIAL</b>
-            </div>
-          </div>
-
           <div className="container responsive_pe">
             <div className="row">
               <div className="col-sm"></div>
@@ -62,7 +55,7 @@ export const Jal = () => {
                 <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
-                      onChange={(e) => setSearchTerritorial(e.target.value)}
+                      onChange={(e) => setSearchDepartamento(e.target.value)}
                       placeholder="Buscar nombre departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
@@ -79,7 +72,7 @@ export const Jal = () => {
                 <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
-                      onChange={(e) => setSearchTerritorial(e.target.value)}
+                      onChange={(e) => setSearchDepartamento(e.target.value)}
                       placeholder="Buscar nombre departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
@@ -100,7 +93,7 @@ export const Jal = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }} >
+                  <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
                   </th>
                   <th className="text-center" style={{ width: "30%" }}>
@@ -110,13 +103,13 @@ export const Jal = () => {
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotesJalTerritorial
+                {arrayVotosAsamblea
                   .filter((myVotes) => {
-                    return searchTerritorial === ""
+                    return searchDepartamento === ""
                       ? myVotes
                       : myVotes.department.name_department
                           .toLowerCase()
-                          .includes(searchTerritorial.toLowerCase());
+                          .includes(searchDepartamento.toLowerCase());
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
@@ -124,19 +117,29 @@ export const Jal = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/jal/departamento/" +
+                            "/asamblea/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
                           {myVotes.department.name_department}
                         </a>
                       </td>
-                      <td className="text-center">{format.format(myVotes.votos)}</td>
+                      <td className="text-center">
+                        <a
+                          className="link_departamento"
+                          href={
+                            "/asamblea/departamento/" +
+                            myVotes.department.idDepartment
+                          }
+                        >
+                          {format.format(myVotes.votos)}
+                        </a>
+                      </td>
                       <td className="text-center align-middle">
                         <a
                           className="link_departamento"
                           href={
-                            "/jal/departamento/" +
+                            "/asamblea/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >

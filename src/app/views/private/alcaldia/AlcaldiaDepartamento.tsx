@@ -38,7 +38,7 @@ export const AlcaldiaDepartamento = () => {
     }
   };
   //Prevent enter in search box
-  function submitHandler(e:any) {
+  function submitHandler(e: any) {
     e.preventDefault();
   }
   useEffect(() => {
@@ -60,7 +60,7 @@ export const AlcaldiaDepartamento = () => {
               <b className="title_table">ALCALDIAS MUNICIPALES</b> &nbsp;
             </div>
           </div>
-          <div className="container responsive"> 
+          <div className="container responsive">
             <div className="row">
               <div className="col-sm "></div>
               <div className="col">
@@ -122,11 +122,10 @@ export const AlcaldiaDepartamento = () => {
                   <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
                   </th>
-                  <th className="text-center" style={{ width: "35%" }} >
+                  <th className="text-center" style={{ width: "35%" }}>
                     TOTAL VOTOS
                   </th>
-                  <th className="text-center" style={{ width: "30%" }} ></th>
-
+                  <th className="text-center" style={{ width: "30%" }}></th>
                 </tr>
               </thead>
               <tbody className="color container_table">
@@ -154,7 +153,17 @@ export const AlcaldiaDepartamento = () => {
                         </a>
                       </td>
                       <td className="text-center">
-                        {format.format(myVotes.votos)}
+                      <a
+                          className="link_departamento"
+                          href={
+                            "/alcaldia/departamento/" +
+                            idDepartment +
+                            "/municipio/" +
+                            myVotes.municipality.id_municipality
+                          }
+                        >
+                          {format.format(myVotes.votos)}
+                        </a>
                       </td>
                       <td className="text-center">
                         <a
@@ -175,23 +184,23 @@ export const AlcaldiaDepartamento = () => {
             </table>
           </div>
           <div className="dropdown">
-            <div
-              className="container-fluid display-flex justify-content-center mt-4"
-              style={{
-                color: "#FFFFFF",
-                height: "40px",
-                alignItems: "right",
-              }}
-            >
-              <h6
-              className="tituloVotosTotales my-2"
-            >
-              {arrayDepartamento.map((myDepartment) => (
-                <b style={{ color: "#D9224E" }} className="vota_respo">
-                  VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
-                </b>
-              ))}
-            </h6>
+            <div className="d-flex align-items-center mt-3">
+              <div
+                className="container-fluid"
+                style={{
+                  color: "#FFFFFF",
+                  height: "40px",
+                  alignItems: "right",
+                }}
+              >
+                <h6 className="tituloVotosTotales my-2">
+                  {arrayDepartamento.map((myDepartment) => (
+                    <b style={{ color: "#D9224E" }}>
+                      VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
+                    </b>
+                  ))}
+                </h6>
+              </div>
             </div>
           </div>
           <div className="dropdown">
@@ -199,7 +208,7 @@ export const AlcaldiaDepartamento = () => {
               className="container-fluid display-flex justify-content-center"
               style={{
                 color: "#FFFFFF",
-                height: "80px",
+                height: "70px",
                 display: "flex",
                 alignItems: "center",
               }}

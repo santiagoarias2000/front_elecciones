@@ -1,41 +1,39 @@
 import { useState, useEffect } from "react";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import gobernacion from "../../../../assets/image/HeaderTable/ELEGOBERNACION.webp";
+import concejo from "../../../../assets/image/HeaderTable/ELECONCEJO.webp";
 import { Form, InputGroup, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
-import VotesGobernacion from "../../../models/DataElection";
+import VotesConcejo from "../../../models/DataElection";
 
-export const Gobernacion = () => {
+export const Concejo = () => {
   //Format Number Votes
   const format = new Intl.NumberFormat();
-  const [show, setShow] = useState(true);
-  const [searchDepartamento, setSearchDepartamento] = useState("");
-
-  const handleClose = () => setShow(false);
-
-  const [arrayVotosGobernacion, setArrayVotosGobernacion] = useState<
-    VotesGobernacion[]
-  >([]);
-
-  const getVotosGobernacion = async () => {
-    const result = await ServicePrivate.requestGET(ApiBack.GOBERNACION);
-    setArrayVotosGobernacion(result);
-    setShow(false);
-  };
   //Prevent enter in search box
-  function submitHandler(e:any) {
+  function submitHandler(e: any) {
     e.preventDefault();
   }
+  const [searchTerritorial, setSearchTerritorial] = useState("");
+
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
+
+  const [arrayVotesConsejoTerritorial, setArrayVotesConsejoTerritorial] =
+    useState<VotesConcejo[]>([]);
+  const getVotosConsejoTerritorial = async () => {
+    const result = await ServicePrivate.requestGET(ApiBack.CONCEJO);
+    setArrayVotesConsejoTerritorial(result);
+    setShow(false);
+  };
 
   useEffect(() => {
-    getVotosGobernacion();
+    getVotosConsejoTerritorial();
   }, []);
 
   return (
     <main id="main" className="main">
       <img
-        src={gobernacion}
+        src={concejo}
         style={{
           width: "100%",
           maxHeight: "80%",
@@ -46,27 +44,17 @@ export const Gobernacion = () => {
         alt="logo principal para la parte superior de la pagina web"
       />
       <div className="side_bar"></div>
-      {/* Navegación estilo breadcrumb: Inicio */}
 
-      {/* Navegación estilo breadcrumb: Fin */}
-
-      {/* Ejemplo de una tabla para presentación de datos: Inicio */}
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div className="container-fluid display-flex justify-content-center container_title">
-            <div className="text-center">
-              <b className="title_table">GOBERNACIÓN TERRITORIAL</b>
-            </div>
-          </div>
-
           <div className="container responsive_pe">
             <div className="row">
               <div className="col-sm"></div>
               <div className="col-12">
-              <Form id="form_conta" onSubmit={submitHandler}>
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
-                      onChange={(e) => setSearchDepartamento(e.target.value)}
+                      onChange={(e) => setSearchTerritorial(e.target.value)}
                       placeholder="Buscar nombre departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
@@ -83,8 +71,8 @@ export const Gobernacion = () => {
                 <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
-                      onChange={(e) => setSearchDepartamento(e.target.value)}
-                      placeholder="Buscar nombre departamentoxxx"
+                      onChange={(e) => setSearchTerritorial(e.target.value)}
+                      placeholder="Buscar nombre departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
                     ></Form.Control>
@@ -104,7 +92,7 @@ export const Gobernacion = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }} >
+                  <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
                   </th>
                   <th className="text-center" style={{ width: "30%" }}>
@@ -114,13 +102,13 @@ export const Gobernacion = () => {
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotosGobernacion
+                {arrayVotesConsejoTerritorial
                   .filter((myVotes) => {
-                    return searchDepartamento === ""
+                    return searchTerritorial === ""
                       ? myVotes
                       : myVotes.department.name_department
                           .toLowerCase()
-                          .includes(searchDepartamento.toLowerCase());
+                          .includes(searchTerritorial.toLowerCase());
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
@@ -128,7 +116,7 @@ export const Gobernacion = () => {
                         <a
                           className="link_departamento"
                           href={
-                            "/gobernacion/departamento/" +
+                            "/concejo/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -136,13 +124,21 @@ export const Gobernacion = () => {
                         </a>
                       </td>
                       <td className="text-center">
-                        {format.format(myVotes.votos)}
+                        <a
+                          className="link_departamento"
+                          href={
+                            "/concejo/departamento/" +
+                            myVotes.department.idDepartment
+                          }
+                        >
+                          {format.format(myVotes.votos)}
+                        </a>
                       </td>
                       <td className="text-center align-middle">
                         <a
                           className="link_departamento"
                           href={
-                            "/gobernacion/departamento/" +
+                            "/concejo/departamento/" +
                             myVotes.department.idDepartment
                           }
                         >
@@ -201,8 +197,6 @@ export const Gobernacion = () => {
           </Modal.Body>
         </Modal>
       </div>
-
-      {/* Ejemplo de una tabla para presentación de datos: Fin */}
     </main>
   );
 };
