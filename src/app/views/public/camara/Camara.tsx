@@ -378,7 +378,7 @@ export const Camara = () => {
             }}
           >
             <div className="text-center">
-              <b className="title_table">AFRO-DESCENDIENTES</b>
+              <b className="title_table">AFRODESCENDIENTES</b>
             </div>
           </div>
 
