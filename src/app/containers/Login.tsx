@@ -51,6 +51,8 @@ export const Login = () => {
         const objJWT: any = jwtDecode(result.tokenHitData);
         console.log(objJWT);  
         localStorage.setItem("tokenHitData", result.tokenHitData);
+        localStorage.setItem("tokenName", result.tokenName);
+        localStorage.setItem("tokenEmail", result.tokenEmail);
         myNavigate("/");
         setProcess(false);
       } else {
