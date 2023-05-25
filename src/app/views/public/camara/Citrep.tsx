@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Form, InputGroup, Modal } from "react-bootstrap";
+import { Form, InputGroup} from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import CandidatosCitrep from "../../../mocks/models/CITREP/CandidatosCitrep";
 import { ARREGLO_CANDIDATOS_CITREP } from "../../../mocks/MocksCitrep/candidatos-citrep-mocks";

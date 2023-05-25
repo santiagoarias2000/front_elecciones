@@ -149,7 +149,9 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
                               myMunicipality.id_municipality
                             }
                           >
-                            <b className="name_text">{myMunicipality.name_municipality}</b>
+                            <b className="name_text">
+                              {myMunicipality.name_municipality}
+                            </b>
                           </a>
                         ))}
                     </li>
