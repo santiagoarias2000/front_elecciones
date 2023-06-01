@@ -1788,6 +1788,7 @@ h6 {
 }
 
 .buttonBack {
+  color: #ffffff !important;
   --bs-btn-padding-x: 0.75rem;
   --bs-btn-padding-y: 0.375rem;
   --bs-btn-font-family: ;
@@ -2200,15 +2201,19 @@ h6,
 }
 
 .dropdown-toggle {
+  color: #ffffff !important;
+}
+.cambiandoColor {
   color: #052851 !important;
 }
 
-.pruebita {
-  color: #052851 !important;
-}
 .pruebita :hover {
   color: #052851 !important;
 }
+.pruebita ::after {
+  color: #052851 !important;
+}
+
 .navbar a i,
 .navbar a:focus i {
   font-size: 12px;
@@ -2284,6 +2289,9 @@ h6,
     left: -100%;
   }
   .dropdown-toggle {
+    margin-left: 0px !important;
+  }
+  .dropdown-toggle2 {
     margin-left: 0px !important;
   }
 }
@@ -2821,7 +2829,7 @@ h6,
 }
 .getstarted2 {
   background: #ffffff;
-  padding: 0px  12px 0px 25px;
+  padding: 0px 12px 0px 25px;
   margin-left: 20px;
   color: #052851 !important;
   border-radius: 50px;
@@ -5824,7 +5832,6 @@ ul li {
   bottom: 0;
 }
 
-
 .alt-services .icon-box i {
   display: flex;
   align-items: center;
@@ -5876,7 +5883,6 @@ ul li {
   transition: all ease-in-out 0.3s;
   height: 100%;
 }
-
 
 @media (max-width: 768px) {
   .why-us .box2 {

@@ -52,7 +52,7 @@ export const Header = () => {
                 Resultados
               </a>
               {localStorage.getItem("tokenHitData") ? (
-                <NavDropdown title="Cerrar Sesión" id="nav-dropdown" className="getstarted2 scrollto pruebita">
+                <NavDropdown title="Cerrar Sesión" id="nav-dropdown" className="getstarted2 scrollto pruebita" style={{color:"#052851 !important"}}>
                   <NavDropdown.Item
                     eventKey="4.1"
                     style={{ color: "#052851"}}
@@ -68,12 +68,11 @@ export const Header = () => {
                     {nameProfile}
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item eventKey="4.4" style={{ color: "#052851" }}>
+                  <NavDropdown.Item eventKey="4.4">
                     <a
-                      className="dropdown-item d-flex align-items-center"
+                      className="pruebita cambiandoColor dropdown-item d-flex align-items-center"
                       href="/"
                       onClick={LogOut}
-                      style={{ color: "#052851" }}
                     >
                       <i className="fa-solid fa-right-from-bracket"></i>
                       <span>Cerrar Sesión</span>

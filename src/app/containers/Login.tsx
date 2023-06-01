@@ -153,12 +153,13 @@ export const Login = () => {
                       </div>
 
                       <div className="d-inline p-2">
-                        <button
+                        <a
                           type="submit"
                           className="label btn btn-primary btn-block mb-0"
+                          href="https://payco.link/2122207" target="_blank"
                         >
                           Pagar con ePayco
-                        </button>
+                        </a>
                       </div>
                     </div>
                   </Form>
