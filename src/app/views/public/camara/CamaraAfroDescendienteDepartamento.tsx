@@ -5,7 +5,7 @@ import ApiBack from "../../../utilities/domains/ApiBack";
 import camara from "../../../../assets/image/HeaderTable/CRafro.webp";
 import { useParams } from "react-router-dom";
 import Municipality from "../../../models/Municipality";
-import { Form, InputGroup, Modal, Pagination } from "react-bootstrap";
+import { Form, InputGroup, Modal } from "react-bootstrap";
 import Department from "../../../models/Department";
 import CandidatosCamara from "../../../mocks/models/CandidatosCamara";
 import { ARREGLO_CANDIDATOS_ELEGIDOS } from "../../../mocks/candidatos-mocks";

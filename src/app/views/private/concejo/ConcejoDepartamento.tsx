@@ -127,7 +127,7 @@ export const ConcejoDepartamento = () => {
               >
                 <tr>
                   <th className="text-center" style={{ width: "35%" }}>
-                    DEPARTAMENTO
+                    MUNICIPIO
                   </th>
                   <th className="text-center" style={{ width: "35%" }}>
                     TOTAL VOTOS

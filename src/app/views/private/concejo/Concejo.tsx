@@ -5,6 +5,7 @@ import concejo from "../../../../assets/image/HeaderTable/ELECONCEJO.webp";
 import { Form, InputGroup, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 import VotesConcejo from "../../../models/DataElection";
+import { useNavigate } from "react-router-dom";
 
 export const Concejo = () => {
   //Format Number Votes
@@ -18,6 +19,18 @@ export const Concejo = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
+  const myNavigate = useNavigate();
+
+  const navegacion = (idDepartment: any) => {
+    const bogota: any = 11;
+    if (idDepartment === bogota) {
+      myNavigate(
+        "/concejo/departamento/" + idDepartment + "/municipio/" + "149"
+      );
+    } else {
+      myNavigate("/concejo/departamento/" + idDepartment);
+    }
+  };  
   const [arrayVotesConsejoTerritorial, setArrayVotesConsejoTerritorial] =
     useState<VotesConcejo[]>([]);
   const getVotosConsejoTerritorial = async () => {
@@ -115,10 +128,9 @@ export const Concejo = () => {
                       <td className="text_left">
                         <a
                           className="link_departamento"
-                          href={
-                            "/concejo/departamento/" +
-                            myVotes.department.idDepartment
-                          }
+                          onClick={() => {
+                            navegacion(myVotes.department.idDepartment);
+                          }}
                         >
                           {myVotes.department.name_department}
                         </a>
@@ -126,10 +138,9 @@ export const Concejo = () => {
                       <td className="text-center">
                         <a
                           className="link_departamento"
-                          href={
-                            "/concejo/departamento/" +
-                            myVotes.department.idDepartment
-                          }
+                          onClick={() => {
+                            navegacion(myVotes.department.idDepartment);
+                          }}
                         >
                           {format.format(myVotes.votos)}
                         </a>
@@ -137,10 +148,9 @@ export const Concejo = () => {
                       <td className="text-center align-middle">
                         <a
                           className="link_departamento"
-                          href={
-                            "/concejo/departamento/" +
-                            myVotes.department.idDepartment
-                          }
+                          onClick={() => {
+                            navegacion(myVotes.department.idDepartment);
+                          }}
                         >
                           <i className="fa-solid fa-magnifying-glass fa-sm text-danger"></i>
                         </a>
