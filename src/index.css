@@ -2821,7 +2821,7 @@ h6,
 }
 .getstarted2 {
   background: #ffffff;
-  padding: 0px  12px 0px 25px;
+  padding: 0px 12px 0px 25px;
   margin-left: 20px;
   color: #052851 !important;
   border-radius: 50px;
@@ -5824,7 +5824,6 @@ ul li {
   bottom: 0;
 }
 
-
 .alt-services .icon-box i {
   display: flex;
   align-items: center;
@@ -5877,7 +5876,6 @@ ul li {
   height: 100%;
 }
 
-
 @media (max-width: 768px) {
   .why-us .box2 {
     display: flex;
@@ -5921,4 +5919,8 @@ ul li {
 .why-us .box2:hover h4,
 .why-us .box2:hover a {
   color: #fff;
+}
+
+.modal {
+  --bs-modal-padding: 0rem !important;
 }

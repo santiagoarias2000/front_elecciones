@@ -1,17 +1,21 @@
 import Form from "react-bootstrap/Form";
-import logo from "../../assets/image/imgHeader.webp";
-import { useState } from "react";
-import { MessageToastify } from "../utilities/functions/MessageToastify";
-import ApiBack from "../utilities/domains/ApiBack";
-import LoginService from "../services/LoginService";
+import logo from "../../../assets/image/imgHeader.webp";
+import { useEffect, useState } from "react";
+import { MessageToastify } from "../../utilities/functions/MessageToastify";
+import LoginService from "../../services/LoginService";
 import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "../utilities/hooks/useForm";
-import AccessUser from "../mocks/models/AccessUser";
+import { useForm } from "../../utilities/hooks/useForm";
+import AccessUser from "../../mocks/models/AccessUser";
 import { ToastContainer } from "react-toastify";
-import * as encryption from "js-sha512";
 import jwtDecode from "jwt-decode";
+import { Button, Modal } from "react-bootstrap";
+import ImageSpinner from "../../../assets/image/ImagenPago.webp";
 
 export const Login = () => {
+  //Modal
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
+
   //Variables
   const myNavigate = useNavigate();
   type formHtml = React.FocusEvent<HTMLFormElement>;
@@ -46,10 +50,10 @@ export const Login = () => {
       //object.passwordUser = passwordEncypted;
       //const urlLogIn = ApiBack.URL + ApiBack.LOGIN;
       const result = await LoginService.consumeService(object);
-      
+
       if (result.tokenHitData) {
         const objJWT: any = jwtDecode(result.tokenHitData);
-        console.log(objJWT);  
+        console.log(objJWT);
         localStorage.setItem("tokenHitData", result.tokenHitData);
         localStorage.setItem("tokenName", result.tokenName);
         localStorage.setItem("tokenEmail", result.tokenEmail);
@@ -61,6 +65,7 @@ export const Login = () => {
       }
     }
   };
+
 
   return (
     <body
@@ -153,12 +158,14 @@ export const Login = () => {
                       </div>
 
                       <div className="d-inline p-2">
-                        <button
+                        <a
                           type="submit"
                           className="label btn btn-primary btn-block mb-0"
+                          href="https://payco.link/2122207"
+                          target="_blank"
                         >
                           Pagar con ePayco
-                        </button>
+                        </a>
                       </div>
                     </div>
                   </Form>
@@ -169,6 +176,40 @@ export const Login = () => {
           </div>
         </div>
       </section>
+      <Modal
+        show={show}
+        keyboard={false}
+        backdrop="static"
+        onHide={handleClose}
+        centered
+        className="modal"
+        style={{ backgroundColor: "transparent !important", opacity: 0.9 }}
+      >
+        <Modal.Body className="text-center">
+          <div className="text-center">
+            <Button
+              className="btn btn-sm text-white"
+              onClick={(e)=>{
+                setShow(false);
+              }}
+              type="button"
+              style={{
+                position: "absolute",
+                marginTop: "5%",
+                marginLeft: "87%",
+                backgroundColor: "#d9224e",
+              }}
+            >
+              <span aria-hidden="true"> &times; </span>
+            </Button>
+            <img
+              style={{ width: "100%", height: "auto", opacity: 1 }}
+              src={ImageSpinner}
+              alt="imagen de carga para el modal"
+            />
+          </div>
+        </Modal.Body>
+      </Modal>
     </body>
   );
 };

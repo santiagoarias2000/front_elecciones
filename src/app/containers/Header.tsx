@@ -1,4 +1,4 @@
-import { MouseEvent } from "react";
+import { MouseEvent, useEffect } from "react";
 import logo from "../../assets/image/imgHeader.webp";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -8,14 +8,33 @@ import { NavDropdown } from "react-bootstrap";
 
 export const Header = () => {
   const navegar = useNavigate();
-  const user = localStorage.getItem("tokenName");
-  const email = localStorage.getItem("tokenEmail");
-  const nameProfile = user?.toString();
-  const emailProfile = email?.toString();
-  const LogOut = (event: MouseEvent<HTMLElement>) => {
-    event.preventDefault();
+
+  useEffect(() => {
+    // Simulando inicio de sesión exitoso y recepción del token
+    const token = "tokenHitData";
+    const expirationTime = 3600;
+
+    // Almacenar el token en el almacenamiento local o en una cookie segura
+    const nameProfile = localStorage.setItem("tokenName", token);
+    const emailProfile = localStorage.setItem("tokenEmail", token);
+
+    // Programar la función de cierre de sesión después del tiempo de expiración
+    const logoutTimer = setTimeout(() => {
+      logout();
+    }, expirationTime * 1000);
+
+    
+
+    // Limpiar el temporizador cuando el componente se desmonte o se actualice
+    return () => clearTimeout(logoutTimer);
+  }, []);
+
+  const logout = () => {
+    // // Realizar redireccionamiento o cualquier otra acción necesaria
     localStorage.removeItem("tokenHitData");
-    // Redirect  to home page
+    localStorage.removeItem("tokenName");
+    localStorage.removeItem("tokenEmail");
+    // Redirect to home page
     navegar("/");
     
   };
@@ -53,10 +72,15 @@ export const Header = () => {
                 Resultados
               </a>
               {localStorage.getItem("tokenHitData") ? (
-                <NavDropdown title="Cerrar Sesión" id="nav-dropdown" className="getstarted2 scrollto pruebita">
+                <NavDropdown
+                  title="Cerrar Sesión"
+                  id="nav-dropdown"
+                  className="getstarted2 scrollto pruebita"
+                  style={{ color: "#052851 !important" }}
+                >
                   <NavDropdown.Item
                     eventKey="4.1"
-                    style={{ color: "#052851"}}
+                    style={{ color: "#052851" }}
                     className="dropdown-item d-flex justify-content-center"
                   >
                     <i className="bi bi-person-square"></i>
@@ -66,15 +90,14 @@ export const Header = () => {
                     style={{ color: "#052851" }}
                     className="dropdown-item d-flex justify-content-center"
                   >
-                    {nameProfile}
+                    {localStorage.getItem("tokenName")}
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item eventKey="4.4" style={{ color: "#052851" }}>
+                  <NavDropdown.Item eventKey="4.4">
                     <a
-                      className="dropdown-item d-flex align-items-center"
+                      className="pruebita cambiandoColor dropdown-item d-flex align-items-center"
                       href="/"
-                      onClick={LogOut}
-                      style={{ color: "#052851" }}
+                      onClick={logout}
                     >
                       <i className="fa-solid fa-right-from-bracket"></i>
                       <span>Cerrar Sesión</span>

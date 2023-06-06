@@ -276,7 +276,7 @@ export const SenadoIndigenaDepartamento = () => {
                     NOMBRE CANDIDATO
                   </th>
                   <th className="text-center" style={{ width: "25%" }}>
-                    VOTOS DEPARTAMENTO
+                    VOTOS DEPARTAMENTALES
                   </th>
                 </tr>
               </thead>
