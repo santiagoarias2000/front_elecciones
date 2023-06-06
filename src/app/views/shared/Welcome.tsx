@@ -1,17 +1,17 @@
-import Img7Carrusel from "../../assets/image/Img8.webp";
-import Img1Carr from "../../assets/image/GuiasAntiguas/Img1.webp";
-import Img2Carr from "../../assets/image/GuiasAntiguas/Img2.webp";
-import Img3Carr from "../../assets/image/GuiasAntiguas/Img3.webp";
-import Img4Carr from "../../assets/image/GuiasAntiguas/Img4.webp";
-import Img5Carr from "../../assets/image/GuiasAntiguas/Img5.webp";
-import Img6Carr from "../../assets/image/GuiasAntiguas/Img6.webp";
-import ImgHitData from "../../assets/image/Patrocinadores/azul.webp";
-import ImgLoteriaBoyaca from "../../assets/image/Patrocinadores/LoteriaBoyaca.webp";
-import ImgDonJose from "../../assets/image/Patrocinadores/DonJose.webp";
+import Img7Carrusel from "../../../assets/image/Img8.webp";
+import Img1Carr from "../../../assets/image/GuiasAntiguas/Img1.webp";
+import Img2Carr from "../../../assets/image/GuiasAntiguas/Img2.webp";
+import Img3Carr from "../../../assets/image/GuiasAntiguas/Img3.webp";
+import Img4Carr from "../../../assets/image/GuiasAntiguas/Img4.webp";
+import Img5Carr from "../../../assets/image/GuiasAntiguas/Img5.webp";
+import Img6Carr from "../../../assets/image/GuiasAntiguas/Img6.webp";
+import ImgHitData from "../../../assets/image/Patrocinadores/azul.webp";
+import ImgLoteriaBoyaca from "../../../assets/image/Patrocinadores/LoteriaBoyaca.webp";
+import ImgDonJose from "../../../assets/image/Patrocinadores/DonJose.webp";
 import { Carousel, Modal } from "react-bootstrap";
-import "../../assets/js/carrusel.js";
+import "../../../assets/js/carrusel.js";
 import { useState, useEffect } from "react";
-import ImageSpinner from "../../assets/image/Blog/publicidadloteria.webp";
+import ImageSpinner from "../../../assets/image/Blog/publicidadloteria.webp";
 
 export const Welcome = () => {
   const [show, setShow] = useState(true);

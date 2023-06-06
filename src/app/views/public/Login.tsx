@@ -1,17 +1,26 @@
 import Form from "react-bootstrap/Form";
-import logo from "../../assets/image/imgHeader.webp";
-import { useState } from "react";
-import { MessageToastify } from "../utilities/functions/MessageToastify";
-import ApiBack from "../utilities/domains/ApiBack";
-import LoginService from "../services/LoginService";
+import logo from "../../../assets/image/imgHeader.webp";
+import { useEffect, useState } from "react";
+import { MessageToastify } from "../../utilities/functions/MessageToastify";
+import LoginService from "../../services/LoginService";
 import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "../utilities/hooks/useForm";
-import AccessUser from "../mocks/models/AccessUser";
+import { useForm } from "../../utilities/hooks/useForm";
+import AccessUser from "../../mocks/models/AccessUser";
 import { ToastContainer } from "react-toastify";
-import * as encryption from "js-sha512";
 import jwtDecode from "jwt-decode";
+import { Modal } from "react-bootstrap";
+import ImageSpinner from "../../../assets/image/ImagenPago.webp";
 
 export const Login = () => {
+  //Modal
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
+  function hideModal() {
+    setTimeout(() => {
+      setShow(true);
+    });
+  }
+
   //Variables
   const myNavigate = useNavigate();
   type formHtml = React.FocusEvent<HTMLFormElement>;
@@ -61,6 +70,10 @@ export const Login = () => {
       }
     }
   };
+
+  useEffect(() => {
+    hideModal();
+  }, []);
 
   return (
     <body
@@ -170,6 +183,34 @@ export const Login = () => {
           </div>
         </div>
       </section>
+      <Modal
+        show={show}
+        backdrop="static"
+        keyboard={false}
+        onHide={handleClose}
+        centered
+        className="modal"
+        style={{ backgroundColor: "transparent !important", opacity: 0.9}}
+      >
+        <Modal.Body className="text-center" >
+          <div className="text-center">
+          <button
+            className="btn btn-sm text-white"
+            onClick={handleClose}
+            type="button"
+            aria-label="close"
+            style={{position:"absolute", marginTop:"5%", marginLeft:"87%", backgroundColor:"#d9224e"}}
+          >
+            <span aria-hidden="true"> &times; </span>
+          </button>
+            <img
+              style={{ width: "100%", height: "auto", opacity: 1 }}
+              src={ImageSpinner}
+              alt="imagen de carga para el modal"
+            />
+          </div>
+        </Modal.Body>
+      </Modal>
     </body>
   );
 };

@@ -1,6 +1,6 @@
 import { lazy } from "react";
 import { Route, Routes, redirect } from "react-router-dom";
-import { Welcome } from "../../containers/Welcome";
+import { Welcome } from "../../views/shared/Welcome";
 import { SenadoElegidos } from "../../views/public/senado/SenadoElegidos";
 import { PrivacyPolicies } from "../../views/shared/PrivacyPolicies";
 import { NotFound } from "../../views/shared/NotFound";
@@ -13,7 +13,7 @@ import { SenadoNacionalMunicipio } from "../../views/public/senado/SenadoNaciona
 import { CamaraIndigenaDepartamento } from "../../views/public/camara/CamaraIndigenaDepartamento";
 import { CamaraAfroDescendienteDepartamento } from "../../views/public/camara/CamaraAfroDescendienteDepartamento";
 import { Senado } from "../../views/public/senado/Senado";
-import { Blog } from "../../containers/Blog";
+import { Blog } from "../../views/shared/Blog";
 import { CamaraIndigenaDepartamentoMunicipio } from "../../views/public/camara/CamaraIndigenaDepartamentoMunicipio";
 import { CamaraTerritorialDepartamentoMunicipio } from "../../views/public/camara/CamaraTerritorialDepartamentoMunicipio";
 import { CamaraAfroDescendienteDepartamentoMunicipio } from "../../views/public/camara/CamaraAfroDescendienteDepartamentoMunicipio";
@@ -40,7 +40,7 @@ import { ConcejoDepartamento } from "../../views/private/concejo/ConcejoDepartam
 import { ConcejoMunicipal } from "../../views/private/concejo/ConcejoMunicipal";
 import { AlcaldiaDepartamentoMunicipio } from "../../views/private/alcaldia/AlcaldiaDepartamentoMunicipio";
 import { Resultados } from "../../views/shared/Resultados";
-import { Login } from "../../containers/Login";
+import { Login } from "../../views/public/Login";
 import { Guard } from "../../security/Guard";
 import { Citrep } from "../../views/public/camara/Citrep";
 
@@ -61,7 +61,7 @@ const LazyCamara =lazy(()=>import("../../views/public/camara/Camara").then(()=>(
 const LazyCamaraTerritorialDepartamento =lazy(()=>import("../../views/public/camara/CamaraTerritorialDepartamento").then(()=>({default:CamaraTerritorialDepartamento})));
 const LazyCamaraIndigenaDepartamento =lazy(()=>import("../../views/public/camara/CamaraIndigenaDepartamento").then(()=>({default:CamaraIndigenaDepartamento})));
 const LazyCamaraAfroDescendienteDepartamento =lazy(()=>import("../../views/public/camara/CamaraAfroDescendienteDepartamento").then(()=>({default:CamaraAfroDescendienteDepartamento})));
-const LazyWelcome =lazy(()=>import("../../containers/Welcome").then(()=>({default:Welcome})));
+const LazyWelcome =lazy(()=>import("../../views/shared/Welcome").then(()=>({default:Welcome})));
 const LazyCamaraTerritorialepartamentoMunicipio =lazy(()=>import("../../views/public/camara/CamaraTerritorialDepartamentoMunicipio").then(()=>({default:CamaraTerritorialDepartamentoMunicipio})));
 const LazyCamaraIndigenaDepartamentoMunicipio =lazy(()=>import("../../views/public/camara/CamaraIndigenaDepartamentoMunicipio").then(()=>({default:CamaraIndigenaDepartamentoMunicipio})));
 const LazyCamaraAfroDescendienteDepartamentoMunicipio =lazy(()=>import("../../views/public/camara/CamaraAfroDescendienteDepartamentoMunicipio").then(()=>({default:CamaraAfroDescendienteDepartamentoMunicipio})));
@@ -83,10 +83,10 @@ const LazyAsambleaDepartamentoMunicipio = lazy(() => import("../../views/private
 const LazyAlcadiaDepartamento = lazy(() => import("../../views/private/alcaldia/AlcaldiaDepartamento").then(() => ({default: AlcaldiaDepartamento})));
 const LazyAlcadiaDepartamentoMunicipio = lazy(() => import("../../views/private/alcaldia/AlcaldiaDepartamentoMunicipio").then(() => ({default: AlcaldiaDepartamentoMunicipio})));
 //Blog
-const LazyBlog = lazy(() => import("../../containers/Blog").then(() => ({default: Blog})));
+const LazyBlog = lazy(() => import("../../views/shared/Blog").then(() => ({default: Blog})));
 const LazyResultados = lazy(() => import("../../views/shared/Resultados").then(() => ({default: Resultados})));
 const LazyNosotros = lazy(() => import("../../views/shared/AboutUs").then(() => ({default: AboutUs})));
-const LazyLogin = lazy(() => import("../../containers/Login").then(() => ({default: Login})));
+const LazyLogin = lazy(() => import("../../views/public/Login").then(() => ({default: Login})));
 
 
 
