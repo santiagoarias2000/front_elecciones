@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Form, InputGroup, Modal } from "react-bootstrap";
-import {useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import alcaldia from "../../../../assets/image/HeaderTable/ELEALCALDIA.webp";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import ServicePrivate from "../../../services/ServicePrivate";
@@ -11,13 +11,17 @@ import VotesAlcaldia from "../../../models/DataElection";
 export const AlcaldiaDepartamentoMunicipio = () => {
   let { idDepartment } = useParams();
   let { idMunicipality } = useParams();
+  const [searchMunicipio, setSearchMunicipio] = useState("");
   //Format Number Votes
   const format = new Intl.NumberFormat();
   const [search, setSearch] = useState("");
-  const [arrayNameMunicipality, setArrayNameMunicipality] = useState<Municipality[] >([]);
-
+  const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
+    Municipality[]
+  >([]);
+  const [Localidad, setLocalidad] = useState<Municipality[]>([]);
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
+  const [showComboBox, setShowComboBox] = useState(false);
 
   const [arrayVotosAlcaldiaMunicipio, setArrayVotosAlcaldiaMunicipio] =
     useState<VotesAlcaldia[]>([]);
@@ -27,6 +31,13 @@ export const AlcaldiaDepartamentoMunicipio = () => {
       ApiBack.NOMBRE_MUNICIPIO + "/" + idMunicipality
     );
     setArrayNameMunicipality(result);
+  };
+  const getComboBoxLocalidad = async () => {
+    const resultado = await ServicePrivate.requestGET(
+      ApiBack.COMBOBOX_LOCATION
+    );
+    setLocalidad(resultado);
+    return resultado;
   };
   const getVotosAlcalidaMunicipio = async () => {
     const urlCargarVotosMunicipio =
@@ -39,14 +50,31 @@ export const AlcaldiaDepartamentoMunicipio = () => {
     }
   };
   //Prevent enter in search box
-  function submitHandler(e:any) {
+  function submitHandler(e: any) {
     e.preventDefault();
   }
-  
+  const myNavigate = useNavigate();
+  const viewComboBox = () => {
+    if (idDepartment === "11") {
+      getComboBoxLocalidad();
+      setShowComboBox(true);
+    } else {
+      setShowComboBox(false);
+    }
+  };
+  const boton = () => {
+    if (idDepartment === "11") {
+      myNavigate("/alcaldia");
+    } else {
+      myNavigate("/alcaldia/departamento/" + idDepartment);
+    }
+  };
+
   useEffect(() => {
     getVotosAlcalidaMunicipio();
     getNameMunicipality();
-  }, [idDepartment,idMunicipality]);
+    viewComboBox();
+  }, [idDepartment, idMunicipality]);
   return (
     <main id="main" className="main">
       <img
@@ -64,7 +92,63 @@ export const AlcaldiaDepartamentoMunicipio = () => {
           </div>
           <div className="container responsive">
             <div className="row">
-              <div className="col-sm "></div>
+              <div className="col-sm ">
+                {showComboBox && (
+                  <div className="dropdown text-center my-3">
+                    <button
+                      type="button"
+                      className="buttonBack buttonBack-primary dropdown-toggle text-light"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Localidades
+                    </button>
+                    <ul
+                      className="dropdown-menu selectpicker"
+                      data-live-search="true"
+                      style={{ maxHeight: "200px", overflowY: "auto" }}
+                    >
+                      <div className="sticky-top">
+                        <input
+                          type="text"
+                          placeholder="Busqueda..."
+                          className="mi-sticky"
+                          onChange={(event) => {
+                            setSearchMunicipio(event.target.value);
+                          }}
+                        />
+                      </div>
+                      <li>
+                        {Localidad.filter((val) => {
+                          if (searchMunicipio === "") {
+                            return val;
+                          } else if (
+                            val.name_municipality
+                              .toLocaleLowerCase()
+                              .includes(searchMunicipio.toLocaleLowerCase())
+                          ) {
+                            return val;
+                          }
+                        }).map((miMunicipio, indice) => (
+                          <a
+                            className="dropdown-item"
+                            href={
+                              "/alcaldia/departamento/" +
+                              idDepartment +
+                              "/localidad/" +
+                              miMunicipio.id_municipality
+                            }
+                          >
+                            <b className="name_text">
+                              {miMunicipio.name_municipality}
+                            </b>
+                          </a>
+                        ))}
+                      </li>
+                    </ul>
+                  </div>
+                )}
+              </div>
               <div className="col">
                 <h6 className="text-center my-4" style={{ color: "#052851" }}>
                   {arrayNameMunicipality.map((myNameMunicipality) => (
@@ -93,7 +177,63 @@ export const AlcaldiaDepartamentoMunicipio = () => {
           </div>
           <div className="container no_responsive">
             <div className="row">
-              <div className="col-sm "></div>
+              <div className="col-sm ">
+                {showComboBox && (
+                  <div className="dropdown text-center my-3">
+                    <button
+                      type="button"
+                      className="buttonBack buttonBack-primary dropdown-toggle text-light"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Localidades
+                    </button>
+                    <ul
+                      className="dropdown-menu selectpicker"
+                      data-live-search="true"
+                      style={{ maxHeight: "200px", overflowY: "auto" }}
+                    >
+                      <div className="sticky-top">
+                        <input
+                          type="text"
+                          placeholder="Busqueda..."
+                          className="mi-sticky"
+                          onChange={(event) => {
+                            setSearchMunicipio(event.target.value);
+                          }}
+                        />
+                      </div>
+                      <li>
+                        {Localidad.filter((val) => {
+                          if (searchMunicipio == "") {
+                            return val;
+                          } else if (
+                            val.name_municipality
+                              .toLocaleLowerCase()
+                              .includes(searchMunicipio.toLocaleLowerCase())
+                          ) {
+                            return val;
+                          }
+                        }).map((miMunicipio, indice) => (
+                          <a
+                            className="dropdown-item"
+                            href={
+                              "/alcaldia/departamento/" +
+                              idDepartment +
+                              "/localidad/" +
+                              miMunicipio.id_municipality
+                            }
+                          >
+                            <b className="name_text">
+                              {miMunicipio.name_municipality}
+                            </b>
+                          </a>
+                        ))}
+                      </li>
+                    </ul>
+                  </div>
+                )}
+              </div>
               <div className="col">
                 <h6 className="text-center my-2" style={{ color: "#052851" }}>
                   {arrayNameMunicipality.map((myNameMunicipality) => (
@@ -131,10 +271,18 @@ export const AlcaldiaDepartamentoMunicipio = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }} id="text_left_name">
+                  <th
+                    className="text-center"
+                    style={{ width: "35%" }}
+                    id="text_left_name"
+                  >
                     PARTIDO POLITIO
                   </th>
-                  <th className="text-center" style={{ width: "30%" }} id="text_left_name">
+                  <th
+                    className="text-center"
+                    style={{ width: "30%" }}
+                    id="text_left_name"
+                  >
                     NOMBRE CANDIDATO
                   </th>
                   <th className="text-center" style={{ width: "35%" }}>
@@ -184,7 +332,9 @@ export const AlcaldiaDepartamentoMunicipio = () => {
             >
               <div className="text-center">
                 <a
-                  href={"/alcaldia/departamento/" + idDepartment}
+                  onClick={() => {
+                    boton();
+                  }}
                   type="button"
                   className="buttonBack buttonBack-primary"
                 >

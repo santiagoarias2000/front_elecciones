@@ -43,6 +43,8 @@ import { Resultados } from "../../views/shared/Resultados";
 import { Login } from "../../views/public/Login";
 import { Guard } from "../../security/Guard";
 import { Citrep } from "../../views/public/camara/Citrep";
+import { AlcaldiaLocalidad } from "../../views/private/alcaldia/AlcaldiaLocalidad";
+import { ConcejoLocalidad } from "../../views/private/concejo/ConcejoLocalidad";
 
 //Lazy structure from use the all tsx
 
@@ -75,6 +77,7 @@ const LazyJalMunicipio = lazy(() => import("../../views/private/jal/JalMunicipal
 const LazyConcejo = lazy(() => import("../../views/private/concejo/Concejo").then(() => ({default: Concejo})));
 const LazyConcejoDepartamento = lazy(() => import("../../views/private/concejo/ConcejoDepartamento").then(() => ({default: ConcejoDepartamento})));
 const LazyConcejoDMunicipal = lazy(() => import("../../views/private/concejo/ConcejoMunicipal").then(() => ({default: ConcejoMunicipal})));
+const LazyConcejoLocalidad = lazy(() => import("../../views/private/concejo/ConcejoLocalidad").then(() => ({default: ConcejoLocalidad})));
 const LazyAsamblea = lazy(() => import("../../views/private/asamblea/Asamblea").then(() => ({default: Asamblea})));
 const LazyGobernacionDepartamento = lazy(() => import("../../views/private/gobernacion/GobernacionDepartamento").then(() => ({default: GobernacionDepartamento})));
 const LazyGobernacionDepartamentoMunicipio = lazy(() => import("../../views/private/gobernacion/GobernacionDepartamentoMunicipio").then(() => ({default: GobernacionDepartamentoMunicipio})));
@@ -82,6 +85,7 @@ const LazyAsambleaDepartamento = lazy(() => import("../../views/private/asamblea
 const LazyAsambleaDepartamentoMunicipio = lazy(() => import("../../views/private/asamblea/AsambleaDepartamentoMunicipio").then(() => ({default:  AsambleaDepartamentoMunicipio})));
 const LazyAlcadiaDepartamento = lazy(() => import("../../views/private/alcaldia/AlcaldiaDepartamento").then(() => ({default: AlcaldiaDepartamento})));
 const LazyAlcadiaDepartamentoMunicipio = lazy(() => import("../../views/private/alcaldia/AlcaldiaDepartamentoMunicipio").then(() => ({default: AlcaldiaDepartamentoMunicipio})));
+const LazyAlcadiaLocalidad = lazy(() => import("../../views/private/alcaldia/AlcaldiaLocalidad").then(() => ({default: AlcaldiaLocalidad})));
 //Blog
 const LazyBlog = lazy(() => import("../../views/shared/Blog").then(() => ({default: Blog})));
 const LazyResultados = lazy(() => import("../../views/shared/Resultados").then(() => ({default: Resultados})));
@@ -137,10 +141,12 @@ export const InternalRouting = () => {
         <Route path="/alcaldia" element={<LazyAlcadia/>}/>
         <Route path="/alcaldia/departamento/:idDepartment" element={<LazyAlcadiaDepartamento />} />
         <Route path="/alcaldia/departamento/:idDepartment/municipio/:idMunicipality" element={<LazyAlcadiaDepartamentoMunicipio />} />
+        <Route path="/alcaldia/departamento/:idDepartment/localidad/:idMunicipality" element={<LazyAlcadiaLocalidad/>}/>
         //Routes Consejo
         <Route path="/concejo" element={<LazyConcejo/>}/>
         <Route path="/concejo/departamento/:idDepartment" element={<LazyConcejoDepartamento/>}/>
         <Route path="/concejo/departamento/:idDepartment/municipio/:idMunicipality" element={<LazyConcejoDMunicipal/>}/>
+        <Route path="/concejo/departamento/:idDepartment/localidad/:idMunicipality" element={<LazyConcejoLocalidad/>}/>
         //Routes Asamblea
         <Route path="/asamblea" element={<LazyAsamblea/>} />
         <Route path="/asamblea/departamento/:idDepartment" element={<LazyAsambleaDepartamento />} />

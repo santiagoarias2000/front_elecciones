@@ -5,6 +5,7 @@ import alcaldia from "../../../../assets/image/HeaderTable/ELEALCALDIA.webp";
 import { Form, InputGroup, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 import VotosAlcaldia from "../../../models/DataElection";
+import { useNavigate } from "react-router-dom";
 
 export const Alcaldia = () => {
   //Format Number Votes
@@ -18,11 +19,22 @@ export const Alcaldia = () => {
   const [arrayVotosAlcaldia, setArrayVotosAlcaldia] = useState<VotosAlcaldia[]>(
     []
   );
+  const myNavigate = useNavigate();
 
   const getVotosAlcaldia = async () => {
     const result = await ServicePrivate.requestGET(ApiBack.ALCALDIA);
     setArrayVotosAlcaldia(result);
     setShow(false);
+  };
+  const navegacion = (idDepartment: any) => {
+    const bogota: any = 11;
+    if (idDepartment === bogota) {
+      myNavigate(
+        "/alcaldia/departamento/" + idDepartment + "/municipio/" + "149"
+      );
+    } else {
+      myNavigate("/alcaldia/departamento/" + idDepartment);
+    }
   };
   //Prevent enter in search box
   function submitHandler(e: any) {
@@ -123,10 +135,9 @@ export const Alcaldia = () => {
                       <td className="text_left">
                         <a
                           className="link_departamento"
-                          href={
-                            "/alcaldia/departamento/" +
-                            myVotes.department.idDepartment
-                          }
+                          onClick={() => {
+                            navegacion(myVotes.department.idDepartment);
+                          }}
                         >
                           {myVotes.department.name_department}
                         </a>
@@ -134,10 +145,9 @@ export const Alcaldia = () => {
                       <td className="text-center">
                         <a
                           className="link_departamento"
-                          href={
-                            "/alcaldia/departamento/" +
-                            myVotes.department.idDepartment
-                          }
+                          onClick={() => {
+                            navegacion(myVotes.department.idDepartment);
+                          }}
                         >
                           {format.format(myVotes.votos)}
                         </a>
@@ -145,10 +155,9 @@ export const Alcaldia = () => {
                       <td className="text-center align-middle">
                         <a
                           className="link_departamento"
-                          href={
-                            "/alcaldia/departamento/" +
-                            myVotes.department.idDepartment
-                          }
+                          onClick={() => {
+                            navegacion(myVotes.department.idDepartment);
+                          }}
                         >
                           <i className="fa-solid fa-magnifying-glass fa-sm text-danger"></i>
                         </a>

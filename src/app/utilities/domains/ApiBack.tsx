@@ -1,12 +1,11 @@
 const ApiBack = {
-  //URL: "http://localhost:3123",
-  URL: "https://guiaelectoraldecolombia.onrender.com",
+  URL: "http://localhost:3123",
+  //URL: "https://guiaelectoraldecolombia.onrender.com",
 
   LOGIN: "/api/public/user/login",
 
-
-
   COMBOBOX_MUNICIPIO: "/api/public/municipio",
+  COMBOBOX_LOCATION: "/api/public/municipio/localidad/combito",
   NOMBRE_MUNICIPIO: "/api/public/municipio/one",
   NOMBRE_LOCALIDAD: "/api/public/municipio/localidad/one",
   NOMBRE_DEPARTAMENTO_TERRITORIAL: "/api/public/departamento/territorial",
@@ -59,10 +58,12 @@ const ApiBack = {
   ALCALDIA:"/api/private/alcaldia",
   ALCALDIA_DEPARTAMENTO:"/api/private/alcaldia/departamento",
   ALCALDIA_DEPARTAMENTO_MUNICIPIO:"/api/private/alcaldia/municipio",
+  ALCALDIA_LOCALIDAD:"/api/private/alcaldia/localidad",
 
   CONCEJO:"/api/private/concejo",
   CONCEJO_DEPARTAMENTO:"/api/private/concejo/departamento",
   CONCEJO_DEPARTAMENTO_MUNICIPIO:"/api/private/concejo/municipio",
+  CONCEJO_LOCALIDAD:"/api/private/concejo/localidad",
   
   JAL:"/api/private/jal",
   JAL_DEPARTAMENTO:"/api/private/jal/departamento",

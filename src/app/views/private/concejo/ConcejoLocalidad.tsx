@@ -1,43 +1,30 @@
-import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Form, InputGroup, Modal } from "react-bootstrap";
-import Municipality from "../../../models/Municipality";
-import VotesConcejo from "../../../models/DataElection";
-import ServicePrivate from "../../../services/ServicePrivate";
+import { useParams } from "react-router-dom";
+import VotosConcejo from "../../../models/DataElection";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import concejo from "../../../../assets/image/HeaderTable/ELECONCEJO.webp";
+import ServicePrivate from "../../../services/ServicePrivate";
+import Municipality from "../../../models/Municipality";
+import { Form, InputGroup, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
-export const ConcejoMunicipal = () => {
+export const ConcejoLocalidad = () => {
+  //Variables
   let { idDepartment } = useParams();
   let { idMunicipality } = useParams();
-
+  const [search, setSearch] = useState("");
   const [searchMunicipio, setSearchMunicipio] = useState("");
-  const [Localidad, setLocalidad] = useState<Municipality[]>([]);
-  const [showComboBox, setShowComboBox] = useState(false);
+
 
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
   const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
     Municipality[]
   >([]);
-  const [arrayVotesConcejoTerritorial, setArrayVotosConcejoTerritorial] =
-    useState<VotesConcejo[]>([]);
+  const [arrayVotosConsejo, setArrayVotosConcejo] =
+    useState<VotosConcejo[]>([]);
+  const [Localidad, setLocalidad] = useState<Municipality[]>([]);
 
-  //Funciones
-  const getVotosConcejoMunicipal = async () => {
-    const result = await ServicePrivate.requestGET(
-      ApiBack.CONCEJO_DEPARTAMENTO_MUNICIPIO + "/" + idMunicipality
-    );
-    setArrayVotosConcejoTerritorial(result);
-    setShow(false);
-  };
-  const getNameMunicipality = async () => {
-    const result = await ServicePrivate.requestGET(
-      ApiBack.NOMBRE_MUNICIPIO + "/" + idMunicipality
-    );
-    setArrayNameMunicipality(result);
-  };
   const getComboBoxLocalidad = async () => {
     const resultado = await ServicePrivate.requestGET(
       ApiBack.COMBOBOX_LOCATION
@@ -45,21 +32,25 @@ export const ConcejoMunicipal = () => {
     setLocalidad(resultado);
     return resultado;
   };
-  const myNavigate = useNavigate();
-
-  const viewComboBox = () => {
-    if (idDepartment === "11") {
-      getComboBoxLocalidad();
-      setShowComboBox(true);
-    } else {
-      setShowComboBox(false);
-    }
+  //Funciones
+  const getVotosConcejoLocalidad = async () => {
+    const result = await ServicePrivate.requestGET(
+      ApiBack.CONCEJO_LOCALIDAD + "/" + idMunicipality
+    );
+    setArrayVotosConcejo(result);
+    setShow(false);
   };
-  const boton = () => {
+  const getNameMunicipality = async () => {
     if (idDepartment === "11") {
-      myNavigate("/concejo");
+      const result = await ServicePrivate.requestGET(
+        ApiBack.NOMBRE_LOCALIDAD + "/" + idMunicipality
+      );
+      setArrayNameMunicipality(result);
     } else {
-      myNavigate("/concejo/departamento/" + idDepartment);
+      const result = await ServicePrivate.requestGET(
+        ApiBack.NOMBRE_MUNICIPIO + "/" + idMunicipality
+      );
+      setArrayNameMunicipality(result);
     }
   };
 
@@ -70,10 +61,11 @@ export const ConcejoMunicipal = () => {
     e.preventDefault();
   }
   useEffect(() => {
-    getVotosConcejoMunicipal();
+    getVotosConcejoLocalidad();
     getNameMunicipality();
-    viewComboBox();
+    getComboBoxLocalidad();
   }, [idDepartment, idMunicipality]);
+
   return (
     <main id="main" className="main">
       <img
@@ -94,8 +86,7 @@ export const ConcejoMunicipal = () => {
           <div className="container responsive">
             <div className="row">
               <div className="col-sm ">
-                {showComboBox && (
-                  <div className="dropdown text-center my-3">
+              <div className="dropdown text-center my-3">
                     <button
                       type="button"
                       className="buttonBack buttonBack-primary dropdown-toggle text-light"
@@ -148,7 +139,6 @@ export const ConcejoMunicipal = () => {
                       </li>
                     </ul>
                   </div>
-                )}
               </div>
               <div className="col">
                 <h6 className="text-center my-4" style={{ color: "#052851" }}>
@@ -163,10 +153,10 @@ export const ConcejoMunicipal = () => {
                 </h6>
               </div>
               <div className="col-sm">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
-                      onChange={(e) => setSearchMunicipio(e.target.value)}
+                      onChange={(e) => setSearch(e.target.value)}
                       placeholder="Buscar nombre Candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
@@ -179,8 +169,7 @@ export const ConcejoMunicipal = () => {
           <div className="container no_responsive">
             <div className="row">
               <div className="col-sm">
-                {showComboBox && (
-                  <div className="dropdown text-center my-3">
+              <div className="dropdown text-center my-3">
                     <button
                       type="button"
                       className="buttonBack buttonBack-primary dropdown-toggle text-light"
@@ -233,7 +222,6 @@ export const ConcejoMunicipal = () => {
                       </li>
                     </ul>
                   </div>
-                )}
               </div>
               <div className="col">
                 <h6 className="text-center my-2" style={{ color: "#052851" }}>
@@ -248,10 +236,10 @@ export const ConcejoMunicipal = () => {
                 </h6>
               </div>
               <div className="col-sm">
-                <Form id="form_conta">
+                <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-1 container_form">
                     <Form.Control
-                      onChange={(e) => setSearchMunicipio(e.target.value)}
+                      onChange={(e) => setSearch(e.target.value)}
                       placeholder="Buscar nombre Candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
@@ -264,7 +252,7 @@ export const ConcejoMunicipal = () => {
 
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
-              className="colorTable table table-hover"
+              className="colorTableCamara table table-hover"
               style={{ background: "#05285190 !important" }}
             >
               <thead
@@ -286,23 +274,19 @@ export const ConcejoMunicipal = () => {
                   >
                     NOMBRE CANDIDATO
                   </th>
-                  <th
-                    className="text-center"
-                    style={{ width: "25%" }}
-                    id="text_left_name"
-                  >
-                    VOTOS MUNICIPIO
+                  <th className="text-center" style={{ width: "25%" }}>
+                    VOTOS LOCALIDAD
                   </th>
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotesConcejoTerritorial
+                {arrayVotosConsejo
                   .filter((myVotes) => {
-                    return searchMunicipio === ""
+                    return search === ""
                       ? myVotes
                       : myVotes.candidate_name
                           .toLowerCase()
-                          .includes(searchMunicipio.toLowerCase());
+                          .includes(search.toLowerCase());
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
@@ -312,7 +296,7 @@ export const ConcejoMunicipal = () => {
                       <td className="text_left_name">
                         {myVotes.candidate_name}
                       </td>
-                      <td className="text-center">
+                      <td className="text-center align-middle">
                         {format.format(myVotes.votos)}
                       </td>
                     </tr>
@@ -335,9 +319,12 @@ export const ConcejoMunicipal = () => {
                 <a
                   type="button"
                   className="buttonBack buttonBack-primary"
-                  onClick={() => {
-                    boton();
-                  }}
+                  href={
+                    "/concejo/departamento/" +
+                    idDepartment +
+                    "/municipio/" +
+                    149
+                  }
                 >
                   <i className="bi bi-arrow-left-circle"></i>
                   &nbsp;&nbsp;REGRESAR A ELEGIR UN MUNICIPIO
