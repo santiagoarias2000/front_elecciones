@@ -63,6 +63,17 @@ export const Welcome = () => {
                   </b>
                 </p>
               </div>
+              <div className="text-center mb-5">
+                <iframe
+                  width="450"
+                  height="300"
+                  src="https://www.youtube.com/embed/W5T7KS7ACdk"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              </div>
               <div className="section-title">
                 <h5>RESULTADOS ELECTORALES</h5>
                 <hr style={{ color: "#052851" }} />
