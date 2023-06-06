@@ -8,18 +8,13 @@ import { useForm } from "../../utilities/hooks/useForm";
 import AccessUser from "../../mocks/models/AccessUser";
 import { ToastContainer } from "react-toastify";
 import jwtDecode from "jwt-decode";
-import { Modal } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../assets/image/ImagenPago.webp";
 
 export const Login = () => {
   //Modal
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
-  function hideModal() {
-    setTimeout(() => {
-      setShow(true);
-    });
-  }
 
   //Variables
   const myNavigate = useNavigate();
@@ -55,10 +50,10 @@ export const Login = () => {
       //object.passwordUser = passwordEncypted;
       //const urlLogIn = ApiBack.URL + ApiBack.LOGIN;
       const result = await LoginService.consumeService(object);
-      
+
       if (result.tokenHitData) {
         const objJWT: any = jwtDecode(result.tokenHitData);
-        console.log(objJWT);  
+        console.log(objJWT);
         localStorage.setItem("tokenHitData", result.tokenHitData);
         localStorage.setItem("tokenName", result.tokenName);
         localStorage.setItem("tokenEmail", result.tokenEmail);
@@ -71,9 +66,6 @@ export const Login = () => {
     }
   };
 
-  useEffect(() => {
-    hideModal();
-  }, []);
 
   return (
     <body
@@ -169,7 +161,8 @@ export const Login = () => {
                         <a
                           type="submit"
                           className="label btn btn-primary btn-block mb-0"
-                          href="https://payco.link/2122207" target="_blank"
+                          href="https://payco.link/2122207"
+                          target="_blank"
                         >
                           Pagar con ePayco
                         </a>
@@ -185,24 +178,30 @@ export const Login = () => {
       </section>
       <Modal
         show={show}
-        backdrop="static"
         keyboard={false}
+        backdrop="static"
         onHide={handleClose}
         centered
         className="modal"
-        style={{ backgroundColor: "transparent !important", opacity: 0.9}}
+        style={{ backgroundColor: "transparent !important", opacity: 0.9 }}
       >
-        <Modal.Body className="text-center" >
+        <Modal.Body className="text-center">
           <div className="text-center">
-          <button
-            className="btn btn-sm text-white"
-            onClick={handleClose}
-            type="button"
-            aria-label="close"
-            style={{position:"absolute", marginTop:"5%", marginLeft:"87%", backgroundColor:"#d9224e"}}
-          >
-            <span aria-hidden="true"> &times; </span>
-          </button>
+            <Button
+              className="btn btn-sm text-white"
+              onClick={(e)=>{
+                setShow(false);
+              }}
+              type="button"
+              style={{
+                position: "absolute",
+                marginTop: "5%",
+                marginLeft: "87%",
+                backgroundColor: "#d9224e",
+              }}
+            >
+              <span aria-hidden="true"> &times; </span>
+            </Button>
             <img
               style={{ width: "100%", height: "auto", opacity: 1 }}
               src={ImageSpinner}
