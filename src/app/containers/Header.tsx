@@ -17,6 +17,7 @@ export const Header = () => {
     localStorage.removeItem("tokenHitData");
     // Redirect  to home page
     navegar("/");
+    
   };
 
   return (
