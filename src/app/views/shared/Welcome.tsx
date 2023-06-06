@@ -140,8 +140,6 @@ export const Welcome = () => {
         </div>
       </section>
 
-      
-
       <div className="container" data-aos="fade-up">
         <div className="row">
           <div className="col-lg-6 d-flex align-items-center">
@@ -252,7 +250,7 @@ export const Welcome = () => {
           </div>
         </div>
       </div>
-      
+
       <section id="why-us" className="why-us">
         <div className="container" data-aos="fade-up">
           <div className="row mb-5">
@@ -266,7 +264,11 @@ export const Welcome = () => {
                     <i className="bi bi-calendar-week"></i>
                     <div className="d-flex align-items-center">
                       <h6>
-                        <a href="#" className="stretched-link">
+                        <a
+                          href="https://wapp.registraduria.gov.co/electoral/elecciones-territoriales-2023/CalendarioElectoralTerritorial.html"
+                          className="stretched-link"
+                          target="_blank"
+                        >
                           CRONOGRAMA DE ELECCIONES 2023
                         </a>
                       </h6>
@@ -285,7 +287,11 @@ export const Welcome = () => {
                     <i className="bi bi-file-earmark-ruled"></i>
                     <div className="d-flex align-items-center">
                       <h6>
-                        <a href="#" className="stretched-link">
+                        <a
+                          href="https://wapp.registraduria.gov.co/electoral/elecciones-territoriales-2023/Normativa.html"
+                          className="stretched-link"
+                          target="_blank"
+                        >
                           NORMATIVA ELECTORAL
                         </a>
                       </h6>
