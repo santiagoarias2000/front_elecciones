@@ -1,6 +1,6 @@
 import Form from "react-bootstrap/Form";
 import logo from "../../../assets/image/imgHeader.webp";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MessageToastify } from "../../utilities/functions/MessageToastify";
 import LoginService from "../../services/LoginService";
 import { Link, useNavigate } from "react-router-dom";
@@ -55,8 +55,6 @@ export const Login = () => {
         const objJWT: any = jwtDecode(result.tokenHitData);
         console.log(objJWT);
         localStorage.setItem("tokenHitData", result.tokenHitData);
-        localStorage.setItem("tokenName", result.tokenName);
-        localStorage.setItem("tokenEmail", result.tokenEmail);
         myNavigate("/");
         setProcess(false);
       } else {
