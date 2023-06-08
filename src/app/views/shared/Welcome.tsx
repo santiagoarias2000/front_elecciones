@@ -89,7 +89,10 @@ export const Welcome = () => {
                     ) : (
                       <a className="flex d-block" href="/presidencia">
                         <div className="row">
-                          <div className="col-9 justify-content-start" style={{paddingLeft: "20%"}}>
+                          <div
+                            className="col-9 justify-content-start"
+                            style={{ paddingLeft: "20%" }}
+                          >
                             &nbsp;PRESIDENCIA
                           </div>
                         </div>
@@ -105,7 +108,10 @@ export const Welcome = () => {
                     ) : (
                       <a className="flex d-block" href="/senado">
                         <div className="row">
-                          <div className="col-9 justify-content-start" style={{paddingLeft: "20%"}}>
+                          <div
+                            className="col-9 justify-content-start"
+                            style={{ paddingLeft: "20%" }}
+                          >
                             &nbsp;SENADO
                           </div>
                         </div>
@@ -120,7 +126,10 @@ export const Welcome = () => {
                     ) : (
                       <a className="flex d-block" href="/camara">
                         <div className="row">
-                          <div className="col-9 justify-content-start" style={{paddingLeft: "20%"}}>
+                          <div
+                            className="col-9 justify-content-start"
+                            style={{ paddingLeft: "20%" }}
+                          >
                             &nbsp;CÁMARA
                           </div>
                         </div>
@@ -136,11 +145,18 @@ export const Welcome = () => {
                     ) : (
                       <a className="flex d-block" href="/gobernacion">
                         <div className="row">
-                          <div className="col-9 justify-content-start" style={{paddingLeft: "20%"}}>
+                          <div
+                            className="col-9 justify-content-start"
+                            style={{ paddingLeft: "20%" }}
+                          >
                             &nbsp;GOBERNACIONES
                           </div>
                           <div className="col-3 justify-content-start">
-                            <i className="fa-solid fa-crown" style={{color:"#d9224e"}}></i>&nbsp;
+                            <i
+                              className="fa-solid fa-crown"
+                              style={{ color: "#d9224e" }}
+                            ></i>
+                            &nbsp;
                           </div>
                         </div>
                       </a>
@@ -155,9 +171,18 @@ export const Welcome = () => {
                     ) : (
                       <a className="flex d-block" href="/asamblea">
                         <div className="row">
-                          <div className="col-9 justify-content-start" style={{paddingLeft: "20%"}}>&nbsp;ASAMBLEAS</div>
+                          <div
+                            className="col-9 justify-content-start"
+                            style={{ paddingLeft: "20%" }}
+                          >
+                            &nbsp;ASAMBLEAS
+                          </div>
                           <div className="col-3 justify-content-start">
-                            <i className="fa-solid fa-crown" style={{color:"#d9224e"}}></i>&nbsp;
+                            <i
+                              className="fa-solid fa-crown"
+                              style={{ color: "#d9224e" }}
+                            ></i>
+                            &nbsp;
                           </div>
                         </div>
                       </a>
@@ -172,9 +197,18 @@ export const Welcome = () => {
                     ) : (
                       <a className="flex d-block" href="/alcaldia">
                         <div className="row">
-                          <div className="col-9 justify-content-start" style={{paddingLeft: "20%"}}>&nbsp;ALCALDÍAS</div>
+                          <div
+                            className="col-9 justify-content-start"
+                            style={{ paddingLeft: "20%" }}
+                          >
+                            &nbsp;ALCALDÍAS
+                          </div>
                           <div className="col-3 justify-content-start">
-                            <i className="fa-solid fa-crown" style={{color:"#d9224e"}}></i>&nbsp;
+                            <i
+                              className="fa-solid fa-crown"
+                              style={{ color: "#d9224e" }}
+                            ></i>
+                            &nbsp;
                           </div>
                         </div>
                       </a>
@@ -189,9 +223,18 @@ export const Welcome = () => {
                     ) : (
                       <a className="flex d-block" href="/concejo">
                         <div className="row">
-                          <div className="col-9 justify-content-start" style={{paddingLeft: "20%"}}>&nbsp;CONCEJO</div>
+                          <div
+                            className="col-9 justify-content-start"
+                            style={{ paddingLeft: "20%" }}
+                          >
+                            &nbsp;CONCEJO
+                          </div>
                           <div className="col-3 justify-content-start">
-                            <i className="fa-solid fa-crown" style={{color:"#d9224e"}}></i>&nbsp;
+                            <i
+                              className="fa-solid fa-crown"
+                              style={{ color: "#d9224e" }}
+                            ></i>
+                            &nbsp;
                           </div>
                         </div>
                       </a>
@@ -206,9 +249,18 @@ export const Welcome = () => {
                     ) : (
                       <a className="flex d-block" href="/jal">
                         <div className="row">
-                          <div className="col-9 justify-content-start" style={{paddingLeft: "25%"}}>&nbsp;JAL</div>
+                          <div
+                            className="col-9 justify-content-start"
+                            style={{ paddingLeft: "20%" }}
+                          >
+                            &nbsp;JAL
+                          </div>
                           <div className="col-3 justify-content-start">
-                            <i className="fa-solid fa-crown" style={{color:"#d9224e"}}></i>&nbsp;
+                            <i
+                              className="fa-solid fa-crown"
+                              style={{ color: "#d9224e" }}
+                            ></i>
+                            &nbsp;
                           </div>
                         </div>
                       </a>
@@ -219,11 +271,17 @@ export const Welcome = () => {
 
               <hr
                 style={{
-                  color: "#052851"
+                  color: "#052851",
                 }}
               />
+              {localStorage.getItem("tokenHitData") ? null : (
+                <h6 className="text-center fst-italic text_extr">
+                  <b>
+                    Si deseas acceder a más información por favor inicia sesión
+                  </b>
+                </h6>
+              )}
 
-              <h6 className="text-center fst-italic text_extr"><b>Si deseas acceder a más información por favor inicia sesión</b></h6>
               {/* <div className="d-flex justify-content-center">
                 <div id="alt-services" className="alt-services">
                   <div

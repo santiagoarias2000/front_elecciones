@@ -61,11 +61,12 @@ export const GobernacionDepartamento = () => {
   }, [idDepartment]);
   return (
     <main id="main" className="main">
-      <img
-        src={gobernacion}
-        style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
-        alt="logo principal para la parte superior de la pagina web"
-      />
+      <div className="responsive_pr">
+        <img
+          src={gobernacion}
+          alt="logo principal para la parte superior de la pagina web"
+        />
+      </div>
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">

@@ -56,17 +56,12 @@ export const JalDepartamento = () => {
 
   return (
     <main id="main" className="main">
-      <img
-        src={jal}
-        style={{
-          width: "100%",
-          maxHeight: "80%",
-          marginTop: "3vw",
-          borderRadius: "5px 5px 0 0",
-          boxShadow: "0px 0 20px #052851",
-        }}
-        alt="logo principal para la parte superior de la pagina web"
-      />
+      <div className="responsive_pr">
+        <img
+          src={jal}
+          alt="logo principal para la parte superior de la pagina web"
+        />
+      </div>
       <div className="side_bar"></div>
 
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
