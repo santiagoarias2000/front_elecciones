@@ -9,9 +9,9 @@ import bannerPublicidad from "../../../assets/image/Blog/publicidadLoteriaHori.w
 
 export const Blog = () => {
   return (
-    <div id="about" className="containner-welcome">
+    <div id="about" className="containner-welcome ">
       <section>
-        <div className="container">
+        <div className="container mt-5">
           <div className="row">
             <div className="col-md-9" data-aos="fade-up">
               <h3 className="category-title">CATEGORIA: POLÍTICA</h3>
