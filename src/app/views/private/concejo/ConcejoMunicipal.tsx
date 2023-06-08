@@ -252,33 +252,18 @@ export const ConcejoMunicipal = () => {
                   </div>
                 )}
 
-                {idDepartment === "11" ? (
-                  <div className="col-sm">
-                    <Form id="form_conta" onSubmit={submitHandler}>
-                      <InputGroup className="my-1 container_form">
-                        <Form.Control
-                          onChange={(e) => setSearchMunicipio(e.target.value)}
-                          placeholder="Buscar nombre Candidato"
-                          style={{ textAlign: "right", marginRight: "5px" }}
-                          className="form_co"
-                        ></Form.Control>
-                      </InputGroup>
-                    </Form>
-                  </div>
-                ) : (
-                  <div className="col-12">
-                    <Form id="form_conta" onSubmit={submitHandler}>
-                      <InputGroup className="my-1 container_form">
-                        <Form.Control
-                          onChange={(e) => setSearchMunicipio(e.target.value)}
-                          placeholder="Buscar nombre departamento"
-                          style={{ textAlign: "right", marginRight: "5px" }}
-                          className="form_co"
-                        ></Form.Control>
-                      </InputGroup>
-                    </Form>
-                  </div>
-                )}
+                <div className="col-sm">
+                  <Form id="form_conta" onSubmit={submitHandler}>
+                    <InputGroup className="my-1 container_form">
+                      <Form.Control
+                        onChange={(e) => setSearchMunicipio(e.target.value)}
+                        placeholder="Buscar nombre Candidato"
+                        style={{ textAlign: "right", marginRight: "5px" }}
+                        className="form_co"
+                      ></Form.Control>
+                    </InputGroup>
+                  </Form>
+                </div>
               </div>
             </div>
           </div>

@@ -157,11 +157,11 @@ export const AlcaldiaDepartamentoMunicipio = () => {
                 </h6>
               </div>
               <div className="col-sm">
-                <Form id="form_conta" onSubmit={submitHandler}>
+                <Form id="form_conta">
                   <InputGroup className="my-3 container_form">
                     <Form.Control
-                      onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Buscar nombre candidato"
+                      onChange={(e) => setSearchMunicipio(e.target.value)}
+                      placeholder="Buscar nombre Candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
                     ></Form.Control>
