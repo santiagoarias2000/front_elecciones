@@ -3,26 +3,15 @@ import { Navigate, Outlet } from "react-router-dom";
 type propsGuard = { children?: any };
 
 export const Guard = ({ children }: propsGuard) => {
-
-  
-  if (
-    localStorage.getItem("tokenHitData") &&
-    localStorage.getItem("tokenName") &&
-    localStorage.getItem("tokenHitData")
-  ) {
-    const userToken = String(localStorage.getItem("tokenHitData"));
-    const userTokenName = String(localStorage.getItem("tokenName"));
-    const userTokenEmail = String(localStorage.getItem("tokenEmail"));
-
+  const userToken= localStorage.getItem("tokenHitData");
+  if (userToken) {
     try {
       jwtDecode(userToken);
-      jwtDecode(userTokenName);
-      jwtDecode(userTokenEmail);
     } catch (error) {
-      <Navigate to="/" />;
+      <Navigate to="/" replace />;
     }
   } else {
-    return <Navigate to="/login" />;
+    return <Navigate to="/login" replace />;
   }
 
   return children ? children : <Outlet />;
