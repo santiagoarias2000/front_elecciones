@@ -63,6 +63,17 @@ export const Welcome = () => {
                   </b>
                 </p>
               </div>
+              <div className="text-center mb-5">
+                <iframe
+                  width="450"
+                  height="300"
+                  src="https://www.youtube.com/embed/W5T7KS7ACdk"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              </div>
               <div className="section-title">
                 <h5>RESULTADOS ELECTORALES</h5>
                 <hr style={{ color: "#052851" }} />
@@ -139,8 +150,6 @@ export const Welcome = () => {
           </div>
         </div>
       </section>
-
-      
 
       <div className="container" data-aos="fade-up">
         <div className="row">
@@ -252,7 +261,7 @@ export const Welcome = () => {
           </div>
         </div>
       </div>
-      
+
       <section id="why-us" className="why-us">
         <div className="container" data-aos="fade-up">
           <div className="row mb-5">
@@ -266,7 +275,11 @@ export const Welcome = () => {
                     <i className="bi bi-calendar-week"></i>
                     <div className="d-flex align-items-center">
                       <h6>
-                        <a href="#" className="stretched-link">
+                        <a
+                          href="https://wapp.registraduria.gov.co/electoral/elecciones-territoriales-2023/CalendarioElectoralTerritorial.html"
+                          className="stretched-link"
+                          target="_blank"
+                        >
                           CRONOGRAMA DE ELECCIONES 2023
                         </a>
                       </h6>
@@ -285,7 +298,11 @@ export const Welcome = () => {
                     <i className="bi bi-file-earmark-ruled"></i>
                     <div className="d-flex align-items-center">
                       <h6>
-                        <a href="#" className="stretched-link">
+                        <a
+                          href="https://wapp.registraduria.gov.co/electoral/elecciones-territoriales-2023/Normativa.html"
+                          className="stretched-link"
+                          target="_blank"
+                        >
                           NORMATIVA ELECTORAL
                         </a>
                       </h6>
