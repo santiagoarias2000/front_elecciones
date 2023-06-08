@@ -216,7 +216,7 @@ export const SenadoNacionalMunicipio = () => {
                 <div className="d-flex align-items-center mt-2 mb-2 justify-content-between">
                   <div
                     className="dropdown text-left mb-1"
-                    style={{ marginLeft: "3%" }}
+                    style={{ marginRight: "5%" }}
                   >
                     <div className="dropdown">
                       <button

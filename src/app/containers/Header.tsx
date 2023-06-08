@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link, redirect, useNavigate } from "react-router-dom";
-import { NavDropdown } from "react-bootstrap";
+import { NavDropdown, NavItem } from "react-bootstrap";
 
 export const Header = () => {
   const navegar = useNavigate();
@@ -22,8 +22,6 @@ export const Header = () => {
     const logoutTimer = setTimeout(() => {
       logout();
     }, expirationTime * 1000);
-
-    
 
     // Limpiar el temporizador cuando el componente se desmonte o se actualice
     return () => clearTimeout(logoutTimer);
@@ -102,7 +100,9 @@ export const Header = () => {
                       <span>Cerrar Sesión</span>
                     </a>
                   </NavDropdown.Item>
+                  
                 </NavDropdown>
+                
               ) : (
                 <a
                   href="/login"

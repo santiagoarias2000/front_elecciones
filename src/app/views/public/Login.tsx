@@ -75,7 +75,7 @@ export const Login = () => {
       className="background-radial-gradient overflow-hidden"
     >
       <section style={{ width: "100%", height: "100vh" }}>
-        <div className="container px-4 py-5 px-md-5 text-center text-lg-start">
+        <div className="margenDispositivos container px-4 py-3 text-center text-lg-start">
           <div className="row gx-lg-5 align-items-center">
             <div className="col-lg-6 mb-lg-0" style={{ zIndex: "10" }}>
               <Link to={"/"}>
@@ -161,10 +161,10 @@ export const Login = () => {
                         <a
                           type="submit"
                           className="label btn btn-primary btn-block mb-0"
-                          href="https://payco.link/2122207"
+                          href="https://payco.link/2150692"
                           target="_blank"
                         >
-                          Pagar con ePayco
+                          Registrarse
                         </a>
                       </div>
                     </div>

@@ -85,11 +85,6 @@ export const AlcaldiaDepartamentoMunicipio = () => {
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div className="container-fluid display-flex justify-content-center container_title">
-            <div className="text-center">
-              <b className="title_table">ALCALDIAS MUNICIPALES</b> &nbsp;
-            </div>
-          </div>
           <div className="container responsive">
             <div className="row">
               <div className="col-sm ">
@@ -178,8 +173,25 @@ export const AlcaldiaDepartamentoMunicipio = () => {
           <div className="container no_responsive">
             <div className="row">
               <div className="col-sm ">
+                <div className="col">
+                  <h6 className="text-center my-2" style={{ color: "#052851" }}>
+                    {arrayNameMunicipality.map((myNameMunicipality) => (
+                      <b className="name_text">
+                        {myNameMunicipality.name_municipality}
+                        {" ("}
+                        {myNameMunicipality.department}
+                        {")"}
+                      </b>
+                    ))}
+                  </h6>
+                </div>
+              </div>  
+              <div className="d-flex align-items-center mt-2 mb-2 justify-content-between">
                 {showComboBox && (
-                  <div className="dropdown text-center my-3">
+                  <div
+                    className="dropdown text-left mb-1"
+                    style={{ marginRight: "5%" }}
+                  >
                     <button
                       type="button"
                       className="buttonBack buttonBack-primary dropdown-toggle text-light"
@@ -232,31 +244,21 @@ export const AlcaldiaDepartamentoMunicipio = () => {
                       </li>
                     </ul>
                   </div>
+                  
                 )}
-              </div>
-              <div className="col">
-                <h6 className="text-center my-2" style={{ color: "#052851" }}>
-                  {arrayNameMunicipality.map((myNameMunicipality) => (
-                    <b className="name_text">
-                      {myNameMunicipality.name_municipality}
-                      {" ("}
-                      {myNameMunicipality.department}
-                      {")"}
-                    </b>
-                  ))}
-                </h6>
-              </div>
-              <div className="col-sm">
-                <Form id="form_conta" onSubmit={submitHandler}>
-                  <InputGroup className="my-1 container_form">
-                    <Form.Control
-                      onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Buscar nombre candidato"
-                      style={{ textAlign: "right", marginRight: "5px" }}
-                      className="form_co"
-                    ></Form.Control>
-                  </InputGroup>
-                </Form>
+              
+                <div className="col-sm" >
+                  <Form id="form_conta" onSubmit={submitHandler}>
+                    <InputGroup className="my-1 container_form">
+                      <Form.Control
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Buscar nombre Candidato"
+                        style={{ textAlign: "right", marginRight: "5px" }}
+                        className="form_co"
+                      ></Form.Control>
+                    </InputGroup>
+                  </Form>
+                </div>
               </div>
             </div>
           </div>
@@ -276,7 +278,7 @@ export const AlcaldiaDepartamentoMunicipio = () => {
                     style={{ width: "35%" }}
                     id="text_left_name"
                   >
-                    PARTIDO POLITIO
+                    PARTIDO POLÍTICO
                   </th>
                   <th
                     className="text-center"

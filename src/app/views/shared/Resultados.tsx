@@ -35,7 +35,7 @@ export const Resultados = () => {
             <p>
               Registro correspondiente al total de las votaciones realizadas a
               nivel nacional y departamental para la Presidencia de la
-              República.
+              República
             </p>
             <div className="cards-btn text-center">
               <a
@@ -63,7 +63,7 @@ export const Resultados = () => {
             <h3 className="mt-4">Senado de la República</h3>
             <p>
               Registro correspondiente al total de las votaciones realizadas a
-              nivel departamental y municipal para el Senado de la República.
+              nivel departamental y municipal para el Senado de la República
             </p>
             <div className="cards-btn text-center botton_responsive">
               <a href="/senado" className="btn-cards mt-4 responsive_botton">
@@ -88,7 +88,7 @@ export const Resultados = () => {
             <h3 className="mt-4">Cámara de Representantes</h3>
             <p>
               Registro correspondiente al total de las votaciones realizadas a
-              nivel departamental y municipal para la Cámara de Representantes.
+              nivel departamental y municipal para la Cámara de Representantes
             </p>
             <div className="cards-btn text-center">
               <a href="/camara" className="btn-cards mt-4 responsive_botton">
@@ -110,10 +110,10 @@ export const Resultados = () => {
                 style={{ width: "12%", height: "auto" }}
               />
             </span>
-            <h4>Gobernaciones</h4>
+            <h3 className="mt-4">Gobernaciones</h3>
             <p>
               Registro correspondiente al total de las votaciones realizadas a
-              nivel departamental y municipal para las Gobernaciones.
+              nivel departamental y municipal para las Gobernaciones
             </p>
             <div className="cards-btn text-center">
               <a
@@ -138,10 +138,10 @@ export const Resultados = () => {
                 style={{ width: "12%", height: "auto" }}
               />
             </span>
-            <h4>Asambleas Departamentales</h4>
+            <h3 className="mt-4">Asambleas Departamentales</h3>
             <p>
               Registro correspondiente al total de las votaciones realizadas a
-              nivel departamental y municipal para Asambleas.
+              nivel departamental y municipal para Asambleas
             </p>
             <div className="cards-btn text-center">
               <a href="/asamblea" className="btn-cards mt-4 responsive_botton">
@@ -163,10 +163,10 @@ export const Resultados = () => {
                 style={{ width: "12%", height: "auto" }}
               />
             </span>
-            <h4>Alcaldías</h4>
+            <h3 className="mt-4">Alcaldías</h3>
             <p>
               Registro correspondiente al total de las votaciones realizadas a
-              nivel municipal para las Alcaldías.
+              nivel municipal para las Alcaldías
             </p>
             <div className="cards-btn text-center">
               <a href="/alcaldia" className="btn-cards mt-4 responsive_botton">
@@ -187,10 +187,10 @@ export const Resultados = () => {
                 style={{ width: "12%", height: "auto" }}
               />
             </span>
-            <h4>Concejos Municipales</h4>
+            <h3 className="mt-4">Concejos Municipales</h3>
             <p>
               Registro correspondiente al total de las votaciones realizadas
-              para el Concejo Municipal.
+              para el Concejo Municipal
             </p>
             <div className="cards-btn text-center">
               <a href="/concejo" className="btn-cards mt-4 responsive_botton">
@@ -212,10 +212,10 @@ export const Resultados = () => {
                 style={{ width: "12%", height: "auto" }}
               />
             </span>
-            <h4>Juntas Administradoras Locales - JAL</h4>
+            <h3 className="mt-4">Juntas Administradoras Locales - JAL</h3>
             <p>
               Registro correspondiente al total de las votaciones realizadas
-              para JAL.
+              para JAL
             </p>
             <div className="cards-btn text-center">
               <a href="/jal" className="btn-cards mt-4 responsive_botton">

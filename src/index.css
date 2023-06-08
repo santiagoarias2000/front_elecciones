@@ -5924,3 +5924,15 @@ ul li {
 .modal {
   --bs-modal-padding: 0rem !important;
 }
+
+@media (min-width: 768px) {
+  .margenDispositivos {
+    padding-right: 0rem !important;
+    padding-left: 0rem !important;
+  }
+}
+
+.margenDispositivos {
+  padding-right: 3rem !important;
+  padding-left: 3rem !important;
+}

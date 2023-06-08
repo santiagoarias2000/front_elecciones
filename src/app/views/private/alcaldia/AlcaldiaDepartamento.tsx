@@ -55,11 +55,6 @@ export const AlcaldiaDepartamento = () => {
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div className="container-fluid display-flex justify-content-center container_title">
-            <div className="text-center">
-              <b className="title_table">ALCALDIAS MUNICIPALES</b> &nbsp;
-            </div>
-          </div>
           <div className="container responsive">
             <div className="row">
               <div className="col-sm "></div>

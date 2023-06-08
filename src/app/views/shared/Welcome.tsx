@@ -67,7 +67,7 @@ export const Welcome = () => {
                 <iframe
                   width="450"
                   height="300"
-                  src="https://www.youtube.com/embed/W5T7KS7ACdk"
+                  src="https://www.youtube.com/embed/4sgV7e2Qnn0"
                   title="YouTube video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -82,7 +82,7 @@ export const Welcome = () => {
                 <ul className="prueba">
                   <li>
                     <a className="flex d-block" href="/presidencia">
-                      PRESIDENCIA
+                      PRESIDENCIA 
                     </a>
                     <a className="flex d-block" href="/senado">
                       SENADO

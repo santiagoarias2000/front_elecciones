@@ -71,6 +71,7 @@ export const JalDepartamento = () => {
 
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
+          
           <div className="container responsive">
             <div className="row">
               <div className="col-sm">
