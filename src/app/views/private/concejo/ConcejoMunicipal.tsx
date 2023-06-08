@@ -179,8 +179,25 @@ export const ConcejoMunicipal = () => {
           <div className="container no_responsive">
             <div className="row">
               <div className="col-sm">
+                <div className="col">
+                  <h6 className="text-center my-2" style={{ color: "#052851" }}>
+                    {arrayNameMunicipality.map((myNameMunicipality) => (
+                      <b className="name_text">
+                        {myNameMunicipality.name_municipality}
+                        {" ("}
+                        {myNameMunicipality.department}
+                        {")"}
+                      </b>
+                    ))}
+                  </h6>
+                </div>
+              </div>
+              <div className="d-flex align-items-center mt-2 mb-2 justify-content-between">
                 {showComboBox && (
-                  <div className="dropdown text-center my-3">
+                  <div
+                    className="dropdown text-left mb-1"
+                    style={{ marginRight: "5%" }}
+                  >
                     <button
                       type="button"
                       className="buttonBack buttonBack-primary dropdown-toggle text-light"
@@ -234,30 +251,34 @@ export const ConcejoMunicipal = () => {
                     </ul>
                   </div>
                 )}
-              </div>
-              <div className="col">
-                <h6 className="text-center my-2" style={{ color: "#052851" }}>
-                  {arrayNameMunicipality.map((myNameMunicipality) => (
-                    <b className="name_text">
-                      {myNameMunicipality.name_municipality}
-                      {" ("}
-                      {myNameMunicipality.department}
-                      {")"}
-                    </b>
-                  ))}
-                </h6>
-              </div>
-              <div className="col-sm">
-                <Form id="form_conta">
-                  <InputGroup className="my-1 container_form">
-                    <Form.Control
-                      onChange={(e) => setSearchMunicipio(e.target.value)}
-                      placeholder="Buscar nombre Candidato"
-                      style={{ textAlign: "right", marginRight: "5px" }}
-                      className="form_co"
-                    ></Form.Control>
-                  </InputGroup>
-                </Form>
+
+                {idDepartment === "11" ? (
+                  <div className="col-sm">
+                    <Form id="form_conta" onSubmit={submitHandler}>
+                      <InputGroup className="my-1 container_form">
+                        <Form.Control
+                          onChange={(e) => setSearchMunicipio(e.target.value)}
+                          placeholder="Buscar nombre Candidato"
+                          style={{ textAlign: "right", marginRight: "5px" }}
+                          className="form_co"
+                        ></Form.Control>
+                      </InputGroup>
+                    </Form>
+                  </div>
+                ) : (
+                  <div className="col-12">
+                    <Form id="form_conta" onSubmit={submitHandler}>
+                      <InputGroup className="my-1 container_form">
+                        <Form.Control
+                          onChange={(e) => setSearchMunicipio(e.target.value)}
+                          placeholder="Buscar nombre departamento"
+                          style={{ textAlign: "right", marginRight: "5px" }}
+                          className="form_co"
+                        ></Form.Control>
+                      </InputGroup>
+                    </Form>
+                  </div>
+                )}
               </div>
             </div>
           </div>

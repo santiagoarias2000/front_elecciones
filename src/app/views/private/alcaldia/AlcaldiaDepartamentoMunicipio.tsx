@@ -185,7 +185,7 @@ export const AlcaldiaDepartamentoMunicipio = () => {
                     ))}
                   </h6>
                 </div>
-              </div>  
+              </div>
               <div className="d-flex align-items-center mt-2 mb-2 justify-content-between">
                 {showComboBox && (
                   <div
@@ -244,21 +244,35 @@ export const AlcaldiaDepartamentoMunicipio = () => {
                       </li>
                     </ul>
                   </div>
-                  
                 )}
-              
-                <div className="col-sm" >
-                  <Form id="form_conta" onSubmit={submitHandler}>
-                    <InputGroup className="my-1 container_form">
-                      <Form.Control
-                        onChange={(e) => setSearch(e.target.value)}
-                        placeholder="Buscar nombre Candidato"
-                        style={{ textAlign: "right", marginRight: "5px" }}
-                        className="form_co"
-                      ></Form.Control>
-                    </InputGroup>
-                  </Form>
-                </div>
+
+                {idDepartment === "11" ? (
+                  <div className="col-sm">
+                    <Form id="form_conta" onSubmit={submitHandler}>
+                      <InputGroup className="my-1 container_form">
+                        <Form.Control
+                          onChange={(e) => setSearch(e.target.value)}
+                          placeholder="Buscar nombre Candidato"
+                          style={{ textAlign: "right", marginRight: "5px" }}
+                          className="form_co"
+                        ></Form.Control>
+                      </InputGroup>
+                    </Form>
+                  </div>
+                ) : (
+                  <div className="col-12">
+                <Form id="form_conta" onSubmit={submitHandler}>
+                  <InputGroup className="my-1 container_form">
+                    <Form.Control
+                      onChange={(e) => setSearch(e.target.value)}
+                      placeholder="Buscar nombre departamento"
+                      style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
+                    ></Form.Control>
+                  </InputGroup>
+                </Form>
+              </div>
+                )}
               </div>
             </div>
           </div>

@@ -15,14 +15,14 @@ export const ConcejoLocalidad = () => {
   const [search, setSearch] = useState("");
   const [searchMunicipio, setSearchMunicipio] = useState("");
 
-
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
   const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
     Municipality[]
   >([]);
-  const [arrayVotosConsejo, setArrayVotosConcejo] =
-    useState<VotosConcejo[]>([]);
+  const [arrayVotosConsejo, setArrayVotosConcejo] = useState<VotosConcejo[]>(
+    []
+  );
   const [Localidad, setLocalidad] = useState<Municipality[]>([]);
 
   const getComboBoxLocalidad = async () => {
@@ -86,59 +86,59 @@ export const ConcejoLocalidad = () => {
           <div className="container responsive">
             <div className="row">
               <div className="col-sm ">
-              <div className="dropdown text-center my-3">
-                    <button
-                      type="button"
-                      className="buttonBack buttonBack-primary dropdown-toggle text-light"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      Localidades
-                    </button>
-                    <ul
-                      className="dropdown-menu selectpicker"
-                      data-live-search="true"
-                      style={{ maxHeight: "200px", overflowY: "auto" }}
-                    >
-                      <div className="sticky-top">
-                        <input
-                          type="text"
-                          placeholder="Busqueda..."
-                          className="mi-sticky"
-                          onChange={(event) => {
-                            setSearchMunicipio(event.target.value);
-                          }}
-                        />
-                      </div>
-                      <li>
-                        {Localidad.filter((val) => {
-                          if (searchMunicipio === "") {
-                            return val;
-                          } else if (
-                            val.name_municipality
-                              .toLocaleLowerCase()
-                              .includes(searchMunicipio.toLocaleLowerCase())
-                          ) {
-                            return val;
+                <div className="dropdown text-center my-3">
+                  <button
+                    type="button"
+                    className="buttonBack buttonBack-primary dropdown-toggle text-light"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Localidades
+                  </button>
+                  <ul
+                    className="dropdown-menu selectpicker"
+                    data-live-search="true"
+                    style={{ maxHeight: "200px", overflowY: "auto" }}
+                  >
+                    <div className="sticky-top">
+                      <input
+                        type="text"
+                        placeholder="Busqueda..."
+                        className="mi-sticky"
+                        onChange={(event) => {
+                          setSearchMunicipio(event.target.value);
+                        }}
+                      />
+                    </div>
+                    <li>
+                      {Localidad.filter((val) => {
+                        if (searchMunicipio === "") {
+                          return val;
+                        } else if (
+                          val.name_municipality
+                            .toLocaleLowerCase()
+                            .includes(searchMunicipio.toLocaleLowerCase())
+                        ) {
+                          return val;
+                        }
+                      }).map((miMunicipio, indice) => (
+                        <a
+                          className="dropdown-item"
+                          href={
+                            "/concejo/departamento/" +
+                            idDepartment +
+                            "/localidad/" +
+                            miMunicipio.id_municipality
                           }
-                        }).map((miMunicipio, indice) => (
-                          <a
-                            className="dropdown-item"
-                            href={
-                              "/concejo/departamento/" +
-                              idDepartment +
-                              "/localidad/" +
-                              miMunicipio.id_municipality
-                            }
-                          >
-                            <b className="name_text">
-                              {miMunicipio.name_municipality}
-                            </b>
-                          </a>
-                        ))}
-                      </li>
-                    </ul>
-                  </div>
+                        >
+                          <b className="name_text">
+                            {miMunicipio.name_municipality}
+                          </b>
+                        </a>
+                      ))}
+                    </li>
+                  </ul>
+                </div>
               </div>
               <div className="col">
                 <h6 className="text-center my-4" style={{ color: "#052851" }}>
@@ -169,83 +169,89 @@ export const ConcejoLocalidad = () => {
           <div className="container no_responsive">
             <div className="row">
               <div className="col-sm">
-              <div className="dropdown text-center my-3">
-                    <button
-                      type="button"
-                      className="buttonBack buttonBack-primary dropdown-toggle text-light"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      Localidades
-                    </button>
-                    <ul
-                      className="dropdown-menu selectpicker"
-                      data-live-search="true"
-                      style={{ maxHeight: "200px", overflowY: "auto" }}
-                    >
-                      <div className="sticky-top">
-                        <input
-                          type="text"
-                          placeholder="Busqueda..."
-                          className="mi-sticky"
-                          onChange={(event) => {
-                            setSearchMunicipio(event.target.value);
-                          }}
-                        />
-                      </div>
-                      <li>
-                        {Localidad.filter((val) => {
-                          if (searchMunicipio === "") {
-                            return val;
-                          } else if (
-                            val.name_municipality
-                              .toLocaleLowerCase()
-                              .includes(searchMunicipio.toLocaleLowerCase())
-                          ) {
-                            return val;
+                <div className="col">
+                  <h6 className="text-center my-2" style={{ color: "#052851" }}>
+                    {arrayNameMunicipality.map((myNameMunicipality) => (
+                      <b className="name_text">
+                        {myNameMunicipality.name_municipality}
+                        {" ("}
+                        {myNameMunicipality.department}
+                        {")"}
+                      </b>
+                    ))}
+                  </h6>
+                </div>
+              </div>
+              <div className="d-flex align-items-center mt-2 mb-2 justify-content-between">
+                <div
+                  className="dropdown text-left mb-1"
+                  style={{ marginRight: "5%" }}
+                >
+                  <button
+                    type="button"
+                    className="buttonBack buttonBack-primary dropdown-toggle text-light"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Localidades
+                  </button>
+                  <ul
+                    className="dropdown-menu selectpicker"
+                    data-live-search="true"
+                    style={{ maxHeight: "200px", overflowY: "auto" }}
+                  >
+                    <div className="sticky-top">
+                      <input
+                        type="text"
+                        placeholder="Busqueda..."
+                        className="mi-sticky"
+                        onChange={(event) => {
+                          setSearchMunicipio(event.target.value);
+                        }}
+                      />
+                    </div>
+                    <li>
+                      {Localidad.filter((val) => {
+                        if (searchMunicipio === "") {
+                          return val;
+                        } else if (
+                          val.name_municipality
+                            .toLocaleLowerCase()
+                            .includes(searchMunicipio.toLocaleLowerCase())
+                        ) {
+                          return val;
+                        }
+                      }).map((miMunicipio, indice) => (
+                        <a
+                          className="dropdown-item"
+                          href={
+                            "/concejo/departamento/" +
+                            idDepartment +
+                            "/localidad/" +
+                            miMunicipio.id_municipality
                           }
-                        }).map((miMunicipio, indice) => (
-                          <a
-                            className="dropdown-item"
-                            href={
-                              "/concejo/departamento/" +
-                              idDepartment +
-                              "/localidad/" +
-                              miMunicipio.id_municipality
-                            }
-                          >
-                            <b className="name_text">
-                              {miMunicipio.name_municipality}
-                            </b>
-                          </a>
-                        ))}
-                      </li>
-                    </ul>
-                  </div>
-              </div>
-              <div className="col">
-                <h6 className="text-center my-2" style={{ color: "#052851" }}>
-                  {arrayNameMunicipality.map((myNameMunicipality) => (
-                    <b className="name_text">
-                      {myNameMunicipality.name_municipality}
-                      {" ("}
-                      {myNameMunicipality.department}
-                      {")"}
-                    </b>
-                  ))}
-                </h6>
-              </div>
-              <div className="col-sm">
-                <Form id="form_conta" onSubmit={submitHandler}>
-                  <InputGroup className="my-1 container_form">
-                    <Form.Control
-                      onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Buscar nombre Candidato"
-                      style={{ textAlign: "right", marginRight: "5px" }}
-                      className="form_co"
-                    ></Form.Control>
-                  </InputGroup>
-                </Form>
+                        >
+                          <b className="name_text">
+                            {miMunicipio.name_municipality}
+                          </b>
+                        </a>
+                      ))}
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="col-sm">
+                  <Form id="form_conta" onSubmit={submitHandler}>
+                    <InputGroup className="my-1 container_form">
+                      <Form.Control
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Buscar nombre Candidato"
+                        style={{ textAlign: "right", marginRight: "5px" }}
+                        className="form_co"
+                      ></Form.Control>
+                    </InputGroup>
+                  </Form>
+                </div>
               </div>
             </div>
           </div>

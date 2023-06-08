@@ -46,7 +46,7 @@ export const Welcome = () => {
             </div>
 
             <div className="col-lg-6 d-flex flex-column justify-content-center about-content">
-              <div className="section-title" style={{ paddingBottom: "10%" }}>
+              <div className="section-title" style={{ paddingBottom: "5%" }}>
                 <h2>Bienvenido a Guía Electoral de Colombia</h2>
                 <h6 className="fst-italic text_extr">
                   ¡¡¡Para estrategias...Documéntese!!!
@@ -63,10 +63,9 @@ export const Welcome = () => {
                   </b>
                 </p>
               </div>
-              <div className="text-center mb-5">
+              <div className="text-center mb-3">
                 <iframe
-                  width="450"
-                  height="300"
+                  className="cambiosResponsivos"
                   src="https://www.youtube.com/embed/4sgV7e2Qnn0"
                   title="YouTube video player"
                   frameBorder="0"
@@ -81,41 +80,150 @@ export const Welcome = () => {
               <div className="d-flex justify-content-center">
                 <ul className="prueba">
                   <li>
-                    <a className="flex d-block" href="/presidencia">
-                      PRESIDENCIA 
-                    </a>
-                    <a className="flex d-block" href="/senado">
-                      SENADO
-                    </a>
-                    <a className="flex d-block" href="/camara">
-                      CÁMARA
-                    </a>
-                    <a className="flex d-block" href="/gobernacion">
-                      GOBERNACIONES
-                    </a>
-                    <a className="flex d-block" href="/asamblea">
-                      ASAMBLEAS
-                    </a>
-                    <a className="flex d-block" href="/alcaldia">
-                      ALCALDÍAS
-                    </a>
-                    <a className="flex d-block" href="/concejo">
-                      CONCEJO
-                    </a>
-                    <a className="flex d-block" href="/jal">
-                      JAL
-                    </a>
+                    {localStorage.getItem("tokenHitData") ? (
+                      <a className="flex d-block" href="/presidencia">
+                        <div className="row">
+                          <div className="col-12 login">PRESIDENCIA</div>
+                        </div>
+                      </a>
+                    ) : (
+                      <a className="flex d-block" href="/presidencia">
+                        <div className="row">
+                          <div className="col-9 justify-content-start" style={{paddingLeft: "20%"}}>
+                            &nbsp;PRESIDENCIA
+                          </div>
+                        </div>
+                      </a>
+                    )}
+
+                    {localStorage.getItem("tokenHitData") ? (
+                      <a className="flex d-block" href="/senado">
+                        <div className="row">
+                          <div className="col-12 login">SENADO</div>
+                        </div>
+                      </a>
+                    ) : (
+                      <a className="flex d-block" href="/senado">
+                        <div className="row">
+                          <div className="col-9 justify-content-start" style={{paddingLeft: "20%"}}>
+                            &nbsp;SENADO
+                          </div>
+                        </div>
+                      </a>
+                    )}
+                    {localStorage.getItem("tokenHitData") ? (
+                      <a className="flex d-block" href="/camara">
+                        <div className="row">
+                          <div className="col-12 login">CÁMARA</div>
+                        </div>
+                      </a>
+                    ) : (
+                      <a className="flex d-block" href="/camara">
+                        <div className="row">
+                          <div className="col-9 justify-content-start" style={{paddingLeft: "20%"}}>
+                            &nbsp;CÁMARA
+                          </div>
+                        </div>
+                      </a>
+                    )}
+
+                    {localStorage.getItem("tokenHitData") ? (
+                      <a className="flex d-block" href="/gobernacion">
+                        <div className="row">
+                          <div className="col-12 login">GOBERNACIONES</div>
+                        </div>
+                      </a>
+                    ) : (
+                      <a className="flex d-block" href="/gobernacion">
+                        <div className="row">
+                          <div className="col-9 justify-content-start" style={{paddingLeft: "20%"}}>
+                            &nbsp;GOBERNACIONES
+                          </div>
+                          <div className="col-3 justify-content-start">
+                            <i className="fa-solid fa-crown" style={{color:"#d9224e"}}></i>&nbsp;
+                          </div>
+                        </div>
+                      </a>
+                    )}
+
+                    {localStorage.getItem("tokenHitData") ? (
+                      <a className="flex d-block" href="/asamblea">
+                        <div className="row">
+                          <div className="col-12 login">ASAMBLEAS</div>
+                        </div>
+                      </a>
+                    ) : (
+                      <a className="flex d-block" href="/asamblea">
+                        <div className="row">
+                          <div className="col-9 justify-content-start" style={{paddingLeft: "20%"}}>&nbsp;ASAMBLEAS</div>
+                          <div className="col-3 justify-content-start">
+                            <i className="fa-solid fa-crown" style={{color:"#d9224e"}}></i>&nbsp;
+                          </div>
+                        </div>
+                      </a>
+                    )}
+
+                    {localStorage.getItem("tokenHitData") ? (
+                      <a className="flex d-block" href="/alcaldia">
+                        <div className="row">
+                          <div className="col-12 login">ALCALDÍAS</div>
+                        </div>
+                      </a>
+                    ) : (
+                      <a className="flex d-block" href="/alcaldia">
+                        <div className="row">
+                          <div className="col-9 justify-content-start" style={{paddingLeft: "20%"}}>&nbsp;ALCALDÍAS</div>
+                          <div className="col-3 justify-content-start">
+                            <i className="fa-solid fa-crown" style={{color:"#d9224e"}}></i>&nbsp;
+                          </div>
+                        </div>
+                      </a>
+                    )}
+
+                    {localStorage.getItem("tokenHitData") ? (
+                      <a className="flex d-block" href="/concejo">
+                        <div className="row">
+                          <div className="col-12 login">CONCEJO</div>
+                        </div>
+                      </a>
+                    ) : (
+                      <a className="flex d-block" href="/concejo">
+                        <div className="row">
+                          <div className="col-9 justify-content-start" style={{paddingLeft: "20%"}}>&nbsp;CONCEJO</div>
+                          <div className="col-3 justify-content-start">
+                            <i className="fa-solid fa-crown" style={{color:"#d9224e"}}></i>&nbsp;
+                          </div>
+                        </div>
+                      </a>
+                    )}
+
+                    {localStorage.getItem("tokenHitData") ? (
+                      <a className="flex d-block" href="/jal">
+                        <div className="row">
+                          <div className="col-12 login">JAL</div>
+                        </div>
+                      </a>
+                    ) : (
+                      <a className="flex d-block" href="/jal">
+                        <div className="row">
+                          <div className="col-9 justify-content-start" style={{paddingLeft: "25%"}}>&nbsp;JAL</div>
+                          <div className="col-3 justify-content-start">
+                            <i className="fa-solid fa-crown" style={{color:"#d9224e"}}></i>&nbsp;
+                          </div>
+                        </div>
+                      </a>
+                    )}
                   </li>
                 </ul>
               </div>
 
               <hr
                 style={{
-                  color: "#052851",
-                  marginTop: "40px",
-                  marginBottom: "40px",
+                  color: "#052851"
                 }}
               />
+
+              <h6 className="text-center fst-italic text_extr"><b>Si deseas acceder a más información por favor inicia sesión</b></h6>
               {/* <div className="d-flex justify-content-center">
                 <div id="alt-services" className="alt-services">
                   <div
