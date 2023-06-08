@@ -2148,9 +2148,19 @@ h6,
   padding: 0;
   margin: 0;
   max-height: 40px;
-  max-width: 100px;
+  max-width: 150px;
+  margin-left: 45%;
 }
 
+@media (max-width: 768px) {
+  #header .logo img {
+    padding: 0;
+    margin: 0;
+    max-height: 40px;
+    max-width: 100px;
+  }
+  
+}
 .scrolled-offset {
   margin-top: 70px;
 }
