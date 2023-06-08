@@ -116,6 +116,7 @@ export const Login = () => {
                             required
                             type="email"
                             name="emailUser"
+                            placeholder="Correo electronico"
                             className="form-control"
                             value={emailUser}
                             onChange={doubleLink}
@@ -137,7 +138,7 @@ export const Login = () => {
                           className="form-control"
                           value={passwordUser}
                           onChange={doubleLink}
-                          placeholder="Password"
+                          placeholder="Contraseña"
                         />
                         <Form.Control.Feedback type="invalid">
                           Contraseña incorrecta
