@@ -58,7 +58,7 @@ export const Senado = () => {
             style={{
               background: "#052851",
               color: "#FFFFFF",
-              height: "20px",
+              height: "40px",
               display: "flex",
               alignItems: "center",
             }}
