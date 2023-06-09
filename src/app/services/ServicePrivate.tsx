@@ -1,3 +1,4 @@
+import { redirect } from "react-router-dom";
 import ApiBack from "../utilities/domains/ApiBack";
 
 class ServicePrivate {
@@ -5,11 +6,12 @@ class ServicePrivate {
   // *******************************************************************
   public static async requestGET(urlService: string) {
     const bearer = "Bearer " + String(localStorage.getItem("tokenHitData"));
-
+    let userLogged;
     const dataSend = {
       method: "GET",
       headers: { "Content-Type": "application/json; charset=UTF-8",authorization: bearer }
     };
+    
 
     const url = ApiBack.URL + urlService;
     const respuesta = fetch(url, dataSend)

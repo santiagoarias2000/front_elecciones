@@ -16,9 +16,7 @@ export const CamaraAfroDescendienteDepartamento = () => {
   //Format Number Votes
   const format = new Intl.NumberFormat();
 
-  const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState<
-    CandidatosCamara[]
-  >(ARREGLO_CANDIDATOS_ELEGIDOS);
+  const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState< CandidatosCamara[] >(ARREGLO_CANDIDATOS_ELEGIDOS);
   const [search, setSearch] = useState("");
   const [searchMunicipio, setSearchMunicipio] = useState("");
   const [show, setShow] = useState(true);
