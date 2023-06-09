@@ -1,72 +1,92 @@
 import { useEffect, useState } from "react";
-import { Form, InputGroup, Modal } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import alcaldia from "../../../../assets/image/HeaderTable/ELEALCALDIA.webp";
+import VotosJal from "../../../models/DataElection";
 import ApiBack from "../../../utilities/domains/ApiBack";
+import jal from "../../../../assets/image/HeaderTable/ELEJAL.webp";
 import ServicePrivate from "../../../services/ServicePrivate";
-import Department from "../../../models/Department";
+import Municipality from "../../../models/Municipality";
+import { Form, InputGroup, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
-import VotosAlcaldia from "../../../models/DataElection";
 
-export const AlcaldiaDepartamento = () => {
+export const JalMunicipal = () => {
+  //Variables
   let { idDepartment } = useParams();
-  //Format Number Votes
-  const format = new Intl.NumberFormat();
+  let { idMunicipality } = useParams();
   const [search, setSearch] = useState("");
-  const [arrayDepartamento, setArrayDepartamento] = useState<Department[]>([]);
 
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
+  const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
+    Municipality[]
+  >([]);
+  const [arrayVotesJalMunicipal, setArrayVotosJalMunicipal] = useState<
+    VotosJal[]
+  >([]);
 
-  const [arrayVotosAlcaldiaDepartamento, setArrayVotosAlcaldiaDepartamento] =
-    useState<VotosAlcaldia[]>([]);
-
-  const getDepartamento = async () => {
-    const result = await ServicePrivate.requestGET(
-      ApiBack.NOMBRE_DEPARTAMENTO_ALCADIA + "/" + idDepartment
-    );
-    setArrayDepartamento(result);
+  //Funciones
+  const getVotosJalTerritorial = async () => {
+    if (idDepartment === "11") {
+      const result = await ServicePrivate.requestGET(
+        ApiBack.JAL_LOCALIDAD + "/" + idMunicipality
+      );
+      setArrayVotosJalMunicipal(result);
+    } else {
+      const result = await ServicePrivate.requestGET(
+        ApiBack.JAL_DEPARTAMENTO_MUNICIPIO + "/" + idMunicipality
+      );
+      setArrayVotosJalMunicipal(result);
+    }
+    setShow(false);
   };
-  const getVotosAlcaldiaDepartamento = async () => {
-    const urlCargarDepartamento =
-      ApiBack.ALCALDIA_DEPARTAMENTO + "/" + idDepartment;
-    const result = await ServicePrivate.requestGET(urlCargarDepartamento);
-    setArrayVotosAlcaldiaDepartamento(result);
-    if (result) {
-      setArrayVotosAlcaldiaDepartamento(result);
-      setShow(false);
+  const getNameMunicipality = async () => {
+    if (idDepartment === "11") {
+      const result = await ServicePrivate.requestGET(
+        ApiBack.NOMBRE_LOCALIDAD + "/" + idMunicipality
+      );
+      setArrayNameMunicipality(result);
+    } else {
+      const result = await ServicePrivate.requestGET(
+        ApiBack.NOMBRE_MUNICIPIO + "/" + idMunicipality
+      );
+      setArrayNameMunicipality(result);
     }
   };
+
+  //Format Number Votes
+  const format = new Intl.NumberFormat();
   //Prevent enter in search box
-  function submitHandler(e:any) {
+  function submitHandler(e: any) {
     e.preventDefault();
   }
   useEffect(() => {
-    getVotosAlcaldiaDepartamento();
-    getDepartamento();
-  }, [idDepartment]);
+    getVotosJalTerritorial();
+    getNameMunicipality();
+  }, [idDepartment, idMunicipality]);
+
   return (
     <main id="main" className="main">
-      <img
-        src={alcaldia}
-        style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
-        alt="logo principal para la parte superior de la pagina web"
-      />
+      <div className="responsive_pr">
+        <img
+          src={jal}
+          alt="logo principal para la parte superior de la pagina web"
+        />
+      </div>
       <div className="side_bar"></div>
+
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div className="container-fluid display-flex justify-content-center container_title">
-            <div className="text-center">
-              <b className="title_table">ALCALDIAS MUNICIPALES</b> &nbsp;
-            </div>
-          </div>
-          <div className="container responsive"> 
+          <div className="container responsive">
             <div className="row">
               <div className="col-sm "></div>
               <div className="col">
                 <h6 className="text-center my-4" style={{ color: "#052851" }}>
-                  {arrayDepartamento.map((myDepartment) => (
-                    <b>{myDepartment.name_department}</b>
+                  {arrayNameMunicipality.map((myNameMunicipality) => (
+                    <b>
+                      {myNameMunicipality.name_municipality}
+                      {" ("}
+                      {myNameMunicipality.department}
+                      {")"}
+                    </b>
                   ))}
                 </h6>
               </div>
@@ -75,7 +95,7 @@ export const AlcaldiaDepartamento = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Buscar un municipio"
+                      placeholder="Buscar nombre Candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
                     ></Form.Control>
@@ -86,11 +106,16 @@ export const AlcaldiaDepartamento = () => {
           </div>
           <div className="container no_responsive">
             <div className="row">
-              <div className="col-sm "></div>
+              <div className="col-sm"></div>
               <div className="col">
                 <h6 className="text-center my-2" style={{ color: "#052851" }}>
-                  {arrayDepartamento.map((myDepartment) => (
-                    <b className="name_text">{myDepartment.name_department}</b>
+                  {arrayNameMunicipality.map((myNameMunicipality) => (
+                    <b className="name_text">
+                      {myNameMunicipality.name_municipality}
+                      {" ("}
+                      {myNameMunicipality.department}
+                      {")"}
+                    </b>
                   ))}
                 </h6>
               </div>
@@ -99,7 +124,7 @@ export const AlcaldiaDepartamento = () => {
                   <InputGroup className="my-1 container_form">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Buscar un municipio"
+                      placeholder="Buscar nombre Candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
                     ></Form.Control>
@@ -119,81 +144,51 @@ export const AlcaldiaDepartamento = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }}>
-                    DEPARTAMENTO
+                  <th
+                    className="text-center"
+                    style={{ width: "35%" }}
+                    id="text_left_name"
+                  >
+                    PARTIDO POLÍTICO
                   </th>
-                  <th className="text-center" style={{ width: "35%" }} >
-                    TOTAL VOTOS
+                  <th
+                    className="text-center"
+                    style={{ width: "40%" }}
+                    id="text_left_name"
+                  >
+                    NOMBRE CANDIDATO
                   </th>
-                  <th className="text-center" style={{ width: "30%" }} ></th>
-
+                  <th className="text-center" style={{ width: "25%" }}>
+                    VOTOS MUNICIPIO
+                  </th>
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotosAlcaldiaDepartamento
+                {arrayVotesJalMunicipal
                   .filter((myVotes) => {
                     return search === ""
                       ? myVotes
-                      : myVotes.municipality.name_municipality
+                      : myVotes.candidate_name
                           .toLowerCase()
                           .includes(search.toLowerCase());
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text_left left_alination">
-                        <a
-                          className="link_departamento"
-                          href={
-                            "/alcaldia/departamento/" +
-                            idDepartment +
-                            "/municipio/" +
-                            myVotes.municipality.id_municipality
-                          }
-                        >
-                          {myVotes.municipality.name_municipality}
-                        </a>
+                      <td className="text_left_name left_alination">
+                        {myVotes.description_politicparty}
                       </td>
-                      <td className="text-center">
+                      <td className="text_left_name">
+                        {myVotes.candidate_name}
+                      </td>
+                      <td className="text-center align-middle">
                         {format.format(myVotes.votos)}
-                      </td>
-                      <td className="text-center">
-                        <a
-                          className="link_departamento"
-                          href={
-                            "/alcaldia/departamento/" +
-                            idDepartment +
-                            "/municipio/" +
-                            myVotes.municipality.id_municipality
-                          }
-                        >
-                          <i className="fa-solid fa-magnifying-glass fa-sm text-danger"></i>
-                        </a>
                       </td>
                     </tr>
                   ))}
               </tbody>
             </table>
           </div>
-          <div className="dropdown">
-            <div
-              className="container-fluid display-flex justify-content-center mt-4"
-              style={{
-                color: "#FFFFFF",
-                height: "40px",
-                alignItems: "right",
-              }}
-            >
-              <h6
-              className="tituloVotosTotales my-2"
-            >
-              {arrayDepartamento.map((myDepartment) => (
-                <b style={{ color: "#D9224E" }} className="vota_respo">
-                  VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
-                </b>
-              ))}
-            </h6>
-            </div>
-          </div>
+
           <div className="dropdown">
             <div
               className="container-fluid display-flex justify-content-center"
@@ -206,12 +201,12 @@ export const AlcaldiaDepartamento = () => {
             >
               <div className="text-center">
                 <a
-                  href="/alcaldia"
                   type="button"
                   className="buttonBack buttonBack-primary"
+                  href={"/jal/departamento/" + idDepartment}
                 >
                   <i className="bi bi-arrow-left-circle"></i>
-                  &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
+                  &nbsp;&nbsp;REGRESAR A ELEGIR UN MUNICIPIO
                 </a>
               </div>
             </div>
@@ -240,7 +235,6 @@ export const AlcaldiaDepartamento = () => {
           </Modal.Body>
         </Modal>
       </div>
-      <div className="position-absolute bottom-50 end-50"></div>
     </main>
   );
 };

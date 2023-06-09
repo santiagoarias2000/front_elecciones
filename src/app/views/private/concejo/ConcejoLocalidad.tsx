@@ -1,93 +1,88 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import VotosSenado from "../../../models/VotesCongreso";
+import VotosConcejo from "../../../models/DataElection";
 import ApiBack from "../../../utilities/domains/ApiBack";
+import concejo from "../../../../assets/image/HeaderTable/ELECONCEJO.webp";
 import ServicePrivate from "../../../services/ServicePrivate";
-import senado from "../../../../assets/image/HeaderTable/CRsenadoindigena.webp";
-import { Form, InputGroup, Modal } from "react-bootstrap";
 import Municipality from "../../../models/Municipality";
+import { Form, InputGroup, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
-export const SenadoIndigenaMunicipio = () => {
+export const ConcejoLocalidad = () => {
+  //Variables
   let { idDepartment } = useParams();
   let { idMunicipality } = useParams();
-
   const [search, setSearch] = useState("");
   const [searchMunicipio, setSearchMunicipio] = useState("");
 
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
-
-  const [arrayVotesSenadoMunicipal, setArrayVotosSenadoMunicipal] = useState<
-    VotosSenado[]
-  >([]);
-  const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
   const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
     Municipality[]
   >([]);
-  const getVotosSenadoIndigena = async () => {
-    const result = await ServicePrivate.requestGET(
-      ApiBack.SENADO_INDIGENA_MUNICIPIO +
-        "/" +
-        idDepartment +
-        "/municipio/" +
-        idMunicipality
+  const [arrayVotosConsejo, setArrayVotosConcejo] = useState<VotosConcejo[]>(
+    []
+  );
+  const [Localidad, setLocalidad] = useState<Municipality[]>([]);
+
+  const getComboBoxLocalidad = async () => {
+    const resultado = await ServicePrivate.requestGET(
+      ApiBack.COMBOBOX_LOCATION
     );
-    setArrayVotosSenadoMunicipal(result);
+    setLocalidad(resultado);
+    return resultado;
+  };
+  //Funciones
+  const getVotosConcejoLocalidad = async () => {
+    const result = await ServicePrivate.requestGET(
+      ApiBack.CONCEJO_LOCALIDAD + "/" + idMunicipality
+    );
+    setArrayVotosConcejo(result);
     setShow(false);
   };
-
-  const getMuniciaplity = async () => {
-    const result = await ServicePrivate.requestGET(
-      ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
-    );
-    setArrayMunicipio(result);
-  };
   const getNameMunicipality = async () => {
-    const result = await ServicePrivate.requestGET(
-      ApiBack.NOMBRE_MUNICIPIO + "/" + idMunicipality
-    );
-    setArrayNameMunicipality(result);
+    if (idDepartment === "11") {
+      const result = await ServicePrivate.requestGET(
+        ApiBack.NOMBRE_LOCALIDAD + "/" + idMunicipality
+      );
+      setArrayNameMunicipality(result);
+    } else {
+      const result = await ServicePrivate.requestGET(
+        ApiBack.NOMBRE_MUNICIPIO + "/" + idMunicipality
+      );
+      setArrayNameMunicipality(result);
+    }
   };
 
+  //Format Number Votes
+  const format = new Intl.NumberFormat();
   //Prevent enter in search box
   function submitHandler(e: any) {
     e.preventDefault();
   }
-  //Format Number Votes
-  const format = new Intl.NumberFormat();
-
   useEffect(() => {
-    getVotosSenadoIndigena();
-    getMuniciaplity();
+    getVotosConcejoLocalidad();
     getNameMunicipality();
+    getComboBoxLocalidad();
   }, [idDepartment, idMunicipality]);
+
   return (
     <main id="main" className="main">
       <img
-        src={senado}
-        style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
+        src={concejo}
+        style={{
+          width: "100%",
+          maxHeight: "80%",
+          marginTop: "3vw",
+          borderRadius: "5px 5px 0 0",
+          boxShadow: "0px 0 20px #052851",
+        }}
         alt="logo principal para la parte superior de la pagina web"
       />
       <div className="side_bar"></div>
 
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div
-            className="container-fluid display-flex justify-content-center"
-            style={{
-              background: "#052851",
-              color: "#FFFFFF",
-              height: "40px",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <div className="text-center">
-              <b className="title_table">CIRCUNCRIPCIÓN INDÍGENA</b>
-            </div>
-          </div>
-
           <div className="container responsive">
             <div className="row">
               <div className="col-sm ">
@@ -98,7 +93,7 @@ export const SenadoIndigenaMunicipio = () => {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    Municipios
+                    Localidades
                   </button>
                   <ul
                     className="dropdown-menu selectpicker"
@@ -116,33 +111,31 @@ export const SenadoIndigenaMunicipio = () => {
                       />
                     </div>
                     <li>
-                      {arrayMunicipio
-                        .filter((val) => {
-                          if (searchMunicipio === "") {
-                            return val;
-                          } else if (
-                            val.name_municipality
-                              .toLocaleLowerCase()
-                              .includes(searchMunicipio.toLocaleLowerCase())
-                          ) {
-                            return val;
+                      {Localidad.filter((val) => {
+                        if (searchMunicipio === "") {
+                          return val;
+                        } else if (
+                          val.name_municipality
+                            .toLocaleLowerCase()
+                            .includes(searchMunicipio.toLocaleLowerCase())
+                        ) {
+                          return val;
+                        }
+                      }).map((miMunicipio, indice) => (
+                        <a
+                          className="dropdown-item"
+                          href={
+                            "/concejo/departamento/" +
+                            idDepartment +
+                            "/localidad/" +
+                            miMunicipio.id_municipality
                           }
-                        })
-                        .map((myMunicipality) => (
-                          <a
-                            className="dropdown-item"
-                            href={
-                              "/senado/indigena/departamento/" +
-                              myMunicipality.id_department +
-                              "/municipio/" +
-                              myMunicipality.id_municipality
-                            }
-                          >
-                            <b className="name_text">
-                              {myMunicipality.name_municipality}
-                            </b>
-                          </a>
-                        ))}
+                        >
+                          <b className="name_text">
+                            {miMunicipio.name_municipality}
+                          </b>
+                        </a>
+                      ))}
                     </li>
                   </ul>
                 </div>
@@ -166,6 +159,7 @@ export const SenadoIndigenaMunicipio = () => {
                       onChange={(e) => setSearch(e.target.value)}
                       placeholder="Buscar nombre Candidato"
                       style={{ textAlign: "right", marginRight: "5px" }}
+                      className="form_co"
                     ></Form.Control>
                   </InputGroup>
                 </Form>
@@ -174,7 +168,7 @@ export const SenadoIndigenaMunicipio = () => {
           </div>
           <div className="container no_responsive">
             <div className="row">
-              <div className="col-sm ">
+              <div className="col-sm">
                 <div className="col">
                   <h6 className="text-center my-2" style={{ color: "#052851" }}>
                     {arrayNameMunicipality.map((myNameMunicipality) => (
@@ -188,7 +182,6 @@ export const SenadoIndigenaMunicipio = () => {
                   </h6>
                 </div>
               </div>
-
               <div className="d-flex align-items-center mt-2 mb-2 justify-content-between">
                 <div
                   className="dropdown text-left mb-1"
@@ -200,7 +193,7 @@ export const SenadoIndigenaMunicipio = () => {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    Municipios
+                    Localidades
                   </button>
                   <ul
                     className="dropdown-menu selectpicker"
@@ -218,36 +211,35 @@ export const SenadoIndigenaMunicipio = () => {
                       />
                     </div>
                     <li>
-                      {arrayMunicipio
-                        .filter((val) => {
-                          if (searchMunicipio === "") {
-                            return val;
-                          } else if (
-                            val.name_municipality
-                              .toLocaleLowerCase()
-                              .includes(searchMunicipio.toLocaleLowerCase())
-                          ) {
-                            return val;
+                      {Localidad.filter((val) => {
+                        if (searchMunicipio === "") {
+                          return val;
+                        } else if (
+                          val.name_municipality
+                            .toLocaleLowerCase()
+                            .includes(searchMunicipio.toLocaleLowerCase())
+                        ) {
+                          return val;
+                        }
+                      }).map((miMunicipio, indice) => (
+                        <a
+                          className="dropdown-item"
+                          href={
+                            "/concejo/departamento/" +
+                            idDepartment +
+                            "/localidad/" +
+                            miMunicipio.id_municipality
                           }
-                        })
-                        .map((myMunicipality) => (
-                          <a
-                            className="dropdown-item"
-                            href={
-                              "/senado/indigena/departamento/" +
-                              myMunicipality.id_department +
-                              "/municipio/" +
-                              myMunicipality.id_municipality
-                            }
-                          >
-                            <b className="name_text">
-                              {myMunicipality.name_municipality}
-                            </b>
-                          </a>
-                        ))}
+                        >
+                          <b className="name_text">
+                            {miMunicipio.name_municipality}
+                          </b>
+                        </a>
+                      ))}
                     </li>
                   </ul>
                 </div>
+
                 <div className="col-sm">
                   <Form id="form_conta" onSubmit={submitHandler}>
                     <InputGroup className="my-1 container_form">
@@ -266,7 +258,7 @@ export const SenadoIndigenaMunicipio = () => {
 
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table
-              className="colorTable table table-hover"
+              className="colorTableCamara table table-hover"
               style={{ background: "#05285190 !important" }}
             >
               <thead
@@ -276,52 +268,42 @@ export const SenadoIndigenaMunicipio = () => {
                 <tr>
                   <th
                     className="text-center"
-                    style={{ width: "30%" }}
+                    style={{ width: "35%" }}
                     id="text_left_name"
                   >
                     PARTIDO POLÍTICO
                   </th>
                   <th
                     className="text-center"
-                    style={{ width: "30%" }}
+                    style={{ width: "40%" }}
                     id="text_left_name"
                   >
                     NOMBRE CANDIDATO
                   </th>
-                  <th className="text-center" style={{ width: "20%" }}>
-                    VOTOS DEPARTAMENTO
-                  </th>
-                  <th className="text-center" style={{ width: "20%" }}>
-                    VOTOS MUNICIPIO
+                  <th className="text-center" style={{ width: "25%" }}>
+                    VOTOS LOCALIDAD
                   </th>
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotesSenadoMunicipal
-                  .filter((val) => {
-                    if (search === "") {
-                      return val;
-                    } else if (
-                      val.candidate_name
-                        .toLocaleLowerCase()
-                        .includes(search.toLocaleLowerCase())
-                    ) {
-                      return val;
-                    }
+                {arrayVotosConsejo
+                  .filter((myVotes) => {
+                    return search === ""
+                      ? myVotes
+                      : myVotes.candidate_name
+                          .toLowerCase()
+                          .includes(search.toLowerCase());
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
-                      <td className="text_left_name">
+                      <td className="text_left_name left_alination">
                         {myVotes.description_politicparty}
                       </td>
                       <td className="text_left_name">
                         {myVotes.candidate_name}
                       </td>
-                      <td className="text-center">
+                      <td className="text-center align-middle">
                         {format.format(myVotes.votos)}
-                      </td>
-                      <td className="text-center">
-                        {format.format(myVotes.votos_muicipio)}
                       </td>
                     </tr>
                   ))}
@@ -340,11 +322,15 @@ export const SenadoIndigenaMunicipio = () => {
               }}
             >
               <div className="text-center">
-                ¿
                 <a
                   type="button"
                   className="buttonBack buttonBack-primary"
-                  href={"/senado/indigena/departamento/" + idDepartment}
+                  href={
+                    "/concejo/departamento/" +
+                    idDepartment +
+                    "/municipio/" +
+                    149
+                  }
                 >
                   <i className="bi bi-arrow-left-circle"></i>
                   &nbsp;&nbsp;REGRESAR A ELEGIR UN MUNICIPIO

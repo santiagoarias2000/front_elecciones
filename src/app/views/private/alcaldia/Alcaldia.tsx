@@ -5,9 +5,10 @@ import alcaldia from "../../../../assets/image/HeaderTable/ELEALCALDIA.webp";
 import { Form, InputGroup, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 import VotosAlcaldia from "../../../models/DataElection";
+import { useNavigate } from "react-router-dom";
 
 export const Alcaldia = () => {
-  //Format Number Votes 
+  //Format Number Votes
   const format = new Intl.NumberFormat();
 
   const [searchTerritorial, setSearchTerritorial] = useState("");
@@ -15,16 +16,28 @@ export const Alcaldia = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotosAlcaldia, setArrayVotosAlcaldia] =
-    useState<VotosAlcaldia[]>([]);
+  const [arrayVotosAlcaldia, setArrayVotosAlcaldia] = useState<VotosAlcaldia[]>(
+    []
+  );
+  const myNavigate = useNavigate();
 
   const getVotosAlcaldia = async () => {
     const result = await ServicePrivate.requestGET(ApiBack.ALCALDIA);
     setArrayVotosAlcaldia(result);
     setShow(false);
   };
+  const navegacion = (idDepartment: any) => {
+    const bogota: any = 11;
+    if (idDepartment === bogota) {
+      myNavigate(
+        "/alcaldia/departamento/" + idDepartment + "/municipio/" + "149"
+      );
+    } else {
+      myNavigate("/alcaldia/departamento/" + idDepartment);
+    }
+  };
   //Prevent enter in search box
-  function submitHandler(e:any) {
+  function submitHandler(e: any) {
     e.preventDefault();
   }
 
@@ -48,11 +61,6 @@ export const Alcaldia = () => {
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div className="container-fluid display-flex justify-content-center container_title">
-            <div className="text-center">
-              <b className="title_table">ALCALDIA TERRITORIAL</b>
-            </div>
-          </div>
 
           <div className="container responsive_pe">
             <div className="row">
@@ -99,7 +107,7 @@ export const Alcaldia = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }} >
+                  <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
                   </th>
                   <th className="text-center" style={{ width: "30%" }}>
@@ -122,22 +130,29 @@ export const Alcaldia = () => {
                       <td className="text_left">
                         <a
                           className="link_departamento"
-                          href={
-                            "/alcaldia/departamento/" +
-                            myVotes.department.idDepartment
-                          }
+                          onClick={() => {
+                            navegacion(myVotes.department.idDepartment);
+                          }}
                         >
                           {myVotes.department.name_department}
                         </a>
                       </td>
-                      <td className="text-center">{format.format(myVotes.votos)}</td>
+                      <td className="text-center">
+                        <a
+                          className="link_departamento"
+                          onClick={() => {
+                            navegacion(myVotes.department.idDepartment);
+                          }}
+                        >
+                          {format.format(myVotes.votos)}
+                        </a>
+                      </td>
                       <td className="text-center align-middle">
                         <a
                           className="link_departamento"
-                          href={
-                            "/alcaldia/departamento/" +
-                            myVotes.department.idDepartment
-                          }
+                          onClick={() => {
+                            navegacion(myVotes.department.idDepartment);
+                          }}
                         >
                           <i className="fa-solid fa-magnifying-glass fa-sm text-danger"></i>
                         </a>
@@ -197,4 +212,3 @@ export const Alcaldia = () => {
     </main>
   );
 };
-

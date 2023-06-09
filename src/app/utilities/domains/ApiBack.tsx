@@ -1,12 +1,11 @@
 const ApiBack = {
-  URL: "http://localhost:3123",
-  //URL: "https://guiaelectoraldecolombia.onrender.com",
+  //URL: "http://localhost:3123",
+  URL: "https://guiaelectoraldecolombia.onrender.com",
 
   LOGIN: "/api/public/user/login",
 
-
-
   COMBOBOX_MUNICIPIO: "/api/public/municipio",
+  COMBOBOX_LOCATION: "/api/public/municipio/localidad/combito",
   NOMBRE_MUNICIPIO: "/api/public/municipio/one",
   NOMBRE_LOCALIDAD: "/api/public/municipio/localidad/one",
   NOMBRE_DEPARTAMENTO_TERRITORIAL: "/api/public/departamento/territorial",
@@ -47,28 +46,30 @@ const ApiBack = {
   CAMARA_INDIGENA_DEPARTAMENTO_MUNICIPIO:"/api/public/camara/circuncripcion/indigena/departamento",
   CAMARA_AFRODESCENDIENTE_DEPARTAMENTO_MUNICIPIO:"/api/public/camara/circuncripcion/afrodescendiente/departamento",
 
-  GOBERNACION:"/api/public/gobernacion",
-  GOBERNACION_DEPARTAMENTO:"/api/public/gobernacion/departamento",
-  GOBERNACION_DEPARTAMENTO_MUNICIPIO:"/api/public/gobernacion/departamento",
+  GOBERNACION:"/api/private/gobernacion",
+  GOBERNACION_DEPARTAMENTO:"/api/private/gobernacion/departamento",
+  GOBERNACION_DEPARTAMENTO_MUNICIPIO:"/api/private/gobernacion/departamento",
 
   
-  ASAMBLEA:"/api/public/asamblea",
-  ASAMBLEA_DEPARTAMENTO:"/api/public/asamblea/departamento",
-  ASAMBLEA_DEPARTAMENTO_MUNICIPIO:"/api/public/asamblea/departamento",
+  ASAMBLEA:"/api/private/asamblea",
+  ASAMBLEA_DEPARTAMENTO:"/api/private/asamblea/departamento",
+  ASAMBLEA_DEPARTAMENTO_MUNICIPIO:"/api/private/asamblea/departamento",
 
-  ALCALDIA:"/api/public/alcaldia",
-  ALCALDIA_DEPARTAMENTO:"/api/public/alcaldia/departamento",
-  ALCALDIA_DEPARTAMENTO_MUNICIPIO:"/api/public/alcaldia/municipio",
+  ALCALDIA:"/api/private/alcaldia",
+  ALCALDIA_DEPARTAMENTO:"/api/private/alcaldia/departamento",
+  ALCALDIA_DEPARTAMENTO_MUNICIPIO:"/api/private/alcaldia/municipio",
+  ALCALDIA_LOCALIDAD:"/api/private/alcaldia/localidad",
 
-  CONCEJO:"/api/public/concejo",
-  CONCEJO_DEPARTAMENTO:"/api/public/concejo/departamento",
-  CONCEJO_DEPARTAMENTO_MUNICIPIO:"/api/public/concejo/municipio",
+  CONCEJO:"/api/private/concejo",
+  CONCEJO_DEPARTAMENTO:"/api/private/concejo/departamento",
+  CONCEJO_DEPARTAMENTO_MUNICIPIO:"/api/private/concejo/municipio",
+  CONCEJO_LOCALIDAD:"/api/private/concejo/localidad",
   
-  JAL:"/api/public/jal",
-  JAL_DEPARTAMENTO:"/api/public/jal/departamento",
-  JAL_DEPARTAMENTO_MUNICIPIO:"/api/public/jal/municipio",          
-  JAL_DEPARTAMENTO_BOGOTA:"/api/public/jal/departamento/bogota",
-  JAL_LOCALIDAD:"/api/public/jal/localidad",          
+  JAL:"/api/private/jal",
+  JAL_DEPARTAMENTO:"/api/private/jal/departamento",
+  JAL_DEPARTAMENTO_MUNICIPIO:"/api/private/jal/municipio",          
+  JAL_DEPARTAMENTO_BOGOTA:"/api/private/jal/departamento/bogota",
+  JAL_LOCALIDAD:"/api/private/jal/localidad",          
   
 };
 export default ApiBack;

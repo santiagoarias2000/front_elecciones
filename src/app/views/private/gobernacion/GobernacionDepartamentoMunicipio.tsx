@@ -64,26 +64,22 @@ export const GobernacionDepartamentoMunicipio = () => {
   }, [idDepartment, idMunicipality]);
   return (
     <main id="main" className="main">
-      <img
-        src={gobernacion}
-        style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
-        alt="logo principal para la parte superior de la pagina web"
-      />
+      <div className="responsive_pr">
+        <img
+          src={gobernacion}
+          alt="logo principal para la parte superior de la pagina web"
+        />
+      </div>
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div className="container-fluid display-flex justify-content-center container_title">
-            <div className="text-center">
-              <b className="title_table">GOBERNACIÓN MUNICIPAL</b> &nbsp;
-            </div>
-          </div>
           <div className="container responsive">
             <div className="row">
               <div className="col-sm ">
                 <div className="dropdown text-center my-3">
                   <button
                     type="button"
-                    className="buttonBack buttonBack-primary dropdown-toggle"
+                    className="buttonBack buttonBack-primary dropdown-toggle text-light"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
@@ -182,11 +178,11 @@ export const GobernacionDepartamentoMunicipio = () => {
               <div className="d-flex align-items-center mt-2 mb-2 justify-content-between">
                 <div
                   className="dropdown text-left mb-1"
-                  style={{ marginLeft: "3%" }}
+                  style={{ marginRight: "5%" }}
                 >
                   <button
                     type="button"
-                    className="buttonBack buttonBack-primary dropdown-toggle"
+                    className="buttonBack buttonBack-primary dropdown-toggle text-light"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >

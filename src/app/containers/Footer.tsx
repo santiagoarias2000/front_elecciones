@@ -25,7 +25,7 @@ export const Footer = () => {
               </li>
               <li>
                 <i className="bi bi-geo-alt icon_footer"></i>&nbsp; Cr 2 32 49
-                T1 Ap 702
+                T1 Ap 702 Tunja
               </li>
             </ul>
           </div>

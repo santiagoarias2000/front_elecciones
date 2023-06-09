@@ -1,41 +1,52 @@
 import { useState, useEffect } from "react";
 import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import asamblea from "../../../../assets/image/HeaderTable/ELEASAMBLEA.webp";
+import concejo from "../../../../assets/image/HeaderTable/ELECONCEJO.webp";
 import { Form, InputGroup, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
-import VotesAsamblea from "../../../models/DataElection";
+import VotesConcejo from "../../../models/DataElection";
+import { useNavigate } from "react-router-dom";
 
-export const Asamblea = () => {
+export const Concejo = () => {
   //Format Number Votes
   const format = new Intl.NumberFormat();
+  //Prevent enter in search box
+  function submitHandler(e: any) {
+    e.preventDefault();
+  }
+  const [searchTerritorial, setSearchTerritorial] = useState("");
 
-  const [searchDepartamento, setSearchDepartamento] = useState("");
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotosAsamblea, setArrayVotosAsamblea] = useState<VotesAsamblea[]>(
-    []
-  );
+  const myNavigate = useNavigate();
 
-  const getVotosAsamblea = async () => {
-    const result = await ServicePrivate.requestGET(ApiBack.ASAMBLEA);
-    setArrayVotosAsamblea(result);
+  const navegacion = (idDepartment: any) => {
+    const bogota: any = 11;
+    if (idDepartment === bogota) {
+      myNavigate(
+        "/concejo/departamento/" + idDepartment + "/municipio/" + "149"
+      );
+    } else {
+      myNavigate("/concejo/departamento/" + idDepartment);
+    }
+  };  
+  const [arrayVotesConsejoTerritorial, setArrayVotesConsejoTerritorial] =
+    useState<VotesConcejo[]>([]);
+  const getVotosConsejoTerritorial = async () => {
+    const result = await ServicePrivate.requestGET(ApiBack.CONCEJO);
+    setArrayVotesConsejoTerritorial(result);
     setShow(false);
   };
-  //Prevent enter in search box
-  function submitHandler(e:any) {
-    e.preventDefault();
-  }
 
   useEffect(() => {
-    getVotosAsamblea();
+    getVotosConsejoTerritorial();
   }, []);
 
   return (
     <main id="main" className="main">
       <img
-        src={asamblea}
+        src={concejo}
         style={{
           width: "100%",
           maxHeight: "80%",
@@ -46,14 +57,9 @@ export const Asamblea = () => {
         alt="logo principal para la parte superior de la pagina web"
       />
       <div className="side_bar"></div>
+
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div className="container-fluid display-flex justify-content-center container_title">
-            <div className="text-center">
-              <b className="title_table">ASAMBLEA TERRITORIAL</b>
-            </div>
-          </div>
-
           <div className="container responsive_pe">
             <div className="row">
               <div className="col-sm"></div>
@@ -61,7 +67,7 @@ export const Asamblea = () => {
                 <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
-                      onChange={(e) => setSearchDepartamento(e.target.value)}
+                      onChange={(e) => setSearchTerritorial(e.target.value)}
                       placeholder="Buscar nombre departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
@@ -78,7 +84,7 @@ export const Asamblea = () => {
                 <Form id="form_conta" onSubmit={submitHandler}>
                   <InputGroup className="my-3 container_form">
                     <Form.Control
-                      onChange={(e) => setSearchDepartamento(e.target.value)}
+                      onChange={(e) => setSearchTerritorial(e.target.value)}
                       placeholder="Buscar nombre departamento"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
@@ -99,7 +105,7 @@ export const Asamblea = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }} >
+                  <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
                   </th>
                   <th className="text-center" style={{ width: "30%" }}>
@@ -109,37 +115,42 @@ export const Asamblea = () => {
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotosAsamblea
+                {arrayVotesConsejoTerritorial
                   .filter((myVotes) => {
-                    return searchDepartamento === ""
+                    return searchTerritorial === ""
                       ? myVotes
                       : myVotes.department.name_department
                           .toLowerCase()
-                          .includes(searchDepartamento.toLowerCase());
+                          .includes(searchTerritorial.toLowerCase());
                   })
                   .map((myVotes, contador) => (
                     <tr key={contador}>
                       <td className="text_left">
                         <a
                           className="link_departamento"
-                          href={
-                            "/asamblea/departamento/" +
-                            myVotes.department.idDepartment
-                          }
+                          onClick={() => {
+                            navegacion(myVotes.department.idDepartment);
+                          }}
                         >
                           {myVotes.department.name_department}
                         </a>
                       </td>
                       <td className="text-center">
-                        {format.format(myVotes.votos)}
+                        <a
+                          className="link_departamento"
+                          onClick={() => {
+                            navegacion(myVotes.department.idDepartment);
+                          }}
+                        >
+                          {format.format(myVotes.votos)}
+                        </a>
                       </td>
                       <td className="text-center align-middle">
                         <a
                           className="link_departamento"
-                          href={
-                            "/asamblea/departamento/" +
-                            myVotes.department.idDepartment
-                          }
+                          onClick={() => {
+                            navegacion(myVotes.department.idDepartment);
+                          }}
                         >
                           <i className="fa-solid fa-magnifying-glass fa-sm text-danger"></i>
                         </a>

@@ -1,56 +1,42 @@
 import { useEffect, useState } from "react";
-import { Form, InputGroup, Modal } from "react-bootstrap";
-import {useParams } from "react-router-dom";
-import alcaldia from "../../../../assets/image/HeaderTable/ELEALCALDIA.webp";
-import ApiBack from "../../../utilities/domains/ApiBack";
-import ServicePrivate from "../../../services/ServicePrivate";
-import Municipality from "../../../models/Municipality";
-import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
-import VotesAlcaldia from "../../../models/DataElection";
-
-export const AlcaldiaDepartamentoMunicipio = () => {
-  let { idDepartment } = useParams();
-  let { idMunicipality } = useParams();
+import { Form, InputGroup} from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import CandidatosCitrep from "../../../mocks/models/CITREP/CandidatosCitrep";
+import { ARREGLO_CANDIDATOS_CITREP } from "../../../mocks/MocksCitrep/candidatos-citrep-mocks";
+import citrep from "../../../../assets/image/HeaderTable/CITREP.webp";
+export const Citrep = () => {
+  let { idCitrep }: any = useParams();
+  const idCitrepNumber: number = parseInt(idCitrep) as number;
   //Format Number Votes
-  const format = new Intl.NumberFormat();
+  const format: any = new Intl.NumberFormat();
   const [search, setSearch] = useState("");
-  const [arrayNameMunicipality, setArrayNameMunicipality] = useState<Municipality[] >([]);
-
-  const [show, setShow] = useState(true);
-  const handleClose = () => setShow(false);
-
-  const [arrayVotosAlcaldiaMunicipio, setArrayVotosAlcaldiaMunicipio] =
-    useState<VotesAlcaldia[]>([]);
-
-  const getNameMunicipality = async () => {
-    const result = await ServicePrivate.requestGET(
-      ApiBack.NOMBRE_MUNICIPIO + "/" + idMunicipality
-    );
-    setArrayNameMunicipality(result);
-  };
-  const getVotosAlcalidaMunicipio = async () => {
-    const urlCargarVotosMunicipio =
-      ApiBack.ALCALDIA_DEPARTAMENTO_MUNICIPIO + "/" + idMunicipality;
-    const result = await ServicePrivate.requestGET(urlCargarVotosMunicipio);
-    setArrayVotosAlcaldiaMunicipio(result);
-    if (result) {
-      setArrayVotosAlcaldiaMunicipio(result);
-      setShow(false);
-    }
-  };
+  const [arrayVotesCitrep, setArrayVotesCitrep] = useState<CandidatosCitrep[]>(
+    ARREGLO_CANDIDATOS_CITREP
+  );
   //Prevent enter in search box
-  function submitHandler(e:any) {
+  function submitHandler(e: any) {
     e.preventDefault();
   }
-  
-  useEffect(() => {
-    getVotosAlcalidaMunicipio();
-    getNameMunicipality();
-  }, [idDepartment,idMunicipality]);
+  const arregloCitrepId: CandidatosCitrep[] = [];
+  const arregloNombre: CandidatosCitrep[] = [];
+
+  const objName = arrayVotesCitrep.filter(
+    (objeto) => objeto.idCitrep.idCitrep === idCitrepNumber
+  );
+  if (objName.length > 0) {
+    arregloNombre.push(objName[0]);
+  }
+  arrayVotesCitrep.map((item) => {
+    if (item.idCitrep.idCitrep === idCitrepNumber) {
+      arregloCitrepId.push(item);
+    }
+  });
+  useEffect(() => {}, [idCitrep]);
+
   return (
     <main id="main" className="main">
       <img
-        src={alcaldia}
+        src={citrep}
         style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
         alt="logo principal para la parte superior de la pagina web"
       />
@@ -59,7 +45,7 @@ export const AlcaldiaDepartamentoMunicipio = () => {
         <div className="cardBorder card">
           <div className="container-fluid display-flex justify-content-center container_title">
             <div className="text-center">
-              <b className="title_table">ALCALDIAS MUNICIPALES</b> &nbsp;
+              <b className="title_table">CITREP</b> &nbsp;
             </div>
           </div>
           <div className="container responsive">
@@ -67,13 +53,8 @@ export const AlcaldiaDepartamentoMunicipio = () => {
               <div className="col-sm "></div>
               <div className="col">
                 <h6 className="text-center my-4" style={{ color: "#052851" }}>
-                  {arrayNameMunicipality.map((myNameMunicipality) => (
-                    <b>
-                      {myNameMunicipality.name_municipality}
-                      {" ("}
-                      {myNameMunicipality.department}
-                      {")"}
-                    </b>
+                  {arregloNombre.map((miNombre) => (
+                    <b>{miNombre.idCitrep.nombreCitrep}</b>
                   ))}
                 </h6>
               </div>
@@ -96,13 +77,8 @@ export const AlcaldiaDepartamentoMunicipio = () => {
               <div className="col-sm "></div>
               <div className="col">
                 <h6 className="text-center my-2" style={{ color: "#052851" }}>
-                  {arrayNameMunicipality.map((myNameMunicipality) => (
-                    <b className="name_text">
-                      {myNameMunicipality.name_municipality}
-                      {" ("}
-                      {myNameMunicipality.department}
-                      {")"}
-                    </b>
+                  {arregloNombre.map((miNombre) => (
+                    <b>{miNombre.idCitrep.nombreCitrep}</b>
                   ))}
                 </h6>
               </div>
@@ -131,24 +107,32 @@ export const AlcaldiaDepartamentoMunicipio = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }} id="text_left_name">
+                  <th
+                    className="text-center"
+                    style={{ width: "35%" }}
+                    id="text_left_name"
+                  >
                     PARTIDO POLITIO
                   </th>
-                  <th className="text-center" style={{ width: "30%" }} id="text_left_name">
+                  <th
+                    className="text-center"
+                    style={{ width: "30%" }}
+                    id="text_left_name"
+                  >
                     NOMBRE CANDIDATO
                   </th>
                   <th className="text-center" style={{ width: "35%" }}>
-                    VOTOS MUNICIPALES
+                    VOTOS CIRCUNSCRIPCIÓN
                   </th>
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotosAlcaldiaMunicipio
+                {arregloCitrepId
                   .filter((val) => {
                     if (search === "") {
                       return val;
                     } else if (
-                      val.candidate_name
+                      val.nombreCandidato
                         .toLocaleLowerCase()
                         .includes(search.toLocaleLowerCase())
                     ) {
@@ -158,13 +142,13 @@ export const AlcaldiaDepartamentoMunicipio = () => {
                   .map((myVotes, contador) => (
                     <tr key={contador}>
                       <td className="text_left_name">
-                        {myVotes.description_politicparty}
+                        {myVotes.agrupacionPolitica}
                       </td>
                       <td className="text_left_name">
-                        {myVotes.candidate_name}
+                        {myVotes.nombreCandidato}
                       </td>
                       <td className="text-center align-middle">
-                        {format.format(myVotes.votos)}
+                        {format.format(myVotes.votosCandidato)}
                       </td>
                     </tr>
                   ))}
@@ -184,7 +168,7 @@ export const AlcaldiaDepartamentoMunicipio = () => {
             >
               <div className="text-center">
                 <a
-                  href={"/alcaldia/departamento/" + idDepartment}
+                  href={"/camara"}
                   type="button"
                   className="buttonBack buttonBack-primary"
                 >
@@ -195,28 +179,6 @@ export const AlcaldiaDepartamentoMunicipio = () => {
             </div>
           </div>
         </div>
-        <Modal
-          show={show}
-          backdrop="static"
-          keyboard={false}
-          onHide={handleClose}
-          centered
-          style={{ background: "#FFFFFFBF !important" }}
-        >
-          <Modal.Body className="text-center">
-            <div className="text-center">
-              <img
-                src={ImageSpinner}
-                style={{ height: "100px", width: "200px" }}
-              />
-              <div className="mt-4">
-                <div className="spinner-border text-danger" role="status">
-                  <span className=" visually-hidden">Loading...</span>
-                </div>
-              </div>
-            </div>
-          </Modal.Body>
-        </Modal>
       </div>
       <div className="position-absolute bottom-50 end-50"></div>
     </main>

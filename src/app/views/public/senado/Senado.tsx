@@ -7,15 +7,18 @@ import { Form, InputGroup, Modal } from "react-bootstrap";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
 
 export const Senado = () => {
-  
   const [searchNacional, setSearchNacional] = useState("");
   const [searchIndigena, setSearchIndigena] = useState("");
 
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const [arrayVotesSenadoNacional, setArrayVotesSenadoNacional] = useState< VotosSenado[] >([]);
-  const [arrayVotesSenadoIndigena, setArrayVotesSenadoIndigena] = useState< VotosSenado[] >([]);
+  const [arrayVotesSenadoNacional, setArrayVotesSenadoNacional] = useState<
+    VotosSenado[]
+  >([]);
+  const [arrayVotesSenadoIndigena, setArrayVotesSenadoIndigena] = useState<
+    VotosSenado[]
+  >([]);
 
   const getVotosSenadoTerritorial = async () => {
     const result = await ServicePrivate.requestGET(ApiBack.SENADO_NACIONAL);
@@ -28,12 +31,12 @@ export const Senado = () => {
   };
 
   //Prevent enter in search box
-  function submitHandler(e:any) {
+  function submitHandler(e: any) {
     e.preventDefault();
   }
 
-  //Format Number Votes 
-  const format = new Intl.NumberFormat(); 
+  //Format Number Votes
+  const format = new Intl.NumberFormat();
 
   useEffect(() => {
     getVotosSenadoTerritorial();
@@ -50,9 +53,18 @@ export const Senado = () => {
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div className="container-fluid display-flex justify-content-center container_title">
+          <div
+            className="container-fluid display-flex justify-content-center"
+            style={{
+              background: "#052851",
+              color: "#FFFFFF",
+              height: "40px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             <div className="text-center">
-              <b className="title_table">TERRITORIAL NACIONAL</b> &nbsp;
+              <b className="title_table">CIRCUNSCRIPCIÓN NACIONAL</b> &nbsp;
             </div>
           </div>
           <div className="container responsive_pe">
@@ -99,7 +111,7 @@ export const Senado = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }} >
+                  <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
                   </th>
                   <th className="text-center" style={{ width: "30%" }}>
@@ -130,7 +142,17 @@ export const Senado = () => {
                           {myVotes.department.name_department}
                         </a>
                       </td>
-                      <td className="text-center">{format.format(myVotes.votos)}</td>
+                      <td className="text-center">
+                      <a
+                          className="link_departamento"
+                          href={
+                            "/senado/nacional/" +
+                            myVotes.department.idDepartment
+                          }
+                        >
+                          {format.format(myVotes.votos)}
+                        </a>
+                      </td>
                       <td className="text-center align-middle">
                         <a
                           className="link_departamento"
@@ -174,7 +196,13 @@ export const Senado = () => {
                 ELEGIDOS
               </a>
             </div>
-            <div className="text-center no_responsive">
+            <div
+              className="text-center no_responsive"
+              style={{
+                paddingLeft: "none !important",
+                paddingRight: "none !important",
+              }}
+            >
               <a
                 type="button"
                 className="buttonBack buttonBack-primary"
@@ -186,10 +214,10 @@ export const Senado = () => {
 
               <a
                 href="/senadoelegidos"
-                className="buttonBack buttonBack-primary my-1"
+                className="buttonBack d-inline buttonBack-primary my-1"
+                style={{ marginLeft: "10px" }}
               >
-                <i className="bi bi-search "></i>&nbsp;&nbsp;&nbsp;CONOZCA LOS
-                108 ELEGIDOS
+                <i className="bi bi-search "></i>&nbsp;108 ELEGIDOS
               </a>
             </div>
           </div>
@@ -198,9 +226,18 @@ export const Senado = () => {
 
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div className="container-fluid display-flex justify-content-center container_title">
+          <div
+            className="container-fluid display-flex justify-content-center"
+            style={{
+              background: "#052851",
+              color: "#FFFFFF",
+              height: "40px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             <div className="text-center">
-              <b className="title_table">TERRITORIAL INDÍGENA</b>
+              <b className="title_table">CIRCUNSCRIPCIÓN INDÍGENA</b>
             </div>
           </div>
 
@@ -248,7 +285,7 @@ export const Senado = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "35%" }} >
+                  <th className="text-center" style={{ width: "35%" }}>
                     DEPARTAMENTO
                   </th>
                   <th className="text-center" style={{ width: "30%" }}>
@@ -279,7 +316,17 @@ export const Senado = () => {
                           {myVotes.department.name_department}
                         </a>
                       </td>
-                      <td className="text-center">{format.format(myVotes.votos)}</td>
+                      <td className="text-center">
+                        <a
+                          className="link_departamento"
+                          href={
+                            "/senado/indigena/departamento/" +
+                            myVotes.department.idDepartment
+                          }
+                        >
+                          {format.format(myVotes.votos)}
+                        </a>
+                      </td>
                       <td className="text-center align-middle">
                         <a
                           className="text-left"
@@ -318,7 +365,8 @@ export const Senado = () => {
               &nbsp;&nbsp;
               <a
                 href="/senadoelegidos"
-                className="buttonBack buttonBack-primary link_hitdata"
+                className="buttonBack buttonBack-primary"
+                style={{ marginLeft: "10px" }}
               >
                 <i className="bi bi-search "></i> &nbsp; CONOZCA LOS 108
                 ELEGIDOS
@@ -339,8 +387,7 @@ export const Senado = () => {
                 href="/senadoelegidos"
                 className="buttonBack buttonBack-primary my-1"
               >
-                <i className="bi bi-search "></i>&nbsp;&nbsp;&nbsp;CONOZCA LOS
-                108 ELEGIDOS
+                <i className="bi bi-search "></i>108 ELEGIDOS
               </a>
             </div>
           </div>
@@ -356,7 +403,10 @@ export const Senado = () => {
       >
         <Modal.Body className="text-center">
           <div className="text-center">
-            <img src={ImageSpinner} style={{height:"100px", width:"200px"}}/>
+            <img
+              src={ImageSpinner}
+              style={{ height: "100px", width: "200px" }}
+            />
             <div className="mt-4">
               <div className="spinner-border text-danger" role="status">
                 <span className=" visually-hidden">Loading...</span>

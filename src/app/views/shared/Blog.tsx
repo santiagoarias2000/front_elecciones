@@ -1,17 +1,17 @@
-import sergio from "../../assets/image/Blog/sergiofagardo.webp";
-import petro from "../../assets/image/Blog/gustavopetro.webp";
-import rodolfo from "../../assets/image/Blog/rodolfo.webp";
-import elecciones from "../../assets/image/Blog/eleccionesnoticia.webp";
-import uribe from "../../assets/image/Blog/uribe.webp";
-import loteriabanner from "../../assets/image/Blog/publicidadloteria.webp";
-import banner from "../../assets/image/Blog/bannerpublicidad.webp";
-import bannerPublicidad from "../../assets/image/Blog/publicidadLoteriaHori.webp";
+import sergio from "../../../assets/image/Blog/sergiofagardo.webp";
+import petro from "../../../assets/image/Blog/gustavopetro.webp";
+import rodolfo from "../../../assets/image/Blog/rodolfo.webp";
+import elecciones from "../../../assets/image/Blog/eleccionesnoticia.webp";
+import uribe from "../../../assets/image/Blog/uribe.webp";
+import loteriabanner from "../../../assets/image/Blog/publicidadloteria.webp";
+import banner from "../../../assets/image/Blog/bannerpublicidad.webp";
+import bannerPublicidad from "../../../assets/image/Blog/publicidadLoteriaHori.webp";
 
 export const Blog = () => {
   return (
-    <div id="about" className="containner-welcome">
+    <div id="about" className="containner-welcome ">
       <section>
-        <div className="container">
+        <div className="container mt-5">
           <div className="row">
             <div className="col-md-9" data-aos="fade-up">
               <h3 className="category-title">CATEGORIA: POLÍTICA</h3>

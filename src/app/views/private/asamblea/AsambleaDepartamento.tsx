@@ -1,114 +1,73 @@
-import { useState, useEffect } from "react";
-import VotesCongreso from "../../../models/VotesCongreso";
-import ServicePrivate from "../../../services/ServicePrivate";
-import ApiBack from "../../../utilities/domains/ApiBack";
-import Form from "react-bootstrap/Form";
-import camara from "../../../../assets/image/HeaderTable/CRterrirorial.webp";
+import { useEffect, useState } from "react";
+import { Form, InputGroup, Modal } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import asamblea from "../../../../assets/image/HeaderTable/ELEASAMBLEA.webp";
+import ApiBack from "../../../utilities/domains/ApiBack";
+import ServicePrivate from "../../../services/ServicePrivate";
 import Municipality from "../../../models/Municipality";
-import { InputGroup, Modal } from "react-bootstrap";
-import CandidatosCamara from "../../../mocks/models/CandidatosCamara";
-import { ARREGLO_CANDIDATOS_ELEGIDOS } from "../../../mocks/candidatos-mocks";
+import Department from "../../../models/Department";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
+import VotosAsamblea from "../../../models/DataElection";
 
-export const CamaraTerritorialDepartamentoMunicipio = () => {
+export const AsambleaDepartamento = () => {
   let { idDepartment } = useParams();
-  let { idMunicipality } = useParams();
   //Format Number Votes
   const format = new Intl.NumberFormat();
-
-  const [arrayCandidatosElegidos, setArrayCandidatosElegidos] = useState<
-    CandidatosCamara[]
-  >(ARREGLO_CANDIDATOS_ELEGIDOS);
   const [search, setSearch] = useState("");
-  const [show, setShow] = useState(true);
   const [searchMunicipio, setSearchMunicipio] = useState("");
 
-  const [arrayVotesCamaraTerritorial, setArrayVotosCamaraTerritorial] =
-    useState<VotesCongreso[]>([]);
-  const [arrayMunicipio, setArrayMunicipio] = useState<Municipality[]>([]);
-  const [arrayNameMunicipality, setArrayNameMunicipality] = useState<
-    Municipality[]
-  >([]);
+  const [arrayMunicipios, setMunicipios] = useState<Municipality[]>([]);
+  const [arrayDepartamento, setArrayDepartamento] = useState<Department[]>([]);
+
+  const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
-  const getVotosCamaraTerritorial = async () => {
-    const result = await ServicePrivate.requestGET(
-      ApiBack.CAMARA_TERRITORIAL_DEPARTAMENTO_MUNICIPIO +
-        "/" +
-        idDepartment +
-        "/municipio/" +
-        idMunicipality
-    );
-    setArrayVotosCamaraTerritorial(result);
-    setShow(false);
-  };
+  const [arrayVotesAsambleaDepartamental, setarrayVotesAsambleaDepartamental] =
+    useState<VotosAsamblea[]>([]);
   const getComboBoxMunicipio = async () => {
-    const result = await ServicePrivate.requestGET(
+    const resultado = await ServicePrivate.requestGET(
       ApiBack.COMBOBOX_MUNICIPIO + "/" + idDepartment
     );
-    setArrayMunicipio(result);
+    setMunicipios(resultado);
+    return resultado;
   };
 
-  const getNameMunicipality = async () => {
+  const getDepartamento = async () => {
     const result = await ServicePrivate.requestGET(
-      ApiBack.NOMBRE_MUNICIPIO + "/" + idMunicipality
+      ApiBack.NOMBRE_DEPARTAMENTO_ASAMBLEA + "/" + idDepartment
     );
-    setArrayNameMunicipality(result);
+    setArrayDepartamento(result);
   };
-  const CandidatosElegidosCamara = (miCandidato: any) => {
-    var elegidosi: any;
-    var elegidono: any;
-    arrayCandidatosElegidos.map((item) => {
-      if (item.candidate_name === miCandidato) {
-        elegidosi = "True";
-      } else {
-        elegidono = "False";
-      }
-    });
-    return elegidosi;
+  const getVotosAsambleaDepartamental = async () => {
+    const urlCargasVotosDepartamento =
+      ApiBack.ASAMBLEA_DEPARTAMENTO + "/" + idDepartment;
+    const result = await ServicePrivate.requestGET(urlCargasVotosDepartamento);
+    setarrayVotesAsambleaDepartamental(result);
+    if (result) {
+      setarrayVotesAsambleaDepartamental(result);
+      setShow(false);
+    }
   };
   //Prevent enter in search box
   function submitHandler(e: any) {
     e.preventDefault();
   }
-  useEffect(() => {
-    getNameMunicipality();
-    getComboBoxMunicipio();
-    getVotosCamaraTerritorial();
-  }, [idDepartment, idMunicipality]);
 
+  useEffect(() => {
+    getVotosAsambleaDepartamental();
+    getComboBoxMunicipio();
+    getDepartamento();
+  }, [idDepartment]);
   return (
     <main id="main" className="main">
       <img
-        src={camara}
-        style={{
-          width: "100%",
-          maxHeight: "80%",
-          marginTop: "3vw",
-          borderRadius: "5px 5px 0 0",
-          boxShadow: "0px 0 20px #052851",
-        }}
+        src={asamblea}
+        style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
         alt="logo principal para la parte superior de la pagina web"
       />
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-        <div
-            className="container-fluid display-flex justify-content-center"
-            style={{
-              background: "#052851",
-              color: "#FFFFFF",
-              height: "40px",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <div className="text-center">
-              <b className="title_table">CIRCUNSCRIPCIÓN DEPARTAMENTAL</b>
-            </div>
-          </div>
-
           <div className="container responsive">
             <div className="row">
               <div className="col-sm ">
@@ -137,9 +96,9 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                       />
                     </div>
                     <li>
-                      {arrayMunicipio
+                      {arrayMunicipios
                         .filter((val) => {
-                          if (searchMunicipio === "") {
+                          if (searchMunicipio == "") {
                             return val;
                           } else if (
                             val.name_municipality
@@ -149,17 +108,19 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                             return val;
                           }
                         })
-                        .map((myMunicipality, indice) => (
+                        .map((miMunicipio, indice) => (
                           <a
-                            className="dropdown-item name_deparment_respo"
+                            className="dropdown-item"
                             href={
-                              "/camara/circuncripcion/territorial/departamento/" +
-                              myMunicipality.id_department +
+                              "/asamblea/departamento/" +
+                              idDepartment +
                               "/municipio/" +
-                              myMunicipality.id_municipality
+                              miMunicipio.id_municipality
                             }
                           >
-                            <b className="name_text">{myMunicipality.name_municipality}</b>
+                            <b className="name_text">
+                              {miMunicipio.name_municipality}
+                            </b>
                           </a>
                         ))}
                     </li>
@@ -168,13 +129,8 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
               </div>
               <div className="col">
                 <h6 className="text-center my-4" style={{ color: "#052851" }}>
-                  {arrayNameMunicipality.map((myNameMunicipality) => (
-                    <b>
-                      {myNameMunicipality.name_municipality}
-                      {" ("}
-                      {myNameMunicipality.department}
-                      {")"}
-                    </b>
+                  {arrayDepartamento.map((myDepartment) => (
+                    <b>{myDepartment.name_department}</b>
                   ))}
                 </h6>
               </div>
@@ -183,7 +139,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Buscar nombre Candidato"
+                      placeholder="Buscar un Partido Político"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
                     ></Form.Control>
@@ -194,15 +150,12 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
           </div>
           <div className="container no_responsive">
             <div className="row">
-              <div className="col-sm">
+              <div className="col-sm ">
                 <div className="col">
                   <h6 className="text-center my-2" style={{ color: "#052851" }}>
-                    {arrayNameMunicipality.map((myNameMunicipality) => (
+                    {arrayDepartamento.map((myDepartment) => (
                       <b className="name_text">
-                        {myNameMunicipality.name_municipality}
-                        {" ("}
-                        {myNameMunicipality.department}
-                        {")"}
+                        {myDepartment.name_department}
                       </b>
                     ))}
                   </h6>
@@ -216,7 +169,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                 >
                   <button
                     type="button"
-                    className="buttonBack buttonBack-primary dropdown-toggle name_deparment_respo text-light"
+                    className="buttonBack buttonBack-primary dropdown-toggle text-light"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
@@ -238,9 +191,9 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                       />
                     </div>
                     <li>
-                      {arrayMunicipio
+                      {arrayMunicipios
                         .filter((val) => {
-                          if (searchMunicipio === "") {
+                          if (searchMunicipio == "") {
                             return val;
                           } else if (
                             val.name_municipality
@@ -250,18 +203,18 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                             return val;
                           }
                         })
-                        .map((myMunicipality, indice) => (
+                        .map((miMunicipio, indice) => (
                           <a
-                            className="dropdown-item name_deparment_respo"
+                            className="dropdown-item"
                             href={
-                              "/camara/circuncripcion/territorial/departamento/" +
-                              myMunicipality.id_department +
+                              "/asamblea/departamento/" +
+                              idDepartment +
                               "/municipio/" +
-                              myMunicipality.id_municipality
+                              miMunicipio.id_municipality
                             }
                           >
                             <b className="name_text">
-                              {myMunicipality.name_municipality}
+                              {miMunicipio.name_municipality}
                             </b>
                           </a>
                         ))}
@@ -273,7 +226,7 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                     <InputGroup className="my-1 container_form">
                       <Form.Control
                         onChange={(e) => setSearch(e.target.value)}
-                        placeholder="Buscar nombre Candidato"
+                        placeholder="Buscar un Partido Político"
                         style={{ textAlign: "right", marginRight: "5px" }}
                         className="form_co"
                       ></Form.Control>
@@ -296,82 +249,54 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
                 <tr>
                   <th
                     className="text-center"
-                    style={{ width: "30%" }}
+                    style={{ width: "35%" }}
                     id="text_left_name"
                   >
                     PARTIDO POLÍTICO
                   </th>
                   <th
                     className="text-center"
-                    style={{ width: "30%" }}
+                    style={{ width: "40%" }}
                     id="text_left_name"
                   >
                     NOMBRE CANDIDATO
                   </th>
-                  <th className="text-center" style={{ width: "20%" }}>
+                  <th className="text-center" style={{ width: "25%" }}>
                     VOTOS DEPARTAMENTO
-                  </th>
-                  <th className="text-center" style={{ width: "20%" }}>
-                    VOTOS MUNICIPIO
                   </th>
                 </tr>
               </thead>
               <tbody className="color container_table">
-                {arrayVotesCamaraTerritorial
+                {arrayVotesAsambleaDepartamental
                   .filter((val) => {
-                    if (search === "") {
+                    if (search == "") {
                       return val;
                     } else if (
-                      val.candidate_name
+                      val.description_politicparty
                         .toLocaleLowerCase()
                         .includes(search.toLocaleLowerCase())
                     ) {
                       return val;
                     }
                   })
-                  .map((myVotes) => (
-                    <tr>
-                      <td
-                        // className={
-                        //   CandidatosElegidosCamara(myVotes.candidate_name) ===
-                        //   "True"
-                        //     ? "text-center text-danger fst-italic font-weight-bold"
-                        //     : "text-center"
-                        // }
-                        id="text_left_name"
-                      >
+                  .map((myVotes, contador) => (
+                    <tr key={contador}>
+                      <td className="text_left_name">
                         {myVotes.description_politicparty}
                       </td>
-                      <td
-                        // className={
-                        //   CandidatosElegidosCamara(myVotes.candidate_name) ===
-                        //   "True"
-                        //     ? "text-center text-danger fst-italic font-weight-bold"
-                        //     : "text-center"
-                        // }
-                        id="text_left_name"
-                      >
+                      <td className="text_left_name">
                         {myVotes.candidate_name}
                       </td>
-                      <td className="text-center"
-                        // className={
-                        //   CandidatosElegidosCamara(myVotes.candidate_name) ===
-                        //   "True"
-                        //     ? "text-center text-danger fst-italic font-weight-bold"
-                        //     : "text-center"
-                        // }
-                      >
-                        {format.format(myVotes.votos)}
-                      </td>
-                      <td className="text-center"
-                        // className={
-                        //   CandidatosElegidosCamara(myVotes.candidate_name) ===
-                        //   "True"
-                        //     ? "text-center text-danger fst-italic font-weight-bold"
-                        //     : "text-center"
-                        // }
-                      >
-                        {format.format(myVotes.votos_muicipio)}
+                      <td className="text-center">
+                        <a
+                          className="link_departamento"
+                          href={
+                            "/asamblea/departamento/" +
+                            myVotes.department.idDepartment
+                          }
+                        >
+                          {format.format(myVotes.votos)}
+                        </a>
                       </td>
                     </tr>
                   ))}
@@ -379,54 +304,72 @@ export const CamaraTerritorialDepartamentoMunicipio = () => {
             </table>
           </div>
           <div className="dropdown">
+            <div className="d-flex align-items-center mt-3">
+              <div
+                className="container-fluid"
+                style={{
+                  color: "#FFFFFF",
+                  height: "40px",
+                  alignItems: "right",
+                }}
+              >
+                <h6 className="tituloVotosTotales my-2">
+                  {arrayDepartamento.map((myDepartment) => (
+                    <b style={{ color: "#D9224E" }}>
+                      VOTACIÓN TOTAL: {format.format(myDepartment.votos)}
+                    </b>
+                  ))}
+                </h6>
+              </div>
+            </div>
+          </div>
+          <div className="dropdown">
             <div
               className="container-fluid display-flex justify-content-center"
               style={{
                 color: "#FFFFFF",
-                height: "80px",
+                height: "70px",
                 display: "flex",
                 alignItems: "center",
               }}
             >
               <div className="text-center">
                 <a
+                  href="/asamblea"
                   type="button"
                   className="buttonBack buttonBack-primary"
-                  href={
-                    "/camara/circuncripcion/territorial/departamento/" +
-                    idDepartment
-                  }
                 >
                   <i className="bi bi-arrow-left-circle"></i>
-                  &nbsp;&nbsp;REGRESAR A ELEGIR MUNICIPIO
+                  &nbsp;&nbsp;REGRESAR A ELEGIR DEPARTAMENTO
                 </a>
               </div>
             </div>
           </div>
-          <Modal
-            show={show}
-            backdrop="static"
-            keyboard={false}
-            onHide={handleClose}
-            centered
-            style={{ background: "#FFFFFFBF !important" }}
-          >
-            <Modal.Body className="text-center">
-              <div className="text-center">
-                <img
-                  src={ImageSpinner}
-                  style={{ height: "100px", width: "200px" }}
-                />
-                <div className="mt-4">
-                  <div className="spinner-border text-danger" role="status">
-                    <span className=" visually-hidden">Loading...</span>
-                  </div>
+        </div>
+        <Modal
+          show={show}
+          backdrop="static"
+          keyboard={false}
+          onHide={handleClose}
+          centered
+          style={{ background: "#FFFFFFBF !important" }}
+        >
+          <Modal.Body className="text-center">
+            <div className="text-center">
+              <img
+                src={ImageSpinner}
+                style={{ height: "100px", width: "200px" }}
+              />
+              <div className="mt-4">
+                <div className="spinner-border text-danger" role="status">
+                  <span className=" visually-hidden">Loading...</span>
                 </div>
               </div>
-            </Modal.Body>
-          </Modal>
-        </div>
+            </div>
+          </Modal.Body>
+        </Modal>
       </div>
+      <div className="position-absolute bottom-50 end-50"></div>
     </main>
   );
 };

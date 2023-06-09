@@ -79,7 +79,16 @@ export const SenadoNacionalMunicipio = () => {
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div className="container-fluid display-flex justify-content-center container_title">
+          <div
+            className="container-fluid display-flex justify-content-center"
+            style={{
+              background: "#052851",
+              color: "#FFFFFF",
+              height: "40px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             <div className="text-center">
               <b className="title_table">
                 CIRCUNSCRIPCIÓN TERRITORIAL MUNICIPAL
@@ -94,7 +103,7 @@ export const SenadoNacionalMunicipio = () => {
                   <div className="dropdown">
                     <button
                       type="button"
-                      className="buttonBack buttonBack-primary dropdown-toggle"
+                      className="buttonBack buttonBack-primary dropdown-toggle text-light"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
@@ -207,12 +216,12 @@ export const SenadoNacionalMunicipio = () => {
                 <div className="d-flex align-items-center mt-2 mb-2 justify-content-between">
                   <div
                     className="dropdown text-left mb-1"
-                    style={{ marginLeft: "3%" }}
+                    style={{ marginRight: "5%" }}
                   >
                     <div className="dropdown">
                       <button
                         type="button"
-                        className="buttonBack buttonBack-primary dropdown-toggle"
+                        className="buttonBack buttonBack-primary dropdown-toggle text-light"
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >

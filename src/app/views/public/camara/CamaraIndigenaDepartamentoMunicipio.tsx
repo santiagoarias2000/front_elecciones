@@ -94,9 +94,18 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
         <div className="cardBorder card">
-          <div className="container-fluid display-flex justify-content-center container_title">
+        <div
+            className="container-fluid display-flex justify-content-center"
+            style={{
+              background: "#052851",
+              color: "#FFFFFF",
+              height: "40px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             <div className="text-center">
-              <b className="title_table">TERRITORIAL INDIGENA</b>
+              <b className="title_table">CIRCUNSCRIPCIÓN INDÍGENA</b>
             </div>
           </div>
           <div className="container responsive">
@@ -105,7 +114,7 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
                 <div className="dropdown text-center my-3">
                   <button
                     type="button"
-                    className="buttonBack buttonBack-primary dropdown-toggle"
+                    className="buttonBack buttonBack-primary dropdown-toggle text-light"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
@@ -149,7 +158,9 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
                               myMunicipality.id_municipality
                             }
                           >
-                            <b className="name_text">{myMunicipality.name_municipality}</b>
+                            <b className="name_text">
+                              {myMunicipality.name_municipality}
+                            </b>
                           </a>
                         ))}
                     </li>
@@ -202,11 +213,11 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
               <div className="d-flex align-items-center mt-2 mb-2 justify-content-between">
                 <div
                   className="dropdown text-left mb-1"
-                  style={{ marginLeft: "3%" }}
+                  style={{ marginRight: "5%" }}
                 >
                   <button
                     type="button"
-                    className="buttonBack buttonBack-primary dropdown-toggle"
+                    className="buttonBack buttonBack-primary dropdown-toggle text-light"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
@@ -323,44 +334,44 @@ export const CamaraIndigenaDepartamentoMunicipio = () => {
                   .map((myVotes) => (
                     <tr>
                       <td
-                        className={
-                          CandidatosElegidosCamara(myVotes.candidate_name) ===
-                          "True"
-                            ? "text-center text-danger fst-italic font-weight-bold"
-                            : "text-center"
-                        }
+                        // className={
+                        //   CandidatosElegidosCamara(myVotes.candidate_name) ===
+                        //   "True"
+                        //     ? "text-center text-danger fst-italic font-weight-bold"
+                        //     : "text-center"
+                        // }
                         id="text_left_name"
                       >
                         {myVotes.description_politicparty}
                       </td>
                       <td
-                        className={
-                          CandidatosElegidosCamara(myVotes.candidate_name) ===
-                          "True"
-                            ? "text-center text-danger fst-italic font-weight-bold"
-                            : "text-center"
-                        }
+                        // className={
+                        //   CandidatosElegidosCamara(myVotes.candidate_name) ===
+                        //   "True"
+                        //     ? "text-center text-danger fst-italic font-weight-bold"
+                        //     : "text-center"
+                        // }
                         id="text_left_name"
                       >
                         {myVotes.candidate_name}
                       </td>
-                      <td
-                        className={
-                          CandidatosElegidosCamara(myVotes.candidate_name) ===
-                          "True"
-                            ? "text-center text-danger fst-italic font-weight-bold"
-                            : "text-center"
-                        }
+                      <td className="text-center"
+                        // className={
+                        //   CandidatosElegidosCamara(myVotes.candidate_name) ===
+                        //   "True"
+                        //     ? "text-center text-danger fst-italic font-weight-bold"
+                        //     : "text-center"
+                        // }
                       >
                         {format.format(myVotes.votos)}
                       </td>
-                      <td
-                        className={
-                          CandidatosElegidosCamara(myVotes.candidate_name) ===
-                          "True"
-                            ? "text-center text-danger fst-italic font-weight-bold"
-                            : "text-center"
-                        }
+                      <td className="text-center"
+                        // className={
+                        //   CandidatosElegidosCamara(myVotes.candidate_name) ===
+                        //   "True"
+                        //     ? "text-center text-danger fst-italic font-weight-bold"
+                        //     : "text-center"
+                        // }
                       >
                         {format.format(myVotes.votos_muicipio)}
                       </td>
