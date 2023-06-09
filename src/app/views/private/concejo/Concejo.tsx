@@ -45,21 +45,16 @@ export const Concejo = () => {
 
   return (
     <main id="main" className="main">
-      <img
-        src={concejo}
-        style={{
-          width: "100%",
-          maxHeight: "80%",
-          marginTop: "3vw",
-          borderRadius: "5px 5px 0 0",
-          boxShadow: "0px 0 20px #052851",
-        }}
-        alt="logo principal para la parte superior de la pagina web"
-      />
+      <div className="responsive_pr">
+        <img
+          src={concejo}
+          alt="logo principal para la parte superior de la pagina web"
+        />
+      </div>
       <div className="side_bar"></div>
 
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
-        <div className="cardBorder card">
+        <div className="cardBorder card" style={{borderRadius:"0px 0px 5px 5px"}}>
           <div className="container responsive_pe">
             <div className="row">
               <div className="col-sm"></div>

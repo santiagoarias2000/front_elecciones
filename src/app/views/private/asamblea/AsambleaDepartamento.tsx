@@ -60,14 +60,15 @@ export const AsambleaDepartamento = () => {
   }, [idDepartment]);
   return (
     <main id="main" className="main">
-      <img
-        src={asamblea}
-        style={{ width: "100%", maxHeight: "80%", marginTop: "3vw" }}
-        alt="logo principal para la parte superior de la pagina web"
-      />
+      <div className="responsive_pr">
+        <img
+          src={asamblea}
+          alt="logo principal para la parte superior de la pagina web"
+        />
+      </div>
       <div className="side_bar"></div>
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
-        <div className="cardBorder card">
+      <div className="cardBorder card" style={{borderRadius:"0px 0px 5px 5px"}}>
           <div className="container responsive">
             <div className="row">
               <div className="col-sm ">

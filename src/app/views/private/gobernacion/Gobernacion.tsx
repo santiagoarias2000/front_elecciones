@@ -47,7 +47,7 @@ export const Gobernacion = () => {
 
       {/* Ejemplo de una tabla para presentación de datos: Inicio */}
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
-        <div className="cardBorder card">
+      <div className="cardBorder card" style={{borderRadius:"0px 0px 5px 5px"}}>
           <div className="container responsive_pe">
             <div className="row">
               <div className="col-sm"></div>

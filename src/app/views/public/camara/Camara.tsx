@@ -81,7 +81,7 @@ export const Camara = () => {
             style={{
               background: "#052851",
               color: "#FFFFFF",
-              height: "40px",
+              height: "20px",
               display: "flex",
               alignItems: "center",
             }}
@@ -535,7 +535,7 @@ export const Camara = () => {
                   <InputGroup className="my-3 container_form">
                     <Form.Control
                       onChange={(e) => setSearchTerritorial(e.target.value)}
-                      placeholder="Buscar nombre departamento"
+                      placeholder="Buscar nombre de circunscripción"
                       style={{ textAlign: "right", marginRight: "5px" }}
                       className="form_co"
                     ></Form.Control>
@@ -572,13 +572,13 @@ export const Camara = () => {
                 style={{ backgroundColor: "#fff" }}
               >
                 <tr>
-                  <th className="text-center" style={{ width: "40%" }}>
+                  <th className="text-center" style={{ width: "45%" }}>
                     DEPARTAMENTO
                   </th>
-                  <th className="text-center" style={{ width: "25%" }}>
+                  <th className="text-center" style={{ width: "30%" }}>
                     TOTAL VOTOS
                   </th>
-                  <th className="text-center" style={{ width: "35%" }}></th>
+                  <th className="text-center" style={{ width: "25%" }}></th>
                 </tr>
               </thead>
               <tbody className="color container_table">

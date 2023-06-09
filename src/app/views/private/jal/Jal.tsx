@@ -46,7 +46,7 @@ export const Jal = () => {
       <div className="side_bar"></div>
 
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
-        <div className="cardBorder card">
+      <div className="cardBorder card" style={{borderRadius:"0px 0px 5px 5px"}}>
           <div className="container responsive_pe">
             <div className="row">
               <div className="col-sm"></div>

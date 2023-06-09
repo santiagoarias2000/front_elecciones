@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import VotosAlcaldia from "../../../models/DataElection";
 import ApiBack from "../../../utilities/domains/ApiBack";
-import jal from "../../../../assets/image/HeaderTable/ELEALCALDIA.webp";
+import alcaldia from "../../../../assets/image/HeaderTable/ELEALCALDIA.webp";
 import ServicePrivate from "../../../services/ServicePrivate";
 import Municipality from "../../../models/Municipality";
 import { Form, InputGroup, Modal } from "react-bootstrap";
@@ -67,21 +67,16 @@ export const AlcaldiaLocalidad = () => {
 
   return (
     <main id="main" className="main">
+      <div className="responsive_pr">
       <img
-        src={jal}
-        style={{
-          width: "100%",
-          maxHeight: "80%",
-          marginTop: "3vw",
-          borderRadius: "5px 5px 0 0",
-          boxShadow: "0px 0 20px #052851",
-        }}
+        src={alcaldia}
         alt="logo principal para la parte superior de la pagina web"
       />
+    </div>
       <div className="side_bar"></div>
 
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
-        <div className="cardBorder card">
+      <div className="cardBorder card" style={{borderRadius:"0px 0px 5px 5px"}}>
         <div className="container responsive">
             <div className="row">
               <div className="col-sm ">

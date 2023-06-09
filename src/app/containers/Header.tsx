@@ -60,7 +60,7 @@ export const Header = () => {
             aria-hidden="true"
           >
             <Nav className="me-auto">
-              <a href="/#about" style={{ textDecoration: "none" }}>
+              <a href="/" style={{ textDecoration: "none" }}>
                 Inicio
               </a>
               <a href={"/blog"} style={{ textDecoration: "none" }}>
