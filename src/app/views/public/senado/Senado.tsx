@@ -58,12 +58,12 @@ export const Senado = () => {
             style={{
               background: "#052851",
               color: "#FFFFFF",
-              height: "40px",
+              height: "20px",
               display: "flex",
               alignItems: "center",
             }}
           >
-            <div className="text-center">
+            <div className="text-center d-flex align-items-center">
               <b className="title_table">CIRCUNSCRIPCIÓN NACIONAL</b> &nbsp;
             </div>
           </div>
