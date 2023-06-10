@@ -626,24 +626,27 @@ export const Welcome = () => {
           <hr />
         </div>
       </section>
-      <Modal
-        show={show}
-        backdrop="static"
-        keyboard={false}
-        onHide={handleClose}
-        centered
-        style={{ backgroundColor: "transparent !important", opacity: 0.9 }}
-      >
-        <Modal.Body className="text-center text-bg-light">
-          <div className="text-center">
-            <img
-              style={{ width: "100%", height: "auto", opacity: 1 }}
-              src={ImageSpinner}
-              alt="imagen de carga para el modal"
-            />
-          </div>
-        </Modal.Body>
-      </Modal>
+
+      {localStorage.getItem("tokenHitData") ? null : (
+        <Modal
+          show={show}
+          backdrop="static"
+          keyboard={false}
+          onHide={handleClose}
+          centered
+          style={{ backgroundColor: "transparent !important", opacity: 0.9 }}
+        >
+          <Modal.Body className="text-center text-bg-light">
+            <div className="text-center">
+              <img
+                style={{ width: "100%", height: "auto", opacity: 1 }}
+                src={ImageSpinner}
+                alt="imagen de carga para el modal"
+              />
+            </div>
+          </Modal.Body>
+        </Modal>
+      )}
     </div>
   );
 };
