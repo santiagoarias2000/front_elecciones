@@ -116,13 +116,13 @@ export const Login = () => {
                             required
                             type="email"
                             name="emailUser"
-                            placeholder="Correo electronico"
+                            placeholder="Correo electrónico"
                             className="form-control"
                             value={emailUser}
                             onChange={doubleLink}
                           />
                           <Form.Control.Feedback type="invalid">
-                            Debe ingresar un correo electronico valido
+                            Debe ingresar un correo electrónico valido
                           </Form.Control.Feedback>
                         </div>
                       </Form.Group>
