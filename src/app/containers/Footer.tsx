@@ -7,16 +7,17 @@ export const Footer = () => {
       <div className="container text-center">
         <div className="row">
           <div className="col img_footer_center">
-            <img
-              src={footerimg}
-              alt="imagen de footer para la pagina"
-            />
+            <img src={footerimg} alt="imagen de footer para la pagina" />
           </div>
           <div className="col-6">
             <ul>
               <li>
-                <i className="bi bi-globe icon_footer"></i>&nbsp;
-                www.guiaelectoraldecolombia.com
+                <div className="row">
+                  <div className="col-2">
+                    <i className="bi bi-globe icon_footer"></i>
+                  </div>
+                  <div className="col-10">www.guiaelectoraldecolombia.com</div>
+                </div>
               </li>
               <li>
                 <i className="bi bi-envelope icon_footer"></i>&nbsp;
