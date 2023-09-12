@@ -7,6 +7,7 @@ import ServicePrivate from "../../../services/ServicePrivate";
 import ApiBack from "../../../utilities/domains/ApiBack";
 import concejo from "../../../../assets/image/HeaderTable/ELECONCEJO.webp";
 import ImageSpinner from "../../../../assets/image/LOGOAZUL.webp";
+import * as XLSX from "xlsx";
 
 export const ConcejoMunicipal = () => {
   let { idDepartment } = useParams();
@@ -69,6 +70,29 @@ export const ConcejoMunicipal = () => {
   function submitHandler(e: any) {
     e.preventDefault();
   }
+
+  const exportToExcel = () => {
+    const worksheet = XLSX.utils.json_to_sheet(arrayVotesConcejoTerritorial);
+
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Camara");
+
+    const execlBuffer = XLSX.write(workbook, { type: "array" });
+
+    const blob = new Blob([execlBuffer], {
+      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    });
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = 'Datos elecciones consejo del municipio.xlsx ';
+    a.click();
+
+    URL.revokeObjectURL(url);
+  };
+
   useEffect(() => {
     getVotosConcejoMunicipal();
     getNameMunicipality();
@@ -85,7 +109,10 @@ export const ConcejoMunicipal = () => {
       <div className="side_bar"></div>
 
       <div className="col-lg-12" style={{ color: "#052851 !important" }}>
-      <div className="cardBorder card" style={{borderRadius:"0px 0px 5px 5px"}}>
+        <div
+          className="cardBorder card"
+          style={{ borderRadius: "0px 0px 5px 5px" }}
+        >
           <div className="container responsive">
             <div className="row">
               <div className="col-sm ">
@@ -343,6 +370,8 @@ export const ConcejoMunicipal = () => {
                   <i className="bi bi-arrow-left-circle"></i>
                   &nbsp;&nbsp;REGRESAR A ELEGIR UN MUNICIPIO
                 </a>
+                &nbsp;&nbsp;
+                <button className="buttonBack buttonBack-primar hover_down" onClick={exportToExcel}>Descargar Excel <i className="fa-regular fa-file-excel"></i></button>
               </div>
             </div>
           </div>

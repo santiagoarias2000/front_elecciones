@@ -72,7 +72,7 @@ export const Header = () => {
               <a href={"/resultados"} style={{ textDecoration: "none" }}>
                 Resultados
               </a>
-              {localStorage.getItem("tokenHitData") ? (
+              {/* {localStorage.getItem("tokenHitData") ? (
                 <NavDropdown
                   title="Cerrar Sesión"
                   id="nav-dropdown"
@@ -113,7 +113,7 @@ export const Header = () => {
                 >
                   Iniciar Sesión&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </a>
-              )}
+              )} */}
 
               {/* <Nav.Link className="getstarted scrollto pruebita">
                 &nbsp;Iniciar Sesión&nbsp;

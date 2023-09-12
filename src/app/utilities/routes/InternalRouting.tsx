@@ -41,7 +41,7 @@ import { ConcejoMunicipal } from "../../views/private/concejo/ConcejoMunicipal";
 import { AlcaldiaDepartamentoMunicipio } from "../../views/private/alcaldia/AlcaldiaDepartamentoMunicipio";
 import { Resultados } from "../../views/shared/Resultados";
 import { Login } from "../../views/public/Login";
-import { Guard } from "../../security/Guard";
+// import { Guard } from "../../security/Guard";
 import { Citrep } from "../../views/public/camara/Citrep";
 import { AlcaldiaLocalidad } from "../../views/private/alcaldia/AlcaldiaLocalidad";
 import { ConcejoLocalidad } from "../../views/private/concejo/ConcejoLocalidad";
@@ -132,7 +132,7 @@ export const InternalRouting = () => {
       <Route path="/nosotros" element={<LazyNosotros/>}/>
       <Route path="*" element={<LazyNotFound/>}/>
       
-      <Route element={<Guard />}>
+      {/* <Route element={<Guard />}> */}
         //Routes Gobernacion
         <Route  path="/gobernacion" element={<LazyGobernacion/>}/>
         <Route path="/gobernacion/departamento/:idDepartment" element={<LazyGobernacionDepartamento />} />
@@ -155,7 +155,7 @@ export const InternalRouting = () => {
         <Route path="/jal" element={<LazyJal/>}/>
         <Route path="/jal/departamento/:idDepartment" element={<LazyJalDepartamento/>}/>
         <Route path="/jal/departamento/:idDepartment/municipio/:idMunicipality" element={<LazyJalMunicipio/>}/>
-      </Route>
+      {/* </Route> */}
       
       
     </Routes>

@@ -80,13 +80,13 @@ export const Welcome = () => {
               <div className="d-flex justify-content-center">
                 <ul className="prueba">
                   <li>
-                    {localStorage.getItem("tokenHitData") ? (
+                    {/* {localStorage.getItem("tokenHitData") ? ( */}
                       <a className="flex d-block" href="/presidencia">
                         <div className="row">
                           <div className="col-12 login">PRESIDENCIA</div>
                         </div>
                       </a>
-                    ) : (
+                    {/*) : (
                       <a className="flex d-block" href="/presidencia">
                         <div className="row">
                           <div
@@ -99,13 +99,14 @@ export const Welcome = () => {
                       </a>
                     )}
 
-                    {localStorage.getItem("tokenHitData") ? (
+                    {localStorage.getItem("tokenHitData") ? (*/}
+
                       <a className="flex d-block" href="/senado">
                         <div className="row">
                           <div className="col-12 login">SENADO</div>
                         </div>
                       </a>
-                    ) : (
+                   {/* ) : (
                       <a className="flex d-block" href="/senado">
                         <div className="row">
                           <div
@@ -117,13 +118,15 @@ export const Welcome = () => {
                         </div>
                       </a>
                     )}
-                    {localStorage.getItem("tokenHitData") ? (
+                   {localStorage.getItem("tokenHitData") ? (*/}
+
                       <a className="flex d-block" href="/camara">
                         <div className="row">
                           <div className="col-12 login">CÁMARA</div>
                         </div>
                       </a>
-                    ) : (
+                      
+                   {/* ) : (
                       <a className="flex d-block" href="/camara">
                         <div className="row">
                           <div
@@ -136,13 +139,13 @@ export const Welcome = () => {
                       </a>
                     )}
 
-                    {localStorage.getItem("tokenHitData") ? (
+                    {/* {localStorage.getItem("tokenHitData") ? ( */}
                       <a className="flex d-block" href="/gobernacion">
                         <div className="row">
                           <div className="col-12 login">GOBERNACIONES</div>
                         </div>
                       </a>
-                    ) : (
+                    {/* ) : (
                       <a className="flex d-block" href="/gobernacion">
                         <div className="row">
                           <div
@@ -160,15 +163,15 @@ export const Welcome = () => {
                           </div>
                         </div>
                       </a>
-                    )}
+                    )} */}
 
-                    {localStorage.getItem("tokenHitData") ? (
+                    {/* {localStorage.getItem("tokenHitData") ? ( */}
                       <a className="flex d-block" href="/asamblea">
                         <div className="row">
                           <div className="col-12 login">ASAMBLEAS</div>
                         </div>
                       </a>
-                    ) : (
+                    {/* ) : (
                       <a className="flex d-block" href="/asamblea">
                         <div className="row">
                           <div
@@ -186,41 +189,41 @@ export const Welcome = () => {
                           </div>
                         </div>
                       </a>
-                    )}
+                    )} */}
 
-                    {localStorage.getItem("tokenHitData") ? (
+                    {/* {localStorage.getItem("tokenHitData") ? ( */}
                       <a className="flex d-block" href="/alcaldia">
                         <div className="row">
                           <div className="col-12 login">ALCALDÍAS</div>
                         </div>
                       </a>
-                    ) : (
-                      <a className="flex d-block" href="/alcaldia">
-                        <div className="row">
-                          <div
-                            className="col-9 justify-content-start"
-                            style={{ paddingLeft: "20%" }}
-                          >
-                            &nbsp;ALCALDÍAS
-                          </div>
-                          <div className="col-3 justify-content-start">
-                            <i
-                              className="fa-solid fa-crown"
-                              style={{ color: "#d9224e" }}
-                            ></i>
-                            &nbsp;
-                          </div>
-                        </div>
-                      </a>
-                    )}
+                    {/* // ) : (
+                    //   <a className="flex d-block" href="/alcaldia">
+                    //     <div className="row">
+                    //       <div
+                    //         className="col-9 justify-content-start"
+                    //         style={{ paddingLeft: "20%" }}
+                    //       >
+                    //         &nbsp;ALCALDÍAS
+                    //       </div>
+                    //       <div className="col-3 justify-content-start">
+                    //         <i
+                    //           className="fa-solid fa-crown"
+                    //           style={{ color: "#d9224e" }}
+                    //         ></i>
+                    //         &nbsp;
+                    //       </div>
+                    //     </div>
+                    //   </a>
+                    // )}
 
-                    {localStorage.getItem("tokenHitData") ? (
+                    // {localStorage.getItem("tokenHitData") ? ( */}
                       <a className="flex d-block" href="/concejo">
                         <div className="row">
                           <div className="col-12 login">CONCEJO</div>
                         </div>
                       </a>
-                    ) : (
+                    {/* ) : (
                       <a className="flex d-block" href="/concejo">
                         <div className="row">
                           <div
@@ -240,13 +243,13 @@ export const Welcome = () => {
                       </a>
                     )}
 
-                    {localStorage.getItem("tokenHitData") ? (
+                    {localStorage.getItem("tokenHitData") ? ( */}
                       <a className="flex d-block" href="/jal">
                         <div className="row">
                           <div className="col-12 login">JAL</div>
                         </div>
                       </a>
-                    ) : (
+                    {/* ) : (
                       <a className="flex d-block" href="/jal">
                         <div className="row">
                           <div
@@ -264,7 +267,7 @@ export const Welcome = () => {
                           </div>
                         </div>
                       </a>
-                    )}
+                    )} */}
                   </li>
                 </ul>
               </div>
@@ -274,13 +277,13 @@ export const Welcome = () => {
                   color: "#052851",
                 }}
               />
-              {localStorage.getItem("tokenHitData") ? null : (
+               {/* {localStorage.getItem("tokenHitData") ? null : (
                 <h6 className="text-center fst-italic text_extr">
                   <b>
                     Si deseas acceder a más información por favor inicia sesión
                   </b>
                 </h6>
-              )}
+              )} */}
 
               {/* <div className="d-flex justify-content-center">
                 <div id="alt-services" className="alt-services">
@@ -526,6 +529,12 @@ export const Welcome = () => {
                       aria-label="Linkedin"
                     >
                       <i className="bi bi-linkedin"></i>
+                    </a>
+                    <a
+                      href="https://wa.me/+573144077994"
+                      aria-label="Linkedin"
+                    >
+                      <i className="fa-brands fa-square-whatsapp"></i>
                     </a>
                   </div>
                 </div>

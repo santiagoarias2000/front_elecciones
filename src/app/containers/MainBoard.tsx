@@ -9,6 +9,7 @@ export const MainBoard = () => {
       <Header />
       <InternalRouting />
       <Footer />
+      
     </div>
   );
 };
